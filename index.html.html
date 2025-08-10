@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Werbeagentur München – Performance Marketing, SEO & Branding</title>
+  <meta name="description" content="Werbeagentur in München: Performance Marketing, Google Ads, SEO, Social Media, Branding & Web. Messbare Ergebnisse, transparente Reports, klare KPIs.">
+  <meta name="keywords" content="Werbeagentur München, Online Marketing, Performance Marketing, Google Ads, SEO, Social Media, Branding, Webdesign, Agentur München">
+  <meta name="author" content="Andriy Chupryna">
+  <meta name="theme-color" content="#0b1220">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Werbeagentur München – Performance Marketing, SEO & Branding">
+  <meta property="og:description" content="Google Ads, SEO, Social Media, Branding & Web. Messbare Ergebnisse und schnelle Umsetzung.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop">
+  <meta property="og:url" content="https://example.com">
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Andriy Werbeagentur",
+    "url": "https://example.com",
+    "logo": "https://images.unsplash.com/photo-1611162618071-b39a2ec1a8c1?q=80&w=300&auto=format&fit=crop",
+    "sameAs": [],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "München",
+      "addressCountry": "DE"
+    },
+    "contactPoint": [{
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "+49-155-10300538",
+      "areaServed": "DE,AT,CH,EU",
+      "availableLanguage": ["German","English","Ukrainian","Russian"]
+    }]
+  }
+  </script>
+
+  <style>
+    :root{
+      --bg:#0b1220; --bg-2:#0f1a2e; --card:#121b2f; --accent:#5b9dff; --accent-2:#24d18a;
+      --text:#e8eefb; --muted:#9fb0c9; --border:#1f2b46; --max:1200px; --rad:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+
+    /* Topbar */
+    .topbar{position:fixed;inset:0 0 auto 0;height:64px;display:flex;align-items:center;z-index:50;
+      background:rgba(11,18,32,.55);backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--border)}
+    .topbar .inner{display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:36px;height:36px;border-radius:9px}
+    .brand strong{letter-spacing:.3px}
+    nav.menu{display:flex;gap:18px}
+    nav.menu a{color:var(--muted);padding:8px 10px;border-radius:8px;transition:.2s}
+    nav.menu a:hover{color:var(--text);background:rgba(255,255,255,.06)}
+    .lang{display:flex;gap:8px}
+    .lang button{background:#1a2540;color:var(--muted);border:1px solid var(--border);padding:6px 10px;border-radius:8px;cursor:pointer;font-size:12px}
+    .lang button.active,.lang button:hover{color:#fff;border-color:#2f3f64}
+
+    /* Hero */
+    header.hero{min-height:100vh;display:grid;align-items:center;position:relative;isolation:isolate}
+    .hero::before{content:"";position:absolute;inset:0;
+      background:
+      radial-gradient(1200px 500px at 10% 10%, rgba(36,209,138,.15), transparent 60%),
+      radial-gradient(900px 500px at 90% 20%, rgba(91,157,255,.18), transparent 60%),
+      linear-gradient(180deg, rgba(11,18,32,.2), rgba(11,18,32,.85));
+      z-index:-1}
+    .hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;padding-top:80px}
+    .kicker{display:inline-block;font-size:12px;letter-spacing:.4px;background:rgba(255,255,255,.08);padding:6px 10px;border-radius:999px;color:#cfe0ff}
+    h1{font-size:44px;line-height:1.1;margin:14px 0 10px}
+    .sub{color:var(--muted);max-width:640px}
+    .cta{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}
+    .btn{display:inline-block;background:linear-gradient(90deg,var(--accent),#7db7ff);color:#071122;
+      padding:14px 18px;border-radius:10px;font-weight:700}
+    .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+
+    .hero-visual{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
+    .hero-visual img{height:100%;object-fit:cover;filter:saturate(105%) contrast(105%)}
+    .hero-cards{position:absolute;right:10px;bottom:10px;display:flex;gap:10px;flex-wrap:wrap}
+    .mini{background:rgba(15,26,46,.8);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:12px;padding:8px 12px;font-size:12px}
+
+    /* Sections */
+    section{padding:90px 0;border-top:1px solid var(--border)}
+    .section-head{margin-bottom:22px}
+    .section-head h2{margin:0 0 8px;font-size:32px}
+    .lead{color:var(--muted);max-width:780px}
+
+    /* Services Grid */
+    .grid{display:grid;gap:20px}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+    .card .media{height:180px;background:#0c172c}
+    .card .body{padding:18px}
+    .card h3{margin:0 0 8px}
+    .card p{color:var(--muted)}
+
+    /* Steps */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .step{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+    .num{width:34px;height:34px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#7db7ff);color:#0b1220;
+      display:grid;place-items:center;font-weight:800;margin-bottom:10px}
+
+    /* Testimonials */
+    .reviews{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .review{background:#0e1a30;border:1px solid var(--border);border-radius:14px;padding:18px}
+    .author{display:flex;align-items:center;gap:12px;margin-top:10px}
+    .author img{width:44px;height:44px;border-radius:50%}
+    .author small{color:var(--muted)}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .gallery img{height:220px;object-fit:cover;border-radius:12px;border:1px solid var(--border)}
+
+    /* Contact */
+    .contact-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:22px}
+    .form input,.form textarea{width:100%;padding:12px 14px;border-radius:10px;background:#0f1a2e;border:1px solid var(--border);color:#e8eefb;font:inherit}
+    .form textarea{min-height:120px;resize:vertical}
+    .form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .note{color:var(--muted);font-size:14px}
+
+    /* Footer */
+    footer{padding:28px 0;color:#a9bbd7}
+    footer .foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+    /* Responsive */
+    @media (max-width:1100px){.hero .grid{grid-template-columns:1fr}.contact-wrap{grid-template-columns:1fr}.reviews{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.cols-3{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){h1{font-size:32px}.gallery{grid-template-columns:1fr 1fr}.cols-3{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="topbar">
+  <div class="container inner">
+    <div class="brand">
+      <img src="https://images.unsplash.com/photo-1611162618071-b39a2ec1a8c1?q=80&w=200&auto=format&fit=crop" alt="Logo">
+      <strong>Andriy • Werbeagentur</strong>
+    </div>
+    <nav class="menu">
+      <a href="#home" data-i18n="m_home">Start</a>
+      <a href="#services" data-i18n="m_services">Leistungen</a>
+      <a href="#cases" data-i18n="m_cases">Arbeiten</a>
+      <a href="#reviews" data-i18n="m_reviews">Kunden</a>
+      <a href="#contact" data-i18n="m_contact">Kontakt</a>
+    </nav>
+    <div class="lang" aria-label="Language">
+      <button class="active" data-lang="de">DE</button>
+      <button data-lang="en">EN</button>
+      <button data-lang="ua">UA</button>
+      <button data-lang="ru">RU</button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header id="home" class="hero">
+  <div class="container">
+    <div class="grid">
+      <div>
+        <span class="kicker" data-i18n="hero_kicker">Performance Marketing & Branding</span>
+        <h1 data-i18n="hero_title">Wir skalieren Leads & Umsatz – Google Ads, SEO, Social & Web.</h1>
+        <p class="sub" data-i18n="hero_sub">Messbare Ergebnisse statt hübscher Worte. Transparente Reports, klare KPIs, schnelle Umsetzung.</p>
+        <div class="cta">
+          <a class="btn" href="https://wa.me/4915510300538" target="_blank" rel="noopener" data-i18n="cta_whatsapp">Jetzt per WhatsApp anfragen</a>
+          <a class="btn ghost" href="#contact" data-i18n="cta_offer">Kostenlose Erstberatung</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop" alt="Marketing dashboard">
+        <div class="hero-cards">
+          <div class="mini">+82% qualifizierte Leads</div>
+          <div class="mini">ROAS ↑ 3.1x</div>
+          <div class="mini">SEO Top‑10 Keywords</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="srv_title">Leistungen</h2>
+      <p class="lead" data-i18n="srv_lead">Von Strategie bis Umsetzung – alles aus einer Hand. Fokus: Ergebnis.</p>
+    </div>
+    <div class="grid cols-3">
+      <article class="card">
+        <div class="media"><img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?q=80&w=1200&auto=format&fit=crop" alt="Google Ads"></div>
+        <div class="body">
+          <h3>Google Ads</h3>
+          <p data-i18n="srv_ads">Kampagnenaufbau, Tracking, A/B‑Tests, ROAS‑Skalierung. Search, Display, Performance Max.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" alt="SEO & Content"></div>
+        <div class="body">
+          <h3>SEO & Content</h3>
+          <p data-i18n="srv_seo">Technisches SEO, Keyword‑Strategie, Content, interne Verlinkung – planbare Sichtbarkeit.</p>
+        </div>
+      </article>
+      <article class="card">
+        <div class="media"><img src="https://images.unsplash.com/photo-1512758017271-d7b84c2113f1?q=80&w=1200&auto=format&fit=crop" alt="Social Media"></div>
+        <div class="body">
+          <h3>Social Media</h3>
+          <p data-i18n="srv_smm">Meta/Instagram, Reels‑Strategie, Lead‑Ads, Retargeting, Creatives, Reporting.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="proc_title">So arbeiten wir</h2>
+      <p class="lead" data-i18n="proc_lead">Schnell, strukturiert, messbar.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><strong data-i18n="proc_1h">Audit & Ziele</strong><p data-i18n="proc_1p">Status‑Check, KPIs, Zielgruppen, Budget.</p></div>
+      <div class="step"><div class="num">2</div><strong data-i18n="proc_2h">Setup</strong><p data-i18n="proc_2p">Tracking, Kampagnen, Creatives, Landingpages.</p></div>
+      <div class="step"><div class="num">3</div><strong data-i18n="proc_3h">Optimierung</strong><p data-i18n="proc_3p">A/B‑Tests, Skalierung, Kostenkontrolle.</p></div>
+      <div class="step"><div class="num">4</div><strong data-i18n="proc_4h">Reporting</strong><p data-i18n="proc_4p">Transparente Berichte & nächste Schritte.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES / GALLERY -->
+<section id="cases">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="gal_title">Arbeiten</h2>
+      <p class="lead" data-i18n="gal_lead">Ausgewählte Visuals & Kampagnen‑Assets.</p>
+    </div>
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1529336953121-a0ce6f9beab3?q=80&w=1200&auto=format&fit=crop" alt="Case 1">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" alt="Case 2">
+      <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1200&auto=format&fit=crop" alt="Case 3">
+      <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop" alt="Case 4">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=1200&auto=format&fit=crop" alt="Case 5">
+      <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=1200&auto=format&fit=crop" alt="Case 6">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="rev_title">Kundenstimmen</h2>
+      <p class="lead" data-i18n="rev_lead">Echte Resultate, echte Unternehmen.</p>
+    </div>
+    <div class="reviews">
+      <div class="review">
+        <p data-i18n="rev_1txt">„Nach 6 Wochen +82 % qualifizierte Leads. Klare Kommunikation & sauberes Tracking.“</p>
+        <div class="author">
+          <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=200&auto=format&fit=crop" alt="Kunde 1">
+          <div><strong>Markus S.</strong><br><small data-i18n="rev_1src">Inhaber • Handwerksbetrieb</small></div>
+        </div>
+      </div>
+      <div class="review">
+        <p data-i18n="rev_2txt">„Branding, Website, Ads – alles aus einer Hand. Umsatz im Shop verdoppelt.“</p>
+        <div class="author">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=200&auto=format&fit=crop" alt="Kunde 2">
+          <div><strong>Laura M.</strong><br><small data-i18n="rev_2src">Gründerin • Modeboutique</small></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head">
+      <h2 data-i18n="contact_title">Kontakt & Angebot</h2>
+      <p class="lead" data-i18n="contact_lead">Schreiben Sie uns kurz über Ihr Projekt. Wir antworten innerhalb von 24 Stunden.</p>
+    </div>
+    <div class="contact-wrap">
+      <form class="form" action="mailto:your@email.com" method="post" enctype="text/plain">
+        <div class="row">
+          <input name="name" placeholder="Ihr Name" required>
+          <input name="email" type="email" placeholder="Ihre E‑Mail" required>
+        </div>
+        <input name="company" placeholder="Firma (optional)">
+        <textarea name="message" placeholder="Projekt, Ziele, Budgetrahmen…" required></textarea>
+        <div style="display:flex;gap:12px;align-items:center;margin-top:10px">
+          <button class="btn" type="submit" data-i18n="contact_btn">Absenden</button>
+          <a class="btn ghost" href="https://wa.me/4915510300538" target="_blank" data-i18n="contact_alt">oder via WhatsApp</a>
+        </div>
+        <div class="note" data-i18n="contact_note">Mit dem Absenden stimmen Sie der Kontaktaufnahme per E‑Mail zu.</div>
+      </form>
+      <div class="card" style="padding:18px">
+        <h3 data-i18n="card_title">Sitz München – Remote DACH & EU</h3>
+        <p data-i18n="card_p">Beratung auf Deutsch, Ukrainisch & Russisch. Faire, klare Preise.</p>
+        <p><strong>E‑Mail:</strong> <a href="mailto:your@email.com">your@email.com</a><br>
+           <strong>WhatsApp:</strong> <a href="https://wa.me/4915510300538">+49 155 10300538</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <div>© 2025 Andriy • Werbeagentur München</div>
+    <div><a href="#home">Top</a></div>
+  </div>
+</footer>
+
+<script>
+const i18n = {
+  de:{m_home:"Start",m_services:"Leistungen",m_cases:"Arbeiten",m_reviews:"Kunden",m_contact:"Kontakt",
+      hero_kicker:"Performance Marketing & Branding",
+      hero_title:"Wir skalieren Leads & Umsatz – Google Ads, SEO, Social & Web.",
+      hero_sub:"Messbare Ergebnisse statt hübscher Worte. Transparente Reports, klare KPIs, schnelle Umsetzung.",
+      cta_whatsapp:"Jetzt per WhatsApp anfragen", cta_offer:"Kostenlose Erstberatung",
+      srv_title:"Leistungen", srv_lead:"Von Strategie bis Umsetzung – alles aus einer Hand. Fokus: Ergebnis.",
+      srv_ads:"Kampagnenaufbau, Tracking, A/B‑Tests, ROAS‑Skalierung. Search, Display, Performance Max.",
+      srv_seo:"Technisches SEO, Keyword‑Strategie, Content, interne Verlinkung – planbare Sichtbarkeit.",
+      srv_smm:"Meta/Instagram, Reels‑Strategie, Lead‑Ads, Retargeting, Creatives, Reporting.",
+      proc_title:"So arbeiten wir", proc_lead:"Schnell, strukturiert, messbar.",
+      proc_1h:"Audit & Ziele", proc_1p:"Status‑Check, KPIs, Zielgruppen, Budget.",
+      proc_2h:"Setup", proc_2p:"Tracking, Kampagnen, Creatives, Landingpages.",
+      proc_3h:"Optimierung", proc_3p:"A/B‑Tests, Skalierung, Kostenkontrolle.",
+      proc_4h:"Reporting", proc_4p:"Transparente Berichte & nächste Schritte.",
+      gal_title:"Arbeiten", gal_lead:"Ausgewählte Visuals & Kampagnen‑Assets.",
+      rev_title:"Kundenstimmen", rev_lead:"Echte Resultate, echte Unternehmen.",
+      rev_1txt:"„Nach 6 Wochen +82 % qualifizierte Leads. Klare Kommunikation & sauberes Tracking.“",
+      rev_1src:"Inhaber • Handwerksbetrieb",
+      rev_2txt:"„Branding, Website, Ads – alles aus einer Hand. Umsatz im Shop verdoppelt.“",
+      rev_2src:"Gründerin • Modeboutique",
+      contact_title:"Kontakt & Angebot", contact_lead:"Schreiben Sie uns kurz über Ihr Projekt. Wir antworten innerhalb von 24 Stunden.",
+      contact_btn:"Absenden", contact_alt:"oder via WhatsApp", contact_note:"Mit dem Absenden stimmen Sie der Kontaktaufnahme per E‑Mail zu.",
+      card_title:"Sitz München – Remote DACH & EU", card_p:"Beratung auf Deutsch, Ukrainisch & Russisch. Faire, klare Preise."},
+  en:{m_home:"Home",m_services:"Services",m_cases:"Work",m_reviews:"Clients",m_contact:"Contact",
+      hero_kicker:"Performance Marketing & Branding",
+      hero_title:"We scale leads & revenue — Google Ads, SEO, Social & Web.",
+      hero_sub:"Measurable results. Transparent reports, clear KPIs, fast execution.",
+      cta_whatsapp:"Request via WhatsApp", cta_offer:"Free consultation",
+      srv_title:"Services", srv_lead:"From strategy to execution — one team, results first.",
+      srv_ads:"Campaign setup, tracking, A/B tests, ROAS scaling. Search, Display, Performance Max.",
+      srv_seo:"Technical SEO, keyword strategy, content, internal linking — sustainable visibility.",
+      srv_smm:"Meta/Instagram, Reels strategy, Lead Ads, retargeting, creatives, reporting.",
+      proc_title:"How we work", proc_lead:"Fast, structured, measurable.",
+      proc_1h:"Audit & goals", proc_1p:"Status check, KPIs, audiences, budget.",
+      proc_2h:"Setup", proc_2p:"Tracking, campaigns, creatives, landing pages.",
+      proc_3h:"Optimization", proc_3p:"A/B tests, scaling, cost control.",
+      proc_4h:"Reporting", proc_4p:"Transparent reports & next steps.",
+      gal_title:"Work", gal_lead:"Selected visuals & campaign assets.",
+      rev_title:"Testimonials", rev_lead:"Real results for real businesses.",
+      rev_1txt:"“+82% qualified leads in 6 weeks. Clear comms & clean tracking.”",
+      rev_1src:"Owner • Craft business",
+      rev_2txt:"“Branding, website, ads — all‑in‑one. Store revenue doubled.”",
+      rev_2src:"Founder • Fashion boutique",
+      contact_title:"Contact & offer", contact_lead:"Tell us briefly about your project — reply within 24h.",
+      contact_btn:"Send", contact_alt:"or WhatsApp", contact_note:"By submitting you agree to be contacted via email.",
+      card_title:"Based in Munich – Remote DACH & EU", card_p:"Consulting in German, Ukrainian & Russian. Fair pricing."},
+  ua:{m_home:"Головна",m_services:"Послуги",m_cases:"Роботи",m_reviews:"Відгуки",m_contact:"Контакти",
+      hero_kicker:"Performance‑маркетинг і брендинг",
+      hero_title:"Масштабуємо ліди й дохід — Google Ads, SEO, соцмережі та веб.",
+      hero_sub:"Вимірюваний результат. Прозорі звіти, чіткі KPI, швидке впровадження.",
+      cta_whatsapp:"Написати в WhatsApp", cta_offer:"Безкоштовна консультація",
+      srv_title:"Послуги", srv_lead:"Від стратегії до запуску — все в одній команді. Результат — у пріоритеті.",
+      srv_ads:"Налаштування кампаній, трекінг, A/B‑тести, масштабування ROAS.",
+      srv_seo:"Технічне SEO, семантика, контент, внутрішні посилання — стабільна видимість.",
+      srv_smm:"Meta/Instagram, Reels‑стратегія, Lead Ads, ретаргетинг, звіти.",
+      proc_title:"Як ми працюємо", proc_lead:"Швидко, структуровано, вимірювано.",
+      proc_1h:"Аудит і цілі", proc_1p:"Статус, KPI, аудиторії, бюджет.",
+      proc_2h:"Налаштування", proc_2p:"Трекінг, кампанії, креативи, лендінги.",
+      proc_3h:"Оптимізація", proc_3p:"A/B‑тести, масштаб, контроль витрат.",
+      proc_4h:"Звітність", proc_4p:"Прозорі звіти та наступні кроки.",
+      gal_title:"Роботи", gal_lead:"Обрані візуали та активи кампаній.",
+      rev_title:"Відгуки клієнтів", rev_lead:"Реальні результати для реального бізнесу.",
+      rev_1txt:"«+82% якісних лідів за 6 тижнів. Чітка комунікація та трекінг.»",
+      rev_1src:"Власник • Ремонтний бізнес",
+      rev_2txt:"«Брендинг, сайт, реклама — комплект. Дохід магазину подвоївся.»",
+      rev_2src:"Засновниця • Бутик",
+      contact_title:"Контакт і пропозиція", contact_lead:"Коротко опишіть проєкт — відповімо за 24 години.",
+      contact_btn:"Надіслати", contact_alt:"або WhatsApp", contact_note:"Надсилаючи форму, ви погоджуєтесь на контакт e‑mail.",
+      card_title:"Мюнхен — дистанційно по DACH та ЄС", card_p:"Консультації нім., укр., рос. Прозорі ціни."},
+  ru:{m_home:"Главная",m_services:"Услуги",m_cases:"Работы",m_reviews:"Отзывы",m_contact:"Контакты",
+      hero_kicker:"Performance‑маркетинг и брендинг",
+      hero_title:"Масштабируем лиды и доход — Google Ads, SEO, соцсети и веб.",
+      hero_sub:"Измеримый результат. Прозрачные отчёты, понятные KPI, быстрая реализация.",
+      cta_whatsapp:"Написать в WhatsApp", cta_offer:"Бесплатная консультация",
+      srv_title:"Услуги", srv_lead:"От стратегии до запуска — одна команда. В приоритете — результат.",
+      srv_ads:"Настройка кампаний, трекинг, A/B‑тесты, масштабирование ROAS.",
+      srv_seo:"Техническое SEO, семантика, контент, внутренняя перелинковка.",
+      srv_smm:"Кампании Meta/Instagram, Reels‑стратегия, Lead Ads, ретаргетинг, отчёты.",
+      proc_title:"Как мы работаем", proc_lead:"Быстро, структурно, измеримо.",
+      proc_1h:"Аудит и цели", proc_1p:"Статус, KPI, аудитории, бюджет.",
+      proc_2h:"Настройка", proc_2p:"Трекинг, кампании, креативы, лендинги.",
+      proc_3h:"Оптимизация", proc_3p:"A/B‑тесты, масштаб, контроль затрат.",
+      proc_4h:"Отчётность", proc_4p:"Прозрачные отчёты и следующие шаги.",
+      gal_title:"Работы", gal_lead:"Выбранные визуалы и активы кампаний.",
+      rev_title:"Отзывы клиентов", rev_lead:"Реальные результаты для реального бизнеса.",
+      rev_1txt:"«+82% качественных лидов за 6 недель. Чёткая коммуникация и трекинг.»",
+      rev_1src:"Владелец • Ремонтный бизнес",
+      rev_2txt:"«Брендинг, сайт, реклама — комплект. Выручка магазина удвоилась.»",
+      rev_2src:"Основатель • Бутик",
+      contact_title:"Контакт и предложение", contact_lead:"Коротко опишите проект — ответим в течение 24 часов.",
+      contact_btn:"Отправить", contact_alt:"или WhatsApp", contact_note:"Отправляя форму, вы соглашаетесь на контакт по e‑mail.",
+      card_title:"Мюнхен — удалённо по DACH и ЕС", card_p:"Консультации на нем., укр., рус. Прозрачные цены."}
+};
+
+function setLang(lang){
+  const dict = i18n[lang] || i18n.de;
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    const key = el.getAttribute("data-i18n");
+    if(dict[key]) el.textContent = dict[key];
+  });
+  document.documentElement.lang = (lang==='ru'?'ru':lang);
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.remove("active"));
+  const btn = document.querySelector(`.lang button[data-lang='${lang}']`);
+  if(btn) btn.classList.add("active");
+}
+
+document.querySelectorAll(".lang button").forEach(b=>b.addEventListener("click",()=>setLang(b.dataset.lang)));
+setLang('de');
+</script>
+</body>
+</html>
