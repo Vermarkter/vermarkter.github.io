@@ -102,6 +102,47 @@
     .footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.08)}
 
     /* ДОДАТИ/ОНОВИТИ це у вашому <style> */
+/* ▼▼▼ ДОДАЙ У <style> ▼▼▼ */
+.chat-launcher{
+  position:fixed;right:20px;bottom:20px;z-index:60;
+  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--brand,#3B82F6),var(--brand-2,#10B981));
+  color:#fff;border:none;box-shadow:0 20px 50px -20px rgba(0,0,0,.4);cursor:pointer
+}
+.chat-backdrop{
+  position:fixed;inset:0;z-index:59;background:rgba(0,0,0,.25);
+  opacity:0;pointer-events:none;transition:.2s ease;
+}
+.chat-panel{
+  position:fixed;right:20px;bottom:88px;z-index:60;width:380px;max-width:94vw;
+  background:#0b1324;border:1px solid rgba(255,255,255,.1);border-radius:16px;
+  box-shadow:0 20px 50px -20px rgba(0,0,0,.4);
+  transform: translateY(12px) scale(.98); opacity:0; pointer-events:none; transition:.2s ease;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.chat-panel.open{ transform:none;opacity:1;pointer-events:auto; }
+.chat-backdrop.open{ opacity:1; pointer-events:auto; }
+
+.chat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,.04)}
+.chat-header .title{font-weight:700;font-size:14px}
+.chat-body{height:420px;max-height:70vh;overflow:auto;padding:14px;scroll-behavior:smooth}
+.msg{display:flex;gap:8px;margin:8px 0}
+.msg.user{justify-content:flex-end}
+.bubble{max-width:80%;padding:10px 12px;border-radius:12px;line-height:1.4;font-size:14px}
+.user .bubble{background:#1E293B;color:#F8FAFC;border:1px solid #334155}
+.bot .bubble{background:#0f172a;border:1px solid #334155}
+.typing{display:inline-block;width:6px;height:6px;border-radius:50%;background:#9CA3AF;box-shadow:12px 0 0 #9CA3AF,24px 0 0 #9CA3AF;animation:blink 1s infinite}
+@keyframes blink{0%{opacity:.2}50%{opacity:1}100%{opacity:.2}}
+.chat-input{display:flex;gap:8px;padding:10px;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08)}
+.chat-input input{flex:1;background:#0b1229;color:#fff;border:1px solid #334155;border-radius:10px;padding:10px}
+.chat-input button{background:linear-gradient(135deg,var(--brand,#3B82F6),#6D28D9);border:none;color:#fff;padding:10px 12px;border-radius:10px;font-weight:700}
+
+@media(max-width:480px){
+  .chat-panel{right:10px;left:10px;width:auto;bottom:76px}
+  .chat-body{height:60vh}
+}
+/* ▲▲▲ ДОДАЛИ ▲▲▲ */
+
 .chat-launcher{
   position:fixed;right:20px;bottom:20px;z-index:60;
   width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
@@ -623,9 +664,147 @@
 
     chatSend.addEventListener('click', send);
     chatInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); send(); }});
-    chatOpen.addEventListener('click', ()=>{ chatPanel.style.display='block'; setTimeout(()=>chatInput.focus(), 50); });
-    chatClose.addEventListener('click', ()=>{ chatPanel.style.display='none'; });
+    const chatBackdrop = document.getElementById('chatBackdrop');
+
+function openChat(){
+  chatPanel.classList.add('open');
+  chatBackdrop.classList.add('open');
+  chatOpen.setAttribute('aria-expanded','true');
+  // автофокус у поле
+  setTimeout(()=>chatInput?.focus(), 30);
+}
+
+function closeChat(){
+  chatPanel.classList.remove('open');
+  chatBackdrop.classList.remove('open');
+  chatOpen.setAttribute('aria-expanded','false');
+}
+
+function toggleChat(){
+  chatPanel.classList.contains('open') ? closeChat() : openChat();
+}
+
+// Відкрити/згорнути по кнопці-іконці
+chatOpen.addEventListener('click', toggleChat);
+
+// Хрестик
+chatClose.addEventListener('click', closeChat);
+
+// Клік по бекдропу — закриття
+chatBackdrop.addEventListener('click', closeChat);
+
+// ESC — закриття
+window.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape' && chatPanel.classList.contains('open')) closeChat();
+});
+
+// Автозгортання при переході по якорям (навігація по сторінці)
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', closeChat);
+});
+
 
   </script>
+<!-- ▼▼▼ ВСТАВИТИ ПЕРЕД </body> ▼▼▼ -->
+<button class="chat-launcher" id="chatOpen" aria-label="Відкрити чат" aria-expanded="false">
+  <!-- іконка діалогу -->
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+    <path d="M21 12c0 4.418-4.03 8-9 8-1.08 0-2.12-.16-3.08-.46L3 20l1.53-3.33C4.2 15.7 4 14.86 4 14c0-4.418 4.03-8 9-8s8 3.582 8 8z" stroke="#fff" stroke-width="1.6" fill="none"/>
+    <circle cx="9" cy="12" r="1" fill="#fff"/><circle cx="12" cy="12" r="1" fill="#fff"/><circle cx="15" cy="12" r="1" fill="#fff"/>
+  </svg>
+</button>
+
+<div class="chat-backdrop" id="chatBackdrop" aria-hidden="true"></div>
+
+<div class="chat-panel" id="chatPanel" role="dialog" aria-modal="true" aria-label="Чат з агентом">
+  <div class="chat-header">
+    <div class="title">ChatGPT Agent — MiD</div>
+    <button id="chatClose" aria-label="Закрити" style="background:none;border:none;color:#9CA3AF;font-weight:700;font-size:16px;cursor:pointer">×</button>
+  </div>
+  <div class="chat-body" id="chatBody" aria-live="polite">
+    <div class="msg bot">
+      <div class="bubble">Вітаю! Я ваш асистент з маркетингу. Чим допомогти: Web / Google Ads / SMM / SEO?</div>
+    </div>
+  </div>
+  <div class="chat-input">
+    <input id="chatInput" type="text" placeholder="Напишіть повідомлення..." />
+    <button id="chatSend">Надіслати</button>
+  </div>
+<script>
+  // Якщо ці елементи не існують у DOM — перевір, що ти вставив HTML з кроку 1
+  const chatOpen = document.getElementById('chatOpen');
+  const chatClose = document.getElementById('chatClose');
+  const chatPanel = document.getElementById('chatPanel');
+  const chatBackdrop = document.getElementById('chatBackdrop');
+  const chatBody = document.getElementById('chatBody');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+
+  // Простий історі-лог + демо-відповіді без API
+  let history = [{role:'system', content:'You are a helpful marketing assistant for Marketing in Deutschland.'}];
+
+  function appendMsg(role, text){
+    const wrap = document.createElement('div');
+    wrap.className = 'msg ' + (role === 'user' ? 'user':'bot');
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.textContent = text;
+    wrap.appendChild(b);
+    chatBody.appendChild(wrap);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+  function appendTyping(){
+    const wrap = document.createElement('div');
+    wrap.className = 'msg bot'; wrap.id = 'typing';
+    const b = document.createElement('div'); b.className = 'bubble';
+    const dots = document.createElement('span'); dots.className = 'typing';
+    b.appendChild(dots); wrap.appendChild(b); chatBody.appendChild(wrap);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+  function removeTyping(){ const t = document.getElementById('typing'); if(t) t.remove(); }
+
+  // Якщо пізніше додаси backend — заміниш цей демо-обробник
+  async function getReply(messages){
+    const last = messages.filter(m=>m.role==='user').slice(-1)[0]?.content || '';
+    if(/google\s*ads|sem|реклам/i.test(last)) return "Google Ads: розіб’ємо кампанії за намірами, налаштуємо конверсії в GA4 та ROAS. Є акаунт?";
+    if(/seo/i.test(last)) return "SEO: технічний аудит, семантика, контент і лінки — з прогнозом окупності.";
+    if(/smm|соц/i.test(last)) return "SMM: контент-план, короткі відео, UGC, мессенджер-воронки для лідів.";
+    if(/site|сайт|web/i.test(last)) return "Сайт: швидкий, адаптивний, з аналітикою. Скільки сторінок та дедлайн?";
+    return "Опишіть нішу, ЦА та KPI (CPA/ROAS/LTV) — запропоную план.";
+  }
+
+  async function send(){
+    const text = chatInput.value.trim();
+    if(!text) return;
+    appendMsg('user', text);
+    history.push({role:'user', content:text});
+    chatInput.value = '';
+    appendTyping();
+    const reply = await getReply(history);
+    removeTyping();
+    appendMsg('assistant', reply);
+    history.push({role:'assistant', content:reply});
+  }
+
+  function openChat(){
+    chatPanel.classList.add('open'); chatBackdrop.classList.add('open');
+    chatOpen.setAttribute('aria-expanded','true');
+    setTimeout(()=>chatInput?.focus(), 30);
+  }
+  function closeChat(){
+    chatPanel.classList.remove('open'); chatBackdrop.classList.remove('open');
+    chatOpen.setAttribute('aria-expanded','false');
+  }
+  function toggleChat(){ chatPanel.classList.contains('open') ? closeChat() : openChat(); }
+
+  // Події
+  chatOpen?.addEventListener('click', toggleChat);
+  chatClose?.addEventListener('click', closeChat);
+  chatBackdrop?.addEventListener('click', closeChat);
+  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && chatPanel.classList.contains('open')) closeChat(); });
+  chatSend?.addEventListener('click', send);
+  chatInput?.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); send(); } });
+</script>
+
 </body>
 </html>
