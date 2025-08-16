@@ -1,403 +1,190 @@
 <!doctype html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title data-i18n="meta_title">Marketing in Deutschland — Маркетингова агенція (EN/DE/UA/RU)</title>
-  <meta name="description" data-i18n="meta_desc" content="8 років досвіду: створення сайтів, Google Ads, SMM, SEO. Працюємо там, де клієнти вже шукають вас. Telegram: @Marketing_in_Deutschland." />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Marketing in Deutschland — Маркетингова агенція (EN/DE/UA/RU)</title>
+  <meta name="description" content="8 років досвіду: створення сайтів, Google Ads, SMM, SEO. Працюємо там, де клієнти вже шукають вас. Telegram: @Marketing_in_Deutschland.">
   <meta name="theme-color" content="#0F172A"/>
 
-  <!-- Favicon (інформативний, оновлений) -->
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml;utf8,
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-    <defs>
-      <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-        <stop offset="0" stop-color="%230F172A"/>
-        <stop offset="1" stop-color="%233B82F6"/>
-      </linearGradient>
-    </defs>
-    <rect x="2" y="2" width="60" height="60" rx="12" fill="url(%23g)"/>
-    <!-- mini growth chart -->
-    <g stroke="%23ffffff" stroke-width="3" stroke-linecap="round">
-      <line x1="18" y1="44" x2="18" y2="34"/>
-      <line x1="28" y1="44" x2="28" y2="28"/>
-      <line x1="38" y1="44" x2="38" y2="22"/>
-      <line x1="48" y1="44" x2="48" y2="18"/>
-    </g>
-    <text x="32" y="58" text-anchor="middle" font-family="Inter,Arial" font-size="10" fill="%23ffffff" font-weight="700">MiD</text>
-  </svg>'/>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{
-      --bg:#0F172A; /* slate-900 */
-      --bg-soft:#0b1229;
-      --card:#111827; /* gray-900 */
-      --text:#E5E7EB; /* gray-200 */
-      --muted:#9CA3AF; /* gray-400 */
-      --brand:#3B82F6; /* blue-500 */
-      --brand-2:#10B981; /* emerald-500 */
-      --accent:#F59E0B; /* amber-500 */
-      --ring: 0 0 0 4px rgba(59,130,246,.2);
-      --radius:14px;
-      --shadow: 0 20px 50px -20px rgba(0,0,0,.4);
+      --bg:#0F172A; --text:#E5E7EB; --muted:#9CA3AF;
+      --brand:#3B82F6; --brand2:#10B981; --shadow:0 20px 50px -20px rgba(0,0,0,.4);
+      --card:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      --border:1px solid rgba(255,255,255,.08);
     }
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:linear-gradient(180deg,var(--bg),#0b132f);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;scroll-behavior:smooth}
+    html,body{margin:0;background:linear-gradient(180deg,#0F172A,#0b132f);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
     a{color:inherit;text-decoration:none}
     .container{max-width:1100px;margin:0 auto;padding:0 20px}
-    header{
-      position:sticky;top:0;z-index:50;background:rgba(15,23,42,.7);backdrop-filter: blur(12px);
-      border-bottom:1px solid rgba(255,255,255,.06)
-    }
+    header{position:sticky;top:0;z-index:5;background:rgba(15,23,42,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
     .nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:12px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:42px;height:42px}
     .title{font-weight:800;letter-spacing:.2px}
     .subtitle{display:block;font-weight:600;color:var(--muted);font-size:12px;margin-top:-2px}
-    .navlinks{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+    .navlinks{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
     .navlinks a{padding:8px 12px;border-radius:10px;color:var(--muted)}
-    .navlinks a:hover{color:var(--text);background:rgba(255,255,255,.05)}
-    .lang{display:flex;gap:6px;align-items:center}
-    /* Зробили темнішим селектор мов */
-    .lang select{
-      background:#1E293B; /* темніший фон */
-      color:#F8FAFC;      /* світлий текст */
-      border:1px solid #475569; /* контрастна рамка */
-      padding:8px 10px;border-radius:10px;outline:none
-    }
-    .lang select:focus{box-shadow:var(--ring);border-color:#60A5FA}
-    .cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--brand),#6D28D9);
-      color:white;padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:var(--shadow);border:0}
-    .cta:hover{filter:brightness(1.05)}
-
-    /* Hero */
-    .hero{padding:76px 0 36px}
+    .navlinks a:hover{color:#fff;background:rgba(255,255,255,.06)}
+    .lang select{background:#1E293B;color:#F8FAFC;border:1px solid #475569;padding:8px 10px;border-radius:10px;outline:none}
+    .cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--brand),#6D28D9);color:white;padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:var(--shadow);border:0}
+    .hero{padding:72px 0 36px}
     .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
     .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(16,185,129,.15);color:#D1FAE5;border:1px solid rgba(16,185,129,.3);padding:6px 10px;border-radius:999px;font-size:13px}
     h1{font-size:46px;line-height:1.08;margin:14px 0 10px}
     .lead{color:#cbd5e1;max-width:640px}
-    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:20px}
+    .hero-card{background:var(--card);border:var(--border);border-radius:16px;padding:20px}
     .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
-    .stat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px;text-align:center}
+    .stat{background:rgba(255,255,255,.05);border:var(--border);border-radius:12px;padding:14px;text-align:center}
     .stat b{font-size:20px}
-
-    /* Sections */
     section{padding:54px 0}
     .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
-    .card h3{margin:6px 0 8px}
-    .card p{color:#cbd5e1}
-    .chip{display:inline-block;font-size:12px;color:#e5e7eb;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);padding:4px 8px;border-radius:999px;margin-right:8px}
-
-    /* Testimonials */
+    .card{background:var(--card);border:var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .chip{display:inline-block;font-size:12px;color:#e5e7eb;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);padding:4px 8px;border-radius:999px;margin-bottom:8px}
     .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .quote{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:18px;position:relative}
+    .quote{background:rgba(255,255,255,.05);border:var(--border);border-radius:16px;padding:18px;position:relative}
     .quote:before{content:"“";position:absolute;left:12px;top:-10px;font-size:48px;color:rgba(255,255,255,.15)}
-    .quote b{display:block;margin-top:10px}
-
-    /* Footer */
-    .footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.08)}
-
-    /* ДОДАТИ/ОНОВИТИ це у вашому <style> */
-/* ▼▼▼ ДОДАЙ У <style> ▼▼▼ */
-.chat-launcher{
-  position:fixed;right:20px;bottom:20px;z-index:60;
-  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--brand,#3B82F6),var(--brand-2,#10B981));
-  color:#fff;border:none;box-shadow:0 20px 50px -20px rgba(0,0,0,.4);cursor:pointer
-}
-.chat-backdrop{
-  position:fixed;inset:0;z-index:59;background:rgba(0,0,0,.25);
-  opacity:0;pointer-events:none;transition:.2s ease;
-}
-.chat-panel{
-  position:fixed;right:20px;bottom:88px;z-index:60;width:380px;max-width:94vw;
-  background:#0b1324;border:1px solid rgba(255,255,255,.1);border-radius:16px;
-  box-shadow:0 20px 50px -20px rgba(0,0,0,.4);
-  transform: translateY(12px) scale(.98); opacity:0; pointer-events:none; transition:.2s ease;
-  display:flex;flex-direction:column;overflow:hidden;
-}
-.chat-panel.open{ transform:none;opacity:1;pointer-events:auto; }
-.chat-backdrop.open{ opacity:1; pointer-events:auto; }
-
-.chat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,.04)}
-.chat-header .title{font-weight:700;font-size:14px}
-.chat-body{height:420px;max-height:70vh;overflow:auto;padding:14px;scroll-behavior:smooth}
-.msg{display:flex;gap:8px;margin:8px 0}
-.msg.user{justify-content:flex-end}
-.bubble{max-width:80%;padding:10px 12px;border-radius:12px;line-height:1.4;font-size:14px}
-.user .bubble{background:#1E293B;color:#F8FAFC;border:1px solid #334155}
-.bot .bubble{background:#0f172a;border:1px solid #334155}
-.typing{display:inline-block;width:6px;height:6px;border-radius:50%;background:#9CA3AF;box-shadow:12px 0 0 #9CA3AF,24px 0 0 #9CA3AF;animation:blink 1s infinite}
-@keyframes blink{0%{opacity:.2}50%{opacity:1}100%{opacity:.2}}
-.chat-input{display:flex;gap:8px;padding:10px;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08)}
-.chat-input input{flex:1;background:#0b1229;color:#fff;border:1px solid #334155;border-radius:10px;padding:10px}
-.chat-input button{background:linear-gradient(135deg,var(--brand,#3B82F6),#6D28D9);border:none;color:#fff;padding:10px 12px;border-radius:10px;font-weight:700}
-
-@media(max-width:480px){
-  .chat-panel{right:10px;left:10px;width:auto;bottom:76px}
-  .chat-body{height:60vh}
-}
-/* ▲▲▲ ДОДАЛИ ▲▲▲ */
-
-.chat-launcher{
-  position:fixed;right:20px;bottom:20px;z-index:60;
-  width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:none;box-shadow:var(--shadow);cursor:pointer
-}
-
-/* прозорий бекдроп для кліку назовні */
-.chat-backdrop{
-  position:fixed;inset:0;z-index:59;background:rgba(0,0,0,.25);
-  opacity:0;pointer-events:none;transition:.2s ease;
-}
-
-/* панель тепер керується класом .open, не display:none */
-.chat-panel{
-  position:fixed;right:20px;bottom:88px;z-index:60;width:380px;max-width:94vw;
-  background:#0b1324;border:1px solid rgba(255,255,255,.1);border-radius:16px;box-shadow:var(--shadow);
-  transform: translateY(12px) scale(.98); opacity:0; pointer-events:none; transition:.2s ease;
-  display:flex;flex-direction:column;overflow:hidden;
-}
-.chat-panel.open{
-  transform:none;opacity:1;pointer-events:auto;
-}
-.chat-backdrop.open{ opacity:1; pointer-events:auto; }
-
-.chat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,.04)}
-.chat-header .title{font-weight:700;font-size:14px}
-.chat-body{height:420px;max-height:70vh;overflow:auto;padding:14px;scroll-behavior:smooth}
-.msg{display:flex;gap:8px;margin:8px 0}
-.msg.user{justify-content:flex-end}
-.bubble{max-width:80%;padding:10px 12px;border-radius:12px;line-height:1.4;font-size:14px}
-.user .bubble{background:#1E293B;color:#F8FAFC;border:1px solid #334155}
-.bot .bubble{background:#0f172a;border:1px solid #334155}
-.typing{display:inline-block;width:6px;height:6px;border-radius:50%;background:#9CA3AF;box-shadow:12px 0 0 #9CA3AF,24px 0 0 #9CA3AF;animation:blink 1s infinite}
-@keyframes blink{0%{opacity:.2}50%{opacity:1}100%{opacity:.2}}
-.chat-input{display:flex;gap:8px;padding:10px;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08)}
-.chat-input input{flex:1;background:#0b1229;color:#fff;border:1px solid #334155;border-radius:10px;padding:10px}
-.chat-input button{background:linear-gradient(135deg,var(--brand),#6D28D9);border:none;color:#fff;padding:10px 12px;border-radius:10px;font-weight:700}
-
-@media(max-width:480px){
-  .chat-panel{right:10px;left:10px;width:auto;bottom:76px}
-  .chat-body{height:60vh}
-}
-
+    .footer{padding:28px 0;color:var(--muted);border-top:var(--border)}
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    /* === CHAT styles === */
+    .chat-launcher{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:none;box-shadow:var(--shadow);cursor:pointer}
+    .chat-backdrop{position:fixed;inset:0;z-index:59;background:rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.2s ease}
+    .chat-backdrop.open{opacity:1;pointer-events:auto}
+    .chat-panel{position:fixed;right:20px;bottom:88px;z-index:60;width:380px;max-width:94vw;background:#0b1324;border:1px solid rgba(255,255,255,.1);border-radius:16px;box-shadow:var(--shadow);transform:translateY(12px) scale(.98);opacity:0;pointer-events:none;transition:.2s ease;display:flex;flex-direction:column;overflow:hidden}
+    .chat-panel.open{transform:none;opacity:1;pointer-events:auto}
+    .chat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,.04)}
+    .chat-header .title{font-weight:700;font-size:14px}
+    .chat-body{height:420px;max-height:70vh;overflow:auto;padding:14px;scroll-behavior:smooth}
+    .msg{display:flex;gap:8px;margin:8px 0}
+    .msg.user{justify-content:flex-end}
+    .bubble{max-width:80%;padding:10px 12px;border-radius:12px;line-height:1.4;font-size:14px}
+    .user .bubble{background:#1E293B;color:#F8FAFC;border:1px solid #334155}
+    .bot .bubble{background:#0f172a;border:1px solid #334155}
+    .chat-input{display:flex;gap:8px;padding:10px;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08)}
+    .chat-input input{flex:1;background:#0b1229;color:#fff;border:1px solid #334155;border-radius:10px;padding:10px}
+    .chat-input button{background:linear-gradient(135deg,var(--brand),#6D28D9);border:none;color:#fff;padding:10px 12px;border-radius:10px;font-weight:700}
+    @media(max-width:480px){ .chat-panel{right:10px;left:10px;width:auto;bottom:76px} .chat-body{height:60vh} }
   </style>
 </head>
 <body>
   <header>
     <div class="container nav">
       <div class="brand">
-        <!-- ОНОВЛЕНИЙ ЛОГОТИП: MiD + графік + підзаголовок -->
+        <!-- Лого -->
         <svg class="logo" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-label="Marketing in Deutschland логотип">
-          <defs>
-            <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0" stop-color="#3B82F6"/>
-              <stop offset="1" stop-color="#10B981"/>
-            </linearGradient>
-          </defs>
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs>
           <rect x="8" y="8" width="144" height="144" rx="28" fill="url(#lg)"/>
-          <!-- Біла рамка-мішень -->
           <circle cx="80" cy="80" r="56" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="3"/>
-          <circle cx="80" cy="80" r="28" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
-          <!-- Графік зростання -->
           <g stroke="#ffffff" stroke-width="6" stroke-linecap="round">
-            <line x1="48" y1="104" x2="48" y2="84"/>
-            <line x1="68" y1="104" x2="68" y2="74"/>
-            <line x1="88" y1="104" x2="88" y2="62"/>
-            <line x1="108" y1="104" x2="108" y2="52"/>
+            <line x1="48" y1="104" x2="48" y2="84"/><line x1="68" y1="104" x2="68" y2="74"/><line x1="88" y1="104" x2="88" y2="62"/><line x1="108" y1="104" x2="108" y2="52"/>
           </g>
-          <!-- Текст MiD -->
-          <text x="80" y="44" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial" font-weight="800" font-size="22">MiD</text>
-          <!-- Пояснення -->
-          <text x="80" y="128" text-anchor="middle" fill="#ffffff" font-family="Inter,Arial" font-weight="700" font-size="12">Web • Ads • SMM • SEO</text>
+          <text x="80" y="44" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="800" font-size="22">MiD</text>
+          <text x="80" y="128" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="700" font-size="12">Web • Ads • SMM • SEO</text>
         </svg>
-        <div class="title">
-          <span>Marketing in Deutschland</span>
-          <small class="subtitle" data-i18n="tagline">Агенція цифрового маркетингу</small>
-        </div>
+        <div class="title"><span>Marketing in Deutschland</span><small class="subtitle">Агенція цифрового маркетингу</small></div>
       </div>
       <nav class="navlinks">
-        <a href="#services" data-i18n="nav_services">Послуги</a>
-        <a href="#testimonials" data-i18n="nav_testimonials">Відгуки</a>
-        <!-- Прибрали "Контакти" з навігації -->
-        <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
-          <span>Telegram</span> @Marketing_in_Deutschland
-        </a>
-        <div class="lang">
-          <label for="lang" class="sr-only">Language</label>
-          <select id="lang" aria-label="Language">
-            <option value="uk">UA</option>
-            <option value="de">DE</option>
-            <option value="en">EN</option>
-            <option value="ru">RU</option>
+        <a href="#services">Послуги</a>
+        <a href="#testimonials">Відгуки</a>
+        <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">Telegram @Marketing_in_Deutschland</a>
+        <label class="lang">
+          <span class="sr-only">Мова</span>
+          <select id="lang">
+            <option value="uk">UA</option><option value="de">DE</option><option value="en">EN</option><option value="ru">RU</option>
           </select>
-        </div>
+        </label>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    <!-- Hero -->
     <section class="hero" id="home">
       <div class="hero-grid">
         <div>
-          <span class="badge">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21 7.5 13.2 2 9h7l3-7z" fill="#34D399"/></svg>
-            <span data-i18n="xp">8 років досвіду</span>
-          </span>
-          <h1 data-i18n="hero_h1">Будуйте попит. Захоплюйте ринок. Зростайте в Німеччині.</h1>
-          <p class="lead" data-i18n="hero_p">
-            Повний цикл: створення сайтів, Google Ads, SMM та SEO. Працюємо там, де клієнти вже шукають ваші товари та послуги.
-          </p>
+          <span class="badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21 7.5 13.2 2 9h7l3-7z" fill="#34D399"/></svg> 8 років досвіду</span>
+          <h1>Будуйте попит. Захоплюйте ринок. Зростайте в Німеччині.</h1>
+          <p class="lead">Повний цикл: створення сайтів, Google Ads, SMM та SEO. Працюємо там, де клієнти вже шукають ваші товари та послуги.</p>
           <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener" data-i18n="cta_secondary">Написати в Telegram</a>
+            <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">Написати в Telegram</a>
           </div>
         </div>
         <div class="hero-card">
           <div class="hero-stats">
-            <div class="stat">
-              <div class="chip" data-i18n="chip_sem">Google Ads</div>
-              <b data-i18n="stat1">ROI-підхід</b>
-              <div class="muted" style="color:#9CA3AF" data-i18n="stat1d">Стратегії з фокусом на прибуток, а не кліки.</div>
-            </div>
-            <div class="stat">
-              <div class="chip" data-i18n="chip_web">Web</div>
-              <b data-i18n="stat2">Швидкі сайти</b>
-              <div class="muted" style="color:#9CA3AF" data-i18n="stat2d">Core Web Vitals і конверсії з першого екрану.</div>
-            </div>
-            <div class="stat">
-              <div class="chip" data-i18n="chip_seo">SEO</div>
-              <b data-i18n="stat3">Стабільний трафік</b>
-              <div class="muted" style="color:#9CA3AF" data-i18n="stat3d">Ріст органіки без «реклама» бирки.</div>
-            </div>
+            <div class="stat"><div class="chip">Google Ads</div><b>ROI-підхід</b><div style="color:#9CA3AF">Стратегії з фокусом на прибуток, а не кліки.</div></div>
+            <div class="stat"><div class="chip">Web</div><b>Швидкі сайти</b><div style="color:#9CA3AF">Core Web Vitals і конверсії з першого екрану.</div></div>
+            <div class="stat"><div class="chip">SEO</div><b>Стабільний трафік</b><div style="color:#9CA3AF">Органіка без бірки «реклама».</div></div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Services -->
     <section id="services">
-      <h2 style="margin-bottom:14px" data-i18n="services_h2">Послуги</h2>
+      <h2 style="margin-bottom:14px">Послуги</h2>
       <div class="cards">
         <div class="card">
-          <span class="chip" data-i18n="s1_chip">Вебсайти</span>
-          <h3 data-i18n="s1_h3">Створення сайтів</h3>
-          <p data-i18n="s1_p">
-            Проєктуємо та запускаємо швидкі, адаптивні сайти: лендинги, інтернет-магазини, багатомовні проєкти. Дизайн під конверсію, чистий код, інтеграції з аналітикою та CRM.
-          </p>
-          <ul style="color:#cbd5e1;padding-left:18px">
-            <li data-i18n="s1_li1">UX/UI дизайн і прототипи</li>
-            <li data-i18n="s1_li2">Швидкість і SEO-базис</li>
-            <li data-i18n="s1_li3">Підключення аналітики (GA4, GTM)</li>
-          </ul>
+          <span class="chip">Вебсайти</span>
+          <h3>Створення сайтів</h3>
+          <p>Лендинги, магазини, мультимовні проєкти. Конверсійний дизайн, чистий код, інтеграції з GA4/GTM і CRM.</p>
         </div>
-
         <div class="card">
           <span class="chip">Google Ads</span>
-          <h3 data-i18n="s2_h3">Контекст і Shopping</h3>
-          <p data-i18n="s2_p">
-            Будьте там, де попит уже сформований. Налаштовуємо пошукові та товарні кампанії, Performance Max, ремаркетинг/динамічний ремаркетинг, YouTube і медійну мережу — з прозорою аналітикою та контролем CPA/ROAS.
-          </p>
-          <ul style="color:#cbd5e1;padding-left:18px">
-            <li data-i18n="s2_li1">Структура акаунта під масштабування</li>
-            <li data-i18n="s2_li2">Фіди для Shopping, правила й сегментація</li>
-            <li data-i18n="s2_li3">Скрипти, правила, A/B та гіпотези</li>
-          </ul>
+          <h3>Пошук & Shopping</h3>
+          <p>Search та Shopping, Performance Max, (динамічний) ремаркетинг, YouTube & Display — з контролем CPA/ROAS.</p>
         </div>
-
         <div class="card">
           <span class="chip">SMM</span>
-          <h3 data-i18n="s3_h3">Соціальні мережі</h3>
-          <p data-i18n="s3_p">
-            Створюємо впізнаваність і попит у соцмережах: контент-стратегія, дизайн, сценарії Reels/Shorts, таргетована реклама. Працюємо з месенджерами, воронками та UGC, щоб перетворювати перегляди на ліди.
-          </p>
-          <ul style="color:#cbd5e1;padding-left:18px">
-            <li data-i18n="s3_li1">Контент-план і продакшн</li>
-            <li data-i18n="s3_li2">Налаштування реклами та воронок</li>
-            <li data-i18n="s3_li3">Аналітика та оптимізація</li>
-          </ul>
+          <h3>Соціальні мережі</h3>
+          <p>Контент-стратегія, дизайн, Reels/Shorts, таргет. Месенджери та UGC — щоб перегляди ставали лідами.</p>
         </div>
-
         <div class="card">
           <span class="chip">SEO</span>
-          <h3 data-i18n="s4_h3">Пошукова оптимізація</h3>
-          <p data-i18n="s4_p">
-            Робимо ваш сайт фаворитом Google. Технічний аудит, семантика, контент і посилальний профіль — для стабільного зростання органічного трафіку без позначки «реклама». Даємо прогноз і план окупності.
-          </p>
-          <ul style="color:#cbd5e1;padding-left:18px">
-            <li data-i18n="s4_li1">Технічний аудит і швидкість</li>
-            <li data-i18n="s4_li2">Контент-стратегія та E-E-A-T</li>
-            <li data-i18n="s4_li3">Лінкбілдинг і локальне SEO</li>
-          </ul>
+          <h3>Пошукова оптимізація</h3>
+          <p>Технічний аудит, семантика, контент і лінки — стабільний ріст органіки. Даємо прогноз окупності.</p>
         </div>
       </div>
     </section>
 
-    <!-- Testimonials -->
     <section id="testimonials">
-      <h2 style="margin-bottom:14px" data-i18n="t_h2">Відгуки</h2>
+      <h2 style="margin-bottom:14px">Відгуки</h2>
       <div class="testimonials">
-        <div class="quote">
-          <p data-i18n="t1">
-            «За три місяці знизили CPA на 32% і подвоїли онлайн-замовлення. Прозорі звіти щотижня — працювати легко.»
-          </p>
-          <b>Eva K., eCommerce</b>
-        </div>
-        <div class="quote">
-          <p data-i18n="t2">
-            «Сайт завантажується миттєво, а заявки приходять стабільно. Команда говорила мовою бізнесу, а не тільки техніки.»
-          </p>
-          <b>Markus S., Dienstleistungen</b>
-        </div>
-        <div class="quote">
-          <p data-i18n="t3">
-            «YouTube і ремаркетинг дали вибух впізнаваності. Нарешті бачу чіткий зв’язок між контентом і продажами.»
-          </p>
-          <b>Олена Р., EdTech</b>
-        </div>
+        <div class="quote"><p>«За 3 місяці знизили CPA на 32% і подвоїли онлайн-замовлення. Прозорі щотижневі звіти.»</p><b>Eva K., eCommerce</b></div>
+        <div class="quote"><p>«Сайт блискавично швидкий, ліди стабільні. Команда говорить мовою бізнесу.»</p><b>Markus S., Dienstleistungen</b></div>
+        <div class="quote"><p>«YouTube і ремаркетинг дали вибух впізнаваності. Є зв’язок між контентом і продажами.»</p><b>Олена Р., EdTech</b></div>
       </div>
     </section>
-
-    <!-- Блок "Зв'язок" видалено на прохання -->
   </main>
 
   <footer class="footer">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
-      <div>© <span id="year"></span> Marketing in Deutschland • <span data-i18n="foot">Усі права захищено.</span></div>
+      <div>© <span id="year"></span> Marketing in Deutschland • Усі права захищено.</div>
       <a href="mailto:marketing.in.Deutschland@gmail.com">marketing.in.Deutschland@gmail.com</a>
     </div>
   </footer>
 
-  <!-- Плаваючий чат-бот -->
-  <button class="chat-launcher" id="chatOpen" aria-label="Відкрити чат">
-    <!-- іконка діалогу -->
+  <!-- === CHAT (єдиний блок) === -->
+  <button class="chat-launcher" id="chatOpen" aria-label="Відкрити чат" aria-expanded="false">
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
       <path d="M21 12c0 4.418-4.03 8-9 8-1.08 0-2.12-.16-3.08-.46L3 20l1.53-3.33C4.2 15.7 4 14.86 4 14c0-4.418 4.03-8 9-8s8 3.582 8 8z" stroke="#fff" stroke-width="1.6" fill="none"/>
       <circle cx="9" cy="12" r="1" fill="#fff"/><circle cx="12" cy="12" r="1" fill="#fff"/><circle cx="15" cy="12" r="1" fill="#fff"/>
     </svg>
   </button>
+
+  <div class="chat-backdrop" id="chatBackdrop" aria-hidden="true"></div>
+
   <div class="chat-panel" id="chatPanel" role="dialog" aria-modal="true" aria-label="Чат з агентом">
     <div class="chat-header">
       <div class="title">ChatGPT Agent — MiD</div>
       <button id="chatClose" aria-label="Закрити" style="background:none;border:none;color:#9CA3AF;font-weight:700;font-size:16px;cursor:pointer">×</button>
     </div>
     <div class="chat-body" id="chatBody" aria-live="polite">
-      <div class="msg bot">
-        <div class="bubble">Вітаю! Я ваш асистент з маркетингу. Розкажіть, який бізнес просуваєте: Web / Google Ads / SMM / SEO?</div>
-      </div>
+      <div class="msg bot"><div class="bubble">Вітаю! Я ваш асистент з маркетингу. Чим допомогти: Web / Google Ads / SMM / SEO?</div></div>
     </div>
     <div class="chat-input">
-      <input id="chatInput" type="text" placeholder="Напишіть повідомлення..." />
+      <input id="chatInput" type="text" placeholder="Напишіть повідомлення..."/>
       <button id="chatSend">Надіслати</button>
-    </div>
-    <div class="note">
-      Порада: підключіть свій бекенд до <code>API_ENDPOINT</code>, щоб відповідала реальна модель ChatGPT (або ваш агент).
     </div>
   </div>
 
@@ -405,191 +192,13 @@
     // Рік у футері
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // i18n словник (як і раніше)
-    const i18n = {
-      uk: {
-        meta_title: "Marketing in Deutschland — Маркетингова агенція (EN/DE/UA/RU)",
-        meta_desc: "8 років досвіду: створення сайтів, Google Ads, SMM, SEO. Працюємо там, де клієнти вже шукають вас. Telegram: @Marketing_in_Deutschland.",
-        tagline: "Агенція цифрового маркетингу",
-        nav_services: "Послуги",
-        nav_testimonials: "Відгуки",
-        xp: "8 років досвіду",
-        hero_h1: "Будуйте попит. Захоплюйте ринок. Зростайте в Німеччині.",
-        hero_p: "Повний цикл: створення сайтів, Google Ads, SMM та SEO. Працюємо там, де клієнти вже шукають ваші товари та послуги.",
-        cta_secondary: "Написати в Telegram",
-        chip_sem: "Google Ads",
-        chip_web: "Web",
-        chip_seo: "SEO",
-        stat1: "ROI-підхід",
-        stat1d: "Стратегії з фокусом на прибуток, а не кліки.",
-        stat2: "Швидкі сайти",
-        stat2d: "Core Web Vitals і конверсії з першого екрану.",
-        stat3: "Стабільний трафік",
-        stat3d: "Ріст органіки без «реклама» бирки.",
-        services_h2: "Послуги",
-        s1_chip: "Вебсайти",
-        s1_h3: "Створення сайтів",
-        s1_p: "Проєктуємо та запускаємо швидкі, адаптивні сайти: лендинги, інтернет-магазини, багатомовні проєкти. Дизайн під конверсію, чистий код, інтеграції з аналітикою та CRM.",
-        s1_li1: "UX/UI дизайн і прототипи",
-        s1_li2: "Швидкість і SEO-базис",
-        s1_li3: "Підключення аналітики (GA4, GTM)",
-        s2_h3: "Контекст і Shopping",
-        s2_p: "Будьте там, де попит уже сформований. Налаштовуємо пошукові та товарні кампанії, Performance Max, ремаркетинг/динамічний ремаркетинг, YouTube і медійну мережу — з прозорою аналітикою та контролем CPA/ROAS.",
-        s2_li1: "Структура акаунта під масштабування",
-        s2_li2: "Фіди для Shopping, правила й сегментація",
-        s2_li3: "Скрипти, правила, A/B та гіпотези",
-        s3_h3: "Соціальні мережі",
-        s3_p: "Створюємо впізнаваність і попит у соцмережах: контент-стратегія, дизайн, сценарії Reels/Shorts, таргетована реклама. Працюємо з месенджерами, воронками та UGC, щоб перетворювати перегляди на ліди.",
-        s3_li1: "Контент-план і продакшн",
-        s3_li2: "Налаштування реклами та воронок",
-        s3_li3: "Аналітика та оптимізація",
-        s4_h3: "Пошукова оптимізація",
-        s4_p: "Робимо ваш сайт фаворитом Google. Технічний аудит, семантика, контент і посилальний профіль — для стабільного зростання органічного трафіку без позначки «реклама». Даємо прогноз і план окупності.",
-        s4_li1: "Технічний аудит і швидкість",
-        s4_li2: "Контент-стратегія та E-E-A-T",
-        s4_li3: "Лінкбілдинг і локальне SEO",
-        t_h2: "Відгуки",
-        t1: "«За три місяці знизили CPA на 32% і подвоїли онлайн-замовлення. Прозорі звіти щотижня — працювати легко.»",
-        t2: "«Сайт завантажується миттєво, а заявки приходять стабільно. Команда говорила мовою бізнесу, а не тільки техніки.»",
-        t3: "«YouTube і ремаркетинг дали вибух впізнаваності. Нарешті бачу чіткий зв’язок між контентом і продажами.»",
-        foot: "Усі права захищено."
-      },
-      de: {
-        meta_title: "Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)",
-        meta_desc: "8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Dort sichtbar, wo Ihre Kunden bereits suchen.",
-        tagline: "Digitalagentur",
-        nav_services: "Leistungen",
-        nav_testimonials: "Referenzen",
-        xp: "8 Jahre Erfahrung",
-        hero_h1: "Nachfrage aufbauen. Markt gewinnen. In Deutschland wachsen.",
-        hero_p: "Full-Service: Websites, Google Ads, SMM und SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
-        cta_secondary: "In Telegram schreiben",
-        chip_sem: "Google Ads", chip_web: "Web", chip_seo: "SEO",
-        stat1: "ROI-Ansatz", stat1d: "Strategien mit Fokus auf Profit, nicht Klicks.",
-        stat2: "Schnelle Websites", stat2d: "Core Web Vitals & Conversion-Design.",
-        stat3: "Stetiger Traffic", stat3d: "Organisches Wachstum ohne „Anzeige“.",
-        services_h2: "Leistungen",
-        s1_chip: "Websites", s1_h3: "Websites erstellen",
-        s1_p: "Wir konzipieren schnelle, responsive Websites: Landingpages, Shops, mehrsprachige Projekte. Conversion-Design, sauberer Code, Analytics & CRM.",
-        s1_li1: "UX/UI & Prototyping", s1_li2: "Speed & SEO-Basis", s1_li3: "Analytics-Setup (GA4, GTM)",
-        s2_h3: "Search & Shopping",
-        s2_p: "Seien Sie dort, wo Nachfrage besteht. Search- & Shopping-Kampagnen, Performance Max, (dynam.) Remarketing, YouTube & Display — mit klarer Analytics und CPA/ROAS-Kontrolle.",
-        s2_li1: "Kontostruktur für Skalierung", s2_li2: "Feeds für Shopping, Regeln & Segmentierung", s2_li3: "Skripte, Regeln, A/B & Hypothesen",
-        s3_h3: "Social Media",
-        s3_p: "Wir schaffen Reichweite und Nachfrage: Content-Strategie, Design, Reels/Shorts, Targeting. Messenger-Funnels & UGC für Leads statt Views.",
-        s3_li1: "Content-Plan & Produktion", s3_li2: "Ads & Funnel-Setup", s3_li3: "Analytics & Optimierung",
-        s4_h3: "Suchmaschinenoptimierung",
-        s4_p: "Wir machen Ihre Seite zum Google-Liebling. Technischer Audit, Semantik, Content & Links — für nachhaltiges Wachstum ohne „Anzeige“. Mit Rendite-Prognose.",
-        s4_li1: "Technischer Audit & Speed", s4_li2: "Content-Strategie & E-E-A-T", s4_li3: "Linkbuilding & Local SEO",
-        t_h2: "Referenzen",
-        t1: "„CPA um 32 % gesenkt, Bestellungen verdoppelt. Transparente Weekly-Reports – Zusammenarbeit auf Augenhöhe.“",
-        t2: "„Seite lädt blitzschnell, Leads kommen konstant. Das Team spricht Business, nicht nur Technik.“",
-        t3: "„YouTube & Remarketing boosteten die Marke. Endlich klare Linie von Content zu Sales.“",
-        foot: "Alle Rechte vorbehalten."
-      },
-      en: {
-        meta_title: "Marketing in Deutschland — Digital Marketing Agency (EN/DE/UA/RU)",
-        meta_desc: "8 years of experience: Websites, Google Ads, SMM, SEO. Be visible where customers already search.",
-        tagline: "Digital Marketing Agency",
-        nav_services: "Services",
-        nav_testimonials: "Testimonials",
-        xp: "8 years of experience",
-        hero_h1: "Create demand. Win the market. Grow in Germany.",
-        hero_p: "Full-funnel: websites, Google Ads, SMM, and SEO. Visible where customers already search.",
-        cta_secondary: "Message on Telegram",
-        chip_sem: "Google Ads", chip_web: "Web", chip_seo: "SEO",
-        stat1: "ROI mindset", stat1d: "Strategies focused on profit, not clicks.",
-        stat2: "Fast websites", stat2d: "Core Web Vitals & conversion-first design.",
-        stat3: "Predictable traffic", stat3d: "Organic growth without the “ad” label.",
-        services_h2: "Services",
-        s1_chip: "Websites", s1_h3: "Website Development",
-        s1_p: "We plan and launch fast, responsive sites: landing pages, stores, multilingual projects. Conversion design, clean code, analytics and CRM integrations.",
-        s1_li1: "UX/UI & prototyping", s1_li2: "Speed & SEO foundation", s1_li3: "Analytics setup (GA4, GTM)",
-        s2_h3: "Search & Shopping",
-        s2_p: "Show up where demand exists. We run Search and Shopping, Performance Max, (dynamic) remarketing, YouTube & Display — with clear analytics and CPA/ROAS control.",
-        s2_li1: "Account structure for scale", s2_li2: "Shopping feeds, rules & segmentation", s2_li3: "Scripts, rules, A/B tests & hypotheses",
-        s3_h3: "Social Media",
-        s3_p: "We build awareness and demand: content strategy, design, Reels/Shorts, paid social. Messenger funnels & UGC to turn views into leads.",
-        s3_li1: "Content plan & production", s3_li2: "Ads & funnel setup", s3_li3: "Analytics & optimization",
-        s4_h3: "Search Engine Optimization",
-        s4_p: "We make your site a Google favorite. Technical audit, semantics, content and links for durable organic growth. Profitability forecast included.",
-        s4_li1: "Technical audit & speed", s4_li2: "Content strategy & E-E-A-T", s4_li3: "Link building & local SEO",
-        t_h2: "Testimonials",
-        t1: "“Within three months we cut CPA by 32% and doubled online orders. Weekly transparent reports made it easy.”",
-        t2: "“The site is blazing fast and leads are steady. The team speaks business, not just tech.”",
-        t3: "“YouTube and remarketing boosted awareness. Finally a clear line from content to sales.”",
-        foot: "All rights reserved."
-      },
-      ru: {
-        meta_title: "Marketing in Deutschland — Маркетинговое агентство (EN/DE/UA/RU)",
-        meta_desc: "8 лет опыта: сайты, Google Ads, SMM, SEO. Там, где клиенты уже ищут.",
-        tagline: "Цифровое маркетинговое агентство",
-        nav_services: "Услуги",
-        nav_testimonials: "Отзывы",
-        xp: "8 лет опыта",
-        hero_h1: "Формируйте спрос. Берите рынок. Растите в Германии.",
-        hero_p: "Полный цикл: сайты, Google Ads, SMM и SEO. Видимость там, где уже есть спрос.",
-        cta_secondary: "Написать в Telegram",
-        chip_sem: "Google Ads", chip_web: "Web", chip_seo: "SEO",
-        stat1: "ROI-подход", stat1d: "Фокус на прибыли, а не кликах.",
-        stat2: "Быстрые сайты", stat2d: "Core Web Vitals и дизайн под конверсию.",
-        stat3: "Предсказуемый трафик", stat3d: "Органика без ярлыка «реклама».",
-        services_h2: "Услуги",
-        s1_chip: "Веб-сайты", s1_h3: "Разработка сайтов",
-        s1_p: "Проектируем и запускаем быстрые, адаптивные сайты: лендинги, магазины, мультиязычные проекты. Дизайн под конверсию, чистый код, интеграции с аналитикой и CRM.",
-        s1_li1: "UX/UI и прототипирование", s1_li2: "Скорость и SEO-база", s1_li3: "Настройка аналитики (GA4, GTM)",
-        s2_h3: "Поиск и Shopping",
-        s2_p: "Будьте там, где уже есть спрос. Поисковые и товарные кампании, Performance Max, (динам.) ремаркетинг, YouTube и КМС — с прозрачной аналитикой и контролем CPA/ROAS.",
-        s2_li1: "Структура аккаунта под масштаб", s2_li2: "Фиды для Shopping, правила и сегментация", s2_li3: "Скрипты, правила, A/B и гипотезы",
-        s3_h3: "Соцсети",
-        s3_p: "Создаем узнаваемость и спрос: контент-стратегия, дизайн, Reels/Shorts, таргет. Мессенджеры, воронки и UGC — чтобы просмотры становились лидами.",
-        s3_li1: "Контент-план и продакшн", s3_li2: "Реклама и настройка воронок", s3_li3: "Аналитика и оптимизация",
-        s4_h3: "Поисковая оптимизация",
-        s4_p: "Делаем ваш сайт любимцем Google. Техаудит, семантика, контент и ссылки — для стабильного роста органики. Прогноз окупаемости прилагается.",
-        s4_li1: "Технический аудит и скорость", s4_li2: "Контент-стратегия и E-E-A-T", s4_li3: "Линкбилдинг и локальное SEO",
-        t_h2: "Отзывы",
-        t1: "«За три месяца снизили CPA на 32% и удвоили онлайн-заказы. Прозрачные отчеты каждую неделю.»",
-        t2: "«Сайт грузится мгновенно, лиды идут стабильно. Команда говорит на языке бизнеса.»",
-        t3: "«YouTube и ремаркетинг усилили узнаваемость. Наконец-то связь контента с продажами.»",
-        foot: "Все права защищены."
-      }
-    };
-
-    // Функції i18n
-    const langSelect = document.getElementById('lang');
-    function applyLang(L='uk'){
-      const dict = i18n[L] || i18n.uk;
-      document.querySelectorAll('[data-i18n]').forEach(el=>{
-        const key = el.getAttribute('data-i18n');
-        if(dict[key]) {
-          if(el.tagName.toLowerCase()==='meta'){
-            el.setAttribute('content', dict[key]);
-          } else {
-            el.textContent = dict[key];
-          }
-        }
-      });
-      document.documentElement.lang = L;
-      document.title = dict.meta_title || document.title;
-    }
-    const saved = localStorage.getItem('lang') || 'uk';
-    langSelect.value = saved; applyLang(saved);
-    langSelect.addEventListener('change', (e)=>{
-      const L = e.target.value; localStorage.setItem('lang', L); applyLang(L);
-    });
-
-    /* === Чат-бот ===
-       Підключення до бекенду (Serverless/Function/Proxy до OpenAI/вашого агента):
-       1) Створіть ендпоінт і замініть значення API_ENDPOINT на вашу URL.
-       2) Ендпоінт повинен приймати JSON: { messages: [{role:'user'|'assistant'|'system', content:string}, ...] }
-          та повертати JSON: { reply: string }
-       3) Без бекенду чат працює в "демо-режимі" (евристичні відповіді).
-    */
-    const API_ENDPOINT = ""; // <- вставте вашу URL (наприклад, https://your-domain.workers.dev/chat або /api/chat)
+    // === CHAT JS (єдиний) ===
+    const API_ENDPOINT = "https://vermarkter-github-io.vercel.app/api/chat"; // твій прод-ендпоїнт
 
     const chatOpen = document.getElementById('chatOpen');
     const chatClose = document.getElementById('chatClose');
     const chatPanel = document.getElementById('chatPanel');
+    const chatBackdrop = document.getElementById('chatBackdrop');
     const chatBody = document.getElementById('chatBody');
     const chatInput = document.getElementById('chatInput');
     const chatSend = document.getElementById('chatSend');
@@ -597,214 +206,45 @@
     let history = [{role:'system', content:'You are a helpful marketing assistant for Marketing in Deutschland. Be concise and ROI-driven.'}];
 
     function appendMsg(role, text){
-      const wrap = document.createElement('div');
-      wrap.className = 'msg ' + (role === 'user' ? 'user':'bot');
-      const b = document.createElement('div');
-      b.className = 'bubble';
-      b.textContent = text;
-      wrap.appendChild(b);
-      chatBody.appendChild(wrap);
+      const wrap = document.createElement('div'); wrap.className = 'msg ' + (role==='user'?'user':'bot');
+      const b = document.createElement('div'); b.className = 'bubble';
+      if(role==='user'){ b.classList.add('userBubble'); } else { b.classList.add('botBubble'); }
+      b.textContent = text; wrap.appendChild(b); chatBody.appendChild(wrap);
       chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function appendTyping(){
-      const wrap = document.createElement('div');
-      wrap.className = 'msg bot';
-      wrap.id = 'typing';
-      const b = document.createElement('div');
-      b.className = 'bubble';
-      const dots = document.createElement('span');
-      dots.className = 'typing';
-      b.appendChild(dots);
-      wrap.appendChild(b);
-      chatBody.appendChild(wrap);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function removeTyping(){
-      const t = document.getElementById('typing');
-      if(t) t.remove();
     }
 
     async function getReply(messages){
-      if(!API_ENDPOINT){
-        // Демо-режим: прості підказки без зовнішніх API (безпечно для GitHub Pages)
-        const last = messages.filter(m=>m.role==='user').slice(-1)[0]?.content || '';
-        if(/google\s*ads|sem|реклам/i.test(last)) return "Для Google Ads рекомендуємо структуру за продуктами/намірами, конверсії в GA4 та таргет ROAS. Хочете швидкий аудит акаунта?";
-        if(/seo/i.test(last)) return "SEO: технічний аудит, семантика, контент-план + лінки. Орієнтир: ріст органіки за 3–6 міс. Дати сайт/нішу?";
-        if(/smm|соц/i.test(last)) return "SMM: контент-план, короткі відео (Reels/Shorts), UGC та мессенджер-воронки. Ціль — ліди, не лайки.";
-        if(/site|сайт|web/i.test(last)) return "Сайти: швидкі, конверсійні, з аналітикою. Скільки сторінок і який дедлайн?";
-        return "Розкажіть детальніше про нішу, цільову аудиторію та KPI (CPA/ROAS/LTV) — запропоную план.";
-      }
       try{
-        const res = await fetch(API_ENDPOINT, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
+        const r = await fetch(API_ENDPOINT, {
+          method:'POST', headers:{'Content-Type':'application/json'},
           body: JSON.stringify({ messages })
         });
-        const data = await res.json();
+        const data = await r.json();
         return data.reply || "Вибачте, зараз неможливо отримати відповідь.";
-      }catch(e){
-        return "Помилка з’єднання з агентом. Перевірте API_ENDPOINT.";
-      }
+      }catch(e){ return "Помилка з’єднання з агентом. Перевірте API_ENDPOINT."; }
     }
 
     async function send(){
-      const text = chatInput.value.trim();
-      if(!text) return;
-      appendMsg('user', text);
-      history.push({role:'user', content:text});
+      const text = chatInput.value.trim(); if(!text) return;
+      appendMsg('user', text); history.push({role:'user', content:text});
       chatInput.value = '';
-      appendTyping();
+      const typing = document.createElement('div'); typing.className='msg bot'; typing.id='typing';
+      typing.innerHTML = '<div class="bubble">…</div>'; chatBody.appendChild(typing); chatBody.scrollTop = chatBody.scrollHeight;
       const reply = await getReply(history);
-      removeTyping();
-      appendMsg('assistant', reply);
-      history.push({role:'assistant', content:reply});
+      typing.remove();
+      appendMsg('assistant', reply); history.push({role:'assistant', content:reply});
     }
 
+    function openChat(){ chatPanel.classList.add('open'); chatBackdrop.classList.add('open'); chatOpen.setAttribute('aria-expanded','true'); setTimeout(()=>chatInput.focus(),30); }
+    function closeChat(){ chatPanel.classList.remove('open'); chatBackdrop.classList.remove('open'); chatOpen.setAttribute('aria-expanded','false'); }
+    function toggleChat(){ chatPanel.classList.contains('open') ? closeChat() : openChat(); }
+
+    chatOpen.addEventListener('click', toggleChat);
+    chatClose.addEventListener('click', closeChat);
+    chatBackdrop.addEventListener('click', closeChat);
     chatSend.addEventListener('click', send);
-    chatInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); send(); }});
-    const chatBackdrop = document.getElementById('chatBackdrop');
-
-function openChat(){
-  chatPanel.classList.add('open');
-  chatBackdrop.classList.add('open');
-  chatOpen.setAttribute('aria-expanded','true');
-  // автофокус у поле
-  setTimeout(()=>chatInput?.focus(), 30);
-}
-
-function closeChat(){
-  chatPanel.classList.remove('open');
-  chatBackdrop.classList.remove('open');
-  chatOpen.setAttribute('aria-expanded','false');
-}
-
-function toggleChat(){
-  chatPanel.classList.contains('open') ? closeChat() : openChat();
-}
-
-// Відкрити/згорнути по кнопці-іконці
-chatOpen.addEventListener('click', toggleChat);
-
-// Хрестик
-chatClose.addEventListener('click', closeChat);
-
-// Клік по бекдропу — закриття
-chatBackdrop.addEventListener('click', closeChat);
-
-// ESC — закриття
-window.addEventListener('keydown', (e)=>{
-  if(e.key === 'Escape' && chatPanel.classList.contains('open')) closeChat();
-});
-
-// Автозгортання при переході по якорям (навігація по сторінці)
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', closeChat);
-});
-
-
+    chatInput.addEventListener('keydown', e=>{ if(e.key==='Enter'){ e.preventDefault(); send(); } });
+    window.addEventListener('keydown', e=>{ if(e.key==='Escape' && chatPanel.classList.contains('open')) closeChat(); });
   </script>
-<!-- ▼▼▼ ВСТАВИТИ ПЕРЕД </body> ▼▼▼ -->
-<button class="chat-launcher" id="chatOpen" aria-label="Відкрити чат" aria-expanded="false">
-  <!-- іконка діалогу -->
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-    <path d="M21 12c0 4.418-4.03 8-9 8-1.08 0-2.12-.16-3.08-.46L3 20l1.53-3.33C4.2 15.7 4 14.86 4 14c0-4.418 4.03-8 9-8s8 3.582 8 8z" stroke="#fff" stroke-width="1.6" fill="none"/>
-    <circle cx="9" cy="12" r="1" fill="#fff"/><circle cx="12" cy="12" r="1" fill="#fff"/><circle cx="15" cy="12" r="1" fill="#fff"/>
-  </svg>
-</button>
-
-<div class="chat-backdrop" id="chatBackdrop" aria-hidden="true"></div>
-
-<div class="chat-panel" id="chatPanel" role="dialog" aria-modal="true" aria-label="Чат з агентом">
-  <div class="chat-header">
-    <div class="title">ChatGPT Agent — MiD</div>
-    <button id="chatClose" aria-label="Закрити" style="background:none;border:none;color:#9CA3AF;font-weight:700;font-size:16px;cursor:pointer">×</button>
-  </div>
-  <div class="chat-body" id="chatBody" aria-live="polite">
-    <div class="msg bot">
-      <div class="bubble">Вітаю! Я ваш асистент з маркетингу. Чим допомогти: Web / Google Ads / SMM / SEO?</div>
-    </div>
-  </div>
-  <div class="chat-input">
-    <input id="chatInput" type="text" placeholder="Напишіть повідомлення..." />
-    <button id="chatSend">Надіслати</button>
-  </div>
-<script>
-  // Якщо ці елементи не існують у DOM — перевір, що ти вставив HTML з кроку 1
-  const chatOpen = document.getElementById('chatOpen');
-  const chatClose = document.getElementById('chatClose');
-  const chatPanel = document.getElementById('chatPanel');
-  const chatBackdrop = document.getElementById('chatBackdrop');
-  const chatBody = document.getElementById('chatBody');
-  const chatInput = document.getElementById('chatInput');
-  const chatSend = document.getElementById('chatSend');
-
-  // Простий історі-лог + демо-відповіді без API
-  let history = [{role:'system', content:'You are a helpful marketing assistant for Marketing in Deutschland.'}];
-
-  function appendMsg(role, text){
-    const wrap = document.createElement('div');
-    wrap.className = 'msg ' + (role === 'user' ? 'user':'bot');
-    const b = document.createElement('div');
-    b.className = 'bubble';
-    b.textContent = text;
-    wrap.appendChild(b);
-    chatBody.appendChild(wrap);
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
-  function appendTyping(){
-    const wrap = document.createElement('div');
-    wrap.className = 'msg bot'; wrap.id = 'typing';
-    const b = document.createElement('div'); b.className = 'bubble';
-    const dots = document.createElement('span'); dots.className = 'typing';
-    b.appendChild(dots); wrap.appendChild(b); chatBody.appendChild(wrap);
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
-  function removeTyping(){ const t = document.getElementById('typing'); if(t) t.remove(); }
-
-  // Якщо пізніше додаси backend — заміниш цей демо-обробник
-  async function getReply(messages){
-    const last = messages.filter(m=>m.role==='user').slice(-1)[0]?.content || '';
-    if(/google\s*ads|sem|реклам/i.test(last)) return "Google Ads: розіб’ємо кампанії за намірами, налаштуємо конверсії в GA4 та ROAS. Є акаунт?";
-    if(/seo/i.test(last)) return "SEO: технічний аудит, семантика, контент і лінки — з прогнозом окупності.";
-    if(/smm|соц/i.test(last)) return "SMM: контент-план, короткі відео, UGC, мессенджер-воронки для лідів.";
-    if(/site|сайт|web/i.test(last)) return "Сайт: швидкий, адаптивний, з аналітикою. Скільки сторінок та дедлайн?";
-    return "Опишіть нішу, ЦА та KPI (CPA/ROAS/LTV) — запропоную план.";
-  }
-
-  async function send(){
-    const text = chatInput.value.trim();
-    if(!text) return;
-    appendMsg('user', text);
-    history.push({role:'user', content:text});
-    chatInput.value = '';
-    appendTyping();
-    const reply = await getReply(history);
-    removeTyping();
-    appendMsg('assistant', reply);
-    history.push({role:'assistant', content:reply});
-  }
-
-  function openChat(){
-    chatPanel.classList.add('open'); chatBackdrop.classList.add('open');
-    chatOpen.setAttribute('aria-expanded','true');
-    setTimeout(()=>chatInput?.focus(), 30);
-  }
-  function closeChat(){
-    chatPanel.classList.remove('open'); chatBackdrop.classList.remove('open');
-    chatOpen.setAttribute('aria-expanded','false');
-  }
-  function toggleChat(){ chatPanel.classList.contains('open') ? closeChat() : openChat(); }
-
-  // Події
-  chatOpen?.addEventListener('click', toggleChat);
-  chatClose?.addEventListener('click', closeChat);
-  chatBackdrop?.addEventListener('click', closeChat);
-  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && chatPanel.classList.contains('open')) closeChat(); });
-  chatSend?.addEventListener('click', send);
-  chatInput?.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); send(); } });
-</script>
-
 </body>
 </html>
