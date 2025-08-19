@@ -1,1 +1,582 @@
-<!doctype html> <html lang="de"> <head> <meta charset="utf-8"/> <meta name="viewport" content="width=device-width,initial-scale=1"/> <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title> <meta name="deion" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/> <meta name="theme-color" content="#0F172A"/> <!-- Favicon --> <link rel="icon" href="favicon.ico" type="image/x-icon"> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet"> <style> :root{ --bg:#0F172A; --bg2:#0b132f; --text:#E5E7EB; --muted:#9CA3AF; --brand:#3B82F6; --brand2:#10B981; --shadow:0 20px 50px -20px rgba(0,0,0,.45); --card:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02)); --border:1px solid rgba(255,255,255,.08); --radius:16px; } *{box-sizing:border-box} html,body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:Inter,system-ui,Arial,sans-serif} a{color:inherit;text-decoration:none} .container{max-width:1100px;margin:0 auto;padding:0 20px} header{position:sticky;top:0;z-index:10;background:rgba(15,23,42,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)} .nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:12px} .brand{display:flex;align-items:center;gap:12px} .logo{width:42px;height:42px} .title{font-weight:800;letter-spacing:.2px} .subtitle{display:block;font-weight:600;color:var(--muted);font-size:12px;margin-top:-2px} .navlinks{display:flex;gap:16px;align-items:center;flex-wrap:wrap} .navlinks a{padding:8px 12px;border-radius:10px;color:var(--muted)} .navlinks a:hover{color:#fff;background:rgba(255,255,255,.06)} .lang select{ background:#1E293B;color:#F8FAFC;border:1px solid #475569;padding:8px 10px;border-radius:10px;outline:none } .cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--brand),#6D28D9);color:white;padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:var(--shadow);border:0} /* Hero */ .hero{padding:74px 0 38px} .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center} .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(16,185,129,.15);color:#D1FAE5;border:1px solid rgba(16,185,129,.3);padding:6px 10px;border-radius:999px;font-size:13px} h1{font-size:44px;line-height:1.08;margin:14px 0 10px} .lead{color:#cbd5e1;max-width:640px} .hero-card{background:var(--card);border:var(--border);border-radius:var(--radius);padding:20px} .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px} .stat{background:rgba(255,255,255,.05);border:var(--border);border-radius:12px;padding:14px;text-align:center} .stat b{font-size:20px} section{padding:54px 0} .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px} .card{background:var(--card);border:var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)} .card h3{margin:6px 0 8px} .card p{color:#cbd5e1} .chip{display:inline-block;font-size:12px;color:#e5e7eb;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);padding:4px 8px;border-radius:999px;margin-right:8px;margin-bottom:8px} .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px} .quote{background:rgba(255,255,255,.05);border:var(--border);border-radius:16px;padding:18px;position:relative} .quote:before{content:"“";position:absolute;left:12px;top:-10px;font-size:48px;color:rgba(255,255,255,.15)} .quote b{display:block;margin-top:10px} .footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.08)} /* CHAT */ .chat-launcher{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:none;box-shadow:var(--shadow);cursor:pointer} .chat-backdrop{position:fixed;inset:0;z-index:59;background:rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:.2s ease} .chat-backdrop.open{opacity:1;pointer-events:auto} .chat-panel{position:fixed;right:20px;bottom:88px;z-index:60;width:380px;max-width:94vw;background:#0b1324;border:1px solid rgba(255,255,255,.1);border-radius:16px;box-shadow:var(--shadow);transform:translateY(12px) scale(.98);opacity:0;pointer-events:none;transition:.2s ease;display:flex;flex-direction:column;overflow:hidden} .chat-panel.open{transform:none;opacity:1;pointer-events:auto} .chat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,.04)} .chat-header .title{font-weight:700;font-size:14px} .chat-body{height:420px;max-height:70vh;overflow:auto;padding:14px;scroll-behavior:smooth} .msg{display:flex;gap:8px;margin:8px 0} .msg.user{justify-content:flex-end} .bubble{max-width:80%;padding:10px 12px;border-radius:12px;line-height:1.4;font-size:14px} .user .bubble{background:#1E293B;color:#F8FAFC;border:1px solid #334155} .bot .bubble{background:#0f172a;border:1px solid #334155} .chat-input{display:flex;gap:8px;padding:10px;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08)} .chat-input input{flex:1;background:#0b1229;color:#fff;border:1px solid #334155;border-radius:10px;padding:10px} .chat-input button{background:linear-gradient(135deg,var(--brand),#6D28D9);border:none;color:#fff;padding:10px 12px;border-radius:10px;font-weight:700} @media(max-width:480px){.chat-panel{right:10px;left:10px;width:auto;bottom:76px}.chat-body{height:60vh}} </style> </head> <body> <header> <div class="container nav"> <div class="brand"> <!-- Лого --> <svg class="logo" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-label="Marketing in Deutschland logo"> <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs> <rect x="8" y="8" width="144" height="144" rx="28" fill="url(#lg)"/> <circle cx="80" cy="80" r="56" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="3"/> <g stroke="#ffffff" stroke-width="6" stroke-linecap="round"> <line x1="48" y1="104" x2="48" y2="84"/><line x1="68" y1="104" x2="68" y2="74"/><line x1="88" y1="104" x2="88" y2="62"/><line x1="108" y1="104" x2="108" y2="52"/> </g> <text x="80" y="44" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="800" font-size="22">MiD</text> <text x="80" y="128" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="700" font-size="12">Web • Ads • SMM • SEO</text> </svg> <div class="title"> <span data-i18n="brand">Marketing in Deutschland</span> <small class="subtitle" data-i18n="tagline">Digitalagentur</small> </div> </div> <nav class="navlinks"> <a href="#services" data-i18n="nav_services">Leistungen</a> <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a> <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener" data-i18n="telegram">Telegram @Marketing_in_Deutschland</a> <div class="lang"> <label for="lang" class="sr-only">Sprache</label> <select id="lang" aria-label="Language"> <option value="de" selected>DE</option> <option value="en">EN</option> <option value="uk">UA</option> <option value="ru">RU</option> </select> </div> </nav> </div> </header> <main class="container"> <!-- Hero --> <section class="hero" id="home"> <div class="hero-grid"> <div> <span class="badge"> <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21 7.5 13.2 2 9h7l3-7z" fill="#34D399"/></svg> <span data-i18n="xp">8 Jahre Erfahrung</span> </span> <h1 data-i18n="hero_h1">Nachfrage aufbauen. Markt gewinnen. In Deutschland wachsen.</h1> <p class="lead" data-i18n="hero_p">Full-Service: Websites, Google Ads, SMM und SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.</p> <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap"> <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener" data-i18n="cta_primary">In Telegram schreiben</a> </div> </div> <div class="hero-card"> <div class="hero-stats"> <div class="stat"> <div class="chip" data-i18n="chip_sem">Google Ads</div> <b data-i18n="stat1">ROI-Ansatz</b> <div class="muted" style="color:#9CA3AF" data-i18n="stat1d">Strategien mit Fokus auf Profit, nicht Klicks.</div> </div> <div class="stat"> <div class="chip" data-i18n="chip_web">Web</div> <b data-i18n="stat2">Schnelle Websites</b> <div class="muted" style="color:#9CA3AF" data-i18n="stat2d">Core Web Vitals & Conversion-Design.</div> </div> <div class="stat"> <div class="chip" data-i18n="chip_seo">SEO</div> <b data-i18n="stat3">Stetiger Traffic</b> <div class="muted" style="color:#9CA3AF" data-i18n="stat3d">Organisches Wachstum ohne „Anzeige“.</div> </div> </div> </div> </div> </section> <!-- Services --> <section id="services"> <h2 style="margin-bottom:14px" data-i18n="services_h2">Leistungen</h2> <div class="cards"> <div class="card"> <span class="chip" data-i18n="s1_chip">Web</span> <h3 data-i18n="s1_title">Webseiten-Erstellung</h3> <p data-i18n="s1_desc">Wir konzipieren schnelle, responsive Webseiten: Landingpages, Shops, mehrsprachige Projekte. Conversion-Design, sauberer Code, Analytics- & CRM-Integrationen.</p> </div> <div class="card"> <span class="chip" data-i18n="s2_chip">Google Ads</span> <h3 data-i18n="s2_title">Search & Shopping</h3> <p data-i18n="s2_desc">Seien Sie dort, wo Nachfrage besteht: Search & Shopping, Performance Max, (dynam.) Remarketing, YouTube & Display – mit klarer Analytics und CPA/ROAS-Kontrolle.</p> </div> <div class="card"> <span class="chip" data-i18n="s3_chip">SMM</span> <h3 data-i18n="s3_title">Social Media</h3> <p data-i18n="s3_desc">Content-Strategie, Design, Reels/Shorts, Paid Social. Messenger-Funnels & UGC, damit Views zu Leads werden.</p> </div> <div class="card"> <span class="chip" data-i18n="s4_chip">SEO</span> <h3 data-i18n="s4_title">Suchmaschinenoptimierung</h3> <p data-i18n="s4_desc">Technischer Audit, Semantik, Content & Links – für nachhaltiges organisches Wachstum ohne „Anzeige“. Mit Profitabilitätsprognose.</p> </div> </div> </section> <!-- Testimonials --> <section id="testimonials"> <h2 style="margin-bottom:14px" data-i18n="testimonials_h2">Bewertungen</h2> <div class="testimonials"> <div class="quote"> <p data-i18n="t1_text">„CPA um 32 % gesenkt, Bestellungen verdoppelt. Transparente Weekly-Reports – Zusammenarbeit auf Augenhöhe.“</p> <b data-i18n="t1_by">Eva K., eCommerce</b> </div> <div class="quote"> <p data-i18n="t2_text">„Seite lädt blitzschnell, Leads kommen konstant. Das Team spricht Business, nicht nur Technik.“</p> <b data-i18n="t2_by">Markus S., Dienstleistungen</b> </div> <div class="quote"> <p data-i18n="t3_text">„YouTube & Remarketing boosteten die Marke. Endlich klare Linie von Content zu Sales.“</p> <b data-i18n="t3_by">Olena R., EdTech</b> </div> </div> </section> </main> <footer class="footer"> <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap"> <div>© <span id="year"></span> Marketing in Deutschland • <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></div> <a href="mailto:marketing.in.Deutschland@gmail.com">marketing.in.Deutschland@gmail.com</a> </div> </footer> <!-- CHAT --> <button class="chat-launcher" id="chatOpen" aria-label="Chat öffnen" aria-expanded="false"> <svg width="26" height="26" viewBox="0 0 24 24" fill="none"> <path d="M21 12c0 4.418-4.03 8-9 8-1.08 0-2.12-.16-3.08-.46L3 20l1.53-3.33C4.2 15.7 4 14.86 4 14c0-4.418 4.03-8 9-8s8 3.582 8 8z" stroke="#fff" stroke-width="1.6" fill="none"/> <circle cx="9" cy="12" r="1" fill="#fff"/><circle cx="12" cy="12" r="1" fill="#fff"/><circle cx="15" cy="12" r="1" fill="#fff"/> </svg> </button> <div class="chat-backdrop" id="chatBackdrop" aria-hidden="true"></div> <div class="chat-panel" id="chatPanel" role="dialog" aria-modal="true" aria-label="Chat"> <div class="chat-header"> <div class="title">Chat — MiD</div> <button id="chatClose" aria-label="Schließen" style="background:none;border:none;color:#9CA3AF;font-weight:700;font-size:16px;cursor:pointer">×</button> </div> <div class="chat-body" id="chatBody" aria-live="polite"> <div class="msg bot"><div class="bubble" data-i18n="chat_welcome">👋 Hallo! Beschreiben Sie kurz Ihr Ziel (Web / Google Ads / SMM / SEO) — я дам короткий план дій.</div></div> </div> <div class="chat-input"> <input id="chatInput" type="text" placeholder="Schreiben..." /> <button id="chatSend">➤</button> </div> </div> <script> // Рік у футері document.getElementById('year').textContent = new Date().getFullYear(); // ===== I18N словник ===== const translations = { de: { meta_title:"Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)", meta_desc:"8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.", brand:"Marketing in Deutschland", tagline:"Digitalagentur", nav_services:"Leistungen", nav_testimonials:"Bewertungen", telegram:"Telegram @Marketing_in_Deutschland", xp:"8 Jahre Erfahrung", hero_h1:"Nachfrage aufbauen. Markt gewinnen. In Deutschland wachsen.", hero_p:"Full-Service: Websites, Google Ads, SMM und SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.", cta_primary:"In Telegram schreiben", chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO", stat1:"ROI-Ansatz", stat1d:"Strategien mit Fokus auf Profit, nicht Klicks.", stat2:"Schnelle Websites", stat2d:"Core Web Vitals & Conversion-Design.", stat3:"Stetiger Traffic", stat3d:"Organisches Wachstum ohne „Anzeige“.", services_h2:"Leistungen", s1_chip:"Web", s1_title:"Webseiten-Erstellung", s1_desc:"Wir konzipieren schnelle, responsive Webseiten: Landingpages, Shops, mehrsprachige Projekte. Conversion-Design, sauberer Code, Analytics- & CRM-Integrationen.", s2_chip:"Google Ads", s2_title:"Search & Shopping", s2_desc:"Seien Sie dort, wo Nachfrage besteht: Search & Shopping, Performance Max, (dynam.) Remarketing, YouTube & Display – mit klarer Analytics und CPA/ROAS-Kontrolle.", s3_chip:"SMM", s3_title:"Social Media", s3_desc:"Content-Strategie, Design, Reels/Shorts, Paid Social. Messenger-Funnels & UGC, damit Views zu Leads werden.", s4_chip:"SEO", s4_title:"Suchmaschinenoptimierung", s4_desc:"Technischer Audit, Semantik, Content & Links – für nachhaltiges organisches Wachstum ohne „Anzeige“. Mit Profitabilitätsprognose.", testimonials_h2:"Bewertungen", t1_text:"„CPA um 32 % gesenkt, Bestellungen verdoppelt. Transparente Weekly-Reports – Zusammenarbeit auf Augenhöhe.“", t1_by:"Eva K., eCommerce", t2_text:"„Seite lädt blitzschnell, Leads kommen konstant. Das Team spricht Business, nicht nur Technik.“", t2_by:"Markus S., Dienstleistungen", t3_text:"„YouTube & Remarketing boosteten die Marke. Endlich klare Linie von Content zu Sales.“", t3_by:"Olena R., EdTech", footer_rights:"Alle Rechte vorbehalten.", chat_welcome:"👋 Hallo! Beschreiben Sie kurz Ihr Ziel (Web / Google Ads / SMM / SEO) — я дам короткий план дій." }, en: { meta_title:"Marketing in Deutschland — Digital Marketing Agency (EN/DE/UA/RU)", meta_desc:"8 years of experience: Websites, Google Ads, SMM, SEO. Be visible where customers already search.", brand:"Marketing in Deutschland", tagline:"Digital Marketing Agency", nav_services:"Services", nav_testimonials:"Testimonials", telegram:"Telegram @Marketing_in_Deutschland", xp:"8 years of experience", hero_h1:"Create demand. Win the market. Grow in Germany.", hero_p:"Full-funnel: websites, Google Ads, SMM, and SEO. Visible where customers already search.", cta_primary:"Message on Telegram", chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO", stat1:"ROI mindset", stat1d:"Strategies focused on profit, not clicks.", stat2:"Fast websites", stat2d:"Core Web Vitals & conversion-first design.", stat3:"Predictable traffic", stat3d:"Organic growth without the “ad” label.", services_h2:"Services", s1_chip:"Web", s1_title:"Website Development", s1_desc:"We plan and launch fast, responsive sites: landing pages, stores, multilingual projects. Conversion-first design, clean code, analytics & CRM integrations.", s2_chip:"Google Ads", s2_title:"Search & Shopping", s2_desc:"Show up where demand exists: Search & Shopping, Performance Max, (dynamic) remarketing, YouTube & Display — with clear analytics and CPA/ROAS control.", s3_chip:"SMM", s3_title:"Social Media", s3_desc:"Content strategy, design, Reels/Shorts, paid social. Messenger funnels & UGC to turn views into leads.", s4_chip:"SEO", s4_title:"Search Engine Optimization", s4_desc:"Technical audit, semantics, content & links for durable organic growth. Profitability forecast included.", testimonials_h2:"Testimonials", t1_text:"“Cut CPA by 32% and doubled online orders in three months. Transparent weekly reports.”", t1_by:"Eva K., eCommerce", t2_text:"“Site is blazing fast; leads are steady. The team speaks business, not just tech.”", t2_by:"Markus S., Services", t3_text:"“YouTube and remarketing boosted awareness. Finally a clear line from content to sales.”", t3_by:"Olena R., EdTech", footer_rights:"All rights reserved.", chat_welcome:"👋 Hi! Tell me your goal (Web / Google Ads / SMM / SEO) — I’ll give a short action plan." }, uk: { meta_title:"Marketing in Deutschland — Маркетингова агенція (EN/DE/UA/RU)", meta_desc:"8 років досвіду: створення сайтів, Google Ads, SMM, SEO. Працюємо там, де клієнти вже шукають вас.", brand:"Маркетинг у Німеччині", tagline:"Цифрова агенція", nav_services:"Послуги", nav_testimonials:"Відгуки", telegram:"Телеграм @Marketing_in_Deutschland", xp:"8 років досвіду", hero_h1:"Будуйте попит. Захоплюйте ринок. Зростайте в Німеччині.", hero_p:"Повний цикл: створення сайтів, Google Ads, SMM та SEO. Видимість там, де клієнти вже шукають.", cta_primary:"Написати в Telegram", chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO", stat1:"ROI-підхід", stat1d:"Стратегії з фокусом на прибуток, а не кліки.", stat2:"Швидкі сайти", stat2d:"Core Web Vitals і конверсійний дизайн.", stat3:"Стабільний трафік", stat3d:"Органіка без позначки «реклама».", services_h2:"Послуги", s1_chip:"Web", s1_title:"Створення сайтів", s1_desc:"Швидкі, адаптивні сайти: лендинги, магазини, мультимовні проєкти. Дизайн під конверсію, чистий код, інтеграції з аналітикою та CRM.", s2_chip:"Google Ads", s2_title:"Пошук і Shopping", s2_desc:"Будьте там, де є попит: Search/Shopping, Performance Max, (динамічний) ремаркетинг, YouTube та медійна мережа — з контролем CPA/ROAS.", s3_chip:"SMM", s3_title:"Соціальні мережі", s3_desc:"Контент-стратегія, дизайн, Reels/Shorts, платна реклама. Месенджери та UGC — щоб перегляди ставали лідами.", s4_chip:"SEO", s4_title:"Пошукова оптимізація", s4_desc:"Технічний аудит, семантика, контент і посилання — стабільний ріст органіки. Прогноз окупності додається.", testimonials_h2:"Відгуки", t1_text:"«За три місяці знизили CPA на 32% і подвоїли онлайн-замовлення. Прозорі щотижневі звіти.»", t1_by:"Єва К., eCommerce", t2_text:"«Сайт завантажується миттєво, ліди стабільні. Команда говорить мовою бізнесу.»", t2_by:"Марк С., Послуги", t3_text:"«YouTube і ремаркетинг посилили впізнаваність. Є чіткий зв’язок між контентом і продажами.»", t3_by:"Олена Р., EdTech", footer_rights:"Усі права захищено.", chat_welcome:"👋 Привіт! Опишіть мету (Web / Google Ads / SMM / SEO) — дам короткий план дій." }, ru: { meta_title:"Marketing in Deutschland — Маркетинговое агентство (EN/DE/UA/RU)", meta_desc:"8 лет опыта: сайты, Google Ads, SMM, SEO. Там, где клиенты уже ищут.", brand:"Маркетинг в Германии", tagline:"Цифровое агентство", nav_services:"Услуги", nav_testimonials:"Отзывы", telegram:"Телеграм @Marketing_in_Deutschland", xp:"8 лет опыта", hero_h1:"Формируйте спрос. Берите рынок. Растите в Германии.", hero_p:"Полный цикл: сайты, Google Ads, SMM и SEO. Видимость там, где клиенты уже ищут.", cta_primary:"Написать в Telegram", chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO", stat1:"ROI-подход", stat1d:"Фокус на прибыли, не на кликах.", stat2:"Быстрые сайты", stat2d:"Core Web Vitals и дизайн под конверсию.", stat3:"Предсказуемый трафик", stat3d:"Органика без ярлыка «реклама».", services_h2:"Услуги", s1_chip:"Web", s1_title:"Разработка сайтов", s1_desc:"Быстрые, адаптивные сайты: лендинги, магазины, мультиязычные проекты. Дизайн под конверсию, чистый код, интеграции с аналитикой и CRM.", s2_chip:"Google Ads", s2_title:"Поиск и Shopping", s2_desc:"Будьте там, где есть спрос: Search/Shopping, Performance Max, (динамический) ремаркетинг, YouTube и КМС — с контролем CPA/ROAS.", s3_chip:"SMM", s3_title:"Социальные сети", s3_desc:"Контент-стратегия, дизайн, Reels/Shorts, платная реклама. Мессенджеры и UGC — чтобы просмотры становились лидами.", s4_chip:"SEO", s4_title:"Поисковая оптимизация", s4_desc:"Технический аудит, семантика, контент и ссылки — устойчивый рост органики. Прогноз окупаемости прилагается.", testimonials_h2:"Отзывы", t1_text:"«За три месяца снизили CPA на 32% и удвоили онлайн-заказы. Прозрачные еженедельные отчеты.»", t1_by:"Ева К., eCommerce", t2_text:"«Сайт грузится мгновенно, лиды стабильны. Команда говорит на языке бизнеса.»", t2_by:"Марк С., Услуги", t3_text:"«YouTube и ремаркетинг усилили узнаваемость. Есть связь контента с продажами.»", t3_by:"Елена Р., EdTech", footer_rights:"Все права защищены.", chat_welcome:"👋 Привет! Опишите цель (Web / Google Ads / SMM / SEO) — дам короткий план действий." } }; const langSelect = document.getElementById('lang'); function applyLang(L='de'){ const dict = translations[L] || translations.de; document.querySelectorAll('[data-i18n]').forEach(el=>{ const key = el.getAttribute('data-i18n'); if(!key) return; if(el.tagName.toLowerCase()==='meta'){ el.setAttribute('content', dict[key] ?? el.getAttribute('content')); }else{ if(dict[key]!=null) el.textContent = dict[key]; } }); document.documentElement.lang = L; localStorage.setItem('lang', L); // оновити <title> const titleKey = 'meta_title'; if(dict[titleKey]) document.title = dict[titleKey]; } const saved = localStorage.getItem('lang') || 'de'; if(langSelect) langSelect.value = saved; applyLang(saved); langSelect?.addEventListener('change', (e)=>applyLang(e.target.value)); // ===== CHAT ===== <script> // ====== CHAT CONFIG ====== // 1) Твій бекенд на Vercel: const API_ENDPOINT = "https://vermarkter-github-io-git-main-aaas-projects-d83c1bad.vercel.app/api/chat"; // 2) Отримуємо вибрану мову сайту з селекта <select id="lang"> function currentLang(){ // значення з селекта: 'de' | 'en' | 'uk' | 'ru' const v = document.getElementById('lang')?.value || 'de'; return v.toLowerCase(); } // ====== CHAT DOM ====== const chatOpen = document.getElementById('chatOpen'); const chatClose = document.getElementById('chatClose'); const chatPanel = document.getElementById('chatPanel'); const chatBackdrop = document.getElementById('chatBackdrop'); const chatBody = document.getElementById('chatBody'); const chatInput = document.getElementById('chatInput'); const chatSend = document.getElementById('chatSend'); // 3) Історія без system-повідомлення (щоб мову задавав бекенд) let history = []; function appendMsg(role, text){ const wrap = document.createElement('div'); wrap.className = 'msg ' + (role === 'user' ? 'user' : 'bot'); const b = document.createElement('div'); b.className = 'bubble'; b.textContent = text; wrap.appendChild(b); chatBody.appendChild(wrap); chatBody.scrollTop = chatBody.scrollHeight; } async function getReply(messages){ try{ const res = await fetch(API_ENDPOINT, { method:'POST', headers:{'Content-Type':'application/json'}, // 4) Передаємо мову в бекенд body: JSON.stringify({ messages, lang: currentLang() }) }); const data = await res.json(); return data.reply || "Помилка відповіді від сервера."; }catch(e){ return "Немає з’єднання з сервером."; } } async function send(){ const text = chatInput.value.trim(); if(!text) return; appendMsg('user', text); history.push({role:'user', content:text}); chatInput.value = ''; // "typing" булька const typing = document.createElement('div'); typing.className = 'msg bot'; typing.id = 'typing'; const tb = document.createElement('div'); tb.className='bubble'; tb.textContent='…'; typing.appendChild(tb); chatBody.appendChild(typing); chatBody.scrollTop = chatBody.scrollHeight; const reply = await getReply(history); typing.remove(); appendMsg('assistant', reply); history.push({role:'assistant', content:reply}); } function openChat(){ chatPanel.classList.add('open'); chatBackdrop.classList.add('open'); chatOpen?.setAttribute('aria-expanded','true'); setTimeout(()=>chatInput?.focus(), 30); } function closeChat(){ chatPanel.classList.remove('open'); chatBackdrop.classList.remove('open'); chatOpen?.setAttribute('aria-expanded','false'); } chatOpen?.addEventListener('click', openChat); chatClose?.addEventListener('click', closeChat); chatBackdrop?.addEventListener('click', closeChat); chatSend?.addEventListener('click', send); chatInput?.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); send(); } }); window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && chatPanel.classList.contains('open')) closeChat(); }); </script> </> </body> </html>
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title>
+  <meta name="deion" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/>
+  <meta name="theme-color" content="#0F172A"/>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0F172A; --bg2:#0b132f; --text:#E5E7EB; --muted:#9CA3AF;
+      --brand:#3B82F6; --brand2:#10B981; --shadow:0 20px 50px -20px rgba(0,0,0,.45);
+      --card:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
+      --border:1px solid rgba(255,255,255,.08);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);font-family:Inter,system-ui,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    header{position:sticky;top:0;z-index:10;background:rgba(15,23,42,.7);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:70px;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:42px;height:42px}
+    .title{font-weight:800;letter-spacing:.2px}
+    .subtitle{display:block;font-weight:600;color:var(--muted);font-size:12px;margin-top:-2px}
+    .navlinks{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+    .navlinks a{padding:8px 12px;border-radius:10px;color:var(--muted)}
+    .navlinks a:hover{color:#fff;background:rgba(255,255,255,.06)}
+
+    .lang select{
+      background:#1E293B;color:#F8FAFC;border:1px solid #475569;padding:8px 10px;border-radius:10px;outline:none
+    }
+
+    .cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--brand),#6D28D9);color:white;padding:10px 14px;border-radius:12px;font-weight:700;box-shadow:var(--shadow);border:0}
+
+    /* Hero */
+    .hero{padding:74px 0 38px}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+    .badge{display:inline-flex;gap:8px;align-items:center;background:rgba(16,185,129,.15);color:#D1FAE5;border:1px solid rgba(16,185,129,.3);padding:6px 10px;border-radius:999px;font-size:13px}
+    h1{font-size:44px;line-height:1.08;margin:14px 0 10px}
+    .lead{color:#cbd5e1;max-width:640px}
+    .hero-card{background:var(--card);border:var(--border);border-radius:var(--radius);padding:20px}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+    .stat{background:rgba(255,255,255,.05);border:var(--border);border-radius:12px;padding:14px;text-align:center}
+    .stat b{font-size:20px}
+
+    section{padding:54px 0}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .card{background:var(--card);border:var(--border);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 8px}
+    .card p{color:#cbd5e1}
+    .chip{display:inline-block;font-size:12px;color:#e5e7eb;background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);padding:4px 8px;border-radius:999px;margin-right:8px;margin-bottom:8px}
+
+    .testimonials{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .quote{background:rgba(255,255,255,.05);border:var(--border);border-radius:16px;padding:18px;position:relative}
+    .quote:before{content:"“";position:absolute;left:12px;top:-10px;font-size:48px;color:rgba(255,255,255,.15)}
+    .quote b{display:block;margin-top:10px}
+
+    .footer{padding:28px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,.08)}
+
+    /* CHAT */
+    .chat-launcher{position:fixed;right:20px;bottom:20px;z-index:60;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:none;box-shadow:var(--shadow);cursor:pointer}
+    .chat-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 59;
+      background: rgba(0, 0, 0, 0.25);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+    .chat-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .chat-panel {
+      position: fixed;
+      right: 20px;
+      bottom: 88px;
+      z-index: 60;
+      width: 380px;
+      max-width: 94vw;
+      background: #0b1324;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      transform: translateY(12px) scale(0.98);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-panel.open {
+      transform: none;
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .chat-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(255,255,255,.04)}
+    .chat-header .title{font-weight:700;font-size:14px}
+    .chat-body{height:420px;max-height:70vh;overflow:auto;padding:14px;scroll-behavior:smooth}
+    .msg{display:flex;gap:8px;margin:8px 0}
+    .msg.user{justify-content:flex-end}
+    .bubble{max-width:80%;padding:10px 12px;border-radius:12px;line-height:1.4;font-size:14px}
+    .user .bubble{background:#1E293B;color:#F8FAFC;border:1px solid #334155}
+    .bot .bubble{background:#0f172a;border:1px solid #334155}
+    .chat-input{display:flex;gap:8px;padding:10px;background:rgba(255,255,255,.04);border-top:1px solid rgba(255,255,255,.08)}
+    .chat-input input{flex:1;background:#0b1229;color:#fff;border:1px solid #334155;border-radius:10px;padding:10px}
+    .chat-input button{background:linear-gradient(135deg,var(--brand),#6D28D9);border:none;color:#fff;padding:10px 12px;border-radius:10px;font-weight:700}
+    @media(max-width:480px){.chat-panel{right:10px;left:10px;width:auto;bottom:76px}.chat-body{height:60vh}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <!-- Лого -->
+        <svg class="logo" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-label="Marketing in Deutschland logo">
+          <defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#10B981"/></linearGradient></defs>
+          <rect x="8" y="8" width="144" height="144" rx="28" fill="url(#lg)"/>
+          <circle cx="80" cy="80" r="56" fill="none" stroke="rgba(255,255,255,.7)" stroke-width="3"/>
+          <g stroke="#ffffff" stroke-width="6" stroke-linecap="round">
+            <line x1="48" y1="104" x2="48" y2="84"/><line x1="68" y1="104" x2="68" y2="74"/><line x1="88" y1="104" x2="88" y2="62"/><line x1="108" y1="104" x2="108" y2="52"/>
+          </g>
+          <text x="80" y="44" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="800" font-size="22">MiD</text>
+          <text x="80" y="128" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="700" font-size="12">Web • Ads • SMM • SEO</text>
+        </svg>
+        <div class="title">
+          <span data-i18n="brand">Marketing in Deutschland</span>
+          <small class="subtitle" data-i18n="tagline">Digitalagentur</small>
+        </div>
+      </div>
+      <nav class="navlinks">
+        <a href="#services" data-i18n="nav_services">Leistungen</a>
+        <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
+        <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener" data-i18n="telegram">Telegram @Marketing_in_Deutschland</a>
+        <div class="lang">
+          <label for="lang" class="sr-only">Sprache</label>
+          <select id="lang" aria-label="Language">
+            <option value="de">DE</option>
+            <option value="en">EN</option>
+            <option value="uk" selected>UA</option>
+            <option value="ru">RU</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="hero-grid">
+        <div>
+          <span class="badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2l3 7h7l-5.5 4.2L18.5 21 12 16.8 5.5 21 7.5 13.2 2 9h7l3-7z" fill="#34D399"/></svg>
+            <span data-i18n="xp">8 Jahre Erfahrung</span>
+          </span>
+          <h1 data-i18n="hero_h1">Nachfrage aufbauen. Markt gewinnen. In Deutschland wachsen.</h1>
+          <p class="lead" data-i18n="hero_p">Full-Service: Websites, Google Ads, SMM und SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.</p>
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener" data-i18n="cta_primary">In Telegram schreiben</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="chip" data-i18n="chip_sem">Google Ads</div>
+              <b data-i18n="stat1">ROI-Ansatz</b>
+              <div class="muted" style="color:#9CA3AF" data-i18n="stat1d">Strategien mit Fokus auf Profit, nicht Klicks.</div>
+            </div>
+            <div class="stat">
+              <div class="chip" data-i18n="chip_web">Web</div>
+              <b data-i18n="stat2">Schnelle Websites</b>
+              <div class="muted" style="color:#9CA3AF" data-i18n="stat2d">Core Web Vitals & Conversion-Design.</div>
+            </div>
+            <div class="stat">
+              <div class="chip" data-i18n="chip_seo">SEO</div>
+              <b data-i18n="stat3">Stetiger Traffic</b>
+              <div class="muted" style="color:#9CA3AF" data-i18n="stat3d">Organisches Wachstum ohne „Anzeige“.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <h2 style="margin-bottom:14px" data-i18n="services_h2">Leistungen</h2>
+      <div class="cards">
+        <div class="card">
+          <span class="chip" data-i18n="s1_chip">Web</span>
+          <h3 data-i18n="s1_title">Webseiten-Erstellung</h3>
+          <p data-i18n="s1_desc">Wir konzipieren schnelle, responsive Webseiten: Landingpages, Shops, mehrsprachige Projekte. Conversion-Design, sauberer Code, Analytics- & CRM-Integrationen.</p>
+        </div>
+
+        <div class="card">
+          <span class="chip" data-i18n="s2_chip">Google Ads</span>
+          <h3 data-i18n="s2_title">Search & Shopping</h3>
+          <p data-i18n="s2_desc">Seien Sie dort, wo Nachfrage besteht: Search & Shopping, Performance Max, (dynam.) Remarketing, YouTube & Display – mit klarer Analytics und CPA/ROAS-Kontrolle.</p>
+        </div>
+
+        <div class="card">
+          <span class="chip" data-i18n="s3_chip">SMM</span>
+          <h3 data-i18n="s3_title">Social Media</h3>
+          <p data-i18n="s3_desc">Content-Strategie, Design, Reels/Shorts, Paid Social. Messenger-Funnels & UGC, damit Views zu Leads werden.</p>
+        </div>
+
+        <div class="card">
+          <span class="chip" data-i18n="s4_chip">SEO</span>
+          <h3 data-i18n="s4_title">Suchmaschinenoptimierung</h3>
+          <p data-i18n="s4_desc">Technischer Audit, Semantik, Content & Links – für nachhaltiges organisches Wachstum ohne „Anzeige“. Mit Profitabilitätsprognose.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <h2 style="margin-bottom:14px" data-i18n="testimonials_h2">Bewertungen</h2>
+      <div class="testimonials">
+        <div class="quote">
+          <p data-i18n="t1_text">„CPA um 32 % gesenkt, Bestellungen verdoppelt. Transparente Weekly-Reports – Zusammenarbeit auf Augenhöhe.“</p>
+          <b data-i18n="t1_by">Eva K., eCommerce</b>
+        </div>
+        <div class="quote">
+          <p data-i18n="t2_text">„Seite lädt blitzschnell, Leads kommen konstant. Das Team spricht Business, nicht nur Technik.“</p>
+          <b data-i18n="t2_by">Markus S., Dienstleistungen</b>
+        </div>
+        <div class="quote">
+          <p data-i18n="t3_text">„YouTube & Remarketing boosteten die Marke. Endlich klare Linie von Content zu Sales.“</p>
+          <b data-i18n="t3_by">Olena R., EdTech</b>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Marketing in Deutschland • <span data-i18n="footer_rights">Alle Rechte vorbehalten.</span></div>
+      <a href="mailto:marketing.in.Deutschland@gmail.com">marketing.in.Deutschland@gmail.com</a>
+    </div>
+  </footer>
+
+  <!-- CHAT -->
+  <button class="chat-launcher" id="chatOpen" aria-label="Відкрити чат" aria-expanded="false">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+      <path d="M21 12c0 4.418-4.03 8-9 8-1.08 0-2.12-.16-3.08-.46L3 20l1.53-3.33C4.2 15.7 4 14.86 4 14c0-4.418 4.03-8 9-8s8 3.582 8 8z" stroke="#fff" stroke-width="1.6" fill="none"/>
+      <circle cx="9" cy="12" r="1" fill="#fff"/><circle cx="12" cy="12" r="1" fill="#fff"/><circle cx="15" cy="12" r="1" fill="#fff"/>
+    </svg>
+  </button>
+  <div class="chat-backdrop" id="chatBackdrop" aria-hidden="true"></div>
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-modal="true" aria-label="Чат">
+    <div class="chat-header">
+      <div class="title">Чат — MiD</div>
+      <button id="chatClose" aria-label="Закрити" style="background:none;border:none;color:#9CA3AF;font-weight:700;font-size:16px;cursor:pointer">×</button>
+    </div>
+    <div class="chat-body" id="chatBody" aria-live="polite">
+      <div class="msg bot"><div class="bubble" data-i18n="chat_welcome"></div></div>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" type="text" data-i18n-placeholder="chat_placeholder" />
+      <button id="chatSend">➤</button>
+    </div>
+  </div>
+
+  <!-- Скрипт для перекладу -->
+  <script>
+    // Рік у футері
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Словник перекладів
+    const translations = {
+      de: {
+        meta_title:"Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)",
+        meta_desc:"8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
+        brand:"Marketing in Deutschland",
+        tagline:"Digitalagentur",
+        nav_services:"Leistungen",
+        nav_testimonials:"Bewertungen",
+        telegram:"Telegram @Marketing_in_Deutschland",
+        xp:"8 Jahre Erfahrung",
+        hero_h1:"Nachfrage aufbauen. Markt gewinnen. In Deutschland wachsen.",
+        hero_p:"Full-Service: Websites, Google Ads, SMM und SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
+        cta_primary:"In Telegram schreiben",
+        chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO",
+        stat1:"ROI-Ansatz", stat1d:"Strategien mit Fokus auf Profit, nicht Klicks.",
+        stat2:"Schnelle Websites", stat2d:"Core Web Vitals & Conversion-Design.",
+        stat3:"Stetiger Traffic", stat3d:"Organisches Wachstum ohne „Anzeige“.",
+        services_h2:"Leistungen",
+        s1_chip:"Web", s1_title:"Webseiten-Erstellung",
+        s1_desc:"Wir konzipieren schnelle, responsive Webseiten: Landingpages, Shops, mehrsprachige Projekte. Conversion-Design, sauberer Code, Analytics- & CRM-Integrationen.",
+        s2_chip:"Google Ads", s2_title:"Search & Shopping",
+        s2_desc:"Seien Sie dort, wo Nachfrage besteht: Search & Shopping, Performance Max, (dynam.) Remarketing, YouTube & Display – mit klarer Analytics und CPA/ROAS-Kontrolle.",
+        s3_chip:"SMM", s3_title:"Social Media",
+        s3_desc:"Content-Strategie, Design, Reels/Shorts, Paid Social. Messenger-Funnels & UGC, damit Views zu Leads werden.",
+        s4_chip:"SEO", s4_title:"Suchmaschinenoptimierung",
+        s4_desc:"Technischer Audit, Semantik, Content & Links – für nachhaltiges organisches Wachstum ohne „Anzeige“. Mit Profitabilitätsprognose.",
+        testimonials_h2:"Bewertungen",
+        t1_text:"„CPA um 32 % gesenkt, Bestellungen verdoppelt. Transparente Weekly-Reports – Zusammenarbeit auf Augenhöhe.“",
+        t1_by:"Eva K., eCommerce",
+        t2_text:"„Seite lädt blitzschnell, Leads kommen konstant. Das Team spricht Business, nicht nur Technik.“",
+        t2_by:"Markus S., Dienstleistungen",
+        t3_text:"„YouTube & Remarketing boosteten die Marke. Endlich klare Linie von Content zu Sales.“",
+        t3_by:"Olena R., EdTech",
+        footer_rights:"Alle Rechte vorbehalten.",
+        chat_welcome:"👋 Hallo! Beschreiben Sie kurz Ihr Ziel (Web / Google Ads / SMM / SEO) — ich gebe Ihnen einen kurzen Aktionsplan.",
+        chat_placeholder:"Schreiben..."
+      },
+      en: {
+        meta_title:"Marketing in Deutschland — Digital Marketing Agency (EN/DE/UA/RU)",
+        meta_desc:"8 years of experience: Websites, Google Ads, SMM, SEO. Be visible where customers already search.",
+        brand:"Marketing in Deutschland",
+        tagline:"Digital Marketing Agency",
+        nav_services:"Services",
+        nav_testimonials:"Testimonials",
+        telegram:"Telegram @Marketing_in_Deutschland",
+        xp:"8 years of experience",
+        hero_h1:"Create demand. Win the market. Grow in Germany.",
+        hero_p:"Full-funnel: websites, Google Ads, SMM, and SEO. Visible where customers already search.",
+        cta_primary:"Message on Telegram",
+        chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO",
+        stat1:"ROI mindset", stat1d:"Strategies focused on profit, not clicks.",
+        stat2:"Fast websites", stat2d:"Core Web Vitals & conversion-first design.",
+        stat3:"Predictable traffic", stat3d:"Organic growth without the “ad” label.",
+        services_h2:"Services",
+        s1_chip:"Web", s1_title:"Website Development",
+        s1_desc:"We plan and launch fast, responsive sites: landing pages, stores, multilingual projects. Conversion-first design, clean code, analytics & CRM integrations.",
+        s2_chip:"Google Ads", s2_title:"Search & Shopping",
+        s2_desc:"Show up where demand exists: Search & Shopping, Performance Max, (dynamic) remarketing, YouTube & Display — with clear analytics and CPA/ROAS control.",
+        s3_chip:"SMM", s3_title:"Social Media",
+        s3_desc:"Content strategy, design, Reels/Shorts, paid social. Messenger funnels & UGC to turn views into leads.",
+        s4_chip:"SEO", s4_title:"Search Engine Optimization",
+        s4_desc:"Technical audit, semantics, content & links for durable organic growth. Profitability forecast included.",
+        testimonials_h2:"Testimonials",
+        t1_text:"“Cut CPA by 32% and doubled online orders in three months. Transparent weekly reports.”",
+        t1_by:"Eva K., eCommerce",
+        t2_text:"“Site is blazing fast; leads are steady. The team speaks business, not just tech.”",
+        t2_by:"Markus S., Services",
+        t3_text:"“YouTube and remarketing boosted awareness. Finally a clear line from content to sales.”",
+        t3_by:"Olena R., EdTech",
+        footer_rights:"All rights reserved.",
+        chat_welcome:"👋 Hi! Tell me your goal (Web / Google Ads / SMM / SEO) — I’ll give a short action plan.",
+        chat_placeholder:"Type..."
+      },
+      uk: {
+        meta_title:"Marketing in Deutschland — Маркетингова агенція (EN/DE/UA/RU)",
+        meta_desc:"8 років досвіду: створення сайтів, Google Ads, SMM, SEO. Працюємо там, де клієнти вже шукають вас.",
+        brand:"Маркетинг у Німеччині",
+        tagline:"Цифрова агенція",
+        nav_services:"Послуги",
+        nav_testimonials:"Відгуки",
+        telegram:"Телеграм @Marketing_in_Deutschland",
+        xp:"8 років досвіду",
+        hero_h1:"Будуйте попит. Захоплюйте ринок. Зростайте в Німеччині.",
+        hero_p:"Повний цикл: створення сайтів, Google Ads, SMM та SEO. Видимість там, де клієнти вже шукають.",
+        cta_primary:"Написати в Telegram",
+        chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO",
+        stat1:"ROI-підхід", stat1d:"Стратегії з фокусом на прибуток, а не кліки.",
+        stat2:"Швидкі сайти", stat2d:"Core Web Vitals і конверсійний дизайн.",
+        stat3:"Стабільний трафік", stat3d:"Органіка без позначки «реклама».",
+        services_h2:"Послуги",
+        s1_chip:"Web", s1_title:"Створення сайтів",
+        s1_desc:"Швидкі, адаптивні сайти: лендинги, магазини, мультимовні проєкти. Дизайн під конверсію, чистий код, інтеграції з аналітикою та CRM.",
+        s2_chip:"Google Ads", s2_title:"Пошук і Shopping",
+        s2_desc:"Будьте там, де є попит: Search/Shopping, Performance Max, (динамічний) ремаркетинг, YouTube та медійна мережа — з контролем CPA/ROAS.",
+        s3_chip:"SMM", s3_title:"Соціальні мережі",
+        s3_desc:"Контент-стратегія, дизайн, Reels/Shorts, платна реклама. Месенджери та UGC — щоб перегляди ставали лідами.",
+        s4_chip:"SEO", s4_title:"Пошукова оптимізація",
+        s4_desc:"Технічний аудит, семантика, контент і посилання — стабільний ріст органіки. Прогноз окупності додається.",
+        testimonials_h2:"Відгуки",
+        t1_text:"«За три місяці знизили CPA на 32% і подвоїли онлайн-замовлення. Прозорі щотижневі звіти.»",
+        t1_by:"Єва К., eCommerce",
+        t2_text:"«Сайт завантажується миттєво, ліди стабільні. Команда говорить мовою бізнесу.»",
+        t2_by:"Марк С., Послуги",
+        t3_text:"«YouTube і ремаркетинг посилили впізнаваність. Є чіткий зв’язок між контентом і продажами.»",
+        t3_by:"Олена Р., EdTech",
+        footer_rights:"Усі права захищено.",
+        chat_welcome:"👋 Привіт! Опишіть мету (Web / Google Ads / SMM / SEO) — дам короткий план дій.",
+        chat_placeholder:"Напишіть..."
+      },
+      ru: {
+        meta_title:"Marketing in Deutschland — Маркетинговое агентство (EN/DE/UA/RU)",
+        meta_desc:"8 лет опыта: сайты, Google Ads, SMM, SEO. Там, где клиенты уже ищут.",
+        brand:"Маркетинг в Германии",
+        tagline:"Цифровое агентство",
+        nav_services:"Услуги",
+        nav_testimonials:"Отзывы",
+        telegram:"Телеграм @Marketing_in_Deutschland",
+        xp:"8 лет опыта",
+        hero_h1:"Формируйте спрос. Берите рынок. Растите в Германии.",
+        hero_p:"Полный цикл: сайты, Google Ads, SMM и SEO. Видимость там, где клиенты уже ищут.",
+        cta_primary:"Написать в Telegram",
+        chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO",
+        stat1:"ROI-подход", stat1d:"Фокус на прибыли, не на кликах.",
+        stat2:"Быстрые сайты", stat2d:"Core Web Vitals и дизайн под конверсию.",
+        stat3:"Предсказуемый трафик", stat3d:"Органика без ярлыка «реклама».",
+        services_h2:"Услуги",
+        s1_chip:"Web", s1_title:"Разработка сайтов",
+        s1_desc:"Быстрые, адаптивные сайты: лендинги, магазины, мультиязычные проекты. Дизайн под конверсию, чистый код, интеграции с аналитикой и CRM.",
+        s2_chip:"Google Ads", s2_title:"Поиск и Shopping",
+        s2_desc:"Будьте там, где есть спрос: Search/Shopping, Performance Max, (динамический) ремаркетинг, YouTube и КМС — с контролем CPA/ROAS.",
+        s3_chip:"SMM", s3_title:"Социальные сети",
+        s3_desc:"Контент-стратегия, дизайн, Reels/Shorts, платная реклама. Мессенджеры и UGC — чтобы просмотры становились лидами.",
+        s4_chip:"SEO", s4_title:"Поисковая оптимизация",
+        s4_desc:"Технический аудит, семантика, контент и ссылки — устойчивый рост органики. Прогноз окупаемости прилагается.",
+        testimonials_h2:"Отзывы",
+        t1_text:"«За три месяца снизили CPA на 32% и удвоили онлайн-заказы. Прозрачные еженедельные отчеты.»",
+        t1_by:"Ева К., eCommerce",
+        t2_text:"«Сайт грузится мгновенно, лиды стабильны. Команда говорит на языке бизнеса.»",
+        t2_by:"Марк С., Услуги",
+        t3_text:"«YouTube и ремаркетинг усилили узнаваемость. Есть связь контента с продажами.»",
+        t3_by:"Елена Р., EdTech",
+        footer_rights:"Все права защищены.",
+        chat_welcome:"👋 Привет! Опишите цель (Web / Google Ads / SMM / SEO) — дам короткий план действий.",
+        chat_placeholder:"Напишите..."
+      }
+    };
+
+    const langSelect = document.getElementById('lang');
+
+    function applyLang(L = 'uk') {
+      try {
+        const dict = translations[L] || translations.uk;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (!key) return;
+          if (el.tagName.toLowerCase() === 'meta') {
+            el.setAttribute('content', dict[key] ?? el.getAttribute('content'));
+          } else {
+            if (dict[key] != null) el.textContent = dict[key];
+          }
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+          const key = el.getAttribute('data-i18n-placeholder');
+          if (dict[key] != null) el.placeholder = dict[key];
+        });
+        document.documentElement.lang = L;
+        localStorage.setItem('lang', L);
+        const titleKey = 'meta_title';
+        if (dict[titleKey]) document.title = dict[titleKey];
+        console.log(`Мова застосована: ${L}`);
+      } catch (e) {
+        console.error('Помилка в applyLang:', e);
+      }
+    }
+
+    const saved = localStorage.getItem('lang') || 'uk';
+    if (langSelect) langSelect.value = saved;
+    applyLang(saved);
+    langSelect?.addEventListener('change', (e) => applyLang(e.target.value));
+  </script>
+
+  <!-- Скрипт для чату -->
+  <script>
+    // ====== CHAT CONFIG ======
+    const API_ENDPOINT = "https://vermarkter-github-io-git-main-aaas-projects-d83c1bad.vercel.app/api/chat";
+
+    // Поточна мова
+    function currentLang() {
+      return document.getElementById('lang')?.value.toLowerCase() || 'uk';
+    }
+
+    // DOM елементи чату
+    const chatOpen = document.getElementById('chatOpen');
+    const chatClose = document.getElementById('chatClose');
+    const chatPanel = document.getElementById('chatPanel');
+    const chatBackdrop = document.getElementById('chatBackdrop');
+    const chatBody = document.getElementById('chatBody');
+    const chatInput = document.getElementById('chatInput');
+    const chatSend = document.getElementById('chatSend');
+
+    // Історія чату
+    let history = [];
+
+    function appendMsg(role, text) {
+      try {
+        const wrap = document.createElement('div');
+        wrap.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+        const b = document.createElement('div');
+        b.className = 'bubble';
+        b.textContent = text;
+        wrap.appendChild(b);
+        chatBody.appendChild(wrap);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      } catch (e) {
+        console.error('Помилка в appendMsg:', e);
+      }
+    }
+
+    async function getReply(messages) {
+      try {
+        const res = await fetch(API_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages, lang: currentLang() })
+        });
+        const data = await res.json();
+        return data.reply || "Помилка відповіді від сервера.";
+      } catch (e) {
+        console.error('Помилка в getReply:', e);
+        return "Немає з’єднання з сервером.";
+      }
+    }
+
+    async function send() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+      appendMsg('user', text);
+      history.push({ role: 'user', content: text });
+      chatInput.value = '';
+
+      const typing = document.createElement('div');
+      typing.className = 'msg bot';
+      typing.id = 'typing';
+      const tb = document.createElement('div');
+      tb.className = 'bubble';
+      tb.textContent = '…';
+      typing.appendChild(tb);
+      chatBody.appendChild(typing);
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      const reply = await getReply(history);
+      typing.remove();
+      appendMsg('assistant', reply);
+      history.push({ role: 'assistant', content: reply });
+    }
+
+    function openChat() {
+      try {
+        chatPanel.classList.add('open');
+        chatBackdrop.classList.add('open');
+        chatOpen?.setAttribute('aria-expanded', 'true');
+        setTimeout(() => chatInput?.focus(), 30);
+        console.log('Чат відкрито');
+      } catch (e) {
+        console.error('Помилка в openChat:', e);
+      }
+    }
+
+    function closeChat() {
+      try {
+        chatPanel.classList.remove('open');
+        chatBackdrop.classList.remove('open');
+        chatOpen?.setAttribute('aria-expanded', 'false');
+        console.log('Чат закрито');
+      } catch (e) {
+        console.error('Помилка в closeChat:', e);
+      }
+    }
+
+    // Переконуємося, що чат закритий при завантаженні
+    if (chatPanel) chatPanel.classList.remove('open');
+    if (chatBackdrop) chatBackdrop.classList.remove('open');
+    if (chatOpen) chatOpen.setAttribute('aria-expanded', 'false');
+
+    // Події
+    chatOpen?.addEventListener('click', openChat);
+    chatClose?.addEventListener('click', closeChat);
+    chatBackdrop?.addEventListener('click', closeChat);
+    chatSend?.addEventListener('click', send);
+    chatInput?.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        send();
+      }
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && chatPanel?.classList.contains('open')) closeChat();
+    });
+
+    console.log('Скрипт чату ініціалізовано');
+  </script>
+</body>
+</html>
