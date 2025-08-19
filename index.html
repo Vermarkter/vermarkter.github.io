@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title>
-  <meta name="description" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/>
+  <meta name="deion" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/>
   <meta name="theme-color" content="#0F172A"/>
 
   <!-- Favicon -->
@@ -412,82 +412,97 @@
     langSelect?.addEventListener('change', (e)=>applyLang(e.target.value));
 
     // ===== CHAT =====
-    // Замініть на свій endpoint при потребі:
-    const API_ENDPOINT = "https://vermarkter-github-io-git-main-aaas-projects-d83c1bad.vercel.app/api/chat";
+   
+<script>
+  // ====== CHAT CONFIG ======
+  // 1) Твій бекенд на Vercel:
+  const API_ENDPOINT = "https://vermarkter-github-io-git-main-aaas-projects-d83c1bad.vercel.app/api/chat";
 
-    const chatOpen = document.getElementById('chatOpen');
-    const chatClose = document.getElementById('chatClose');
-    const chatPanel = document.getElementById('chatPanel');
-    const chatBackdrop = document.getElementById('chatBackdrop');
-    const chatBody = document.getElementById('chatBody');
-    const chatInput = document.getElementById('chatInput');
-    const chatSend = document.getElementById('chatSend');
+  // 2) Отримуємо вибрану мову сайту з селекта <select id="lang">
+  function currentLang(){
+    // значення з селекта: 'de' | 'en' | 'uk' | 'ru'
+    const v = document.getElementById('lang')?.value || 'de';
+    return v.toLowerCase();
+  }
 
-    let history = [{
-      role:'system',
-      content:'Ти — маркетолог із 8-річним досвідом. Відповідай практично, дієво та лаконічно (до 3 речень). Для Google Ads — надай структуру, гіпотези й метрики; для SMM — сформуй контент-план і воронки; для SEO — визнач пріоритети. Завжди завершуй відповідь коротким CTA: «Напишіть у Telegram @Marketing_in_Deutschland — надішлю план/кошторис». За запитом вкажи мінімальні ціни: створення сайту від 50€, запуск SMM від 50€, запуск Google Ads від 50€. Починай з короткого чекліста-плану дій для кожного запиту, щоб структуровано надавати відповідь.'
-    }];
+  // ====== CHAT DOM ======
+  const chatOpen = document.getElementById('chatOpen');
+  const chatClose = document.getElementById('chatClose');
+  const chatPanel = document.getElementById('chatPanel');
+  const chatBackdrop = document.getElementById('chatBackdrop');
+  const chatBody = document.getElementById('chatBody');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
 
-    function appendMsg(role, text){
-      const wrap = document.createElement('div');
-      wrap.className = 'msg ' + (role === 'user' ? 'user':'bot');
-      const b = document.createElement('div');
-      b.className = 'bubble';
-      b.textContent = text;
-      wrap.appendChild(b);
-      chatBody.appendChild(wrap);
-      chatBody.scrollTop = chatBody.scrollHeight;
+  // 3) Історія без system-повідомлення (щоб мову задавав бекенд)
+  let history = [];
+
+  function appendMsg(role, text){
+    const wrap = document.createElement('div');
+    wrap.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+    const b = document.createElement('div');
+    b.className = 'bubble';
+    b.textContent = text;
+    wrap.appendChild(b);
+    chatBody.appendChild(wrap);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  async function getReply(messages){
+    try{
+      const res = await fetch(API_ENDPOINT, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        // 4) Передаємо мову в бекенд
+        body: JSON.stringify({ messages, lang: currentLang() })
+      });
+      const data = await res.json();
+      return data.reply || "Помилка відповіді від сервера.";
+    }catch(e){
+      return "Немає з’єднання з сервером.";
     }
+  }
 
-    async function getReply(messages){
-      try{
-        const res = await fetch(API_ENDPOINT, {
-          method:'POST',
-          headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ messages })
-        });
-        const data = await res.json();
-        if(data.reply) return data.reply;
-        return "Помилка відповіді від сервера.";
-      }catch(e){
-        return "Помилка з’єднання. Перевірте API_ENDPOINT.";
-      }
-    }
+  async function send(){
+    const text = chatInput.value.trim();
+    if(!text) return;
+    appendMsg('user', text);
+    history.push({role:'user', content:text});
+    chatInput.value = '';
 
-    async function send(){
-      const text = chatInput.value.trim();
-      if(!text) return;
-      appendMsg('user', text);
-      history.push({role:'user', content:text});
-      chatInput.value = '';
-      const typing = document.createElement('div');
-      typing.className = 'msg bot'; typing.id = 'typing';
-      const tb = document.createElement('div'); tb.className='bubble'; tb.textContent='…';
-      typing.appendChild(tb); chatBody.appendChild(typing); chatBody.scrollTop = chatBody.scrollHeight;
+    // "typing" булька
+    const typing = document.createElement('div');
+    typing.className = 'msg bot'; typing.id = 'typing';
+    const tb = document.createElement('div'); tb.className='bubble'; tb.textContent='…';
+    typing.appendChild(tb); chatBody.appendChild(typing);
+    chatBody.scrollTop = chatBody.scrollHeight;
 
-      const reply = await getReply(history);
-      typing.remove();
-      appendMsg('assistant', reply);
-      history.push({role:'assistant', content:reply});
-    }
+    const reply = await getReply(history);
+    typing.remove();
+    appendMsg('assistant', reply);
+    history.push({role:'assistant', content:reply});
+  }
 
-    function openChat(){
-      chatPanel.classList.add('open');
-      chatBackdrop.classList.add('open');
-      chatOpen.setAttribute('aria-expanded','true');
-      setTimeout(()=>chatInput?.focus(), 30);
-    }
-    function closeChat(){
-      chatPanel.classList.remove('open');
-      chatBackdrop.classList.remove('open');
-      chatOpen.setAttribute('aria-expanded','false');
-    }
-    chatOpen.addEventListener('click', openChat);
-    chatClose.addEventListener('click', closeChat);
-    chatBackdrop.addEventListener('click', closeChat);
-    chatSend.addEventListener('click', send);
-    chatInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); send(); } });
-    window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && chatPanel.classList.contains('open')) closeChat(); });
-  </script>
+  function openChat(){
+    chatPanel.classList.add('open');
+    chatBackdrop.classList.add('open');
+    chatOpen?.setAttribute('aria-expanded','true');
+    setTimeout(()=>chatInput?.focus(), 30);
+  }
+  function closeChat(){
+    chatPanel.classList.remove('open');
+    chatBackdrop.classList.remove('open');
+    chatOpen?.setAttribute('aria-expanded','false');
+  }
+
+  chatOpen?.addEventListener('click', openChat);
+  chatClose?.addEventListener('click', closeChat);
+  chatBackdrop?.addEventListener('click', closeChat);
+  chatSend?.addEventListener('click', send);
+  chatInput?.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); send(); } });
+  window.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && chatPanel.classList.contains('open')) closeChat(); });
+</script>
+
+  </>
 </body>
 </html>
