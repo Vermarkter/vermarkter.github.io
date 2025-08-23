@@ -251,8 +251,12 @@
       transition:all 0.3s ease;backdrop-filter:blur(10px);
     }
     .quote:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);}
-    .quote:before{
-      content:""";position:absolute;left:20px;top:-5px;
+   .quote:before{
+  content:'“';
+  position:absolute;left:20px;top:-5px;
+  ...
+}
+
       font-size:60px;color:rgba(59,130,246,.3);font-weight:900;
     }
     .quote p{margin:0 0 20px;font-size:16px;line-height:1.6;font-style:italic}
@@ -733,10 +737,11 @@
         chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO",
         stat1:"ROI-Ansatz", stat1d:"Strategien mit Fokus auf Profit, nicht Klicks.",
         stat2:"Schnelle Websites", stat2d:"Core Web Vitals & Conversion-Design.",
-        stat3:"Stetiger Traffic", stat3d:"Organisches Wachstum ohne „Anzeige".",
-        stats_1:"150+", stats_1_label:"Abgeschlossene Projekte",
-        stats_2:"8", stats_2_label:"Jahre Erfahrung",
-        stats_3:"95%", stats_3_label:"Zufriedene Kunden",
+        stat3:"Stetiger Traffic", stat3d:"Organisches Wachstum ohne „Anzeige“.",
+t1_text:"„CPA um 32 % gesenkt, Bestellungen verdoppelt. Transparente Weekly-Reports.“",
+t2_text:"„Seite lädt blitzschnell, Leads kommen konstant. Das Team spricht Business.“",
+t3_text:"„YouTube & Remarketing boosteten die Marke. Klare Linie von Content zu Sales.“",
+
         stats_4:"24/7", stats_4_label:"Support",
         services_h2:"Leistungen",
         s1_chip:"Web", s1_title:"Webseiten-Erstellung",
@@ -791,10 +796,11 @@
         chip_sem:"Google Ads", chip_web:"Web", chip_seo:"SEO",
         stat1:"ROI mindset", stat1d:"Strategies focused on profit, not clicks.",
         stat2:"Fast websites", stat2d:"Core Web Vitals & conversion-first design.",
-        stat3:"Predictable traffic", stat3d:"Organic growth without the "ad" label.",
-        stats_1:"150+", stats_1_label:"Projects completed",
-        stats_2:"8", stats_2_label:"Years of experience",
-        stats_3:"95%", stats_3_label:"Satisfied clients",
+        stat3d:"Predictable traffic", stat3d:"Organic growth without the \"ad\" label.",
+t1_text:"“Cut CPA by 32% and doubled online orders in three months. Transparent weekly reports.”",
+t2_text:"“Site is blazing fast; leads are steady. The team speaks business, not just tech.”",
+t3_text:"“YouTube and remarketing boosted awareness. Clear line from content to sales.”",
+
         stats_4:"24/7", stats_4_label:"Support",
         services_h2:"Services",
         s1_chip:"Web", s1_title:"Website Development",
@@ -1043,7 +1049,8 @@
   <!-- Enhanced Chat Script -->
   <script>
     // ====== CHAT CONFIG ======
-    const API_ENDPOINT = "https://vermarkter-github-io-git-main-aaas-projects-d83c1bad.vercel.app/api/chat";
+    const API_ENDPOINT = "https://vercel-jk2s.vercel.app/api/chat";
+
 
     // Поточна мова
     function currentLang() {
