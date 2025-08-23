@@ -1,7 +1,8 @@
 // api/chat.js — Vercel Edge Function (ESM)
 export const config = { runtime: 'edge' };
 
-const ALLOW_ORIGIN = 'https://vermarkter.github.io'; // фронтенд-домен
+// Allow requests from any origin to avoid CORS issues on preview domains
+const ALLOW_ORIGIN = '*';
 
 function json(body, status = 200) {
   return new Response(JSON.stringify(body), {

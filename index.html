@@ -461,7 +461,9 @@
   <!-- Скрипт для чату -->
   <script>
     // ====== CHAT CONFIG ======
-    const API_ENDPOINT = "https://vermarkter-github-io-git-main-aaas-projects-d83c1bad.vercel.app/api/chat";
+    // Використовуємо стабільний домен Vercel замість прев'ю,
+    // щоб уникнути помилок CORS після кожного деплою.
+    const API_ENDPOINT = "https://vermarkter-github-io.vercel.app/api/chat";
 
     // Поточна мова
     function currentLang() {
