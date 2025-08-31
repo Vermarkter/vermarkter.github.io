@@ -6,6 +6,29 @@
   <title>Vermarkter — Маркетингові послуги</title>
   <meta name="description" content="Професійні маркетингові послуги: сайти, Google Ads, соцмережі, SEO. Прозоро. Ефективно." />
   <style>
+    :root {
+      --bg: #121212;
+      --text: #e0e0e0;
+      --text-secondary: #b0b0b0;
+      --card-bg: #1f1f1f;
+      --border: #333;
+      --accent: #bb86fc;
+      --header: #ffffff;
+      --shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .light-theme {
+      --bg: #f8f9fa;
+      --text: #212529;
+      --text-secondary: #6c757d;
+      --card-bg: #ffffff;
+      --border: #dee2e6;
+      --accent: #6200ee;
+      --header: #121212;
+      --shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -13,21 +36,21 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: #e0e0e0;
-      background: #121212;
-      transition: background 0.3s ease;
+      font-family: var(--font);
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+      transition: background 0.3s ease, color 0.3s ease;
+      padding-top: 70px;
     }
 
     a {
+      color: var(--accent);
       text-decoration: none;
-      color: #bb86fc;
     }
 
-    img {
-      max-width: 100%;
-      height: auto;
+    a:hover {
+      text-decoration: underline;
     }
 
     .container {
@@ -37,24 +60,25 @@
     }
 
     section {
-      padding: 5rem 0;
+      padding: 6rem 0;
     }
 
     h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      margin-bottom: 3rem;
       text-align: center;
-      color: #ffffff;
+      color: var(--header);
+      font-weight: 600;
     }
 
     h3 {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       margin-bottom: 1rem;
-      color: #bb86fc;
+      color: var(--accent);
     }
 
     p {
-      color: #b0b0b0;
+      color: var(--text-secondary);
       margin-bottom: 1rem;
     }
 
@@ -63,10 +87,12 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: #1f1f1f;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      background: rgba(18, 18, 18, 0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       z-index: 1000;
       padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
@@ -77,23 +103,43 @@
 
     .logo {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       color: #ffffff;
     }
 
     .nav-desktop {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .nav-desktop a {
-      color: #e0e0e0;
-      font-size: 1rem;
-      transition: color 0.3s;
+      color: var(--text);
+      font-size: 1.1rem;
+      position: relative;
     }
 
-    .nav-desktop a:hover {
-      color: #bb86fc;
+    .nav-desktop a:after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-desktop a:hover:after {
+      width: 100%;
+    }
+
+    .theme-switch {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: var(--text);
     }
 
     .lang-switch {
@@ -119,7 +165,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #121212;
+      background: var(--bg);
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -145,7 +191,7 @@
 
     .mobile-menu nav a {
       font-size: 1.6rem;
-      color: #bb86fc;
+      color: var(--accent);
     }
 
     .close-btn {
@@ -156,10 +202,10 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: #e0e0e0;
+      color: var(--text);
     }
 
-    /* Послуги — 4 в ряд */
+    /* Послуги */
     .services {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -168,15 +214,15 @@
 
     .service {
       padding: 2rem;
-      background: #1f1f1f;
-      border: 1px solid #333;
-      border-radius: 10px;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .service:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
     }
 
     /* Як ми працюємо */
@@ -194,57 +240,67 @@
     .step-icon {
       font-size: 2rem;
       margin-bottom: 1rem;
-      color: #bb86fc;
+      color: var(--accent);
     }
 
     /* Відгуки */
     .reviews {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
     }
 
     .review {
-      background: #1f1f1f;
-      padding: 2rem;
-      border-radius: 10px;
-      border: 1px solid #333;
+      background: var(--card-bg);
+      padding: 2.2rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      position: relative;
+      font-style: italic;
+      line-height: 1.8;
     }
 
     .review-author {
       font-weight: 600;
-      margin-top: 1rem;
-      color: #ffffff;
+      margin-top: 1.2rem;
+      color: var(--header);
+      font-style: normal;
     }
 
     /* FAQ */
     .faq {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
     .faq-item {
-      margin-bottom: 1.5rem;
-      background: #1f1f1f;
-      padding: 1.2rem;
-      border-radius: 8px;
-      border: 1px solid #333;
+      margin-bottom: 1.8rem;
+      background: var(--card-bg);
+      padding: 1.5rem 1.8rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: box-shadow 0.3s;
+    }
+
+    .faq-item:hover {
+      box-shadow: var(--shadow);
     }
 
     .faq-q {
       font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: #ffffff;
+      margin-bottom: 0.8rem;
+      color: var(--header);
     }
 
     /* Футер */
     footer {
       text-align: center;
-      padding: 2rem 0;
-      color: #b0b0b0;
-      font-size: 0.9rem;
+      padding: 3rem 0 2rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      border-top: 1px solid var(--border);
     }
 
     /* Адаптивність */
@@ -263,16 +319,16 @@
       }
 
       h2 {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
       }
 
       section {
-        padding: 4rem 0;
+        padding: 5rem 0;
       }
     }
   </style>
 </head>
-<body>
+<body class="dark-theme">
 
   <header>
     <div class="container header-inner">
@@ -284,6 +340,10 @@
         <a href="#reviews" data-i18n="menu.reviews">Відгуки</a>
         <a href="#faq" data-i18n="menu.faq">FAQ</a>
       </nav>
+
+      <div class="theme-switch" id="theme-toggle">
+        🌙 <span>Темна</span>
+      </div>
 
       <div class="lang-switch">
         <a href="#" data-lang="uk" title="Українська">🇺🇦</a>
@@ -394,6 +454,22 @@
           <div class="faq-q" data-i18n="faq.guarantee_q">Чи є гарантії результату?</div>
           <p data-i18n="faq.guarantee_a">Ми гарантуємо професійне виконання робіт згідно з технічним завданням. Для рекламних кампаній надаємо прогнози та регулярну звітність.</p>
         </div>
+        <div class="faq-item">
+          <div class="faq-q" data-i18n="faq.communication_q">Як відбувається комунікація?</div>
+          <p data-i18n="faq.communication_a">Щотижневі звіти, онлайн-зустрічі, прозорість у всіх процесах. Ви завжди у курсі прогресу.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" data-i18n="faq.multilingual_q">Чи робите ви сайти для міжнародних клієнтів?</div>
+          <p data-i18n="faq.multilingual_a">Так, створюємо мультимовні сайти з SEO під кожен регіон та локалізований контент.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" data-i18n="faq.support_q">Чи є підтримка після запуску?</div>
+          <p data-i18n="faq.support_a">Так, ми пропонуємо технічну та стратегічну підтримку після запуску кампаній або сайту.</p>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q" data-i18n="faq.contract_q">Чи потрібен договір?</div>
+          <p data-i18n="faq.contract_a">Так, для всіх проектів укладається договір, що гарантує прозорість та захист обох сторін.</p>
+        </div>
       </div>
     </section>
   </main>
@@ -405,7 +481,7 @@
   </footer>
 
   <script>
-    // Переклади (відповідно до вашого сайту)
+    // Переклади
     const translations = {
       uk: {
         menu: { services: "Послуги", how: "Як ми працюємо", reviews: "Відгуки", faq: "FAQ" },
@@ -424,7 +500,25 @@
           optimize_desc: "Постійно аналізуємо результати та покращуємо ефективність."
         },
         reviews: { title: "Відгуки", review1: "«За три місяці знизили CPA на 32% і подвоїли онлайн-замовлення. Прозорі щотижневі звіти.»", review2: "«Сайт завантажується миттєво, ліди стабільні. Команда говорить мовою бізнесу.»", review3: "«YouTube і ремаркетинг посилили впізнаваність. Є чіткий зв'язок між контентом і продажами.»", author1: "Єва К., eCommerce", author2: "Марк С., Послуги", author3: "Олена Р., EdTech" },
-        faq: { title: "Часті запитання", cost_q: "Як визначається вартість послуг?", cost_a: "Вартість залежить від обсягу робіт та специфіки проєкту. Пропонуємо безкоштовну консультацію для оцінки ваших потреб.", results_q: "Коли можна очікувати результатів?", results_a: "Google Ads: результати через 2–4 тижні. SEO: 3–6 місяців. Створення сайту: 2–6 тижнів залежно від складності.", clients_q: "З якими компаніями ви працюєте?", clients_a: "Так, ми працюємо з компаніями різного розміру — від стартапів до великих корпорацій. Підбираємо рішення під ваш бюджет.", guarantee_q: "Чи є гарантії результату?", guarantee_a: "Ми гарантуємо професійне виконання робіт згідно з технічним завданням. Для рекламних кампаній надаємо прогнози та регулярну звітність." }
+        faq: { 
+          title: "Часті запитання",
+          cost_q: "Як визначається вартість послуг?",
+          cost_a: "Вартість залежить від обсягу робіт та специфіки проєкту. Пропонуємо безкоштовну консультацію для оцінки ваших потреб.",
+          results_q: "Коли можна очікувати результатів?",
+          results_a: "Google Ads: результати через 2–4 тижні. SEO: 3–6 місяців. Створення сайту: 2–6 тижнів залежно від складності.",
+          clients_q: "З якими компаніями ви працюєте?",
+          clients_a: "Так, ми працюємо з компаніями різного розміру — від стартапів до великих корпорацій. Підбираємо рішення під ваш бюджет.",
+          guarantee_q: "Чи є гарантії результату?",
+          guarantee_a: "Ми гарантуємо професійне виконання робіт згідно з технічним завданням. Для рекламних кампаній надаємо прогнози та регулярну звітність.",
+          communication_q: "Як відбувається комунікація?",
+          communication_a: "Щотижневі звіти, онлайн-зустрічі, прозорість у всіх процесах. Ви завжди у курсі прогресу.",
+          multilingual_q: "Чи робите ви сайти для міжнародних клієнтів?",
+          multilingual_a: "Так, створюємо мультимовні сайти з SEO під кожен регіон та локалізований контент.",
+          support_q: "Чи є підтримка після запуску?",
+          support_a: "Так, ми пропонуємо технічну та стратегічну підтримку після запуску кампаній або сайту.",
+          contract_q: "Чи потрібен договір?",
+          contract_a: "Так, для всіх проектів укладається договір, що гарантує прозорість та захист обох сторін."
+        }
       },
       en: {
         menu: { services: "Services", how: "How we work", reviews: "Reviews", faq: "FAQ" },
@@ -443,7 +537,25 @@
           optimize_desc: "We continuously analyze results and improve performance."
         },
         reviews: { title: "Reviews", review1: "«Reduced CPA by 32% in three months and doubled online orders. Transparent weekly reports.»", review2: "«Site loads instantly, leads are stable. The team speaks the language of business.»", review3: "«YouTube and remarketing boosted brand recognition. There is a clear connection between content and sales.»", author1: "Eva K., eCommerce", author2: "Mark S., Services", author3: "Olena R., EdTech" },
-        faq: { title: "Frequently Asked Questions", cost_q: "How is the cost of services determined?", cost_a: "The cost depends on the scope of work and project specifics. We offer a free consultation to assess your needs.", results_q: "When can I expect results?", results_a: "Google Ads: results in 2–4 weeks. SEO: 3–6 months. Website creation: 2–6 weeks depending on complexity.", clients_q: "Which companies do you work with?", clients_a: "Yes, we work with companies of all sizes — from startups to large corporations. We tailor solutions to your budget.", guarantee_q: "Are there any guarantees of results?", guarantee_a: "We guarantee professional work according to the technical specification. For ad campaigns, we provide forecasts and regular reporting." }
+        faq: { 
+          title: "Frequently Asked Questions",
+          cost_q: "How is the cost of services determined?",
+          cost_a: "The cost depends on the scope of work and project specifics. We offer a free consultation to assess your needs.",
+          results_q: "When can I expect results?",
+          results_a: "Google Ads: results in 2–4 weeks. SEO: 3–6 months. Website creation: 2–6 weeks depending on complexity.",
+          clients_q: "Which companies do you work with?",
+          clients_a: "Yes, we work with companies of all sizes — from startups to large corporations. We tailor solutions to your budget.",
+          guarantee_q: "Are there any guarantees of results?",
+          guarantee_a: "We guarantee professional work according to the technical specification. For ad campaigns, we provide forecasts and regular reporting.",
+          communication_q: "How does communication work?",
+          communication_a: "Weekly reports, online meetings, transparency in all processes. You are always in the loop.",
+          multilingual_q: "Do you create websites for international clients?",
+          multilingual_a: "Yes, we create multilingual websites with SEO for each region and localized content.",
+          support_q: "Is there support after launch?",
+          support_a: "Yes, we offer technical and strategic support after launching campaigns or websites.",
+          contract_q: "Is a contract required?",
+          contract_a: "Yes, we sign a contract for all projects to ensure transparency and protection for both parties."
+        }
       },
       de: {
         menu: { services: "Leistungen", how: "Wie wir arbeiten", reviews: "Bewertungen", faq: "FAQ" },
@@ -462,7 +574,25 @@
           optimize_desc: "Wir analysieren kontinuierlich die Ergebnisse und verbessern die Effizienz."
         },
         reviews: { title: "Bewertungen", review1: "«CPA in drei Monaten um 32 % gesenkt und Online-Bestellungen verdoppelt. Transparente wöchentliche Berichte.»", review2: "«Die Website lädt sofort, die Leads sind stabil. Das Team spricht die Sprache des Geschäfts.»", review3: "«YouTube und Remarketing haben die Markenbekanntheit gesteigert. Es besteht eine klare Verbindung zwischen Inhalten und Verkäufen.»", author1: "Eva K., eCommerce", author2: "Mark S., Dienstleistungen", author3: "Olena R., EdTech" },
-        faq: { title: "Häufige Fragen", cost_q: "Wie wird der Preis für Dienstleistungen bestimmt?", cost_a: "Die Kosten hängen vom Umfang der Arbeiten und den Projektanforderungen ab. Wir bieten eine kostenlose Beratung zur Bedarfsanalyse.", results_q: "Wann kann ich Ergebnisse erwarten?", results_a: "Google Ads: Ergebnisse in 2–4 Wochen. SEO: 3–6 Monate. Website-Erstellung: 2–6 Wochen je nach Komplexität.", clients_q: "Mit welchen Unternehmen arbeiten Sie zusammen?", clients_a: "Ja, wir arbeiten mit Unternehmen aller Größen – von Start-ups bis zu Großunternehmen. Wir finden eine Lösung für Ihr Budget.", guarantee_q: "Gibt es Ergebnisgarantien?", guarantee_a: "Wir garantieren professionelle Arbeit gemäß der technischen Spezifikation. Für Werbekampagnen stellen wir Prognosen und regelmäßige Berichte zur Verfügung." }
+        faq: { 
+          title: "Häufige Fragen",
+          cost_q: "Wie wird der Preis für Dienstleistungen bestimmt?",
+          cost_a: "Die Kosten hängen vom Umfang der Arbeiten und den Projektanforderungen ab. Wir bieten eine kostenlose Beratung zur Bedarfsanalyse.",
+          results_q: "Wann kann ich Ergebnisse erwarten?",
+          results_a: "Google Ads: Ergebnisse in 2–4 Wochen. SEO: 3–6 Monate. Website-Erstellung: 2–6 Wochen je nach Komplexität.",
+          clients_q: "Mit welchen Unternehmen arbeiten Sie zusammen?",
+          clients_a: "Ja, wir arbeiten mit Unternehmen aller Größen – von Start-ups bis zu Großunternehmen. Wir finden eine Lösung für Ihr Budget.",
+          guarantee_q: "Gibt es Ergebnisgarantien?",
+          guarantee_a: "Wir garantieren professionelle Arbeit gemäß der technischen Spezifikation. Für Werbekampagnen stellen wir Prognosen und regelmäßige Berichte zur Verfügung.",
+          communication_q: "Wie erfolgt die Kommunikation?",
+          communication_a: "Wöchentliche Berichte, Online-Meetings, Transparenz in allen Prozessen. Sie sind immer informiert.",
+          multilingual_q: "Erstellen Sie Websites für internationale Kunden?",
+          multilingual_a: "Ja, wir erstellen mehrsprachige Websites mit SEO für jede Region und lokalisierten Inhalten.",
+          support_q: "Gibt es Support nach dem Launch?",
+          support_a: "Ja, wir bieten technischen und strategischen Support nach dem Start von Kampagnen oder Websites.",
+          contract_q: "Ist ein Vertrag erforderlich?",
+          contract_a: "Ja, für alle Projekte wird ein Vertrag abgeschlossen, um Transparenz und Schutz beider Seiten zu gewährleisten."
+        }
       },
       pl: {
         menu: { services: "Usługi", how: "Jak pracujemy", reviews: "Opinie", faq: "FAQ" },
@@ -481,7 +611,25 @@
           optimize_desc: "Stale analizujemy wyniki i poprawiamy efektywność."
         },
         reviews: { title: "Opinie", review1: "«W ciągu trzech miesięcy obniżyliśmy CPA o 32% i podwoiliśmy zamówienia online. Przejrzyste cotygodniowe raporty.»", review2: "«Strona ładuje się natychmiast, leadsy są stabilne. Zespół mówi językiem biznesu.»", review3: "«YouTube i remarketing wzmocniły rozpoznawalność marki. Istnieje wyraźny związek między treścią a sprzedażą.»", author1: "Ewa K., eCommerce", author2: "Marcin S., Usługi", author3: "Olena R., EdTech" },
-        faq: { title: "Często zadawane pytania", cost_q: "Jak ustalana jest cena usług?", cost_a: "Koszt zależy od zakresu prac i specyfiki projektu. Oferujemy bezpłatną konsultację, aby ocenić Twoje potrzeby.", results_q: "Kiedy można spodziewać się efektów?", results_a: "Google Ads: efekty po 2–4 tygodniach. SEO: 3–6 miesięcy. Tworzenie strony: 2–6 tygodni w zależności od złożoności.", clients_q: "Z jakimi firmami współpracujecie?", clients_a: "Tak, współpracujemy z firmami różnej wielkości — od startupów po duże korporacje. Dostosowujemy rozwiązania do Twojego budżetu.", guarantee_q: "Czy dajecie gwarancję wyników?", guarantee_a: "Gwarantujemy profesjonalne wykonanie prac zgodnie z założeniami. Dla kampanii reklamowych dostarczamy prognozy i regularne raporty." }
+        faq: { 
+          title: "Często zadawane pytania",
+          cost_q: "Jak ustalana jest cena usług?",
+          cost_a: "Koszt zależy od zakresu prac i specyfiki projektu. Oferujemy bezpłatną konsultację, aby ocenić Twoje potrzeby.",
+          results_q: "Kiedy można spodziewać się efektów?",
+          results_a: "Google Ads: efekty po 2–4 tygodniach. SEO: 3–6 miesięcy. Tworzenie strony: 2–6 tygodni w zależności od złożoności.",
+          clients_q: "Z jakimi firmami współpracujecie?",
+          clients_a: "Tak, współpracujemy z firmami różnej wielkości — od startupów po duże korporacje. Dostosowujemy rozwiązania do Twojego budżetu.",
+          guarantee_q: "Czy dajecie gwarancję wyników?",
+          guarantee_a: "Gwarantujemy profesjonalne wykonanie prac zgodnie z założeniami. Dla kampanii reklamowych dostarczamy prognozy i regularne raporty.",
+          communication_q: "Jak wygląda komunikacja?",
+          communication_a: "Cotygodniowe raporty, spotkania online, przejrzystość we wszystkich procesach. Zawsze jesteś na bieżąco.",
+          multilingual_q: "Czy tworzycie strony dla klientów międzynarodowych?",
+          multilingual_a: "Tak, tworzymy wielojęzyczne strony z SEO dla każdego regionu i lokalizowaną treścią.",
+          support_q: "Czy jest wsparcie po uruchomieniu?",
+          support_a: "Tak, oferujemy wsparcie techniczne i strategiczne po uruchomieniu kampanii lub strony.",
+          contract_q: "Czy potrzebny jest kontrakt?",
+          contract_a: "Tak, dla wszystkich projektów zawieramy umowę, zapewniającą przejrzystość i ochronę obu stron."
+        }
       },
       ru: {
         menu: { services: "Услуги", how: "Как мы работаем", reviews: "Отзывы", faq: "FAQ" },
@@ -500,12 +648,51 @@
           optimize_desc: "Постоянно анализируем результаты и повышаем эффективность."
         },
         reviews: { title: "Отзывы", review1: "«За три месяца снизили CPA на 32% и удвоили онлайн-заказы. Прозрачные еженедельные отчеты.»", review2: "«Сайт загружается мгновенно, лиды стабильные. Команда говорит на языке бизнеса.»", review3: "«YouTube и ремаркетинг усилили узнаваемость. Есть четкая связь между контентом и продажами.»", author1: "Ева К., eCommerce", author2: "Марк С., Услуги", author3: "Олена Р., EdTech" },
-        faq: { title: "Часто задаваемые вопросы", cost_q: "Как определяется стоимость услуг?", cost_a: "Стоимость зависит от объема работ и специфики проекта. Предлагаем бесплатную консультацию для оценки ваших потребностей.", results_q: "Когда можно ожидать результатов?", results_a: "Google Ads: результаты через 2–4 недели. SEO: 3–6 месяцев. Создание сайта: 2–6 недель в зависимости от сложности.", clients_q: "С какими компаниями вы работаете?", clients_a: "Да, мы работаем с компаниями разного размера — от стартапов до крупных корпораций. Подбираем решения под ваш бюджет.", guarantee_q: "Есть ли гарантии результата?", guarantee_a: "Мы гарантируем профессиональное выполнение работ в соответствии с техническим заданием. Для рекламных кампаний предоставляем прогнозы и регулярную отчетность." }
+        faq: { 
+          title: "Часто задаваемые вопросы",
+          cost_q: "Как определяется стоимость услуг?",
+          cost_a: "Стоимость зависит от объема работ и специфики проекта. Предлагаем бесплатную консультацию для оценки ваших потребностей.",
+          results_q: "Когда можно ожидать результатов?",
+          results_a: "Google Ads: результаты через 2–4 недели. SEO: 3–6 месяцев. Создание сайта: 2–6 недель в зависимости от сложности.",
+          clients_q: "С какими компаниями вы работаете?",
+          clients_a: "Да, мы работаем с компаниями разного размера — от стартапов до крупных корпораций. Подбираем решения под ваш бюджет.",
+          guarantee_q: "Есть ли гарантии результата?",
+          guarantee_a: "Мы гарантируем профессиональное выполнение работ в соответствии с техническим заданием. Для рекламных кампаний предоставляем прогнозы и регулярную отчетность.",
+          communication_q: "Как происходит коммуникация?",
+          communication_a: "Еженедельные отчеты, онлайн-встречи, прозрачность во всех процессах. Вы всегда в курсе прогресса.",
+          multilingual_q: "Делаете ли вы сайты для международных клиентов?",
+          multilingual_a: "Да, создаем мультязычные сайты с SEO под каждый регион и локализованный контент.",
+          support_q: "Есть ли поддержка после запуска?",
+          support_a: "Да, мы предлагаем техническую и стратегическую поддержку после запуска кампаний или сайта.",
+          contract_q: "Нужен ли договор?",
+          contract_a: "Да, на все проекты заключается договор, что гарантирует прозрачность и защиту обеих сторон."
+        }
       }
     };
 
-    // Завантаження мови
-    const savedLang = localStorage.getItem('lang') || 'uk';
+    // Перемикач теми
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Завантаження теми
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    if (savedTheme === 'light') {
+      body.classList.add('light-theme');
+      themeToggle.innerHTML = '☀️ <span>Світла</span>';
+    }
+
+    // Перемикання теми
+    themeToggle.addEventListener('click', () => {
+      if (body.classList.contains('light-theme')) {
+        body.classList.remove('light-theme');
+        themeToggle.innerHTML = '🌙 <span>Темна</span>';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        body.classList.add('light-theme');
+        themeToggle.innerHTML = '☀️ <span>Світла</span>';
+        localStorage.setItem('theme', 'light');
+      }
+    });
 
     // Функція зміни мови
     function setLanguage(lang) {
@@ -528,6 +715,7 @@
     });
 
     // Завантаження мови при старті
+    const savedLang = localStorage.getItem('lang') || 'uk';
     setLanguage(savedLang);
 
     // Мобільне меню
