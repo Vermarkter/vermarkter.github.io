@@ -15,13 +15,14 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      color: #333;
-      background: #fff;
+      color: #e0e0e0;
+      background: #121212;
+      transition: background 0.3s ease;
     }
 
     a {
       text-decoration: none;
-      color: inherit;
+      color: #bb86fc;
     }
 
     img {
@@ -43,15 +44,17 @@
       font-size: 2rem;
       margin-bottom: 2rem;
       text-align: center;
+      color: #ffffff;
     }
 
     h3 {
       font-size: 1.4rem;
       margin-bottom: 1rem;
+      color: #bb86fc;
     }
 
     p {
-      color: #555;
+      color: #b0b0b0;
       margin-bottom: 1rem;
     }
 
@@ -60,8 +63,8 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: #fff;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: #1f1f1f;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
       z-index: 1000;
       padding: 1rem 0;
     }
@@ -75,7 +78,7 @@
     .logo {
       font-weight: 700;
       font-size: 1.5rem;
-      color: #000;
+      color: #ffffff;
     }
 
     .nav-desktop {
@@ -83,10 +86,21 @@
       gap: 2rem;
     }
 
+    .nav-desktop a {
+      color: #e0e0e0;
+      font-size: 1rem;
+      transition: color 0.3s;
+    }
+
+    .nav-desktop a:hover {
+      color: #bb86fc;
+    }
+
     .lang-switch {
       display: flex;
       gap: 0.8rem;
       font-size: 1.4rem;
+      cursor: pointer;
     }
 
     .menu-btn {
@@ -95,6 +109,7 @@
       background: none;
       border: none;
       cursor: pointer;
+      color: #e0e0e0;
     }
 
     /* Мобільне меню */
@@ -104,7 +119,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: #fff;
+      background: #121212;
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -130,7 +145,7 @@
 
     .mobile-menu nav a {
       font-size: 1.6rem;
-      color: #000;
+      color: #bb86fc;
     }
 
     .close-btn {
@@ -141,7 +156,7 @@
       background: none;
       border: none;
       cursor: pointer;
-      color: #000;
+      color: #e0e0e0;
     }
 
     /* Послуги — 4 в ряд */
@@ -153,13 +168,15 @@
 
     .service {
       padding: 2rem;
-      border: 1px solid #eee;
+      background: #1f1f1f;
+      border: 1px solid #333;
       border-radius: 10px;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .service:hover {
       transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
 
     /* Як ми працюємо */
@@ -177,6 +194,7 @@
     .step-icon {
       font-size: 2rem;
       margin-bottom: 1rem;
+      color: #bb86fc;
     }
 
     /* Відгуки */
@@ -189,14 +207,16 @@
     }
 
     .review {
-      background: #f9f9f9;
+      background: #1f1f1f;
       padding: 2rem;
       border-radius: 10px;
+      border: 1px solid #333;
     }
 
     .review-author {
       font-weight: 600;
       margin-top: 1rem;
+      color: #ffffff;
     }
 
     /* FAQ */
@@ -207,18 +227,23 @@
 
     .faq-item {
       margin-bottom: 1.5rem;
+      background: #1f1f1f;
+      padding: 1.2rem;
+      border-radius: 8px;
+      border: 1px solid #333;
     }
 
     .faq-q {
       font-weight: 600;
       margin-bottom: 0.5rem;
+      color: #ffffff;
     }
 
     /* Футер */
     footer {
       text-align: center;
       padding: 2rem 0;
-      color: #777;
+      color: #b0b0b0;
       font-size: 0.9rem;
     }
 
@@ -380,7 +405,7 @@
   </footer>
 
   <script>
-    // Переклади
+    // Переклади (відповідно до вашого сайту)
     const translations = {
       uk: {
         menu: { services: "Послуги", how: "Як ми працюємо", reviews: "Відгуки", faq: "FAQ" },
@@ -418,4 +443,111 @@
           optimize_desc: "We continuously analyze results and improve performance."
         },
         reviews: { title: "Reviews", review1: "«Reduced CPA by 32% in three months and doubled online orders. Transparent weekly reports.»", review2: "«Site loads instantly, leads are stable. The team speaks the language of business.»", review3: "«YouTube and remarketing boosted brand recognition. There is a clear connection between content and sales.»", author1: "Eva K., eCommerce", author2: "Mark S., Services", author3: "Olena R., EdTech" },
-        faq: { title: "Frequently Asked Questions", cost_q: "How is the cost of services determined?", cost_a: "The cost depends on the scope of work and project specifics. We offer a free consultation to
+        faq: { title: "Frequently Asked Questions", cost_q: "How is the cost of services determined?", cost_a: "The cost depends on the scope of work and project specifics. We offer a free consultation to assess your needs.", results_q: "When can I expect results?", results_a: "Google Ads: results in 2–4 weeks. SEO: 3–6 months. Website creation: 2–6 weeks depending on complexity.", clients_q: "Which companies do you work with?", clients_a: "Yes, we work with companies of all sizes — from startups to large corporations. We tailor solutions to your budget.", guarantee_q: "Are there any guarantees of results?", guarantee_a: "We guarantee professional work according to the technical specification. For ad campaigns, we provide forecasts and regular reporting." }
+      },
+      de: {
+        menu: { services: "Leistungen", how: "Wie wir arbeiten", reviews: "Bewertungen", faq: "FAQ" },
+        services: { title: "Leistungen", website: "Webseiten-Erstellung", ads: "Suche & Shopping", social: "Soziale Netzwerke", seo: "SEO" },
+        services_desc: { 
+          website_desc: "Schnelle, responsive Websites: Landingpages, Shops, mehrsprachige Projekte. Konversionsorientiertes Design, sauberer Code, Integrationen mit Analytics und CRM.",
+          ads_desc: "Seien Sie dort, wo Nachfrage ist: Search/Shopping, Performance Max, (dynamisches) Remarketing, YouTube und Display-Netzwerk — mit CPA/ROAS-Kontrolle.",
+          social_desc: "Content-Strategie, Design, Reels/Shorts, bezahlte Werbung. Messenger und UGC — aus Views werden Leads.",
+          seo_desc: "Technisches Audit, Semantik, Content und Backlinks — stabiles Wachstum im Organic Traffic. ROI-Prognose inkludiert."
+        },
+        how: { title: "Wie wir arbeiten", analyze: "Analyse", strategy: "Strategie", implement: "Umsetzung", optimize: "Optimierung" },
+        how_desc: { 
+          analyze_desc: "Wir analysieren Ihr Unternehmen, die Konkurrenz und Ihre Zielgruppe. Wir identifizieren Wachstumspotenziale.",
+          strategy_desc: "Wir entwickeln einen umfassenden Plan mit konkreten KPIs und Zeitrahmen.",
+          implement_desc: "Wir starten Kampagnen, erstellen Inhalte und optimieren Prozesse.",
+          optimize_desc: "Wir analysieren kontinuierlich die Ergebnisse und verbessern die Effizienz."
+        },
+        reviews: { title: "Bewertungen", review1: "«CPA in drei Monaten um 32 % gesenkt und Online-Bestellungen verdoppelt. Transparente wöchentliche Berichte.»", review2: "«Die Website lädt sofort, die Leads sind stabil. Das Team spricht die Sprache des Geschäfts.»", review3: "«YouTube und Remarketing haben die Markenbekanntheit gesteigert. Es besteht eine klare Verbindung zwischen Inhalten und Verkäufen.»", author1: "Eva K., eCommerce", author2: "Mark S., Dienstleistungen", author3: "Olena R., EdTech" },
+        faq: { title: "Häufige Fragen", cost_q: "Wie wird der Preis für Dienstleistungen bestimmt?", cost_a: "Die Kosten hängen vom Umfang der Arbeiten und den Projektanforderungen ab. Wir bieten eine kostenlose Beratung zur Bedarfsanalyse.", results_q: "Wann kann ich Ergebnisse erwarten?", results_a: "Google Ads: Ergebnisse in 2–4 Wochen. SEO: 3–6 Monate. Website-Erstellung: 2–6 Wochen je nach Komplexität.", clients_q: "Mit welchen Unternehmen arbeiten Sie zusammen?", clients_a: "Ja, wir arbeiten mit Unternehmen aller Größen – von Start-ups bis zu Großunternehmen. Wir finden eine Lösung für Ihr Budget.", guarantee_q: "Gibt es Ergebnisgarantien?", guarantee_a: "Wir garantieren professionelle Arbeit gemäß der technischen Spezifikation. Für Werbekampagnen stellen wir Prognosen und regelmäßige Berichte zur Verfügung." }
+      },
+      pl: {
+        menu: { services: "Usługi", how: "Jak pracujemy", reviews: "Opinie", faq: "FAQ" },
+        services: { title: "Usługi", website: "Tworzenie stron", ads: "Google Ads i Shopping", social: "Media społeczne", seo: "SEO" },
+        services_desc: { 
+          website_desc: "Szybkie, responsywne strony: landingi, sklepy, projekty wielojęzyczne. Projektowanie pod konwersję, czysty kod, integracje z analizami i CRM.",
+          ads_desc: "Bądź tam, gdzie jest popyt: Search/Shopping, Performance Max, remarketing (dynamiczny), YouTube i sieć wyświetlania — z kontrolą CPA/ROAS.",
+          social_desc: "Strategia treści, projektowanie, Reels/Shorts, reklama płatna. Messengery i UGC — by odsłony stały się leadami.",
+          seo_desc: "Audyt techniczny, semantyka, treści i linki — stabilny wzrost ruchu organicznego. Prognoza opłacalności włączona."
+        },
+        how: { title: "Jak pracujemy", analyze: "Analiza", strategy: "Strategia", implement: "Realizacja", optimize: "Optymalizacja" },
+        how_desc: { 
+          analyze_desc: "Analizujemy Twoją firmę, konkurencję i grupę docelową. Określamy punkty wzrostu.",
+          strategy_desc: "Tworzymy kompleksowy plan z konkretnymi KPI i terminami realizacji.",
+          implement_desc: "Uruchamiamy kampanie, tworzymy treści, optymalizujemy procesy.",
+          optimize_desc: "Stale analizujemy wyniki i poprawiamy efektywność."
+        },
+        reviews: { title: "Opinie", review1: "«W ciągu trzech miesięcy obniżyliśmy CPA o 32% i podwoiliśmy zamówienia online. Przejrzyste cotygodniowe raporty.»", review2: "«Strona ładuje się natychmiast, leadsy są stabilne. Zespół mówi językiem biznesu.»", review3: "«YouTube i remarketing wzmocniły rozpoznawalność marki. Istnieje wyraźny związek między treścią a sprzedażą.»", author1: "Ewa K., eCommerce", author2: "Marcin S., Usługi", author3: "Olena R., EdTech" },
+        faq: { title: "Często zadawane pytania", cost_q: "Jak ustalana jest cena usług?", cost_a: "Koszt zależy od zakresu prac i specyfiki projektu. Oferujemy bezpłatną konsultację, aby ocenić Twoje potrzeby.", results_q: "Kiedy można spodziewać się efektów?", results_a: "Google Ads: efekty po 2–4 tygodniach. SEO: 3–6 miesięcy. Tworzenie strony: 2–6 tygodni w zależności od złożoności.", clients_q: "Z jakimi firmami współpracujecie?", clients_a: "Tak, współpracujemy z firmami różnej wielkości — od startupów po duże korporacje. Dostosowujemy rozwiązania do Twojego budżetu.", guarantee_q: "Czy dajecie gwarancję wyników?", guarantee_a: "Gwarantujemy profesjonalne wykonanie prac zgodnie z założeniami. Dla kampanii reklamowych dostarczamy prognozy i regularne raporty." }
+      },
+      ru: {
+        menu: { services: "Услуги", how: "Как мы работаем", reviews: "Отзывы", faq: "FAQ" },
+        services: { title: "Услуги", website: "Создание сайтов", ads: "Поиск и Shopping", social: "Социальные сети", seo: "SEO" },
+        services_desc: { 
+          website_desc: "Быстрые, адаптивные сайты: лендинги, магазины, мультязычные проекты. Дизайн под конверсию, чистый код, интеграции с аналитикой и CRM.",
+          ads_desc: "Будьте там, где есть спрос: Поиск/Shopping, Performance Max, (динамический) ремаркетинг, YouTube и медийная сеть — с контролем CPA/ROAS.",
+          social_desc: "Контент-стратегия, дизайн, Reels/Shorts, платная реклама. Мессенджеры и UGC — чтобы просмотры становились лидами.",
+          seo_desc: "Технический аудит, семантика, контент и ссылки — стабильный рост органики. Прогноз окупаемости прилагается."
+        },
+        how: { title: "Как мы работаем", analyze: "Анализ", strategy: "Стратегия", implement: "Реализация", optimize: "Оптимизация" },
+        how_desc: { 
+          analyze_desc: "Изучаем ваш бизнес, конкурентов и целевую аудиторию. Определяем точки роста.",
+          strategy_desc: "Разрабатываем комплексный план с конкретными KPI и сроками выполнения.",
+          implement_desc: "Запускаем кампании, создаем контент, оптимизируем процессы.",
+          optimize_desc: "Постоянно анализируем результаты и повышаем эффективность."
+        },
+        reviews: { title: "Отзывы", review1: "«За три месяца снизили CPA на 32% и удвоили онлайн-заказы. Прозрачные еженедельные отчеты.»", review2: "«Сайт загружается мгновенно, лиды стабильные. Команда говорит на языке бизнеса.»", review3: "«YouTube и ремаркетинг усилили узнаваемость. Есть четкая связь между контентом и продажами.»", author1: "Ева К., eCommerce", author2: "Марк С., Услуги", author3: "Олена Р., EdTech" },
+        faq: { title: "Часто задаваемые вопросы", cost_q: "Как определяется стоимость услуг?", cost_a: "Стоимость зависит от объема работ и специфики проекта. Предлагаем бесплатную консультацию для оценки ваших потребностей.", results_q: "Когда можно ожидать результатов?", results_a: "Google Ads: результаты через 2–4 недели. SEO: 3–6 месяцев. Создание сайта: 2–6 недель в зависимости от сложности.", clients_q: "С какими компаниями вы работаете?", clients_a: "Да, мы работаем с компаниями разного размера — от стартапов до крупных корпораций. Подбираем решения под ваш бюджет.", guarantee_q: "Есть ли гарантии результата?", guarantee_a: "Мы гарантируем профессиональное выполнение работ в соответствии с техническим заданием. Для рекламных кампаний предоставляем прогнозы и регулярную отчетность." }
+      }
+    };
+
+    // Завантаження мови
+    const savedLang = localStorage.getItem('lang') || 'uk';
+
+    // Функція зміни мови
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const keys = el.getAttribute('data-i18n').split('.');
+        let text = translations[lang];
+        keys.forEach(k => { text = text[k]; });
+        el.textContent = text;
+      });
+      localStorage.setItem('lang', lang);
+    }
+
+    // Перемикання мови
+    document.querySelectorAll('[data-lang]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = btn.getAttribute('data-lang');
+        setLanguage(lang);
+      });
+    });
+
+    // Завантаження мови при старті
+    setLanguage(savedLang);
+
+    // Мобільне меню
+    const menuBtn = document.querySelector('.menu-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+    });
+
+    document.querySelectorAll('.mobile-menu nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
