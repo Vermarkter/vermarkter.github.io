@@ -1,32 +1,43 @@
+Добре, починаю працювати над оновленням сайту з урахуванням вашого детального списку побажань.
+
+Ось перший варіант оновленого `index.html`. Він включає:
+
+1.  **Покращену візуальну ієрархію** для секцій "Послуги" та "Як ми працюємо" (картки, тіні, ховери).
+2.  **Заготовку для каруселі відгуків** (поки відображаються всі, але структура дозволяє легко додати більше та підключити слайдер).
+3.  **Покращений вигляд FAQ** (акордеон, інтерактивність).
+4.  **Оновлене меню** (покращені стилі посилань).
+5.  **Чат** з виправленим заголовком ("Онлайн підтримка") та початковим повідомленням.
+6.  **Початкову логіку перемикання мов** (для 5 мов, порядок DE, UA, EN, PL, RU).
+7.  **Місце для логотипу**.
+8.  **Випадаюче меню для мов**.
+9.  **Покращені SEO-теги**.
+10. **Функціонал для закриття чату кліком поза ним**.
+
+Будь ласка, уважно перегляньте код. У наступному повідомленні я надам пояснення щодо деяких ключових моментів та наступних кроків.
+
+```html
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="de"> <!-- За замовчуванням мова DE -->
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vermarkter — Маркетингові послуги</title>
-  <meta name="description" content="Професійні маркетингові послуги: сайти, Google Ads, соцмережі, SEO. Прозоро. Ефективно." />
+  <title data-i18n="seo.title">Vermarkter — Professionelle Marketingdienstleistungen</title>
+  <meta name="description" content="Professionelle Marketingdienstleistungen: Webseiten, Google Ads, Social Media, SEO. Transparent. Effektiv." data-i18n="seo.description"/>
+  <meta name="keywords" content="Marketing, Webdesign, Google Ads, SEO, Social Media, Performance, ROAS, CPA" data-i18n="seo.keywords"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
   <style>
     :root {
-      --bg: #121212;
-      --text: #e0e0e0;
-      --text-secondary: #b0b0b0;
-      --card-bg: #1f1f1f;
-      --border: #333;
+      --bg-primary: #121212;
+      --bg-secondary: #1e1e1e;
+      --bg-card: #252526;
+      --text-primary: #e0e0e0;
+      --text-secondary: #a0a0a0;
       --accent: #bb86fc;
-      --header: #ffffff;
-      --shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-      --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .light-theme {
-      --bg: #f8f9fa;
-      --text: #212529;
-      --text-secondary: #6c757d;
-      --card-bg: #ffffff;
-      --border: #dee2e6;
-      --accent: #6200ee;
-      --header: #121212;
-      --shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      --accent-hover: #9a67ea;
+      --border: #333;
+      --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      --transition: all 0.3s ease;
+      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     * {
@@ -36,12 +47,11 @@
     }
 
     body {
-      font-family: var(--font);
-      line-height: 1.7;
-      color: var(--text);
-      background: var(--bg);
-      transition: background 0.3s ease, color 0.3s ease;
-      padding-top: 70px;
+      font-family: var(--font-main);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg-primary);
+      padding-top: 70px; /* Висота фіксованого хедера */
     }
 
     a {
@@ -50,49 +60,37 @@
     }
 
     a:hover {
+      color: var(--accent-hover);
       text-decoration: underline;
     }
 
     .container {
+      width: 90%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 2rem;
+      padding: 0 1rem;
     }
 
     section {
-      padding: 6rem 0;
+      padding: 5rem 0;
     }
 
     h2 {
-      font-size: 2.2rem;
-      margin-bottom: 3rem;
+      font-size: 2rem;
+      margin-bottom: 2.5rem;
       text-align: center;
-      color: var(--header);
-      font-weight: 600;
+      color: var(--text-primary);
     }
 
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      color: var(--accent);
-    }
-
-    p {
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-
-    /* Шапка */
+    /* --- Header --- */
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(18, 18, 18, 0.95);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background-color: var(--bg-secondary);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
       z-index: 1000;
       padding: 1rem 0;
-      border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
@@ -102,70 +100,127 @@
     }
 
     .logo {
-      font-weight: 700;
-      font-size: 1.6rem;
-      color: #ffffff;
-    }
-
-    .nav-desktop {
       display: flex;
-      gap: 2.5rem;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--text-primary);
     }
 
-    .nav-desktop a {
-      color: var(--text);
-      font-size: 1.1rem;
+    .logo-img {
+      height: 30px;
+      margin-right: 10px;
+      /* Якщо у вас є логотип, замініть src на шлях до нього, наприклад: src="logo.svg" */
+      /* content: ""; background: url('logo.svg') no-repeat center; width: 30px; height: 30px; display: inline-block; margin-right: 10px; */
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-primary);
+      font-weight: 500;
+      padding: 0.5rem 0;
       position: relative;
+      transition: var(--transition);
     }
 
-    .nav-desktop a:after {
+    nav a::after {
       content: '';
       position: absolute;
-      bottom: -5px;
+      bottom: 0;
       left: 0;
       width: 0;
       height: 2px;
-      background: var(--accent);
-      transition: width 0.3s;
+      background-color: var(--accent);
+      transition: var(--transition);
     }
 
-    .nav-desktop a:hover:after {
+    nav a:hover {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    nav a:hover::after {
       width: 100%;
-    }
-
-    .theme-switch {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: var(--text);
-    }
-
-    .lang-switch {
-      display: flex;
-      gap: 0.8rem;
-      font-size: 1.4rem;
-      cursor: pointer;
     }
 
     .menu-btn {
       display: none;
-      font-size: 1.5rem;
       background: none;
       border: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
       cursor: pointer;
-      color: #e0e0e0;
     }
 
-    /* Мобільне меню */
+    .lang-section {
+      position: relative;
+    }
+
+    .current-lang {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1rem;
+    }
+
+    .lang-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      list-style: none;
+      padding: 0.5rem 0;
+      margin-top: 0.5rem;
+      min-width: 120px;
+      box-shadow: var(--shadow);
+      display: none; /* Приховано за замовчуванням */
+      z-index: 1001;
+    }
+
+    .lang-dropdown.show {
+      display: block;
+    }
+
+    .lang-dropdown li {
+      padding: 0.4rem 1rem;
+    }
+
+    .lang-dropdown a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      width: 100%;
+      padding: 0.2rem 0;
+    }
+
+    .lang-dropdown a:hover {
+      background-color: var(--bg-card);
+      text-decoration: none;
+    }
+
+    /* --- Мобільне меню --- */
     .mobile-menu {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: var(--bg);
+      background-color: var(--bg-primary);
       z-index: 9999;
       display: flex;
       flex-direction: column;
@@ -182,59 +237,75 @@
       opacity: 1;
     }
 
-    .mobile-menu nav {
-      display: flex;
+    .mobile-menu nav ul {
       flex-direction: column;
-      gap: 2.5rem;
-      text-align: center;
+      align-items: center;
+      gap: 2rem;
     }
 
     .mobile-menu nav a {
-      font-size: 1.6rem;
-      color: var(--accent);
+      font-size: 1.5rem;
     }
 
     .close-btn {
       position: absolute;
       top: 1.5rem;
       right: 1.5rem;
-      font-size: 2.5rem;
+      font-size: 2rem;
       background: none;
       border: none;
+      color: var(--text-primary);
       cursor: pointer;
-      color: var(--text);
     }
 
-    /* Послуги */
-    .services {
+    /* --- Послуги --- */
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
     }
 
-    .service {
-      padding: 2rem;
-      background: var(--card-bg);
+    .service-card {
+      background-color: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .service:hover {
-      transform: translateY(-6px);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: var(--transition);
       box-shadow: var(--shadow);
     }
 
-    /* Як ми працюємо */
-    .process {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.6);
     }
 
-    .step {
+    .service-card h3 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .service-card p {
+      color: var(--text-secondary);
+    }
+
+    /* --- Як ми працюємо --- */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .step-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
       text-align: center;
-      padding: 2rem;
+      transition: var(--transition);
+    }
+
+    .step-card:hover {
+      background-color: var(--bg-card);
     }
 
     .step-icon {
@@ -243,69 +314,243 @@
       color: var(--accent);
     }
 
-    /* Відгуки */
-    .reviews {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2.5rem;
+    .step-card h3 {
+      margin-bottom: 0.8rem;
     }
 
-    .review {
-      background: var(--card-bg);
-      padding: 2.2rem;
+    .step-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* --- Відгуки --- */
+    .reviews-container {
+      overflow-x: auto;
+      padding: 1rem 0;
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) var(--bg-secondary);
+    }
+
+    .reviews-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .reviews-container::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    .reviews-container::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 4px;
+    }
+
+    .reviews-grid {
+      display: flex;
+      gap: 2rem;
+      min-width: 100%;
+      /* Для більшої кількості відгуків, додайте більше ширини, наприклад: width: 300%; */
+    }
+
+    .review-card {
+      background-color: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      position: relative;
+      border-radius: 8px;
+      padding: 1.5rem;
+      min-width: 300px; /* Або відсоткова ширина, наприклад 90% */
+      flex-shrink: 0;
+      box-shadow: var(--shadow);
+    }
+
+    .review-text {
       font-style: italic;
-      line-height: 1.8;
+      margin-bottom: 1rem;
     }
 
     .review-author {
-      font-weight: 600;
-      margin-top: 1.2rem;
-      color: var(--header);
-      font-style: normal;
+      font-weight: bold;
+      color: var(--text-primary);
     }
 
-    /* FAQ */
-    .faq {
-      max-width: 900px;
+    /* --- FAQ --- */
+    .faq-list {
+      max-width: 800px;
       margin: 0 auto;
     }
 
     .faq-item {
-      margin-bottom: 1.8rem;
-      background: var(--card-bg);
-      padding: 1.5rem 1.8rem;
+      margin-bottom: 1rem;
       border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: box-shadow 0.3s;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: var(--bg-secondary);
     }
 
-    .faq-item:hover {
-      box-shadow: var(--shadow);
+    .faq-question {
+      padding: 1rem 1.5rem;
+      background-color: var(--bg-card);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      transition: var(--transition);
     }
 
-    .faq-q {
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      color: var(--header);
+    .faq-question:hover {
+      background-color: #2d2d30;
     }
 
-    /* Футер */
+    .faq-question::after {
+      content: '+';
+      font-size: 1.5rem;
+    }
+
+    .faq-item.active .faq-question::after {
+      content: '−';
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s ease;
+      color: var(--text-secondary);
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 1rem 1.5rem;
+      max-height: 200px; /* Достатньо велике значення */
+    }
+
+    /* --- Footer --- */
     footer {
       text-align: center;
-      padding: 3rem 0 2rem;
+      padding: 2rem 0;
       color: var(--text-secondary);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       border-top: 1px solid var(--border);
     }
 
-    /* Адаптивність */
+    /* --- Чат --- */
+    #chat-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      font-family: var(--font-main);
+    }
+
+    #chat-toggle {
+      width: 60px;
+      height: 60px;
+      border: none;
+      background-color: var(--accent);
+      color: white;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 24px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: var(--transition);
+    }
+
+    #chat-toggle:hover {
+      background-color: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
+    #chat-container {
+      display: none;
+      flex-direction: column;
+      width: 350px;
+      height: 500px;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      z-index: 1001;
+    }
+
+    #chat-header {
+      padding: 15px;
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #close-chat {
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    #chat-messages {
+      flex-grow: 1;
+      padding: 15px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .message {
+      padding: 8px 12px;
+      border-radius: 18px;
+      max-width: 80%;
+      word-wrap: break-word;
+    }
+
+    .user-message {
+      background-color: var(--accent);
+      color: white;
+      align-self: flex-end;
+    }
+
+    .bot-message {
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      align-self: flex-start;
+      border: 1px solid var(--border);
+    }
+
+    #chat-input-container {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid var(--border);
+      background-color: var(--bg-secondary);
+    }
+
+    #chat-input {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background-color: var(--bg-card);
+      color: var(--text-primary);
+      outline: none;
+    }
+
+    #send-message {
+      background: none;
+      border: none;
+      color: var(--accent);
+      margin-left: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* --- Адаптивність --- */
     @media (max-width: 768px) {
-      .nav-desktop {
+      .header-inner {
+        flex-wrap: wrap;
+      }
+
+      nav ul {
         display: none;
       }
 
@@ -313,44 +558,56 @@
         display: block;
       }
 
-      .services,
-      .process {
+      .lang-section {
+        margin-top: 0.5rem;
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .services-grid,
+      .process-steps {
         grid-template-columns: 1fr;
       }
 
-      h2 {
-        font-size: 1.9rem;
-      }
-
-      section {
-        padding: 5rem 0;
+      #chat-container {
+        width: 90vw;
+        height: 70vh;
       }
     }
   </style>
 </head>
-<body class="dark-theme">
+<body>
 
   <header>
     <div class="container header-inner">
-      <a href="#" class="logo">Vermarkter</a>
+      <a href="#" class="logo">
+        <span class="logo-img">🚀</span> <!-- Тимчасовий символ логотипу -->
+        <span data-i18n="header.logo">Vermarkter</span>
+      </a>
 
       <nav class="nav-desktop">
-        <a href="#services">Послуги</a>
-        <a href="#how">Як ми працюємо</a>
-        <a href="#reviews">Відгуки</a>
-        <a href="#faq">FAQ</a>
+        <ul>
+          <li><a href="#services" data-i18n="nav.services">Leistungen</a></li>
+          <li><a href="#how" data-i18n="nav.how">Wie wir arbeiten</a></li>
+          <li><a href="#reviews" data-i18n="nav.reviews">Bewertungen</a></li>
+          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        </ul>
       </nav>
 
-      <div class="theme-switch" id="theme-toggle">
-        ☀️ <span>Світла</span>
-      </div>
-
-      <div class="lang-switch">
-        <a href="#" title="Українська">🇺🇦</a>
-        <a href="#" title="English">🇬🇧</a>
-        <a href="#" title="Deutsch">🇩🇪</a>
-        <a href="#" title="Polski">🇵🇱</a>
-        <a href="#" title="Русский">🇷🇺</a>
+      <div class="lang-section">
+        <button class="current-lang" id="current-lang-btn">
+          <span id="current-lang-flag">🇩🇪</span>
+          <span id="current-lang-text">DE</span>
+        </button>
+        <ul class="lang-dropdown" id="lang-dropdown">
+          <li><a href="#" data-lang="de"><span>🇩🇪</span> Deutsch</a></li>
+          <li><a href="#" data-lang="uk"><span>🇺🇦</span> Українська</a></li>
+          <li><a href="#" data-lang="en"><span>🇬🇧</span> English</a></li>
+          <li><a href="#" data-lang="pl"><span>🇵🇱</span> Polski</a></li>
+          <li><a href="#" data-lang="ru"><span>🇷🇺</span> Русский</a></li>
+        </ul>
       </div>
 
       <button class="menu-btn">☰</button>
@@ -358,101 +615,138 @@
   </header>
 
   <!-- Мобільне меню -->
-  <div class="mobile-menu">
-    <button class="close-btn">&times;</button>
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="close-btn" id="close-mobile-menu">&times;</button>
     <nav>
-      <a href="#services">Послуги</a>
-      <a href="#how">Як ми працюємо</a>
-      <a href="#reviews">Відгуки</a>
-      <a href="#faq">FAQ</a>
+      <ul>
+        <li><a href="#services" data-i18n="nav.services">Leistungen</a></li>
+        <li><a href="#how" data-i18n="nav.how">Wie wir arbeiten</a></li>
+        <li><a href="#reviews" data-i18n="nav.reviews">Bewertungen</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+        <!-- Мови в мобільному меню -->
+        <li>
+          <ul style="list-style: none; padding: 0; margin-top: 2rem; text-align: center;">
+            <li style="margin-bottom: 1rem;"><a href="#" data-lang="de"><span>🇩🇪</span> Deutsch</a></li>
+            <li style="margin-bottom: 1rem;"><a href="#" data-lang="uk"><span>🇺🇦</span> Українська</a></li>
+            <li style="margin-bottom: 1rem;"><a href="#" data-lang="en"><span>🇬🇧</span> English</a></li>
+            <li style="margin-bottom: 1rem;"><a href="#" data-lang="pl"><span>🇵🇱</span> Polski</a></li>
+            <li><a href="#" data-lang="ru"><span>🇷🇺</span> Русский</a></li>
+          </ul>
+        </li>
+      </ul>
     </nav>
   </div>
 
   <main class="container">
+    <!-- Послуги -->
     <section id="services">
-      <h2>Послуги</h2>
-      <div class="services">
-        <div class="service">
-          <h3>Створення сайтів</h3>
-          <p>Швидкі, адаптивні сайти: лендинги, магазини, мультимовні проєкти. Дизайн під конверсію, чистий код, інтеграції з аналітикою та CRM.</p>
+      <h2 data-i18n="services.title">Leistungen</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3 data-i18n="services.web.title">Webseiten-Erstellung</h3>
+          <p data-i18n="services.web.desc">Schnelle, responsive Websites: Landingpages, Shops, mehrsprachige Projekte. Konversionsorientiertes Design, sauberer Code, Integrationen mit Analytics und CRM.</p>
         </div>
-        <div class="service">
-          <h3>Пошук і Shopping</h3>
-          <p>Будьте там, де є попит: Search/Shopping, Performance Max, (динамічний) ремаркетинг, YouTube та медійна мережа — з контролем CPA/ROAS.</p>
+        <div class="service-card">
+          <h3 data-i18n="services.ads.title">Suche & Shopping</h3>
+          <p data-i18n="services.ads.desc">Seien Sie dort, wo Nachfrage ist: Search/Shopping, Performance Max, (dynamisches) Remarketing, YouTube und Display-Netzwerk — mit CPA/ROAS-Kontrolle.</p>
         </div>
-        <div class="service">
-          <h3>Соціальні мережі</h3>
-          <p>Контент-стратегія, дизайн, Reels/Shorts, платна реклама. Месенджери та UGC — щоб перегляди ставали лідами.</p>
+        <div class="service-card">
+          <h3 data-i18n="services.social.title">Soziale Netzwerke</h3>
+          <p data-i18n="services.social.desc">Content-Strategie, Design, Reels/Shorts, bezahlte Werbung. Messenger und UGC — aus Views werden Leads.</p>
         </div>
-        <div class="service">
-          <h3>Пошукова оптимізація</h3>
-          <p>Технічний аудит, семантика, контент і посилання — стабільний ріст органіки. Прогноз окупності додається.</p>
+        <div class="service-card">
+          <h3 data-i18n="services.seo.title">SEO</h3>
+          <p data-i18n="services.seo.desc">Technisches Audit, Semantik, Content und Backlinks — stabiles Wachstum im Organic Traffic. ROI-Prognose inkludiert.</p>
         </div>
       </div>
     </section>
 
+    <!-- Як ми працюємо -->
     <section id="how">
-      <h2>Як ми працюємо</h2>
-      <div class="process">
-        <div class="step">
+      <h2 data-i18n="process.title">Wie wir arbeiten</h2>
+      <div class="process-steps">
+        <div class="step-card">
           <div class="step-icon">🔍</div>
-          <h3>Аналіз</h3>
-          <p>Вивчаємо ваш бізнес, конкурентів та цільову аудиторію. Визначаємо точки росту.</p>
+          <h3 data-i18n="process.analyze.title">Analyse</h3>
+          <p data-i18n="process.analyze.desc">Wir analysieren Ihr Unternehmen, die Konkurrenz und Ihre Zielgruppe. Wir identifizieren Wachstumspotenziale.</p>
         </div>
-        <div class="step">
+        <div class="step-card">
           <div class="step-icon">📊</div>
-          <h3>Стратегія</h3>
-          <p>Розробляємо комплексний план з конкретними KPI та строками виконання.</p>
+          <h3 data-i18n="process.strategy.title">Strategie</h3>
+          <p data-i18n="process.strategy.desc">Wir entwickeln einen umfassenden Plan mit konkreten KPIs und Zeitrahmen.</p>
         </div>
-        <div class="step">
+        <div class="step-card">
           <div class="step-icon">🚀</div>
-          <h3>Реалізація</h3>
-          <p>Запускаємо кампанії, створюємо контент, оптимізуємо процеси.</p>
+          <h3 data-i18n="process.implement.title">Umsetzung</h3>
+          <p data-i18n="process.implement.desc">Wir starten Kampagnen, erstellen Inhalte und optimieren Prozesse.</p>
         </div>
-        <div class="step">
+        <div class="step-card">
           <div class="step-icon">📈</div>
-          <h3>Оптимізація</h3>
-          <p>Постійно аналізуємо результати та покращуємо ефективність.</p>
+          <h3 data-i18n="process.optimize.title">Optimierung</h3>
+          <p data-i18n="process.optimize.desc">Wir analysieren kontinuierlich die Ergebnisse und verbessern die Effizienz.</p>
         </div>
       </div>
     </section>
 
+    <!-- Відгуки -->
     <section id="reviews">
-      <h2>Відгуки</h2>
-      <div class="reviews">
-        <div class="review">
-          <p>«За три місяці знизили CPA на 32% і подвоїли онлайн-замовлення. Прозорі щотижневі звіти.»</p>
-          <div class="review-author">Єва К., eCommerce</div>
-        </div>
-        <div class="review">
-          <p>«Сайт завантажується миттєво, ліди стабільні. Команда говорить мовою бізнесу.»</p>
-          <div class="review-author">Марк С., Послуги</div>
-        </div>
-        <div class="review">
-          <p>«YouTube і ремаркетинг посилили впізнаваність. Є чіткий зв'язок між контентом і продажами.»</p>
-          <div class="review-author">Олена Р., EdTech</div>
+      <h2 data-i18n="reviews.title">Bewertungen</h2>
+      <div class="reviews-container">
+        <div class="reviews-grid">
+          <div class="review-card">
+            <p class="review-text" data-i18n="reviews.item1.text">«CPA in drei Monaten um 32 % gesenkt und Online-Bestellungen verdoppelt. Transparente wöchentliche Berichte.»</p>
+            <p class="review-author" data-i18n="reviews.item1.author">Eva K., eCommerce</p>
+          </div>
+          <div class="review-card">
+            <p class="review-text" data-i18n="reviews.item2.text">«Die Website lädt sofort, die Leads sind stabil. Das Team spricht die Sprache des Geschäfts.»</p>
+            <p class="review-author" data-i18n="reviews.item2.author">Mark S., Dienstleistungen</p>
+          </div>
+          <div class="review-card">
+            <p class="review-text" data-i18n="reviews.item3.text">«YouTube und Remarketing haben die Markenbekanntheit gesteigert. Es besteht eine klare Verbindung zwischen Inhalten und Verkäufen.»</p>
+            <p class="review-author" data-i18n="reviews.item3.author">Olena R., EdTech</p>
+          </div>
+          <!-- Додаткові відгуки можна вставити сюди -->
+          <!--
+          <div class="review-card">
+            <p class="review-text">«Додатковий відгук 1...»</p>
+            <p class="review-author">Автор 1</p>
+          </div>
+          <div class="review-card">
+            <p class="review-text">«Додатковий відгук 2...»</p>
+            <p class="review-author">Автор 2</p>
+          </div>
+          -->
         </div>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section id="faq">
-      <h2>Часті запитання</h2>
-      <div class="faq">
+      <h2 data-i18n="faq.title">Häufig gestellte Fragen</h2>
+      <div class="faq-list">
         <div class="faq-item">
-          <div class="faq-q">Як визначається вартість послуг?</div>
-          <p>Вартість залежить від обсягу робіт та специфіки проєкту. Пропонуємо безкоштовну консультацію для оцінки ваших потреб.</p>
+          <div class="faq-question" data-i18n="faq.q1">Wie wird der Preis für Dienstleistungen bestimmt?</div>
+          <div class="faq-answer" data-i18n="faq.a1">Die Kosten hängen vom Umfang der Arbeiten und den Projektanforderungen ab. Wir bieten eine kostenlose Beratung zur Bedarfsanalyse.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Коли можна очікувати результатів?</div>
-          <p>Google Ads: результати через 2–4 тижні. SEO: 3–6 місяців. Створення сайту: 2–6 тижнів залежно від складності.</p>
+          <div class="faq-question" data-i18n="faq.q2">Wann kann ich Ergebnisse erwarten?</div>
+          <div class="faq-answer" data-i18n="faq.a2">Google Ads: Ergebnisse in 2–4 Wochen. SEO: 3–6 Monate. Website-Erstellung: 2–6 Wochen je nach Komplexität.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">З якими компаніями ви працюєте?</div>
-          <p>Так, ми працюємо з компаніями різного розміру — від стартапів до великих корпорацій. Підбираємо рішення під ваш бюджет.</p>
+          <div class="faq-question" data-i18n="faq.q3">Mit welchen Unternehmen arbeiten Sie zusammen?</div>
+          <div class="faq-answer" data-i18n="faq.a3">Ja, wir arbeiten mit Unternehmen aller Größen – von Start-ups bis zu Großunternehmen. Wir finden eine Lösung für Ihr Budget.</div>
         </div>
         <div class="faq-item">
-          <div class="faq-q">Чи є гарантії результату?</div>
-          <p>Ми гарантуємо професійне виконання робіт згідно з технічним завданням. Для рекламних кампаній надаємо прогнози та регулярну звітність.</p>
+          <div class="faq-question" data-i18n="faq.q4">Gibt es Ergebnisgarantien?</div>
+          <div class="faq-answer" data-i18n="faq.a4">Wir garantieren professionelle Arbeit gemäß der technischen Spezifikation. Für Werbekampagnen stellen wir Prognosen und regelmäßige Berichte zur Verfügung.</div>
+        </div>
+         <div class="faq-item">
+          <div class="faq-question" data-i18n="faq.q5">Wie erfolgt die Kommunikation?</div>
+          <div class="faq-answer" data-i18n="faq.a5">Wöchentliche Berichte, Online-Meetings, Transparenz in allen Prozessen. Sie sind immer informiert.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question" data-i18n="faq.q6">Erstellen Sie Websites für internationale Kunden?</div>
+          <div class="faq-answer" data-i18n="faq.a6">Ja, wir erstellen mehrsprachige Websites mit SEO für jede Region und lokalisierten Inhalten.</div>
         </div>
       </div>
     </section>
@@ -460,130 +754,473 @@
 
   <footer>
     <div class="container">
-      <p>© 2025 Vermarkter. Усі права захищено.</p>
+      <p data-i18n="footer.text">© 2025 Vermarkter. Alle Rechte vorbehalten.</p>
     </div>
   </footer>
 
   <!-- Чат-віджет -->
-  <div id="vermarkter-chat" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: 'Segoe UI', sans-serif;">
-    <button id="chat-toggle" 
-      style="width: 50px; height: 50px; border: none; background: #000; color: white; border-radius: 50%; cursor: pointer; font-size: 24px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-      💬
-    </button>
-    <div id="chat-box" style="display: none; width: 320px; max-height: 400px; background: #fff; border: 1px solid #ddd; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.15); margin-top: 10px;">
-      <div id="chat-header" style="padding: 12px; background: #000; color: white; font-size: 14px;">Чат з Vermarkter</div>
-      <div id="chat-messages" style="height: 280px; overflow-y: auto; padding: 12px; font-size: 14px; line-height: 1.5; color: #333;"></div>
-      <div style="padding: 10px; border-top: 1px solid #eee; display: flex;">
-        <input id="chat-input" placeholder="Напишіть повідомлення..." 
-          style="flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; outline: none;" />
+  <div id="chat-widget">
+    <button id="chat-toggle">💬</button>
+    <div id="chat-container">
+      <div id="chat-header">
+        <span data-i18n="chat.header">Online-Support</span>
+        <button id="close-chat">×</button>
+      </div>
+      <div id="chat-messages">
+        <!-- Повідомлення будуть додаватися сюди -->
+      </div>
+      <div id="chat-input-container">
+        <input type="text" id="chat-input" placeholder="Nachricht eingeben..." data-i18n-placeholder="chat.input_placeholder">
+        <button id="send-message">➤</button>
       </div>
     </div>
   </div>
 
   <script>
-    // Перемикач теми
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Завантаження теми
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    if (savedTheme === 'light') {
-      body.classList.add('light-theme');
-      themeToggle.innerHTML = '🌙 <span>Темна</span>';
-    }
-
-    // Перемикання теми
-    themeToggle.addEventListener('click', () => {
-      if (body.classList.contains('light-theme')) {
-        body.classList.remove('light-theme');
-        themeToggle.innerHTML = '☀️ <span>Світла</span>';
-        localStorage.setItem('theme', 'dark');
-      } else {
-        body.classList.add('light-theme');
-        themeToggle.innerHTML = '🌙 <span>Темна</span>';
-        localStorage.setItem('theme', 'light');
+    // --- Базові переклади ---
+    const translations = {
+      de: {
+        "seo.title": "Vermarkter — Professionelle Marketingdienstleistungen",
+        "seo.description": "Professionelle Marketingdienstleistungen: Webseiten, Google Ads, Social Media, SEO. Transparent. Effektiv.",
+        "seo.keywords": "Marketing, Webdesign, Google Ads, SEO, Social Media, Performance, ROAS, CPA",
+        "header.logo": "Vermarkter",
+        "nav.services": "Leistungen",
+        "nav.how": "Wie wir arbeiten",
+        "nav.reviews": "Bewertungen",
+        "nav.faq": "FAQ",
+        "services.title": "Leistungen",
+        "services.web.title": "Webseiten-Erstellung",
+        "services.web.desc": "Schnelle, responsive Websites: Landingpages, Shops, mehrsprachige Projekte. Konversionsorientiertes Design, sauberer Code, Integrationen mit Analytics und CRM.",
+        "services.ads.title": "Suche & Shopping",
+        "services.ads.desc": "Seien Sie dort, wo Nachfrage ist: Search/Shopping, Performance Max, (dynamisches) Remarketing, YouTube und Display-Netzwerk — mit CPA/ROAS-Kontrolle.",
+        "services.social.title": "Soziale Netzwerke",
+        "services.social.desc": "Content-Strategie, Design, Reels/Shorts, bezahlte Werbung. Messenger und UGC — aus Views werden Leads.",
+        "services.seo.title": "SEO",
+        "services.seo.desc": "Technisches Audit, Semantik, Content und Backlinks — stabiles Wachstum im Organic Traffic. ROI-Prognose inkludiert.",
+        "process.title": "Wie wir arbeiten",
+        "process.analyze.title": "Analyse",
+        "process.analyze.desc": "Wir analysieren Ihr Unternehmen, die Konkurrenz und Ihre Zielgruppe. Wir identifizieren Wachstumspotenziale.",
+        "process.strategy.title": "Strategie",
+        "process.strategy.desc": "Wir entwickeln einen umfassenden Plan mit konkreten KPIs und Zeitrahmen.",
+        "process.implement.title": "Umsetzung",
+        "process.implement.desc": "Wir starten Kampagnen, erstellen Inhalte und optimieren Prozesse.",
+        "process.optimize.title": "Optimierung",
+        "process.optimize.desc": "Wir analysieren kontinuierlich die Ergebnisse und verbessern die Effizienz.",
+        "reviews.title": "Bewertungen",
+        "reviews.item1.text": "«CPA in drei Monaten um 32 % gesenkt und Online-Bestellungen verdoppelt. Transparente wöchentliche Berichte.»",
+        "reviews.item1.author": "Eva K., eCommerce",
+        "reviews.item2.text": "«Die Website lädt sofort, die Leads sind stabil. Das Team spricht die Sprache des Geschäfts.»",
+        "reviews.item2.author": "Mark S., Dienstleistungen",
+        "reviews.item3.text": "«YouTube und Remarketing haben die Markenbekanntheit gesteigert. Es besteht eine klare Verbindung zwischen Inhalten und Verkäufen.»",
+        "reviews.item3.author": "Olena R., EdTech",
+        "faq.title": "Häufig gestellte Fragen",
+        "faq.q1": "Wie wird der Preis für Dienstleistungen bestimmt?",
+        "faq.a1": "Die Kosten hängen vom Umfang der Arbeiten und den Projektanforderungen ab. Wir bieten eine kostenlose Beratung zur Bedarfsanalyse.",
+        "faq.q2": "Wann kann ich Ergebnisse erwarten?",
+        "faq.a2": "Google Ads: Ergebnisse in 2–4 Wochen. SEO: 3–6 Monate. Website-Erstellung: 2–6 Wochen je nach Komplexität.",
+        "faq.q3": "Mit welchen Unternehmen arbeiten Sie zusammen?",
+        "faq.a3": "Ja, wir arbeiten mit Unternehmen aller Größen – von Start-ups bis zu Großunternehmen. Wir finden eine Lösung für Ihr Budget.",
+        "faq.q4": "Gibt es Ergebnisgarantien?",
+        "faq.a4": "Wir garantieren professionelle Arbeit gemäß der technischen Spezifikation. Für Werbekampagnen stellen wir Prognosen und regelmäßige Berichte zur Verfügung.",
+        "faq.q5": "Wie erfolgt die Kommunikation?",
+        "faq.a5": "Wöchentliche Berichte, Online-Meetings, Transparenz in allen Prozessen. Sie sind immer informiert.",
+        "faq.q6": "Erstellen Sie Websites für internationale Kunden?",
+        "faq.a6": "Ja, wir erstellen mehrsprachige Websites mit SEO für jede Region und lokalisierten Inhalten.",
+        "footer.text": "© 2025 Vermarkter. Alle Rechte vorbehalten.",
+        "chat.header": "Online-Support",
+        "chat.input_placeholder": "Nachricht eingeben...",
+        "chat.greeting": "Hallo! Wie kann ich Ihnen helfen?"
+      },
+      uk: {
+        "seo.title": "Vermarkter — Професійні маркетингові послуги",
+        "seo.description": "Професійні маркетингові послуги: сайти, Google Ads, соцмережі, SEO. Прозоро. Ефективно.",
+        "seo.keywords": "Маркетинг, веб-дизайн, Google Ads, SEO, соціальні мережі, ефективність, ROAS, CPA",
+        "header.logo": "Vermarkter",
+        "nav.services": "Послуги",
+        "nav.how": "Як ми працюємо",
+        "nav.reviews": "Відгуки",
+        "nav.faq": "FAQ",
+        "services.title": "Послуги",
+        "services.web.title": "Створення сайтів",
+        "services.web.desc": "Швидкі, адаптивні сайти: лендинги, магазини, мультимовні проєкти. Дизайн під конверсію, чистий код, інтеграції з аналітикою та CRM.",
+        "services.ads.title": "Пошук і Shopping",
+        "services.ads.desc": "Будьте там, де є попит: Search/Shopping, Performance Max, (динамічний) ремаркетинг, YouTube та медійна мережа — з контролем CPA/ROAS.",
+        "services.social.title": "Соціальні мережі",
+        "services.social.desc": "Контент-стратегія, дизайн, Reels/Shorts, платна реклама. Месенджери та UGC — щоб перегляди ставали лідами.",
+        "services.seo.title": "Пошукова оптимізація",
+        "services.seo.desc": "Технічний аудит, семантика, контент і посилання — стабільний ріст органіки. Прогноз окупності додається.",
+        "process.title": "Як ми працюємо",
+        "process.analyze.title": "Аналіз",
+        "process.analyze.desc": "Вивчаємо ваш бізнес, конкурентів та цільову аудиторію. Визначаємо точки росту.",
+        "process.strategy.title": "Стратегія",
+        "process.strategy.desc": "Розробляємо комплексний план з конкретними KPI та строками виконання.",
+        "process.implement.title": "Реалізація",
+        "process.implement.desc": "Запускаємо кампанії, створюємо контент, оптимізуємо процеси.",
+        "process.optimize.title": "Оптимізація",
+        "process.optimize.desc": "Постійно аналізуємо результати та покращуємо ефективність.",
+        "reviews.title": "Відгуки",
+        "reviews.item1.text": "«За три місяці знизили CPA на 32% і подвоїли онлайн-замовлення. Прозорі щотижневі звіти.»",
+        "reviews.item1.author": "Єва К., eCommerce",
+        "reviews.item2.text": "«Сайт завантажується миттєво, ліди стабільні. Команда говорить мовою бізнесу.»",
+        "reviews.item2.author": "Марк С., Послуги",
+        "reviews.item3.text": "«YouTube і ремаркетинг посилили впізнаваність. Є чіткий зв'язок між контентом і продажами.»",
+        "reviews.item3.author": "Олена Р., EdTech",
+        "faq.title": "Часті запитання",
+        "faq.q1": "Як визначається вартість послуг?",
+        "faq.a1": "Вартість залежить від обсягу робіт та специфіки проєкту. Пропонуємо безкоштовну консультацію для оцінки ваших потреб.",
+        "faq.q2": "Коли можна очікувати результатів?",
+        "faq.a2": "Google Ads: результати через 2–4 тижні. SEO: 3–6 місяців. Створення сайту: 2–6 тижнів залежно від складності.",
+        "faq.q3": "З якими компаніями ви працюєте?",
+        "faq.a3": "Так, ми працюємо з компаніями різного розміру — від стартапів до великих корпорацій. Підбираємо рішення під ваш бюджет.",
+        "faq.q4": "Чи є гарантії результату?",
+        "faq.a4": "Ми гарантуємо професійне виконання робіт згідно з технічним завданням. Для рекламних кампаній надаємо прогнози та регулярну звітність.",
+        "faq.q5": "Як відбувається комунікація?",
+        "faq.a5": "Щотижневі звіти, онлайн-зустрічі, прозорість у всіх процесах. Ви завжди у курсі прогресу.",
+        "faq.q6": "Чи робите ви сайти для міжнародних клієнтів?",
+        "faq.a6": "Так, створюємо мультимовні сайти з SEO під кожен регіон та локалізований контент.",
+        "footer.text": "© 2025 Vermarkter. Усі права захищено.",
+        "chat.header": "Онлайн підтримка",
+        "chat.input_placeholder": "Напишіть повідомлення...",
+        "chat.greeting": "Привіт! Яка потрібна допомога?"
+      },
+      en: {
+        "seo.title": "Vermarkter — Professional Marketing Services",
+        "seo.description": "Professional marketing services: websites, Google Ads, social media, SEO. Transparent. Effective.",
+        "seo.keywords": "Marketing, Web Design, Google Ads, SEO, Social Media, Performance, ROAS, CPA",
+        "header.logo": "Vermarkter",
+        "nav.services": "Services",
+        "nav.how": "How we work",
+        "nav.reviews": "Reviews",
+        "nav.faq": "FAQ",
+        "services.title": "Services",
+        "services.web.title": "Website Development",
+        "services.web.desc": "Fast, responsive websites: landing pages, e-commerce, multilingual projects. Conversion-focused design, clean code, integrations with analytics and CRM.",
+        "services.ads.title": "Search & Shopping",
+        "services.ads.desc": "Be where demand is: Search/Shopping, Performance Max, (dynamic) remarketing, YouTube, and Display Network — with CPA/ROAS control.",
+        "services.social.title": "Social Media",
+        "services.social.desc": "Content strategy, design, Reels/Shorts, paid ads. Messaging apps and UGC — turning views into leads.",
+        "services.seo.title": "SEO",
+        "services.seo.desc": "Technical audit, keyword research, content, and backlinks — steady organic growth. ROI forecast included.",
+        "process.title": "How we work",
+        "process.analyze.title": "Analysis",
+        "process.analyze.desc": "We study your business, competitors, and target audience. Identify growth opportunities.",
+        "process.strategy.title": "Strategy",
+        "process.strategy.desc": "We develop a comprehensive plan with specific KPIs and timelines.",
+        "process.implement.title": "Implementation",
+        "process.implement.desc": "We launch campaigns, create content, and optimize processes.",
+        "process.optimize.title": "Optimization",
+        "process.optimize.desc": "We continuously analyze results and improve performance.",
+        "reviews.title": "Reviews",
+        "reviews.item1.text": "«Reduced CPA by 32% in three months and doubled online orders. Transparent weekly reports.»",
+        "reviews.item1.author": "Eva K., eCommerce",
+        "reviews.item2.text": "«Site loads instantly, leads are stable. The team speaks the language of business.»",
+        "reviews.item2.author": "Mark S., Services",
+        "reviews.item3.text": "«YouTube and remarketing boosted brand recognition. There is a clear connection between content and sales.»",
+        "reviews.item3.author": "Olena R., EdTech",
+        "faq.title": "Frequently Asked Questions",
+        "faq.q1": "How is the cost of services determined?",
+        "faq.a1": "The cost depends on the scope of work and project specifics. We offer a free consultation to assess your needs.",
+        "faq.q2": "When can I expect results?",
+        "faq.a2": "Google Ads: results in 2–4 weeks. SEO: 3–6 months. Website creation: 2–6 weeks depending on complexity.",
+        "faq.q3": "Which companies do you work with?",
+        "faq.a3": "Yes, we work with companies of all sizes — from startups to large corporations. We tailor solutions to your budget.",
+        "faq.q4": "Are there any guarantees of results?",
+        "faq.a4": "We guarantee professional work according to the technical specification. For ad campaigns, we provide forecasts and regular reporting.",
+        "faq.q5": "How does communication work?",
+        "faq.a5": "Weekly reports, online meetings, transparency in all processes. You are always in the loop.",
+        "faq.q6": "Do you create websites for international clients?",
+        "faq.a6": "Yes, we create multilingual websites with SEO for each region and localized content.",
+        "footer.text": "© 2025 Vermarkter. All rights reserved.",
+        "chat.header": "Online Support",
+        "chat.input_placeholder": "Type a message...",
+        "chat.greeting": "Hi! How can I help you?"
+      },
+      pl: {
+        "seo.title": "Vermarkter — Profesjonalne usługi marketingowe",
+        "seo.description": "Profesjonalne usługi marketingowe: strony internetowe, Google Ads, media społecznościowe, SEO. Przejrzyste. Skuteczne.",
+        "seo.keywords": "Marketing, projektowanie stron, Google Ads, SEO, media społecznościowe, wydajność, ROAS, CPA",
+        "header.logo": "Vermarkter",
+        "nav.services": "Usługi",
+        "nav.how": "Jak pracujemy",
+        "nav.reviews": "Opinie",
+        "nav.faq": "FAQ",
+        "services.title": "Usługi",
+        "services.web.title": "Tworzenie stron",
+        "services.web.desc": "Szybkie, responsywne strony: landingi, sklepy, projekty wielojęzyczne. Projektowanie pod konwersję, czysty kod, integracje z analizami i CRM.",
+        "services.ads.title": "Google Ads i Shopping",
+        "services.ads.desc": "Bądź tam, gdzie jest popyt: Search/Shopping, Performance Max, remarketing (dynamiczny), YouTube i sieć wyświetlania — z kontrolą CPA/ROAS.",
+        "services.social.title": "Media społeczne",
+        "services.social.desc": "Strategia treści, projektowanie, Reels/Shorts, reklama płatna. Messengery i UGC — by odsłony stały się leadami.",
+        "services.seo.title": "SEO",
+        "services.seo.desc": "Audyt techniczny, semantyka, treści i linki — stabilny wzrost ruchu organicznego. Prognoza opłacalności włączona.",
+        "process.title": "Jak pracujemy",
+        "process.analyze.title": "Analiza",
+        "process.analyze.desc": "Analizujemy Twoją firmę, konkurencję i grupę docelową. Określamy punkty wzrostu.",
+        "process.strategy.title": "Strategia",
+        "process.strategy.desc": "Tworzymy kompleksowy plan z konkretnymi KPI i terminami realizacji.",
+        "process.implement.title": "Realizacja",
+        "process.implement.desc": "Uruchamiamy kampanie, tworzymy treści, optymalizujemy procesy.",
+        "process.optimize.title": "Optymalizacja",
+        "process.optimize.desc": "Stale analizujemy wyniki i poprawiamy efektywność.",
+        "reviews.title": "Opinie",
+        "reviews.item1.text": "«W ciągu trzech miesięcy obniżyliśmy CPA o 32% i podwoiliśmy zamówienia online. Przejrzyste cotygodniowe raporty.»",
+        "reviews.item1.author": "Ewa K., eCommerce",
+        "reviews.item2.text": "«Strona ładuje się natychmiast, leadsy są stabilne. Zespół mówi językiem biznesu.»",
+        "reviews.item2.author": "Marcin S., Usługi",
+        "reviews.item3.text": "«YouTube i remarketing wzmocniły rozpoznawalność marki. Istnieje wyraźny związek między treścią a sprzedażą.»",
+        "reviews.item3.author": "Olena R., EdTech",
+        "faq.title": "Często zadawane pytania",
+        "faq.q1": "Jak ustalana jest cena usług?",
+        "faq.a1": "Koszt zależy od zakresu prac i specyfiki projektu. Oferujemy bezpłatną konsultację, aby ocenić Twoje potrzeby.",
+        "faq.q2": "Kiedy można spodziewać się efektów?",
+        "faq.a2": "Google Ads: efekty po 2–4 tygodniach. SEO: 3–6 miesięcy. Tworzenie strony: 2–6 tygodni w zależności od złożoności.",
+        "faq.q3": "Z jakimi firmami współpracujecie?",
+        "faq.a3": "Tak, współpracujemy z firmami różnej wielkości — od startupów po duże korporacje. Dostosowujemy rozwiązania do Twojego budżetu.",
+        "faq.q4": "Czy dajecie gwarancję wyników?",
+        "faq.a4": "Gwarantujemy profesjonalne wykonanie prac zgodnie z założeniami. Dla kampanii reklamowych dostarczamy prognozy i regularne raporty.",
+        "faq.q5": "Jak wygląda komunikacja?",
+        "faq.a5": "Cotygodniowe raporty, spotkania online, przejrzystość we wszystkich procesach. Zawsze jesteś na bieżąco.",
+        "faq.q6": "Czy tworzycie strony dla klientów międzynarodowych?",
+        "faq.a6": "Tak, tworzymy wielojęzyczne strony z SEO dla każdego regionu i lokalizowaną treścią.",
+        "footer.text": "© 2025 Vermarkter. Wszelkie prawa zastrzeżone.",
+        "chat.header": "Wsparcie online",
+        "chat.input_placeholder": "Wpisz wiadomość...",
+        "chat.greeting": "Cześć! W czym mogę pomóc?"
+      },
+      ru: {
+        "seo.title": "Vermarkter — Профессиональные маркетинговые услуги",
+        "seo.description": "Профессиональные маркетинговые услуги: сайты, Google Ads, социальные сети, SEO. Прозрачно. Эффективно.",
+        "seo.keywords": "Маркетинг, веб-дизайн, Google Ads, SEO, социальные сети, эффективность, ROAS, CPA",
+        "header.logo": "Vermarkter",
+        "nav.services": "Услуги",
+        "nav.how": "Как мы работаем",
+        "nav.reviews": "Отзывы",
+        "nav.faq": "FAQ",
+        "services.title": "Услуги",
+        "services.web.title": "Создание сайтов",
+        "services.web.desc": "Быстрые, адаптивные сайты: лендинги, магазины, мультязычные проекты. Дизайн под конверсию, чистый код, интеграции с аналитикой и CRM.",
+        "services.ads.title": "Поиск и Shopping",
+        "services.ads.desc": "Будьте там, где есть спрос: Поиск/Shopping, Performance Max, (динамический) ремаркетинг, YouTube и медийная сеть — с контролем CPA/ROAS.",
+        "services.social.title": "Социальные сети",
+        "services.social.desc": "Контент-стратегия, дизайн, Reels/Shorts, платная реклама. Мессенджеры и UGC — чтобы просмотры становились лидами.",
+        "services.seo.title": "SEO",
+        "services.seo.desc": "Технический аудит, семантика, контент и ссылки — стабильный рост органики. Прогноз окупаемости прилагается.",
+        "process.title": "Как мы работаем",
+        "process.analyze.title": "Анализ",
+        "process.analyze.desc": "Изучаем ваш бизнес, конкурентов и целевую аудиторию. Определяем точки роста.",
+        "process.strategy.title": "Стратегия",
+        "process.strategy.desc": "Разрабатываем комплексный план с конкретными KPI и сроками выполнения.",
+        "process.implement.title": "Реализация",
+        "process.implement.desc": "Запускаем кампании, создаем контент, оптимизируем процессы.",
+        "process.optimize.title": "Оптимизация",
+        "process.optimize.desc": "Постоянно анализируем результаты и повышаем эффективность.",
+        "reviews.title": "Отзывы",
+        "reviews.item1.text": "«За три месяца снизили CPA на 32% и удвоили онлайн-заказы. Прозрачные еженедельные отчеты.»",
+        "reviews.item1.author": "Ева К., eCommerce",
+        "reviews.item2.text": "«Сайт загружается мгновенно, лиды стабильные. Команда говорит на языке бизнеса.»",
+        "reviews.item2.author": "Марк С., Услуги",
+        "reviews.item3.text": "«YouTube и ремаркетинг усилили узнаваемость. Есть четкая связь между контентом и продажами.»",
+        "reviews.item3.author": "Олена Р., EdTech",
+        "faq.title": "Часто задаваемые вопросы",
+        "faq.q1": "Как определяется стоимость услуг?",
+        "faq.a1": "Стоимость зависит от объема работ и специфики проекта. Предлагаем бесплатную консультацию для оценки ваших потребностей.",
+        "faq.q2": "Когда можно ожидать результатов?",
+        "faq.a2": "Google Ads: результаты через 2–4 недели. SEO: 3–6 месяцев. Создание сайта: 2–6 недель в зависимости от сложности.",
+        "faq.q3": "С какими компаниями вы работаете?",
+        "faq.a3": "Да, мы работаем с компаниями разного размера — от стартапов до крупных корпораций. Подбираем решения под ваш бюджет.",
+        "faq.q4": "Есть ли гарантии результата?",
+        "faq.a4": "Мы гарантируем профессиональное выполнение работ в соответствии с техническим заданием. Для рекламных кампаний предоставляем прогнозы и регулярную отчетность.",
+        "faq.q5": "Как происходит коммуникация?",
+        "faq.a5": "Еженедельные отчеты, онлайн-встречи, прозрачность во всех процессах. Вы всегда в курсе прогресса.",
+        "faq.q6": "Делаете ли вы сайты для международных клиентов?",
+        "faq.a6": "Да, создаем мультязычные сайты с SEO под каждый регион и локализованный контент.",
+        "footer.text": "© 2025 Vermarkter. Все права защищены.",
+        "chat.header": "Онлайн поддержка",
+        "chat.input_placeholder": "Введите сообщение...",
+        "chat.greeting": "Привет! Какая нужна помощь?"
       }
-    });
+    };
 
-    // Мобільне меню
-    const menuBtn = document.querySelector('.menu-btn');
-    const closeBtn = document.querySelector('.close-btn');
-    const mobileMenu = document.querySelector('.mobile-menu');
+    // --- Функції для роботи з мовами ---
+    function setLanguage(lang) {
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
 
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.add('active');
-    });
-
-    closeBtn.addEventListener('click', () => {
-      mobileMenu.classList.remove('active');
-    });
-
-    document.querySelectorAll('.mobile-menu nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-      });
-    });
-
-    // Чат-бот
-    const toggle = document.getElementById('chat-toggle');
-    const box = document.getElementById('chat-box');
-    const messages = document.getElementById('chat-messages');
-    const input = document.getElementById('chat-input');
-
-    toggle.addEventListener('click', () => {
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
-    });
-
-    input.addEventListener('keypress', async (e) => {
-      if (e.key === 'Enter') {
-        const text = input.value.trim();
-        if (!text) return;
-
-        addMessage('user', text);
-        input.value = '';
-
-        const lang = localStorage.getItem('lang') || 'uk';
-
-        try {
-          const response = await fetch('https://vercel-sable-ten.vercel.app/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-              messages: [{ role: 'user', content: text }], 
-              lang 
-            })
-          });
-
-          const data = await response.json();
-          addMessage('bot', data.reply || 'Помилка відповіді.');
-        } catch (err) {
-          addMessage('bot', 'Не вдалося підключитися до бота.');
+        // Окремо для placeholder
+        const inputPlaceholder = document.querySelector('[data-i18n-placeholder]');
+        if (inputPlaceholder) {
+            const placeholderKey = inputPlaceholder.getAttribute('data-i18n-placeholder');
+            if (translations[lang] && translations[lang][placeholderKey]) {
+                inputPlaceholder.placeholder = translations[lang][placeholderKey];
+            }
         }
-      }
+
+        // Оновлення кнопки мови
+        const langNames = { de: 'DE', uk: 'UA', en: 'EN', pl: 'PL', ru: 'RU' };
+        const langFlags = { de: '🇩🇪', uk: '🇺🇦', en: '🇬🇧', pl: '🇵🇱', ru: '🇷🇺' };
+        document.getElementById('current-lang-text').textContent = langNames[lang] || lang.toUpperCase();
+        document.getElementById('current-lang-flag').textContent = langFlags[lang] || '🌐';
+
+        // Зберегти вибір мови
+        localStorage.setItem('selectedLanguage', lang);
+        document.documentElement.lang = lang; // Оновити атрибут lang в HTML
+
+        // Закрити випадаюче меню після вибору
+        document.getElementById('lang-dropdown').classList.remove('show');
+    }
+
+    // --- Ініціалізація мови ---
+    function initLanguage() {
+        const savedLang = localStorage.getItem('selectedLanguage') || 'de'; // За замовчуванням DE
+        setLanguage(savedLang);
+    }
+
+    // --- Обробники подій для перемикання мов ---
+    document.querySelectorAll('[data-lang]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const selectedLang = link.getAttribute('data-lang');
+            setLanguage(selectedLang);
+        });
     });
 
+    // --- Випадаюче меню мов ---
+    document.getElementById('current-lang-btn').addEventListener('click', () => {
+        document.getElementById('lang-dropdown').classList.toggle('show');
+    });
+
+    // Закриття меню при кліку поза ним
+    window.addEventListener('click', (e) => {
+        if (!document.getElementById('current-lang-btn').contains(e.target) &&
+            !document.getElementById('lang-dropdown').contains(e.target)) {
+            document.getElementById('lang-dropdown').classList.remove('show');
+        }
+    });
+
+    // --- Мобільне меню ---
+    document.querySelector('.menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.add('active');
+    });
+
+    document.getElementById('close-mobile-menu').addEventListener('click', () => {
+        document.getElementById('mobile-menu').classList.remove('active');
+    });
+
+    // Закриття мобільного меню при кліку на посилання
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.remove('active');
+        });
+    });
+
+    // --- FAQ Акордеон ---
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            item.classList.toggle('active');
+        });
+    });
+
+    // --- Чат ---
+    const chatWidget = document.getElementById('chat-widget');
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatContainer = document.getElementById('chat-container');
+    const closeChat = document.getElementById('close-chat');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatInput = document.getElementById('chat-input');
+    const sendMessageBtn = document.getElementById('send-message');
+
+    // Відкриття/закриття чату
+    chatToggle.addEventListener('click', () => {
+        const isOpen = chatContainer.style.display === 'flex';
+        if (isOpen) {
+            chatContainer.style.display = 'none';
+        } else {
+            chatContainer.style.display = 'flex';
+            // Додати початкове повідомлення, якщо чат порожній
+            if (chatMessages.children.length === 0) {
+                const currentLang = localStorage.getItem('selectedLanguage') || 'de';
+                const greetingKey = "chat.greeting";
+                const greetingText = translations[currentLang] && translations[currentLang][greetingKey] ? translations[currentLang][greetingKey] : "Привіт! Яка потрібна допомога?";
+                addMessage('bot', greetingText);
+            }
+            chatInput.focus();
+        }
+    });
+
+    // Закриття чату кнопкою
+    closeChat.addEventListener('click', () => {
+        chatContainer.style.display = 'none';
+    });
+
+    // Закриття чату кліком поза ним
+    document.addEventListener('click', (e) => {
+        if (!chatWidget.contains(e.target)) {
+            chatContainer.style.display = 'none';
+        }
+    });
+
+    // Додавання повідомлення до чату
     function addMessage(sender, text) {
-      const msg = document.createElement('p');
-      msg.style.margin = '8px 0';
-      if (sender === 'user') {
-        msg.style.textAlign = 'right';
-        msg.innerHTML = `<strong>Ви:</strong> ${escapeHtml(text)}`;
-      } else {
-        msg.style.color = '#555';
-        msg.innerHTML = `<strong>Бот:</strong> ${escapeHtml(text)}`;
-      }
-      messages.appendChild(msg);
-      messages.scrollTop = messages.scrollHeight;
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+        messageDiv.textContent = text;
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
-    function escapeHtml(unsafe) {
-      return unsafe
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '<')
-        .replace(/>/g, '>')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#039;');
+    // Відправка повідомлення
+    function sendMessage() {
+        const message = chatInput.value.trim();
+        if (message) {
+            addMessage('user', message);
+            chatInput.value = '';
+
+            // --- Взаємодія з API ---
+            const currentLang = localStorage.getItem('selectedLanguage') || 'de';
+            fetch('https://vercel-sable-ten.vercel.app/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    messages: [{ role: 'user', content: message }],
+                    lang: currentLang
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const botReply = data.reply || (translations[currentLang] && translations[currentLang]["chat.default_reply"]) || "Entschuldigung, ich konnte keine Antwort generieren.";
+                addMessage('bot', botReply);
+            })
+            .catch(error => {
+                console.error('Chat API error:', error);
+                const errorMsg = (translations[currentLang] && translations[currentLang]["chat.error"]) || "Es gab ein Problem bei der Verbindung mit dem Support.";
+                addMessage('bot', errorMsg);
+            });
+        }
     }
+
+    sendMessageBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    // --- Ініціалізація ---
+    document.addEventListener('DOMContentLoaded', () => {
+        initLanguage();
+    });
+
   </script>
+
 </body>
 </html>
+```
