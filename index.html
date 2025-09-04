@@ -6,6 +6,7 @@
   <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title>
   <meta name="description" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/>
   <meta name="theme-color" content="#0F172A"/>
+  <meta name="color-scheme" content="dark light"/>
 
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -21,6 +22,16 @@
       --radius:20px; --radius-sm:12px;
       --glow:0 0 20px rgba(59, 130, 246, 0.3);
     }
+    
+    /* Light Theme Variables */
+    [data-theme="light"]{
+      --bg:#FFFFFF; --bg2:#F8FAFC; --text:#1E293B; --muted:#64748B;
+      --card:linear-gradient(145deg,rgba(0,0,0,.02),rgba(0,0,0,.08));
+      --border:1px solid rgba(0,0,0,.1);
+      --shadow:0 25px 50px -12px rgba(0,0,0,.1);
+      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.15);
+      --glow:0 0 20px rgba(59, 130, 246, 0.2);
+    }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;background:linear-gradient(135deg,var(--bg) 0%,var(--bg2) 100%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
@@ -30,10 +41,16 @@
     @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
     @keyframes slideInLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
+    @keyframes glow{0%,100%{box-shadow:var(--glow)}50%{box-shadow:0 0 30px rgba(59, 130, 246, 0.5)}}
+    @keyframes shimmer{0%{background-position:-200px 0}100%{background-position:calc(200px + 100%) 0}}
     .animate-float{animation:float 6s ease-in-out infinite}
     .animate-slide-up{animation:slideUp .8s ease-out forwards}
     .animate-slide-left{animation:slideInLeft .6s ease-out forwards}
     .animate-fade{animation:fadeIn .5s ease-out forwards}
+    .animate-bounce{animation:bounce 2s ease-in-out infinite}
+    .animate-glow{animation:glow 3s ease-in-out infinite}
+    .animate-shimmer{background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent);background-size:200px 100%;animation:shimmer 2s infinite}
 
     a{color:inherit;text-decoration:none}
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
@@ -379,10 +396,10 @@
       .hero-grid{grid-template-columns:1fr;gap:32px;text-align:center}
       .hero-card{padding:20px}
       .hero-stats{gap:12px}
-      .stat{padding:12px}
+          .stat{padding:12px}
       .stat b{font-size:16px}
       
-      .cards{grid-template-columns:1fr;gap:16px}
+           .cards{grid-template-columns:1fr !important;gap:16px}
       .card{padding:20px}
       .card-icon{width:48px;height:48px;margin-bottom:12px}
       .card h3{font-size:18px}
@@ -403,9 +420,25 @@
         max-height:60vh;
       }
       .chat-body{height:280px;padding:12px}
-      .chat-launcher{width:52px;height:52px;right:12px;bottom:12px}
+        .chat-launcher{width:52px;height:52px;right:12px;bottom:12px}
       
       .lang select{padding:6px 10px;font-size:13px}
+    
+    /* Theme Toggle */
+    .theme-toggle{
+      background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);
+      border-radius:20px;padding:4px;display:flex;align-items:center;
+      gap:4px;cursor:pointer;transition:.3s ease;margin-right:12px;
+    }
+    .theme-toggle:hover{background:rgba(255,255,255,.15);border-color:var(--brand)}
+    .theme-option{
+      padding:6px 10px;border-radius:16px;font-size:12px;font-weight:600;
+      transition:.3s ease;color:var(--muted);min-width:35px;text-align:center;
+    }
+    .theme-option.active{
+      background:var(--brand);color:white;box-shadow:var(--glow);
+    }
+    .theme-option:not(.active):hover{color:white}
       .cta{padding:8px 14px;font-size:13px;gap:8px}
     }
 
@@ -475,30 +508,30 @@
           <a href="#process" data-i18n="nav_process">Prozess</a>
           <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
           <a href="#faq" data-i18n="nav_faq">FAQ</a>
-          <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
+                  <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
             <span data-i18n="telegram">Telegram</span>
           </a>
+          <div class="theme-toggle" id="themeToggle">
+            <div class="theme-option active" data-theme="dark">🌙</div>
+            <div class="theme-option" data-theme="light">☀️</div>
+          </div>
           <div class="lang">
             <label for="lang" class="sr-only">Sprache</label>
             <select id="lang" aria-label="Language">
-              <option value="de">DE</option>
-              <option value="en">EN</option>
-              <option value="uk" selected>UA</option>
-              <option value="ru">RU</option>
+              <option value="de">de</option>
+              <option value="en">en</option>
+              <option value="ua" selected>ua</option>
+              <option value="pl">pl</option>
+              <option value="ru">ru</option>
             </select>
           </div>
         </div>
 
         <!-- Mobile Toggle -->
-        <div class="mobile-controls" style="display: flex; align-items: center; gap: 12px;">
-          <div class="lang">
-            <label for="lang-mobile" class="sr-only">Sprache</label>
-            <select id="lang-mobile" aria-label="Language">
-              <option value="de">DE</option>
-              <option value="en">EN</option>
-              <option value="uk" selected>UA</option>
-              <option value="ru">RU</option>
-            </select>
+        <div class="mobile-controls" style="display: flex; align-items: center; gap: 8px;">
+          <div class="theme-toggle" id="themeToggleMobile">
+            <div class="theme-option active" data-theme="dark">🌙</div>
+            <div class="theme-option" data-theme="light">☀️</div>
           </div>
           <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
             <div class="hamburger" id="hamburger">
@@ -516,6 +549,16 @@
             <a href="#process" data-i18n="nav_process">Prozess</a>
             <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
             <a href="#faq" data-i18n="nav_faq">FAQ</a>
+            <div class="lang" style="margin: 12px 16px;">
+              <label for="lang-mobile" class="sr-only">Sprache</label>
+              <select id="lang-mobile" aria-label="Language">
+                <option value="de">de</option>
+                <option value="en">en</option>
+                <option value="ua" selected>ua</option>
+                <option value="pl">pl</option>
+                <option value="ru">ru</option>
+              </select>
+            </div>
             <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
               <span data-i18n="telegram">Telegram</span>
             </a>
@@ -527,15 +570,14 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+        <section class="hero" style="background-image: url('img/hero.jpg'); background-size: cover; background-position: center; background-blend-mode: overlay;">
       <div class="container">
         <div class="hero-content animate-slide-up">
           <div class="hero-grid">
             <div>
-              <div class="badge animate-slide-left">
+                           <div class="badge animate-slide-left animate-bounce">
                 ✨ <span data-i18n="badge">8 Jahre Erfahrung</span>
               </div>
-              <h1 data-i18n="hero_title">Digitales Marketing, das funktioniert</h1>
               <p class="lead" data-i18n="hero_lead">Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.</p>
               <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px;">
                 <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
@@ -571,11 +613,11 @@
     </section>
 
     <!-- Services Section -->
-    <section id="services">
+       <section id="services">
       <div class="container">
         <h2 data-i18n="services_title">Unsere Leistungen</h2>
-        <div class="cards">
-          <div class="card animate-slide-up">
+               <div class="cards" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto;">
+          <div class="card animate-slide-up animate-glow">
             <div class="chip">Web Development</div>
             <div class="card-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -587,7 +629,7 @@
             <p data-i18n="service_web_desc">Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit.</p>
           </div>
           
-          <div class="card animate-slide-up">
+                 <div class="card animate-slide-up animate-glow">
             <div class="chip">Google Ads</div>
             <div class="card-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -598,7 +640,7 @@
             <p data-i18n="service_ads_desc">Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten.</p>
           </div>
 
-          <div class="card animate-slide-up">
+                  <div class="card animate-slide-up animate-glow">
             <div class="chip">SEO</div>
             <div class="card-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -606,10 +648,10 @@
               </svg>
             </div>
             <h3 data-i18n="service_seo_title">Suchmaschinenoptimierung</h3>
-            <p data-i18n="service_seo_desc">Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen.</p>
+          <p data-i18n="service_seo_desc">Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen.</p>
           </div>
 
-          <div class="card animate-slide-up">
+             <div class="card animate-slide-up animate-glow">
             <div class="chip">Social Media</div>
             <div class="card-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
@@ -678,20 +720,88 @@
 
     <!-- Testimonials Section -->
     <section id="testimonials">
-      <div class="container">
+     div class="container">
         <h2 data-i18n="testimonials_title">Was unsere Kunden sagen</h2>
         <div class="testimonials">
-          <div class="quote">
+        <div class="quote animate-fade">
             <p data-i18n="testimonial1_text">Dank der professionellen Betreuung haben wir unseren Online-Umsatz um 300% gesteigert. Absolut empfehlenswert!</p>
             <b><div class="quote-avatar">MK</div> <span data-i18n="testimonial1_author">Maria K., Geschäftsführerin</span></b>
           </div>
-          <div class="quote">
+          <div class="quote animate-fade">
             <p data-i18n="testimonial2_text">Die Website ist modern, schnell und bringt uns täglich neue Kunden. Sehr zufrieden mit der Zusammenarbeit.</p>
             <b><div class="quote-avatar">TH</div> <span data-i18n="testimonial2_author">Thomas H., Unternehmer</span></b>
           </div>
-          <div class="quote">
+               <div class="quote animate-fade">
             <p data-i18n="testimonial3_text">Professionelle Google Ads Betreuung mit messbaren Ergebnissen. Unser ROI hat sich verdreifacht.</p>
             <b><div class="quote-avatar">SL</div> <span data-i18n="testimonial3_author">Sarah L., Marketing Manager</span></b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Excellent SEO results! Our organic traffic increased by 400% in just 6 months.</p>
+            <b><div class="quote-avatar">JD</div> John D., CEO</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Профессиональная команда, отличные результаты. Рекомендую всем!</p>
+            <b><div class="quote-avatar">АП</div> Анна П., Директор</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Чудова робота з соціальними мережами. Наша аудиторія зросла в 5 разів!</p>
+            <b><div class="quote-avatar">ОМ</div> Олена М., Маркетолог</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Szybka i profesjonalna obsługa. Strona internetowa przekroczyła nasze oczekiwania.</p>
+            <b><div class="quote-avatar">PK</div> Piotr K., Właściciel</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Best investment for our business! ROI improved dramatically within 3 months.</p>
+            <b><div class="quote-avatar">RM</div> Robert M., Founder</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Kreative Lösungen und messbare Ergebnisse. Genau das, was wir gebraucht haben.</p>
+            <b><div class="quote-avatar">LW</div> Lisa W., CMO</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Отличная техподдержка 24/7. Всегда готовы помочь и решить любые вопросы.</p>
+            <b><div class="quote-avatar">ДС</div> Дмитрий С., IT-директор</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Наш сайт тепер виглядає сучасно і працює швидко. Дякую за якісну роботу!</p>
+            <b><div class="quote-avatar">ВК</div> Віктор К., Засновник</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Fantastyczne rezultaty w Google Ads. Zwiększyliśmy sprzedaż o 250%!</p>
+            <b><div class="quote-avatar">MN</div> Marek N., Manager</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Professional team with deep expertise in digital marketing. Highly recommended!</p>
+            <b><div class="quote-avatar">EJ</div> Emma J., Director</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Schnelle Umsetzung und hervorragende Kommunikation. Sehr professionell!</p>
+            <b><div class="quote-avatar">FS</div> Frank S., Geschäftsführer</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Благодаря вашей работе наш бизнес вышел на новый уровень. Спасибо!</p>
+            <b><div class="quote-avatar">ИВ</div> Ирина В., Владелец</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Дуже задоволені результатами SEO. Сайт тепер на першій сторінці Google!</p>
+            <b><div class="quote-avatar">СТ</div> Сергій Т., Керівник</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Świetna obsługa klienta i doskonałe wyniki marketingowe. Polecam!</p>
+            <b><div class="quote-avatar">KL</div> Katarzyna L., CEO</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Outstanding social media strategy! Our engagement rates tripled in 2 months.</p>
+            <b><div class="quote-avatar">DW</div> David W., Marketing Lead</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Zuverlässige Partnerschaft seit 3 Jahren. Immer innovative Lösungen!</p>
+            <b><div class="quote-avatar">CB</div> Claudia B., Inhaberin</b>
+          </div>
+          <div class="quote animate-fade">
+            <p>Превосходная работа с контекстной рекламой. Конверсии выросли в 4 раза!</p>
+            <b><div class="quote-avatar">НР</div> Николай Р., Маркетолог</b>
           </div>
         </div>
       </div>
@@ -786,6 +896,7 @@
     💬
   </button>
 
+  <script src="chat.js"></script>
   <script>
     // Mobile Menu Toggle
     document.getElementById('mobileToggle').addEventListener('click', function() {
@@ -832,78 +943,180 @@
         } else {
           item.classList.add('open');
         }
-      });
+        });
     });
 
-    // Chat functionality
-    let chatOpen = false;
-
-    function toggleChat() {
-      const panel = document.getElementById('chatPanel');
-      const backdrop = document.getElementById('chatBackdrop');
-      
-      chatOpen = !chatOpen;
-      
-      if (chatOpen) {
-        panel.classList.add('open');
-        backdrop.classList.add('open');
-      } else {
-        panel.classList.remove('open');
-        backdrop.classList.remove('open');
-      }
-    }
-
-    function sendMessage() {
-      const input = document.getElementById('chatInput');
-      const message = input.value.trim();
-      
-      if (!message) return;
-      
-      const chatBody = document.getElementById('chatBody');
-      
-      // Add user message
-      chatBody.innerHTML += `
-        <div class="msg user">
-          <div class="bubble">${message}</div>
-        </div>
-      `;
-      
-      input.value = '';
-      
-      // Auto response after delay
-      setTimeout(() => {
-        chatBody.innerHTML += `
-          <div class="msg bot">
-            <div class="bubble">Vielen Dank für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen. Für sofortige Hilfe kontaktieren Sie uns über <a href="https://t.me/Marketing_in_Deutschland" target="_blank" style="color: var(--brand);">Telegram</a>.</div>
-          </div>
-        `;
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 1000);
-      
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function handleEnter(event) {
-      if (event.key === 'Enter') {
-        sendMessage();
-      }
-    }
-
+     // Chat functionality is now handled by chat.js
     // Close chat when clicking backdrop
     document.getElementById('chatBackdrop').addEventListener('click', toggleChat);
 
-    // Language switching (basic implementation)
+    // Theme Toggle Functionality
+    function initThemeToggle() {
+      const toggles = document.querySelectorAll('.theme-toggle');
+      
+      toggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          if (e.target.classList.contains('theme-option')) {
+            const theme = e.target.dataset.theme;
+            
+            // Update all toggles
+            document.querySelectorAll('.theme-option').forEach(opt => {
+              opt.classList.remove('active');
+            });
+            document.querySelectorAll(`[data-theme="${theme}"]`).forEach(opt => {
+              opt.classList.add('active');
+            });
+            
+            // Apply theme
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+          }
+        });
+      });
+      
+      // Load saved theme
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.querySelectorAll('.theme-option').forEach(opt => {
+        opt.classList.remove('active');
+      });
+      document.querySelectorAll(`[data-theme="${savedTheme}"]`).forEach(opt => {
+        opt.classList.add('active');
+      });
+    }
+    
+    // Language switching with i18n support
+    const translations = {
+      de: {
+        meta_title: "Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)",
+        meta_desc: "8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
+        brand: "Marketing in Deutschland",
+        tagline: "Digitalagentur",
+        nav_services: "Leistungen",
+        nav_process: "Prozess",
+        nav_testimonials: "Bewertungen",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        badge: "8 Jahre Erfahrung",
+        hero_title: "Digitales Marketing, das funktioniert",
+        hero_lead: "Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
+        consultation: "Beratung starten",
+        services: "Leistungen"
+      },
+      en: {
+        meta_title: "Marketing in Deutschland — Digital Agency (EN/DE/UA/RU)",
+        meta_desc: "8 years of experience: Websites, Google Ads, SMM, SEO. Visible where your customers are already searching.",
+        brand: "Marketing in Deutschland",
+        tagline: "Digital Agency",
+        nav_services: "Services",
+        nav_process: "Process",
+        nav_testimonials: "Reviews",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        badge: "8 Years Experience",
+        hero_title: "Digital Marketing That Works",
+        hero_lead: "Websites, Google Ads, SMM, SEO. Visible where your customers are already searching.",
+        consultation: "Start Consultation",
+        services: "Services"
+      },
+      ua: {
+        meta_title: "Маркетинг в Німеччині — Цифрове агентство (EN/DE/UA/RU)",
+        meta_desc: "8 років досвіду: Веб-сайти, Google Ads, SMM, SEO. Видимі там, де ваші клієнти вже шукають.",
+        brand: "Marketing in Deutschland",
+        tagline: "Цифрове агентство",
+        nav_services: "Послуги",
+        nav_process: "Процес",
+        nav_testimonials: "Відгуки",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        badge: "8 років досвіду",
+        hero_title: "Цифровий маркетинг, що працює",
+        hero_lead: "Веб-сайти, Google Ads, SMM, SEO. Видимі там, де ваші клієнти вже шукають.",
+        consultation: "Почати консультацію",
+        services: "Послуги"
+      },
+      ru: {
+        meta_title: "Маркетинг в Германии — Цифровое агентство (EN/DE/UA/RU)",
+        meta_desc: "8 лет опыта: Веб-сайты, Google Ads, SMM, SEO. Видимы там, где ваши клиенты уже ищут.",
+        brand: "Marketing in Deutschland",
+        tagline: "Цифровое агентство",
+        nav_services: "Услуги",
+        nav_process: "Процесс",
+        nav_testimonials: "Отзывы",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        badge: "8 лет опыта",
+        hero_title: "Цифровой маркетинг, который работает",
+        hero_lead: "Веб-сайты, Google Ads, SMM, SEO. Видимы там, где ваши клиенты уже ищут.",
+        consultation: "Начать консультацию",
+        services: "Услуги"
+      },
+      pl: {
+        meta_title: "Marketing w Niemczech — Agencja cyfrowa (EN/DE/UA/RU)",
+        meta_desc: "8 lat doświadczenia: Strony internetowe, Google Ads, SMM, SEO. Widoczni tam, gdzie już szukają Twoi klienci.",
+        brand: "Marketing in Deutschland",
+        tagline: "Agencja cyfrowa",
+        nav_services: "Usługi",
+        nav_process: "Proces",
+        nav_testimonials: "Opinie",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        badge: "8 lat doświadczenia",
+        hero_title: "Marketing cyfrowy, który działa",
+        hero_lead: "Strony internetowe, Google Ads, SMM, SEO. Widoczni tam, gdzie już szukają Twoi klienci.",
+        consultation: "Rozpocznij konsultację",
+        services: "Usługi"
+      }
+    };
+    
+    function switchLanguage(lang) {
+      const translation = translations[lang];
+      if (!translation) return;
+      
+      // Update all elements with data-i18n attributes
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translation[key]) {
+          if (element.tagName === 'META') {
+            element.setAttribute('content', translation[key]);
+          } else {
+            element.textContent = translation[key];
+          }
+        }
+      });
+      
+      // Update page title
+      if (translation.meta_title) {
+        document.title = translation.meta_title;
+      }
+      
+      // Dispatch language change event for chat
+      document.dispatchEvent(new CustomEvent('languageChanged', {
+        detail: { language: lang }
+      }));
+    }
     document.querySelectorAll('select[id^="lang"]').forEach(select => {
       select.addEventListener('change', function() {
+            const selectedLang = this.value;
         // Update all selects to match
         document.querySelectorAll('select[id^="lang"]').forEach(s => {
-          s.value = this.value;
+         s.value = selectedLang;
         });
+                
+           // Switch language
+        switchLanguage(selectedLang);
         
-        // Here you would implement actual language switching
-        console.log('Language changed to:', this.value);
+        // Save language preference
+        localStorage.setItem('language', selectedLang);
       });
     });
+    
+    // Load saved language
+    const savedLang = localStorage.getItem('language') || 'ua';
+    document.querySelectorAll('select[id^="lang"]').forEach(s => {
+      s.value = savedLang;
+    });
+    switchLanguage(savedLang);
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -945,9 +1158,62 @@
         const rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight && rect.bottom > 0) {
           el.style.animationPlayState = 'running';
-        }
+             }
       });
     }, 100);
+    
+    // Initialize theme toggle
+    initThemeToggle();
+    
+    // Add parallax effect to hero background
+    window.addEventListener('scroll', () => {
+      const hero = document.querySelector('.hero');
+      const scrolled = window.pageYOffset;
+      const parallax = scrolled * 0.5;
+      
+      if (hero) {
+        hero.style.backgroundPosition = `center ${parallax}px`;
+      }
+    });
+    
+    // Add floating particles animation
+    function createFloatingParticles() {
+      const hero = document.querySelector('.hero');
+      if (!hero) return;
+      
+      for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+          position: absolute;
+          width: 4px;
+          height: 4px;
+          background: rgba(59, 130, 246, 0.6);
+          border-radius: 50%;
+          top: ${Math.random() * 100}%;
+          left: ${Math.random() * 100}%;
+          animation: float ${3 + Math.random() * 4}s ease-in-out infinite;
+          animation-delay: ${Math.random() * 2}s;
+          pointer-events: none;
+          z-index: 1;
+        `;
+        hero.appendChild(particle);
+      }
+    }
+    
+    createFloatingParticles();
+    
+    // Enhanced card hover effects
+    document.querySelectorAll('.card').forEach((card, index) => {
+      card.style.animationDelay = `${index * 0.1}s`;
+      
+      card.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-12px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0) scale(1)';
+      });
+    });
   </script>
 </body>
 </html>
