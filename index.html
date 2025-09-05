@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title>
+  <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU/PL)</title>
   <meta name="description" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/>
   <meta name="theme-color" content="#0F172A"/>
   <meta name="color-scheme" content="dark light"/>
@@ -25,12 +25,26 @@
     
     /* Light Theme Variables */
     [data-theme="light"]{
-      --bg:#FFFFFF; --bg2:#F8FAFC; --text:#1E293B; --muted:#64748B;
-      --card:linear-gradient(145deg,rgba(0,0,0,.02),rgba(0,0,0,.08));
-      --border:1px solid rgba(0,0,0,.1);
-      --shadow:0 25px 50px -12px rgba(0,0,0,.1);
-      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.15);
-      --glow:0 0 20px rgba(59, 130, 246, 0.2);
+      --bg:#FFFFFF; --bg2:#F1F5F9; --text:#0F172A; --muted:#475569;
+      --brand:#2563EB; --brand2:#059669; --accent:#D97706; --purple:#7C3AED;
+      --card:linear-gradient(145deg,rgba(0,0,0,.03),rgba(0,0,0,.01));
+      --border:1px solid rgba(0,0,0,.08);
+      --shadow:0 25px 50px -12px rgba(0,0,0,.08);
+      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.12);
+      --glow:0 0 20px rgba(37, 99, 235, 0.15);
+    }
+    
+    [data-theme="light"] body{
+      background:linear-gradient(135deg,#FFFFFF 0%,#F8FAFC 50%,#E2E8F0 100%);
+    }
+    
+    [data-theme="light"] header{
+      background:rgba(255,255,255,.95);
+      border-bottom:1px solid rgba(0,0,0,.08);
+    }
+    
+    [data-theme="light"] .hero{
+      background-blend-mode:soft-light;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -198,7 +212,9 @@
       -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
     }
 
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+    @media(max-width:1200px){.cards{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:768px){.cards{grid-template-columns:1fr}}
     .card{
       background:var(--card);border:var(--border);border-radius:var(--radius);
       padding:24px;box-shadow:var(--shadow);position:relative;
@@ -256,7 +272,19 @@
       font-size:20px;font-weight:800;color:white;
     }
 
-    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+    .testimonials-container{position:relative;overflow:hidden}
+    .testimonials{display:flex;gap:20px;overflow-x:auto;scroll-behavior:smooth;padding:20px 0}
+    .testimonials::-webkit-scrollbar{height:8px}
+    .testimonials::-webkit-scrollbar-track{background:rgba(255,255,255,.1);border-radius:4px}
+    .testimonials::-webkit-scrollbar-thumb{background:var(--brand);border-radius:4px}
+    .testimonials::-webkit-scrollbar-thumb:hover{background:var(--brand2)}
+    .testimonials .quote{min-width:320px;flex-shrink:0}
+    .testimonials-nav{display:flex;justify-content:center;gap:12px;margin-top:24px}
+    .nav-btn{background:var(--brand);color:white;border:none;width:44px;height:44px;
+      border-radius:50%;cursor:pointer;font-size:18px;font-weight:bold;
+      transition:.3s ease;display:flex;align-items:center;justify-content:center}
+    .nav-btn:hover{background:var(--brand2);transform:scale(1.1)}
+    .nav-btn:active{transform:scale(0.95)}
     .quote{
       background:rgba(255,255,255,.05);border:var(--border);
       border-radius:var(--radius);padding:24px;position:relative;
@@ -399,7 +427,7 @@
       .stat{padding:12px}
       .stat b{font-size:16px}
       
-      .cards{grid-template-columns:1fr !important;gap:16px}
+      .cards{grid-template-columns:1fr;gap:16px}
       .card{padding:20px}
       .card-icon{width:48px;height:48px;margin-bottom:12px}
       .card h3{font-size:18px}
@@ -439,6 +467,38 @@
       background:var(--brand);color:white;box-shadow:var(--glow);
     }
     .theme-option:not(.active):hover{color:white}
+    
+    /* Site Banner */
+    .site-banner{
+      background:linear-gradient(135deg,var(--brand) 0%,var(--purple) 50%,var(--brand2) 100%);
+      color:white;padding:40px 0;position:relative;overflow:hidden;
+    }
+    .site-banner:before{
+      content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+      background:url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+      animation:shimmer 20s linear infinite;
+    }
+    .banner-content{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:2}
+    .banner-text{flex:1;max-width:600px}
+    .banner-title{
+      font-size:clamp(24px,4vw,36px);font-weight:900;margin:0 0 12px;
+      text-shadow:0 2px 10px rgba(0,0,0,.3);
+    }
+    .banner-subtitle{
+      font-size:clamp(14px,2.5vw,18px);opacity:.9;margin:0;line-height:1.5;
+    }
+    .banner-stats{display:flex;gap:32px;align-items:center}
+    .banner-stat{text-align:center}
+    .banner-stat .stat-number{
+      font-size:clamp(24px,4vw,32px);font-weight:900;
+      text-shadow:0 2px 10px rgba(0,0,0,.3);
+    }
+    .banner-stat .stat-label{font-size:12px;opacity:.8;margin-top:4px}
+    
+    @media(max-width:768px){
+      .banner-content{flex-direction:column;text-align:center;gap:24px}
+      .banner-stats{justify-content:center;gap:24px}
+    }
       .cta{padding:8px 14px;font-size:13px;gap:8px}
     }
 
@@ -518,11 +578,11 @@
           <div class="lang">
             <label for="lang" class="sr-only">Sprache</label>
             <select id="lang" aria-label="Language">
-              <option value="de">de</option>
-              <option value="en">en</option>
-              <option value="ua" selected>ua</option>
-              <option value="pl">pl</option>
-              <option value="ru">ru</option>
+              <option value="de">DE</option>
+              <option value="en">EN</option>
+              <option value="ua" selected>UA</option>
+              <option value="pl">PL</option>
+              <option value="ru">RU</option>
             </select>
           </div>
         </div>
@@ -552,11 +612,11 @@
             <div class="lang" style="margin: 12px 16px;">
               <label for="lang-mobile" class="sr-only">Sprache</label>
               <select id="lang-mobile" aria-label="Language">
-                <option value="de">de</option>
-                <option value="en">en</option>
-                <option value="ua" selected>ua</option>
-                <option value="pl">pl</option>
-                <option value="ru">ru</option>
+                <option value="de">DE</option>
+                <option value="en">EN</option>
+                <option value="ua" selected>UA</option>
+                <option value="pl">PL</option>
+                <option value="ru">RU</option>
               </select>
             </div>
             <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
@@ -567,6 +627,32 @@
       </nav>
     </div>
   </header>
+
+  <!-- Site Banner -->
+  <section class="site-banner">
+    <div class="container">
+      <div class="banner-content">
+        <div class="banner-text">
+          <h1 class="banner-title" data-i18n="banner_title">🚀 Ihr Erfolg im digitalen Raum beginnt hier!</h1>
+          <p class="banner-subtitle" data-i18n="banner_subtitle">Professionelle Digitalmarketing-Lösungen für Unternehmen in Deutschland, Europa und weltweit</p>
+        </div>
+        <div class="banner-stats">
+          <div class="banner-stat">
+            <div class="stat-number">150+</div>
+            <div class="stat-label" data-i18n="banner_projects">Projekte</div>
+          </div>
+          <div class="banner-stat">
+            <div class="stat-number">8+</div>
+            <div class="stat-label" data-i18n="banner_years">Jahre</div>
+          </div>
+          <div class="banner-stat">
+            <div class="stat-number">95%</div>
+            <div class="stat-label" data-i18n="banner_satisfaction">Zufriedenheit</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <main>
     <!-- Hero Section -->
@@ -617,7 +703,7 @@
     <section id="services">
       <div class="container">
         <h2 data-i18n="services_title">Unsere Leistungen</h2>
-        <div class="cards" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto;">
+        <div class="cards">
           <div class="card animate-slide-up animate-glow">
             <div class="chip">Web Development</div>
             <div class="card-icon">
@@ -723,7 +809,8 @@
     <section id="testimonials">
       <div class="container">
         <h2 data-i18n="testimonials_title">Was unsere Kunden sagen</h2>
-        <div class="testimonials">
+        <div class="testimonials-container">
+          <div class="testimonials">
           <div class="quote animate-fade">
             <p data-i18n="testimonial1_text">Dank der professionellen Betreuung haben wir unseren Online-Umsatz um 300% gesteigert. Absolut empfehlenswert!</p>
             <b><div class="quote-avatar">MK</div> <span data-i18n="testimonial1_author">Maria K., Geschäftsführerin</span></b>
@@ -803,6 +890,11 @@
           <div class="quote animate-fade">
             <p>Превосходная работа с контекстной рекламой. Конверсии выросли в 4 раза!</p>
             <b><div class="quote-avatar">НР</div> Николай Р., Маркетолог</b>
+          </div>
+          </div>
+          <div class="testimonials-nav">
+            <button class="nav-btn prev" onclick="scrollTestimonials('prev')">←</button>
+            <button class="nav-btn next" onclick="scrollTestimonials('next')">→</button>
           </div>
         </div>
       </div>
@@ -1021,7 +1113,7 @@
         services: "Services"
       },
       ua: {
-        meta_title: "Маркетинг в Німеччині — Цифрове агентство (EN/DE/UA/RU)",
+        meta_title: "Маркетинг в Німеччині — Цифрове агентство (EN/DE/UA/RU/PL)",
         meta_desc: "8 років досвіду: Веб-сайти, Google Ads, SMM, SEO. Видимі там, де ваші клієнти вже шукають.",
         brand: "Marketing in Deutschland",
         tagline: "Цифрове агентство",
@@ -1034,7 +1126,12 @@
         hero_title: "Цифровий маркетинг, що працює",
         hero_lead: "Веб-сайти, Google Ads, SMM, SEO. Видимі там, де ваші клієнти вже шукають.",
         consultation: "Почати консультацію",
-        services: "Послуги"
+        services: "Послуги",
+        banner_title: "🚀 Ваш успіх у цифровому просторі починається тут!",
+        banner_subtitle: "Професійні рішення цифрового маркетингу для компаній в Німеччині, Європі та в усьому світі",
+        banner_projects: "Проєктів",
+        banner_years: "Років",
+        banner_satisfaction: "Задоволеність"
       },
       ru: {
         meta_title: "Маркетинг в Германии — Цифровое агентство (EN/DE/UA/RU)",
@@ -1217,6 +1314,31 @@
         this.style.transform = 'translateY(0) scale(1)';
       });
     });
+    
+    // Testimonials scrolling
+    window.scrollTestimonials = function(direction) {
+      const container = document.querySelector('.testimonials');
+      const scrollAmount = 340; // width of one testimonial + gap
+      
+      if (direction === 'next') {
+        container.scrollLeft += scrollAmount;
+      } else {
+        container.scrollLeft -= scrollAmount;
+      }
+    };
+    
+    // Auto-scroll testimonials
+    setInterval(() => {
+      const container = document.querySelector('.testimonials');
+      if (container) {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        if (container.scrollLeft >= maxScroll) {
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft += 340;
+        }
+      }
+    }, 5000);
   </script>
 </body>
 </html>
