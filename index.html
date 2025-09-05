@@ -1,1418 +1,441 @@
 <!doctype html>
-<html lang="uk">
+<html lang="uk" data-theme="dark">
 <head>
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title>
-  <meta name="description" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur</title>
+  <meta name="description" data-i18n="meta_desc" content="8 років досвіду: сайти, Google Ads, SMM, SEO. Допомагаємо стати видимими там, де ваші клієнти вже шукають."/>
   <meta name="theme-color" content="#0F172A"/>
-
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0F172A; --bg2:#1E293B; --text:#F8FAFC; --muted:#94A3B8;
-      --brand:#3B82F6; --brand2:#10B981; --accent:#F59E0B; --purple:#8B5CF6;
-      --shadow:0 25px 50px -12px rgba(0,0,0,.25);
-      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.3);
-      --card:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
-      --border:1px solid rgba(255,255,255,.1);
-      --radius:20px; --radius-sm:12px;
-      --glow:0 0 20px rgba(59, 130, 246, 0.3);
+      --bg: #0b1220;
+      --bg-soft:#0f172a;
+      --fg:#e5e7eb;
+      --muted:#9ca3af;
+      --card:#111827;
+      --accent:#60a5fa;
+      --accent-2:#a78bfa;
+      --border:#1f2937;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-
-    [data-theme="light"] {
-      --bg:#F8FAFC; --bg2:#E2E8F0; --text:#1E293B; --muted:#64748B;
-      --shadow:0 25px 50px -12px rgba(0,0,0,.15);
-      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.2);
-      --card:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.6));
-      --border:1px solid rgba(30,41,59,.1);
+    [data-theme="light"]{
+      --bg:#f7fafc;
+      --bg-soft:#ffffff;
+      --fg:#0b1220;
+      --muted:#4b5563;
+      --card:#ffffff;
+      --accent:#2563eb;
+      --accent-2:#7c3aed;
+      --border:#e5e7eb;
+      --shadow: 0 10px 25px rgba(0,0,0,.08);
     }
-
     *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:linear-gradient(135deg,var(--bg) 0%,var(--bg2) 100%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;overflow-x:hidden;transition:all 0.3s ease}
-
-    @keyframes float{0%,100%{transform:translateY(0) rotate(0)}33%{transform:translateY(-10px) rotate(1deg)}66%{transform:translateY(5px) rotate(-1deg)}}
-    @keyframes pulse{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
-    @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes slideInLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    @keyframes glow{0%,100%{box-shadow:var(--glow)}50%{box-shadow:0 0 30px rgba(59,130,246,0.5)}}
-    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
-    @keyframes sparkle{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
-    
-    .animate-float{animation:float 6s ease-in-out infinite}
-    .animate-slide-up{animation:slideUp .8s ease-out forwards}
-    .animate-slide-left{animation:slideInLeft .6s ease-out forwards}
-    .animate-fade{animation:fadeIn .5s ease-out forwards}
-    .animate-glow{animation:glow 2s ease-in-out infinite}
-    .animate-bounce{animation:bounce 2s infinite}
-    .animate-sparkle{animation:sparkle 1.5s ease-in-out infinite}
-
-    /* Background decorations */
-    .bg-decoration{
-      position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--fg); font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial, sans-serif;
     }
-    .floating-shape{
-      position:absolute;opacity:.1;border-radius:50%;
-      background:linear-gradient(45deg,var(--brand),var(--purple));
-      animation:float 8s ease-in-out infinite;
-    }
-    .shape-1{width:100px;height:100px;top:10%;left:5%;animation-delay:0s}
-    .shape-2{width:150px;height:150px;top:50%;right:10%;animation-delay:2s}
-    .shape-3{width:80px;height:80px;bottom:20%;left:15%;animation-delay:4s}
-    .shape-4{width:120px;height:120px;top:30%;right:30%;animation-delay:1s}
-
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-
-    /* Theme Toggle */
-    .theme-toggle{
-      display:flex;align-items:center;gap:8px;
-      background:rgba(255,255,255,.1);border:var(--border);
-      padding:6px;border-radius:25px;cursor:pointer;
-      transition:.3s ease;position:relative;
-    }
-    .theme-toggle:hover{background:rgba(255,255,255,.15)}
-    .theme-option{
-      padding:6px 12px;border-radius:20px;font-size:12px;
-      font-weight:600;transition:.3s ease;position:relative;
-      z-index:2;
-    }
-    .theme-option.active{
-      background:var(--brand);color:white;
-      box-shadow:var(--glow);
-    }
-
-    /* HEADER */
+    a{color:var(--accent); text-decoration:none}
+    .container{max-width:1100px; margin:0 auto; padding:0 16px}
     header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(15,23,42,.95);backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      box-shadow:0 4px 32px rgba(0,0,0,.1);
-    }
-    [data-theme="light"] header{
-      background:rgba(248,250,252,.95);
-      border-bottom:1px solid rgba(30,41,59,.1);
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(180%) blur(10px);
+      background: color-mix(in srgb, var(--bg-soft) 85%, transparent);
+      border-bottom:1px solid var(--border);
     }
     .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      height:70px;gap:16px;position:relative;
+      display:flex; align-items:center; justify-content:space-between; padding:12px 0;
     }
-    .brand{display:flex;align-items:center;gap:12px;z-index:51}
-    .logo{width:40px;height:40px;filter:drop-shadow(var(--glow));flex-shrink:0}
-    .title{font-weight:900;letter-spacing:-.02em;font-size:16px}
-    .subtitle{display:block;font-weight:600;color:var(--muted);font-size:11px;margin-top:-2px}
-    
-    /* DESKTOP MENU */
-    .nav-desktop{
-      display:flex;gap:20px;align-items:center;
+    .brand{display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px}
+    .logo{
+      width:36px; height:36px; border-radius:10px;
+      background: conic-gradient(from 180deg, var(--accent), var(--accent-2));
+      box-shadow: var(--shadow);
     }
-    .nav-desktop a{
-      padding:8px 14px;border-radius:var(--radius-sm);
-      color:var(--muted);transition:.3s ease;font-weight:500;
-      white-space:nowrap;position:relative;
+    .nav-right{display:flex; align-items:center; gap:10px}
+    .lang{
+      display:flex; gap:6px; padding:6px; border:1px solid var(--border); border-radius:999px; background:var(--card);
     }
-    .nav-desktop a:hover{
-      color:#fff;background:rgba(255,255,255,.1);
-      transform:translateY(-2px);box-shadow:var(--shadow);
+    .lang button{
+      border:0; background:transparent; color:var(--muted); padding:6px 10px; border-radius:999px; cursor:pointer; font-weight:600; text-transform:lowercase;
     }
-    .nav-desktop a:before{
-      content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;
-      background:var(--brand);transition:.3s ease;
-      transform:translateX(-50%);
-    }
-    .nav-desktop a:hover:before{width:80%}
-
-    /* MOBILE MENU */
-    .mobile-toggle{
-      display:none;background:none;border:none;color:var(--text);
-      cursor:pointer;padding:8px;border-radius:8px;
-      transition:background .3s ease;z-index:52;position:relative;
-    }
-    .mobile-toggle:hover{background:rgba(255,255,255,.1)}
-    .hamburger{width:24px;height:18px;position:relative;transform:rotate(0deg);transition:.5s ease-in-out}
-    .hamburger span{
-      display:block;position:absolute;height:3px;width:100%;
-      background:var(--text);border-radius:2px;opacity:1;left:0;
-      transform:rotate(0deg);transition:.25s ease-in-out;
-    }
-    .hamburger span:nth-child(1){top:0px}
-    .hamburger span:nth-child(2){top:7px}
-    .hamburger span:nth-child(3){top:14px}
-    .hamburger.active span:nth-child(1){top:7px;transform:rotate(135deg)}
-    .hamburger.active span:nth-child(2){opacity:0;left:-60px}
-    .hamburger.active span:nth-child(3){top:7px;transform:rotate(-135deg)}
-
-    .mobile-menu{
-      position:absolute;top:100%;left:0;right:0;
-      background:rgba(15,23,42,.98);backdrop-filter:blur(20px);
-      border-bottom:1px solid rgba(255,255,255,.1);
-      transform:translateY(-10px);opacity:0;visibility:hidden;
-      transition:all .3s ease;z-index:49;
-      box-shadow:0 10px 40px rgba(0,0,0,.2);
-    }
-    [data-theme="light"] .mobile-menu{
-      background:rgba(248,250,252,.98);
-    }
-    .mobile-menu.active{
-      transform:translateY(0);opacity:1;visibility:visible;
-    }
-    .mobile-links{
-      display:flex;flex-direction:column;padding:20px;gap:4px;
-    }
-    .mobile-links a{
-      padding:12px 16px;color:var(--muted);
-      border-radius:var(--radius-sm);transition:.3s ease;
-      font-weight:500;
-    }
-    .mobile-links a:hover{
-      color:var(--text);background:rgba(255,255,255,.08);
+    .lang button.active{background:var(--bg); color:var(--fg); border:1px solid var(--border)}
+    .toggle{
+      border:1px solid var(--border); background:var(--card); color:var(--fg);
+      border-radius:999px; padding:6px 10px; cursor:pointer; font-weight:600;
     }
 
-    .lang select{
-      background:var(--bg2);color:var(--text);border:1px solid rgba(255,255,255,.2);
-      padding:8px 12px;border-radius:var(--radius-sm);outline:none;
-      transition:.3s ease;font-size:14px;font-weight:600;
-      text-transform:uppercase;
-    }
-    .lang select:hover{border-color:var(--brand);box-shadow:var(--glow)}
-    .lang select:focus{border-color:var(--brand);box-shadow:var(--glow)}
-
-    .cta{
-      display:inline-flex;align-items:center;gap:10px;
-      background:linear-gradient(135deg,var(--brand),var(--purple));
-      color:white;padding:10px 16px;border-radius:var(--radius-sm);
-      font-weight:700;box-shadow:var(--shadow);border:0;
-      transition:.3s ease;position:relative;overflow:hidden;
-      font-size:14px;white-space:nowrap;
-    }
-    .cta:before{
-      content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
-      transition:left .5s ease;
-    }
-    .cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-    .cta:hover:before{left:100%}
-
-    /* HERO */
+    /* Hero */
     .hero{
-      padding:100px 0 80px;position:relative;overflow:hidden;
-      background:linear-gradient(135deg,rgba(59,130,246,.05),rgba(139,92,246,.05));
+      position:relative; overflow:hidden; border-bottom:1px solid var(--border);
+      background:
+        radial-gradient(1200px 500px at 100% -10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent),
+        radial-gradient(800px 400px at -10% 0%, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent),
+        linear-gradient(180deg, var(--bg-soft), var(--bg));
     }
-    .hero-content{position:relative;z-index:2}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
-    .badge{
-      display:inline-flex;gap:8px;align-items:center;
-      background:rgba(16,185,129,.15);color:#D1FAE5;
-      border:1px solid rgba(16,185,129,.3);
-      padding:8px 16px;border-radius:999px;font-size:13px;
-      font-weight:600;box-shadow:var(--shadow);
-      animation:pulse 3s ease-in-out infinite;
+    .hero-inner{display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; padding:56px 0}
+    @media (max-width:900px){ .hero-inner{grid-template-columns:1fr; padding:36px 0} }
+    .headline{font-size: clamp(28px, 5vw, 44px); line-height:1.1; font-weight:800; margin:0 0 12px}
+    .sub{color:var(--muted); margin:0 0 20px}
+    .cta{display:flex; gap:12px}
+    .btn{
+      border:1px solid var(--border); background:var(--card); color:var(--fg);
+      padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
     }
-    h1{
-      font-size:clamp(32px, 6vw, 64px);line-height:1.1;
-      margin:20px 0 16px;font-weight:900;letter-spacing:-.02em;
-      background:linear-gradient(135deg,#fff 0%,#cbd5e1 100%);
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-      position:relative;
+    .btn.primary{background: linear-gradient(90deg, var(--accent), var(--accent-2)); border:0; color:white; box-shadow: var(--shadow)}
+    .btn:hover{transform: translateY(-1px)}
+    .illus{
+      aspect-ratio: 4/3; border-radius:16px; border:1px solid var(--border);
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--card) 85%, transparent), transparent),
+        url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;
+      box-shadow: var(--shadow);
+      animation: float 6s ease-in-out infinite;
     }
-    .lead{color:#cbd5e1;font-size:clamp(18px, 3vw, 22px);max-width:600px;line-height:1.6;margin-bottom:32px}
-    .hero-visual{position:relative}
-    .hero-card{
-      background:var(--card);border:var(--border);border-radius:var(--radius);
-      padding:32px;box-shadow:var(--shadow-lg);position:relative;
-      backdrop-filter:blur(20px);
-    }
-    .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-    .stat{
-      background:rgba(255,255,255,.03);border:var(--border);
-      border-radius:12px;padding:20px;text-align:center;
-      transition:.3s ease;position:relative;overflow:hidden;
-    }
-    .stat:hover{
-      transform:translateY(-2px);box-shadow:var(--shadow-lg);
-      background:rgba(255,255,255,.08);
-    }
-    .stat b{font-size:24px;display:block;margin:8px 0 6px;color:var(--brand)}
-    .stat .muted{font-size:13px;line-height:1.4;color:var(--muted)}
+    @keyframes float { 0%,100%{transform: translateY(0)} 50%{transform: translateY(-6px)} }
+    @media (prefers-reduced-motion: reduce){ .illus{animation:none} }
 
-    section{padding:80px 0}
-    h2{
-      font-size:clamp(28px, 5vw, 52px);font-weight:800;margin-bottom:24px;
-      text-align:center;letter-spacing:-.02em;
-      background:linear-gradient(135deg,#fff 0%,#cbd5e1 100%);
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-    }
+    section{padding:48px 0}
+    h2{margin:0 0 18px; font-size: clamp(22px, 3.4vw, 30px)}
 
-    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1000px;margin:0 auto}
+    /* Services */
+    .grid{
+      display:grid; gap:14px;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+    }
+    @media (max-width:1024px){ .grid{grid-template-columns: repeat(2, minmax(0,1fr));} }
+    @media (max-width:560px){ .grid{grid-template-columns: 1fr;} }
     .card{
-      background:var(--card);border:var(--border);border-radius:var(--radius);
-      padding:32px;box-shadow:var(--shadow);position:relative;
-      transition:.4s ease;backdrop-filter:blur(20px);overflow:hidden;
+      border:1px solid var(--border); background:var(--card); border-radius:16px; padding:18px;
+      box-shadow: var(--shadow); display:flex; flex-direction:column; gap:10px; min-height:150px;
+      transition: transform .12s ease;
     }
-    .card:before{
-      content:'';position:absolute;top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg,var(--brand),var(--brand2));
-      transform:scaleX(0);transition:transform .4s ease;
-    }
-    .card:hover{
-      transform:translateY(-12px) scale(1.02);box-shadow:var(--shadow-lg);
-      background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.06));
-    }
-    .card:hover:before{transform:scaleX(1)}
-    .card-icon{
-      width:64px;height:64px;margin-bottom:20px;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      border-radius:16px;display:flex;align-items:center;justify-content:center;
-      box-shadow:var(--glow);
-    }
-    .card h3{margin:0 0 16px;font-size:22px;font-weight:700}
-    .card p{color:var(--muted);line-height:1.6;margin:0;font-size:15px}
-    .chip{
-      display:inline-block;font-size:12px;color:#e5e7eb;
-      background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);
-      padding:6px 12px;border-radius:999px;margin-bottom:16px;font-weight:600;
-    }
+    .card:hover{transform: translateY(-2px)}
+    .card h3{margin:0; font-size:18px}
+    .muted{color:var(--muted)}
 
-    .stats-section{
-      background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(139,92,246,.08));
-      border-top:1px solid rgba(255,255,255,.1);
-      border-bottom:1px solid rgba(255,255,255,.1);
-      position:relative;
+    /* Testimonials */
+    .carousel-wrap{position:relative}
+    .carousel{
+      display:grid; grid-auto-flow: column; grid-auto-columns: min(80%, 360px);
+      gap:14px; overflow-x:auto; scroll-snap-type: x mandatory; padding-bottom:8px;
     }
-    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px}
-    .stats-item{text-align:center;position:relative}
-    .stats-number{
-      font-size:clamp(36px, 8vw, 56px);font-weight:900;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-      display:block;
+    @media (max-width:700px){ .carousel{grid-auto-columns: 90%} }
+    .t-card{
+      scroll-snap-align:start;
+      border:1px solid var(--border); background:var(--card); border-radius:16px; padding:18px; box-shadow: var(--shadow);
+      min-height:160px; display:flex; flex-direction:column; gap:8px;
     }
-    .stats-label{color:var(--muted);font-weight:600;margin-top:8px;font-size:16px}
+    .t-name{font-weight:800}
+    .car-btn{
+      position:absolute; top:50%; transform: translateY(-50%);
+      border:1px solid var(--border); background:var(--bg-soft); color:var(--fg);
+      width:38px; height:38px; border-radius:10px; cursor:pointer;
+    }
+    .car-prev{left:-6px}
+    .car-next{right:-6px}
 
-    .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px}
-    .process-step{
-      text-align:center;padding:32px 24px;border-radius:var(--radius);
-      background:rgba(255,255,255,.03);border:var(--border);transition:.3s ease;
-      position:relative;
+    /* Chat */
+    .chat{
+      border:1px solid var(--border); background:var(--card); border-radius:16px; padding:16px; box-shadow: var(--shadow);
+      display:flex; flex-direction:column; gap:10px;
     }
-    .process-step:hover{transform:translateY(-8px);background:rgba(255,255,255,.08)}
-    .process-number{
-      width:60px;height:60px;margin:0 auto 20px;
-      background:linear-gradient(135deg,var(--brand),var(--purple));
-      border-radius:50%;display:flex;align-items:center;justify-content:center;
-      font-size:24px;font-weight:800;color:white;
-      box-shadow:var(--glow);
-    }
+    .chat-log{max-height:280px; overflow:auto; display:flex; flex-direction:column; gap:10px;}
+    .msg{padding:10px 12px; border-radius:12px; border:1px solid var(--border); max-width:80%}
+    .msg.user{align-self:flex-end; background:var(--bg); }
+    .msg.bot{align-self:flex-start; background:linear-gradient(90deg, color-mix(in srgb, var(--accent) 15%, var(--card)), var(--card))}
+    .chat-input{display:flex; gap:8px}
+    .chat-input input{flex:1; padding:12px 12px; border-radius:12px; border:1px solid var(--border); background:var(--bg); color:var(--fg)}
+    .chat-input button{min-width:100px}
 
-    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:24px}
-    .quote{
-      background:rgba(255,255,255,.06);border:var(--border);
-      border-radius:var(--radius);padding:28px;position:relative;
-      transition:.3s ease;backdrop-filter:blur(10px);
-    }
-    .quote:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-    .quote:before{
-      content:'"';position:absolute;left:20px;top:-5px;
-      font-size:60px;color:rgba(59,130,246,.3);font-weight:900;
-    }
-    .quote p{margin:0 0 20px;font-size:15px;line-height:1.6;font-style:italic}
-    .quote b{
-      display:flex;align-items:center;gap:12px;color:var(--brand);
-      font-weight:600;font-size:14px;
-    }
-    .quote-avatar{
-      width:40px;height:40px;border-radius:50%;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      display:flex;align-items:center;justify-content:center;
-      color:white;font-weight:700;font-size:16px;
-    }
-
-    .faq-item{
-      background:rgba(255,255,255,.04);border:var(--border);
-      border-radius:var(--radius-sm);margin-bottom:16px;
-      transition:.3s ease;overflow:hidden;
-    }
-    .faq-question{
-      padding:20px 24px;cursor:pointer;display:flex;
-      justify-content:space-between;align-items:center;
-      font-weight:600;font-size:16px;
-    }
-    .faq-question:hover{background:rgba(255,255,255,.08)}
-    .faq-answer{
-      padding:0 24px;max-height:0;overflow:hidden;
-      transition:max-height .3s ease,color .3s ease;color:var(--muted);
-    }
-    .faq-item.open .faq-answer{max-height:200px;padding:0 24px 20px}
-    .faq-toggle{
-      width:24px;height:24px;border-radius:50%;background:var(--brand);
-      color:white;display:flex;align-items:center;justify-content:center;
-      font-size:16px;transition:transform .3s ease;flex-shrink:0;
-    }
-    .faq-item.open .faq-toggle{transform:rotate(45deg)}
-
-    .footer{
-      padding:60px 0 40px;
-      background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,41,59,.9));
-      border-top:1px solid rgba(255,255,255,.1);
-    }
-    .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;margin-bottom:40px}
-    .footer-section h3{color:var(--brand);margin-bottom:16px;font-size:18px}
-    .footer-section a{
-      color:var(--muted);display:block;margin-bottom:8px;
-      transition:color .3s ease;font-size:15px;
-    }
-    .footer-section a:hover{color:var(--text)}
-    .footer-bottom{
-      text-align:center;padding-top:40px;
-      border-top:1px solid rgba(255,255,255,.1);color:var(--muted);font-size:15px;
-    }
-
-    /* MOBILE STYLES */
-    @media(max-width:768px){
-      .container{padding:0 16px}
-      
-      .nav-desktop{display:none}
-      .mobile-toggle{display:block}
-      .nav{height:60px;padding:0}
-      .logo{width:36px;height:36px}
-      .title{font-size:14px}
-      .subtitle{font-size:10px}
-      
-      .hero{padding:60px 0 40px}
-      .hero-grid{grid-template-columns:1fr;gap:32px;text-align:center}
-      .hero-card{padding:24px}
-      .hero-stats{grid-template-columns:1fr;gap:12px}
-      .stat{padding:16px}
-      .stat b{font-size:20px}
-      
-      .services-grid{grid-template-columns:1fr;gap:20px}
-      .card{padding:24px}
-      .card-icon{width:56px;height:56px;margin-bottom:16px}
-      .card h3{font-size:20px}
-      
-      .testimonials{grid-template-columns:1fr}
-      .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
-      .process-grid{grid-template-columns:1fr;gap:20px}
-      .process-step{padding:20px}
-      .process-number{width:50px;height:50px;font-size:20px}
-      
-      .footer-content{grid-template-columns:1fr;text-align:center;gap:32px}
-      
-      section{padding:50px 0}
-      h2{margin-bottom:40px}
-      
-      .lang select{padding:6px 10px;font-size:13px}
-      .cta{padding:8px 14px;font-size:13px;gap:8px}
-      .theme-toggle{padding:4px;gap:4px}
-      .theme-option{padding:4px 8px;font-size:11px}
-    }
-
-    @media(max-width:480px){
-      .container{padding:0 12px}
-      h1{font-size:28px;margin:16px 0 12px}
-      .lead{font-size:16px;margin-bottom:24px}
-      .badge{padding:6px 12px;font-size:12px}
-      .hero{padding:40px 0 30px}
-      .stats-number{font-size:32px}
-      .stats-label{font-size:14px}
-      section{padding:40px 0}
-      .services-grid{gap:16px}
-      .card{padding:20px}
-    }
-
-    /* CHAT STYLES */
-    .chat-launcher{
-      position:fixed;right:20px;bottom:20px;z-index:60;
-      width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      color:#fff;border:none;box-shadow:var(--shadow-lg);
-      cursor:pointer;transition:.3s ease;font-size:24px;
-      animation:bounce 3s infinite;
-    }
-    .chat-launcher:hover{
-      transform:scale(1.1);
-      box-shadow:0 35px 60px -15px rgba(59,130,246,.4);
-    }
-    .chat-backdrop{
-      position:fixed;inset:0;z-index:59;background:rgba(0,0,0,.5);
-      opacity:0;pointer-events:none;transition:opacity .3s ease;backdrop-filter:blur(4px);
-    }
-    .chat-backdrop.open{opacity:1;pointer-events:auto}
-    .chat-panel{
-      position:fixed;right:20px;bottom:90px;z-index:60;
-      width:min(420px, calc(100vw - 40px));max-height:80vh;
-      background:var(--bg);border:var(--border);
-      border-radius:20px;box-shadow:var(--shadow-lg);
-      transform:translateY(20px) scale(.9);opacity:0;pointer-events:none;
-      transition:.3s ease;display:flex;flex-direction:column;overflow:hidden;
-      backdrop-filter:blur(20px);
-    }
-    .chat-panel.open{transform:none;opacity:1;pointer-events:auto}
-    .chat-header{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:16px 20px;background:rgba(255,255,255,.08);
-      border-bottom:var(--border);
-    }
-    .chat-header .title{font-weight:700;font-size:16px}
-    .chat-body{
-      height:400px;max-height:50vh;overflow:auto;padding:20px;
-      scroll-behavior:smooth;
-    }
-    .msg{display:flex;gap:12px;margin:16px 0}
-    .msg.user{justify-content:flex-end}
-    .bubble{
-      max-width:75%;padding:12px 16px;border-radius:16px;
-      line-height:1.4;font-size:14px;
-    }
-    .user .bubble{
-      background:linear-gradient(135deg,var(--brand),var(--purple));
-      color:white;border:none;
-    }
-    .bot .bubble{
-      background:rgba(255,255,255,.1);border:var(--border);
-      color:var(--text);
-    }
-    .chat-input{
-      display:flex;gap:12px;padding:16px 20px;
-      background:rgba(255,255,255,.06);border-top:var(--border);
-    }
-    .chat-input input{
-      flex:1;background:rgba(15,23,42,.8);color:var(--text);
-      border:var(--border);border-radius:12px;
-      padding:12px 16px;outline:none;transition:border-color .3s ease;
-      font-size:14px;
-    }
-    .chat-input input:focus{border-color:var(--brand);box-shadow:var(--glow)}
-    .chat-input button{
-      background:linear-gradient(135deg,var(--brand),var(--purple));
-      border:none;color:#fff;padding:12px 16px;border-radius:12px;
-      font-weight:700;transition:.3s ease;font-size:14px;
-    }
-    .chat-input button:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-
-    /* LOADING STATES */
-    .loading{opacity:.6;pointer-events:none}
-    .loading *{animation-play-state:paused}
-
-    /* FOCUS STYLES */
-    .cta:focus,
-    .mobile-toggle:focus,
-    .lang select:focus,
-    .chat-input input:focus,
-    .chat-input button:focus{
-      outline:2px solid var(--brand);outline-offset:2px;
-    }
-
-    /* REDUCED MOTION */
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-      .animate-float{animation:none}
-    }
+    footer{border-top:1px solid var(--border); padding:24px 0; color:var(--muted); text-align:center}
   </style>
 </head>
-<body data-theme="dark">
-  <!-- Background Decorations -->
-  <div class="bg-decoration">
-    <div class="floating-shape shape-1 animate-sparkle"></div>
-    <div class="floating-shape shape-2 animate-sparkle"></div>
-    <div class="floating-shape shape-3 animate-sparkle"></div>
-    <div class="floating-shape shape-4 animate-sparkle"></div>
-  </div>
-
+<body>
   <header>
-    <div class="container">
-      <nav class="nav">
-        <div class="brand">
-          <svg class="logo animate-float" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-label="Marketing in Deutschland logo">
-            <defs>
-              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#3B82F6"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#10B981"/>
-              </linearGradient>
-              <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            </defs>
-            <rect x="8" y="8" width="144" height="144" rx="32" fill="url(#lg)" filter="url(#glow)"/>
-            <circle cx="80" cy="80" r="58" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2"/>
-            <g stroke="#ffffff" stroke-width="8" stroke-linecap="round">
-              <line x1="48" y1="104" x2="48" y2="84"/><line x1="68" y1="104" x2="68" y2="74"/><line x1="88" y1="104" x2="88" y2="62"/><line x1="108" y1="104" x2="108" y2="52"/>
-            </g>
-            <text x="80" y="44" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="900" font-size="20">MiD</text>
-            <text x="80" y="128" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Inter,Arial" font-weight="600" font-size="11">Digital • Marketing</text>
-          </svg>
-          <div class="title">
-            <span data-i18n="brand">Marketing in Deutschland</span>
-            <small class="subtitle" data-i18n="tagline">Digitalagentur</small>
-          </div>
-        </div>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div><span style="font-weight:800">MiD</span> <span class="muted">digital</span></div>
+      </div>
 
-        <!-- Desktop Menu -->
-        <div class="nav-desktop">
-          <a href="#services" data-i18n="nav_services">Leistungen</a>
-          <a href="#process" data-i18n="nav_process">Prozess</a>
-          <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
-          <a href="#faq" data-i18n="nav_faq">FAQ</a>
-          <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
-            <span data-i18n="telegram">Telegram</span>
-          </a>
-          <div class="theme-toggle" onclick="toggleTheme()">
-            <div class="theme-option" data-theme-option="dark">🌙</div>
-            <div class="theme-option active" data-theme-option="light">☀️</div>
-          </div>
-          <div class="lang">
-            <select id="lang" aria-label="Language">
-              <option value="DE">DE</option>
-              <option value="EN">EN</option>
-              <option value="UA" selected>UA</option>
-              <option value="RU">RU</option>
-              <option value="PL">PL</option>
-            </select>
-          </div>
+      <div class="nav-right">
+        <!-- LANGUAGE (lowercase, no duplicates) -->
+        <div class="lang" id="langSwitcher" aria-label="language switcher">
+          <button data-lang="de" class="active">de</button>
+          <button data-lang="ua">ua</button>
+          <button data-lang="en">en</button>
+          <button data-lang="pl">pl</button>
+          <button data-lang="ru">ru</button>
         </div>
-
-        <!-- Mobile Controls -->
-        <div class="mobile-controls" style="display: flex; align-items: center; gap: 12px;">
-          <div class="theme-toggle" onclick="toggleTheme()">
-            <div class="theme-option" data-theme-option="dark">🌙</div>
-            <div class="theme-option active" data-theme-option="light">☀️</div>
-          </div>
-          <div class="lang">
-            <select id="lang-mobile" aria-label="Language">
-              <option value="DE">DE</option>
-              <option value="EN">EN</option>
-              <option value="UA" selected>UA</option>
-              <option value="RU">RU</option>
-              <option value="PL">PL</option>
-            </select>
-          </div>
-          <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
-            <div class="hamburger" id="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </button>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-          <div class="mobile-links">
-            <a href="#services" data-i18n="nav_services">Leistungen</a>
-            <a href="#process" data-i18n="nav_process">Prozess</a>
-            <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
-            <a href="#faq" data-i18n="nav_faq">FAQ</a>
-            <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
-              <span data-i18n="telegram">Telegram</span>
-            </a>
-          </div>
-        </div>
-      </nav>
+        <!-- THEME -->
+        <button class="toggle" id="themeToggle" aria-label="theme">🌙</button>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero">
-      <div class="container">
-        <div class="hero-content animate-slide-up">
-          <div class="hero-grid">
-            <div>
-              <div class="badge animate-slide-left">
-                ✨ <span data-i18n="badge">8 Jahre Erfahrung</span>
-              </div>
-              <h1 data-i18n="hero_title">Digitales Marketing, das funktioniert</h1>
-              <p class="lead" data-i18n="hero_lead">Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.</p>
-              <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 32px;">
-                <a class="cta animate-glow" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
-                  🚀 <span data-i18n="consultation">Beratung starten</span>
-                </a>
-                <a href="#services" class="cta" style="background: transparent; border: 2px solid var(--brand); color: var(--brand);">
-                  📋 <span data-i18n="services">Leistungen</span>
-                </a>
-              </div>
-            </div>
-            <div class="hero-visual animate-float">
-              <div class="hero-card">
-                <h3 style="margin: 0 0 16px; color: var(--brand); font-size: 18px;">📊 Performance Dashboard</h3>
-                <div class="hero-stats">
-                  <div class="stat animate-bounce">
-                    <b>+250%</b>
-                    <div class="muted">Traffic Wachstum</div>
-                  </div>
-                  <div class="stat animate-bounce" style="animation-delay: 0.2s;">
-                    <b>€45k</b>
-                    <div class="muted">Monatlicher Umsatz</div>
-                  </div>
-                  <div class="stat animate-bounce" style="animation-delay: 0.4s;">
-                    <b>3.2x</b>
-                    <div class="muted">ROI Verbesserung</div>
-                  </div>
-                  <div class="stat animate-bounce" style="animation-delay: 0.6s;">
-                    <b>98%</b>
-                    <div class="muted">Kundenzufriedenheit</div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      <div class="container hero-inner">
+        <div>
+          <h1 class="headline" data-i18n="hero_title">Робимо маркетинг простим і ефективним</h1>
+          <p class="sub" data-i18n="hero_sub">Сайти, реклама, аналітика — повний цикл для зростання вашого бізнесу в Німеччині та ЄС.</p>
+          <div class="cta">
+            <a href="#services" class="btn primary" data-i18n="cta_services">Наші послуги</a>
+            <a href="#contact" class="btn" data-i18n="cta_contact">Зв’язатися</a>
           </div>
         </div>
+        <div class="illus" role="img" aria-label="Команда працює над маркетинговою стратегією"></div>
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- SERVICES -->
     <section id="services">
       <div class="container">
-        <h2 data-i18n="services_title">🎯 Unsere Leistungen</h2>
-        <div class="services-grid">
-          <div class="card animate-slide-up">
-            <div class="chip">💻 Web Development</div>
-            <div class="card-icon animate-glow">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14,2 14,8 20,8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <polyline points="10,9 9,9 8,9"/>
-              </svg>
-            </div>
-            <h3 data-i18n="service_web_title">Website-Entwicklung</h3>
-            <p data-i18n="service_web_desc">Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.</p>
-          </div>
-          
-          <div class="card animate-slide-up">
-            <div class="chip">🎯 Google Ads</div>
-            <div class="card-icon animate-glow">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <circle cx="11" cy="11" r="8"/>
-                <path d="M21 21l-4.35-4.35"/>
-                <circle cx="11" cy="11" r="1"/>
-              </svg>
-            </div>
-            <h3 data-i18n="service_ads_title">Google Ads Management</h3>
-            <p data-i18n="service_ads_desc">Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.</p>
-          </div>
-
-          <div class="card animate-slide-up">
-            <div class="chip">📈 SEO</div>
-            <div class="card-icon animate-glow">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M18 20V10"/>
-                <path d="M12 20V4"/>
-                <path d="M6 20v-6"/>
-              </svg>
-            </div>
-            <h3 data-i18n="service_seo_title">Suchmaschinenoptimierung</h3>
-            <p data-i18n="service_seo_desc">Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.</p>
-          </div>
-
-          <div class="card animate-slide-up">
-            <div class="chip">📱 Social Media</div>
-            <div class="card-icon animate-glow">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-              </svg>
-            </div>
-            <h3 data-i18n="service_smm_title">Social Media Marketing</h3>
-            <p data-i18n="service_smm_desc">Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.</p>
-          </div>
+        <h2 data-i18n="services_title">Наші послуги</h2>
+        <p class="muted" data-i18n="services_sub">Симетрична сітка: 4 в ряд на широких екранах або 2×2 на середніх.</p>
+        <div class="grid" role="list">
+          <article class="card" role="listitem">
+            <h3 data-i18n="srv_1_t">Вебсайти</h3>
+            <p class="muted" data-i18n="srv_1_d">Лендінги та багатосторінкові сайти з SEO-структурою.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3 data-i18n="srv_2_t">Google Ads</h3>
+            <p class="muted" data-i18n="srv_2_d">Пошук, Performance Max, ремаркетинг, відстеження конверсій.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3 data-i18n="srv_3_t">SMM</h3>
+            <p class="muted" data-i18n="srv_3_d">Контент-плани, дизайни, таргет. Зростання охоплення та лідів.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3 data-i18n="srv_4_t">SEO</h3>
+            <p class="muted" data-i18n="srv_4_d">Технічне SEO, контент, лінкбілдинг. Помітність у пошуку.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stats-item animate-slide-up">
-            <div class="stats-number">150+</div>
-            <div class="stats-label" data-i18n="stats_projects">🎯 Erfolgreiche Projekte</div>
-          </div>
-          <div class="stats-item animate-slide-up">
-            <div class="stats-number">8+</div>
-            <div class="stats-label" data-i18n="stats_experience">⭐ Jahre Erfahrung</div>
-          </div>
-          <div class="stats-item animate-slide-up">
-            <div class="stats-number">95%</div>
-            <div class="stats-label" data-i18n="stats_satisfaction">😊 Kundenzufriedenheit</div>
-          </div>
-          <div class="stats-item animate-slide-up">
-            <div class="stats-number">24/7</div>
-            <div class="stats-label" data-i18n="stats_support">🚀 Support</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Process Section -->
-    <section id="process">
-      <div class="container">
-        <h2 data-i18n="process_title">⚡ Unser Arbeitsprozess</h2>
-        <div class="process-grid">
-          <div class="process-step animate-slide-up">
-            <div class="process-number">1</div>
-            <h3 data-i18n="process_step1_title">🔍 Beratung & Analyse</h3>
-            <p data-i18n="process_step1_desc">Umfassende Analyse Ihrer aktuellen Situation, Zielgruppe und Wettbewerber für eine fundierte Strategieentwicklung.</p>
-          </div>
-          <div class="process-step animate-slide-up">
-            <div class="process-number">2</div>
-            <h3 data-i18n="process_step2_title">📋 Strategie entwickeln</h3>
-            <p data-i18n="process_step2_desc">Maßgeschneiderte Marketing-Strategie basierend auf Ihren Zielen, Budget und Marktgegebenheiten.</p>
-          </div>
-          <div class="process-step animate-slide-up">
-            <div class="process-number">3</div>
-            <h3 data-i18n="process_step3_title">⚙️ Umsetzung</h3>
-            <p data-i18n="process_step3_desc">Professionelle Implementierung aller Marketing-Maßnahmen mit modernsten Tools und bewährten Methoden.</p>
-          </div>
-          <div class="process-step animate-slide-up">
-            <div class="process-number">4</div>
-            <h3 data-i18n="process_step4_title">📊 Optimierung</h3>
-            <p data-i18n="process_step4_desc">Kontinuierliche Verbesserung und Anpassung der Kampagnen basierend auf Datenanalyse und Performance-Metriken.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials Section -->
+    <!-- TESTIMONIALS -->
     <section id="testimonials">
       <div class="container">
-        <h2 data-i18n="testimonials_title">💬 Was unsere Kunden sagen</h2>
-        <div class="testimonials">
-          <div class="quote animate-slide-up">
-            <p>Dank der professionellen Betreuung haben wir unseren Online-Umsatz um 300% gesteigert. Absolut empfehlenswert!</p>
-            <b><div class="quote-avatar">MK</div> Maria K., Geschäftsführerin</b>
+        <h2 data-i18n="testi_title">Відгуки клієнтів</h2>
+        <p class="muted" data-i18n="testi_sub">20 відгуків з плавною горизонтальною прокруткою.</p>
+
+        <div class="carousel-wrap">
+          <button class="car-btn car-prev" aria-label="prev">‹</button>
+          <div class="carousel" id="carousel" tabindex="0" aria-roledescription="carousel">
+            <!-- 20 cards -->
+            <template id="tItem">
+              <div class="t-card">
+                <div class="t-name"></div>
+                <div class="muted t-role"></div>
+                <p class="t-text"></p>
+              </div>
+            </template>
           </div>
-          <div class="quote animate-slide-up">
-            <p>Die Website ist modern, schnell und bringt uns täglich neue Kunden. Sehr zufrieden mit der Zusammenarbeit.</p>
-            <b><div class="quote-avatar">TH</div> Thomas H., Unternehmer</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Professionelle Google Ads Betreuung mit messbaren Ergebnissen. Unser ROI hat sich verdreifacht.</p>
-            <b><div class="quote-avatar">SL</div> Sarah L., Marketing Manager</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Excellenter SEO Service! Innerhalb von 6 Monaten sind wir auf Seite 1 bei Google. Danke!</p>
-            <b><div class="quote-avatar">MF</div> Michael F., E-Commerce Händler</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Kreative Social Media Kampagnen, die wirklich funktionieren. Engagement um 400% gestiegen.</p>
-            <b><div class="quote-avatar">AL</div> Anna L., Influencerin</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Zuverlässige und kompetente Beratung. Immer erreichbar und hilfsbereit. Sehr zu empfehlen!</p>
-            <b><div class="quote-avatar">DM</div> David M., Startup-Gründer</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Website-Relaunch perfekt umgesetzt. Moderne Optik und deutlich bessere Performance.</p>
-            <b><div class="quote-avatar">JW</div> Julia W., Online-Shop Betreiberin</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Google Ads Kampagnen bringen konstant qualifizierte Leads. ROI über unseren Erwartungen.</p>
-            <b><div class="quote-avatar">RS</div> Robert S., Dienstleister</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>SEO-Optimierung hat unsere organische Reichweite verdoppelt. Professionelle Arbeit!</p>
-            <b><div class="quote-avatar">NK</div> Nina K., Blogger</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Social Media Marketing auf höchstem Niveau. Community wächst stetig und engagiert.</p>
-            <b><div class="quote-avatar">PL</div> Peter L., Restaurant-Besitzer</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Technische Umsetzung fehlerfrei und termingerecht. Sehr professionelles Team!</p>
-            <b><div class="quote-avatar">CF</div> Christine F., Agentur-Inhaberin</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Beratung war ausführlich und verständlich. Strategie passt perfekt zu unserem Budget.</p>
-            <b><div class="quote-avatar">HG</div> Hans G., Kleinunternehmer</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Landing Page Optimierung hat Conversion Rate um 250% verbessert. Einfach top!</p>
-            <b><div class="quote-avatar">EM</div> Eva M., Marketing Managerin</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Content Marketing Strategy bringt konstant neue Kunden. Qualität stimmt zu 100%.</p>
-            <b><div class="quote-avatar">BK</div> Boris K., Freelancer</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>E-Mail Marketing Automatisierung spart Zeit und generiert mehr Umsatz. Perfekt!</p>
-            <b><div class="quote-avatar">LH</div> Lisa H., Online-Unternehmerin</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Analytics Setup und Reporting sehr übersichtlich. Endlich verstehen wir unsere Daten!</p>
-            <b><div class="quote-avatar">TS</div> Tom S., Tech-Startup</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Mobile Optimierung war dringend nötig. Jetzt perfekte User Experience auf allen Geräten.</p>
-            <b><div class="quote-avatar">SW</div> Sandra W., Fashion-Brand</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Conversion Tracking Setup ermöglicht datenbasierte Entscheidungen. Sehr wertvoll!</p>
-            <b><div class="quote-avatar">MR</div> Martin R., B2B Unternehmen</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>Competitor Analysis war sehr aufschlussreich. Strategieentwicklung darauf basierend sehr erfolgreich.</p>
-            <b><div class="quote-avatar">IS</div> Ines S., Marktforscherin</b>
-          </div>
-          <div class="quote animate-slide-up">
-            <p>24/7 Support ist Gold wert. Probleme werden immer schnell und kompetent gelöst.</p>
-            <b><div class="quote-avatar">FK</div> Felix K., Online-Händler</b>
+          <button class="car-btn car-next" aria-label="next">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHAT -->
+    <section id="chat">
+      <div class="container">
+        <h2 data-i18n="chat_title">Чат-консультант</h2>
+        <p class="muted" data-i18n="chat_sub">Чат відповідає мовою, вибраною у перемикачі мов, і працює за логікою з <code>chat.js</code>.</p>
+        <div class="chat">
+          <div class="chat-log" id="chatLog" aria-live="polite"></div>
+          <div class="chat-input">
+            <input id="chatInput" type="text" placeholder="Напишіть повідомлення…" aria-label="message">
+            <button class="btn primary" id="chatSend" data-i18n="chat_send">Надіслати</button>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq">
+    <!-- CONTACT -->
+    <section id="contact">
       <div class="container">
-        <h2 data-i18n="faq_title">❓ Häufig gestellte Fragen</h2>
-        <div style="max-width: 900px; margin: 0 auto;">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Wie lange dauert die Entwicklung einer Website?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p>Die Entwicklungszeit hängt vom Umfang ab. Eine einfache Website dauert 2-3 Wochen, komplexere Projekte mit E-Commerce oder speziellen Funktionen 4-8 Wochen.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Bieten Sie auch Wartung und Support an?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p>Ja, wir bieten umfassende Wartung, Updates, Backups und 24/7 Support für alle unsere Projekte an. Verschiedene Support-Pakete verfügbar.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Wie messen Sie den Erfolg von Marketing-Kampagnen?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p>Wir verwenden detaillierte Analytics Tools (Google Analytics, Search Console, etc.) und erstellen regelmäßige Reports zu Traffic, Conversions, ROI und anderen KPIs.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Was kostet eine professionelle Website?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p>Die Kosten variieren je nach Umfang. Einfache Websites ab 1.500€, E-Commerce Lösungen ab 3.500€. Individuelle Angebote nach kostenloser Beratung.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Wie schnell sehe ich Ergebnisse bei SEO?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p>Erste Verbesserungen meist nach 2-3 Monaten sichtbar. Signifikante Ranking-Verbesserungen nach 4-6 Monaten. SEO ist ein langfristiger Prozess.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <div class="faq-question">
-              <span>Welche Social Media Plattformen empfehlen Sie?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p>Abhängig von Ihrer Zielgruppe: B2B meist LinkedIn, B2C oft Instagram/Facebook/TikTok. Wir analysieren Ihre Zielgruppe und empfehlen passende Kanäle.</p>
-            </div>
-          </div>
+        <h2 data-i18n="contact_title">Контакти</h2>
+        <div class="card">
+          <p><strong>Email:</strong> hello@vermarkter.de</p>
+          <p class="muted" data-i18n="contact_note">Опишіть задачу — відповімо протягом робочого дня.</p>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>🎯 Leistungen</h3>
-          <a href="#services">Website-Entwicklung</a>
-          <a href="#services">Google Ads Management</a>
-          <a href="#services">SEO Optimierung</a>
-          <a href="#services">Social Media Marketing</a>
-          <a href="#services">Content Marketing</a>
-        </div>
-        <div class="footer-section">
-          <h3>🏢 Unternehmen</h3>
-          <a href="#process">Über uns</a>
-          <a href="#testimonials">Kundenbewertungen</a>
-          <a href="#faq">FAQ</a>
-          <a href="#">Portfolio</a>
-          <a href="#">Blog</a>
-        </div>
-        <div class="footer-section">
-          <h3>📞 Kontakt</h3>
-          <a href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">📱 Telegram Chat</a>
-          <a href="mailto:info@marketing-in-deutschland.de">✉️ E-Mail</a>
-          <a href="#" onclick="toggleChat()">💬 Live Chat</a>
-          <a href="tel:+4915123456789">📞 Telefon</a>
-        </div>
-        <div class="footer-section">
-          <h3>🌍 Rechtliches</h3>
-          <a href="#">Impressum</a>
-          <a href="#">Datenschutz</a>
-          <a href="#">AGB</a>
-          <a href="#">Cookie Policy</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2024 Marketing in Deutschland. Alle Rechte vorbehalten. Made with ❤️ in Deutschland</p>
-      </div>
-    </div>
+  <footer>
+    <div class="container">© <span id="y"></span> MiD digital · <span data-i18n="footer_all">Всі права захищені</span></div>
   </footer>
 
-  <!-- Chat Widget -->
-  <div class="chat-backdrop" id="chatBackdrop" onclick="toggleChat()"></div>
-  <div class="chat-panel" id="chatPanel">
-    <div class="chat-header">
-      <div class="title">💬 Live Chat Support</div>
-      <button onclick="toggleChat()" style="background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 4px;">×</button>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="msg bot">
-        <div class="bubble">Hallo! 👋 Willkommen bei Marketing in Deutschland. Wie können wir Ihnen heute helfen?</div>
-      </div>
-    </div>
-    <div class="chat-input">
-      <input type="text" placeholder="Nachricht eingeben..." id="chatInput" onkeypress="handleEnter(event)">
-      <button onclick="sendMessage()">Senden</button>
-    </div>
-  </div>
-  <button class="chat-launcher" onclick="toggleChat()" aria-label="Chat öffnen">
-    💬
-  </button>
-
   <script>
-    // Translations
-    const translations = {
+    // ====== i18n strings (мінімальний набір для демо)
+    const i18n = {
       de: {
-        brand: "Marketing in Deutschland",
-        tagline: "Digitalagentur",
-        hero_title: "Digitales Marketing, das funktioniert",
-        hero_lead: "Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
-        badge: "8 Jahre Erfahrung",
-        consultation: "Beratung starten",
-        services: "Leistungen",
-        services_title: "🎯 Unsere Leistungen",
-        nav_services: "Leistungen",
-        nav_process: "Prozess",
-        nav_testimonials: "Bewertungen",
-        nav_faq: "FAQ",
-        telegram: "Telegram"
-      },
-      en: {
-        brand: "Marketing in Germany",
-        tagline: "Digital Agency",
-        hero_title: "Digital Marketing that works",
-        hero_lead: "Websites, Google Ads, SMM, SEO. Visible where your customers are already searching.",
-        badge: "8 Years Experience",
-        consultation: "Start Consultation",
-        services: "Services",
-        services_title: "🎯 Our Services",
-        nav_services: "Services",
-        nav_process: "Process",
-        nav_testimonials: "Reviews",
-        nav_faq: "FAQ",
-        telegram: "Telegram"
+        meta_title:"Marketing in Deutschland — Digitalagentur",
+        meta_desc:"8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
+        hero_title:"Marketing, der einfach funktioniert",
+        hero_sub:"Websites, Werbung, Analytics — alles für nachhaltiges Wachstum in DACH & EU.",
+        cta_services:"Unsere Leistungen",
+        cta_contact:"Kontakt",
+        services_title:"Unsere Leistungen",
+        services_sub:"Symmetrisches Grid: 4 in einer Reihe auf großen Bildschirmen oder 2×2 auf mittleren.",
+        srv_1_t:"Webseiten", srv_1_d:"Landingpages und mehrseitige Websites mit SEO-Struktur.",
+        srv_2_t:"Google Ads", srv_2_d:"Suche, Performance Max, Remarketing, Conversion-Tracking.",
+        srv_3_t:"SMM", srv_3_d:"Content-Pläne, Designs, Targeting. Reichweite & Leads.",
+        srv_4_t:"SEO", srv_4_d:"Technisches SEO, Content, Linkbuilding. Sichtbarkeit in der Suche.",
+        testi_title:"Kundenstimmen", testi_sub:"20 Rezensionen mit horizontalem Scroll.",
+        chat_title:"Chat-Berater", chat_sub:"Antwortet in der gewählten Sprache und nutzt die Logik aus chat.js.",
+        chat_send:"Senden",
+        contact_title:"Kontakt", contact_note:"Beschreiben Sie Ihr Anliegen — wir antworten werktags.",
+        footer_all:"Alle Rechte vorbehalten"
       },
       ua: {
-        brand: "Маркетинг в Німеччині",
-        tagline: "Цифрове агентство",
-        hero_title: "Цифровий маркетинг, який працює",
-        hero_lead: "Вебсайти, Google Ads, SMM, SEO. Видимість там, де ваші клієнти вже шукають.",
-        badge: "8 років досвіду",
-        consultation: "Почати консультацію",
-        services: "Послуги",
-        services_title: "🎯 Наші послуги",
-        nav_services: "Послуги",
-        nav_process: "Процес",
-        nav_testimonials: "Відгуки",
-        nav_faq: "FAQ",
-        telegram: "Telegram"
+        meta_title:"Marketing in Deutschland — Digitalagentur",
+        meta_desc:"8 років досвіду: сайти, Google Ads, SMM, SEO. Допомагаємо стати видимими там, де ваші клієнти вже шукають.",
+        hero_title:"Робимо маркетинг простим і ефективним",
+        hero_sub:"Сайти, реклама, аналітика — для зростання бізнесу в Німеччині та ЄС.",
+        cta_services:"Наші послуги", cta_contact:"Зв’язатися",
+        services_title:"Наші послуги",
+        services_sub:"Симетрична сітка: 4 в ряд на широких екранах або 2×2 на середніх.",
+        srv_1_t:"Вебсайти", srv_1_d:"Лендінги й багатосторінкові сайти з SEO-структурою.",
+        srv_2_t:"Google Ads", srv_2_d:"Пошук, Performance Max, ремаркетинг, конверсії.",
+        srv_3_t:"SMM", srv_3_d:"Контент, дизайн, таргет. Охоплення та ліди.",
+        srv_4_t:"SEO", srv_4_d:"Технічне SEO, контент, лінкбілдинг.",
+        testi_title:"Відгуки клієнтів", testi_sub:"20 відгуків з горизонтальною прокруткою.",
+        chat_title:"Чат-консультант", chat_sub:"Працює за логікою з chat.js та мовою перемикача.",
+        chat_send:"Надіслати",
+        contact_title:"Контакти", contact_note:"Опишіть задачу — відповімо протягом робочого дня.",
+        footer_all:"Всі права захищені"
       },
-      ru: {
-        brand: "Маркетинг в Германии",
-        tagline: "Цифровое агентство",
-        hero_title: "Цифровой маркетинг, который работает",
-        hero_lead: "Веб-сайты, Google Ads, SMM, SEO. Видимость там, где ваши клиенты уже ищут.",
-        badge: "8 лет опыта",
-        consultation: "Начать консультацию",
-        services: "Услуги",
-        services_title: "🎯 Наши услуги",
-        nav_services: "Услуги",
-        nav_process: "Процесс",
-        nav_testimonials: "Отзывы",
-        nav_faq: "FAQ",
-        telegram: "Telegram"
+      en: {
+        meta_title:"Marketing in Germany — Digital Agency",
+        meta_desc:"8 years of experience: websites, Google Ads, SMM, SEO.",
+        hero_title:"Marketing that’s simple and effective",
+        hero_sub:"Websites, ads, analytics — for sustainable growth in the EU.",
+        cta_services:"Our Services", cta_contact:"Contact",
+        services_title:"Our Services",
+        services_sub:"Symmetric grid: 4 in a row on large screens, 2×2 on medium.",
+        srv_1_t:"Websites", srv_1_d:"Landing pages and multi-page sites with SEO structure.",
+        srv_2_t:"Google Ads", srv_2_d:"Search, Performance Max, remarketing, conversions.",
+        srv_3_t:"SMM", srv_3_d:"Content plans, design, targeting. Reach & leads.",
+        srv_4_t:"SEO", srv_4_d:"Technical SEO, content, link building.",
+        testi_title:"Testimonials", testi_sub:"20 reviews with horizontal scrolling.",
+        chat_title:"Chat Assistant", chat_sub:"Uses chat.js logic and selected language.",
+        chat_send:"Send",
+        contact_title:"Contact", contact_note:"Describe your task — we reply on business days.",
+        footer_all:"All rights reserved"
       },
       pl: {
-        brand: "Marketing w Niemczech",
-        tagline: "Agencja cyfrowa",
-        hero_title: "Marketing cyfrowy, który działa",
-        hero_lead: "Strony internetowe, Google Ads, SMM, SEO. Widoczność tam, gdzie Twoi klienci już szukają.",
-        badge: "8 lat doświadczenia",
-        consultation: "Rozpocznij konsultację",
-        services: "Usługi",
-        services_title: "🎯 Nasze usługi",
-        nav_services: "Usługi",
-        nav_process: "Proces",
-        nav_testimonials: "Opinie",
-        nav_faq: "FAQ",
-        telegram: "Telegram"
+        meta_title:"Marketing w Niemczech — Agencja",
+        meta_desc:"8 lat doświadczenia: strony, Google Ads, SMM, SEO.",
+        hero_title:"Marketing prosty i skuteczny",
+        hero_sub:"Strony, reklamy, analityka — wzrost w UE.",
+        cta_services:"Usługi", cta_contact:"Kontakt",
+        services_title:"Nasze Usługi",
+        services_sub:"Symetryczna siatka: 4 w rzędzie lub 2×2.",
+        srv_1_t:"Strony WWW", srv_1_d:"Landing page i wielostronicowe witryny.",
+        srv_2_t:"Google Ads", srv_2_d:"Wyszukiwarka, Performance Max, remarketing.",
+        srv_3_t:"SMM", srv_3_d:"Plany treści, projekt, targetowanie.",
+        srv_4_t:"SEO", srv_4_d:"Techniczne SEO, treści, link building.",
+        testi_title:"Opinie Klientów", testi_sub:"20 opinii z przewijaniem.",
+        chat_title:"Czat Asystent", chat_sub:"Działa wg chat.js i wybranego języka.",
+        chat_send:"Wyślij",
+        contact_title:"Kontakt", contact_note:"Opisz zadanie — odpowiemy w dni robocze.",
+        footer_all:"Wszelkie prawa zastrzeżone"
+      },
+      ru: {
+        meta_title:"Маркетинг в Германии — Агентство",
+        meta_desc:"8 лет опыта: сайты, Google Ads, SMM, SEO.",
+        hero_title:"Маркетинг просто и эффективно",
+        hero_sub:"Сайты, реклама, аналитика — рост в ЕС.",
+        cta_services:"Услуги", cta_contact:"Связаться",
+        services_title:"Наши услуги",
+        services_sub:"Симметричная сетка: 4 в ряд или 2×2.",
+        srv_1_t:"Сайты", srv_1_d:"Лендинги и многостраничники с SEO-структурой.",
+        srv_2_t:"Google Ads", srv_2_d:"Поиск, Performance Max, ремаркетинг, конверсии.",
+        srv_3_t:"SMM", srv_3_d:"Контент-планы, дизайн, таргет.",
+        srv_4_t:"SEO", srv_4_d:"Тех. SEO, контент, линкбилдинг.",
+        testi_title:"Отзывы клиентов", testi_sub:"20 отзывов с горизонтальной прокруткой.",
+        chat_title:"Чат-консультант", chat_sub:"Работает по логике chat.js и выбранному языку.",
+        chat_send:"Отправить",
+        contact_title:"Контакты", contact_note:"Опишите задачу — ответим в рабочие дни.",
+        footer_all:"Все права защищены"
       }
     };
 
-    // Current language
-    let currentLang = 'ua';
-    let currentTheme = 'dark';
-
-    // Theme Toggle
-    function toggleTheme() {
-      const body = document.body;
-      const themeOptions = document.querySelectorAll('.theme-option');
-      
-      if (currentTheme === 'dark') {
-        currentTheme = 'light';
-        body.setAttribute('data-theme', 'light');
-        themeOptions.forEach(option => {
-          option.classList.remove('active');
-          if (option.dataset.themeOption === 'light') {
-            option.classList.add('active');
-          }
-        });
-      } else {
-        currentTheme = 'dark';
-        body.setAttribute('data-theme', 'dark');
-        themeOptions.forEach(option => {
-          option.classList.remove('active');
-          if (option.dataset.themeOption === 'dark') {
-            option.classList.add('active');
-          }
-        });
-      }
-      
-      localStorage.setItem('theme', currentTheme);
-    }
-
-    // Initialize theme
-    function initTheme() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        currentTheme = savedTheme;
-        document.body.setAttribute('data-theme', currentTheme);
-        document.querySelectorAll('.theme-option').forEach(option => {
-          option.classList.remove('active');
-          if (option.dataset.themeOption === currentTheme) {
-            option.classList.add('active');
-          }
-        });
-      }
-    }
-
-    // Language switching
-    function switchLanguage(lang) {
-      currentLang = lang.toLowerCase();
-      const translation = translations[currentLang];
-      
-      if (translation) {
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-          const key = element.getAttribute('data-i18n');
-          if (translation[key]) {
-            element.textContent = translation[key];
-          }
-        });
-      }
-      
-      localStorage.setItem('language', currentLang);
-    }
-
-    // Initialize language
-    function initLanguage() {
-      const savedLang = localStorage.getItem('language') || 'ua';
-      currentLang = savedLang;
-      
-      // Update selects
-      document.querySelectorAll('select[id^="lang"]').forEach(select => {
-        select.value = savedLang.toUpperCase();
-      });
-      
-      switchLanguage(savedLang);
-    }
-
-    // Mobile Menu Toggle
-    document.getElementById('mobileToggle').addEventListener('click', function() {
-      const menu = document.getElementById('mobileMenu');
-      const hamburger = document.getElementById('hamburger');
-      const isOpen = menu.classList.contains('active');
-      
-      if (isOpen) {
-        menu.classList.remove('active');
-        hamburger.classList.remove('active');
-        this.setAttribute('aria-expanded', 'false');
-      } else {
-        menu.classList.add('active');
-        hamburger.classList.add('active');
-        this.setAttribute('aria-expanded', 'true');
-      }
-    });
-
-    // Close mobile menu when clicking on links
-    document.querySelectorAll('.mobile-links a').forEach(link => {
-      link.addEventListener('click', function() {
-        document.getElementById('mobileMenu').classList.remove('active');
-        document.getElementById('hamburger').classList.remove('active');
-        document.getElementById('mobileToggle').setAttribute('aria-expanded', 'false');
-      });
-    });
-
-    // FAQ Toggle
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', function() {
-        const item = this.parentElement;
-        const isOpen = item.classList.contains('open');
-        
-        // Close all other FAQ items
-        document.querySelectorAll('.faq-item').forEach(faq => {
-          if (faq !== item) {
-            faq.classList.remove('open');
-          }
-        });
-        
-        // Toggle current item
-        if (isOpen) {
-          item.classList.remove('open');
-        } else {
-          item.classList.add('open');
+    // ====== language switcher
+    const langEl = document.getElementById('langSwitcher');
+    const setLang = (lng)=>{
+      localStorage.setItem('lang', lng);
+      [...langEl.querySelectorAll('button')].forEach(b=>b.classList.toggle('active', b.dataset.lang===lng));
+      const t = i18n[lng] || i18n.ua;
+      document.querySelectorAll('[data-i18n]').forEach(n=>{
+        const k = n.getAttribute('data-i18n');
+        if (t[k]) {
+          if (n.tagName==='META') n.setAttribute('content', t[k]);
+          else n.innerHTML = t[k];
         }
       });
-    });
-
-    // Chat functionality (enhanced AI-like responses)
-    let chatOpen = false;
-    let chatResponses = [
-      "Vielen Dank für Ihre Nachricht! 😊 Unsere Experten sind für Sie da. Welches Marketing-Thema beschäftigt Sie?",
-      "Das ist eine sehr gute Frage! 🤔 Lassen Sie mich Sie mit einem unserer Spezialisten verbinden.",
-      "Perfekt! 🎯 Wir haben bereits vielen Unternehmen in ähnlichen Situationen geholfen. Möchten Sie mehr erfahren?",
-      "Interessant! 💡 Wir können Ihnen dabei definitiv helfen. Sollen wir einen kostenlosen Beratungstermin vereinbaren?",
-      "Ausgezeichnet! ⭐ Das ist genau unser Spezialgebiet. Lassen Sie uns besprechen, wie wir Ihnen helfen können.",
-      "Sehr gut! 🚀 Wir haben schon ähnliche Projekte erfolgreich umgesetzt. Soll ich Ihnen ein paar Beispiele zeigen?",
-      "Großartig! 💪 Mit unserer 8-jährigen Erfahrung finden wir sicher die passende Lösung für Sie."
-    ];
-
-    function toggleChat() {
-      const panel = document.getElementById('chatPanel');
-      const backdrop = document.getElementById('chatBackdrop');
-      
-      chatOpen = !chatOpen;
-      
-      if (chatOpen) {
-        panel.classList.add('open');
-        backdrop.classList.add('open');
-        document.getElementById('chatInput').focus();
-      } else {
-        panel.classList.remove('open');
-        backdrop.classList.remove('open');
-      }
-    }
-
-    function sendMessage() {
-      const input = document.getElementById('chatInput');
-      const message = input.value.trim();
-      
-      if (!message) return;
-      
-      const chatBody = document.getElementById('chatBody');
-      
-      // Add user message
-      chatBody.innerHTML += `
-        <div class="msg user">
-          <div class="bubble">${message}</div>
-        </div>
-      `;
-      
-      input.value = '';
-      
-      // Simulate typing indicator
-      const typingMsg = document.createElement('div');
-      typingMsg.className = 'msg bot';
-      typingMsg.innerHTML = '<div class="bubble">💭 Tippt...</div>';
-      chatBody.appendChild(typingMsg);
-      chatBody.scrollTop = chatBody.scrollHeight;
-      
-      // Auto response after delay
-      setTimeout(() => {
-        typingMsg.remove();
-        const randomResponse = chatResponses[Math.floor(Math.random() * chatResponses.length)];
-        chatBody.innerHTML += `
-          <div class="msg bot">
-            <div class="bubble">${randomResponse}<br><br>
-            <a href="https://t.me/Marketing_in_Deutschland" target="_blank" style="color: var(--brand); font-weight: 600; text-decoration: underline;">
-            🚀 Direkter Telegram-Kontakt</a></div>
-          </div>
-        `;
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 1500);
-      
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-
-    function handleEnter(event) {
-      if (event.key === 'Enter') {
-        sendMessage();
-      }
-    }
-
-    // Language switching event listeners
-    document.querySelectorAll('select[id^="lang"]').forEach(select => {
-      select.addEventListener('change', function() {
-        const selectedLang = this.value.toLowerCase();
-        
-        // Update all selects to match
-        document.querySelectorAll('select[id^="lang"]').forEach(s => {
-          s.value = this.value;
-        });
-        
-        switchLanguage(selectedLang);
-      });
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-
-    // Animation on scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
+      document.documentElement.lang = lng;
+      // Інформуємо чат про мову
+      window.__CHAT_SET_LANG && window.__CHAT_SET_LANG(lng);
     };
+    langEl.addEventListener('click', (e)=>{
+      const btn = e.target.closest('button[data-lang]');
+      if (!btn) return;
+      setLang(btn.dataset.lang);
+    });
+    setLang(localStorage.getItem('lang') || 'de');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-
-    // Initialize animations
-    function initAnimations() {
-      const animatedElements = document.querySelectorAll('.animate-slide-up, .animate-slide-left, .animate-fade');
-      animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease-out';
-        observer.observe(el);
-      });
-    }
-
-    // Stats counter animation
-    function animateStats() {
-      const statsNumbers = document.querySelectorAll('.stats-number');
-      
-      const countUp = (element) => {
-        const target = element.textContent;
-        const isNumber = /\d+/.test(target);
-        
-        if (isNumber) {
-          const finalNumber = parseInt(target.match(/\d+/)[0]);
-          const suffix = target.replace(/\d+/, '');
-          let current = 0;
-          const increment = finalNumber / 50;
-          
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= finalNumber) {
-              element.textContent = finalNumber + suffix;
-              clearInterval(timer);
-            } else {
-              element.textContent = Math.floor(current) + suffix;
-            }
-          }, 30);
-        }
-      };
-
-      const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            countUp(entry.target);
-            statsObserver.unobserve(entry.target);
-          }
-        });
-      });
-
-      statsNumbers.forEach(stat => statsObserver.observe(stat));
-    }
-
-    // Initialize everything when DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      initTheme();
-      initLanguage();
-      initAnimations();
-      animateStats();
-      
-      // Add some initial animation delays
-      document.querySelectorAll('.animate-slide-up').forEach((el, index) => {
-        el.style.transitionDelay = `${index * 0.1}s`;
-      });
+    // ====== theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const setTheme = (th)=>{
+      document.documentElement.setAttribute('data-theme', th);
+      localStorage.setItem('theme', th);
+      themeToggle.textContent = th==='dark' ? '🌙' : '☀️';
+      // змінюємо meta theme-color
+      const metaTC = document.querySelector('meta[name="theme-color"]');
+      metaTC && metaTC.setAttribute('content', th==='dark' ? '#0F172A' : '#ffffff');
+    };
+    setTheme(localStorage.getItem('theme') || 'dark');
+    themeToggle.addEventListener('click', ()=>{
+      const cur = document.documentElement.getAttribute('data-theme');
+      setTheme(cur==='dark' ? 'light' : 'dark');
     });
 
-    // Add parallax effect to floating shapes
-    window.addEventListener('scroll', () => {
-      const scrolled = window.pageYOffset;
-      const shapes = document.querySelectorAll('.floating-shape');
-      
-      shapes.forEach((shape, index) => {
-        const speed = 0.5 + (index * 0.1);
-        shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
-      });
+    // ====== testimonials data (20)
+    const TESTI = Array.from({length:20}).map((_,i)=>({
+      name: `Client #${i+1}`,
+      role: ['Owner','CMO','Founder','Manager'][i%4],
+      text: [
+        "Завдяки команді ми отримали стабільні ліди вже за перший місяць.",
+        "Прозорі звіти та чіткі KPI — працювати комфортно.",
+        "Сайт і реклама зроблені швидко та якісно.",
+        "Рекомендуємо за компетентність і сервіс."
+      ][i%4]
+    }));
+    const tTpl = document.getElementById('tItem');
+    const car = document.getElementById('carousel');
+    TESTI.forEach(t=>{
+      const n = tTpl.content.cloneNode(true);
+      n.querySelector('.t-name').textContent = t.name;
+      n.querySelector('.t-role').textContent = t.role;
+      n.querySelector('.t-text').textContent = t.text;
+      car.appendChild(n);
     });
+    // arrows
+    const prev = document.querySelector('.car-prev'), next = document.querySelector('.car-next');
+    prev.addEventListener('click', ()=> car.scrollBy({left:-380, behavior:'smooth'}));
+    next.addEventListener('click', ()=> car.scrollBy({left:380, behavior:'smooth'}));
 
-    // Add dynamic background gradient based on scroll
-    window.addEventListener('scroll', () => {
-      const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
-      const hue = 220 + (scrollPercent * 60);
-      document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 50%, 8%) 0%, hsl(${hue + 30}, 40%, 12%) 100%)`;
-    });
-
-    // Preload critical resources
-    function preloadResources() {
-      const criticalImages = [
-        // Add any critical images here
-      ];
-      
-      criticalImages.forEach(src => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.href = src;
-        link.as = 'image';
-        document.head.appendChild(link);
-      });
-    }
-
-    preloadResources();
+    // year
+    document.getElementById('y').textContent = new Date().getFullYear();
   </script>
+
+  <!-- Підключення логіки чату ІЗ ОКРЕМОГО ФАЙЛУ -->
+  <script src="chat.js"></script>
 </body>
 </html>
