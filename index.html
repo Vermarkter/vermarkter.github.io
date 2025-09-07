@@ -1,1369 +1,1418 @@
-<!DOCTYPE html>
-<html lang="de"> <!-- За замовчуванням мова DE -->
+<!doctype html>
+<html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="seo.title">Vermarkter — Professionelle Marketingdienstleistungen</title>
-  <meta name="description" content="Professionelle Marketingdienstleistungen: Webseiten, Google Ads, Social Media, SEO. Transparent. Effektiv." data-i18n="seo.description"/>
-  <meta name="keywords" content="Marketing, Webdesign, Google Ads, SEO, Social Media, Performance, ROAS, CPA" data-i18n="seo.keywords"/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title>
+  <meta name="description" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/>
+  <meta name="theme-color" content="#0F172A"/>
+
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      /* Темна тема за замовчуванням */
-      --bg-primary: #121212;
-      --bg-secondary: #1e1e1e;
-      --bg-card: #252526;
-      --text-primary: #ffffff;
-      --text-secondary: #b0b0b0;
-      --accent: #bb86fc;
-      --accent-hover: #9a67ea;
-      --border: #333;
-      --shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-      --transition: all 0.3s ease;
-      --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .light-theme {
-      --bg-primary: #f5f5f7;
-      --bg-secondary: #ffffff;
-      --bg-card: #f0f0f0;
-      --text-primary: #333333;
-      --text-secondary: #666666;
-      --accent: #6200ee;
-      --accent-hover: #3700b3;
-      --border: #dddddd;
-      --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: var(--font-main);
-      line-height: 1.6;
-      color: var(--text-primary);
-      background-color: var(--bg-primary);
-      transition: background-color 0.5s ease, color 0.5s ease;
-      padding-top: 80px; /* Висота фіксованого хедера */
-      animation: fadeIn 0.8s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    a:hover {
-      color: var(--accent-hover);
-      text-decoration: underline;
-    }
-
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    section {
-      padding: 5rem 0;
-      animation: slideUp 0.8s ease-out;
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 2.5rem;
-      text-align: center;
-      color: var(--text-primary);
-      position: relative;
-    }
-
-    h2::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 4px;
-        background-color: var(--accent);
-        margin: 10px auto 0;
-        border-radius: 2px;
-    }
-
-
-    /* --- Header --- */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: var(--bg-secondary);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      z-index: 1000;
-      padding: 1rem 0;
-      transition: var(--transition);
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--text-primary);
-    }
-
-    .logo-img {
-      height: 35px;
-      margin-right: 12px;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
-      gap: 1.8rem;
-    }
-
-    nav a {
-      color: var(--text-primary);
-      font-weight: 500;
-      padding: 0.5rem 0;
-      position: relative;
-      transition: var(--transition);
-    }
-
-    nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background-color: var(--accent);
-      transition: var(--transition);
-    }
-
-    nav a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    .menu-btn {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      font-size: 1.8rem;
-      cursor: pointer;
-    }
-
-    .theme-switch {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      font-size: 1.4rem;
-      cursor: pointer;
-      color: var(--text-primary);
-      margin-left: 1rem;
-    }
-
-    .lang-section {
-      position: relative;
-      margin-left: 1rem;
-    }
-
-    .current-lang {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      color: var(--text-primary);
-      padding: 0.5rem 0.9rem;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1rem;
-      transition: var(--transition);
-    }
-
-    .current-lang:hover {
-        background-color: var(--accent);
-        color: white;
-    }
-
-    .lang-dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      list-style: none;
-      padding: 0.6rem 0;
-      margin-top: 0.6rem;
-      min-width: 130px;
-      box-shadow: var(--shadow);
-      display: none;
-      z-index: 1001;
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    .lang-dropdown.show {
-      display: block;
-    }
-
-    .lang-dropdown li {
-      padding: 0.5rem 1.2rem;
-    }
-
-    .lang-dropdown a {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: var(--text-primary);
-      text-decoration: none;
-      width: 100%;
-      padding: 0.3rem 0;
-      transition: var(--transition);
-      font-size: 0.95rem;
-    }
-
-    .lang-dropdown a:hover {
-      background-color: var(--bg-card);
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    /* --- Мобільне меню --- */
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: var(--bg-primary);
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transform: translateY(-100%);
-      opacity: 0;
-      transition: all 0.4s ease;
-      padding: 2rem;
-    }
-
-    .mobile-menu.active {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .mobile-menu nav ul {
-      flex-direction: column;
-      align-items: center;
-      gap: 2.2rem;
-    }
-
-    .mobile-menu nav a {
-      font-size: 1.6rem;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      font-size: 2.2rem;
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      cursor: pointer;
-    }
-
-    /* --- Послуги --- */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Завжди 2 колонки на більших екранах */
-      gap: 2rem;
-    }
-
-    .service-card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.8rem;
-      transition: var(--transition);
-      box-shadow: var(--shadow);
-      animation: fadeIn 1s ease-out;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    .service-card h3 {
-      color: var(--accent);
-      margin-bottom: 1.2rem;
-      font-size: 1.4rem;
-    }
-
-    .service-card p {
-      color: var(--text-secondary);
-    }
-
-    /* --- Як ми працюємо --- */
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* Завжди 2 колонки */
-      gap: 2rem;
-    }
-
-    .step-card {
-      background-color: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 1.8rem;
-      text-align: center;
-      transition: var(--transition);
-      box-shadow: var(--shadow);
-      animation: fadeIn 1.2s ease-out;
-    }
-
-    .step-card:hover {
-      background-color: var(--bg-card);
-      transform: scale(1.02);
-    }
-
-    .step-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1.2rem;
-      color: var(--accent);
-    }
-
-    .step-card h3 {
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-
-    .step-card p {
-      color: var(--text-secondary);
-      font-size: 1rem;
-    }
-
-    /* --- Відгуки (Карусель) --- */
-    .reviews-container {
-        overflow-x: auto;
-        padding: 1.5rem 0 2.5rem;
-        scrollbar-width: thin;
-        scrollbar-color: var(--accent) var(--bg-secondary);
-        scroll-behavior: smooth; /* Плавна прокрутка */
-    }
-
-    .reviews-container::-webkit-scrollbar {
-        height: 10px;
-    }
-
-    .reviews-container::-webkit-scrollbar-track {
-        background: var(--bg-secondary);
-        border-radius: 5px;
-    }
-
-    .reviews-container::-webkit-scrollbar-thumb {
-        background-color: var(--accent);
-        border-radius: 5px;
-    }
-
-    .reviews-grid {
-        display: flex;
-        gap: 2rem;
-        /* Ширина для 20 відгуків */
-        width: calc(20 * (320px + 2rem) - 2rem); /* 320px ширина картки + gap */
-    }
-
-    .review-card {
-        background-color: var(--bg-card);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 1.8rem;
-        min-width: 320px;
-        flex-shrink: 0;
-        box-shadow: var(--shadow);
-        animation: fadeIn 0.5s ease-out;
-    }
-
-    .review-text {
-        font-style: italic;
-        margin-bottom: 1.2rem;
-        color: var(--text-primary);
-    }
-
-    .review-author {
-        font-weight: bold;
-        color: var(--accent);
-    }
-
-    /* --- FAQ --- */
-    .faq-list {
-      max-width: 850px;
-      margin: 0 auto;
-    }
-
-    .faq-item {
-      margin-bottom: 1.2rem;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      overflow: hidden;
-      background-color: var(--bg-secondary);
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-    }
-
-    .faq-item:hover {
-        transform: translateY(-3px);
-    }
-
-    .faq-question {
-      padding: 1.2rem 1.8rem;
-      background-color: var(--bg-card);
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 500;
-      transition: var(--transition);
-    }
-
-    .faq-question:hover {
-      background-color: var(--accent);
-      color: white;
-    }
-
-    .faq-question::after {
-      content: '+';
-      font-size: 1.8rem;
-    }
-
-    .faq-item.active .faq-question::after {
-      content: '−';
-    }
-
-    .faq-answer {
-      padding: 0 1.8rem;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out, padding 0.4s ease, background-color 0.3s ease;
-      color: var(--text-secondary);
-      background-color: var(--bg-secondary);
-    }
-
-    .faq-item.active .faq-answer {
-      padding: 1.2rem 1.8rem;
-      max-height: 500px; /* Достатньо велике значення */
-      background-color: var(--bg-card);
-    }
-
-    /* --- Footer --- */
-    footer {
-      text-align: center;
-      padding: 2.5rem 0;
-      color: var(--text-secondary);
-      font-size: 1rem;
-      border-top: 1px solid var(--border);
-    }
-
-    /* --- Чат --- */
-    #chat-widget {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 1000;
-      font-family: var(--font-main);
-    }
-
-    #chat-toggle {
-      width: 65px;
-      height: 65px;
-      border: none;
-      background-color: var(--accent);
-      color: white;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 26px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.3);
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    #chat-toggle:hover {
-      background-color: var(--accent-hover);
-      transform: scale(1.1);
-    }
-
-    #chat-container {
-      display: none;
-      flex-direction: column;
-      width: 370px;
-      height: 520px;
-      background-color: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      z-index: 1001;
-      animation: slideUpChat 0.4s ease-out;
-    }
-
-    @keyframes slideUpChat {
-        from { transform: translateY(20px); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-    }
-
-    #chat-header {
-      padding: 18px;
-      background-color: var(--bg-card);
-      color: var(--text-primary);
-      font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid var(--border);
-    }
-
-    #close-chat {
-      background: none;
-      border: none;
-      color: var(--text-primary);
-      font-size: 1.4rem;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    #close-chat:hover {
-        color: var(--accent);
-    }
-
-    #chat-messages {
-      flex-grow: 1;
-      padding: 18px;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .message {
-      padding: 10px 15px;
-      border-radius: 20px;
-      max-width: 80%;
-      word-wrap: break-word;
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    .user-message {
-      background-color: var(--accent);
-      color: white;
-      align-self: flex-end;
-    }
-
-    .bot-message {
-      background-color: var(--bg-card);
-      color: var(--text-primary);
-      align-self: flex-start;
-      border: 1px solid var(--border);
-    }
-
-    #chat-input-container {
-      display: flex;
-      padding: 12px;
-      border-top: 1px solid var(--border);
-      background-color: var(--bg-secondary);
-    }
-
-    #chat-input {
-      flex-grow: 1;
-      padding: 12px 15px;
-      border: 1px solid var(--border);
-      border-radius: 25px;
-      background-color: var(--bg-card);
-      color: var(--text-primary);
-      outline: none;
-      transition: var(--transition);
-    }
-
-    #chat-input:focus {
-        border-color: var(--accent);
-    }
-
-    #send-message {
-      background: none;
-      border: none;
-      color: var(--accent);
-      margin-left: 12px;
-      cursor: pointer;
-      font-size: 1.4rem;
-      transition: var(--transition);
-    }
-
-    #send-message:hover {
-        color: var(--accent-hover);
-        transform: scale(1.1);
-    }
-
-    /* --- Адаптивність --- */
-    @media (max-width: 992px) {
-        .services-grid,
-        .process-steps {
-            grid-template-columns: 1fr; /* 1 колонка на мобільних */
-        }
-    }
-
-    @media (max-width: 768px) {
-      .header-inner {
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-
-      nav ul {
-        display: none;
-      }
-
-      .menu-btn {
-        display: block;
-      }
-
-      .theme-switch, .lang-section {
-        margin: 0.8rem 0 0 0;
-        order: 3;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-      }
-
-      .reviews-grid {
-          width: calc(20 * (90vw + 2rem) - 2rem); /* Для мобільних */
-      }
-
-      .review-card {
-          min-width: 90vw;
-      }
-
-      #chat-container {
-        width: 90vw;
-        height: 70vh;
-      }
+    :root{
+      --bg:#0F172A; --bg2:#1E293B; --text:#F8FAFC; --muted:#94A3B8;
+      --brand:#3B82F6; --brand2:#10B981; --accent:#F59E0B; --purple:#8B5CF6;
+      --shadow:0 25px 50px -12px rgba(0,0,0,.25);
+      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.3);
+      --card:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
+      --border:1px solid rgba(255,255,255,.1);
+      --radius:20px; --radius-sm:12px;
+      --glow:0 0 20px rgba(59, 130, 246, 0.3);
+    }
+
+    [data-theme="light"] {
+      --bg:#F8FAFC; --bg2:#E2E8F0; --text:#1E293B; --muted:#64748B;
+      --shadow:0 25px 50px -12px rgba(0,0,0,.15);
+      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.2);
+      --card:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.6));
+      --border:1px solid rgba(30,41,59,.1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:linear-gradient(135deg,var(--bg) 0%,var(--bg2) 100%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;overflow-x:hidden;transition:all 0.3s ease}
+
+    @keyframes float{0%,100%{transform:translateY(0) rotate(0)}33%{transform:translateY(-10px) rotate(1deg)}66%{transform:translateY(5px) rotate(-1deg)}}
+    @keyframes pulse{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+    @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideInLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    @keyframes glow{0%,100%{box-shadow:var(--glow)}50%{box-shadow:0 0 30px rgba(59,130,246,0.5)}}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
+    @keyframes sparkle{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
+    
+    .animate-float{animation:float 6s ease-in-out infinite}
+    .animate-slide-up{animation:slideUp .8s ease-out forwards}
+    .animate-slide-left{animation:slideInLeft .6s ease-out forwards}
+    .animate-fade{animation:fadeIn .5s ease-out forwards}
+    .animate-glow{animation:glow 2s ease-in-out infinite}
+    .animate-bounce{animation:bounce 2s infinite}
+    .animate-sparkle{animation:sparkle 1.5s ease-in-out infinite}
+
+    /* Background decorations */
+    .bg-decoration{
+      position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;
+    }
+    .floating-shape{
+      position:absolute;opacity:.1;border-radius:50%;
+      background:linear-gradient(45deg,var(--brand),var(--purple));
+      animation:float 8s ease-in-out infinite;
+    }
+    .shape-1{width:100px;height:100px;top:10%;left:5%;animation-delay:0s}
+    .shape-2{width:150px;height:150px;top:50%;right:10%;animation-delay:2s}
+    .shape-3{width:80px;height:80px;bottom:20%;left:15%;animation-delay:4s}
+    .shape-4{width:120px;height:120px;top:30%;right:30%;animation-delay:1s}
+
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+    /* Theme Toggle */
+    .theme-toggle{
+      display:flex;align-items:center;gap:8px;
+      background:rgba(255,255,255,.1);border:var(--border);
+      padding:6px;border-radius:25px;cursor:pointer;
+      transition:.3s ease;position:relative;
+    }
+    .theme-toggle:hover{background:rgba(255,255,255,.15)}
+    .theme-option{
+      padding:6px 12px;border-radius:20px;font-size:12px;
+      font-weight:600;transition:.3s ease;position:relative;
+      z-index:2;
+    }
+    .theme-option.active{
+      background:var(--brand);color:white;
+      box-shadow:var(--glow);
+    }
+
+    /* HEADER */
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(15,23,42,.95);backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+      box-shadow:0 4px 32px rgba(0,0,0,.1);
+    }
+    [data-theme="light"] header{
+      background:rgba(248,250,252,.95);
+      border-bottom:1px solid rgba(30,41,59,.1);
+    }
+    .nav{
+      display:flex;align-items:center;justify-content:space-between;
+      height:70px;gap:16px;position:relative;
+    }
+    .brand{display:flex;align-items:center;gap:12px;z-index:51}
+    .logo{width:40px;height:40px;filter:drop-shadow(var(--glow));flex-shrink:0}
+    .title{font-weight:900;letter-spacing:-.02em;font-size:16px}
+    .subtitle{display:block;font-weight:600;color:var(--muted);font-size:11px;margin-top:-2px}
+    
+    /* DESKTOP MENU */
+    .nav-desktop{
+      display:flex;gap:20px;align-items:center;
+    }
+    .nav-desktop a{
+      padding:8px 14px;border-radius:var(--radius-sm);
+      color:var(--muted);transition:.3s ease;font-weight:500;
+      white-space:nowrap;position:relative;
+    }
+    .nav-desktop a:hover{
+      color:#fff;background:rgba(255,255,255,.1);
+      transform:translateY(-2px);box-shadow:var(--shadow);
+    }
+    .nav-desktop a:before{
+      content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;
+      background:var(--brand);transition:.3s ease;
+      transform:translateX(-50%);
+    }
+    .nav-desktop a:hover:before{width:80%}
+
+    /* MOBILE MENU */
+    .mobile-toggle{
+      display:none;background:none;border:none;color:var(--text);
+      cursor:pointer;padding:8px;border-radius:8px;
+      transition:background .3s ease;z-index:52;position:relative;
+    }
+    .mobile-toggle:hover{background:rgba(255,255,255,.1)}
+    .hamburger{width:24px;height:18px;position:relative;transform:rotate(0deg);transition:.5s ease-in-out}
+    .hamburger span{
+      display:block;position:absolute;height:3px;width:100%;
+      background:var(--text);border-radius:2px;opacity:1;left:0;
+      transform:rotate(0deg);transition:.25s ease-in-out;
+    }
+    .hamburger span:nth-child(1){top:0px}
+    .hamburger span:nth-child(2){top:7px}
+    .hamburger span:nth-child(3){top:14px}
+    .hamburger.active span:nth-child(1){top:7px;transform:rotate(135deg)}
+    .hamburger.active span:nth-child(2){opacity:0;left:-60px}
+    .hamburger.active span:nth-child(3){top:7px;transform:rotate(-135deg)}
+
+    .mobile-menu{
+      position:absolute;top:100%;left:0;right:0;
+      background:rgba(15,23,42,.98);backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,.1);
+      transform:translateY(-10px);opacity:0;visibility:hidden;
+      transition:all .3s ease;z-index:49;
+      box-shadow:0 10px 40px rgba(0,0,0,.2);
+    }
+    [data-theme="light"] .mobile-menu{
+      background:rgba(248,250,252,.98);
+    }
+    .mobile-menu.active{
+      transform:translateY(0);opacity:1;visibility:visible;
+    }
+    .mobile-links{
+      display:flex;flex-direction:column;padding:20px;gap:4px;
+    }
+    .mobile-links a{
+      padding:12px 16px;color:var(--muted);
+      border-radius:var(--radius-sm);transition:.3s ease;
+      font-weight:500;
+    }
+    .mobile-links a:hover{
+      color:var(--text);background:rgba(255,255,255,.08);
+    }
+
+    .lang select{
+      background:var(--bg2);color:var(--text);border:1px solid rgba(255,255,255,.2);
+      padding:8px 12px;border-radius:var(--radius-sm);outline:none;
+      transition:.3s ease;font-size:14px;font-weight:600;
+      text-transform:uppercase;
+    }
+    .lang select:hover{border-color:var(--brand);box-shadow:var(--glow)}
+    .lang select:focus{border-color:var(--brand);box-shadow:var(--glow)}
+
+    .cta{
+      display:inline-flex;align-items:center;gap:10px;
+      background:linear-gradient(135deg,var(--brand),var(--purple));
+      color:white;padding:10px 16px;border-radius:var(--radius-sm);
+      font-weight:700;box-shadow:var(--shadow);border:0;
+      transition:.3s ease;position:relative;overflow:hidden;
+      font-size:14px;white-space:nowrap;
+    }
+    .cta:before{
+      content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
+      transition:left .5s ease;
+    }
+    .cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+    .cta:hover:before{left:100%}
+
+    /* HERO */
+    .hero{
+      padding:100px 0 80px;position:relative;overflow:hidden;
+      background:linear-gradient(135deg,rgba(59,130,246,.05),rgba(139,92,246,.05));
+    }
+    .hero-content{position:relative;z-index:2}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+    .badge{
+      display:inline-flex;gap:8px;align-items:center;
+      background:rgba(16,185,129,.15);color:#D1FAE5;
+      border:1px solid rgba(16,185,129,.3);
+      padding:8px 16px;border-radius:999px;font-size:13px;
+      font-weight:600;box-shadow:var(--shadow);
+      animation:pulse 3s ease-in-out infinite;
+    }
+    h1{
+      font-size:clamp(32px, 6vw, 64px);line-height:1.1;
+      margin:20px 0 16px;font-weight:900;letter-spacing:-.02em;
+      background:linear-gradient(135deg,#fff 0%,#cbd5e1 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      position:relative;
+    }
+    .lead{color:#cbd5e1;font-size:clamp(18px, 3vw, 22px);max-width:600px;line-height:1.6;margin-bottom:32px}
+    .hero-visual{position:relative}
+    .hero-card{
+      background:var(--card);border:var(--border);border-radius:var(--radius);
+      padding:32px;box-shadow:var(--shadow-lg);position:relative;
+      backdrop-filter:blur(20px);
+    }
+    .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+    .stat{
+      background:rgba(255,255,255,.03);border:var(--border);
+      border-radius:12px;padding:20px;text-align:center;
+      transition:.3s ease;position:relative;overflow:hidden;
+    }
+    .stat:hover{
+      transform:translateY(-2px);box-shadow:var(--shadow-lg);
+      background:rgba(255,255,255,.08);
+    }
+    .stat b{font-size:24px;display:block;margin:8px 0 6px;color:var(--brand)}
+    .stat .muted{font-size:13px;line-height:1.4;color:var(--muted)}
+
+    section{padding:80px 0}
+    h2{
+      font-size:clamp(28px, 5vw, 52px);font-weight:800;margin-bottom:24px;
+      text-align:center;letter-spacing:-.02em;
+      background:linear-gradient(135deg,#fff 0%,#cbd5e1 100%);
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    }
+
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1000px;margin:0 auto}
+    .card{
+      background:var(--card);border:var(--border);border-radius:var(--radius);
+      padding:32px;box-shadow:var(--shadow);position:relative;
+      transition:.4s ease;backdrop-filter:blur(20px);overflow:hidden;
+    }
+    .card:before{
+      content:'';position:absolute;top:0;left:0;right:0;height:3px;
+      background:linear-gradient(90deg,var(--brand),var(--brand2));
+      transform:scaleX(0);transition:transform .4s ease;
+    }
+    .card:hover{
+      transform:translateY(-12px) scale(1.02);box-shadow:var(--shadow-lg);
+      background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.06));
+    }
+    .card:hover:before{transform:scaleX(1)}
+    .card-icon{
+      width:64px;height:64px;margin-bottom:20px;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      border-radius:16px;display:flex;align-items:center;justify-content:center;
+      box-shadow:var(--glow);
+    }
+    .card h3{margin:0 0 16px;font-size:22px;font-weight:700}
+    .card p{color:var(--muted);line-height:1.6;margin:0;font-size:15px}
+    .chip{
+      display:inline-block;font-size:12px;color:#e5e7eb;
+      background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);
+      padding:6px 12px;border-radius:999px;margin-bottom:16px;font-weight:600;
+    }
+
+    .stats-section{
+      background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(139,92,246,.08));
+      border-top:1px solid rgba(255,255,255,.1);
+      border-bottom:1px solid rgba(255,255,255,.1);
+      position:relative;
+    }
+    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px}
+    .stats-item{text-align:center;position:relative}
+    .stats-number{
+      font-size:clamp(36px, 8vw, 56px);font-weight:900;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      display:block;
+    }
+    .stats-label{color:var(--muted);font-weight:600;margin-top:8px;font-size:16px}
+
+    .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px}
+    .process-step{
+      text-align:center;padding:32px 24px;border-radius:var(--radius);
+      background:rgba(255,255,255,.03);border:var(--border);transition:.3s ease;
+      position:relative;
+    }
+    .process-step:hover{transform:translateY(-8px);background:rgba(255,255,255,.08)}
+    .process-number{
+      width:60px;height:60px;margin:0 auto 20px;
+      background:linear-gradient(135deg,var(--brand),var(--purple));
+      border-radius:50%;display:flex;align-items:center;justify-content:center;
+      font-size:24px;font-weight:800;color:white;
+      box-shadow:var(--glow);
+    }
+
+    .testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:24px}
+    .quote{
+      background:rgba(255,255,255,.06);border:var(--border);
+      border-radius:var(--radius);padding:28px;position:relative;
+      transition:.3s ease;backdrop-filter:blur(10px);
+    }
+    .quote:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+    .quote:before{
+      content:'"';position:absolute;left:20px;top:-5px;
+      font-size:60px;color:rgba(59,130,246,.3);font-weight:900;
+    }
+    .quote p{margin:0 0 20px;font-size:15px;line-height:1.6;font-style:italic}
+    .quote b{
+      display:flex;align-items:center;gap:12px;color:var(--brand);
+      font-weight:600;font-size:14px;
+    }
+    .quote-avatar{
+      width:40px;height:40px;border-radius:50%;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      display:flex;align-items:center;justify-content:center;
+      color:white;font-weight:700;font-size:16px;
+    }
+
+    .faq-item{
+      background:rgba(255,255,255,.04);border:var(--border);
+      border-radius:var(--radius-sm);margin-bottom:16px;
+      transition:.3s ease;overflow:hidden;
+    }
+    .faq-question{
+      padding:20px 24px;cursor:pointer;display:flex;
+      justify-content:space-between;align-items:center;
+      font-weight:600;font-size:16px;
+    }
+    .faq-question:hover{background:rgba(255,255,255,.08)}
+    .faq-answer{
+      padding:0 24px;max-height:0;overflow:hidden;
+      transition:max-height .3s ease,color .3s ease;color:var(--muted);
+    }
+    .faq-item.open .faq-answer{max-height:200px;padding:0 24px 20px}
+    .faq-toggle{
+      width:24px;height:24px;border-radius:50%;background:var(--brand);
+      color:white;display:flex;align-items:center;justify-content:center;
+      font-size:16px;transition:transform .3s ease;flex-shrink:0;
+    }
+    .faq-item.open .faq-toggle{transform:rotate(45deg)}
+
+    .footer{
+      padding:60px 0 40px;
+      background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,41,59,.9));
+      border-top:1px solid rgba(255,255,255,.1);
+    }
+    .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;margin-bottom:40px}
+    .footer-section h3{color:var(--brand);margin-bottom:16px;font-size:18px}
+    .footer-section a{
+      color:var(--muted);display:block;margin-bottom:8px;
+      transition:color .3s ease;font-size:15px;
+    }
+    .footer-section a:hover{color:var(--text)}
+    .footer-bottom{
+      text-align:center;padding-top:40px;
+      border-top:1px solid rgba(255,255,255,.1);color:var(--muted);font-size:15px;
+    }
+
+    /* MOBILE STYLES */
+    @media(max-width:768px){
+      .container{padding:0 16px}
+      
+      .nav-desktop{display:none}
+      .mobile-toggle{display:block}
+      .nav{height:60px;padding:0}
+      .logo{width:36px;height:36px}
+      .title{font-size:14px}
+      .subtitle{font-size:10px}
+      
+      .hero{padding:60px 0 40px}
+      .hero-grid{grid-template-columns:1fr;gap:32px;text-align:center}
+      .hero-card{padding:24px}
+      .hero-stats{grid-template-columns:1fr;gap:12px}
+      .stat{padding:16px}
+      .stat b{font-size:20px}
+      
+      .services-grid{grid-template-columns:1fr;gap:20px}
+      .card{padding:24px}
+      .card-icon{width:56px;height:56px;margin-bottom:16px}
+      .card h3{font-size:20px}
+      
+      .testimonials{grid-template-columns:1fr}
+      .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+      .process-grid{grid-template-columns:1fr;gap:20px}
+      .process-step{padding:20px}
+      .process-number{width:50px;height:50px;font-size:20px}
+      
+      .footer-content{grid-template-columns:1fr;text-align:center;gap:32px}
+      
+      section{padding:50px 0}
+      h2{margin-bottom:40px}
+      
+      .lang select{padding:6px 10px;font-size:13px}
+      .cta{padding:8px 14px;font-size:13px;gap:8px}
+      .theme-toggle{padding:4px;gap:4px}
+      .theme-option{padding:4px 8px;font-size:11px}
+    }
+
+    @media(max-width:480px){
+      .container{padding:0 12px}
+      h1{font-size:28px;margin:16px 0 12px}
+      .lead{font-size:16px;margin-bottom:24px}
+      .badge{padding:6px 12px;font-size:12px}
+      .hero{padding:40px 0 30px}
+      .stats-number{font-size:32px}
+      .stats-label{font-size:14px}
+      section{padding:40px 0}
+      .services-grid{gap:16px}
+      .card{padding:20px}
+    }
+
+    /* CHAT STYLES */
+    .chat-launcher{
+      position:fixed;right:20px;bottom:20px;z-index:60;
+      width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#fff;border:none;box-shadow:var(--shadow-lg);
+      cursor:pointer;transition:.3s ease;font-size:24px;
+      animation:bounce 3s infinite;
+    }
+    .chat-launcher:hover{
+      transform:scale(1.1);
+      box-shadow:0 35px 60px -15px rgba(59,130,246,.4);
+    }
+    .chat-backdrop{
+      position:fixed;inset:0;z-index:59;background:rgba(0,0,0,.5);
+      opacity:0;pointer-events:none;transition:opacity .3s ease;backdrop-filter:blur(4px);
+    }
+    .chat-backdrop.open{opacity:1;pointer-events:auto}
+    .chat-panel{
+      position:fixed;right:20px;bottom:90px;z-index:60;
+      width:min(420px, calc(100vw - 40px));max-height:80vh;
+      background:var(--bg);border:var(--border);
+      border-radius:20px;box-shadow:var(--shadow-lg);
+      transform:translateY(20px) scale(.9);opacity:0;pointer-events:none;
+      transition:.3s ease;display:flex;flex-direction:column;overflow:hidden;
+      backdrop-filter:blur(20px);
+    }
+    .chat-panel.open{transform:none;opacity:1;pointer-events:auto}
+    .chat-header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:16px 20px;background:rgba(255,255,255,.08);
+      border-bottom:var(--border);
+    }
+    .chat-header .title{font-weight:700;font-size:16px}
+    .chat-body{
+      height:400px;max-height:50vh;overflow:auto;padding:20px;
+      scroll-behavior:smooth;
+    }
+    .msg{display:flex;gap:12px;margin:16px 0}
+    .msg.user{justify-content:flex-end}
+    .bubble{
+      max-width:75%;padding:12px 16px;border-radius:16px;
+      line-height:1.4;font-size:14px;
+    }
+    .user .bubble{
+      background:linear-gradient(135deg,var(--brand),var(--purple));
+      color:white;border:none;
+    }
+    .bot .bubble{
+      background:rgba(255,255,255,.1);border:var(--border);
+      color:var(--text);
+    }
+    .chat-input{
+      display:flex;gap:12px;padding:16px 20px;
+      background:rgba(255,255,255,.06);border-top:var(--border);
+    }
+    .chat-input input{
+      flex:1;background:rgba(15,23,42,.8);color:var(--text);
+      border:var(--border);border-radius:12px;
+      padding:12px 16px;outline:none;transition:border-color .3s ease;
+      font-size:14px;
+    }
+    .chat-input input:focus{border-color:var(--brand);box-shadow:var(--glow)}
+    .chat-input button{
+      background:linear-gradient(135deg,var(--brand),var(--purple));
+      border:none;color:#fff;padding:12px 16px;border-radius:12px;
+      font-weight:700;transition:.3s ease;font-size:14px;
+    }
+    .chat-input button:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+
+    /* LOADING STATES */
+    .loading{opacity:.6;pointer-events:none}
+    .loading *{animation-play-state:paused}
+
+    /* FOCUS STYLES */
+    .cta:focus,
+    .mobile-toggle:focus,
+    .lang select:focus,
+    .chat-input input:focus,
+    .chat-input button:focus{
+      outline:2px solid var(--brand);outline-offset:2px;
+    }
+
+    /* REDUCED MOTION */
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
+      .animate-float{animation:none}
     }
   </style>
 </head>
-<body>
+<body data-theme="dark">
+  <!-- Background Decorations -->
+  <div class="bg-decoration">
+    <div class="floating-shape shape-1 animate-sparkle"></div>
+    <div class="floating-shape shape-2 animate-sparkle"></div>
+    <div class="floating-shape shape-3 animate-sparkle"></div>
+    <div class="floating-shape shape-4 animate-sparkle"></div>
+  </div>
 
   <header>
-    <div class="container header-inner">
-      <a href="#" class="logo">
-        <span class="logo-img">🚀</span> <!-- Тимчасовий символ логотипу -->
-        <span data-i18n="header.logo">Vermarkter</span>
-      </a>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <svg class="logo animate-float" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-label="Marketing in Deutschland logo">
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#3B82F6"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#10B981"/>
+              </linearGradient>
+              <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <rect x="8" y="8" width="144" height="144" rx="32" fill="url(#lg)" filter="url(#glow)"/>
+            <circle cx="80" cy="80" r="58" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2"/>
+            <g stroke="#ffffff" stroke-width="8" stroke-linecap="round">
+              <line x1="48" y1="104" x2="48" y2="84"/><line x1="68" y1="104" x2="68" y2="74"/><line x1="88" y1="104" x2="88" y2="62"/><line x1="108" y1="104" x2="108" y2="52"/>
+            </g>
+            <text x="80" y="44" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="900" font-size="20">MiD</text>
+            <text x="80" y="128" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Inter,Arial" font-weight="600" font-size="11">Digital • Marketing</text>
+          </svg>
+          <div class="title">
+            <span data-i18n="brand">Marketing in Deutschland</span>
+            <small class="subtitle" data-i18n="tagline">Digitalagentur</small>
+          </div>
+        </div>
 
-      <nav class="nav-desktop">
-        <ul>
-          <li><a href="#services" data-i18n="nav.services">Leistungen</a></li>
-          <li><a href="#how" data-i18n="nav.how">Wie wir arbeiten</a></li>
-          <li><a href="#reviews" data-i18n="nav.reviews">Bewertungen</a></li>
-          <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-        </ul>
+        <!-- Desktop Menu -->
+        <div class="nav-desktop">
+          <a href="#services" data-i18n="nav_services">Leistungen</a>
+          <a href="#process" data-i18n="nav_process">Prozess</a>
+          <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
+          <a href="#faq" data-i18n="nav_faq">FAQ</a>
+          <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
+            <span data-i18n="telegram">Telegram</span>
+          </a>
+          <div class="theme-toggle" onclick="toggleTheme()">
+            <div class="theme-option" data-theme-option="dark">🌙</div>
+            <div class="theme-option active" data-theme-option="light">☀️</div>
+          </div>
+          <div class="lang">
+            <select id="lang" aria-label="Language">
+              <option value="DE">DE</option>
+              <option value="EN">EN</option>
+              <option value="UA" selected>UA</option>
+              <option value="RU">RU</option>
+              <option value="PL">PL</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Mobile Controls -->
+        <div class="mobile-controls" style="display: flex; align-items: center; gap: 12px;">
+          <div class="theme-toggle" onclick="toggleTheme()">
+            <div class="theme-option" data-theme-option="dark">🌙</div>
+            <div class="theme-option active" data-theme-option="light">☀️</div>
+          </div>
+          <div class="lang">
+            <select id="lang-mobile" aria-label="Language">
+              <option value="DE">DE</option>
+              <option value="EN">EN</option>
+              <option value="UA" selected>UA</option>
+              <option value="RU">RU</option>
+              <option value="PL">PL</option>
+            </select>
+          </div>
+          <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
+            <div class="hamburger" id="hamburger">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+          <div class="mobile-links">
+            <a href="#services" data-i18n="nav_services">Leistungen</a>
+            <a href="#process" data-i18n="nav_process">Prozess</a>
+            <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
+            <a href="#faq" data-i18n="nav_faq">FAQ</a>
+            <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
+              <span data-i18n="telegram">Telegram</span>
+            </a>
+          </div>
+        </div>
       </nav>
-
-       <div style="display: flex; align-items: center; gap: 1rem;">
-        <div class="theme-switch" id="theme-toggle">
-            <span>☀️</span> <!-- Світла тема за замовчуванням -->
-        </div>
-
-        <div class="lang-section">
-            <button class="current-lang" id="current-lang-btn">
-            <span id="current-lang-flag">🇩🇪</span>
-            <span id="current-lang-text">de</span>
-            </button>
-            <ul class="lang-dropdown" id="lang-dropdown">
-            <!-- Порядок: de.ua.en.pl.ru -->
-            <li><a href="#" data-lang="de"><span>🇩🇪</span> de</a></li>
-            <li><a href="#" data-lang="uk"><span>🇺🇦</span> ua</a></li>
-            <li><a href="#" data-lang="en"><span>🇬🇧</span> en</a></li>
-            <li><a href="#" data-lang="pl"><span>🇵🇱</span> pl</a></li>
-            <li><a href="#" data-lang="ru"><span>🇷🇺</span> ru</a></li>
-            </ul>
-        </div>
-      </div>
-
-      <button class="menu-btn">☰</button>
     </div>
   </header>
 
-  <!-- Мобільне меню -->
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="close-btn" id="close-mobile-menu">&times;</button>
-    <nav>
-      <ul>
-        <li><a href="#services" data-i18n="nav.services">Leistungen</a></li>
-        <li><a href="#how" data-i18n="nav.how">Wie wir arbeiten</a></li>
-        <li><a href="#reviews" data-i18n="nav.reviews">Bewertungen</a></li>
-        <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
-        <!-- Мови в мобільному меню -->
-        <li>
-          <ul style="list-style: none; padding: 0; margin-top: 2.5rem; text-align: center;">
-            <li style="margin-bottom: 1.2rem;"><a href="#" data-lang="de"><span>🇩🇪</span> de</a></li>
-            <li style="margin-bottom: 1.2rem;"><a href="#" data-lang="uk"><span>🇺🇦</span> ua</a></li>
-            <li style="margin-bottom: 1.2rem;"><a href="#" data-lang="en"><span>🇬🇧</span> en</a></li>
-            <li style="margin-bottom: 1.2rem;"><a href="#" data-lang="pl"><span>🇵🇱</span> pl</a></li>
-            <li><a href="#" data-lang="ru"><span>🇷🇺</span> ru</a></li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content animate-slide-up">
+          <div class="hero-grid">
+            <div>
+              <div class="badge animate-slide-left">
+                ✨ <span data-i18n="badge">8 Jahre Erfahrung</span>
+              </div>
+              <h1 data-i18n="hero_title">Digitales Marketing, das funktioniert</h1>
+              <p class="lead" data-i18n="hero_lead">Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.</p>
+              <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 32px;">
+                <a class="cta animate-glow" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
+                  🚀 <span data-i18n="consultation">Beratung starten</span>
+                </a>
+                <a href="#services" class="cta" style="background: transparent; border: 2px solid var(--brand); color: var(--brand);">
+                  📋 <span data-i18n="services">Leistungen</span>
+                </a>
+              </div>
+            </div>
+            <div class="hero-visual animate-float">
+              <div class="hero-card">
+                <h3 style="margin: 0 0 16px; color: var(--brand); font-size: 18px;">📊 Performance Dashboard</h3>
+                <div class="hero-stats">
+                  <div class="stat animate-bounce">
+                    <b>+250%</b>
+                    <div class="muted">Traffic Wachstum</div>
+                  </div>
+                  <div class="stat animate-bounce" style="animation-delay: 0.2s;">
+                    <b>€45k</b>
+                    <div class="muted">Monatlicher Umsatz</div>
+                  </div>
+                  <div class="stat animate-bounce" style="animation-delay: 0.4s;">
+                    <b>3.2x</b>
+                    <div class="muted">ROI Verbesserung</div>
+                  </div>
+                  <div class="stat animate-bounce" style="animation-delay: 0.6s;">
+                    <b>98%</b>
+                    <div class="muted">Kundenzufriedenheit</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <main class="container">
-    <!-- Послуги -->
+    <!-- Services Section -->
     <section id="services">
-      <h2 data-i18n="services.title">Leistungen</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <h3 data-i18n="services.web.title">Webseiten-Erstellung</h3>
-          <p data-i18n="services.web.desc">Schnelle, responsive Websites: Landingpages, Shops, mehrsprachige Projekte. Konversionsorientiertes Design, sauberer Code, Integrationen mit Analytics und CRM.</p>
-        </div>
-        <div class="service-card">
-          <h3 data-i18n="services.ads.title">Suche & Shopping</h3>
-          <p data-i18n="services.ads.desc">Seien Sie dort, wo Nachfrage ist: Search/Shopping, Performance Max, (dynamisches) Remarketing, YouTube und Display-Netzwerk — mit CPA/ROAS-Kontrolle.</p>
-        </div>
-        <div class="service-card">
-          <h3 data-i18n="services.social.title">Soziale Netzwerke</h3>
-          <p data-i18n="services.social.desc">Content-Strategie, Design, Reels/Shorts, bezahlte Werbung. Messenger und UGC — aus Views werden Leads.</p>
-        </div>
-        <div class="service-card">
-          <h3 data-i18n="services.seo.title">SEO</h3>
-          <p data-i18n="services.seo.desc">Technisches Audit, Semantik, Content und Backlinks — stabiles Wachstum im Organic Traffic. ROI-Prognose inkludiert.</p>
+      <div class="container">
+        <h2 data-i18n="services_title">🎯 Unsere Leistungen</h2>
+        <div class="services-grid">
+          <div class="card animate-slide-up">
+            <div class="chip">💻 Web Development</div>
+            <div class="card-icon animate-glow">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14,2 14,8 20,8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10,9 9,9 8,9"/>
+              </svg>
+            </div>
+            <h3 data-i18n="service_web_title">Website-Entwicklung</h3>
+            <p data-i18n="service_web_desc">Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.</p>
+          </div>
+          
+          <div class="card animate-slide-up">
+            <div class="chip">🎯 Google Ads</div>
+            <div class="card-icon animate-glow">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <path d="M21 21l-4.35-4.35"/>
+                <circle cx="11" cy="11" r="1"/>
+              </svg>
+            </div>
+            <h3 data-i18n="service_ads_title">Google Ads Management</h3>
+            <p data-i18n="service_ads_desc">Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.</p>
+          </div>
+
+          <div class="card animate-slide-up">
+            <div class="chip">📈 SEO</div>
+            <div class="card-icon animate-glow">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M18 20V10"/>
+                <path d="M12 20V4"/>
+                <path d="M6 20v-6"/>
+              </svg>
+            </div>
+            <h3 data-i18n="service_seo_title">Suchmaschinenoptimierung</h3>
+            <p data-i18n="service_seo_desc">Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.</p>
+          </div>
+
+          <div class="card animate-slide-up">
+            <div class="chip">📱 Social Media</div>
+            <div class="card-icon animate-glow">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </div>
+            <h3 data-i18n="service_smm_title">Social Media Marketing</h3>
+            <p data-i18n="service_smm_desc">Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Як ми працюємо -->
-    <section id="how">
-      <h2 data-i18n="process.title">Wie wir arbeiten</h2>
-      <div class="process-steps">
-        <div class="step-card">
-          <div class="step-icon">🔍</div>
-          <h3 data-i18n="process.analyze.title">Analyse</h3>
-          <p data-i18n="process.analyze.desc">Wir analysieren Ihr Unternehmen, die Konkurrenz und Ihre Zielgruppe. Wir identifizieren Wachstumspotenziale.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-icon">📊</div>
-          <h3 data-i18n="process.strategy.title">Strategie</h3>
-          <p data-i18n="process.strategy.desc">Wir entwickeln einen umfassenden Plan mit konkreten KPIs und Zeitrahmen.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-icon">🚀</div>
-          <h3 data-i18n="process.implement.title">Umsetzung</h3>
-          <p data-i18n="process.implement.desc">Wir starten Kampagnen, erstellen Inhalte und optimieren Prozesse.</p>
-        </div>
-        <div class="step-card">
-          <div class="step-icon">📈</div>
-          <h3 data-i18n="process.optimize.title">Optimierung</h3>
-          <p data-i18n="process.optimize.desc">Wir analysieren kontinuierlich die Ergebnisse und verbessern die Effizienz.</p>
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stats-item animate-slide-up">
+            <div class="stats-number">150+</div>
+            <div class="stats-label" data-i18n="stats_projects">🎯 Erfolgreiche Projekte</div>
+          </div>
+          <div class="stats-item animate-slide-up">
+            <div class="stats-number">8+</div>
+            <div class="stats-label" data-i18n="stats_experience">⭐ Jahre Erfahrung</div>
+          </div>
+          <div class="stats-item animate-slide-up">
+            <div class="stats-number">95%</div>
+            <div class="stats-label" data-i18n="stats_satisfaction">😊 Kundenzufriedenheit</div>
+          </div>
+          <div class="stats-item animate-slide-up">
+            <div class="stats-number">24/7</div>
+            <div class="stats-label" data-i18n="stats_support">🚀 Support</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Відгуки -->
-    <section id="reviews">
-      <h2 data-i18n="reviews.title">Bewertungen</h2>
-      <div class="reviews-container">
-        <div class="reviews-grid">
-          <!-- 20 відгуків -->
-          <div class="review-card"><p class="review-text">«Reduzierte CPA um 35% innerhalb von 3 Monaten. Transparente Berichte.»</p><p class="review-author">Anna M., E-Commerce</p></div>
-          <div class="review-card"><p class="review-text">«Die Website wurde schnell erstellt und läuft einwandfrei.»</p><p class="review-author">Thomas K., Beratung</p></div>
-          <div class="review-card"><p class="review-text">«Großartige SEO-Ergebnisse. Der Traffic stieg um 120%.»</p><p class="review-author">Julia S., Startup</p></div>
-          <div class="review-card"><p class="review-text">«Perfekte Google Ads-Kampagnen. Hohe Conversion-Rate.»</p><p class="review-author">Michael B., Dienstleistungen</p></div>
-          <div class="review-card"><p class="review-text">«Endlich eine Agentur, die unsere Ziele versteht.»</p><p class="review-author">Petra L., Retail</p></div>
-          <div class="review-card"><p class="review-text">«Professionelle Social-Media-Strategie.»</p><p class="review-author">David R., Tech</p></div>
-          <div class="review-card"><p class="review-text">«Unsere Leads haben sich verdoppelt.»</p><p class="review-author">Sarah W., Marketing</p></div>
-          <div class="review-card"><p class="review-text">«Schnelle Reaktionszeit und klare Kommunikation.»</p><p class="review-author">Markus H., Finanzen</p></div>
-          <div class="review-card"><p class="review-text">«Die Website sieht toll aus und lädt superschnell.»</p><p class="review-author">Laura F., Design</p></div>
-          <div class="review-card"><p class="review-text">«Exzellente Analyse unseres Marktes.»</p><p class="review-author">Andreas Z., Logistik</p></div>
-          <div class="review-card"><p class="review-text">««CPA in drei Monaten um 32 % gesenkt und Online-Bestellungen verdoppelt. Transparente wöchentliche Berichte.»</p><p class="review-author">Eva K., eCommerce</p></div>
-          <div class="review-card"><p class="review-text">«Die Website lädt sofort, die Leads sind stabil. Das Team spricht die Sprache des Geschäfts.»</p><p class="review-author">Mark S., Dienstleistungen</p></div>
-          <div class="review-card"><p class="review-text">«YouTube und Remarketing haben die Markenbekanntheit gesteigert. Es besteht eine klare Verbindung zwischen Inhalten und Verkäufen.»</p><p class="review-author">Olena R., EdTech</p></div>
-          <div class="review-card"><p class="review-text">«Wir haben unseren Umsatz durch gezielte Kampagnen gesteigert.»</p><p class="review-author">Nina G., Gesundheit</p></div>
-          <div class="review-card"><p class="review-text">«Die Zusammenarbeit war sehr professionell.»</p><p class="review-author">Christian V., Immobilien</p></div>
-          <div class="review-card"><p class="review-text">«Großartige Ergebnisse bei Shopping-Kampagnen.»</p><p class="review-author">Katrin M., Mode</p></div>
-          <div class="review-card"><p class="review-text">«Endlich klare Kennzahlen und messbare Erfolge.»</p><p class="review-author">Felix N., SaaS</p></div>
-          <div class="review-card"><p class="review-text">«Die Inhalte sind immer relevant und ansprechend.»</p><p class="review-author">Simone K., Bildung</p></div>
-          <div class="review-card"><p class="review-text">«Ein starkes Team mit tiefem Verständnis für Marketing.»</p><p class="review-author">Tobias S., Automotive</p></div>
-          <div class="review-card"><p class="review-text">«Wir sind mit den Ergebnissen sehr zufrieden.»</p><p class="review-author">Claudia B., Tourismus</p></div>
+    <!-- Process Section -->
+    <section id="process">
+      <div class="container">
+        <h2 data-i18n="process_title">⚡ Unser Arbeitsprozess</h2>
+        <div class="process-grid">
+          <div class="process-step animate-slide-up">
+            <div class="process-number">1</div>
+            <h3 data-i18n="process_step1_title">🔍 Beratung & Analyse</h3>
+            <p data-i18n="process_step1_desc">Umfassende Analyse Ihrer aktuellen Situation, Zielgruppe und Wettbewerber für eine fundierte Strategieentwicklung.</p>
+          </div>
+          <div class="process-step animate-slide-up">
+            <div class="process-number">2</div>
+            <h3 data-i18n="process_step2_title">📋 Strategie entwickeln</h3>
+            <p data-i18n="process_step2_desc">Maßgeschneiderte Marketing-Strategie basierend auf Ihren Zielen, Budget und Marktgegebenheiten.</p>
+          </div>
+          <div class="process-step animate-slide-up">
+            <div class="process-number">3</div>
+            <h3 data-i18n="process_step3_title">⚙️ Umsetzung</h3>
+            <p data-i18n="process_step3_desc">Professionelle Implementierung aller Marketing-Maßnahmen mit modernsten Tools und bewährten Methoden.</p>
+          </div>
+          <div class="process-step animate-slide-up">
+            <div class="process-number">4</div>
+            <h3 data-i18n="process_step4_title">📊 Optimierung</h3>
+            <p data-i18n="process_step4_desc">Kontinuierliche Verbesserung und Anpassung der Kampagnen basierend auf Datenanalyse und Performance-Metriken.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+      <div class="container">
+        <h2 data-i18n="testimonials_title">💬 Was unsere Kunden sagen</h2>
+        <div class="testimonials">
+          <div class="quote animate-slide-up">
+            <p>Dank der professionellen Betreuung haben wir unseren Online-Umsatz um 300% gesteigert. Absolut empfehlenswert!</p>
+            <b><div class="quote-avatar">MK</div> Maria K., Geschäftsführerin</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Die Website ist modern, schnell und bringt uns täglich neue Kunden. Sehr zufrieden mit der Zusammenarbeit.</p>
+            <b><div class="quote-avatar">TH</div> Thomas H., Unternehmer</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Professionelle Google Ads Betreuung mit messbaren Ergebnissen. Unser ROI hat sich verdreifacht.</p>
+            <b><div class="quote-avatar">SL</div> Sarah L., Marketing Manager</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Excellenter SEO Service! Innerhalb von 6 Monaten sind wir auf Seite 1 bei Google. Danke!</p>
+            <b><div class="quote-avatar">MF</div> Michael F., E-Commerce Händler</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Kreative Social Media Kampagnen, die wirklich funktionieren. Engagement um 400% gestiegen.</p>
+            <b><div class="quote-avatar">AL</div> Anna L., Influencerin</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Zuverlässige und kompetente Beratung. Immer erreichbar und hilfsbereit. Sehr zu empfehlen!</p>
+            <b><div class="quote-avatar">DM</div> David M., Startup-Gründer</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Website-Relaunch perfekt umgesetzt. Moderne Optik und deutlich bessere Performance.</p>
+            <b><div class="quote-avatar">JW</div> Julia W., Online-Shop Betreiberin</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Google Ads Kampagnen bringen konstant qualifizierte Leads. ROI über unseren Erwartungen.</p>
+            <b><div class="quote-avatar">RS</div> Robert S., Dienstleister</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>SEO-Optimierung hat unsere organische Reichweite verdoppelt. Professionelle Arbeit!</p>
+            <b><div class="quote-avatar">NK</div> Nina K., Blogger</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Social Media Marketing auf höchstem Niveau. Community wächst stetig und engagiert.</p>
+            <b><div class="quote-avatar">PL</div> Peter L., Restaurant-Besitzer</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Technische Umsetzung fehlerfrei und termingerecht. Sehr professionelles Team!</p>
+            <b><div class="quote-avatar">CF</div> Christine F., Agentur-Inhaberin</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Beratung war ausführlich und verständlich. Strategie passt perfekt zu unserem Budget.</p>
+            <b><div class="quote-avatar">HG</div> Hans G., Kleinunternehmer</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Landing Page Optimierung hat Conversion Rate um 250% verbessert. Einfach top!</p>
+            <b><div class="quote-avatar">EM</div> Eva M., Marketing Managerin</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Content Marketing Strategy bringt konstant neue Kunden. Qualität stimmt zu 100%.</p>
+            <b><div class="quote-avatar">BK</div> Boris K., Freelancer</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>E-Mail Marketing Automatisierung spart Zeit und generiert mehr Umsatz. Perfekt!</p>
+            <b><div class="quote-avatar">LH</div> Lisa H., Online-Unternehmerin</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Analytics Setup und Reporting sehr übersichtlich. Endlich verstehen wir unsere Daten!</p>
+            <b><div class="quote-avatar">TS</div> Tom S., Tech-Startup</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Mobile Optimierung war dringend nötig. Jetzt perfekte User Experience auf allen Geräten.</p>
+            <b><div class="quote-avatar">SW</div> Sandra W., Fashion-Brand</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Conversion Tracking Setup ermöglicht datenbasierte Entscheidungen. Sehr wertvoll!</p>
+            <b><div class="quote-avatar">MR</div> Martin R., B2B Unternehmen</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>Competitor Analysis war sehr aufschlussreich. Strategieentwicklung darauf basierend sehr erfolgreich.</p>
+            <b><div class="quote-avatar">IS</div> Ines S., Marktforscherin</b>
+          </div>
+          <div class="quote animate-slide-up">
+            <p>24/7 Support ist Gold wert. Probleme werden immer schnell und kompetent gelöst.</p>
+            <b><div class="quote-avatar">FK</div> Felix K., Online-Händler</b>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
     <section id="faq">
-      <h2 data-i18n="faq.title">Häufig gestellte Fragen</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-question" data-i18n="faq.q1">Wie wird der Preis für Dienstleistungen bestimmt?</div>
-          <div class="faq-answer" data-i18n="faq.a1">Die Kosten hängen vom Umfang der Arbeiten und den Projektanforderungen ab. Wir bieten eine kostenlose Beratung zur Bedarfsanalyse.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" data-i18n="faq.q2">Wann kann ich Ergebnisse erwarten?</div>
-          <div class="faq-answer" data-i18n="faq.a2">Google Ads: Ergebnisse in 2–4 Wochen. SEO: 3–6 Monate. Website-Erstellung: 2–6 Wochen je nach Komplexität.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" data-i18n="faq.q3">Mit welchen Unternehmen arbeiten Sie zusammen?</div>
-          <div class="faq-answer" data-i18n="faq.a3">Ja, wir arbeiten mit Unternehmen aller Größen – von Start-ups bis zu Großunternehmen. Wir finden eine Lösung für Ihr Budget.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" data-i18n="faq.q4">Gibt es Ergebnisgarantien?</div>
-          <div class="faq-answer" data-i18n="faq.a4">Wir garantieren professionelle Arbeit gemäß der technischen Spezifikation. Für Werbekampagnen stellen wir Prognosen und regelmäßige Berichte zur Verfügung.</div>
-        </div>
-         <div class="faq-item">
-          <div class="faq-question" data-i18n="faq.q5">Wie erfolgt die Kommunikation?</div>
-          <div class="faq-answer" data-i18n="faq.a5">Wöchentliche Berichte, Online-Meetings, Transparenz in allen Prozessen. Sie sind immer informiert.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" data-i18n="faq.q6">Erstellen Sie Websites für internationale Kunden?</div>
-          <div class="faq-answer" data-i18n="faq.a6">Ja, wir erstellen mehrsprachige Websites mit SEO für jede Region und lokalisierten Inhalten.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" data-i18n="faq.q7">Bieten Sie auch Support nach dem Projekt an?</div>
-          <div class="faq-answer" data-i18n="faq.a7">Ja, wir bieten verschiedene Support-Pakete an, um die Kontinuität und den Erfolg Ihrer Kampagnen zu gewährleisten.</div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question" data-i18n="faq.q8">Welche Tools verwenden Sie?</div>
-          <div class="faq-answer" data-i18n="faq.a8">Wir nutzen branchenführende Tools wie Google Ads, Google Analytics, Meta Business Suite, sowie interne Analyse- und Reporting-Plattformen.</div>
+      <div class="container">
+        <h2 data-i18n="faq_title">❓ Häufig gestellte Fragen</h2>
+        <div style="max-width: 900px; margin: 0 auto;">
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Wie lange dauert die Entwicklung einer Website?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              <p>Die Entwicklungszeit hängt vom Umfang ab. Eine einfache Website dauert 2-3 Wochen, komplexere Projekte mit E-Commerce oder speziellen Funktionen 4-8 Wochen.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Bieten Sie auch Wartung und Support an?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              <p>Ja, wir bieten umfassende Wartung, Updates, Backups und 24/7 Support für alle unsere Projekte an. Verschiedene Support-Pakete verfügbar.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Wie messen Sie den Erfolg von Marketing-Kampagnen?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              <p>Wir verwenden detaillierte Analytics Tools (Google Analytics, Search Console, etc.) und erstellen regelmäßige Reports zu Traffic, Conversions, ROI und anderen KPIs.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Was kostet eine professionelle Website?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              <p>Die Kosten variieren je nach Umfang. Einfache Websites ab 1.500€, E-Commerce Lösungen ab 3.500€. Individuelle Angebote nach kostenloser Beratung.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Wie schnell sehe ich Ergebnisse bei SEO?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              <p>Erste Verbesserungen meist nach 2-3 Monaten sichtbar. Signifikante Ranking-Verbesserungen nach 4-6 Monaten. SEO ist ein langfristiger Prozess.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>Welche Social Media Plattformen empfehlen Sie?</span>
+              <div class="faq-toggle">+</div>
+            </div>
+            <div class="faq-answer">
+              <p>Abhängig von Ihrer Zielgruppe: B2B meist LinkedIn, B2C oft Instagram/Facebook/TikTok. Wir analysieren Ihre Zielgruppe und empfehlen passende Kanäle.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
-      <p data-i18n="footer.text">© 2025 Vermarkter. Alle Rechte vorbehalten.</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>🎯 Leistungen</h3>
+          <a href="#services">Website-Entwicklung</a>
+          <a href="#services">Google Ads Management</a>
+          <a href="#services">SEO Optimierung</a>
+          <a href="#services">Social Media Marketing</a>
+          <a href="#services">Content Marketing</a>
+        </div>
+        <div class="footer-section">
+          <h3>🏢 Unternehmen</h3>
+          <a href="#process">Über uns</a>
+          <a href="#testimonials">Kundenbewertungen</a>
+          <a href="#faq">FAQ</a>
+          <a href="#">Portfolio</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="footer-section">
+          <h3>📞 Kontakt</h3>
+          <a href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">📱 Telegram Chat</a>
+          <a href="mailto:info@marketing-in-deutschland.de">✉️ E-Mail</a>
+          <a href="#" onclick="toggleChat()">💬 Live Chat</a>
+          <a href="tel:+4915123456789">📞 Telefon</a>
+        </div>
+        <div class="footer-section">
+          <h3>🌍 Rechtliches</h3>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+          <a href="#">AGB</a>
+          <a href="#">Cookie Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Marketing in Deutschland. Alle Rechte vorbehalten. Made with ❤️ in Deutschland</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Чат-віджет -->
-  <div id="chat-widget">
-    <button id="chat-toggle">💬</button>
-    <div id="chat-container">
-      <div id="chat-header">
-        <span data-i18n="chat.header">Online-Support</span>
-        <button id="close-chat">×</button>
-      </div>
-      <div id="chat-messages">
-        <!-- Повідомлення будуть додаватися сюди -->
-      </div>
-      <div id="chat-input-container">
-        <input type="text" id="chat-input" placeholder="Nachricht eingeben..." data-i18n-placeholder="chat.input_placeholder">
-        <button id="send-message">➤</button>
+  <!-- Chat Widget -->
+  <div class="chat-backdrop" id="chatBackdrop" onclick="toggleChat()"></div>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="title">💬 Live Chat Support</div>
+      <button onclick="toggleChat()" style="background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 4px;">×</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot">
+        <div class="bubble">Hallo! 👋 Willkommen bei Marketing in Deutschland. Wie können wir Ihnen heute helfen?</div>
       </div>
     </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Nachricht eingeben..." id="chatInput" onkeypress="handleEnter(event)">
+      <button onclick="sendMessage()">Senden</button>
+    </div>
   </div>
+  <button class="chat-launcher" onclick="toggleChat()" aria-label="Chat öffnen">
+    💬
+  </button>
 
   <script>
-    // --- Базові переклади ---
+    // Translations
     const translations = {
       de: {
-        "seo.title": "Vermarkter — Professionelle Marketingdienstleistungen",
-        "seo.description": "Professionelle Marketingdienstleistungen: Webseiten, Google Ads, Social Media, SEO. Transparent. Effektiv.",
-        "seo.keywords": "Marketing, Webdesign, Google Ads, SEO, Social Media, Performance, ROAS, CPA",
-        "header.logo": "Vermarkter",
-        "nav.services": "Leistungen",
-        "nav.how": "Wie wir arbeiten",
-        "nav.reviews": "Bewertungen",
-        "nav.faq": "FAQ",
-        "services.title": "Leistungen",
-        "services.web.title": "Webseiten-Erstellung",
-        "services.web.desc": "Schnelle, responsive Websites: Landingpages, Shops, mehrsprachige Projekte. Konversionsorientiertes Design, sauberer Code, Integrationen mit Analytics und CRM.",
-        "services.ads.title": "Suche & Shopping",
-        "services.ads.desc": "Seien Sie dort, wo Nachfrage ist: Search/Shopping, Performance Max, (dynamisches) Remarketing, YouTube und Display-Netzwerk — mit CPA/ROAS-Kontrolle.",
-        "services.social.title": "Soziale Netzwerke",
-        "services.social.desc": "Content-Strategie, Design, Reels/Shorts, bezahlte Werbung. Messenger und UGC — aus Views werden Leads.",
-        "services.seo.title": "SEO",
-        "services.seo.desc": "Technisches Audit, Semantik, Content und Backlinks — stabiles Wachstum im Organic Traffic. ROI-Prognose inkludiert.",
-        "process.title": "Wie wir arbeiten",
-        "process.analyze.title": "Analyse",
-        "process.analyze.desc": "Wir analysieren Ihr Unternehmen, die Konkurrenz und Ihre Zielgruppe. Wir identifizieren Wachstumspotenziale.",
-        "process.strategy.title": "Strategie",
-        "process.strategy.desc": "Wir entwickeln einen umfassenden Plan mit konkreten KPIs und Zeitrahmen.",
-        "process.implement.title": "Umsetzung",
-        "process.implement.desc": "Wir starten Kampagnen, erstellen Inhalte und optimieren Prozesse.",
-        "process.optimize.title": "Optimierung",
-        "process.optimize.desc": "Wir analysieren kontinuierlich die Ergebnisse und verbessern die Effizienz.",
-        "reviews.title": "Bewertungen",
-        // Відгуки не перекладаються, бо це вже конкретні тексти
-        "faq.title": "Häufig gestellte Fragen",
-        "faq.q1": "Wie wird der Preis für Dienstleistungen bestimmt?",
-        "faq.a1": "Die Kosten hängen vom Umfang der Arbeiten und den Projektanforderungen ab. Wir bieten eine kostenlose Beratung zur Bedarfsanalyse.",
-        "faq.q2": "Wann kann ich Ergebnisse erwarten?",
-        "faq.a2": "Google Ads: Ergebnisse in 2–4 Wochen. SEO: 3–6 Monate. Website-Erstellung: 2–6 Wochen je nach Komplexität.",
-        "faq.q3": "Mit welchen Unternehmen arbeiten Sie zusammen?",
-        "faq.a3": "Ja, wir arbeiten mit Unternehmen aller Größen – von Start-ups bis zu Großunternehmen. Wir finden eine Lösung für Ihr Budget.",
-        "faq.q4": "Gibt es Ergebnisgarantien?",
-        "faq.a4": "Wir garantieren professionelle Arbeit gemäß der technischen Spezifikation. Für Werbekampagnen stellen wir Prognosen und regelmäßige Berichte zur Verfügung.",
-        "faq.q5": "Wie erfolgt die Kommunikation?",
-        "faq.a5": "Wöchentliche Berichte, Online-Meetings, Transparenz in allen Prozessen. Sie sind immer informiert.",
-        "faq.q6": "Erstellen Sie Websites für internationale Kunden?",
-        "faq.a6": "Ja, wir erstellen mehrsprachige Websites mit SEO für jede Region und lokalisierten Inhalten.",
-        "faq.q7": "Bieten Sie auch Support nach dem Projekt an?",
-        "faq.a7": "Ja, wir bieten verschiedene Support-Pakete an, um die Kontinuität und den Erfolg Ihrer Kampagnen zu gewährleisten.",
-        "faq.q8": "Welche Tools verwenden Sie?",
-        "faq.a8": "Wir nutzen branchenführende Tools wie Google Ads, Google Analytics, Meta Business Suite, sowie interne Analyse- und Reporting-Plattformen.",
-        "footer.text": "© 2025 Vermarkter. Alle Rechte vorbehalten.",
-        "chat.header": "Online-Support",
-        "chat.input_placeholder": "Nachricht eingeben...",
-        "chat.greeting": "Hallo! Wie kann ich Ihnen helfen?"
-      },
-      uk: {
-        "seo.title": "Vermarkter — Професійні маркетингові послуги",
-        "seo.description": "Професійні маркетингові послуги: сайти, Google Ads, соцмережі, SEO. Прозоро. Ефективно.",
-        "seo.keywords": "Маркетинг, веб-дизайн, Google Ads, SEO, соціальні мережі, ефективність, ROAS, CPA",
-        "header.logo": "Vermarkter",
-        "nav.services": "Послуги",
-        "nav.how": "Як ми працюємо",
-        "nav.reviews": "Відгуки",
-        "nav.faq": "FAQ",
-        "services.title": "Послуги",
-        "services.web.title": "Створення сайтів",
-        "services.web.desc": "Швидкі, адаптивні сайти: лендинги, магазини, мультимовні проєкти. Дизайн під конверсію, чистий код, інтеграції з аналітикою та CRM.",
-        "services.ads.title": "Пошук і Shopping",
-        "services.ads.desc": "Будьте там, де є попит: Search/Shopping, Performance Max, (динамічний) ремаркетинг, YouTube та медійна мережа — з контролем CPA/ROAS.",
-        "services.social.title": "Соціальні мережі",
-        "services.social.desc": "Контент-стратегія, дизайн, Reels/Shorts, платна реклама. Месенджери та UGC — щоб перегляди ставали лідами.",
-        "services.seo.title": "Пошукова оптимізація",
-        "services.seo.desc": "Технічний аудит, семантика, контент і посилання — стабільний ріст органіки. Прогноз окупності додається.",
-        "process.title": "Як ми працюємо",
-        "process.analyze.title": "Аналіз",
-        "process.analyze.desc": "Вивчаємо ваш бізнес, конкурентів та цільову аудиторію. Визначаємо точки росту.",
-        "process.strategy.title": "Стратегія",
-        "process.strategy.desc": "Розробляємо комплексний план з конкретними KPI та строками виконання.",
-        "process.implement.title": "Реалізація",
-        "process.implement.desc": "Запускаємо кампанії, створюємо контент, оптимізуємо процеси.",
-        "process.optimize.title": "Оптимізація",
-        "process.optimize.desc": "Постійно аналізуємо результати та покращуємо ефективність.",
-        "reviews.title": "Відгуки",
-        "faq.title": "Часті запитання",
-        "faq.q1": "Як визначається вартість послуг?",
-        "faq.a1": "Вартість залежить від обсягу робіт та специфіки проєкту. Пропонуємо безкоштовну консультацію для оцінки ваших потреб.",
-        "faq.q2": "Коли можна очікувати результатів?",
-        "faq.a2": "Google Ads: результати через 2–4 тижні. SEO: 3–6 місяців. Створення сайту: 2–6 тижнів залежно від складності.",
-        "faq.q3": "З якими компаніями ви працюєте?",
-        "faq.a3": "Так, ми працюємо з компаніями різного розміру — від стартапів до великих корпорацій. Підбираємо рішення під ваш бюджет.",
-        "faq.q4": "Чи є гарантії результату?",
-        "faq.a4": "Ми гарантуємо професійне виконання робіт згідно з технічним завданням. Для рекламних кампаній надаємо прогнози та регулярну звітність.",
-        "faq.q5": "Як відбувається комунікація?",
-        "faq.a5": "Щотижневі звіти, онлайн-зустрічі, прозорість у всіх процесах. Ви завжди у курсі прогресу.",
-        "faq.q6": "Чи робите ви сайти для міжнародних клієнтів?",
-        "faq.a6": "Так, створюємо мультимовні сайти з SEO під кожен регіон та локалізований контент.",
-        "faq.q7": "Чи надаєте ви підтримку після проекту?",
-        "faq.a7": "Так, ми пропонуємо різні пакети підтримки для забезпечення безперервності та успіху ваших кампаній.",
-        "faq.q8": "Які інструменти ви використовуєте?",
-        "faq.a8": "Ми використовуємо провідні інструменти галузі, такі як Google Ads, Google Analytics, Meta Business Suite, а також внутрішні платформи для аналізу та звітності.",
-        "footer.text": "© 2025 Vermarkter. Усі права захищено.",
-        "chat.header": "Онлайн підтримка",
-        "chat.input_placeholder": "Напишіть повідомлення...",
-        "chat.greeting": "Привіт! Яка потрібна допомога?"
+        brand: "Marketing in Deutschland",
+        tagline: "Digitalagentur",
+        hero_title: "Digitales Marketing, das funktioniert",
+        hero_lead: "Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
+        badge: "8 Jahre Erfahrung",
+        consultation: "Beratung starten",
+        services: "Leistungen",
+        services_title: "🎯 Unsere Leistungen",
+        nav_services: "Leistungen",
+        nav_process: "Prozess",
+        nav_testimonials: "Bewertungen",
+        nav_faq: "FAQ",
+        telegram: "Telegram"
       },
       en: {
-        "seo.title": "Vermarkter — Professional Marketing Services",
-        "seo.description": "Professional marketing services: websites, Google Ads, social media, SEO. Transparent. Effective.",
-        "seo.keywords": "Marketing, Web Design, Google Ads, SEO, Social Media, Performance, ROAS, CPA",
-        "header.logo": "Vermarkter",
-        "nav.services": "Services",
-        "nav.how": "How we work",
-        "nav.reviews": "Reviews",
-        "nav.faq": "FAQ",
-        "services.title": "Services",
-        "services.web.title": "Website Development",
-        "services.web.desc": "Fast, responsive websites: landing pages, e-commerce, multilingual projects. Conversion-focused design, clean code, integrations with analytics and CRM.",
-        "services.ads.title": "Search & Shopping",
-        "services.ads.desc": "Be where demand is: Search/Shopping, Performance Max, (dynamic) remarketing, YouTube, and Display Network — with CPA/ROAS control.",
-        "services.social.title": "Social Media",
-        "services.social.desc": "Content strategy, design, Reels/Shorts, paid ads. Messaging apps and UGC — turning views into leads.",
-        "services.seo.title": "SEO",
-        "services.seo.desc": "Technical audit, keyword research, content, and backlinks — steady organic growth. ROI forecast included.",
-        "process.title": "How we work",
-        "process.analyze.title": "Analysis",
-        "process.analyze.desc": "We study your business, competitors, and target audience. Identify growth opportunities.",
-        "process.strategy.title": "Strategy",
-        "process.strategy.desc": "We develop a comprehensive plan with specific KPIs and timelines.",
-        "process.implement.title": "Implementation",
-        "process.implement.desc": "We launch campaigns, create content, and optimize processes.",
-        "process.optimize.title": "Optimization",
-        "process.optimize.desc": "We continuously analyze results and improve performance.",
-        "reviews.title": "Reviews",
-        "faq.title": "Frequently Asked Questions",
-        "faq.q1": "How is the cost of services determined?",
-        "faq.a1": "The cost depends on the scope of work and project specifics. We offer a free consultation to assess your needs.",
-        "faq.q2": "When can I expect results?",
-        "faq.a2": "Google Ads: results in 2–4 weeks. SEO: 3–6 months. Website creation: 2–6 weeks depending on complexity.",
-        "faq.q3": "Which companies do you work with?",
-        "faq.a3": "Yes, we work with companies of all sizes — from startups to large corporations. We tailor solutions to your budget.",
-        "faq.q4": "Are there any guarantees of results?",
-        "faq.a4": "We guarantee professional work according to the technical specification. For ad campaigns, we provide forecasts and regular reporting.",
-        "faq.q5": "How does communication work?",
-        "faq.a5": "Weekly reports, online meetings, transparency in all processes. You are always in the loop.",
-        "faq.q6": "Do you create websites for international clients?",
-        "faq.a6": "Yes, we create multilingual websites with SEO for each region and localized content.",
-        "faq.q7": "Do you offer support after the project?",
-        "faq.a7": "Yes, we offer various support packages to ensure continuity and success of your campaigns.",
-        "faq.q8": "What tools do you use?",
-        "faq.a8": "We use industry-leading tools such as Google Ads, Google Analytics, Meta Business Suite, as well as internal analysis and reporting platforms.",
-        "footer.text": "© 2025 Vermarkter. All rights reserved.",
-        "chat.header": "Online Support",
-        "chat.input_placeholder": "Type a message...",
-        "chat.greeting": "Hi! How can I help you?"
+        brand: "Marketing in Germany",
+        tagline: "Digital Agency",
+        hero_title: "Digital Marketing that works",
+        hero_lead: "Websites, Google Ads, SMM, SEO. Visible where your customers are already searching.",
+        badge: "8 Years Experience",
+        consultation: "Start Consultation",
+        services: "Services",
+        services_title: "🎯 Our Services",
+        nav_services: "Services",
+        nav_process: "Process",
+        nav_testimonials: "Reviews",
+        nav_faq: "FAQ",
+        telegram: "Telegram"
       },
-      pl: {
-        "seo.title": "Vermarkter — Profesjonalne usługi marketingowe",
-        "seo.description": "Profesjonalne usługi marketingowe: strony internetowe, Google Ads, media społecznościowe, SEO. Przejrzyste. Skuteczne.",
-        "seo.keywords": "Marketing, projektowanie stron, Google Ads, SEO, media społecznościowe, wydajność, ROAS, CPA",
-        "header.logo": "Vermarkter",
-        "nav.services": "Usługi",
-        "nav.how": "Jak pracujemy",
-        "nav.reviews": "Opinie",
-        "nav.faq": "FAQ",
-        "services.title": "Usługi",
-        "services.web.title": "Tworzenie stron",
-        "services.web.desc": "Szybkie, responsywne strony: landingi, sklepy, projekty wielojęzyczne. Projektowanie pod konwersję, czysty kod, integracje z analizami i CRM.",
-        "services.ads.title": "Google Ads i Shopping",
-        "services.ads.desc": "Bądź tam, gdzie jest popyt: Search/Shopping, Performance Max, remarketing (dynamiczny), YouTube i sieć wyświetlania — z kontrolą CPA/ROAS.",
-        "services.social.title": "Media społeczne",
-        "services.social.desc": "Strategia treści, projektowanie, Reels/Shorts, reklama płatna. Messengery i UGC — by odsłony stały się leadami.",
-        "services.seo.title": "SEO",
-        "services.seo.desc": "Audyt techniczny, semantyka, treści i linki — stabilny wzrost ruchu organicznego. Prognoza opłacalności włączona.",
-        "process.title": "Jak pracujemy",
-        "process.analyze.title": "Analiza",
-        "process.analyze.desc": "Analizujemy Twoją firmę, konkurencję i grupę docelową. Określamy punkty wzrostu.",
-        "process.strategy.title": "Strategia",
-        "process.strategy.desc": "Tworzymy kompleksowy plan z konkretnymi KPI i terminami realizacji.",
-        "process.implement.title": "Realizacja",
-        "process.implement.desc": "Uruchamiamy kampanie, tworzymy treści, optymalizujemy procesy.",
-        "process.optimize.title": "Optymalizacja",
-        "process.optimize.desc": "Stale analizujemy wyniki i poprawiamy efektywność.",
-        "reviews.title": "Opinie",
-        "faq.title": "Często zadawane pytania",
-        "faq.q1": "Jak ustalana jest cena usług?",
-        "faq.a1": "Koszt zależy od zakresu prac i specyfiki projektu. Oferujemy bezpłatną konsultację, aby ocenić Twoje potrzeby.",
-        "faq.q2": "Kiedy można spodziewać się efektów?",
-        "faq.a2": "Google Ads: efekty po 2–4 tygodniach. SEO: 3–6 miesięcy. Tworzenie strony: 2–6 tygodni w zależności od złożoności.",
-        "faq.q3": "Z jakimi firmami współpracujecie?",
-        "faq.a3": "Tak, współpracujemy z firmami różnej wielkości — od startupów po duże korporacje. Dostosowujemy rozwiązania do Twojego budżetu.",
-        "faq.q4": "Czy dajecie gwarancję wyników?",
-        "faq.a4": "Gwarantujemy profesjonalne wykonanie prac zgodnie z założeniami. Dla kampanii reklamowych dostarczamy prognozy i regularne raporty.",
-        "faq.q5": "Jak wygląda komunikacja?",
-        "faq.a5": "Cotygodniowe raporty, spotkania online, przejrzystość we wszystkich procesach. Zawsze jesteś na bieżąco.",
-        "faq.q6": "Czy tworzycie strony dla klientów międzynarodowych?",
-        "faq.a6": "Tak, tworzymy wielojęzyczne strony z SEO dla każdego regionu i lokalizowaną treścią.",
-        "faq.q7": "Czy oferujecie wsparcie po projekcie?",
-        "faq.a7": "Tak, oferujemy różne pakiety wsparcia, aby zapewnić ciągłość i sukces Twoich kampanii.",
-        "faq.q8": "Jakich narzędzi używacie?",
-        "faq.a8": "Korzystamy z wiodących narzędzi branżowych, takich jak Google Ads, Google Analytics, Meta Business Suite, a także z wewnętrznych platform analitycznych i raportowych.",
-        "footer.text": "© 2025 Vermarkter. Wszelkie prawa zastrzeżone.",
-        "chat.header": "Wsparcie online",
-        "chat.input_placeholder": "Wpisz wiadomość...",
-        "chat.greeting": "Cześć! W czym mogę pomóc?"
+      ua: {
+        brand: "Маркетинг в Німеччині",
+        tagline: "Цифрове агентство",
+        hero_title: "Цифровий маркетинг, який працює",
+        hero_lead: "Вебсайти, Google Ads, SMM, SEO. Видимість там, де ваші клієнти вже шукають.",
+        badge: "8 років досвіду",
+        consultation: "Почати консультацію",
+        services: "Послуги",
+        services_title: "🎯 Наші послуги",
+        nav_services: "Послуги",
+        nav_process: "Процес",
+        nav_testimonials: "Відгуки",
+        nav_faq: "FAQ",
+        telegram: "Telegram"
       },
       ru: {
-        "seo.title": "Vermarkter — Профессиональные маркетинговые услуги",
-        "seo.description": "Профессиональные маркетинговые услуги: сайты, Google Ads, социальные сети, SEO. Прозрачно. Эффективно.",
-        "seo.keywords": "Маркетинг, веб-дизайн, Google Ads, SEO, социальные сети, эффективность, ROAS, CPA",
-        "header.logo": "Vermarkter",
-        "nav.services": "Услуги",
-        "nav.how": "Как мы работаем",
-        "nav.reviews": "Отзывы",
-        "nav.faq": "FAQ",
-        "services.title": "Услуги",
-        "services.web.title": "Создание сайтов",
-        "services.web.desc": "Быстрые, адаптивные сайты: лендинги, магазины, мультязычные проекты. Дизайн под конверсию, чистый код, интеграции с аналитикой и CRM.",
-        "services.ads.title": "Поиск и Shopping",
-        "services.ads.desc": "Будьте там, где есть спрос: Поиск/Shopping, Performance Max, (динамический) ремаркетинг, YouTube и медийная сеть — с контролем CPA/ROAS.",
-        "services.social.title": "Социальные сети",
-        "services.social.desc": "Контент-стратегия, дизайн, Reels/Shorts, платная реклама. Мессенджеры и UGC — чтобы просмотры становились лидами.",
-        "services.seo.title": "SEO",
-        "services.seo.desc": "Технический аудит, семантика, контент и ссылки — стабильный рост органики. Прогноз окупаемости прилагается.",
-        "process.title": "Как мы работаем",
-        "process.analyze.title": "Анализ",
-        "process.analyze.desc": "Изучаем ваш бизнес, конкурентов и целевую аудиторию. Определяем точки роста.",
-        "process.strategy.title": "Стратегия",
-        "process.strategy.desc": "Разрабатываем комплексный план с конкретными KPI и сроками выполнения.",
-        "process.implement.title": "Реализация",
-        "process.implement.desc": "Запускаем кампании, создаем контент, оптимизируем процессы.",
-        "process.optimize.title": "Оптимизация",
-        "process.optimize.desc": "Постоянно анализируем результаты и повышаем эффективность.",
-        "reviews.title": "Отзывы",
-        "faq.title": "Часто задаваемые вопросы",
-        "faq.q1": "Как определяется стоимость услуг?",
-        "faq.a1": "Стоимость зависит от объема работ и специфики проекта. Предлагаем бесплатную консультацию для оценки ваших потребностей.",
-        "faq.q2": "Когда можно ожидать результатов?",
-        "faq.a2": "Google Ads: результаты через 2–4 недели. SEO: 3–6 месяцев. Создание сайта: 2–6 недель в зависимости от сложности.",
-        "faq.q3": "С какими компаниями вы работаете?",
-        "faq.a3": "Да, мы работаем с компаниями разного размера — от стартапов до крупных корпораций. Подбираем решения под ваш бюджет.",
-        "faq.q4": "Есть ли гарантии результата?",
-        "faq.a4": "Мы гарантируем профессиональное выполнение работ в соответствии с техническим заданием. Для рекламных кампаний предоставляем прогнозы и регулярную отчетность.",
-        "faq.q5": "Как происходит коммуникация?",
-        "faq.a5": "Еженедельные отчеты, онлайн-встречи, прозрачность во всех процессах. Вы всегда в курсе прогресса.",
-        "faq.q6": "Делаете ли вы сайты для международных клиентов?",
-        "faq.a6": "Да, создаем мультязычные сайты с SEO под каждый регион и локализованный контент.",
-        "faq.q7": "Предоставляете ли вы поддержку после проекта?",
-        "faq.a7": "Да, мы предлагаем различные пакеты поддержки для обеспечения непрерывности и успеха ваших кампаний.",
-        "faq.q8": "Какие инструменты вы используете?",
-        "faq.a8": "Мы используем ведущие отраслевые инструменты, такие как Google Ads, Google Analytics, Meta Business Suite, а также внутренние платформы для анализа и отчетности.",
-        "footer.text": "© 2025 Vermarkter. Все права защищены.",
-        "chat.header": "Онлайн поддержка",
-        "chat.input_placeholder": "Введите сообщение...",
-        "chat.greeting": "Привет! Какая нужна помощь?"
+        brand: "Маркетинг в Германии",
+        tagline: "Цифровое агентство",
+        hero_title: "Цифровой маркетинг, который работает",
+        hero_lead: "Веб-сайты, Google Ads, SMM, SEO. Видимость там, где ваши клиенты уже ищут.",
+        badge: "8 лет опыта",
+        consultation: "Начать консультацию",
+        services: "Услуги",
+        services_title: "🎯 Наши услуги",
+        nav_services: "Услуги",
+        nav_process: "Процесс",
+        nav_testimonials: "Отзывы",
+        nav_faq: "FAQ",
+        telegram: "Telegram"
+      },
+      pl: {
+        brand: "Marketing w Niemczech",
+        tagline: "Agencja cyfrowa",
+        hero_title: "Marketing cyfrowy, który działa",
+        hero_lead: "Strony internetowe, Google Ads, SMM, SEO. Widoczność tam, gdzie Twoi klienci już szukają.",
+        badge: "8 lat doświadczenia",
+        consultation: "Rozpocznij konsultację",
+        services: "Usługi",
+        services_title: "🎯 Nasze usługi",
+        nav_services: "Usługi",
+        nav_process: "Proces",
+        nav_testimonials: "Opinie",
+        nav_faq: "FAQ",
+        telegram: "Telegram"
       }
     };
 
-    // --- Функції для роботи з мовами ---
-    function setLanguage(lang) {
-        const elements = document.querySelectorAll('[data-i18n]');
-        elements.forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (translations[lang] && translations[lang][key]) {
-                element.textContent = translations[lang][key];
-            }
+    // Current language
+    let currentLang = 'ua';
+    let currentTheme = 'dark';
+
+    // Theme Toggle
+    function toggleTheme() {
+      const body = document.body;
+      const themeOptions = document.querySelectorAll('.theme-option');
+      
+      if (currentTheme === 'dark') {
+        currentTheme = 'light';
+        body.setAttribute('data-theme', 'light');
+        themeOptions.forEach(option => {
+          option.classList.remove('active');
+          if (option.dataset.themeOption === 'light') {
+            option.classList.add('active');
+          }
         });
-
-        // Окремо для placeholder
-        const inputPlaceholder = document.querySelector('[data-i18n-placeholder]');
-        if (inputPlaceholder) {
-            const placeholderKey = inputPlaceholder.getAttribute('data-i18n-placeholder');
-            if (translations[lang] && translations[lang][placeholderKey]) {
-                inputPlaceholder.placeholder = translations[lang][placeholderKey];
-            }
-        }
-
-        // Оновлення кнопки мови
-        const langNames = { de: 'de', uk: 'ua', en: 'en', pl: 'pl', ru: 'ru' };
-        const langFlags = { de: '🇩🇪', uk: '🇺🇦', en: '🇬🇧', pl: '🇵🇱', ru: '🇷🇺' };
-        document.getElementById('current-lang-text').textContent = langNames[lang] || lang;
-        document.getElementById('current-lang-flag').textContent = langFlags[lang] || '🌐';
-
-        // Зберегти вибір мови
-        localStorage.setItem('selectedLanguage', lang);
-        document.documentElement.lang = lang; // Оновити атрибут lang в HTML
-
-        // Закрити випадаюче меню після вибору
-        document.getElementById('lang-dropdown').classList.remove('show');
+      } else {
+        currentTheme = 'dark';
+        body.setAttribute('data-theme', 'dark');
+        themeOptions.forEach(option => {
+          option.classList.remove('active');
+          if (option.dataset.themeOption === 'dark') {
+            option.classList.add('active');
+          }
+        });
+      }
+      
+      localStorage.setItem('theme', currentTheme);
     }
 
-    // --- Ініціалізація мови ---
+    // Initialize theme
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        currentTheme = savedTheme;
+        document.body.setAttribute('data-theme', currentTheme);
+        document.querySelectorAll('.theme-option').forEach(option => {
+          option.classList.remove('active');
+          if (option.dataset.themeOption === currentTheme) {
+            option.classList.add('active');
+          }
+        });
+      }
+    }
+
+    // Language switching
+    function switchLanguage(lang) {
+      currentLang = lang.toLowerCase();
+      const translation = translations[currentLang];
+      
+      if (translation) {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          const key = element.getAttribute('data-i18n');
+          if (translation[key]) {
+            element.textContent = translation[key];
+          }
+        });
+      }
+      
+      localStorage.setItem('language', currentLang);
+    }
+
+    // Initialize language
     function initLanguage() {
-        const savedLang = localStorage.getItem('selectedLanguage') || 'de'; // За замовчуванням DE
-        setLanguage(savedLang);
+      const savedLang = localStorage.getItem('language') || 'ua';
+      currentLang = savedLang;
+      
+      // Update selects
+      document.querySelectorAll('select[id^="lang"]').forEach(select => {
+        select.value = savedLang.toUpperCase();
+      });
+      
+      switchLanguage(savedLang);
     }
 
-    // --- Обробники подій для перемикання мов ---
-    document.querySelectorAll('[data-lang]').forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const selectedLang = link.getAttribute('data-lang');
-            setLanguage(selectedLang);
-        });
+    // Mobile Menu Toggle
+    document.getElementById('mobileToggle').addEventListener('click', function() {
+      const menu = document.getElementById('mobileMenu');
+      const hamburger = document.getElementById('hamburger');
+      const isOpen = menu.classList.contains('active');
+      
+      if (isOpen) {
+        menu.classList.remove('active');
+        hamburger.classList.remove('active');
+        this.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.classList.add('active');
+        hamburger.classList.add('active');
+        this.setAttribute('aria-expanded', 'true');
+      }
     });
 
-    // --- Випадаюче меню мов ---
-    document.getElementById('current-lang-btn').addEventListener('click', () => {
-        document.getElementById('lang-dropdown').classList.toggle('show');
+    // Close mobile menu when clicking on links
+    document.querySelectorAll('.mobile-links a').forEach(link => {
+      link.addEventListener('click', function() {
+        document.getElementById('mobileMenu').classList.remove('active');
+        document.getElementById('hamburger').classList.remove('active');
+        document.getElementById('mobileToggle').setAttribute('aria-expanded', 'false');
+      });
     });
 
-    // Закриття меню при кліку поза ним
-    window.addEventListener('click', (e) => {
-        if (!document.getElementById('current-lang-btn').contains(e.target) &&
-            !document.getElementById('lang-dropdown').contains(e.target)) {
-            document.getElementById('lang-dropdown').classList.remove('show');
-        }
-    });
-
-    // --- Мобільне меню ---
-    document.querySelector('.menu-btn').addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.add('active');
-    });
-
-    document.getElementById('close-mobile-menu').addEventListener('click', () => {
-        document.getElementById('mobile-menu').classList.remove('active');
-    });
-
-    // Закриття мобільного меню при кліку на посилання
-    document.querySelectorAll('.mobile-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.remove('active');
-        });
-    });
-
-    // --- FAQ Акордеон ---
+    // FAQ Toggle
     document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', () => {
-            const item = question.parentElement;
-            item.classList.toggle('active');
+      question.addEventListener('click', function() {
+        const item = this.parentElement;
+        const isOpen = item.classList.contains('open');
+        
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-item').forEach(faq => {
+          if (faq !== item) {
+            faq.classList.remove('open');
+          }
         });
-    });
-
-    // --- Теми ---
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
-
-    // Завантаження теми
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    if (savedTheme === 'light') {
-        body.classList.add('light-theme');
-        themeToggle.innerHTML = '🌙'; // Темна тема зараз
-    } else {
-         themeToggle.innerHTML = '☀️'; // Світла тема зараз
-    }
-
-    // Перемикання теми
-    themeToggle.addEventListener('click', () => {
-        if (body.classList.contains('light-theme')) {
-            body.classList.remove('light-theme');
-            themeToggle.innerHTML = '☀️'; // Тепер світла
-            localStorage.setItem('theme', 'dark');
-        } else {
-            body.classList.add('light-theme');
-            themeToggle.innerHTML = '🌙'; // Тепер темна
-            localStorage.setItem('theme', 'light');
-        }
-    });
-
-
-    // --- Чат ---
-    const chatWidget = document.getElementById('chat-widget');
-    const chatToggle = document.getElementById('chat-toggle');
-    const chatContainer = document.getElementById('chat-container');
-    const closeChat = document.getElementById('close-chat');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatInput = document.getElementById('chat-input');
-    const sendMessageBtn = document.getElementById('send-message');
-
-    // Відкриття/закриття чату
-    chatToggle.addEventListener('click', () => {
-        const isOpen = chatContainer.style.display === 'flex';
+        
+        // Toggle current item
         if (isOpen) {
-            chatContainer.style.display = 'none';
+          item.classList.remove('open');
         } else {
-            chatContainer.style.display = 'flex';
-            // Додати початкове повідомлення, якщо чат порожній
-            if (chatMessages.children.length === 0) {
-                const currentLang = localStorage.getItem('selectedLanguage') || 'de';
-                const greetingKey = "chat.greeting";
-                const greetingText = translations[currentLang] && translations[currentLang][greetingKey] ? translations[currentLang][greetingKey] : "Привіт! Яка потрібна допомога?";
-                addMessage('bot', greetingText);
-            }
-            chatInput.focus();
+          item.classList.add('open');
         }
+      });
     });
 
-    // Закриття чату кнопкою
-    closeChat.addEventListener('click', () => {
-        chatContainer.style.display = 'none';
-    });
+    // Chat functionality (enhanced AI-like responses)
+    let chatOpen = false;
+    let chatResponses = [
+      "Vielen Dank für Ihre Nachricht! 😊 Unsere Experten sind für Sie da. Welches Marketing-Thema beschäftigt Sie?",
+      "Das ist eine sehr gute Frage! 🤔 Lassen Sie mich Sie mit einem unserer Spezialisten verbinden.",
+      "Perfekt! 🎯 Wir haben bereits vielen Unternehmen in ähnlichen Situationen geholfen. Möchten Sie mehr erfahren?",
+      "Interessant! 💡 Wir können Ihnen dabei definitiv helfen. Sollen wir einen kostenlosen Beratungstermin vereinbaren?",
+      "Ausgezeichnet! ⭐ Das ist genau unser Spezialgebiet. Lassen Sie uns besprechen, wie wir Ihnen helfen können.",
+      "Sehr gut! 🚀 Wir haben schon ähnliche Projekte erfolgreich umgesetzt. Soll ich Ihnen ein paar Beispiele zeigen?",
+      "Großartig! 💪 Mit unserer 8-jährigen Erfahrung finden wir sicher die passende Lösung für Sie."
+    ];
 
-    // Закриття чату кліком поза ним
-    document.addEventListener('click', (e) => {
-        if (!chatWidget.contains(e.target) && chatContainer.style.display === 'flex') {
-            chatContainer.style.display = 'none';
-        }
-    });
-
-    // Додавання повідомлення до чату
-    function addMessage(sender, text) {
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message');
-        messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
-        messageDiv.textContent = text;
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
+    function toggleChat() {
+      const panel = document.getElementById('chatPanel');
+      const backdrop = document.getElementById('chatBackdrop');
+      
+      chatOpen = !chatOpen;
+      
+      if (chatOpen) {
+        panel.classList.add('open');
+        backdrop.classList.add('open');
+        document.getElementById('chatInput').focus();
+      } else {
+        panel.classList.remove('open');
+        backdrop.classList.remove('open');
+      }
     }
 
-    // Відправка повідомлення
     function sendMessage() {
-        const message = chatInput.value.trim();
-        if (message) {
-            addMessage('user', message);
-            chatInput.value = '';
-
-            // --- Взаємодія з API ---
-            const currentLang = localStorage.getItem('selectedLanguage') || 'de';
-            fetch('https://vercel-sable-ten.vercel.app/api/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    messages: [{ role: 'user', content: message }],
-                    lang: currentLang // Передаємо правильну мову
-                })
-            })
-            .then(response => {
-                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                 }
-                 return response.json();
-            })
-            .then(data => {
-                // Перевірка, чи API повернуло помилку в структурі даних
-                if (data.error) {
-                    console.error('API Error:', data.error);
-                    const errorMsg = (translations[currentLang] && translations[currentLang]["chat.error"]) || "Es gab ein Problem bei der Verbindung mit dem Support. (API Error)";
-                    addMessage('bot', errorMsg);
-                    return;
-                }
-                const botReply = data.reply || (translations[currentLang] && translations[currentLang]["chat.default_reply"]) || "Entschuldigung, ich konnte keine Antwort generieren.";
-                addMessage('bot', botReply);
-            })
-            .catch(error => {
-                console.error('Chat API error:', error);
-                const currentLang = localStorage.getItem('selectedLanguage') || 'de';
-                const errorMsg = (translations[currentLang] && translations[currentLang]["chat.error"]) || "Es gab ein Problem bei der Verbindung mit dem Support.";
-                addMessage('bot', errorMsg);
-            });
-        }
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      
+      if (!message) return;
+      
+      const chatBody = document.getElementById('chatBody');
+      
+      // Add user message
+      chatBody.innerHTML += `
+        <div class="msg user">
+          <div class="bubble">${message}</div>
+        </div>
+      `;
+      
+      input.value = '';
+      
+      // Simulate typing indicator
+      const typingMsg = document.createElement('div');
+      typingMsg.className = 'msg bot';
+      typingMsg.innerHTML = '<div class="bubble">💭 Tippt...</div>';
+      chatBody.appendChild(typingMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+      
+      // Auto response after delay
+      setTimeout(() => {
+        typingMsg.remove();
+        const randomResponse = chatResponses[Math.floor(Math.random() * chatResponses.length)];
+        chatBody.innerHTML += `
+          <div class="msg bot">
+            <div class="bubble">${randomResponse}<br><br>
+            <a href="https://t.me/Marketing_in_Deutschland" target="_blank" style="color: var(--brand); font-weight: 600; text-decoration: underline;">
+            🚀 Direkter Telegram-Kontakt</a></div>
+          </div>
+        `;
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }, 1500);
+      
+      chatBody.scrollTop = chatBody.scrollHeight;
     }
 
-    sendMessageBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
+    function handleEnter(event) {
+      if (event.key === 'Enter') {
+        sendMessage();
+      }
+    }
+
+    // Language switching event listeners
+    document.querySelectorAll('select[id^="lang"]').forEach(select => {
+      select.addEventListener('change', function() {
+        const selectedLang = this.value.toLowerCase();
+        
+        // Update all selects to match
+        document.querySelectorAll('select[id^="lang"]').forEach(s => {
+          s.value = this.value;
+        });
+        
+        switchLanguage(selectedLang);
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
         }
+      });
     });
 
-    // --- Ініціалізація ---
-    document.addEventListener('DOMContentLoaded', () => {
-        initLanguage();
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Initialize animations
+    function initAnimations() {
+      const animatedElements = document.querySelectorAll('.animate-slide-up, .animate-slide-left, .animate-fade');
+      animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'all 0.6s ease-out';
+        observer.observe(el);
+      });
+    }
+
+    // Stats counter animation
+    function animateStats() {
+      const statsNumbers = document.querySelectorAll('.stats-number');
+      
+      const countUp = (element) => {
+        const target = element.textContent;
+        const isNumber = /\d+/.test(target);
+        
+        if (isNumber) {
+          const finalNumber = parseInt(target.match(/\d+/)[0]);
+          const suffix = target.replace(/\d+/, '');
+          let current = 0;
+          const increment = finalNumber / 50;
+          
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= finalNumber) {
+              element.textContent = finalNumber + suffix;
+              clearInterval(timer);
+            } else {
+              element.textContent = Math.floor(current) + suffix;
+            }
+          }, 30);
+        }
+      };
+
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            countUp(entry.target);
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      });
+
+      statsNumbers.forEach(stat => statsObserver.observe(stat));
+    }
+
+    // Initialize everything when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initTheme();
+      initLanguage();
+      initAnimations();
+      animateStats();
+      
+      // Add some initial animation delays
+      document.querySelectorAll('.animate-slide-up').forEach((el, index) => {
+        el.style.transitionDelay = `${index * 0.1}s`;
+      });
     });
 
+    // Add parallax effect to floating shapes
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const shapes = document.querySelectorAll('.floating-shape');
+      
+      shapes.forEach((shape, index) => {
+        const speed = 0.5 + (index * 0.1);
+        shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+      });
+    });
+
+    // Add dynamic background gradient based on scroll
+    window.addEventListener('scroll', () => {
+      const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
+      const hue = 220 + (scrollPercent * 60);
+      document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 50%, 8%) 0%, hsl(${hue + 30}, 40%, 12%) 100%)`;
+    });
+
+    // Preload critical resources
+    function preloadResources() {
+      const criticalImages = [
+        // Add any critical images here
+      ];
+      
+      criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = src;
+        link.as = 'image';
+        document.head.appendChild(link);
+      });
+    }
+
+    preloadResources();
   </script>
-
 </body>
 </html>
