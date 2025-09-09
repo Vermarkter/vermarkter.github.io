@@ -6,7 +6,14 @@
   <title data-i18n="meta_title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title>
   <meta name="description" data-i18n="meta_desc" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen."/>
   <meta name="theme-color" content="#0F172A"/>
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)" />
+  <meta property="og:description" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://marketing-in-deutschland.de" />
+  <meta property="og:image" content="https://marketing-in-deutschland.de/og-image.jpg" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root{
@@ -26,7 +33,7 @@
       --card:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.6));
       --border:1px solid rgba(30,41,59,.1);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
+    *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;background:linear-gradient(135deg,var(--bg) 0%,var(--bg2) 100%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;overflow-x:hidden;transition:all 0.3s ease}
     @keyframes float{0%,100%{transform:translateY(0) rotate(0)}33%{transform:translateY(-10px) rotate(1deg)}66%{transform:translateY(5px) rotate(-1deg)}}
@@ -36,12 +43,27 @@
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
     @keyframes glow{0%,100%{box-shadow:var(--glow)}50%{box-shadow:0 0 30px rgba(59,130,246,0.5)}}
     @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
+    @keyframes sparkle{0%,100%{opacity:.3;transform:scale(.8)}50%{opacity:1;transform:scale(1.2)}}
     .animate-float{animation:float 6s ease-in-out infinite}
     .animate-slide-up{animation:slideUp .8s ease-out forwards}
     .animate-slide-left{animation:slideInLeft .6s ease-out forwards}
     .animate-fade{animation:fadeIn .5s ease-out forwards}
     .animate-glow{animation:glow 2s ease-in-out infinite}
     .animate-bounce{animation:bounce 2s infinite}
+    .animate-sparkle{animation:sparkle 1.5s ease-in-out infinite}
+    /* Background decorations */
+    .bg-decoration{
+      position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:-1;
+    }
+    .floating-shape{
+      position:absolute;opacity:.1;border-radius:50%;
+      background:linear-gradient(45deg,var(--brand),var(--purple));
+      animation:float 8s ease-in-out infinite;
+    }
+    .shape-1{width:100px;height:100px;top:10%;left:5%;animation-delay:0s}
+    .shape-2{width:150px;height:150px;top:50%;right:10%;animation-delay:2s}
+    .shape-3{width:80px;height:80px;bottom:20%;left:15%;animation-delay:4s}
+    .shape-4{width:120px;height:120px;top:30%;right:30%;animation-delay:1s}
     a{color:inherit;text-decoration:none}
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
     /* Theme Toggle */
@@ -188,7 +210,10 @@
       -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
       position:relative;
     }
-    .lead{color:#cbd5e1;font-size:clamp(18px, 3vw, 22px);max-width:600px;line-height:1.6;margin-bottom:32px}
+    .lead{
+      color:var(--text); /* Змінено з #cbd5e1 для кращої читабельності на світлій темі */
+      font-size:clamp(18px, 3vw, 22px);max-width:600px;line-height:1.6;margin-bottom:32px
+    }
     .hero-visual{position:relative}
     .hero-card{
       background:var(--card);border:var(--border);border-radius:var(--radius);
@@ -211,10 +236,10 @@
     h2{
       font-size:clamp(28px, 5vw, 52px);font-weight:800;margin-bottom:24px;
       text-align:center;letter-spacing:-.02em;
-      background:linear-gradient(135deg,#fff 0%,#cbd5e1 100%);
+      background:linear-gradient(135deg,var(--text) 0%, var(--muted) 100%); /* Змінено для кращої читабельності на світлій темі */
       -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
     }
-    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:0 auto}
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1000px;margin:0 auto}
     .card{
       background:var(--card);border:var(--border);border-radius:var(--radius);
       padding:32px;box-shadow:var(--shadow);position:relative;
@@ -358,6 +383,65 @@
       text-align:center;padding-top:40px;
       border-top:1px solid rgba(255,255,255,.1);color:var(--muted);font-size:15px;
     }
+    /* Breadcrumbs */
+    .breadcrumbs {
+      padding: 15px 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .breadcrumbs a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+    .breadcrumbs a:hover {
+      text-decoration: underline;
+    }
+    .breadcrumbs span {
+      margin: 0 5px;
+    }
+    /* Scroll Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--brand), var(--purple));
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s ease;
+    }
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--brand), var(--purple));
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      z-index: 50;
+    }
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
     /* MOBILE STYLES */
     @media(max-width:768px){
       .container{padding:0 16px}
@@ -373,7 +457,7 @@
       .hero-stats{grid-template-columns:1fr;gap:12px}
       .stat{padding:16px}
       .stat b{font-size:20px}
-      .services-grid{grid-template-columns:repeat(2,1fr);gap:20px}
+      .services-grid{grid-template-columns:1fr;gap:20px}
       .card{padding:24px}
       .card-icon{width:56px;height:56px;margin-bottom:16px}
       .card h3{font-size:20px}
@@ -399,7 +483,7 @@
       .stats-number{font-size:32px}
       .stats-label{font-size:14px}
       section{padding:40px 0}
-      .services-grid{grid-template-columns:1fr;gap:16px}
+      .services-grid{gap:16px}
       .card{padding:20px}
     }
     /* CHAT STYLES */
@@ -490,6 +574,20 @@
   </style>
 </head>
 <body data-theme="dark">
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
+  
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+  <!-- Background Decorations -->
+  <div class="bg-decoration">
+    <div class="floating-shape shape-1 animate-sparkle"></div>
+    <div class="floating-shape shape-2 animate-sparkle"></div>
+    <div class="floating-shape shape-3 animate-sparkle"></div>
+    <div class="floating-shape shape-4 animate-sparkle"></div>
+  </div>
+  
   <header>
     <div class="container">
       <nav class="nav">
@@ -539,6 +637,19 @@
         </div>
         <!-- Mobile Controls -->
         <div class="mobile-controls" style="display: flex; align-items: center; gap: 12px;">
+          <div class="theme-toggle" onclick="toggleTheme()">
+            <div class="theme-option" data-theme-option="dark">🌙</div>
+            <div class="theme-option active" data-theme-option="light">☀️</div>
+          </div>
+          <div class="lang">
+            <select id="lang-mobile" aria-label="Language">
+              <option value="DE">DE</option>
+              <option value="EN">EN</option>
+              <option value="UA" selected>UA</option>
+              <option value="RU">RU</option>
+              <option value="PL">PL</option>
+            </select>
+          </div>
           <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
             <div class="hamburger" id="hamburger">
               <span></span>
@@ -557,27 +668,19 @@
             <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
               <span data-i18n="telegram">Telegram</span>
             </a>
-            <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
-              <div class="theme-toggle" onclick="toggleTheme()">
-                <div class="theme-option" data-theme-option="dark">🌙</div>
-                <div class="theme-option active" data-theme-option="light">☀️</div>
-              </div>
-              <div class="lang">
-                <select id="lang-mobile" aria-label="Language">
-                  <option value="DE">DE</option>
-                  <option value="EN">EN</option>
-                  <option value="UA" selected>UA</option>
-                  <option value="RU">RU</option>
-                  <option value="PL">PL</option>
-                </select>
-              </div>
-            </div>
           </div>
         </div>
       </nav>
     </div>
   </header>
   <main>
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs container">
+      <a href="#" data-i18n="breadcrumb_home">Home</a>
+      <span>/</span>
+      <span data-i18n="breadcrumb_current">Marketing Agency</span>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
       <div class="container">
@@ -631,7 +734,7 @@
         <h2 data-i18n="services_title">🎯 Unsere Leistungen</h2>
         <div class="services-grid">
           <div class="card animate-slide-up">
-            <div class="chip">💻 Web Development</div>
+            <div class="chip" data-i18n="service_web_chip">💻 Web Development</div>
             <div class="card-icon animate-glow">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
@@ -645,7 +748,7 @@
             <p data-i18n="service_web_desc">Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.</p>
           </div>
           <div class="card animate-slide-up">
-            <div class="chip">🎯 Google Ads</div>
+            <div class="chip" data-i18n="service_ads_chip">🎯 Google Ads</div>
             <div class="card-icon animate-glow">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                 <circle cx="11" cy="11" r="8"/>
@@ -657,7 +760,7 @@
             <p data-i18n="service_ads_desc">Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.</p>
           </div>
           <div class="card animate-slide-up">
-            <div class="chip">📈 SEO</div>
+            <div class="chip" data-i18n="service_seo_chip">📈 SEO</div>
             <div class="card-icon animate-glow">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                 <path d="M18 20V10"/>
@@ -669,7 +772,7 @@
             <p data-i18n="service_seo_desc">Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.</p>
           </div>
           <div class="card animate-slide-up">
-            <div class="chip">📱 Social Media</div>
+            <div class="chip" data-i18n="service_smm_chip">📱 Social Media</div>
             <div class="card-icon animate-glow">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -784,58 +887,53 @@
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Social Media Marketing auf höchstem Niveau. Community wächst stetig und engagiert.</p>
-              <b><div class="quote-avatar">PL</div> Peter L., Restaurant-Besitzer</b>
+              <p data-i18n="testimonial_ua_1">Дякуємо за вашу професійну роботу! Наш онлайн-продаж збільшився втричі за 3 місяці.</p>
+              <b><div class="quote-avatar">ОП</div> <span data-i18n="testimonial_ua_1_name">Олена П., власниця онлайн-магазину</span></b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Technische Umsetzung fehlerfrei und termingerecht. Sehr professionelles Team!</p>
-              <b><div class="quote-avatar">CF</div> Christine F., Agentur-Inhaberin</b>
+              <p data-i18n="testimonial_ua_2">Ваша команда створила для нас чудовий сайт. Простий у використанні та ефективний!</p>
+              <b><div class="quote-avatar">ІК</div> <span data-i18n="testimonial_ua_2_name">Ігор К., директор компанії</span></b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Beratung war ausführlich und verständlich. Strategie passt perfekt zu unserem Budget.</p>
-              <b><div class="quote-avatar">HG</div> Hans G., Kleinunternehmer</b>
+              <p data-i18n="testimonial_ua_3">SEO-оптимізація принесла нам нових клієнтів. Рекомендуємо всім!</p>
+              <b><div class="quote-avatar">МЛ</div> <span data-i18n="testimonial_ua_3_name">Марина Л., маркетолог</span></b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Landing Page Optimierung hat Conversion Rate um 250% verbessert. Einfach top!</p>
-              <b><div class="quote-avatar">EM</div> Eva M., Marketing Managerin</b>
+              <p data-i18n="testimonial_ua_4">Професійне налаштування Google Ads. Видно результат вже з першого тижня!</p>
+              <b><div class="quote-avatar">АВ</div> <span data-i18n="testimonial_ua_4_name">Андрій В., власник стартапу</span></b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Content Marketing Strategy bringt konstant neue Kunden. Qualität stimmt zu 100%.</p>
-              <b><div class="quote-avatar">BK</div> Boris K., Freelancer</b>
+              <p data-i18n="testimonial_ua_5">Чудова підтримка 24/7. Дуже задоволені співпрацею!</p>
+              <b><div class="quote-avatar">НС</div> <span data-i18n="testimonial_ua_5_name">Наталія С., директор агентства</span></b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>E-Mail Marketing Automatisierung spart Zeit und generiert mehr Umsatz. Perfekt!</p>
-              <b><div class="quote-avatar">LH</div> Lisa H., Online-Unternehmerin</b>
+              <p>Спасибо за профессиональную работу! Наши продажи в интернете выросли в 3 раза за 3 месяца.</p>
+              <b><div class="quote-avatar">ЕП</div> Елена П., владелица онлайн-магазина</b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Analytics Setup und Reporting sehr übersichtlich. Endlich verstehen wir unsere Daten!</p>
-              <b><div class="quote-avatar">TS</div> Tom S., Tech-Startup</b>
+              <p>Ваша команда создала для нас отличный сайт. Простой в использовании и эффективный!</p>
+              <b><div class="quote-avatar">ИК</div> Игорь К., директор компании</b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Mobile Optimierung war dringend nötig. Jetzt perfekte User Experience auf allen Geräten.</p>
-              <b><div class="quote-avatar">SW</div> Sandra W., Fashion-Brand</b>
+              <p>SEO-оптимизация принесла нам новых клиентов. Рекомендуем всем!</p>
+              <b><div class="quote-avatar">МЛ</div> Марина Л., маркетолог</b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Conversion Tracking Setup ermöglicht datenbasierte Entscheidungen. Sehr wertvoll!</p>
-              <b><div class="quote-avatar">MR</div> Martin R., B2B Unternehmen</b>
+              <p>Professional work! Our online sales increased threefold in 3 months.</p>
+              <b><div class="quote-avatar">JD</div> Jane Doe, E-commerce Owner</b>
               <div class="stars">★★★★★</div>
             </div>
             <div class="quote animate-slide-up">
-              <p>Competitor Analysis war sehr aufschlussreich. Strategieentwicklung darauf basierend sehr erfolgreich.</p>
-              <b><div class="quote-avatar">IS</div> Ines S., Marktforscherin</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>24/7 Support ist Gold wert. Probleme werden immer schnell und kompetent gelöst.</p>
-              <b><div class="quote-avatar">FK</div> Felix K., Online-Händler</b>
+              <p>Excellent service and support. Highly recommended!</p>
+              <b><div class="quote-avatar">JS</div> John Smith, Startup Founder</b>
               <div class="stars">★★★★★</div>
             </div>
           </div>
@@ -853,7 +951,7 @@
               <div class="faq-toggle">+</div>
             </div>
             <div class="faq-answer">
-              <p data-i18n="faq_a1">Die Entwicklungszeit hängt vom Umfang ab. Eine einfache Website dauert 2-3 Wochen, komplexere Projekte mit E-Commerce oder speziellen Funktionen 4-8 Wochen.</p>
+              <p data-i18n="faq_a1">Die Entwicklungszeit hängt vom Umfang ab. Eine einfache Website dauert 1-3 Wochen, komplexere Projekte mit E-Commerce oder speziellen Funktionen 4-8 Wochen.</p>
             </div>
           </div>
           <div class="faq-item">
@@ -880,7 +978,7 @@
               <div class="faq-toggle">+</div>
             </div>
             <div class="faq-answer">
-              <p data-i18n="faq_a4">Die Kosten variieren je nach Umfang. Einfache Websites ab 1.500€, E-Commerce Lösungen ab 3.500€. Individuelle Angebote nach kostenloser Beratung.</p>
+              <p data-i18n="faq_a4">Die Kosten variieren je nach Umfang. Einfache Websites können ab 50 € kosten, E-Commerce Lösungen ab 500 €. Individuelle Angebote nach kostenloser Beratung.</p>
             </div>
           </div>
           <div class="faq-item">
@@ -998,19 +1096,30 @@
         testimonials_title: "💬 Was unsere Kunden sagen",
         faq_title: "❓ Häufig gestellte Fragen",
         faq_q1: "Wie lange dauert die Entwicklung einer Website?",
-        faq_a1: "Die Entwicklungszeit hängt vom Umfang ab. Eine einfache Website dauert 2-3 Wochen, komplexere Projekte mit E-Commerce oder speziellen Funktionen 4-8 Wochen.",
+        faq_a1: "Die Entwicklungszeit hängt vom Umfang ab. Eine einfache Website dauert 1-3 Wochen, komplexere Projekte mit E-Commerce oder speziellen Funktionen 4-8 Wochen.",
         faq_q2: "Bieten Sie auch Wartung und Support an?",
         faq_a2: "Ja, wir bieten umfassende Wartung, Updates, Backups und 24/7 Support für alle unsere Projekte an. Verschiedene Support-Pakete verfügbar.",
         faq_q3: "Wie messen Sie den Erfolg von Marketing-Kampagnen?",
         faq_a3: "Wir verwenden detaillierte Analytics Tools (Google Analytics, Search Console, etc.) und erstellen regelmäßige Reports zu Traffic, Conversions, ROI und anderen KPIs.",
         faq_q4: "Was kostet eine professionelle Website?",
-        faq_a4: "Die Kosten variieren je nach Umfang. Einfache Websites ab 1.500€, E-Commerce Lösungen ab 3.500€. Individuelle Angebote nach kostenloser Beratung.",
+        faq_a4: "Die Kosten variieren je nach Umfang. Einfache Websites können ab 50 € kosten, E-Commerce Lösungen ab 500 €. Individuelle Angebote nach kostenloser Beratung.",
         faq_q5: "Wie schnell sehe ich Ergebnisse bei SEO?",
         faq_a5: "Erste Verbesserungen meist nach 2-3 Monaten sichtbar. Signifikante Ranking-Verbesserungen nach 4-6 Monaten. SEO ist ein langfristiger Prozess.",
         faq_q6: "Welche Social Media Plattformen empfehlen Sie?",
         faq_a6: "Abhängig von Ihrer Zielgruppe: B2B meist LinkedIn, B2C oft Instagram/Facebook/TikTok. Wir analysieren Ihre Zielgruppe und empfehlen passende Kanäle.",
         footer_services: "🎯 Leistungen",
-        footer_web_dev: "Website-Entwicklung",
+        service_web_chip: "💻 Web Development",
+        service_ads_chip: "🎯 Google Ads",
+        service_seo_chip: "📈 SEO",
+        service_smm_chip: "📱 Social Media",
+        service_web_title: "Website-Entwicklung",
+        service_web_desc: "Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.",
+        service_ads_title: "Google Ads Management",
+        service_ads_desc: "Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.",
+        service_seo_title: "Suchmaschinenoptimierung",
+        service_seo_desc: "Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.",
+        service_smm_title: "Social Media Marketing",
+        service_smm_desc: "Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.",
         footer_ads: "Google Ads Management",
         footer_seo: "SEO Optimierung",
         footer_smm: "Social Media Marketing",
@@ -1035,7 +1144,19 @@
         chat_title: "💬 Live Chat Support",
         chat_welcome: "Hallo! 👋 Willkommen bei Marketing in Deutschland. Wie können wir Ihnen heute helfen?",
         chat_placeholder: "Nachricht eingeben...",
-        chat_send: "Senden"
+        chat_send: "Senden",
+        testimonial_ua_1: "Дякуємо за вашу професійну роботу! Наш онлайн-продаж збільшився втричі за 3 місяці.",
+        testimonial_ua_1_name: "Олена П., власниця онлайн-магазину",
+        testimonial_ua_2: "Ваша команда створила для нас чудовий сайт. Простий у використанні та ефективний!",
+        testimonial_ua_2_name: "Ігор К., директор компанії",
+        testimonial_ua_3: "SEO-оптимізація принесла нам нових клієнтів. Рекомендуємо всім!",
+        testimonial_ua_3_name: "Марина Л., маркетолог",
+        testimonial_ua_4: "Професійне налаштування Google Ads. Видно результат вже з першого тижня!",
+        testimonial_ua_4_name: "Андрій В., власник стартапу",
+        testimonial_ua_5: "Чудова підтримка 24/7. Дуже задоволені співпрацею!",
+        testimonial_ua_5_name: "Наталія С., директор агентства",
+        breadcrumb_home: "Home",
+        breadcrumb_current: "Marketing Agentur"
       },
       en: {
         brand: "Marketing in Germany",
@@ -1067,19 +1188,30 @@
         testimonials_title: "💬 What our customers say",
         faq_title: "❓ Frequently Asked Questions",
         faq_q1: "How long does it take to develop a website?",
-        faq_a1: "Development time depends on scope. A simple website takes 2-3 weeks, more complex projects with e-commerce or special features take 4-8 weeks.",
+        faq_a1: "Development time depends on scope. A simple website takes 1-3 weeks, more complex projects with e-commerce or special features take 4-8 weeks.",
         faq_q2: "Do you also offer maintenance and support?",
         faq_a2: "Yes, we offer comprehensive maintenance, updates, backups and 24/7 support for all our projects. Various support packages available.",
         faq_q3: "How do you measure the success of marketing campaigns?",
         faq_a3: "We use detailed analytics tools (Google Analytics, Search Console, etc.) and create regular reports on traffic, conversions, ROI and other KPIs.",
         faq_q4: "How much does a professional website cost?",
-        faq_a4: "Costs vary depending on scope. Simple websites from €1,500, e-commerce solutions from €3,500. Individual offers after free consultation.",
+        faq_a4: "Costs vary depending on scope. Simple websites can cost from $50, e-commerce solutions from $500. Individual offers after free consultation.",
         faq_q5: "How quickly will I see results with SEO?",
         faq_a5: "First improvements usually visible after 2-3 months. Significant ranking improvements after 4-6 months. SEO is a long-term process.",
         faq_q6: "Which social media platforms do you recommend?",
         faq_a6: "Depending on your target audience: B2B mostly LinkedIn, B2C often Instagram/Facebook/TikTok. We analyze your target audience and recommend suitable channels.",
         footer_services: "🎯 Services",
-        footer_web_dev: "Website Development",
+        service_web_chip: "💻 Web Development",
+        service_ads_chip: "🎯 Google Ads",
+        service_seo_chip: "📈 SEO",
+        service_smm_chip: "📱 Social Media",
+        service_web_title: "Website Development",
+        service_web_desc: "Modern, responsive websites with optimal performance and user-friendliness. From landing pages to complex e-commerce solutions.",
+        service_ads_title: "Google Ads Management",
+        service_ads_desc: "Professional Google Ads campaigns for maximum reach and optimal conversion rates. Strategic keyword analysis and bid management.",
+        service_seo_title: "Search Engine Optimization",
+        service_seo_desc: "Increase organic visibility and achieve better long-term rankings in Google. Technical SEO, content optimization and link building.",
+        service_smm_title: "Social Media Marketing",
+        service_smm_desc: "Strategic social media campaigns for increased engagement and customer loyalty. Content creation, community management and influencer marketing.",
         footer_ads: "Google Ads Management",
         footer_seo: "SEO Optimization",
         footer_smm: "Social Media Marketing",
@@ -1104,7 +1236,9 @@
         chat_title: "💬 Live Chat Support",
         chat_welcome: "Hello! 👋 Welcome to Marketing in Germany. How can we help you today?",
         chat_placeholder: "Enter message...",
-        chat_send: "Send"
+        chat_send: "Send",
+        breadcrumb_home: "Home",
+        breadcrumb_current: "Marketing Agency"
       },
       ua: {
         brand: "Маркетинг в Німеччині",
@@ -1136,19 +1270,30 @@
         testimonials_title: "💬 Що говорять наші клієнти",
         faq_title: "❓ Часті запитання",
         faq_q1: "Скільки часу потрібно для розробки веб-сайту?",
-        faq_a1: "Термін розробки залежить від обсягу. Простий веб-сайт займає 2-3 тижні, складніші проекти з електронною комерцією або спеціальними функціями - 4-8 тижнів.",
+        faq_a1: "Термін розробки залежить від обсягу. Простий веб-сайт займає 1-3 тижні, на 1-3 тижні, складніші проекти з електронною комерцією або спеціальними функціями - 4-8 тижнів.",
         faq_q2: "Чи пропонуєте ви також обслуговування та підтримку?",
         faq_a2: "Так, ми пропонуємо комплексне обслуговування, оновлення, резервне копіювання та підтримку 24/7 для всіх наших проектів. Доступні різні пакети підтримки.",
         faq_q3: "Як ви вимірюєте успіх маркетингових кампаній?",
         faq_a3: "Ми використовуємо детальні аналітичні інструменти (Google Analytics, Search Console тощо) і створюємо регулярні звіти про трафік, конверсії, ROI та інші KPI.",
         faq_q4: "Скільки коштує професійний веб-сайт?",
-        faq_a4: "Вартість варіюється залежно від обсягу. Прості веб-сайти від 1500 €, рішення для електронної комерції від 3500 €. Індивідуальні пропозиції після безкоштовної консультації.",
+        faq_a4: "Вартість варіюється залежно від обсягу. Прості веб-сайти можуть коштувати від 50 €, рішення для електронної комерції від 500 €. Індивідуальні пропозиції після безкоштовної консультації.",
         faq_q5: "Як швидко я побачу результати з SEO?",
         faq_a5: "Перші покращення зазвичай помітні через 2-3 місяці. Значне покращення позицій через 4-6 місяців. SEO - це довгостроковий процес.",
         faq_q6: "Які платформи соціальних мереж ви рекомендуєте?",
         faq_a6: "Залежно від вашої цільової аудиторії: B2B зазвичай LinkedIn, B2C часто Instagram/Facebook/TikTok. Ми аналізуємо вашу цільову аудиторію та рекомендуємо відповідні канали.",
         footer_services: "🎯 Послуги",
-        footer_web_dev: "Розробка веб-сайтів",
+        service_web_chip: "💻 Веб-розробка",
+        service_ads_chip: "🎯 Google Ads",
+        service_seo_chip: "📈 SEO",
+        service_smm_chip: "📱 Соціальні мережі",
+        service_web_title: "Розробка веб-сайтів",
+        service_web_desc: "Сучасні, адаптивні веб-сайти з оптимальною продуктивністю та зручністю користування. Від цільових сторінок до складних рішень електронної комерції.",
+        service_ads_title: "Керування Google Ads",
+        service_ads_desc: "Професійні кампанії Google Ads для максимальної охопленості та оптимальних показників конверсії. Стратегічний аналіз ключових слів та управління ставками.",
+        service_seo_title: "Пошукова оптимізація",
+        service_seo_desc: "Збільште органічну видимість і досягніть кращих довгострокових рейтингів у Google. Технічне SEO, оптимізація контенту та побудова посилань.",
+        service_smm_title: "Маркетинг у соціальних мережах",
+        service_smm_desc: "Стратегічні кампанії в соціальних мережах для збільшення залученості та лояльності клієнтів. Створення контенту, управління спільнотою та маркетинг впливових осіб.",
         footer_ads: "Керування Google Ads",
         footer_seo: "Пошукова оптимізація",
         footer_smm: "Маркетинг у соціальних мережах",
@@ -1173,7 +1318,19 @@
         chat_title: "💬 Підтримка в чаті",
         chat_welcome: "Привіт! 👋 Ласкаво просимо до Маркетингу в Німеччині. Як ми можемо вам допомогти сьогодні?",
         chat_placeholder: "Введіть повідомлення...",
-        chat_send: "Надіслати"
+        chat_send: "Надіслати",
+        testimonial_ua_1: "Дякуємо за вашу професійну роботу! Наш онлайн-продаж збільшився втричі за 3 місяці.",
+        testimonial_ua_1_name: "Олена П., власниця онлайн-магазину",
+        testimonial_ua_2: "Ваша команда створила для нас чудовий сайт. Простий у використанні та ефективний!",
+        testimonial_ua_2_name: "Ігор К., директор компанії",
+        testimonial_ua_3: "SEO-оптимізація принесла нам нових клієнтів. Рекомендуємо всім!",
+        testimonial_ua_3_name: "Марина Л., маркетолог",
+        testimonial_ua_4: "Професійне налаштування Google Ads. Видно результат вже з першого тижня!",
+        testimonial_ua_4_name: "Андрій В., власник стартапу",
+        testimonial_ua_5: "Чудова підтримка 24/7. Дуже задоволені співпрацею!",
+        testimonial_ua_5_name: "Наталія С., директор агентства",
+        breadcrumb_home: "Головна",
+        breadcrumb_current: "Маркетинг Агентство"
       },
       ru: {
         brand: "Маркетинг в Германии",
@@ -1205,19 +1362,30 @@
         testimonials_title: "💬 Что говорят наши клиенты",
         faq_title: "❓ Часто задаваемые вопросы",
         faq_q1: "Сколько времени занимает разработка сайта?",
-        faq_a1: "Срок разработки зависит от объема. Простой сайт занимает 2-3 недели, более сложные проекты с электронной коммерцией или специальными функциями - 4-8 недель.",
+        faq_a1: "Срок разработки зависит от объема. Простой сайт занимает 1-3 недели, более сложные проекты с электронной коммерцией или специальными функциями - 4-8 недель.",
         faq_q2: "Вы также предлагаете обслуживание и поддержку?",
         faq_a2: "Да, мы предлагаем комплексное обслуживание, обновления, резервное копирование и поддержку 24/7 для всех наших проектов. Доступны различные пакеты поддержки.",
         faq_q3: "Как вы измеряете успех маркетинговых кампаний?",
         faq_a3: "Мы используем подробные аналитические инструменты (Google Analytics, Search Console и т.д.) и создаем регулярные отчеты о трафике, конверсиях, ROI и других KPI.",
         faq_q4: "Сколько стоит профессиональный сайт?",
-        faq_a4: "Стоимость варьируется в зависимости от объема. Простые сайты от 1500 €, решения для электронной коммерции от 3500 €. Индивидуальные предложения после бесплатной консультации.",
+        faq_a4: "Стоимость варьируется в зависимости от объема. Простые сайты могут стоить от 50 €, решения для электронной комерции от 500 €. Индивидуальные предложения после бесплатной консультации.",
         faq_q5: "Как быстро я увижу результаты с SEO?",
         faq_a5: "Первые улучшения обычно заметны через 2-3 месяца. Значительное улучшение позиций через 4-6 месяцев. SEO - это долгосрочный процесс.",
         faq_q6: "Какие платформы социальных сетей вы рекомендуете?",
         faq_a6: "В зависимости от вашей целевой аудитории: B2B чаще всего LinkedIn, B2C часто Instagram/Facebook/TikTok. Мы анализируем вашу целевую аудиторию и рекомендуем подходящие каналы.",
         footer_services: "🎯 Услуги",
-        footer_web_dev: "Разработка сайтов",
+        service_web_chip: "💻 Веб-разработка",
+        service_ads_chip: "🎯 Google Ads",
+        service_seo_chip: "📈 SEO",
+        service_smm_chip: "📱 Социальные сети",
+        service_web_title: "Разработка сайтов",
+        service_web_desc: "Современные, адаптивные сайты с оптимальной производительностью и удобством использования. От целевых страниц до сложных решений электронной коммерции.",
+        service_ads_title: "Управление Google Ads",
+        service_ads_desc: "Профессиональные кампании Google Ads для максимального охвата и оптимальных показателей конверсии. Стратегический анализ ключевых слов и управление ставками.",
+        service_seo_title: "Поисковая оптимизация",
+        service_seo_desc: "Увеличьте органическую видимость и добейтесь лучших долгосрочных рейтингов в Google. Техническое SEO, оптимизация контента и построение ссылок.",
+        service_smm_title: "Маркетинг в социальных сетях",
+        service_smm_desc: "Стратегические кампании в социальных сетях для повышения вовлеченности и лояльности клиентов. Создание контента, управление сообществом и маркетинг влияния.",
         footer_ads: "Управление Google Ads",
         footer_seo: "Поисковая оптимизация",
         footer_smm: "Маркетинг в социальных сетях",
@@ -1242,7 +1410,9 @@
         chat_title: "💬 Поддержка в чате",
         chat_welcome: "Привет! 👋 Добро пожаловать в Маркетинг в Германии. Как мы можем вам помочь сегодня?",
         chat_placeholder: "Введите сообщение...",
-        chat_send: "Отправить"
+        chat_send: "Отправить",
+        breadcrumb_home: "Главная",
+        breadcrumb_current: "Маркетинг Агентство"
       },
       pl: {
         brand: "Marketing w Niemczech",
@@ -1274,19 +1444,30 @@
         testimonials_title: "💬 Co mówią nasi klienci",
         faq_title: "❓ Najczęściej zadawane pytania",
         faq_q1: "Jak długo trwa tworzenie strony internetowej?",
-        faq_a1: "Czas tworzenia zależy od zakresu. Prosta strona internetowa zajmuje 2-3 tygodnie, bardziej złożone projekty z e-commerce lub specjalnymi funkcjami zajmują 4-8 tygodni.",
+        faq_a1: "Czas tworzenia zależy od zakresu. Prosta strona internetowa zajmuje 1-3 tygodnie, bardziej złożone projekty z e-commerce lub specjalnymi funkcjami zajmują 4-8 tygodni.",
         faq_q2: "Czy oferujecie również konserwację i wsparcie?",
         faq_a2: "Tak, oferujemy kompleksową konserwację, aktualizacje, kopie zapasowe i wsparcie 24/7 dla wszystkich naszych projektów. Dostępne są różne pakiety wsparcia.",
         faq_q3: "Jak mierzycie sukces kampanii marketingowych?",
         faq_a3: "Używamy szczegółowych narzędzi analitycznych (Google Analytics, Search Console itp.) i tworzymy regularne raporty dotyczące ruchu, konwersji, ROI i innych wskaźników KPI.",
         faq_q4: "Ile kosztuje profesjonalna strona internetowa?",
-        faq_a4: "Koszty zależą od zakresu. Proste strony internetowe od 1500 €, rozwiązania e-commerce od 3500 €. Indywidualne oferty po bezpłatnej konsultacji.",
+        faq_a4: "Koszty zależą od zakresu. Proste strony internetowe mogą kosztować od 50 €, rozwiązania e-commerce od 500 €. Indywidualne oferty po bezpłatnej konsultacji.",
         faq_q5: "Jak szybko zobaczę wyniki z SEO?",
         faq_a5: "Pierwsze poprawy zwykle widoczne po 2-3 miesiącach. Znaczące poprawy pozycji po 4-6 miesiącach. SEO to proces długoterminowy.",
         faq_q6: "Jakie platformy mediów społecznościowych polecacie?",
         faq_a6: "W zależności od grupy docelowej: B2B najczęściej LinkedIn, B2C często Instagram/Facebook/TikTok. Analizujemy Twoją grupę docelową i rekomendujemy odpowiednie kanały.",
         footer_services: "🎯 Usługi",
-        footer_web_dev: "Tworzenie stron",
+        service_web_chip: "💻 Tworzenie stron",
+        service_ads_chip: "🎯 Google Ads",
+        service_seo_chip: "📈 SEO",
+        service_smm_chip: "📱 Media społecznościowe",
+        service_web_title: "Tworzenie stron internetowych",
+        service_web_desc: "Nowoczesne, responsywne strony internetowe o optymalnej wydajności i przyjaznym interfejsie użytkownika. Od stron docelowych po złożone rozwiązania e-commerce.",
+        service_ads_title: "Zarządzanie Google Ads",
+        service_ads_desc: "Profesjonalne kampanie Google Ads zapewniające maksymalny zasięg i optymalne współczynniki konwersji. Strategiczna analiza słów kluczowych i zarządzanie ofertami.",
+        service_seo_title: "Optymalizacja SEO",
+        service_seo_desc: "Zwiększ widoczność organiczną i osiągnij lepsze długoterminowe pozycje w Google. Techniczne SEO, optymalizacja treści i budowanie linków.",
+        service_smm_title: "Marketing w mediach społecznościowych",
+        service_smm_desc: "Strategiczne kampanie w mediach społecznościowych zwiększające zaangażowanie i lojalność klientów. Tworzenie treści, zarządzanie społecznością i marketing influencerów.",
         footer_ads: "Zarządzanie Google Ads",
         footer_seo: "Optymalizacja SEO",
         footer_smm: "Marketing w mediach społecznościowych",
@@ -1311,7 +1492,9 @@
         chat_title: "💬 Wsparcie na czacie",
         chat_welcome: "Cześć! 👋 Witaj w Marketingu w Niemczech. Jak możemy Ci dzisiaj pomóc?",
         chat_placeholder: "Wpisz wiadomość...",
-        chat_send: "Wyślij"
+        chat_send: "Wyślij",
+        breadcrumb_home: "Strona główna",
+        breadcrumb_current: "Agencja Marketingowa"
       }
     };
     // Current language
@@ -1621,6 +1804,60 @@
       // Add some initial animation delays
       document.querySelectorAll('.animate-slide-up').forEach((el, index) => {
         el.style.transitionDelay = `${index * 0.1}s`;
+      });
+    });
+    // Add parallax effect to floating shapes
+    window.addEventListener('scroll', () => {
+      const scrolled = window.pageYOffset;
+      const shapes = document.querySelectorAll('.floating-shape');
+      shapes.forEach((shape, index) => {
+        const speed = 0.5 + (index * 0.1);
+        shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.05}deg)`;
+      });
+    });
+    // Add dynamic background gradient based on scroll
+    window.addEventListener('scroll', () => {
+      const scrollPercent = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
+      const hue = 220 + (scrollPercent * 60);
+      document.body.style.background = `linear-gradient(135deg, hsl(${hue}, 50%, 8%) 0%, hsl(${hue + 30}, 40%, 12%) 100%)`;
+    });
+    // Preload critical resources
+    function preloadResources() {
+      const criticalImages = [
+        // Add any critical images here
+      ];
+      criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = src;
+        link.as = 'image';
+        document.head.appendChild(link);
+      });
+    }
+    preloadResources();
+    
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      document.getElementById('progressBar').style.width = scrollPercent + '%';
+    });
+    
+    // Back to Top Button
+    const backToTopButton = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('show');
+      } else {
+        backToTopButton.classList.remove('show');
+      }
+    });
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
       });
     });
   </script>
