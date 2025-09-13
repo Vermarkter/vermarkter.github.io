@@ -1,9 +1,6 @@
 <!doctype html>
 <html lang="uk">
 <head>
- <!doctype html>
-<html lang="uk">
-<head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title id="meta-title">Marketing in Deutschland — Digitalagentur (EN/DE/UA/RU)</title>
@@ -140,7 +137,6 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-
   
   <style>
     :root{
@@ -160,7 +156,6 @@
       --card:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.6));
       --border:1px solid rgba(30,41,59,.1);
     }
-    /* ИСПРАВЛЕНИЕ СВЕТЛОЙ ТЕМЫ - ЧИТАЕМОСТЬ */
     [data-theme="light"] h1 {
       background:linear-gradient(135deg,#1E293B 0%,#374151 100%);
       -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
@@ -192,14 +187,12 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:1200px;margin:0 auto;padding:0 20px}
 
-    /* Progress Bar */
     .progress-bar {
       position: fixed;top: 0;left: 0;width: 0%;height: 3px;
       background: linear-gradient(90deg, var(--brand), var(--brand2));
       z-index: 51;transition: width 0.1s ease;
     }
 
-    /* Breadcrumbs */
     .breadcrumbs {
       background: rgba(255, 255, 255, 0.05);padding: 10px 0;
       border-bottom: 1px solid var(--border);display: none;
@@ -214,7 +207,6 @@
     .breadcrumbs a {color: var(--brand);text-decoration: none;}
     .breadcrumbs a:hover {text-decoration: underline;}
 
-    /* Back to Top Button */
     .back-to-top {
       position: fixed;bottom: 90px;right: 20px;width: 50px;height: 50px;
       background: var(--brand);color: white;border: none;border-radius: 50%;
@@ -229,7 +221,6 @@
       background: var(--brand2);transform: scale(1.1);
     }
 
-    /* Theme Toggle */
     .theme-toggle{
       display:flex;align-items:center;gap:8px;
       background:rgba(255,255,255,.1);border:var(--border);
@@ -246,7 +237,6 @@
       background:var(--brand);color:white;
       box-shadow:var(--glow);
     }
-    /* HEADER */
     header{
       position:sticky;top:0;z-index:50;
       background:rgba(15,23,42,.95);backdrop-filter:blur(16px);
@@ -265,7 +255,6 @@
     .logo{width:40px;height:40px;filter:drop-shadow(var(--glow));flex-shrink:0}
     .title{font-weight:900;letter-spacing:-.02em;font-size:16px}
     .subtitle{display:block;font-weight:600;color:var(--muted);font-size:11px;margin-top:-2px}
-    /* DESKTOP MENU */
     .nav-desktop{
       display:flex;gap:20px;align-items:center;
     }
@@ -284,7 +273,6 @@
       transform:translateX(-50%);
     }
     .nav-desktop a:hover:before{width:80%}
-    /* MOBILE MENU */
     .mobile-toggle{
       display:none;background:none;border:none;color:var(--text);
       cursor:pointer;padding:8px;border-radius:8px;
@@ -351,7 +339,6 @@
     }
     .cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
     .cta:hover:before{left:100%}
-    /* HERO */
     .hero{
       padding:100px 0 80px;position:relative;overflow:hidden;
       background:linear-gradient(135deg,rgba(59,130,246,.05),rgba(139,92,246,.05));
@@ -400,7 +387,6 @@
       -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
     }
 
-    /* АДАПТИВНАЯ СЕТКА УСЛУГ */
     .services-grid{
       display:grid;gap:24px;max-width:1200px;margin:0 auto;
       grid-template-columns: repeat(4, 1fr);
@@ -561,7 +547,6 @@
       text-align:center;padding-top:40px;
       border-top:1px solid rgba(255,255,255,.1);color:var(--muted);font-size:15px;
     }
-    /* CHAT STYLES */
     .chat-launcher{
       position:fixed;right:20px;bottom:20px;z-index:60;
       width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
@@ -630,7 +615,38 @@
       font-weight:700;transition:.3s ease;font-size:14px;
     }
     .chat-input button:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-    /* MOBILE STYLES */
+
+    /* Lead form responsive */
+    @media(max-width: 768px) {
+      .lead-form .container {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+      .lead-form form {
+        width: 100%;
+        justify-content: center;
+      }
+      .lead-form input {
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+    
+    /* Urgency banner animation */
+    .urgency-banner {
+      animation: slideDown 0.5s ease-out;
+    }
+    
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+      }
+      to {
+        transform: translateY(0);
+      }
+    }
+
     @media(max-width:768px){
       .container{padding:0 16px}
       .nav-desktop{display:none}
@@ -672,10 +688,8 @@
       section{padding:40px 0}
       .card{padding:20px}
     }
-    /* LOADING STATES */
     .loading{opacity:.6;pointer-events:none}
     .loading *{animation-play-state:paused}
-    /* FOCUS STYLES */
     .cta:focus,
     .mobile-toggle:focus,
     .lang select:focus,
@@ -683,7 +697,6 @@
     .chat-input button:focus{
       outline:2px solid var(--brand);outline-offset:2px;
     }
-    /* LAZY LOADING */
     img {
       loading: lazy;
       transition: opacity 0.3s;
@@ -694,65 +707,21 @@
     img.lazy.loaded {
       opacity: 1;
     }
-    /* REDUCED MOTION */
     @media(prefers-reduced-motion:reduce){
       *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
       .animate-float{animation:none}
-    }
-      /* REDUCED MOTION */
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-      .animate-float{animation:none}
-    }
-    
-    /* ДОДАТИ ЦІ СТИЛІ */
-    /* Lead form responsive */
-    @media(max-width: 768px) {
-      .lead-form .container {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-      .lead-form form {
-        width: 100%;
-        justify-content: center;
-      }
-      .lead-form input {
-        flex: 1;
-        min-width: 120px;
-      }
-    }
-    
-    /* Urgency banner animation */
-    .urgency-banner {
-      animation: slideDown 0.5s ease-out;
-    }
-    
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100%);
-      }
-      to {
-        transform: translateY(0);
-      }
     }
   </style>
-
 </head>
 <body data-theme="dark">
-   
- <!-- urgency-banner блок -->
-<div class="urgency-banner" style="background: linear-gradient(135deg, #F59E0B, #EF4444); color: white; padding: 12px; text-align: center; font-weight: 600; position: relative; z-index: 60;">
-⚡ <span data-i18n="urgency_text">Только до конца месяца: Настройка Google ADS и Facebook ADS от 50€ вместо 150€</span>
-  <button onclick="this.parentElement.style.display='none'" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 18px; cursor: pointer; opacity: 0.8;">×</button>
-</div>
-
-
   <!-- Progress Bar -->
   <div class="progress-bar" id="progressBar"></div>
 
-  <!-- Progress Bar -->
-  <div class="progress-bar" id="progressBar"></div>
+  <!-- Urgency Banner -->
+  <div class="urgency-banner" style="background: linear-gradient(135deg, #F59E0B, #EF4444); color: white; padding: 12px; text-align: center; font-weight: 600; position: relative; z-index: 60;">
+    ⚡ <span data-i18n="urgency_text">Только до конца месяца: Настройка Google ADS и Facebook ADS от 50€ вместо 150€</span>
+    <button onclick="this.parentElement.style.display='none'" style="position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; color: white; font-size: 18px; cursor: pointer; opacity: 0.8;">×</button>
+  </div>
 
   <!-- Breadcrumbs -->
   <nav class="breadcrumbs" id="breadcrumbs">
@@ -1170,1133 +1139,24 @@
       </div>
     </section>
   </main>
-    </main>
-  
-  <!-- ВСТАВИТИ ЦЕ СЮДИ -->
+
   <!-- Sticky Lead Form -->
   <div id="leadForm" class="lead-form" style="position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(135deg, var(--brand), var(--brand2)); padding: 16px; z-index: 55; transform: translateY(100%); transition: transform 0.3s ease; box-shadow: 0 -10px 40px rgba(0,0,0,0.3);">
     <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
       <div style="flex: 1; min-width: 200px;">
-        <h4 style="margin: 0; color: white; font-size: 18px;" data-i18n="lead_form_title">🎯 Бесплатный аудит вашей рекламы</h4>
-        <small style="color: rgba(255,255,255,0.9); font-size: 14px;" data-i18n="lead_form_subtitle">Получите план роста за 24 часа</small>
+        <h4 style="margin: 0; color: white; font-size: 18px;" data-i18n="lead_form_title">🎯 Безкоштовний аудит вашої реклами</h4>
+        <small style="color: rgba(255,255,255,0.9); font-size: 14px;" data-i18n="lead_form_subtitle">Отримайте план зростання за 24 години</small>
       </div>
       <form id="leadFormSubmit" style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap;">
-        <input type="tel" id="phoneInput" placeholder="+49..." required style="padding: 12px 16px; border: none; border-radius: 12px; min-width: 140px; font-size: 14px;" data-i18n-placeholder="phone_placeholder">
+        <input type="tel" id="phoneInput" placeholder="+380..." required style="padding: 12px 16px; border: none; border-radius: 12px; min-width: 140px; font-size: 14px;" data-i18n-placeholder="phone_placeholder">
         <button type="submit" style="background: white; color: var(--brand); padding: 12px 20px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; transition: all 0.3s ease; font-size: 14px;" data-i18n="get_audit">
-          Получить аудит
+          Отримати аудит
         </button>
       </form>
       <button onclick="document.getElementById('leadForm').style.transform='translateY(100%)'" style="background: none; border: none; color: rgba(255,255,255,0.8); font-size: 24px; cursor: pointer; padding: 4px; line-height: 1;">×</button>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="footer">
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3 data-i18n="footer_services">🎯 Послуги</h3>
-          <a href="#services" data-i18n="footer_web_dev">Розробка веб-сайтів</a>
-          <a href="#services" data-i18n="footer_ads">Керування Google Ads</a>
-          <a href="#services" data-i18n="footer_seo">Пошукова оптимізація</a>
-          <a href="#services" data-i18n="footer_smm">Маркетинг у соціальних мережах</a>
-          <a href="#services" data-i18n="footer_content">Контент-маркетинг</a>
-        </div>
-        <div class="footer-section">
-          <h3 data-i18n="footer_company">🏢 Компанія</h3>
-          <a href="#process" data-i18n="footer_about">Про нас</a>
-          <a href="#testimonials" data-i18n="footer_reviews">Відгуки клієнтів</a>
-          <a href="#faq" data-i18n="footer_faq">FAQ</a>
-          <a href="#" data-i18n="footer_portfolio">Портфоліо</a>
-          <a href="#" data-i18n="footer_blog">Блог</a>
-        </div>
-        <div class="footer-section">
-          <h3 data-i18n="footer_contact">📞 Контакти</h3>
-          <a href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener" data-i18n="footer_telegram">📱 Telegram чат</a>
-          <a href="mailto:info@marketing-in-deutschland.de" data-i18n="footer_email">✉️ Електронна пошта</a>
-          <a href="#" onclick="toggleChat()" data-i18n="footer_chat">💬 Онлайн чат</a>
-          <a href="tel:+4915123456789" data-i18n="footer_phone">📞 Телефон</a>
-        </div>
-        <div class="footer-section">
-          <h3 data-i18n="footer_legal">🌍 Юридична інформація</h3>
-          <a href="#" data-i18n="footer_imprint">Реквізити</a>
-          <a href="#" data-i18n="footer_privacy">Політика конфіденційності</a>
-          <a href="#" data-i18n="footer_terms">Умови обслуговування</a>
-          <a href="#" data-i18n="footer_cookies">Політика використання файлів cookie</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p data-i18n="footer_copyright">© 2024 Маркетинг в Німеччині. Всі права захищені. Зроблено з ❤️ в Німеччині</p>
-      </div>
-    </div>
-  </footer>
-  <!-- Chat Widget -->
-  <div class="chat-backdrop" id="chatBackdrop" onclick="toggleChat()"></div>
-  <div class="chat-panel" id="chatPanel">
-    <div class="chat-header">
-      <div class="title" data-i18n="chat_title">💬 Підтримка в чаті</div>
-      <button onclick="toggleChat()" style="background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 4px;">×</button>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="msg bot">
-        <div class="bubble" data-i18n="chat_welcome">Привіт! 👋 Ласкаво просимо до Маркетингу в Німеччині. Як ми можемо вам допомогти сьогодні?</div>
-      </div>
-    </div>
-    <div class="chat-input">
-      <input type="text" placeholder="Введіть повідомлення..." id="chatInput" onkeypress="handleEnter(event)" data-i18n-placeholder="chat_placeholder">
-      <button onclick="sendMessage()" data-i18n="chat_send">Надіслати</button>
-    </div>
-  </div>
-  <button class="chat-launcher" onclick="toggleChat()" aria-label="Chat öffnen">
-    💬
-  </button>
-
-  <!-- Back to Top Button -->
-  <button id="backToTop" class="back-to-top" onclick="scrollToTop()" aria-label="Вернуться наверх">
-    <i class="fas fa-arrow-up"></i>
-  </button>
-
-  <meta name="theme-color" content="#0F172A"/>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  
-  <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Marketing in Deutschland — Digitalagentur">
-  <meta property="og:description" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vermarkter.github.io">
-  <meta property="og:image" content="https://vermarkter.github.io/og-image.jpg">
-  <meta property="og:site_name" content="Marketing in Deutschland">
-  
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Marketing in Deutschland — Digitalagentur">
-  <meta name="twitter:description" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO.">
-  <meta name="twitter:image" content="https://vermarkter.github.io/og-image.jpg">
-  
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
-  
-  <style>
-    :root{
-      --bg:#0F172A; --bg2:#1E293B; --text:#F8FAFC; --muted:#94A3B8;
-      --brand:#3B82F6; --brand2:#10B981; --accent:#F59E0B; --purple:#8B5CF6;
-      --shadow:0 25px 50px -12px rgba(0,0,0,.25);
-      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.3);
-      --card:linear-gradient(145deg,rgba(255,255,255,.08),rgba(255,255,255,.02));
-      --border:1px solid rgba(255,255,255,.1);
-      --radius:20px; --radius-sm:12px;
-      --glow:0 0 20px rgba(59, 130, 246, 0.3);
-    }
-    [data-theme="light"] {
-      --bg:#F8FAFC; --bg2:#E2E8F0; --text:#1E293B; --muted:#64748B;
-      --shadow:0 25px 50px -12px rgba(0,0,0,.15);
-      --shadow-lg:0 35px 60px -15px rgba(0,0,0,.2);
-      --card:linear-gradient(145deg,rgba(255,255,255,.9),rgba(255,255,255,.6));
-      --border:1px solid rgba(30,41,59,.1);
-    }
-    /* ИСПРАВЛЕНИЕ СВЕТЛОЙ ТЕМЫ - ЧИТАЕМОСТЬ */
-    [data-theme="light"] h1 {
-      background:linear-gradient(135deg,#1E293B 0%,#374151 100%);
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-    }
-    [data-theme="light"] h2 {
-      background:linear-gradient(135deg,#1E293B 0%,#374151 100%);
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-    }
-    [data-theme="light"] .lead {
-      color: #374151;
-    }
-    
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{margin:0;background:linear-gradient(135deg,var(--bg) 0%,var(--bg2) 100%);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.6;overflow-x:hidden;transition:all 0.3s ease}
-    @keyframes float{0%,100%{transform:translateY(0) rotate(0)}33%{transform:translateY(-10px) rotate(1deg)}66%{transform:translateY(5px) rotate(-1deg)}}
-    @keyframes pulse{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
-    @keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes slideInLeft{from{opacity:0;transform:translateX(-20px)}to{opacity:1;transform:translateX(0)}}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-    @keyframes glow{0%,100%{box-shadow:var(--glow)}50%{box-shadow:0 0 30px rgba(59,130,246,0.5)}}
-    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
-    .animate-float{animation:float 6s ease-in-out infinite}
-    .animate-slide-up{animation:slideUp .8s ease-out forwards}
-    .animate-slide-left{animation:slideInLeft .6s ease-out forwards}
-    .animate-fade{animation:fadeIn .5s ease-out forwards}
-    .animate-glow{animation:glow 2s ease-in-out infinite}
-    .animate-bounce{animation:bounce 2s infinite}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1200px;margin:0 auto;padding:0 20px}
-
-    /* Progress Bar */
-    .progress-bar {
-      position: fixed;top: 0;left: 0;width: 0%;height: 3px;
-      background: linear-gradient(90deg, var(--brand), var(--brand2));
-      z-index: 51;transition: width 0.1s ease;
-    }
-
-    /* Breadcrumbs */
-    .breadcrumbs {
-      background: rgba(255, 255, 255, 0.05);padding: 10px 0;
-      border-bottom: 1px solid var(--border);display: none;
-    }
-    .breadcrumbs.visible {display: block;}
-    .breadcrumbs ol {
-      display: flex;list-style: none;margin: 0;padding: 0;font-size: 14px;
-    }
-    .breadcrumbs li:not(:last-child):after {
-      content: ' / ';margin: 0 8px;color: var(--muted);
-    }
-    .breadcrumbs a {color: var(--brand);text-decoration: none;}
-    .breadcrumbs a:hover {text-decoration: underline;}
-
-    /* Back to Top Button */
-    .back-to-top {
-      position: fixed;bottom: 90px;right: 20px;width: 50px;height: 50px;
-      background: var(--brand);color: white;border: none;border-radius: 50%;
-      cursor: pointer;font-size: 18px;opacity: 0;visibility: hidden;
-      transform: translateY(20px);transition: all 0.3s ease;z-index: 40;
-      box-shadow: var(--shadow);
-    }
-    .back-to-top.visible {
-      opacity: 1;visibility: visible;transform: translateY(0);
-    }
-    .back-to-top:hover {
-      background: var(--brand2);transform: scale(1.1);
-    }
-
-    /* Theme Toggle */
-    .theme-toggle{
-      display:flex;align-items:center;gap:8px;
-      background:rgba(255,255,255,.1);border:var(--border);
-      padding:6px;border-radius:25px;cursor:pointer;
-      transition:.3s ease;position:relative;
-    }
-    .theme-toggle:hover{background:rgba(255,255,255,.15)}
-    .theme-option{
-      padding:6px 12px;border-radius:20px;font-size:12px;
-      font-weight:600;transition:.3s ease;position:relative;
-      z-index:2;
-    }
-    .theme-option.active{
-      background:var(--brand);color:white;
-      box-shadow:var(--glow);
-    }
-    /* HEADER */
-    header{
-      position:sticky;top:0;z-index:50;
-      background:rgba(15,23,42,.95);backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(255,255,255,.08);
-      box-shadow:0 4px 32px rgba(0,0,0,.1);
-    }
-    [data-theme="light"] header{
-      background:rgba(248,250,252,.95);
-      border-bottom:1px solid rgba(30,41,59,.1);
-    }
-    .nav{
-      display:flex;align-items:center;justify-content:space-between;
-      height:70px;gap:16px;position:relative;
-    }
-    .brand{display:flex;align-items:center;gap:12px;z-index:51}
-    .logo{width:40px;height:40px;filter:drop-shadow(var(--glow));flex-shrink:0}
-    .title{font-weight:900;letter-spacing:-.02em;font-size:16px}
-    .subtitle{display:block;font-weight:600;color:var(--muted);font-size:11px;margin-top:-2px}
-    /* DESKTOP MENU */
-    .nav-desktop{
-      display:flex;gap:20px;align-items:center;
-    }
-    .nav-desktop a{
-      padding:8px 14px;border-radius:var(--radius-sm);
-      color:var(--muted);transition:.3s ease;font-weight:500;
-      white-space:nowrap;position:relative;
-    }
-    .nav-desktop a:hover{
-      color:#fff;background:rgba(255,255,255,.1);
-      transform:translateY(-2px);box-shadow:var(--shadow);
-    }
-    .nav-desktop a:before{
-      content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;
-      background:var(--brand);transition:.3s ease;
-      transform:translateX(-50%);
-    }
-    .nav-desktop a:hover:before{width:80%}
-    /* MOBILE MENU */
-    .mobile-toggle{
-      display:none;background:none;border:none;color:var(--text);
-      cursor:pointer;padding:8px;border-radius:8px;
-      transition:background .3s ease;z-index:52;position:relative;
-    }
-    .mobile-toggle:hover{background:rgba(255,255,255,.1)}
-    .hamburger{width:24px;height:18px;position:relative;transform:rotate(0deg);transition:.5s ease-in-out}
-    .hamburger span{
-      display:block;position:absolute;height:3px;width:100%;
-      background:var(--text);border-radius:2px;opacity:1;left:0;
-      transform:rotate(0deg);transition:.25s ease-in-out;
-    }
-    .hamburger span:nth-child(1){top:0px}
-    .hamburger span:nth-child(2){top:7px}
-    .hamburger span:nth-child(3){top:14px}
-    .hamburger.active span:nth-child(1){top:7px;transform:rotate(135deg)}
-    .hamburger.active span:nth-child(2){opacity:0;left:-60px}
-    .hamburger.active span:nth-child(3){top:7px;transform:rotate(-135deg)}
-    .mobile-menu{
-      position:absolute;top:100%;left:0;right:0;
-      background:rgba(15,23,42,.98);backdrop-filter:blur(20px);
-      border-bottom:1px solid rgba(255,255,255,.1);
-      transform:translateY(-10px);opacity:0;visibility:hidden;
-      transition:all .3s ease;z-index:49;
-      box-shadow:0 10px 40px rgba(0,0,0,.2);
-    }
-    [data-theme="light"] .mobile-menu{
-      background:rgba(248,250,252,.98);
-    }
-    .mobile-menu.active{
-      transform:translateY(0);opacity:1;visibility:visible;
-    }
-    .mobile-links{
-      display:flex;flex-direction:column;padding:20px;gap:4px;
-    }
-    .mobile-links a{
-      padding:12px 16px;color:var(--muted);
-      border-radius:var(--radius-sm);transition:.3s ease;
-      font-weight:500;
-    }
-    .mobile-links a:hover{
-      color:var(--text);background:rgba(255,255,255,.08);
-    }
-    .lang select{
-      background:var(--bg2);color:var(--text);border:1px solid rgba(255,255,255,.2);
-      padding:8px 12px;border-radius:var(--radius-sm);outline:none;
-      transition:.3s ease;font-size:14px;font-weight:600;
-      text-transform:lowercase;
-    }
-    .lang select:hover{border-color:var(--brand);box-shadow:var(--glow)}
-    .lang select:focus{border-color:var(--brand);box-shadow:var(--glow)}
-    .cta{
-      display:inline-flex;align-items:center;gap:10px;
-      background:linear-gradient(135deg,var(--brand),var(--purple));
-      color:white;padding:10px 16px;border-radius:var(--radius-sm);
-      font-weight:700;box-shadow:var(--shadow);border:0;
-      transition:.3s ease;position:relative;overflow:hidden;
-      font-size:14px;white-space:nowrap;
-    }
-    .cta:before{
-      content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);
-      transition:left .5s ease;
-    }
-    .cta:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
-    .cta:hover:before{left:100%}
-    /* HERO */
-    .hero{
-      padding:100px 0 80px;position:relative;overflow:hidden;
-      background:linear-gradient(135deg,rgba(59,130,246,.05),rgba(139,92,246,.05));
-    }
-    .hero-content{position:relative;z-index:2}
-    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
-    .badge{
-      display:inline-flex;gap:8px;align-items:center;
-      background:rgba(16,185,129,.15);color:#D1FAE5;
-      border:1px solid rgba(16,185,129,.3);
-      padding:8px 16px;border-radius:999px;font-size:13px;
-      font-weight:600;box-shadow:var(--shadow);
-      animation:pulse 3s ease-in-out infinite;
-    }
-    h1{
-      font-size:clamp(32px, 6vw, 64px);line-height:1.1;
-      margin:20px 0 16px;font-weight:900;letter-spacing:-.02em;
-      background:linear-gradient(135deg,#fff 0%,#cbd5e1 100%);
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-      position:relative;
-    }
-    .lead{color:#cbd5e1;font-size:clamp(18px, 3vw, 22px);max-width:600px;line-height:1.6;margin-bottom:32px}
-    .hero-visual{position:relative}
-    .hero-card{
-      background:var(--card);border:var(--border);border-radius:var(--radius);
-      padding:32px;box-shadow:var(--shadow-lg);position:relative;
-      backdrop-filter:blur(20px);
-    }
-    .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-    .stat{
-      background:rgba(255,255,255,.03);border:var(--border);
-      border-radius:12px;padding:20px;text-align:center;
-      transition:.3s ease;position:relative;overflow:hidden;
-    }
-    .stat:hover{
-      transform:translateY(-2px);box-shadow:var(--shadow-lg);
-      background:rgba(255,255,255,.08);
-    }
-    .stat b{font-size:24px;display:block;margin:8px 0 6px;color:var(--brand)}
-    .stat .muted{font-size:13px;line-height:1.4;color:var(--muted)}
-    section{padding:80px 0}
-    h2{
-      font-size:clamp(28px, 5vw, 52px);font-weight:800;margin-bottom:24px;
-      text-align:center;letter-spacing:-.02em;
-      background:linear-gradient(135deg,#fff 0%,#cbd5e1 100%);
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-    }
-
-    /* АДАПТИВНАЯ СЕТКА УСЛУГ */
-    .services-grid{
-      display:grid;gap:24px;max-width:1200px;margin:0 auto;
-      grid-template-columns: repeat(4, 1fr);
-    }
-    
-    @media (max-width: 1199px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    
-    @media (max-width: 768px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .card{
-      background:var(--card);border:var(--border);border-radius:var(--radius);
-      padding:32px;box-shadow:var(--shadow);position:relative;
-      transition:.4s ease;backdrop-filter:blur(20px);overflow:hidden;
-    }
-    .card:before{
-      content:'';position:absolute;top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg,var(--brand),var(--brand2));
-      transform:scaleX(0);transition:transform .4s ease;
-    }
-    .card:hover{
-      transform:translateY(-12px) scale(1.02);box-shadow:var(--shadow-lg);
-      background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.06));
-    }
-    .card:hover:before{transform:scaleX(1)}
-    .card-icon{
-      width:64px;height:64px;margin-bottom:20px;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      border-radius:16px;display:flex;align-items:center;justify-content:center;
-      box-shadow:var(--glow);font-size:28px;color:white;
-    }
-    .card h3{margin:0 0 16px;font-size:22px;font-weight:700}
-    .card p{color:var(--muted);line-height:1.6;margin:0;font-size:15px}
-    .chip{
-      display:inline-block;font-size:12px;color:#e5e7eb;
-      background:rgba(59,130,246,.2);border:1px solid rgba(59,130,246,.3);
-      padding:6px 12px;border-radius:999px;margin-bottom:16px;font-weight:600;
-    }
-    .stats-section{
-      background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(139,92,246,.08));
-      border-top:1px solid rgba(255,255,255,.1);
-      border-bottom:1px solid rgba(255,255,255,.1);
-      position:relative;
-    }
-    .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px}
-    .stats-item{text-align:center;position:relative}
-    .stats-number{
-      font-size:clamp(36px, 8vw, 56px);font-weight:900;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
-      display:block;
-    }
-    .stats-label{color:var(--muted);font-weight:600;margin-top:8px;font-size:16px}
-    .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:32px}
-    .process-step{
-      text-align:center;padding:32px 24px;border-radius:var(--radius);
-      background:rgba(255,255,255,.03);border:var(--border);transition:.3s ease;
-      position:relative;
-    }
-    .process-step:hover{transform:translateY(-8px);background:rgba(255,255,255,.08)}
-    .process-number{
-      width:60px;height:60px;margin:0 auto 20px;
-      background:linear-gradient(135deg,var(--brand),var(--purple));
-      border-radius:50%;display:flex;align-items:center;justify-content:center;
-      font-size:24px;font-weight:800;color:white;
-      box-shadow:var(--glow);
-    }
-    .testimonials-container {
-      overflow-x: auto;
-      padding: 20px 0;
-      scrollbar-width: thin;
-      scrollbar-color: var(--brand) var(--bg);
-    }
-    .testimonials-container::-webkit-scrollbar {
-      height: 8px;
-    }
-    .testimonials-container::-webkit-scrollbar-track {
-      background: var(--bg);
-    }
-    .testimonials-container::-webkit-scrollbar-thumb {
-      background-color: var(--brand);
-      border-radius: 20px;
-    }
-    .testimonials{
-      display:flex;
-      gap:24px;
-      padding: 0 20px;
-    }
-    .quote{
-      min-width: 350px;
-      background:rgba(255,255,255,.06);border:var(--border);
-      border-radius:var(--radius);padding:28px;position:relative;
-      transition:.3s ease;backdrop-filter:blur(10px);
-    }
-    .quote:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-    .quote:before{
-      content:'"';position:absolute;left:20px;top:-5px;
-      font-size:60px;color:rgba(59,130,246,.3);font-weight:900;
-    }
-    .quote p{margin:0 0 20px;font-size:15px;line-height:1.6;font-style:italic}
-    .quote b{
-      display:flex;align-items:center;gap:12px;color:var(--brand);
-      font-weight:600;font-size:14px;
-    }
-    .quote-avatar{
-      width:40px;height:40px;border-radius:50%;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      display:flex;align-items:center;justify-content:center;
-      color:white;font-weight:700;font-size:16px;
-    }
-    .stars {
-      color: #F59E0B;
-      font-size: 16px;
-      margin-top: 8px;
-    }
-    .faq-item{
-      background:rgba(255,255,255,.04);border:var(--border);
-      border-radius:var(--radius-sm);margin-bottom:16px;
-      transition:.3s ease;overflow:hidden;
-    }
-    .faq-question{
-      padding:20px 24px;cursor:pointer;display:flex;
-      justify-content:space-between;align-items:center;
-      font-weight:600;font-size:16px;
-    }
-    .faq-question:hover{background:rgba(255,255,255,.08)}
-    .faq-answer{
-      padding:0 24px;max-height:0;overflow:hidden;
-      transition:max-height .3s ease,color .3s ease;color:var(--muted);
-    }
-    .faq-item.open .faq-answer{max-height:200px;padding:0 24px 20px}
-    .faq-toggle{
-      width:24px;height:24px;border-radius:50%;background:var(--brand);
-      color:white;display:flex;align-items:center;justify-content:center;
-      font-size:16px;transition:transform .3s ease;flex-shrink:0;
-    }
-    .faq-item.open .faq-toggle{transform:rotate(45deg)}
-    .footer{
-      padding:60px 0 40px;
-      background:linear-gradient(135deg,rgba(15,23,42,.9),rgba(30,41,59,.9));
-      border-top:1px solid rgba(255,255,255,.1);
-    }
-    .footer-content{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;margin-bottom:40px}
-    .footer-section h3{color:var(--brand);margin-bottom:16px;font-size:18px}
-    .footer-section a{
-      color:var(--muted);display:block;margin-bottom:8px;
-      transition:color .3s ease;font-size:15px;
-    }
-    .footer-section a:hover{color:var(--text)}
-    .footer-bottom{
-      text-align:center;padding-top:40px;
-      border-top:1px solid rgba(255,255,255,.1);color:var(--muted);font-size:15px;
-    }
-    /* CHAT STYLES */
-    .chat-launcher{
-      position:fixed;right:20px;bottom:20px;z-index:60;
-      width:60px;height:60px;border-radius:50%;display:grid;place-items:center;
-      background:linear-gradient(135deg,var(--brand),var(--brand2));
-      color:#fff;border:none;box-shadow:var(--shadow-lg);
-      cursor:pointer;transition:.3s ease;font-size:24px;
-      animation:bounce 3s infinite;
-    }
-    .chat-launcher:hover{
-      transform:scale(1.1);
-      box-shadow:0 35px 60px -15px rgba(59,130,246,.4);
-    }
-    .chat-backdrop{
-      position:fixed;inset:0;z-index:59;background:rgba(0,0,0,.5);
-      opacity:0;pointer-events:none;transition:opacity .3s ease;backdrop-filter:blur(4px);
-    }
-    .chat-backdrop.open{opacity:1;pointer-events:auto}
-    .chat-panel{
-      position:fixed;right:20px;bottom:90px;z-index:60;
-      width:min(420px, calc(100vw - 40px));max-height:80vh;
-      background:var(--bg);border:var(--border);
-      border-radius:20px;box-shadow:var(--shadow-lg);
-      transform:translateY(20px) scale(.9);opacity:0;pointer-events:none;
-      transition:.3s ease;display:flex;flex-direction:column;overflow:hidden;
-      backdrop-filter:blur(20px);
-    }
-    .chat-panel.open{transform:none;opacity:1;pointer-events:auto}
-    .chat-header{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:16px 20px;background:rgba(255,255,255,.08);
-      border-bottom:var(--border);
-    }
-    .chat-header .title{font-weight:700;font-size:16px}
-    .chat-body{
-      height:400px;max-height:50vh;overflow:auto;padding:20px;
-      scroll-behavior:smooth;
-    }
-    .msg{display:flex;gap:12px;margin:16px 0}
-    .msg.user{justify-content:flex-end}
-    .bubble{
-      max-width:75%;padding:12px 16px;border-radius:16px;
-      line-height:1.4;font-size:14px;
-    }
-    .user .bubble{
-      background:linear-gradient(135deg,var(--brand),var(--purple));
-      color:white;border:none;
-    }
-    .bot .bubble{
-      background:rgba(255,255,255,.1);border:var(--border);
-      color:var(--text);
-    }
-    .chat-input{
-      display:flex;gap:12px;padding:16px 20px;
-      background:rgba(255,255,255,.06);border-top:var(--border);
-    }
-    .chat-input input{
-      flex:1;background:rgba(15,23,42,.8);color:var(--text);
-      border:var(--border);border-radius:12px;
-      padding:12px 16px;outline:none;transition:border-color .3s ease;
-      font-size:14px;
-    }
-    .chat-input input:focus{border-color:var(--brand);box-shadow:var(--glow)}
-    .chat-input button{
-      background:linear-gradient(135deg,var(--brand),var(--purple));
-      border:none;color:#fff;padding:12px 16px;border-radius:12px;
-      font-weight:700;transition:.3s ease;font-size:14px;
-    }
-    .chat-input button:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
-    /* MOBILE STYLES */
-    @media(max-width:768px){
-      .container{padding:0 16px}
-      .nav-desktop{display:none}
-      .mobile-toggle{display:block}
-      .nav{height:60px;padding:0}
-      .logo{width:36px;height:36px}
-      .title{font-size:14px}
-      .subtitle{font-size:10px}
-      .hero{padding:60px 0 40px}
-      .hero-grid{grid-template-columns:1fr;gap:32px;text-align:center}
-      .hero-card{padding:24px}
-      .hero-stats{grid-template-columns:1fr;gap:12px}
-      .stat{padding:16px}
-      .stat b{font-size:20px}
-      .card{padding:24px}
-      .card-icon{width:56px;height:56px;margin-bottom:16px}
-      .card h3{font-size:20px}
-      .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
-      .process-grid{grid-template-columns:1fr;gap:20px}
-      .process-step{padding:20px}
-      .process-number{width:50px;height:50px;font-size:20px}
-      .footer-content{grid-template-columns:1fr;text-align:center;gap:32px}
-      section{padding:50px 0}
-      h2{margin-bottom:40px}
-      .lang select{padding:6px 10px;font-size:13px}
-      .cta{padding:8px 14px;font-size:13px;gap:8px}
-      .theme-toggle{padding:4px;gap:4px}
-      .theme-option{padding:4px 8px;font-size:11px}
-      .quote{min-width:280px;}
-    }
-    @media(max-width:480px){
-      .container{padding:0 12px}
-      h1{font-size:28px;margin:16px 0 12px}
-      .lead{font-size:16px;margin-bottom:24px}
-      .badge{padding:6px 12px;font-size:12px}
-      .hero{padding:40px 0 30px}
-      .stats-number{font-size:32px}
-      .stats-label{font-size:14px}
-      section{padding:40px 0}
-      .card{padding:20px}
-    }
-    /* LOADING STATES */
-    .loading{opacity:.6;pointer-events:none}
-    .loading *{animation-play-state:paused}
-    /* FOCUS STYLES */
-    .cta:focus,
-    .mobile-toggle:focus,
-    .lang select:focus,
-    .chat-input input:focus,
-    .chat-input button:focus{
-      outline:2px solid var(--brand);outline-offset:2px;
-    }
-    /* LAZY LOADING */
-    img {
-      loading: lazy;
-      transition: opacity 0.3s;
-    }
-    img.lazy {
-      opacity: 0;
-    }
-    img.lazy.loaded {
-      opacity: 1;
-    }
-    /* REDUCED MOTION */
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-      .animate-float{animation:none}
-    }
-      /* REDUCED MOTION */
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important}
-      .animate-float{animation:none}
-    }
-    
-    /* ДОДАТИ ЦІ СТИЛІ */
-    /* Lead form responsive */
-    @media(max-width: 768px) {
-      .lead-form .container {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-      .lead-form form {
-        width: 100%;
-        justify-content: center;
-      }
-      .lead-form input {
-        flex: 1;
-        min-width: 120px;
-      }
-    }
-    
-    /* Urgency banner animation */
-    .urgency-banner {
-      animation: slideDown 0.5s ease-out;
-    }
-    
-    @keyframes slideDown {
-      from {
-        transform: translateY(-100%);
-      }
-      to {
-        transform: translateY(0);
-      }
-    }
-  </style>
-
-</head>
-<body data-theme="dark">
-  <!-- Progress Bar -->
-  <div class="progress-bar" id="progressBar"></div>
-
-  <!-- Breadcrumbs -->
-  <nav class="breadcrumbs" id="breadcrumbs">
-    <div class="container">
-      <ol>
-        <li><a href="/" data-i18n="breadcrumb_home">Головна</a></li>
-        <li id="currentPage" data-i18n="breadcrumb_current">Головна</li>
-      </ol>
-    </div>
-  </nav>
-
-  <header>
-    <div class="container">
-      <nav class="nav">
-        <div class="brand">
-          <svg class="logo animate-float" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-label="Marketing in Deutschland logo">
-            <defs>
-              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#3B82F6"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#10B981"/>
-              </linearGradient>
-              <filter id="glow"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            </defs>
-            <rect x="8" y="8" width="144" height="144" rx="32" fill="url(#lg)" filter="url(#glow)"/>
-            <circle cx="80" cy="80" r="58" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2"/>
-            <g stroke="#ffffff" stroke-width="8" stroke-linecap="round">
-              <line x1="48" y1="104" x2="48" y2="84"/><line x1="68" y1="104" x2="68" y2="74"/><line x1="88" y1="104" x2="88" y2="62"/><line x1="108" y1="104" x2="108" y2="52"/>
-            </g>
-            <text x="80" y="44" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-weight="900" font-size="20">MiD</text>
-            <text x="80" y="128" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-family="Inter,Arial" font-weight="600" font-size="11">Digital • Marketing</text>
-          </svg>
-          <div class="title">
-            <span data-i18n="brand">Маркетинг в Німеччині</span>
-            <small class="subtitle" data-i18n="tagline">Цифрове агентство</small>
-          </div>
-        </div>
-        <!-- Desktop Menu -->
-        <div class="nav-desktop">
-          <a href="#services" data-i18n="nav_services">Послуги</a>
-          <a href="#process" data-i18n="nav_process">Процес</a>
-          <a href="#testimonials" data-i18n="nav_testimonials">Відгуки</a>
-          <a href="#faq" data-i18n="nav_faq">FAQ</a>
-          <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
-            <span data-i18n="telegram">Telegram</span>
-          </a>
-          <div class="theme-toggle" onclick="toggleTheme()">
-            <div class="theme-option" data-theme-option="dark">🌙</div>
-            <div class="theme-option active" data-theme-option="light">☀️</div>
-          </div>
-          <div class="lang">
-            <select id="lang" aria-label="Language">
-              <option value="de">de</option>
-              <option value="en">en</option>
-              <option value="ua" selected>ua</option>
-              <option value="ru">ru</option>
-              <option value="pl">pl</option>
-            </select>
-          </div>
-        </div>
-        <!-- Mobile Controls -->
-        <div class="mobile-controls" style="display: flex; align-items: center; gap: 12px;">
-          <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" aria-expanded="false">
-            <div class="hamburger" id="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobileMenu">
-          <div class="mobile-links">
-            <a href="#services" data-i18n="nav_services">Послуги</a>
-            <a href="#process" data-i18n="nav_process">Процес</a>
-            <a href="#testimonials" data-i18n="nav_testimonials">Відгуки</a>
-            <a href="#faq" data-i18n="nav_faq">FAQ</a>
-            <a class="cta" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
-              <span data-i18n="telegram">Telegram</span>
-            </a>
-            <div style="display: flex; align-items: center; gap: 12px; margin-top: 12px;">
-              <div class="theme-toggle" onclick="toggleTheme()">
-                <div class="theme-option" data-theme-option="dark">🌙</div>
-                <div class="theme-option active" data-theme-option="light">☀️</div>
-              </div>
-              <div class="lang">
-                <select id="lang-mobile" aria-label="Language">
-                  <option value="de">de</option>
-                  <option value="en">en</option>
-                  <option value="ua" selected>ua</option>
-                  <option value="ru">ru</option>
-                  <option value="pl">pl</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-    </div>
-  </header>
-  <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-content animate-slide-up">
-          <div class="hero-grid">
-            <div>
-              <div class="badge animate-slide-left">
-                ✨ <span data-i18n="badge">8 років досвіду</span>
-              </div>
-              <h1 data-i18n="hero_title">Цифровий маркетинг, який працює</h1>
-              <p class="lead" data-i18n="hero_lead">Вебсайти, Google Ads, SMM, SEO. Видимість там, де ваші клієнти вже шукають.</p>
-              <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 32px;">
-                <a class="cta animate-glow" href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener">
-                  🚀 <span data-i18n="consultation">Почати консультацію</span>
-                </a>
-                <a href="#services" class="cta" style="background: transparent; border: 2px solid var(--brand); color: var(--brand);">
-                  📋 <span data-i18n="services">Послуги</span>
-                </a>
-              </div>
-            </div>
-            <div class="hero-visual animate-float">
-              <div class="hero-card">
-                <h3 style="margin: 0 0 16px; color: var(--brand); font-size: 18px;">📊 Performance Dashboard</h3>
-                <div class="hero-stats">
-                  <div class="stat animate-bounce">
-                    <b>+250%</b>
-                    <div class="muted">Зростання трафіку</div>
-                  </div>
-                  <div class="stat animate-bounce" style="animation-delay: 0.2s;">
-                    <b>€45k</b>
-                    <div class="muted">Місячний дохід</div>
-                  </div>
-                  <div class="stat animate-bounce" style="animation-delay: 0.4s;">
-                    <b>3.2x</b>
-                    <div class="muted">Покращення ROI</div>
-                  </div>
-                  <div class="stat animate-bounce" style="animation-delay: 0.6s;">
-                    <b>98%</b>
-                    <div class="muted">Задоволеність клієнтів</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Services Section -->
-    <section id="services">
-      <div class="container">
-        <h2 data-i18n="services_title">🎯 Наші послуги</h2>
-        <div class="services-grid">
-          <div class="card animate-slide-up">
-            <div class="chip">💻 Web Development</div>
-            <div class="card-icon animate-glow">
-              <i class="fas fa-laptop-code"></i>
-            </div>
-            <h3 data-i18n="service_web_title">Розробка веб-сайтів</h3>
-            <p data-i18n="service_web_desc">Сучасні, адаптивні веб-сайти з оптимальною продуктивністю та зручністю користування. Від лендингів до складних рішень електронної комерції.</p>
-          </div>
-          <div class="card animate-slide-up">
-            <div class="chip">🎯 Google Ads</div>
-            <div class="card-icon animate-glow">
-              <i class="fab fa-google"></i>
-            </div>
-            <h3 data-i18n="service_ads_title">Керування Google Ads</h3>
-            <p data-i18n="service_ads_desc">Професійні кампанії Google Ads для максимального охоплення та оптимальних показників конверсії. Стратегічний аналіз ключових слів та управління ставками.</p>
-          </div>
-          <div class="card animate-slide-up">
-            <div class="chip">📈 SEO</div>
-            <div class="card-icon animate-glow">
-              <i class="fas fa-chart-line"></i>
-            </div>
-            <h3 data-i18n="service_seo_title">Пошукова оптимізація</h3>
-            <p data-i18n="service_seo_desc">Підвищення органічної видимості та досягнення кращих позицій в Google в довгостроковій перспективі. Технічне SEO, оптимізація контенту та лінкбілдинг.</p>
-          </div>
-          <div class="card animate-slide-up">
-            <div class="chip">📱 Social Media</div>
-            <div class="card-icon animate-glow">
-              <i class="fas fa-share-alt"></i>
-            </div>
-            <h3 data-i18n="service_smm_title">Маркетинг у соціальних мережах</h3>
-            <p data-i18n="service_smm_desc">Стратегічні кампанії в соціальних мережах для підвищення залученості та лояльності клієнтів. Створення контенту, управління спільнотою та інфлюенсер маркетинг.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stats-item animate-slide-up">
-            <div class="stats-number">150+</div>
-            <div class="stats-label" data-i18n="stats_projects">🎯 Успішні проекти</div>
-          </div>
-          <div class="stats-item animate-slide-up">
-            <div class="stats-number">8+</div>
-            <div class="stats-label" data-i18n="stats_experience">⭐ Років досвіду</div>
-          </div>
-          <div class="stats-item animate-slide-up">
-            <div class="stats-number">95%</div>
-            <div class="stats-label" data-i18n="stats_satisfaction">😊 Задоволеність клієнтів</div>
-          </div>
-          <div class="stats-item animate-slide-up">
-            <div class="stats-number">24/7</div>
-            <div class="stats-label" data-i18n="stats_support">🚀 Підтримка</div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Process Section -->
-    <section id="process">
-      <div class="container">
-        <h2 data-i18n="process_title">⚡ Наш робочий процес</h2>
-        <div class="process-grid">
-          <div class="process-step animate-slide-up">
-            <div class="process-number">1</div>
-            <h3 data-i18n="process_step1_title">🔍 Консультація та аналіз</h3>
-            <p data-i18n="process_step1_desc">Комплексний аналіз вашої поточної ситуації, цільової аудиторії та конкурентів для розробки обґрунтованої стратегії.</p>
-          </div>
-          <div class="process-step animate-slide-up">
-            <div class="process-number">2</div>
-            <h3 data-i18n="process_step2_title">📋 Розробка стратегії</h3>
-            <p data-i18n="process_step2_desc">Індивідуальна маркетингова стратегія на основі ваших цілей, бюджету та ринкових умов.</p>
-          </div>
-          <div class="process-step animate-slide-up">
-            <div class="process-number">3</div>
-            <h3 data-i18n="process_step3_title">⚙️ Впровадження</h3>
-            <p data-i18n="process_step3_desc">Професійна реалізація всіх маркетингових заходів за допомогою сучасних інструментів та перевірених методів.</p>
-          </div>
-          <div class="process-step animate-slide-up">
-            <div class="process-number">4</div>
-            <h3 data-i18n="process_step4_title">📊 Оптимізація</h3>
-            <p data-i18n="process_step4_desc">Постійне вдосконалення та коригування кампаній на основі аналізу даних та показників ефективності.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- Testimonials Section -->
-    <section id="testimonials">
-      <div class="container">
-        <h2 data-i18n="testimonials_title">💬 Що говорять наші клієнти</h2>
-        <div class="testimonials-container">
-          <div class="testimonials">
-            <!-- 9 немецких отзывов -->
-            <div class="quote animate-slide-up">
-              <p>Dank der professionellen Betreuung haben wir unseren Online-Umsatz um 300% gesteigert. Absolut empfehlenswert!</p>
-              <b><div class="quote-avatar">MK</div> Maria K., Geschäftsführerin</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Die Website ist modern, schnell und bringt uns täglich neue Kunden. Sehr zufrieden mit der Zusammenarbeit.</p>
-              <b><div class="quote-avatar">TH</div> Thomas H., Unternehmer</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Professionelle Google Ads Betreuung mit messbaren Ergebnissen. Unser ROI hat sich verdreifacht.</p>
-              <b><div class="quote-avatar">SL</div> Sarah L., Marketing Manager</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Excellenter SEO Service! Innerhalb von 6 Monaten sind wir auf Seite 1 bei Google. Danke!</p>
-              <b><div class="quote-avatar">MF</div> Michael F., E-Commerce Händler</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Kreative Social Media Kampagnen, die wirklich funktionieren. Engagement um 400% gestiegen.</p>
-              <b><div class="quote-avatar">AL</div> Anna L., Influencerin</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Zuverlässige und kompetente Beratung. Immer erreichbar und hilfsbereit. Sehr zu empfehlen!</p>
-              <b><div class="quote-avatar">DM</div> David M., Startup-Gründer</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Website-Relaunch perfekt umgesetzt. Moderne Optik und deutlich bessere Performance.</p>
-              <b><div class="quote-avatar">JW</div> Julia W., Online-Shop Betreiberin</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Google Ads Kampagnen bringen konstant qualifizierte Leads. ROI über unseren Erwartungen.</p>
-              <b><div class="quote-avatar">RS</div> Robert S., Dienstleister</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>SEO-Optimierung hat unsere organische Reichweite verdoppelt. Professionelle Arbeit!</p>
-              <b><div class="quote-avatar">NK</div> Nina K., Blogger</b>
-              <div class="stars">★★★★★</div>
-            </div>
-
-            <!-- 5 украинских отзывов -->
-            <div class="quote animate-slide-up">
-              <p>Завдяки професійному обслуговуванню ми збільшили наш онлайн-дохід на 300%. Абсолютно рекомендую!</p>
-              <b><div class="quote-avatar">ОК</div> Олена К., Директорка</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Веб-сайт сучасний, швидкий і приносить нам щодня нових клієнтів. Дуже задоволені співпрацею.</p>
-              <b><div class="quote-avatar">ВП</div> Володимир П., Підприємець</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Професійне обслуговування Google Ads з вимірюваними результатами. Наш ROI потроївся.</p>
-              <b><div class="quote-avatar">ІЛ</div> Ірина Л., Менеджерка з маркетингу</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Відмінний SEO сервіс! За 6 місяців ми потрапили на першу сторінку Google. Дякую!</p>
-              <b><div class="quote-avatar">АФ</div> Андрій Ф., Торговець електронною комерцією</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Креативні кампанії в соціальних мережах, які справді працюють. Залученість зросла на 400%.</p>
-              <b><div class="quote-avatar">МЛ</div> Марія Л., Блогерка</b>
-              <div class="stars">★★★★★</div>
-            </div>
-
-            <!-- 4 русских отзыва -->
-            <div class="quote animate-slide-up">
-              <p>Благодаря профессиональному обслуживанию мы увеличили наш онлайн-доход на 300%. Абсолютно рекомендую!</p>
-              <b><div class="quote-avatar">ЕК</div> Елена К., Директор</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Сайт современный, быстрый и приносит нам ежедневно новых клиентов. Очень довольны сотрудничеством.</p>
-              <b><div class="quote-avatar">ВП</div> Владимир П., Предприниматель</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Профессиональное обслуживание Google Ads с измеримыми результатами. Наш ROI утроился.</p>
-              <b><div class="quote-avatar">СЛ</div> Светлана Л., Менеджер по маркетингу</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>Отличный SEO сервис! В течение 6 месяцев мы попали на первую страницу Google. Спасибо!</p>
-              <b><div class="quote-avatar">МФ</div> Михаил Ф., Торговец электронной коммерцией</b>
-              <div class="stars">★★★★★</div>
-            </div>
-
-            <!-- 2 английских отзыва -->
-            <div class="quote animate-slide-up">
-              <p>Thanks to professional service, we increased our online revenue by 300%. Absolutely recommend!</p>
-              <b><div class="quote-avatar">JK</div> John K., CEO</b>
-              <div class="stars">★★★★★</div>
-            </div>
-            <div class="quote animate-slide-up">
-              <p>The website is modern, fast and brings us new customers daily. Very satisfied with the cooperation.</p>
-              <b><div class="quote-avatar">SP</div> Sarah P., Entrepreneur</b>
-              <div class="stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- FAQ Section -->
-    <section id="faq">
-      <div class="container">
-        <h2 data-i18n="faq_title">❓ Часті запитання</h2>
-        <div style="max-width: 900px; margin: 0 auto;">
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-i18n="faq_q1">Скільки часу потрібно для розробки веб-сайту?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p data-i18n="faq_a1">Термін розробки залежить від обсягу. Простий веб-сайт займає 1-3 тижні, складніші проекти з електронною комерцією або спеціальними функціями - 4-8 тижнів.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-i18n="faq_q2">Чи пропонуєте ви також обслуговування та підтримку?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p data-i18n="faq_a2">Так, ми пропонуємо комплексне обслуговування, оновлення, резервне копіювання та підтримку 24/7 для всіх наших проектів. Доступні різні пакети підтримки.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-i18n="faq_q3">Як ви вимірюєте успіх маркетингових кампаній?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p data-i18n="faq_a3">Ми використовуємо детальні аналітичні інструменти (Google Analytics, Search Console тощо) і створюємо регулярні звіти про трафік, конверсії, ROI та інші KPI.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-i18n="faq_q4">Скільки коштує професійний веб-сайт?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p data-i18n="faq_a4">Вартість варіюється залежно від обсягу. Прості веб-сайти можуть коштувати від 50 €, рішення для електронної комерції від 500 €. Індивідуальні пропозиції після безкоштовної консультації.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-i18n="faq_q5">Як швидко я побачу результати з SEO?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p data-i18n="faq_a5">Перші покращення зазвичай помітні через 2-3 місяці. Значне покращення позицій через 4-6 місяців. SEO - це довгостроковий процес.</p>
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question">
-              <span data-i18n="faq_q6">Які платформи соціальних мереж ви рекомендуєте?</span>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <p data-i18n="faq_a6">Залежно від вашої цільової аудиторії: B2B зазвичай LinkedIn, B2C часто Instagram/Facebook/TikTok. Ми аналізуємо вашу цільову аудиторію та рекомендуємо відповідні канали.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -2366,1019 +1226,468 @@
   <script>
     // Translations
     const translations = {
-  de: {
-    brand: "Marketing in Deutschland",
-    tagline: "Digitalagentur",
-    meta_title: "Marketing in Deutschland — Digitalagentur für internationale Unternehmen (DE/EN/UA/RU)",
-    meta_desc: "Professionelles Digital Marketing in Deutschland für internationale Unternehmen. Google Ads Betreuung, SEO Optimierung, Website Entwicklung. 8 Jahre Erfahrung. Beratung ab 50€.",
-    meta_keywords: "marketing deutschland, google ads betreuung, seo optimierung, website entwicklung, digital marketing agentur, online marketing, social media marketing, webdesign deutschland",
-    urgency_text: "Nur bis Ende des Monats: Google ADS und Facebook ADS Setup ab 50€ statt 150€",
-    hero_title: "Digitales Marketing, das funktioniert",
-    hero_lead: "Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
-    badge: "8 Jahre Erfahrung",
-    consultation: "Beratung starten",
-    services: "Leistungen",
-    services_title: "🎯 Unsere Leistungen",
-    nav_services: "Leistungen",
-    nav_process: "Prozess",
-    nav_testimonials: "Bewertungen",
-    nav_faq: "FAQ",
-    telegram: "Telegram",
-    stats_projects: "🎯 Erfolgreiche Projekte",
-    stats_experience: "⭐ Jahre Erfahrung",
-    stats_satisfaction: "😊 Kundenzufriedenheit",
-    stats_support: "🚀 Support",
-    process_title: "⚡ Unser Arbeitsprozess",
-    process_step1_title: "🔍 Beratung & Analyse",
-    process_step1_desc: "Umfassende Analyse Ihrer aktuellen Situation, Zielgruppe und Wettbewerber für eine fundierte Strategieentwicklung.",
-    process_step2_title: "📋 Strategie entwickeln",
-    process_step2_desc: "Maßgeschneiderte Marketing-Strategie basierend auf Ihren Zielen, Budget und Marktgegebenheiten.",
-    process_step3_title: "⚙️ Umsetzung",
-    process_step3_desc: "Professionelle Implementierung aller Marketing-Maßnahmen mit modernsten Tools und bewährten Methoden.",
-    process_step4_title: "📊 Optimierung",
-    process_step4_desc: "Kontinuierliche Verbesserung und Anpassung der Kampagnen basierend auf Datenanalyse und Performance-Metriken.",
-    testimonials_title: "💬 Was unsere Kunden sagen",
-    faq_title: "❓ Häufig gestellte Fragen",
-    faq_q1: "Wie lange dauert die Entwicklung einer Website?",
-    faq_a1: "Die Entwicklungszeit hängt vom Umfang ab. Eine einfache Website dauert 1-3 Wochen, komplexere Projekte mit E-Commerce oder speziellen Funktionen 4-8 Wochen.",
-    faq_q2: "Bieten Sie auch Wartung und Support an?",
-    faq_a2: "Ja, wir bieten umfassende Wartung, Updates, Backups und 24/7 Support für alle unsere Projekte an. Verschiedene Support-Pakete verfügbar.",
-    faq_q3: "Wie messen Sie den Erfolg von Marketing-Kampagnen?",
-    faq_a3: "Wir verwenden detaillierte Analytics Tools (Google Analytics, Search Console, etc.) und erstellen regelmäßige Reports zu Traffic, Conversions, ROI und anderen KPIs.",
-    faq_q4: "Was kostet eine professionelle Website?",
-    faq_a4: "Die Kosten variieren je nach Umfang. Einfache Websites können ab 50€ kosten, E-Commerce Lösungen ab 500€. Individuelle Angebote nach kostenloser Beratung.",
-    faq_q5: "Wie schnell sehe ich Ergebnisse bei SEO?",
-    faq_a5: "Erste Verbesserungen meist nach 2-3 Monaten sichtbar. Signifikante Ranking-Verbesserungen nach 4-6 Monaten. SEO ist ein langfristiger Prozess.",
-    faq_q6: "Welche Social Media Plattformen empfehlen Sie?",
-    faq_a6: "Abhängig von Ihrer Zielgruppe: B2B meist LinkedIn, B2C oft Instagram/Facebook/TikTok. Wir analysieren Ihre Zielgruppe und empfehlen passende Kanäle.",
-    service_web_title: "Website-Entwicklung",
-    service_web_desc: "Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.",
-    service_ads_title: "Google Ads Management",
-    service_ads_desc: "Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.",
-    service_seo_title: "Suchmaschinenoptimierung",
-    service_seo_desc: "Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.",
-    service_smm_title: "Social Media Marketing",
-    service_smm_desc: "Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.",
-    footer_services: "🎯 Leistungen",
-    footer_web_dev: "Website-Entwicklung",
-    footer_ads: "Google Ads Management",
-    footer_seo: "SEO Optimierung",
-    footer_smm: "Social Media Marketing",
-    footer_content: "Content Marketing",
-    footer_company: "🏢 Unternehmen",
-    footer_about: "Über uns",
-    footer_reviews: "Kundenbewertungen",
-    footer_faq: "FAQ",
-    footer_portfolio: "Portfolio",
-    footer_blog: "Blog",
-    footer_contact: "📞 Kontakt",
-    footer_telegram: "📱 Telegram Chat",
-    footer_email: "✉️ E-Mail",
-    footer_chat: "💬 Live Chat",
-    footer_phone: "📞 Telefon",
-    footer_legal: "🌍 Rechtliches",
-    footer_imprint: "Impressum",
-    footer_privacy: "Datenschutz",
-    footer_terms: "AGB",
-    footer_cookies: "Cookie Policy",
-    footer_copyright: "© 2024 Marketing in Deutschland. Alle Rechte vorbehalten. Made with ❤️ in Deutschland",
-    chat_title: "💬 Live Chat Support",
-    chat_welcome: "Hallo! 👋 Willkommen bei Marketing in Deutschland. Wie können wir Ihnen heute helfen?",
-    chat_placeholder: "Nachricht eingeben...",
-    chat_send: "Senden",
-    breadcrumb_home: "Startseite",
-    breadcrumb_current: "Startseite",
-      meta_title: "Marketing in Deutschland — Digitalagentur für internationale Unternehmen (DE/EN/UA/RU)",
-  meta_desc: "Professionelles Digital Marketing in Deutschland für internationale Unternehmen. Google Ads Betreuung, SEO Optimierung, Website Entwicklung. 8 Jahre Erfahrung. Beratung ab 50€.",
-  meta_keywords: "marketing deutschland, google ads betreuung, seo optimierung, website entwicklung, digital marketing agentur, online marketing, social media marketing, webdesign deutschland",
-  urgency_text: "Nur bis Ende des Monats: Google ADS und Facebook ADS Setup ab 50€ statt 150€",
-  lead_form_title: "🎯 Kostenloser Audit Ihrer Werbung",
-  lead_form_subtitle: "Erhalten Sie einen Wachstumsplan in 24 Stunden", 
-  phone_placeholder: "+49...",
-  get_audit: "Audit erhalten"
+      de: {
+        brand: "Marketing in Deutschland",
+        tagline: "Digitalagentur",
+        meta_title: "Marketing in Deutschland — Digitalagentur für internationale Unternehmen (DE/EN/UA/RU)",
+        meta_desc: "Professionelles Digital Marketing in Deutschland für internationale Unternehmen. Google Ads Betreuung, SEO Optimierung, Website Entwicklung. 8 Jahre Erfahrung. Beratung ab 50€.",
+        meta_keywords: "marketing deutschland, google ads betreuung, seo optimierung, website entwicklung, digital marketing agentur, online marketing, social media marketing, webdesign deutschland",
+        urgency_text: "Nur bis Ende des Monats: Google ADS und Facebook ADS Setup ab 50€ statt 150€",
+        hero_title: "Digitales Marketing, das funktioniert",
+        hero_lead: "Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.",
+        badge: "8 Jahre Erfahrung",
+        consultation: "Beratung starten",
+        services: "Leistungen",
+        services_title: "🎯 Unsere Leistungen",
+        nav_services: "Leistungen",
+        nav_process: "Prozess",
+        nav_testimonials: "Bewertungen",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        stats_projects: "🎯 Erfolgreiche Projekte",
+        stats_experience: "⭐ Jahre Erfahrung",
+        stats_satisfaction: "😊 Kundenzufriedenheit",
+        stats_support: "🚀 Support",
+        process_title: "⚡ Unser Arbeitsprozess",
+        process_step1_title: "🔍 Beratung & Analyse",
+        process_step1_desc: "Umfassende Analyse Ihrer aktuellen Situation, Zielgruppe und Wettbewerber für eine fundierte Strategieentwicklung.",
+        process_step2_title: "📋 Strategie entwickeln",
+        process_step2_desc: "Maßgeschneiderte Marketing-Strategie basierend auf Ihren Zielen, Budget und Marktgegebenheiten.",
+        process_step3_title: "⚙️ Umsetzung",
+        process_step3_desc: "Professionelle Implementierung aller Marketing-Maßnahmen mit modernsten Tools und bewährten Methoden.",
+        process_step4_title: "📊 Optimierung",
+        process_step4_desc: "Kontinuierliche Verbesserung und Anpassung der Kampagnen basierend auf Datenanalyse und Performance-Metriken.",
+        testimonials_title: "💬 Was unsere Kunden sagen",
+        faq_title: "❓ Häufig gestellte Fragen",
+        faq_q1: "Wie lange dauert die Entwicklung einer Website?",
+        faq_a1: "Die Entwicklungszeit hängt vom Umfang ab. Eine einfache Website dauert 1-3 Wochen, komplexere Projekte mit E-Commerce oder speziellen Funktionen 4-8 Wochen.",
+        faq_q2: "Bieten Sie auch Wartung und Support an?",
+        faq_a2: "Ja, wir bieten umfassende Wartung, Updates, Backups und 24/7 Support für alle unsere Projekte an. Verschiedene Support-Pakete verfügbar.",
+        faq_q3: "Wie messen Sie den Erfolg von Marketing-Kampagnen?",
+        faq_a3: "Wir verwenden detaillierte Analytics Tools (Google Analytics, Search Console, etc.) und erstellen regelmäßige Reports zu Traffic, Conversions, ROI und anderen KPIs.",
+        faq_q4: "Was kostet eine professionelle Website?",
+        faq_a4: "Die Kosten variieren je nach Umfang. Einfache Websites können ab 50€ kosten, E-Commerce Lösungen ab 500€. Individuelle Angebote nach kostenloser Beratung.",
+        faq_q5: "Wie schnell sehe ich Ergebnisse bei SEO?",
+        faq_a5: "Erste Verbesserungen meist nach 2-3 Monaten sichtbar. Signifikante Ranking-Verbesserungen nach 4-6 Monaten. SEO ist ein langfristiger Prozess.",
+        faq_q6: "Welche Social Media Plattformen empfehlen Sie?",
+        faq_a6: "Abhängig von Ihrer Zielgruppe: B2B meist LinkedIn, B2C oft Instagram/Facebook/TikTok. Wir analysieren Ihre Zielgruppe und empfehlen passende Kanäle.",
+        service_web_title: "Website-Entwicklung",
+        service_web_desc: "Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.",
+        service_ads_title: "Google Ads Management",
+        service_ads_desc: "Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.",
+        service_seo_title: "Suchmaschinenoptimierung",
+        service_seo_desc: "Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.",
+        service_smm_title: "Social Media Marketing",
+        service_smm_desc: "Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.",
+        footer_services: "🎯 Leistungen",
+        footer_web_dev: "Website-Entwicklung",
+        footer_ads: "Google Ads Management",
+        footer_seo: "SEO Optimierung",
+        footer_smm: "Social Media Marketing",
+        footer_content: "Content Marketing",
+        footer_company: "🏢 Unternehmen",
+        footer_about: "Über uns",
+        footer_reviews: "Kundenbewertungen",
+        footer_faq: "FAQ",
+        footer_portfolio: "Portfolio",
+        footer_blog: "Blog",
+        footer_contact: "📞 Kontakt",
+        footer_telegram: "📱 Telegram Chat",
+        footer_email: "✉️ E-Mail",
+        footer_chat: "💬 Live Chat",
+        footer_phone: "📞 Telefon",
+        footer_legal: "🌍 Rechtliches",
+        footer_imprint: "Impressum",
+        footer_privacy: "Datenschutz",
+        footer_terms: "AGB",
+        footer_cookies: "Cookie Policy",
+        footer_copyright: "© 2024 Marketing in Deutschland. Alle Rechte vorbehalten. Made with ❤️ in Deutschland",
+        chat_title: "💬 Live Chat Support",
+        chat_welcome: "Hallo! 👋 Willkommen bei Marketing in Deutschland. Wie können wir Ihnen heute helfen?",
+        chat_placeholder: "Nachricht eingeben...",
+        chat_send: "Senden",
+        breadcrumb_home: "Startseite",
+        breadcrumb_current: "Startseite",
+        lead_form_title: "🎯 Kostenloser Audit Ihrer Werbung",
+        lead_form_subtitle: "Erhalten Sie einen Wachstumsplan in 24 Stunden", 
+        phone_placeholder: "+49...",
+        get_audit: "Audit erhalten"
       },
-  en: {
-    brand: "Marketing in Germany",
-    tagline: "Digital Agency",
-    meta_title: "Marketing in Germany — Digital Agency for International Business (EN/DE/UA/RU)",
-    meta_desc: "Professional Digital Marketing in Germany for international businesses. Google Ads management, SEO optimization, website development. 8 years experience. Consultation from €50.",
-    meta_keywords: "marketing germany, google ads management, seo optimization, website development, digital marketing agency, online marketing, social media marketing, web design germany",
-    urgency_text: "Only until the end of the month: Google ADS and Facebook ADS setup from €50 instead of €150",
-    hero_title: "Digital Marketing that works",
-    hero_lead: "Websites, Google Ads, SMM, SEO. Visible where your customers are already searching.",
-    badge: "8 Years Experience",
-    consultation: "Start Consultation",
-    services: "Services",
-    services_title: "🎯 Our Services",
-    nav_services: "Services",
-    nav_process: "Process",
-    nav_testimonials: "Reviews",
-    nav_faq: "FAQ",
-    telegram: "Telegram",
-    stats_projects: "🎯 Successful Projects",
-    stats_experience: "⭐ Years Experience",
-    stats_satisfaction: "😊 Customer Satisfaction",
-    stats_support: "🚀 Support",
-    process_title: "⚡ Our Process",
-    process_step1_title: "🔍 Consultation & Analysis",
-    process_step1_desc: "Comprehensive analysis of your current situation, target audience and competitors for a solid strategy development.",
-    process_step2_title: "📋 Strategy Development",
-    process_step2_desc: "Customized marketing strategy based on your goals, budget and market conditions.",
-    process_step3_title: "⚙️ Implementation",
-    process_step3_desc: "Professional implementation of all marketing measures with the latest tools and proven methods.",
-    process_step4_title: "📊 Optimization",
-    process_step4_desc: "Continuous improvement and adjustment of campaigns based on data analysis and performance metrics.",
-    testimonials_title: "💬 What our customers say",
-    faq_title: "❓ Frequently Asked Questions",
-    faq_q1: "How long does it take to develop a website?",
-    faq_a1: "Development time depends on scope. A simple website takes 1-3 weeks, more complex projects with e-commerce or special features take 4-8 weeks.",
-    faq_q2: "Do you also offer maintenance and support?",
-    faq_a2: "Yes, we offer comprehensive maintenance, updates, backups and 24/7 support for all our projects. Various support packages available.",
-    faq_q3: "How do you measure the success of marketing campaigns?",
-    faq_a3: "We use detailed analytics tools (Google Analytics, Search Console, etc.) and create regular reports on traffic, conversions, ROI and other KPIs.",
-    faq_q4: "How much does a professional website cost?",
-    faq_a4: "Costs vary depending on scope. Simple websites can cost from €50, e-commerce solutions from €500. Individual offers after free consultation.",
-    faq_q5: "How quickly will I see results with SEO?",
-    faq_a5: "First improvements usually visible after 2-3 months. Significant ranking improvements after 4-6 months. SEO is a long-term process.",
-    faq_q6: "Which social media platforms do you recommend?",
-    faq_a6: "Depending on your target audience: B2B mostly LinkedIn, B2C often Instagram/Facebook/TikTok. We analyze your target audience and recommend suitable channels.",
-    service_web_title: "Website Development",
-    service_web_desc: "Modern, responsive websites with optimal performance and user-friendliness. From landing pages to complex e-commerce solutions.",
-    service_ads_title: "Google Ads Management",
-    service_ads_desc: "Professional Google Ads campaigns for maximum reach and optimal conversion rates. Strategic keyword analysis and bid management.",
-    service_seo_title: "Search Engine Optimization",
-    service_seo_desc: "Increase organic visibility and achieve better Google rankings in the long term. Technical SEO, content optimization and link building.",
-    service_smm_title: "Social Media Marketing",
-    service_smm_desc: "Strategic social media campaigns for more engagement and customer loyalty. Content creation, community management and influencer marketing.",
-    footer_services: "🎯 Services",
-    footer_web_dev: "Website Development",
-    footer_ads: "Google Ads Management",
-    footer_seo: "SEO Optimization",
-    footer_smm: "Social Media Marketing",
-    footer_content: "Content Marketing",
-    footer_company: "🏢 Company",
-    footer_about: "About Us",
-    footer_reviews: "Customer Reviews",
-    footer_faq: "FAQ",
-    footer_portfolio: "Portfolio",
-    footer_blog: "Blog",
-    footer_contact: "📞 Contact",
-    footer_telegram: "📱 Telegram Chat",
-    footer_email: "✉️ Email",
-    footer_chat: "💬 Live Chat",
-    footer_phone: "📞 Phone",
-    footer_legal: "🌍 Legal",
-    footer_imprint: "Imprint",
-    footer_privacy: "Privacy Policy",
-    footer_terms: "Terms of Service",
-    footer_cookies: "Cookie Policy",
-    footer_copyright: "© 2024 Marketing in Germany. All rights reserved. Made with ❤️ in Germany",
-    chat_title: "💬 Live Chat Support",
-    chat_welcome: "Hello! 👋 Welcome to Marketing in Germany. How can we help you today?",
-    chat_placeholder: "Enter message...",
-    chat_send: "Send",
-    breadcrumb_home: "Home",
-    breadcrumb_current: "Home",
-    meta_title: "Marketing in Germany — Digital Agency for International Business (EN/DE/UA/RU)",
-  meta_desc: "Professional Digital Marketing in Germany for international businesses. Google Ads management, SEO optimization, website development. 8 years experience. Consultation from €50.",
-  meta_keywords: "marketing germany, google ads management, seo optimization, website development, digital marketing agency, online marketing, social media marketing, web design germany",
-  urgency_text: "Only until the end of the month: Google ADS and Facebook ADS setup from €50 instead of €150",
-  lead_form_title: "🎯 Free Advertising Audit",
-  lead_form_subtitle: "Get your growth plan in 24 hours",
-  phone_placeholder: "+44...",
-  get_audit: "Get Audit"
-},
-  ua: {
-    brand: "Маркетинг в Німеччині",
-    tagline: "Цифрове агентство",
-    meta_title: "Маркетинг в Німеччині — Цифрове агентство для українського бізнесу (UA/DE/EN/RU)",
-    meta_desc: "Професійний цифровий маркетинг в Німеччині для українського бізнесу. Google Ads налаштування, SEO просування, створення сайтів. 8 років досвіду. Консультація від 50€.",
-    meta_keywords: "маркетинг німеччина, google ads налаштування, seo просування, створення сайтів, цифровий маркетинг, онлайн маркетинг, реклама google, smm послуги",
-    urgency_text: "Тільки до кінця місяця: Налаштування Google ADS та Facebook ADS від 50€ замість 150€",
-    hero_title: "Цифровий маркетинг, який працює",
-    hero_lead: "Вебсайти, Google Ads, SMM, SEO. Видимість там, де ваші клієнти вже шукають.",
-    badge: "8 років досвіду",
-    consultation: "Почати консультацію",
-    services: "Послуги",
-    services_title: "🎯 Наші послуги",
-    nav_services: "Послуги",
-    nav_process: "Процес",
-    nav_testimonials: "Відгуки",
-    nav_faq: "FAQ",
-    telegram: "Telegram",
-    stats_projects: "🎯 Успішні проекти",
-    stats_experience: "⭐ Років досвіду",
-    stats_satisfaction: "😊 Задоволеність клієнтів",
-    stats_support: "🚀 Підтримка",
-    process_title: "⚡ Наш робочий процес",
-    process_step1_title: "🔍 Консультація та аналіз",
-    process_step1_desc: "Комплексний аналіз вашої поточної ситуації, цільової аудиторії та конкурентів для розробки обґрунтованої стратегії.",
-    process_step2_title: "📋 Розробка стратегії",
-    process_step2_desc: "Індивідуальна маркетингова стратегія на основі ваших цілей, бюджету та ринкових умов.",
-    process_step3_title: "⚙️ Впровадження",
-    process_step3_desc: "Професійна реалізація всіх маркетингових заходів за допомогою сучасних інструментів та перевірених методів.",
-    process_step4_title: "📊 Оптимізація",
-    process_step4_desc: "Постійне вдосконалення та коригування кампаній на основі аналізу даних та показників ефективності.",
-    testimonials_title: "💬 Що говорять наші клієнти",
-    faq_title: "❓ Часті запитання",
-    faq_q1: "Скільки часу потрібно для розробки веб-сайту?",
-    faq_a1: "Термін розробки залежить від обсягу. Простий веб-сайт займає 1-3 тижні, складніші проекти з електронною комерцією або спеціальними функціями - 4-8 тижнів.",
-    faq_q2: "Чи пропонуєте ви також обслуговування та підтримку?",
-    faq_a2: "Так, ми пропонуємо комплексне обслуговування, оновлення, резервне копіювання та підтримку 24/7 для всіх наших проектів. Доступні різні пакети підтримки.",
-    faq_q3: "Як ви вимірюєте успіх маркетингових кампаній?",
-    faq_a3: "Ми використовуємо детальні аналітичні інструменти (Google Analytics, Search Console тощо) і створюємо регулярні звіти про трафік, конверсії, ROI та інші KPI.",
-    faq_q4: "Скільки коштує професійний веб-сайт?",
-    faq_a4: "Вартість варіюється залежно від обсягу. Прості веб-сайти можуть коштувати від 50 €, рішення для електронної комерції від 500 €. Індивідуальні пропозиції після безкоштовної консультації.",
-    faq_q5: "Як швидко я побачу результати з SEO?",
-    faq_a5: "Перші покращення зазвичай помітні через 2-3 місяці. Значне покращення позицій через 4-6 місяців. SEO - це довгостроковий процес.",
-    faq_q6: "Які платформи соціальних мереж ви рекомендуєте?",
-    faq_a6: "Залежно від вашої цільової аудиторії: B2B зазвичай LinkedIn, B2C часто Instagram/Facebook/TikTok. Ми аналізуємо вашу цільову аудиторію та рекомендуємо відповідні канали.",
-    service_web_title: "Розробка веб-сайтів",
-    service_web_desc: "Сучасні, адаптивні веб-сайти з оптимальною продуктивністю та зручністю користування. Від лендингів до складних рішень електронної комерції.",
-    service_ads_title: "Керування Google Ads",
-    service_ads_desc: "Професійні кампанії Google Ads для максимального охоплення та оптимальних показників конверсії. Стратегічний аналіз ключових слів та управління ставками.",
-    service_seo_title: "Пошукова оптимізація",
-    service_seo_desc: "Підвищення органічної видимості та досягнення кращих позицій в Google в довгостроковій перспективі. Технічне SEO, оптимізація контенту та лінкбілдинг.",
-    service_smm_title: "Маркетинг у соціальних мережах",
-    service_smm_desc: "Стратегічні кампанії в соціальних мережах для підвищення залученості та лояльності клієнтів. Створення контенту, управління спільнотою та інфлюенсер маркетинг.",
-    footer_services: "🎯 Послуги",
-    footer_web_dev: "Розробка веб-сайтів",
-    footer_ads: "Керування Google Ads",
-    footer_seo: "Пошукова оптимізація",
-    footer_smm: "Маркетинг у соціальних мережах",
-    footer_content: "Контент-маркетинг",
-    footer_company: "🏢 Компанія",
-    footer_about: "Про нас",
-    footer_reviews: "Відгуки клієнтів",
-    footer_faq: "FAQ",
-    footer_portfolio: "Портфоліо",
-    footer_blog: "Блог",
-    footer_contact: "📞 Контакти",
-    footer_telegram: "📱 Telegram чат",
-    footer_email: "✉️ Електронна пошта",
-    footer_chat: "💬 Онлайн чат",
-    footer_phone: "📞 Телефон",
-    footer_legal: "🌍 Юридична інформація",
-    footer_imprint: "Реквізити",
-    footer_privacy: "Політика конфіденційності",
-    footer_terms: "Умови обслуговування",
-    footer_cookies: "Політика використання файлів cookie",
-    footer_copyright: "© 2024 Маркетинг в Німеччині. Всі права захищені. Зроблено з ❤️ в Німеччині",
-    chat_title: "💬 Підтримка в чаті",
-    chat_welcome: "Привіт! 👋 Ласкаво просимо до Маркетингу в Німеччині. Як ми можемо вам допомогти сьогодні?",
-    chat_placeholder: "Введіть повідомлення...",
-    chat_send: "Надіслати",
-    breadcrumb_home: "Головна",
-    breadcrumb_current: "Головна",
-    meta_title: "Маркетинг в Німеччині — Цифрове агентство для українського бізнесу (UA/DE/EN/RU)",
-  meta_desc: "Професійний цифровий маркетинг в Німеччині для українського бізнесу. Google Ads налаштування, SEO просування, створення сайтів. 8 років досвіду. Консультація від 50€.",
-  meta_keywords: "маркетинг німеччина, google ads налаштування, seo просування, створення сайтів, цифровий маркетинг, онлайн маркетинг, реклама google, smm послуги",
-  urgency_text: "Тільки до кінця місяця: Налаштування Google ADS та Facebook ADS від 50€ замість 150€",
-  lead_form_title: "🎯 Безкоштовний аудит вашої реклами", 
-  lead_form_subtitle: "Отримайте план зростання за 24 години",
-  phone_placeholder: "+380...",
-  get_audit: "Отримати аудит"
-},
-  ru: {
-    brand: "Маркетинг в Германии",
-    tagline: "Цифровое агентство",
-    meta_title: "Маркетинг в Германии — Цифровое агентство для русскоязычного бизнеса (RU/DE/EN/UA)",
-    meta_desc: "Профессиональный цифровой маркетинг в Германии для русскоязычного бизнеса. Настройка Google Ads, SEO продвижение, создание сайтов. 8 лет опыта. Консультация от 50€.",
-    meta_keywords: "маркетинг германия, настройка google ads, seo продвижение, создание сайтов, цифровой маркетинг, онлайн реклама, реклама гугл, smm услуги",
-    urgency_text: "Только до конца месяца: Настройка Google ADS и Facebook ADS от 50€ вместо 150€",
-    hero_title: "Цифровой маркетинг, который работает",
-    hero_lead: "Веб-сайты, Google Ads, SMM, SEO. Видимость там, где ваши клиенты уже ищут.",
-    badge: "8 лет опыта",
-    consultation: "Начать консультацию",
-    services: "Услуги",
-    services_title: "🎯 Наши услуги",
-    nav_services: "Услуги",
-    nav_process: "Процесс",
-    nav_testimonials: "Отзывы",
-    nav_faq: "FAQ",
-    telegram: "Telegram",
-    stats_projects: "🎯 Успешные проекты",
-    stats_experience: "⭐ Лет опыта",
-    stats_satisfaction: "😊 Удовлетворенность клиентов",
-    stats_support: "🚀 Поддержка",
-    process_title: "⚡ Наш рабочий процесс",
-    process_step1_title: "🔍 Консультация и анализ",
-    process_step1_desc: "Комплексный анализ вашей текущей ситуации, целевой аудитории и конкурентов для разработки обоснованной стратегии.",
-    process_step2_title: "📋 Разработка стратегии",
-    process_step2_desc: "Индивидуальная маркетинговая стратегия на основе ваших целей, бюджета и рыночных условий.",
-    process_step3_title: "⚙️ Реализация",
-    process_step3_desc: "Профессиональная реализация всех маркетинговых мероприятий с использованием современных инструментов и проверенных методов.",
-    process_step4_title: "📊 Оптимизация",
-    process_Step4_desc: "Постоянное улучшение и корректировка кампаний на основе анализа данных и показателей эффективности.",
-    testimonials_title: "💬 Что говорят наши клиенты",
-    faq_title: "❓ Часто задаваемые вопросы",
-    faq_q1: "Сколько времени занимает разработка сайта?",
-    faq_a1: "Срок разработки зависит от объема. Простой сайт занимает 1-3 недели, более сложные проекты с электронной коммерцией или специальными функциями - 4-8 недель.",
-    faq_q2: "Вы также предлагаете обслуживание и поддержку?",
-    faq_a2: "Да, мы предлагаем комплексное обслуживание, обновления, резервное копирование и поддержку 24/7 для всех наших проектов. Доступны различные пакеты поддержки.",
-    faq_q3: "Как вы измеряете успех маркетинговых кампаний?",
-    faq_a3: "Мы используем подробные аналитические инструменты (Google Analytics, Search Console и т.д.) и создаем регулярные отчеты о трафике, конверсиях, ROI и других KPI.",
-    faq_q4: "Сколько стоит профессиональный сайт?",
-    faq_a4: "Стоимость варьируется в зависимости от объема. Простые сайты могут стоить от 50 €, решения для электронной коммерции от 500 €. Индивидуальные предложения после бесплатной консультации.",
-    faq_q5: "Как быстро я увижу результаты с SEO?",
-    faq_a5: "Первые улучшения обычно заметны через 2-3 месяца. Значительное улучшение позиций через 4-6 месяцев. SEO - это долгосрочный процесс.",
-    faq_q6: "Какие платформы социальных сетей вы рекомендуете?",
-    faq_a6: "В зависимости от вашей целевой аудитории: B2B чаще всего LinkedIn, B2C часто Instagram/Facebook/TikTok. Мы анализируем вашу целевую аудиторию и рекомендуем подходящие каналы.",
-    service_web_title: "Разработка сайтов",
-    service_web_desc: "Современные, адаптивные веб-сайты с оптимальной производительностью и удобством использования. От лендингов до сложных решений электронной коммерции.",
-    service_ads_title: "Управление Google Ads",
-    service_ads_desc: "Профессиональные кампании Google Ads для максимального охвата и оптимальных показателей конверсии. Стратегический анализ ключевых слов и управление ставками.",
-    service_seo_title: "Поисковая оптимизация",
-    service_seo_desc: "Повышение органической видимости и достижение лучших позиций в Google в долгосрочной перспективе. Техническое SEO, оптимизация контента и линкбилдинг.",
-    service_smm_title: "Маркетинг в социальных сетях",
-    service_smm_desc: "Стратегические кампании в социальных сетях для повышения вовлеченности и лояльности клиентов. Создание контента, управление сообществом и инфлюенсер маркетинг.",
-    footer_services: "🎯 Услуги",
-    footer_web_dev: "Разработка сайтов",
-    footer_ads: "Управление Google Ads",
-    footer_seo: "Поисковая оптимизация",
-    footer_smm: "Маркетинг в социальных сетях",
-    footer_content: "Контент-маркетинг",
-    footer_company: "🏢 Компания",
-    footer_about: "О нас",
-    footer_reviews: "Отзывы клиентов",
-    footer_faq: "FAQ",
-    footer_portfolio: "Портфолио",
-    footer_blog: "Блог",
-    footer_contact: "📞 Контакты",
-    footer_telegram: "📱 Telegram чат",
-    footer_email: "✉️ Электронная почта",
-    footer_chat: "💬 Онлайн чат",
-    footer_phone: "📞 Телефон",
-    footer_legal: "🌍 Юридическая информация",
-    footer_imprint: "Реквизиты",
-    footer_privacy: "Политика конфиденциальности",
-    footer_terms: "Условия обслуживания",
-    footer_cookies: "Политика использования файлов cookie",
-    footer_copyright: "© 2024 Маркетинг в Германии. Все права защищены. Сделано с ❤️ в Германии",
-    chat_title: "💬 Поддержка в чате",
-    chat_welcome: "Привет! 👋 Добро пожаловать в Маркетинг в Германии. Как мы можем вам помочь сегодня?",
-    chat_placeholder: "Введите сообщение...",
-    chat_send: "Отправить",
-    breadcrumb_home: "Главная",
-    breadcrumb_current: "Главная",
-   meta_title: "Маркетинг в Германии — Цифровое агентство для русскоязычного бизнеса (RU/DE/EN/UA)",
-  meta_desc: "Профессиональный цифровой маркетинг в Германии для русскоязычного бизнеса. Настройка Google Ads, SEO продвижение, создание сайтов. 8 лет опыта. Консультация от 50€.",
-  meta_keywords: "маркетинг германия, настройка google ads, seo продвижение, создание сайтов, цифровой маркетинг, онлайн реклама, реклама гугл, smm услуги",
-  urgency_text: "Только до конца месяца: Настройка Google ADS и Facebook ADS от 50€ вместо 150€",
-  lead_form_title: "🎯 Бесплатный аудит вашей рекламы",
-  lead_form_subtitle: "Получите план роста за 24 часа",
-  phone_placeholder: "+7...",
-  get_audit: "Получить аудит"
-},
-  pl: {
-    brand: "Marketing w Niemczech",
-    tagline: "Agencja cyfrowa",
-    meta_title: "Marketing w Niemczech — Agencja cyfrowa dla polskiego biznesu (PL/DE/EN/UA)",
-    meta_desc: "Profesjonalny marketing cyfrowy w Niemczech dla polskiego biznesu. Zarządzanie Google Ads, optymalizacja SEO, tworzenie stron. 8 lat doświadczenia. Konsultacja od 50€.",
-    meta_keywords: "marketing niemcy, google ads zarządzanie, optymalizacja seo, tworzenie stron internetowych, marketing cyfrowy, reklama online, social media marketing",
-    urgency_text: "Tylko do końca miesiąca: Konfiguracja Google ADS i Facebook ADS od 50€ zamiast 150€",
-    hero_title: "Marketing cyfrowy, który działa",
-    hero_lead: "Strony internetowe, Google Ads, SMM, SEO. Widoczność tam, gdzie Twoi klienci już szukają.",
-    badge: "8 lat doświadczenia",
-    consultation: "Rozpocznij konsultację",
-    services: "Usługi",
-    services_title: "🎯 Nasze usługi",
-    nav_services: "Usługi",
-    nav_process: "Proces",
-    nav_testimonials: "Opinie",
-    nav_faq: "FAQ",
-    telegram: "Telegram",
-    stats_projects: "🎯 Udane projekty",
-    stats_experience: "⭐ Lata doświadczenia",
-    stats_satisfaction: "😊 Satysfakcja klientów",
-    stats_support: "🚀 Wsparcie",
-    process_title: "⚡ Nasz proces pracy",
-    process_step1_title: "🔍 Konsultacja i analiza",
-    process_step1_desc: "Kompleksowa analiza obecnej sytuacji, grupy docelowej i konkurencji w celu opracowania solidnej strategii.",
-    process_step2_title: "📋 Opracowanie strategii",
-    process_step2_desc: "Spersonalizowana strategia marketingowa oparta na Twoich celach, budżecie i warunkach rynkowych.",
-    process_step3_title: "⚙️ Wdrożenie",
-    process_step3_desc: "Profesjonalna implementacja wszystkich działań marketingowych przy użyciu nowoczesnych narzędzi i sprawdzonych metod.",
-    process_step4_title: "📊 Optymalizacja",
-    process_step4_desc: "Ciągłe doskonalenie i dostosowywanie kampanii na podstawie analizy danych i wskaźników wydajności.",
-    testimonials_title: "💬 Co mówią nasi klienci",
-    faq_title: "❓ Najczęściej zadawane pytania",
-    faq_q1: "Jak długo trwa tworzenie strony internetowej?",
-    faq_a1: "Czas tworzenia zależy od zakresu. Prosta strona internetowa zajmuje 1-3 tygodnie, bardziej złożone projekty z e-commerce lub specjalnymi funkcjami zajmują 4-8 tygodni.",
-    faq_q2: "Czy oferujecie również konserwację i wsparcie?",
-    faq_a2: "Tak, oferujemy kompleksową konserwację, aktualizacje, kopie zapasowe i wsparcie 24/7 dla wszystkich naszych projektów. Dostępne są różne pakiety wsparcia.",
-    faq_q3: "Jak mierzycie sukces kampanii marketingowych?",
-    faq_a3: "Używamy szczegółowych narzędzi analitycznych (Google Analytics, Search Console itp.) i tworzymy regularne raporty dotyczące ruchu, konwersji, ROI i innych wskaźników KPI.",
-    faq_q4: "Ile kosztuje profesjonalna strona internetowa?",
-    faq_a4: "Koszty zależą od zakresu. Proste strony internetowe mogą kosztować od 50 €, rozwiązania e-commerce od 500 €. Indywidualne oferty po bezpłatnej konsultacji.",
-    faq_q5: "Jak szybko zobaczę wyniki z SEO?",
-    faq_a5: "Pierwsze poprawy zwykle widoczne po 2-3 miesiącach. Znaczące poprawy pozycji po 4-6 miesiącach. SEO to proces długoterminowy.",
-    faq_q6: "Jakie platformy mediów społecznościowych polecacie?",
-    faq_a6: "W zależności od grupy docelowej: B2B najczęściej LinkedIn, B2C często Instagram/Facebook/TikTok. Analizujemy Twoją grupę docelową i rekomendujemy odpowiednie kanały.",
-    service_web_title: "Tworzenie stron internetowych",
-    service_web_desc: "Nowoczesne, responsywne strony internetowe z optymalną wydajnością i przyjazną dla użytkownika. Od stron docelowych po złożone rozwiązania e-commerce.",
-    service_ads_title: "Zarządzanie Google Ads",
-    service_ads_desc: "Profesjonalne kampanie Google Ads dla maksymalnego zasięgu i optymalnych wskaźników konwersji. Strategiczna analiza słów kluczowych i zarządzanie stawkami.",
-    service_seo_title: "Optymalizacja dla wyszukiwarek",
-    service_seo_desc: "Zwiększenie organicznej widoczności i osiągnięcie lepszych pozycji w Google w długim terminie. Techniczne SEO, optymalizacja treści i budowanie linków.",
-    service_smm_title: "Marketing w mediach społecznościowych",
-    service_smm_desc: "Strategiczne kampanie w mediach społecznościowych dla większego zaangażowania i lojalności klientów. Tworzenie treści, zarządzanie społecznością i marketing influencerów.",
-    footer_services: "🎯 Usługi",
-    footer_web_dev: "Tworzenie stron",
-    footer_ads: "Zarządzanie Google Ads",
-    footer_seo: "Optymalizacja SEO",
-    footer_smm: "Marketing w mediach społecznościowych",
-    footer_content: "Marketing treści",
-    footer_company: "🏢 Firma",
-    footer_about: "O nas",
-    footer_reviews: "Opinie klientów",
-    footer_faq: "FAQ",
-    footer_portfolio: "Portfolio",
-    footer_blog: "Blog",
-    footer_contact: "📞 Kontakt",
-    footer_telegram: "📱 Czat Telegram",
-    footer_email: "✉️ Email",
-    footer_chat: "💬 Czat na żywo",
-    footer_phone: "📞 Telefon",
-    footer_legal: "🌍 Informacje prawne",
-    footer_imprint: "Dane firmy",
-    footer_privacy: "Polityka prywatności",
-    footer_terms: "Warunki korzystania",
-    footer_cookies: "Polityka cookies",
-    footer_copyright: "© 2024 Marketing w Niemczech. Wszelkie prawa zastrzeżone. Stworzone z ❤️ w Niemczech",
-    chat_title: "💬 Wsparcie na czacie",
-    chat_welcome: "Cześć! 👋 Witaj w Marketingu w Niemczech. Jak możemy Ci dzisiaj pomóc?",
-    chat_placeholder: "Wpisz wiadomość...",
-    chat_send: "Wyślij",
-    breadcrumb_home: "Strona główna",
-    breadcrumb_current: "Strona główna",
-   meta_title: "Marketing w Niemczech — Agencja cyfrowa dla polskiego biznesu (PL/DE/EN/UA)",
-  meta_desc: "Profesjonalny marketing cyfrowy w Niemczech dla polskiego biznesu. Zarządzanie Google Ads, optymalizacja SEO, tworzenie stron. 8 lat doświadczenia. Konsultacja od 50€.",
-  meta_keywords: "marketing niemcy, google ads zarządzanie, optymalizacja seo, tworzenie stron internetowych, marketing cyfrowy, reklama online, social media marketing",
-  urgency_text: "Tylko do końca miesiąca: Konfiguracja Google ADS i Facebook ADS od 50€ zamiast 150€",
-  lead_form_title: "🎯 Darmowy audyt Twojej reklamy",
-  lead_form_subtitle: "Otrzymaj plan wzrostu w 24 godziny",
-  phone_placeholder: "+48...",
-  get_audit: "Otrzymaj audyt"
-}
-};
-   
-    // Current language
-    let currentLang = 'ua';
-    let currentTheme = 'dark';
-    
-    // Theme Toggle
-    function toggleTheme() {
-      const body = document.body;
-      const themeOptions = document.querySelectorAll('.theme-option');
-      if (currentTheme === 'dark') {
-        currentTheme = 'light';
-        body.setAttribute('data-theme', 'light');
-        themeOptions.forEach(option => {
-          option.classList.remove('active');
-          if (option.dataset.themeOption === 'light') {
-            option.classList.add('active');
-          }
-        });
-      } else {
-        currentTheme = 'dark';
-        body.setAttribute('data-theme', 'dark');
-        themeOptions.forEach(option => {
-          option.classList.remove('active');
-          if (option.dataset.themeOption === 'dark') {
-            option.classList.add('active');
-          }
-        });
+      en: {
+        brand: "Marketing in Germany",
+        tagline: "Digital Agency",
+        meta_title: "Marketing in Germany — Digital Agency for International Business (EN/DE/UA/RU)",
+        meta_desc: "Professional Digital Marketing in Germany for international businesses. Google Ads management, SEO optimization, website development. 8 years experience. Consultation from €50.",
+        meta_keywords: "marketing germany, google ads management, seo optimization, website development, digital marketing agency, online marketing, social media marketing, web design germany",
+        urgency_text: "Only until the end of the month: Google ADS and Facebook ADS setup from €50 instead of €150",
+        hero_title: "Digital Marketing that works",
+        hero_lead: "Websites, Google Ads, SMM, SEO. Visible where your customers are already searching.",
+        badge: "8 Years Experience",
+        consultation: "Start Consultation",
+        services: "Services",
+        services_title: "🎯 Our Services",
+        nav_services: "Services",
+        nav_process: "Process",
+        nav_testimonials: "Reviews",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        stats_projects: "🎯 Successful Projects",
+        stats_experience: "⭐ Years Experience",
+        stats_satisfaction: "😊 Customer Satisfaction",
+        stats_support: "🚀 Support",
+        process_title: "⚡ Our Process",
+        process_step1_title: "🔍 Consultation & Analysis",
+        process_step1_desc: "Comprehensive analysis of your current situation, target audience and competitors for a solid strategy development.",
+        process_step2_title: "📋 Strategy Development",
+        process_step2_desc: "Customized marketing strategy based on your goals, budget and market conditions.",
+        process_step3_title: "⚙️ Implementation",
+        process_step3_desc: "Professional implementation of all marketing measures with the latest tools and proven methods.",
+        process_step4_title: "📊 Optimization",
+        process_step4_desc: "Continuous improvement and adjustment of campaigns based on data analysis and performance metrics.",
+        testimonials_title: "💬 What our customers say",
+        faq_title: "❓ Frequently Asked Questions",
+        faq_q1: "How long does it take to develop a website?",
+        faq_a1: "Development time depends on scope. A simple website takes 1-3 weeks, more complex projects with e-commerce or special features take 4-8 weeks.",
+        faq_q2: "Do you also offer maintenance and support?",
+        faq_a2: "Yes, we offer comprehensive maintenance, updates, backups and 24/7 support for all our projects. Various support packages available.",
+        faq_q3: "How do you measure the success of marketing campaigns?",
+        faq_a3: "We use detailed analytics tools (Google Analytics, Search Console, etc.) and create regular reports on traffic, conversions, ROI and other KPIs.",
+        faq_q4: "How much does a professional website cost?",
+        faq_a4: "Costs vary depending on scope. Simple websites can cost from €50, e-commerce solutions from €500. Individual offers after free consultation.",
+        faq_q5: "How quickly will I see results with SEO?",
+        faq_a5: "First improvements usually visible after 2-3 months. Significant ranking improvements after 4-6 months. SEO is a long-term process.",
+        faq_q6: "Which social media platforms do you recommend?",
+        faq_a6: "Depending on your target audience: B2B mostly LinkedIn, B2C often Instagram/Facebook/TikTok. We analyze your target audience and recommend suitable channels.",
+        service_web_title: "Website Development",
+        service_web_desc: "Modern, responsive websites with optimal performance and user-friendliness. From landing pages to complex e-commerce solutions.",
+        service_ads_title: "Google Ads Management",
+        service_ads_desc: "Professional Google Ads campaigns for maximum reach and optimal conversion rates. Strategic keyword analysis and bid management.",
+        service_seo_title: "Search Engine Optimization",
+        service_seo_desc: "Increase organic visibility and achieve better Google rankings in the long term. Technical SEO, content optimization and link building.",
+        service_smm_title: "Social Media Marketing",
+        service_smm_desc: "Strategic social media campaigns for more engagement and customer loyalty. Content creation, community management and influencer marketing.",
+        footer_services: "🎯 Services",
+        footer_web_dev: "Website Development",
+        footer_ads: "Google Ads Management",
+        footer_seo: "SEO Optimization",
+        footer_smm: "Social Media Marketing",
+        footer_content: "Content Marketing",
+        footer_company: "🏢 Company",
+        footer_about: "About Us",
+        footer_reviews: "Customer Reviews",
+        footer_faq: "FAQ",
+        footer_portfolio: "Portfolio",
+        footer_blog: "Blog",
+        footer_contact: "📞 Contact",
+        footer_telegram: "📱 Telegram Chat",
+        footer_email: "✉️ Email",
+        footer_chat: "💬 Live Chat",
+        footer_phone: "📞 Phone",
+        footer_legal: "🌍 Legal",
+        footer_imprint: "Imprint",
+        footer_privacy: "Privacy Policy",
+        footer_terms: "Terms of Service",
+        footer_cookies: "Cookie Policy",
+        footer_copyright: "© 2024 Marketing in Germany. All rights reserved. Made with ❤️ in Germany",
+        chat_title: "💬 Live Chat Support",
+        chat_welcome: "Hello! 👋 Welcome to Marketing in Germany. How can we help you today?",
+        chat_placeholder: "Enter message...",
+        chat_send: "Send",
+        breadcrumb_home: "Home",
+        breadcrumb_current: "Home",
+        lead_form_title: "🎯 Free Advertising Audit",
+        lead_form_subtitle: "Get your growth plan in 24 hours",
+        phone_placeholder: "+44...",
+        get_audit: "Get Audit"
+      },
+      ua: {
+        brand: "Маркетинг в Німеччині",
+        tagline: "Цифрове агентство",
+        meta_title: "Маркетинг в Німеччині — Цифрове агентство для українського бізнесу (UA/DE/EN/RU)",
+        meta_desc: "Професійний цифровий маркетинг в Німеччині для українського бізнесу. Google Ads налаштування, SEO просування, створення сайтів. 8 років досвіду. Консультація від 50€.",
+        meta_keywords: "маркетинг німеччина, google ads налаштування, seo просування, створення сайтів, цифровий маркетинг, онлайн маркетинг, реклама google, smm послуги",
+        urgency_text: "Тільки до кінця місяця: Налаштування Google ADS та Facebook ADS від 50€ замість 150€",
+        hero_title: "Цифровий маркетинг, який працює",
+        hero_lead: "Вебсайти, Google Ads, SMM, SEO. Видимість там, де ваші клієнти вже шукають.",
+        badge: "8 років досвіду",
+        consultation: "Почати консультацію",
+        services: "Послуги",
+        services_title: "🎯 Наші послуги",
+        nav_services: "Послуги",
+        nav_process: "Процес",
+        nav_testimonials: "Відгуки",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        stats_projects: "🎯 Успішні проекти",
+        stats_experience: "⭐ Років досвіду",
+        stats_satisfaction: "😊 Задоволеність клієнтів",
+        stats_support: "🚀 Підтримка",
+        process_title: "⚡ Наш робочий процес",
+        process_step1_title: "🔍 Консультація та аналіз",
+        process_step1_desc: "Комплексний аналіз вашої поточної ситуації, цільової аудиторії та конкурентів для розробки обґрунтованої стратегії.",
+        process_step2_title: "📋 Розробка стратегії",
+        process_step2_desc: "Індивідуальна маркетингова стратегія на основі ваших цілей, бюджету та ринкових умов.",
+        process_step3_title: "⚙️ Впровадження",
+        process_step3_desc: "Професійна реалізація всіх маркетингових заходів за допомогою сучасних інструментів та перевірених методів.",
+        process_step4_title: "📊 Оптимізація",
+        process_step4_desc: "Постійне вдосконалення та коригування кампаній на основі аналізу даних та показників ефективності.",
+        testimonials_title: "💬 Що говорять наші клієнти",
+        faq_title: "❓ Часті запитання",
+        faq_q1: "Скільки часу потрібно для розробки веб-сайту?",
+        faq_a1: "Термін розробки залежить від обсягу. Простий веб-сайт займає 1-3 тижні, складніші проекти з електронною комерцією або спеціальними функціями - 4-8 тижнів.",
+        faq_q2: "Чи пропонуєте ви також обслуговування та підтримку?",
+        faq_a2: "Так, ми пропонуємо комплексне обслуговування, оновлення, резервне копіювання та підтримку 24/7 для всіх наших проектів. Доступні різні пакети підтримки.",
+        faq_q3: "Як ви вимірюєте успіх маркетингових кампаній?",
+        faq_a3: "Ми використовуємо детальні аналітичні інструменти (Google Analytics, Search Console тощо) і створюємо регулярні звіти про трафік, конверсії, ROI та інші KPI.",
+        faq_q4: "Скільки коштує професійний веб-сайт?",
+        faq_a4: "Вартість варіюється залежно від обсягу. Прості веб-сайти можуть коштувати від 50 €, рішення для електронної комерції від 500 €. Індивідуальні пропозиції після безкоштовної консультації.",
+        faq_q5: "Як швидко я побачу результати з SEO?",
+        faq_a5: "Перші покращення зазвичай помітні через 2-3 місяці. Значне покращення позицій через 4-6 місяців. SEO - це довгостроковий процес.",
+        faq_q6: "Які платформи соціальних мереж ви рекомендуєте?",
+        faq_a6: "Залежно від вашої цільової аудиторії: B2B зазвичай LinkedIn, B2C часто Instagram/Facebook/TikTok. Ми аналізуємо вашу цільову аудиторію та рекомендуємо відповідні канали.",
+        service_web_title: "Розробка веб-сайтів",
+        service_web_desc: "Сучасні, адаптивні веб-сайти з оптимальною продуктивністю та зручністю користування. Від лендингів до складних рішень електронної комерції.",
+        service_ads_title: "Керування Google Ads",
+        service_ads_desc: "Професійні кампанії Google Ads для максимального охоплення та оптимальних показників конверсії. Стратегічний аналіз ключових слів та управління ставками.",
+        service_seo_title: "Пошукова оптимізація",
+        service_seo_desc: "Підвищення органічної видимості та досягнення кращих позицій в Google в довгостроковій перспективі. Технічне SEO, оптимізація контенту та лінкбілдинг.",
+        service_smm_title: "Маркетинг у соціальних мережах",
+        service_smm_desc: "Стратегічні кампанії в соціальних мережах для підвищення залученості та лояльності клієнтів. Створення контенту, управління спільнотою та інфлюенсер маркетинг.",
+        footer_services: "🎯 Послуги",
+        footer_web_dev: "Розробка веб-сайтів",
+        footer_ads: "Керування Google Ads",
+        footer_seo: "Пошукова оптимізація",
+        footer_smm: "Маркетинг у соціальних мережах",
+        footer_content: "Контент-маркетинг",
+        footer_company: "🏢 Компанія",
+        footer_about: "Про нас",
+        footer_reviews: "Відгуки клієнтів",
+        footer_faq: "FAQ",
+        footer_portfolio: "Портфоліо",
+        footer_blog: "Блог",
+        footer_contact: "📞 Контакти",
+        footer_telegram: "📱 Telegram чат",
+        footer_email: "✉️ Електронна пошта",
+        footer_chat: "💬 Онлайн чат",
+        footer_phone: "📞 Телефон",
+        footer_legal: "🌍 Юридична інформація",
+        footer_imprint: "Реквізити",
+        footer_privacy: "Політика конфіденційності",
+        footer_terms: "Умови обслуговування",
+        footer_cookies: "Політика використання файлів cookie",
+        footer_copyright: "© 2024 Маркетинг в Німеччині. Всі права захищені. Зроблено з ❤️ в Німеччині",
+        chat_title: "💬 Підтримка в чаті",
+        chat_welcome: "Привіт! 👋 Ласкаво просимо до Маркетингу в Німеччині. Як ми можемо вам допомогти сьогодні?",
+        chat_placeholder: "Введіть повідомлення...",
+        chat_send: "Надіслати",
+        breadcrumb_home: "Головна",
+        breadcrumb_current: "Головна",
+        lead_form_title: "🎯 Безкоштовний аудит вашої реклами", 
+        lead_form_subtitle: "Отримайте план зростання за 24 години",
+        phone_placeholder: "+380...",
+        get_audit: "Отримати аудит"
+      },
+      ru: {
+        brand: "Маркетинг в Германии",
+        tagline: "Цифровое агентство",
+        meta_title: "Маркетинг в Германии — Цифровое агентство для русскоязычного бизнеса (RU/DE/EN/UA)",
+        meta_desc: "Профессиональный цифровой маркетинг в Германии для русскоязычного бизнеса. Настройка Google Ads, SEO продвижение, создание сайтов. 8 лет опыта. Консультация от 50€.",
+        meta_keywords: "маркетинг германия, настройка google ads, seo продвижение, создание сайтов, цифровой маркетинг, онлайн реклама, реклама гугл, smm услуги",
+        urgency_text: "Только до конца месяца: Настройка Google ADS и Facebook ADS от 50€ вместо 150€",
+        hero_title: "Цифровой маркетинг, который работает",
+        hero_lead: "Веб-сайты, Google Ads, SMM, SEO. Видимость там, где ваши клиенты уже ищут.",
+        badge: "8 лет опыта",
+        consultation: "Начать консультацию",
+        services: "Услуги",
+        services_title: "🎯 Наши услуги",
+        nav_services: "Услуги",
+        nav_process: "Процесс",
+        nav_testimonials: "Отзывы",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        stats_projects: "🎯 Успешные проекты",
+        stats_experience: "⭐ Лет опыта",
+        stats_satisfaction: "😊 Удовлетворенность клиентов",
+        stats_support: "🚀 Поддержка",
+        process_title: "⚡ Наш рабочий процесс",
+        process_step1_title: "🔍 Консультация и анализ",
+        process_step1_desc: "Комплексный анализ вашей текущей ситуации, целевой аудитории и конкурентов для разработки обоснованной стратегии.",
+        process_step2_title: "📋 Разработка стратегии",
+        process_step2_desc: "Индивидуальная маркетинговая стратегия на основе ваших целей, бюджета и рыночных условий.",
+        process_step3_title: "⚙️ Реализация",
+        process_step3_desc: "Профессиональная реализация всех маркетинговых мероприятий с использованием современных инструментов и проверенных методов.",
+        process_step4_title: "📊 Оптимизация",
+        process_step4_desc: "Постоянное улучшение и корректировка кампаний на основе анализа данных и показателей эффективности.",
+        testimonials_title: "💬 Что говорят наши клиенты",
+        faq_title: "❓ Часто задаваемые вопросы",
+        faq_q1: "Сколько времени занимает разработка сайта?",
+        faq_a1: "Срок разработки зависит от объема. Простой сайт занимает 1-3 недели, более сложные проекты с электронной коммерцией или специальными функциями - 4-8 недель.",
+        faq_q2: "Вы также предлагаете обслуживание и поддержку?",
+        faq_a2: "Да, мы предлагаем комплексное обслуживание, обновления, резервное копирование и поддержку 24/7 для всех наших проектов. Доступны различные пакеты поддержки.",
+        faq_q3: "Как вы измеряете успех маркетинговых кампаний?",
+        faq_a3: "Мы используем подробные аналитические инструменты (Google Analytics, Search Console и т.д.) и создаем регулярные отчеты о трафике, конверсиях, ROI и других KPI.",
+        faq_q4: "Сколько стоит профессиональный сайт?",
+        faq_a4: "Стоимость варьируется в зависимости от объема. Простые сайты могут стоить от 50 €, решения для электронной коммерции от 500 €. Индивидуальные предложения после бесплатной консультации.",
+        faq_q5: "Как быстро я увижу результаты с SEO?",
+        faq_a5: "Первые улучшения обычно заметны через 2-3 месяца. Значительное улучшение позиций через 4-6 месяцев. SEO - это долгосрочный процесс.",
+        faq_q6: "Какие платформы социальных сетей вы рекомендуете?",
+        faq_a6: "В зависимости от вашей целевой аудитории: B2B чаще всего LinkedIn, B2C часто Instagram/Facebook/TikTok. Мы анализируем вашу целевую аудиторию и рекомендуем подходящие каналы.",
+        service_web_title: "Разработка сайтов",
+        service_web_desc: "Современные, адаптивные веб-сайты с оптимальной производительностью и удобством использования. От лендингов до сложных решений электронной коммерции.",
+        service_ads_title: "Управление Google Ads",
+        service_ads_desc: "Профессиональные кампании Google Ads для максимального охвата и оптимальных показателей конверсии. Стратегический анализ ключевых слов и управление ставками.",
+        service_seo_title: "Поисковая оптимизация",
+        service_seo_desc: "Повышение органической видимости и достижение лучших позиций в Google в долгосрочной перспективе. Техническое SEO, оптимизация контента и линкбилдинг.",
+        service_smm_title: "Маркетинг в социальных сетях",
+        service_smm_desc: "Стратегические кампании в социальных сетях для повышения вовлеченности и лояльности клиентов. Создание контента, управление сообществом и инфлюенсер маркетинг.",
+        footer_services: "🎯 Услуги",
+        footer_web_dev: "Разработка сайтов",
+        footer_ads: "Управление Google Ads",
+        footer_seo: "Поисковая оптимизация",
+        footer_smm: "Маркетинг в социальных сетях",
+        footer_content: "Контент-маркетинг",
+        footer_company: "🏢 Компания",
+        footer_about: "О нас",
+        footer_reviews: "Отзывы клиентов",
+        footer_faq: "FAQ",
+        footer_portfolio: "Портфолио",
+        footer_blog: "Блог",
+        footer_contact: "📞 Контакты",
+        footer_telegram: "📱 Telegram чат",
+        footer_email: "✉️ Электронная почта",
+        footer_chat: "💬 Онлайн чат",
+        footer_phone: "📞 Телефон",
+        footer_legal: "🌍 Юридическая информация",
+        footer_imprint: "Реквизиты",
+        footer_privacy: "Политика конфиденциальности",
+        footer_terms: "Условия обслуживания",
+        footer_cookies: "Политика использования файлов cookie",
+        footer_copyright: "© 2024 Маркетинг в Германии. Все права защищены. Сделано с ❤️ в Германии",
+        chat_title: "💬 Поддержка в чате",
+        chat_welcome: "Привет! 👋 Добро пожаловать в Маркетинг в Германии. Как мы можем вам помочь сегодня?",
+        chat_placeholder: "Введите сообщение...",
+        chat_send: "Отправить",
+        breadcrumb_home: "Главная",
+        breadcrumb_current: "Главная",
+        lead_form_title: "🎯 Бесплатный аудит вашей рекламы",
+        lead_form_subtitle: "Получите план роста за 24 часа",
+        phone_placeholder: "+7...",
+        get_audit: "Получить аудит"
+      },
+      pl: {
+        brand: "Marketing w Niemczech",
+        tagline: "Agencja cyfrowa",
+        meta_title: "Marketing w Niemczech — Agencja cyfrowa dla polskiego biznesu (PL/DE/EN/UA)",
+        meta_desc: "Profesjonalny marketing cyfrowy w Niemczech dla polskiego biznesu. Zarządzanie Google Ads, optymalizacja SEO, tworzenie stron. 8 lat doświadczenia. Konsultacja od 50€.",
+        meta_keywords: "marketing niemcy, google ads zarządzanie, optymalizacja seo, tworzenie stron internetowych, marketing cyfrowy, reklama online, social media marketing",
+        urgency_text: "Tylko do końca miesiąca: Konfiguracja Google ADS i Facebook ADS od 50€ zamiast 150€",
+        hero_title: "Marketing cyfrowy, który działa",
+        hero_lead: "Strony internetowe, Google Ads, SMM, SEO. Widoczność tam, gdzie Twoi klienci już szukają.",
+        badge: "8 lat doświadczenia",
+        consultation: "Rozpocznij konsultację",
+        services: "Usługi",
+        services_title: "🎯 Nasze usługi",
+        nav_services: "Usługi",
+        nav_process: "Proces",
+        nav_testimonials: "Opinie",
+        nav_faq: "FAQ",
+        telegram: "Telegram",
+        stats_projects: "🎯 Udane projekty",
+        stats_experience: "⭐ Lata doświadczenia",
+        stats_satisfaction: "😊 Satysfakcja klientów",
+        stats_support: "🚀 Wsparcie",
+        process_title: "⚡ Nasz proces pracy",
+        process_step1_title: "🔍 Konsultacja i analiza",
+        process_step1_desc: "Kompleksowa analiza obecnej sytuacji, grupy docelowej i konkurencji w celu opracowania solidnej strategii.",
+        process_step2_title: "📋 Opracowanie strategii",
+        process_step2_desc: "Spersonalizowana strategia marketingowa oparta na Twoich celach, budżecie i warunkach rynkowych.",
+        process_step3_title: "⚙️ Wdrożenie",
+        process_step3_desc: "Profesjonalna implementacja wszystkich działań marketingowych przy użyciu nowoczesnych narzędzi i sprawdzonych metod.",
+        process_step4_title: "📊 Optymalizacja",
+        process_step4_desc: "Ciągłe doskonalenie i dostosowywanie kampanii na podstawie analizy danych i wskaźników wydajności.",
+        testimonials_title: "💬 Co mówią nasi klienci",
+        faq_title: "❓ Najczęściej zadawane pytania",
+        faq_q1: "Jak długo trwa tworzenie strony internetowej?",
+        faq_a1: "Czas tworzenia zależy od zakresu. Prosta strona internetowa zajmuje 1-3 tygodnie, bardziej złożone projekty z e-commerce lub specjalnymi funkcjami zajmują 4-8 tygodni.",
+        faq_q2: "Czy oferujecie również konserwację i wsparcie?",
+        faq_a2: "Tak, oferujemy kompleksową konserwację, aktualizacje, kopie zapasowe i wsparcie 24/7 dla wszystkich naszych projektów. Dostępne są różne pakiety wsparcia.",
+        faq_q3: "Jak mierzycie sukces kampanii marketingowych?",
+        faq_a3: "Używamy szczegółowych narzędzi analitycznych (Google Analytics, Search Console itp.) i tworzymy regularne raporty dotyczące ruchu, konwersji, ROI i innych wskaźników KPI.",
+        faq_q4: "Ile kosztuje profesjonalna strona internetowa?",
+        faq_a4: "Koszty zależą od zakresu. Proste strony internetowe mogą kosztować od 50 €, rozwiązania e-commerce od 500 €. Indywidualne oferty po bezpłatnej konsultacji.",
+        faq_q5: "Jak szybko zobaczę wyniki z SEO?",
+        faq_a5: "Pierwsze poprawy zwykle widoczne po 2-3 miesiącach. Znaczące poprawy pozycji po 4-6 miesiącach. SEO to proces długoterminowy.",
+        faq_q6: "Jakie platformy mediów społecznościowych polecacie?",
+        faq_a6: "W zależności od grupy docelowej: B2B najczęściej LinkedIn, B2C często Instagram/Facebook/TikTok. Analizujemy Twoją grupę docelową i rekomendujemy odpowiednie kanały.",
+        service_web_title: "Tworzenie stron internetowych",
+        service_web_desc: "Nowoczesne, responsywne strony internetowe z optymalną wydajnością i przyjazną dla użytkownika. Od stron docelowych po złożone rozwiązania e-commerce.",
+        service_ads_title: "Zarządzanie Google Ads",
+        service_ads_desc: "Profesjonalne kampanie Google Ads dla maksymalnego zasięgu i optymalnych wskaźników konwersji. Strategiczna analiza słów kluczowych i zarządzanie stawkami.",
+        service_seo_title: "Optymalizacja dla wyszukiwarek",
+        service_seo_desc: "Zwiększenie organicznej widoczności i osiągnięcie lepszych pozycji w Google w długim terminie. Techniczne SEO, optymalizacja treści i budowanie linków.",
+        service_smm_title: "Marketing w mediach społecznościowych",
+        service_smm_desc: "Strategiczne kampanie w mediach społecznościowych dla większego zaangażowania i lojalności klientów. Tworzenie treści, zarządzanie społecznością i marketing influencerów.",
+        footer_services: "🎯 Usługi",
+        footer_web_dev: "Tworzenie stron",
+        footer_ads: "Zarządzanie Google Ads",
+        footer_seo: "Optymalizacja SEO",
+        footer_smm: "Marketing w mediach społecznościowych",
+        footer_content: "Marketing treści",
+        footer_company: "🏢 Firma",
+        footer_about: "O nas",
+        footer_reviews: "Opinie klientów",
+        footer_faq: "FAQ",
+        footer_portfolio: "Portfolio",
+        footer_blog: "Blog",
+        footer_contact: "📞 Kontakt",
+        footer_telegram: "📱 Czat Telegram",
+        footer_email: "✉️ Email",
+        footer_chat: "💬 Czat na żywo",
+        footer_phone: "📞 Telefon",
+        footer_legal: "🌍 Informacje prawne",
+        footer_imprint: "Dane firmy",
+        footer_privacy: "Polityka prywatności",
+        footer_terms: "Warunki korzystania",
+        footer_cookies: "Polityka cookies",
+        footer_copyright: "© 2024 Marketing w Niemczech. Wszelkie prawa zastrzeżone. Stworzone z ❤️ w Niemczech",
+        chat_title: "💬 Wsparcie na czacie",
+        chat_welcome: "Cześć! 👋 Witaj w Marketingu w Niemczech. Jak możemy Ci dzisiaj pomóc?",
+        chat_placeholder: "Wpisz wiadomość...",
+        chat_send: "Wyślij",
+        breadcrumb_home: "Strona główna",
+        breadcrumb_current: "Strona główna",
+        lead_form_title: "🎯 Darmowy audyt Twojej reklamy",
+        lead_form_subtitle: "Otrzymaj plan wzrostu w 24 godziny",
+        phone_placeholder: "+48...",
+        get_audit: "Otrzymaj audyt"
       }
-      localStorage.setItem('theme', currentTheme);
-    }
-    
-    // Initialize theme
-    function initTheme() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
-        currentTheme = savedTheme;
-        document.body.setAttribute('data-theme', currentTheme);
-        document.querySelectorAll('.theme-option').forEach(option => {
-          option.classList.remove('active');
-          if (option.dataset.themeOption === currentTheme) {
-            option.classList.add('active');
-          }
-        });
-      }
-    }
-    
-    // Language switching
-    function switchLanguage(lang) {
-      currentLang = lang.toLowerCase();
-      const translation = translations[currentLang];
-      if (translation) {
-        document.querySelectorAll('[data-i18n]').forEach(element => {
-          const key = element.getAttribute('data-i18n');
-          if (translation[key]) {
-            element.textContent = translation[key];
-          }
-        });
-        // Handle placeholder separately
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
-          const key = element.getAttribute('data-i18n-placeholder');
-          if (translation[key]) {
-            element.placeholder = translation[key];
-          }
-        });
-          updateMetaTags(currentLang);
-      }
-      localStorage.setItem('language', currentLang);
-    }
-    
-    // Initialize language
- function initLanguage() {
-  // Check URL parameter first
-  const urlParams = new URLSearchParams(window.location.search);
-  const langParam = urlParams.get('lang');
-  
-  let targetLang;
-  if (langParam && translations[langParam]) {
-    targetLang = langParam;
-  } else {
-    targetLang = localStorage.getItem('language') || 'ua';
-  }
-  
-  currentLang = targetLang;
-  // Update selects
-  document.querySelectorAll('select[id^="lang"]').forEach(select => {
-    select.value = targetLang.toLowerCase();
-  });
-  switchLanguage(targetLang);
-}
-
-    
-    // Mobile Menu Toggle
-    document.getElementById('mobileToggle').addEventListener('click', function() {
-      const menu = document.getElementById('mobileMenu');
-      const hamburger = document.getElementById('hamburger');
-      const isOpen = menu.classList.contains('active');
-      if (isOpen) {
-        menu.classList.remove('active');
-        hamburger.classList.remove('active');
-        this.setAttribute('aria-expanded', 'false');
-      } else {
-        menu.classList.add('active');
-        hamburger.classList.add('active');
-        this.setAttribute('aria-expanded', 'true');
-      }
-    });
-    
-    // Close mobile menu when clicking on links
-    document.querySelectorAll('.mobile-links a').forEach(link => {
-      link.addEventListener('click', function() {
-        document.getElementById('mobileMenu').classList.remove('active');
-        document.getElementById('hamburger').classList.remove('active');
-        document.getElementById('mobileToggle').setAttribute('aria-expanded', 'false');
-      });
-    });
-    
-    // FAQ Toggle
-    document.querySelectorAll('.faq-question').forEach(question => {
-      question.addEventListener('click', function() {
-        const item = this.parentElement;
-        const isOpen = item.classList.contains('open');
-        // Close all other FAQ items
-        document.querySelectorAll('.faq-item').forEach(faq => {
-          if (faq !== item) {
-            faq.classList.remove('open');
-          }
-        });
-        // Toggle current item
-        if (isOpen) {
-          item.classList.remove('open');
-        } else {
-          item.classList.add('open');
-        }
-      });
-    });
-    
-    // Chat functionality (enhanced AI-like responses)
-    let chatOpen = false;
-    function getResponseForLanguage() {
-      const responses = {
-        de: [
-          "Vielen Dank für Ihre Nachricht! 😊 Unsere Experten sind für Sie da. Welches Marketing-Thema beschäftigt Sie?",
-          "Das ist eine sehr gute Frage! 🤔 Lassen Sie mich Sie mit einem unserer Spezialisten verbinden.",
-          "Perfekt! 🎯 Wir haben bereits vielen Unternehmen in ähnlichen Situationen geholfen. Möchten Sie mehr erfahren?",
-          "Interessant! 💡 Wir können Ihnen dabei definitiv helfen. Sollen wir einen kostenlosen Beratungstermin vereinbaren?",
-          "Ausgezeichnet! ⭐ Das ist genau unser Spezialgebiet. Lassen Sie uns besprechen, wie wir Ihnen helfen können.",
-          "Sehr gut! 🚀 Wir haben schon ähnliche Projekte erfolgreich umgesetzt. Soll ich Ihnen ein paar Beispiele zeigen?",
-          "Großartig! 💪 Mit unserer 8-jährigen Erfahrung finden wir sicher die passende Lösung für Sie."
-        ],
-        en: [
-          "Thank you for your message! 😊 Our experts are here for you. What marketing topic concerns you?",
-          "That's a very good question! 🤔 Let me connect you with one of our specialists.",
-          "Perfect! 🎯 We've already helped many companies in similar situations. Would you like to learn more?",
-          "Interesting! 💡 We can definitely help you with this. Shall we schedule a free consultation?",
-          "Excellent! ⭐ This is exactly our specialty. Let's discuss how we can help you.",
-          "Very good! 🚀 We've already successfully implemented similar projects. Should I show you some examples?",
-          "Great! 💪 With our 8 years of experience, we'll surely find the right solution for you."
-        ],
-        ua: [
-          "Дякуємо за ваше повідомлення! 😊 Наші експерти завжди готові вам допомогти. Яка тема маркетингу вас цікавить?",
-          "Це дуже гарне запитання! 🤔 Дозвольте мені з'єднати вас з одним із наших фахівців.",
-          "Ідеально! 🎯 Ми вже допомогли багатьом компаніям у подібних ситуаціях. Хочете дізнатися більше?",
-          "Цікаво! 💡 Ми точно можемо вам допомогти. Може, організуємо безкоштовну консультацію?",
-          "Чудово! ⭐ Це саме наша спеціалізація. Давайте обговоримо, як ми можемо вам допомогти.",
-          "Дуже добре! 🚀 Ми вже успішно реалізували подібні проекти. Показати вам кілька прикладів?",
-          "Відмінно! 💪 З нашим 8-річним досвідом ми обов'язково знайдемо для вас правильне рішення."
-        ],
-        ru: [
-          "Благодарим за ваше сообщение! 😊 Наши эксперты всегда готовы вам помочь. Какая тема маркетинга вас интересует?",
-          "Это очень хороший вопрос! 🤔 Позвольте мне соединить вас с одним из наших специалистов.",
-          "Идеально! 🎯 Мы уже помогли многим компаниям в подобных ситуациях. Хотите узнать больше?",
-          "Интересно! 💡 Мы точно можем вам помочь. Может, организуем бесплатную консультацию?",
-          "Отлично! ⭐ Это именно наша специализация. Давайте обсудим, как мы можем вам помочь.",
-          "Очень хорошо! 🚀 Мы уже успешно реализовали подобные проекты. Показать вам несколько примеров?",
-          "Отлично! 💪 С нашим 8-летним опытом мы обязательно найдем для вас правильное решение."
-        ],
-        pl: [
-          "Dziękujemy za wiadomość! 😊 Nasi eksperci są do Twojej dyspozycji. Jaki temat marketingowy Cię interesuje?",
-          "To bardzo dobre pytanie! 🤔 Pozwól mi połączyć Cię z jednym z naszych specjalistów.",
-          "Idealnie! 🎯 Pomogliśmy już wielu firmom w podobnych sytuacjach. Chcesz dowiedzieć się więcej?",
-          "Ciekawe! 💡 Na pewno możemy Ci w tym pomóc. Umówmy się na bezpłatną konsultację?",
-          "Doskonale! ⭐ To właśnie nasza specjalność. Porozmawiajmy, jak możemy Ci pomóc.",
-          "Bardzo dobrze! 🚀 Już wcześniej z powodzeniem realizowaliśmy podobne projekty. Pokazać Ci kilka przykładów?",
-          "Świetnie! 💪 Dzięki naszemu 8-letniemu doświadczeniu na pewno znajdziemy dla Ciebie odpowiednie rozwiązanie."
-        ]
-      };
-      return responses[currentLang] || responses.de;
-    }
-    
-    function toggleChat() {
-      const panel = document.getElementById('chatPanel');
-      const backdrop = document.getElementById('chatBackdrop');
-      chatOpen = !chatOpen;
-      if (chatOpen) {
-        panel.classList.add('open');
-        backdrop.classList.add('open');
-        document.getElementById('chatInput').focus();
-      } else {
-        panel.classList.remove('open');
-        backdrop.classList.remove('open');
-      }
-    }
-    
-    function sendMessage() {
-      const input = document.getElementById('chatInput');
-      const message = input.value.trim();
-      if (!message) return;
-      const chatBody = document.getElementById('chatBody');
-      // Add user message
-      chatBody.innerHTML += `
-        <div class="msg user">
-          <div class="bubble">${message}</div>
-        </div>
-      `;
-      input.value = '';
-      // Simulate typing indicator
-      const typingMsg = document.createElement('div');
-      typingMsg.className = 'msg bot';
-      typingMsg.innerHTML = '<div class="bubble">💭 Tippt...</div>';
-      chatBody.appendChild(typingMsg);
-      chatBody.scrollTop = chatBody.scrollHeight;
-      // Auto response after delay
-      setTimeout(() => {
-        typingMsg.remove();
-        const responses = getResponseForLanguage();
-        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-        chatBody.innerHTML += `
-          <div class="msg bot">
-            <div class="bubble">${randomResponse}<br><br>
-            <a href="https://t.me/Marketing_in_Deutschland" target="_blank" style="color: var(--brand); font-weight: 600; text-decoration: underline;">
-            🚀 Direkter Telegram-Kontakt</a></div>
-          </div>
-        `;
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 1500);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-    
-    function handleEnter(event) {
-      if (event.key === 'Enter') {
-        sendMessage();
-      }
-    }
-    
-    // Language switching event listeners
-    document.querySelectorAll('select[id^="lang"]').forEach(select => {
-      select.addEventListener('change', function() {
-        const selectedLang = this.value.toLowerCase();
-        // Update all selects to match
-        document.querySelectorAll('select[id^="lang"]').forEach(s => {
-          s.value = this.value;
-        });
-        switchLanguage(selectedLang);
-      });
-    });
-    
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
-      });
-    });
-    
-    // Animation on scroll
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
     };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, observerOptions);
-    
-    // Initialize animations
-    function initAnimations() {
-      const animatedElements = document.querySelectorAll('.animate-slide-up, .animate-slide-left, .animate-fade');
-      animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease-out';
-        observer.observe(el);
-      });
-    }
-    
-    // Stats counter animation
-    function animateStats() {
-      const statsNumbers = document.querySelectorAll('.stats-number');
-      const countUp = (element) => {
-        const target = element.textContent;
-        const isNumber = /\d+/.test(target);
-        if (isNumber) {
-          const finalNumber = parseInt(target.match(/\d+/)[0]);
-          const suffix = target.replace(/\d+/, '');
-          let current = 0;
-          const increment = finalNumber / 50;
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= finalNumber) {
-              element.textContent = finalNumber + suffix;
-              clearInterval(timer);
-            } else {
-              element.textContent = Math.floor(current) + suffix;
-            }
-          }, 30);
-        }
-      };
-      const statsObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            countUp(entry.target);
-            statsObserver.unobserve(entry.target);
-          }
-        });
-      });
-      statsNumbers.forEach(stat => statsObserver.observe(stat));
-    }
 
-    // Progress Bar
-    function updateProgressBar() {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      document.getElementById('progressBar').style.width = scrolled + '%';
-    }
+    // Global Variables
+    let currentLang = 'ua';
+    let chatOpen = false;
 
-    // Back to Top Button
-    function toggleBackToTop() {
-      const button = document.getElementById('backToTop');
-      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-        button.classList.add('visible');
+    // Initialize language from URL or localStorage
+    function initLanguage() {
+      // Check URL parameter first
+      const urlParams = new URLSearchParams(window.location.search);
+      const langParam = urlParams.get('lang');
+      
+      let targetLang;
+      if (langParam && translations[langParam]) {
+        targetLang = langParam;
       } else {
-        button.classList.remove('visible');
+        targetLang = localStorage.getItem('language') || 'ua';
       }
-    }
-
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-
-    // Breadcrumbs functionality
-    function updateBreadcrumbs() {
-      const breadcrumbs = document.getElementById('breadcrumbs');
-      const currentPage = document.getElementById('currentPage');
       
-      if (window.scrollY > 100) {
-        breadcrumbs.classList.add('visible');
-      } else {
-        breadcrumbs.classList.remove('visible');
-      }
+      currentLang = targetLang;
+      // Update selects
+      document.querySelectorAll('select[id^="lang"]').forEach(select => {
+        select.value = targetLang.toLowerCase();
+      });
+      switchLanguage(targetLang);
     }
 
-    // Lazy loading for images
-    function initLazyLoading() {
-      const images = document.querySelectorAll('img[loading="lazy"]');
-      const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target;
-            img.classList.add('loaded');
-            observer.unobserve(img);
-          }
-        });
-      });
-
-      images.forEach(img => {
-        img.classList.add('lazy');
-        imageObserver.observe(img);
-      });
-    }
-
-    // Testimonials scroll functionality
-    function initTestimonialsScroll() {
-      const container = document.querySelector('.testimonials-container');
-      if (container) {
-        let isScrolling = false;
-        let scrollTimeout;
-
-        container.addEventListener('scroll', () => {
-          isScrolling = true;
-          clearTimeout(scrollTimeout);
-          scrollTimeout = setTimeout(() => {
-            isScrolling = false;
-          }, 150);
-        });
-
-        // Auto-scroll testimonials every 5 seconds when not manually scrolling
-        setInterval(() => {
-          if (!isScrolling && container) {
-            const scrollAmount = container.clientWidth / 2;
-            const maxScroll = container.scrollWidth - container.clientWidth;
-            
-            if (container.scrollLeft >= maxScroll - 10) {
-              container.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-              container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-            }
-          }
-        }, 5000);
-      }
-    }
-
-    // Enhanced service cards interaction
-    function initServiceCards() {
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-          this.style.transform = 'translateY(-12px) scale(1.02)';
-          this.style.transition = 'all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        });
-        
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'translateY(0) scale(1)';
-        });
-      });
-    }
-
-    // Enhanced animations
-    function initEnhancedAnimations() {
-      // Stagger animation for service cards
-      const cards = document.querySelectorAll('.services-grid .card');
-      cards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-      });
-
-      // Stagger animation for process steps
-      const steps = document.querySelectorAll('.process-step');
-      steps.forEach((step, index) => {
-        step.style.animationDelay = `${index * 0.15}s`;
-      });
-
-      // Hero stats animation
-      const heroStats = document.querySelectorAll('.hero-stats .stat');
-      heroStats.forEach((stat, index) => {
-        stat.style.animationDelay = `${index * 0.2}s`;
-      });
-    }
-
-    // Keyboard navigation
-    function initKeyboardNavigation() {
-      document.addEventListener('keydown', function(e) {
-        // ESC to close chat
-        if (e.key === 'Escape' && chatOpen) {
-          toggleChat();
-        }
-        
-        // ESC to close mobile menu
-        if (e.key === 'Escape') {
-          const mobileMenu = document.getElementById('mobileMenu');
-          if (mobileMenu.classList.contains('active')) {
-            document.getElementById('mobileToggle').click();
-          }
-        }
-      });
-    }
-
-    // Performance optimizations
-    function initPerformanceOptimizations() {
-      // Throttle scroll events
-      let ticking = false;
-      
-      function updateOnScroll() {
-        updateProgressBar();
-        toggleBackToTop();
-        updateBreadcrumbs();
-        ticking = false;
-      }
-
-      window.addEventListener('scroll', function() {
-        if (!ticking) {
-          requestAnimationFrame(updateOnScroll);
-          ticking = true;
-        }
-      });
-
-      // Preload critical resources
-      const preloadLink = document.createElement('link');
-      preloadLink.rel = 'preload';
-      preloadLink.as = 'font';
-      preloadLink.type = 'font/woff2';
-      preloadLink.crossOrigin = 'anonymous';
-      preloadLink.href = 'https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyeMZs.woff2';
-      document.head.appendChild(preloadLink);
-    }
-
-    // Error handling
-    function initErrorHandling() {
-      window.addEventListener('error', function(e) {
-        console.log('Error caught:', e.error);
-        // Graceful degradation - ensure basic functionality works
-        if (typeof toggleTheme !== 'function') {
-          window.toggleTheme = function() {
-            document.body.classList.toggle('light-theme');
-          };
-        }
-      });
-    }
-
-    // Initialize everything when DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      initTheme();
-     initLanguageFromURL();
-      initAnimations();
-      animateStats();
-      initLazyLoading();
-      initTestimonialsScroll();
-      initServiceCards();
-      initEnhancedAnimations();
-      initKeyboardNavigation();
-      initPerformanceOptimizations();
-      initErrorHandling();
-      
-      // Initial calls
-      updateProgressBar();
-      toggleBackToTop();
-      updateBreadcrumbs();
-      
-      // Loading completed
-      setTimeout(() => {
-        document.body.classList.remove('loading');
-      }, 100);
-      
-      console.log('🚀 Marketing in Deutschland website loaded successfully!');
-    });
-
-    // Service Worker registration for PWA features
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-          .then(function(registration) {
-            console.log('SW registered: ', registration);
-          })
-          .catch(function(registrationError) {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-
-    // Global functions for HTML onclick events
-    window.toggleTheme = toggleTheme;
-    window.toggleChat = toggleChat;
-    window.sendMessage = sendMessage;
-    window.handleEnter = handleEnter;
-     window.scrollToTop = scrollToTop;
     // Update SEO meta tags based on language
     function updateMetaTags(lang) {
       const translation = translations[lang];
@@ -3404,6 +1713,8 @@
         // Update Open Graph tags
         const ogTitle = document.getElementById('og-title');
         const ogDesc = document.getElementById('og-description');
+        const twitterTitle = document.getElementById('twitter-title');
+        const twitterDesc = document.getElementById('twitter-description');
         
         if (ogTitle && translation.meta_title) {
           ogTitle.setAttribute('content', translation.meta_title);
@@ -3411,72 +1722,409 @@
         if (ogDesc && translation.meta_desc) {
           ogDesc.setAttribute('content', translation.meta_desc);
         }
-      }
-    }
-
-    // ВСТАВИТИ ЦЕ СЮДИ
-    // Lead Form functionality
-    let leadFormShown = false;
-    
-    function showLeadForm() {
-      if (!leadFormShown && window.scrollY > 1000) {
-        const leadForm = document.getElementById('leadForm');
-        if (leadForm) {
-          leadForm.style.transform = 'translateY(0)';
-          leadFormShown = true;
-          
-          // Hide after 10 seconds if not interacted
-          setTimeout(() => {
-            if (leadForm && leadForm.style.transform === 'translateY(0px)') {
-              leadForm.style.transform = 'translateY(100%)';
-            }
-          }, 10000);
+        if (twitterTitle && translation.meta_title) {
+          twitterTitle.setAttribute('content', translation.meta_title);
+        }
+        if (twitterDesc && translation.meta_desc) {
+          twitterDesc.setAttribute('content', translation.meta_desc);
         }
       }
     }
-    
-    // Show lead form on scroll
-    window.addEventListener('scroll', showLeadForm);
-    
-    // Handle lead form submission
-    document.addEventListener('DOMContentLoaded', function() {
-      const leadFormSubmit = document.getElementById('leadFormSubmit');
-      if (leadFormSubmit) {
-        leadFormSubmit.addEventListener('submit', function(e) {
-          e.preventDefault();
-          const phone = document.getElementById('phoneInput').value;
-          
-          // Track conversion
-          if (typeof gtag !== 'undefined') {
-            gtag('event', 'generate_lead', {
-              'currency': 'EUR',
-              'value': 150
-            });
+
+    // Language switching
+    function switchLanguage(lang) {
+      currentLang = lang.toLowerCase();
+      const translation = translations[currentLang];
+      if (translation) {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          const key = element.getAttribute('data-i18n');
+          if (translation[key]) {
+            element.textContent = translation[key];
           }
-          
-          // Send to Telegram or your CRM
-          const message = `🎯 Новый лид с сайта!\nТелефон: ${phone}\nВремя: ${new Date().toLocaleString()}\nСтраница: ${window.location.href}`;
-          
-          // Replace with your Telegram bot token and chat ID
-          fetch(`https://api.telegram.org/bot${7522018067:AAEdFn-SeXkYvFW6Xm81gK4ZUqVDeRKKBNQ}/sendMessage`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              chat_id: 'YOUR_CHAT_ID',
-              text: message
-            })
+        });
+        // Handle placeholder separately
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+          const key = element.getAttribute('data-i18n-placeholder');
+          if (translation[key]) {
+            element.placeholder = translation[key];
+          }
+        });
+        
+        // UPDATE META TAGS
+        updateMetaTags(currentLang);
+      }
+      localStorage.setItem('language', currentLang);
+    }
+
+    // Theme handling
+    function initTheme() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.body.setAttribute('data-theme', savedTheme);
+      updateThemeToggle(savedTheme);
+    }
+
+    function toggleTheme() {
+      const currentTheme = document.body.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.body.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeToggle(newTheme);
+    }
+
+         function updateThemeToggle(theme) {
+        document.querySelectorAll('.theme-option').forEach(option => {
+          option.classList.remove('active');
+        });
+        document.querySelector(`[data-theme-option="${theme}"]`).classList.add('active');
+      }
+
+      // Mobile navigation
+      document.addEventListener('DOMContentLoaded', function() {
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const hamburger = document.getElementById('hamburger');
+
+        if (mobileToggle && mobileMenu && hamburger) {
+          mobileToggle.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+            mobileToggle.setAttribute('aria-expanded', 
+              mobileMenu.classList.contains('active').toString()
+            );
           });
-          
-          // Show success message
-          alert('Спасибо! Мы свяжемся с вами в течение 24 часов.');
-          document.getElementById('leadForm').style.transform = 'translateY(100%)';
+
+          // Close mobile menu when clicking on links
+          document.querySelectorAll('.mobile-links a').forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.remove('active');
+              hamburger.classList.remove('active');
+              mobileToggle.setAttribute('aria-expanded', 'false');
+            });
+          });
+
+          // Close mobile menu when clicking outside
+          document.addEventListener('click', function(e) {
+            if (!mobileToggle.contains(e.target) && !mobileMenu.contains(e.target)) {
+              mobileMenu.classList.remove('active');
+              hamburger.classList.remove('active');
+              mobileToggle.setAttribute('aria-expanded', 'false');
+            }
+          });
+        }
+      });
+
+      // Language selector handling
+      document.addEventListener('DOMContentLoaded', function() {
+        const langSelects = document.querySelectorAll('select[id^="lang"]');
+        langSelects.forEach(select => {
+          select.addEventListener('change', function() {
+            const selectedLang = this.value;
+            switchLanguage(selectedLang);
+            // Update all selectors
+            langSelects.forEach(otherSelect => {
+              otherSelect.value = selectedLang;
+            });
+          });
+        });
+      });
+
+      // FAQ functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+          const question = item.querySelector('.faq-question');
+          question.addEventListener('click', () => {
+            const isOpen = item.classList.contains('open');
+            // Close all other items
+            faqItems.forEach(otherItem => {
+              otherItem.classList.remove('open');
+            });
+            // Toggle current item
+            if (!isOpen) {
+              item.classList.add('open');
+            }
+          });
+        });
+      });
+
+      // Chat functionality
+      function toggleChat() {
+        const chatPanel = document.getElementById('chatPanel');
+        const chatBackdrop = document.getElementById('chatBackdrop');
+        const isOpen = chatPanel.classList.contains('open');
+        
+        if (isOpen) {
+          chatPanel.classList.remove('open');
+          chatBackdrop.classList.remove('open');
+          chatOpen = false;
+        } else {
+          chatPanel.classList.add('open');
+          chatBackdrop.classList.add('open');
+          chatOpen = true;
+          // Focus on input
+          setTimeout(() => {
+            document.getElementById('chatInput').focus();
+          }, 300);
+        }
+      }
+
+      function sendMessage() {
+        const input = document.getElementById('chatInput');
+        const message = input.value.trim();
+        if (!message) return;
+
+        const chatBody = document.getElementById('chatBody');
+        
+        // Add user message
+        const userMsg = document.createElement('div');
+        userMsg.className = 'msg user';
+        userMsg.innerHTML = `<div class="bubble">${message}</div>`;
+        chatBody.appendChild(userMsg);
+
+        // Add bot response
+        setTimeout(() => {
+          const botMsg = document.createElement('div');
+          botMsg.className = 'msg bot';
+          const responses = [
+            'Дякуємо за ваше повідомлення! Наш спеціаліст зв\'яжеться з вами найближчим часом.',
+            'Для швидкої відповіді напишіть нам в Telegram: @Marketing_in_Deutschland',
+            'Ми працюємо з 9:00 до 18:00 CET. Залишіть ваш контакт, і ми обов\'язково відповімо!',
+            'Цікавить конкретна послуга? Опишіть детальніше, і ми підготуємо індивідуальну пропозицію.'
+          ];
+          const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+          botMsg.innerHTML = `<div class="bubble">${randomResponse}</div>`;
+          chatBody.appendChild(botMsg);
+          chatBody.scrollTop = chatBody.scrollHeight;
+        }, 1000);
+
+        input.value = '';
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+
+      function handleEnter(event) {
+        if (event.key === 'Enter') {
+          sendMessage();
+        }
+      }
+
+      // Animation on scroll
+      function initAnimations() {
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = '1';
+              entry.target.style.transform = 'translateY(0)';
+            }
+          });
+        }, observerOptions);
+
+        // Observe elements with animation classes
+        document.querySelectorAll('.animate-slide-up, .animate-slide-left, .animate-fade').forEach(el => {
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(30px)';
+          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(el);
         });
       }
-    });
 
-  </script>
-</body>
+      // Animate statistics
+      function animateStats() {
+        const stats = document.querySelectorAll('.stats-number');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const target = entry.target;
+              const finalValue = target.textContent;
+              const isNumber = /^\d+/.test(finalValue);
+              
+              if (isNumber) {
+                const number = parseInt(finalValue.match(/\d+/)[0]);
+                animateValue(target, 0, number, 2000, finalValue.replace(/\d+/, ''));
+              }
+              observer.unobserve(target);
+            }
+          });
+        });
+        
+        stats.forEach(stat => observer.observe(stat));
+      }
+
+      function animateValue(element, start, end, duration, suffix = '') {
+        let startTime = null;
+        
+        function animation(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const progress = Math.min(timeElapsed / duration, 1);
+          const value = Math.floor(progress * (end - start) + start);
+          element.textContent = value + suffix;
+          
+          if (progress < 1) {
+            requestAnimationFrame(animation);
+          }
+        }
+        
+        requestAnimationFrame(animation);
+      }
+
+      // Progress bar functionality
+      function updateProgressBar() {
+        const progressBar = document.getElementById('progressBar');
+        const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = scrolled + '%';
+      }
+
+      // Back to Top Button
+      function toggleBackToTop() {
+        const button = document.getElementById('backToTop');
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+          button.classList.add('visible');
+        } else {
+          button.classList.remove('visible');
+        }
+      }
+
+      function scrollToTop() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
+
+      // Breadcrumbs functionality
+      function updateBreadcrumbs() {
+        const breadcrumbs = document.getElementById('breadcrumbs');
+        
+        if (window.scrollY > 100) {
+          breadcrumbs.classList.add('visible');
+        } else {
+          breadcrumbs.classList.remove('visible');
+        }
+      }
+
+      // Lead Form functionality
+      let leadFormShown = false;
+      
+      function showLeadForm() {
+        if (!leadFormShown && window.scrollY > 1000) {
+          const leadForm = document.getElementById('leadForm');
+          if (leadForm) {
+            leadForm.style.transform = 'translateY(0)';
+            leadFormShown = true;
+            
+            // Hide after 10 seconds if not interacted
+            setTimeout(() => {
+              if (leadForm && leadForm.style.transform === 'translateY(0px)') {
+                leadForm.style.transform = 'translateY(100%)';
+              }
+            }, 10000);
+          }
+        }
+      }
+      
+      // Show lead form on scroll
+      window.addEventListener('scroll', showLeadForm);
+      
+      // Handle lead form submission
+      document.addEventListener('DOMContentLoaded', function() {
+        const leadFormSubmit = document.getElementById('leadFormSubmit');
+        if (leadFormSubmit) {
+          leadFormSubmit.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const phone = document.getElementById('phoneInput').value;
+            
+            // Track conversion
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'generate_lead', {
+                'currency': 'EUR',
+                'value': 150,
+                'language': currentLang,
+                'source_language': currentLang
+              });
+            }
+            
+            // Send to Telegram
+            const message = `🎯 Новий лід з сайту!
+Телефон: ${phone}
+Мова: ${currentLang.toUpperCase()}
+Час: ${new Date().toLocaleString()}
+Сторінка: ${window.location.href}`;
+            
+            const BOT_TOKEN = '7522018067:AAEdFn-SeXkYvFW6Xm81gK4ZUqVDeRKKBNQ';
+            const CHAT_ID = 'YOUR_CHAT_ID';  // ЗАМІНІТЬ НА ВАШ Chat ID
+            
+            if (CHAT_ID !== 'YOUR_CHAT_ID') {
+              fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: CHAT_ID,
+                  text: message
+                })
+              }).catch(err => console.log('Telegram error:', err));
+            }
+            
+            alert('Дякуємо! Ми зв\'яжемося з вами протягом 24 годин.');
+            document.getElementById('leadForm').style.transform = 'translateY(100%)';
+          });
+        }
+      });
+
+      // Performance optimizations
+      function initPerformanceOptimizations() {
+        // Throttle scroll events
+        let ticking = false;
+        
+        function updateOnScroll() {
+          updateProgressBar();
+          toggleBackToTop();
+          updateBreadcrumbs();
+          ticking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+          if (!ticking) {
+            requestAnimationFrame(updateOnScroll);
+            ticking = true;
+          }
+        });
+      }
+
+      // Initialize everything when DOM is loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        initTheme();
+        initLanguage();
+        initAnimations();
+        animateStats();
+        initPerformanceOptimizations();
+        
+        // Initial calls
+        updateProgressBar();
+        toggleBackToTop();
+        updateBreadcrumbs();
+        
+        // Loading completed
+        setTimeout(() => {
+          document.body.classList.remove('loading');
+        }, 100);
+        
+        console.log('🚀 Marketing in Deutschland website loaded successfully!');
+      });
+
+      // Global functions for HTML onclick events
+      window.toggleTheme = toggleTheme;
+      window.toggleChat = toggleChat;
+      window.sendMessage = sendMessage;
+      window.handleEnter = handleEnter;
+      window.scrollToTop = scrollToTop;
+
+    </script>
+  </body>
 </html>
-
