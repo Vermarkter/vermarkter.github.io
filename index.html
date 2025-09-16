@@ -1032,6 +1032,13 @@ const translations = {
     chat_title: "💬 Live Chat Support",
     chat_welcome: "Hallo! 👋 Willkommen bei Marketing in Deutschland. Wie können wir Ihnen heute helfen?",
     chat_placeholder: "Nachricht eingeben...",
+    testimonial1_text: "Dank der Zusammenarbeit mit Vermarkter haben wir +230% mehr Anfragen in nur 2 Monaten erhalten. Die professionelle Betreuung hat unsere Erwartungen übertroffen.",
+testimonial1_author: "Maxim, Online-Möbelshop München",
+testimonial2_text: "Nach 6 Monaten SEO-Optimierung sind wir von Seite 5 in die Top-3 aufgestiegen. Unser organischer Traffic hat sich verdreifacht.",
+testimonial2_author: "Anna, Startup Berlin",
+testimonial3_text: "Vermarkter hat uns eine moderne Website erstellt und sofort Google Ads eingerichtet. ROI von 300% in den ersten 3 Monaten.",
+testimonial3_author: "Petro, Lieferservice Hamburg",
+
     chat_send: "Senden",
     lead_form_title: "🎯 Kostenloser Audit Ihrer Werbung",
     lead_form_subtitle: "Erhalten Sie einen Wachstumsplan in 24 Stunden",
@@ -1773,6 +1780,16 @@ window.toggleChat = toggleChat;
 window.sendMessage = sendMessage;
 window.handleEnter = handleEnter;
 window.scrollToTop = scrollToTop;
+
+<!-- Google Form Modal -->
+<div id="emailModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 70; display: flex; align-items: center; justify-content: center;">
+  <div style="background: var(--bg); padding: 30px; border-radius: 20px; max-width: 500px; width: 90%; position: relative;">
+    <button onclick="closeEmailForm()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer;">×</button>
+    <h3 style="margin-bottom: 20px; color: var(--brand);">Контакт форма</h3>
+    <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0">Завантаження…</iframe>
+  </div>
+</div>
+
 
 </script>
 </body>
