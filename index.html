@@ -854,7 +854,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </div>
     </section>
-     
+
+    <!-- Testimonials Section -->
+<section id="testimonials">
+  <div class="container">
+    <h2 data-i18n="testimonials_title">💬 Що говорять наші клієнти</h2>
+    <div class="testimonials-container">
+      <div class="testimonials">
+        <div class="quote animate-slide-up">
+          <p data-i18n="testimonial1_text">Відгук клієнта 1...</p>
+          <b><div class="quote-avatar">M</div><span data-i18n="testimonial1_author">Maxim, München</span></b>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="quote animate-slide-up">
+          <p data-i18n="testimonial2_text">Відгук клієнта 2...</p>
+          <b><div class="quote-avatar">A</div><span data-i18n="testimonial2_author">Anna, Berlin</span></b>
+          <div class="stars">★★★★★</div>
+        </div>
+        <div class="quote animate-slide-up">
+          <p data-i18n="testimonial3_text">Відгук клієнта 3...</p>
+          <b><div class="quote-avatar">P</div><span data-i18n="testimonial3_author">Petro, Hamburg</span></b>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
     <!-- FAQ Section -->
     <section id="faq">
       <div class="container">
@@ -929,7 +955,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="footer-section">
           <h3 data-i18n="footer_contact">📞 Контакти</h3>
           <a href="https://t.me/Marketing_in_Deutschland" target="_blank" rel="noopener" data-i18n="footer_telegram">📱 Telegram чат</a>
-          <a href="mailto:info@marketing-in-deutschland.de" data-i18n="footer_email">✉️ Електронна пошта</a>
+<a href="#" onclick="openEmailForm()" data-i18n="footer_email">✉️ Електронна пошта</a>
           <a href="#" onclick="toggleChat()" data-i18n="footer_chat">💬 Онлайн чат</a>
         </div>
       </div>
@@ -1744,7 +1770,7 @@ document.addEventListener('DOMContentLoaded', function() {
 Сторінка: ${window.location.href}`;
       
       const BOT_TOKEN = '7522018067:AAEdFn-SeXkYvFW6Xm81gK4ZUqVDeRKKBNQ';
-      const CHAT_ID = 'YOUR_CHAT_ID';  // ЗАМІНІТЬ НА ВАШ Chat ID
+      const CHAT_ID = '7522018067:AAEdFn-SeXkYvFW6Xm81gK4ZUqVDeRKKBNQ';  // ЗАМІНІТЬ НА ВАШ Chat ID
       
       if (CHAT_ID !== 'YOUR_CHAT_ID') {
         fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
@@ -1780,6 +1806,28 @@ window.toggleChat = toggleChat;
 window.sendMessage = sendMessage;
 window.handleEnter = handleEnter;
 window.scrollToTop = scrollToTop;
+  
+// Email form functions
+function openEmailForm() {
+  const modal = document.getElementById('emailModal');
+  if (modal) {
+    modal.style.display = 'block';
+  }
+}
+
+function closeEmailForm() {
+  const modal = document.getElementById('emailModal');
+  if (modal) {
+    modal.style.display = 'none';
+  }
+}
+
+// Make functions global
+window.openEmailForm = openEmailForm;
+window.closeEmailForm = closeEmailForm;
+
+  </script>
+
 
 <!-- Google Form Modal -->
 <div id="emailModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 70; display: flex; align-items: center; justify-content: center;">
@@ -1790,8 +1838,6 @@ window.scrollToTop = scrollToTop;
   </div>
 </div>
 
-
-</script>
 </body>
 </html>
 
