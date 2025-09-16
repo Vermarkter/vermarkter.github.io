@@ -1806,12 +1806,27 @@ window.toggleChat = toggleChat;
 window.sendMessage = sendMessage;
 window.handleEnter = handleEnter;
 window.scrollToTop = scrollToTop;
+
+  
+// Show/hide back to top button
+window.addEventListener('scroll', function() {
+  const backToTopBtn = document.getElementById('backToTop');
+  if (backToTopBtn) {
+    if (window.pageYOffset > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
+});
+
   
 // Email form functions
 function openEmailForm() {
   const modal = document.getElementById('emailModal');
   if (modal) {
     modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
   }
 }
 
@@ -1819,8 +1834,32 @@ function closeEmailForm() {
   const modal = document.getElementById('emailModal');
   if (modal) {
     modal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
   }
 }
+
+// Handle contact form submission
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactFormEmail');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const phone = document.getElementById('contactPhone').value;
+      const message = document.getElementById('contactMessage').value;
+      
+      // Send to Telegram
+      const telegramMessage = `🎯 НОВИЙ КОНТАКТ\n\n👤 Ім'я: ${name}\n📧 Email: ${email}\n📱 Телефон: ${phone}\n💬 Повідомлення:\n${message}`;
+      
+      sendToTelegram(telegramMessage, 'contactFormResult');
+      
+      // Clear form
+      contactForm.reset();
+    });
+  }
+});
 
 // Make functions global
 window.openEmailForm = openEmailForm;
@@ -1829,14 +1868,46 @@ window.closeEmailForm = closeEmailForm;
   </script>
 
 
-<!-- Google Form Modal -->
-<div id="emailModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 70; display: flex; align-items: center; justify-content: center;">
-  <div style="background: var(--bg); padding: 30px; border-radius: 20px; max-width: 500px; width: 90%; position: relative;">
-    <button onclick="closeEmailForm()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer;">×</button>
-    <h3 style="margin-bottom: 20px; color: var(--brand);">Контакт форма</h3>
-    <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" width="100%" height="400" frameborder="0" marginheight="0" marginwidth="0">Завантаження…</iframe>
+<!-- Contact Form Modal -->
+<div id="emailModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 70;">
+  <div style="background: var(--bg); padding: 30px; border-radius: 20px; max-width: 500px; width: 90%; position: relative; margin: 50px auto; max-height: 80vh; overflow-y: auto;">
+    <button onclick="closeEmailForm()" style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: var(--muted); font-size: 24px; cursor: pointer; z-index: 71;">×</button>
+    <h3 style="margin-bottom: 20px; color: var(--brand); text-align: center;">Контакт форма</h3>
+    
+    <form id="contactFormEmail" style="display: flex; flex-direction: column; gap: 15px;">
+      <div>
+        <label style="display: block; margin-bottom: 5px; color: var(--text); font-weight: 600;">Ім'я:</label>
+        <input type="text" id="contactName" required style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 16px; background: var(--surface);">
+      </div>
+      
+      <div>
+        <label style="display: block; margin-bottom: 5px; color: var(--text); font-weight: 600;">Email:</label>
+        <input type="email" id="contactEmail" required style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 16px; background: var(--surface);">
+      </div>
+      
+      <div>
+        <label style="display: block; margin-bottom: 5px; color: var(--text); font-weight: 600;">Телефон:</label>
+        <input type="tel" id="contactPhone" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 16px; background: var(--surface);" placeholder="+49 или +380">
+      </div>
+      
+      <div>
+        <label style="display: block; margin-bottom: 5px; color: var(--text); font-weight: 600;">Повідомлення:</label>
+        <textarea id="contactMessage" required rows="4" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 16px; background: var(--surface); resize: vertical;"></textarea>
+      </div>
+      
+      <button type="submit" style="background: linear-gradient(135deg, var(--brand), var(--brand2)); color: white; padding: 15px 30px; border: none; border-radius: 12px; font-weight: 700; cursor: pointer; font-size: 16px; transition: all 0.3s ease;">
+        📧 Відправити
+      </button>
+    </form>
+    
+    <div id="contactFormResult" style="margin-top: 15px; text-align: center; display: none;"></div>
   </div>
 </div>
+<!-- Back to Top Button -->
+<button id="backToTop" class="back-to-top" onclick="scrollToTop()" title="Прокрутити наверх">
+  ↑
+</button>
+
 
 </body>
 </html>
