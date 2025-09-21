@@ -9,6 +9,14 @@
   <meta name="theme-color" content="#0F172A"/>
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   
+  <!-- HREFLANG TAGS FOR ALL LANGUAGES -->
+  <link rel="alternate" hreflang="de" href="https://vermarkter.github.io/de/" />
+  <link rel="alternate" hreflang="en" href="https://vermarkter.github.io/en/" />
+  <link rel="alternate" hreflang="uk" href="https://vermarkter.github.io/uk/" />
+  <link rel="alternate" hreflang="ru" href="https://vermarkter.github.io/ru/" />
+  <link rel="alternate" hreflang="pl" href="https://vermarkter.github.io/pl/" />
+  <link rel="alternate" hreflang="x-default" href="https://vermarkter.github.io/" />
+  
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Marketing in Deutschland — Digitalagentur">
   <meta property="og:description" content="8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Sichtbar dort, wo Ihre Kunden bereits suchen.">
@@ -67,6 +75,7 @@
       --radius: 20px;
       --radius-sm: 12px;
       --glow: 0 0 20px rgba(59, 130, 246, 0.3);
+      --gradient: linear-gradient(135deg, var(--brand), var(--brand2));
     }
 
     [data-theme="light"] {
@@ -156,7 +165,7 @@
       display: inline-flex; 
       align-items: center; 
       gap: 10px;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      background: var(--gradient);
       color: white; 
       padding: 12px 24px; 
       border-radius: var(--radius-sm);
@@ -176,9 +185,84 @@
       box-shadow: var(--shadow-lg);
     }
 
+    /* ENHANCED MOBILE LANGUAGE SELECTOR */
+    .lang select {
+      background: var(--bg2); 
+      color: var(--text); 
+      border: 1px solid rgba(255,255,255,.2); 
+      padding: 8px 12px; 
+      border-radius: var(--radius-sm); 
+      outline: none; 
+      transition: .3s ease; 
+      font-size: 14px; 
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .lang select:hover, .lang select:focus { 
+      border-color: var(--brand); 
+      box-shadow: var(--glow); 
+    }
+
+    /* ENHANCED ONLINE CHAT WIDGET */
+    .chat-launcher {
+      position: fixed; 
+      right: 20px; 
+      bottom: 20px; 
+      z-index: 60;
+      width: 80px; 
+      height: 80px; 
+      border-radius: 50%; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      color: #fff; 
+      border: none; 
+      box-shadow: var(--shadow-lg);
+      cursor: pointer; 
+      transition: .3s ease; 
+      font-size: 32px;
+      animation: pulse 3s infinite;
+    }
+
+    .chat-launcher:hover {
+      transform: scale(1.1);
+      box-shadow: 0 35px 60px -15px rgba(59,130,246,.4);
+    }
+
+    .chat-label {
+      font-size: 10px;
+      font-weight: 600;
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
     @media (max-width: 768px) {
       .container { padding: 0 16px; }
       .hero { padding: 60px 0 40px; }
+      .chat-launcher {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+      }
+      .chat-label {
+        font-size: 9px;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+      }
+      50% { 
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+      }
     }
   </style>
 
@@ -190,7 +274,6 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></noscript>
 
   <!-- GTM / GA4 TRACKING -->
-  <!-- Google Tag Manager -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -202,7 +285,6 @@
       send_page_view: true
     });
 
-    // Track CTA clicks
     function trackCTA(action, label) {
       gtag('event', 'cta_click', {
         event_category: 'engagement',
@@ -211,7 +293,6 @@
       });
     }
 
-    // Track form submissions
     function trackFormSubmission(formName) {
       gtag('event', 'form_submit', {
         event_category: 'conversion',
@@ -219,8 +300,6 @@
       });
     }
   </script>
-
-  <!-- NON-CRITICAL CSS WILL BE LOADED ASYNCHRONOUSLY -->
 </head>
 <body data-theme="dark">
   <!-- COOKIE CONSENT BANNER -->
@@ -278,38 +357,15 @@
           <a href="#cases" data-i18n="nav_cases">Erfolgs-Cases</a>
           <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
           <a href="#faq" data-i18n="nav_faq">FAQ</a>
-
-          <!-- IMPROVED CTA BANNER WITH CLEAR CONDITIONS -->
-          <div class="promo-banner">
-            <div class="promo-content">
-              <div class="promo-text">
-                <strong data-i18n="promo_offer">Google ADS + Facebook ADS Setup für 50€</strong>
-                <div class="promo-details" data-i18n="promo_details">
-                  ✅ Bis zu 20 Keywords<br>
-                  ✅ 5 Anzeigengruppen<br>
-                  ✅ Landing Page Check<br>
-                  ✅ 14 Tage Support
-                </div>
-              </div>
-              <div class="promo-timer">
-                <div class="timer" data-i18n="promo_timer">Nur für die ersten 10 Kunden!</div>
-                <div class="countdown" id="promoCountdown">23:59:42</div>
-              </div>
-            </div>
-            <a href="#auditForm" class="promo-cta" onclick="trackCTA('promo_click', 'header_promo')" data-i18n="promo_cta">JETZT SICHERN</a>
-          </div>
-
-          <a class="cta" href="https://t.me/Asystentmijbot" target="_blank" rel="noopener" onclick="trackCTA('telegram_click', 'header_telegram')">
-            <i class="fab fa-telegram"></i>
-            <span data-i18n="telegram">Telegram</span>
-          </a>
+          
+          <!-- LANGUAGE SELECTOR WITH CAPITAL LETTERS -->
           <div class="lang">
             <select id="lang" aria-label="Language">
-              <option value="de">DE</option>
-              <option value="en">EN</option>
-              <option value="ua" selected>UA</option>
-              <option value="ru">RU</option>
-              <option value="pl">PL</option>
+              <option value="DE">DE</option>
+              <option value="EN">EN</option>
+              <option value="UA" selected>UA</option>
+              <option value="RU">RU</option>
+              <option value="PL">PL</option>
             </select>
           </div>
         </div>
@@ -323,36 +379,55 @@
           </div>
         </button>
         
-        <!-- Mobile Menu -->
+        <!-- ENHANCED MOBILE MENU WITH VISIBLE LANGUAGE PANEL -->
         <div class="mobile-menu" id="mobileMenu">
+          <div class="mobile-header">
+            <!-- VISIBLE LANGUAGE PANEL IN MOBILE -->
+            <div class="mobile-lang-panel">
+              <span class="lang-label" data-i18n="select_language">Sprache:</span>
+              <div class="lang">
+                <select id="lang-mobile" aria-label="Language">
+                  <option value="DE">DE</option>
+                  <option value="EN">EN</option>
+                  <option value="UA" selected>UA</option>
+                  <option value="RU">RU</option>
+                  <option value="PL">PL</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <div class="mobile-links">
             <a href="#services" data-i18n="nav_services">Leistungen</a>
             <a href="#cases" data-i18n="nav_cases">Erfolgs-Cases</a>
             <a href="#testimonials" data-i18n="nav_testimonials">Bewertungen</a>
             <a href="#faq" data-i18n="nav_faq">FAQ</a>
-            <a class="cta" href="https://t.me/Asystentmijbot" target="_blank" rel="noopener" onclick="trackCTA('telegram_click', 'mobile_telegram')">
-              <i class="fab fa-telegram"></i>
-              <span data-i18n="telegram">Telegram</span>
-            </a>
-            <div style="margin-top: 12px;">
-              <div class="lang">
-                <select id="lang-mobile" aria-label="Language">
-                  <option value="de">DE</option>
-                  <option value="en">EN</option>
-                  <option value="ua" selected>UA</option>
-                  <option value="ru">RU</option>
-                  <option value="pl">PL</option>
-                </select>
-              </div>
-            </div>
           </div>
         </div>
       </nav>
+      
+      <!-- HORIZONTAL CTA BANNER UNDER DESKTOP MENU -->
+      <div class="desktop-cta-banner">
+        <div class="promo-banner-horizontal">
+          <div class="promo-content-horizontal">
+            <div class="promo-text-large">
+              <strong data-i18n="promo_offer">🚀 Google ADS + Facebook ADS Setup für nur 50€</strong>
+              <div class="promo-details-horizontal" data-i18n="promo_details_full">
+                ✅ Bis zu 20 Keywords ✅ 5 Anzeigengruppen ✅ Landing Page Check ✅ 14 Tage Support ✅ ROAS Optimierung
+              </div>
+            </div>
+            <div class="promo-timer-horizontal">
+              <div class="timer-large" data-i18n="promo_timer">Nur für die ersten 10 Kunden!</div>
+              <div class="countdown-large" id="promoCountdown">23:59:42</div>
+            </div>
+          </div>
+          <a href="#auditForm" class="promo-cta-large" onclick="trackCTA('promo_click', 'header_promo')" data-i18n="promo_cta">JETZT SICHERN</a>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
-    <!-- Hero Section with IMPROVED CTA -->
+    <!-- Hero Section -->
     <section class="hero">
       <div class="container">
         <div class="hero-content animate-slide-up">
@@ -362,13 +437,11 @@
                 ✨ <span data-i18n="badge">8 Jahre Erfahrung • 300+ erfolgreiche Projekte</span>
               </div>
               
-              <!-- SEMANTIC HEADING STRUCTURE -->
               <h1 data-i18n="hero_title">Digitales Marketing, das messbare Ergebnisse liefert</h1>
               <p class="lead" data-i18n="hero_lead">Websites, Google Ads, SMM, SEO. Durchschnittlich +250% mehr qualifizierte Leads in 90 Tagen.</p>
               
-              <!-- IMPROVED CTA BUTTONS -->
+              <!-- SIMPLIFIED HERO ACTIONS - REMOVED BUTTONS PER REQUEST -->
               <div class="hero-actions">
-                <!-- PRIMARY CTA - FREE AUDIT FORM -->
                 <div class="audit-form-inline">
                   <h3 data-i18n="audit_title">🎯 Kostenloser Marketing-Audit (Wert: 200€)</h3>
                   <form id="heroAuditForm" class="audit-form">
@@ -379,16 +452,6 @@
                     </button>
                   </form>
                   <small class="audit-note" data-i18n="audit_note">✅ Analyse in 24h • ✅ Konkrete Empfehlungen • ✅ Keine Verpflichtung</small>
-                </div>
-
-                <!-- SECONDARY ACTIONS -->
-                <div class="secondary-actions">
-                  <a class="cta cta-secondary" href="https://t.me/Asystentmijbot" target="_blank" rel="noopener" onclick="trackCTA('telegram_click', 'hero_telegram')">
-                    💬 <span data-i18n="consultation">Direkte Beratung</span>
-                  </a>
-                  <button onclick="showCases()" class="cta cta-outline" onclick="trackCTA('cases_click', 'hero_cases')">
-                    📊 <span data-i18n="view_cases">Erfolgs-Cases ansehen</span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -443,205 +506,556 @@
         </div>
       </div>
     </section>
-        <!-- SUCCESS CASES SECTION WITH REAL SCREENSHOTS -->
+        <!-- SUCCESS CASES SECTION - 20 CASES IN MULTIPLE LANGUAGES -->
     <section id="cases" class="cases-section">
       <div class="container">
-        <!-- SEMANTIC HEADING STRUCTURE -->
         <header class="section-header">
-          <h2 data-i18n="cases_title">🏆 Bewiesene Erfolgs-Cases</h2>
-          <p class="section-subtitle" data-i18n="cases_subtitle">Echte Ergebnisse unserer Kunden mit Screenshots und Daten aus Google Analytics</p>
+          <h2 data-i18n="cases_title">🏆 Доведені кейси успіху</h2>
+          <p class="section-subtitle" data-i18n="cases_subtitle">Реальні результати наших клієнтів з Мюнхена та всієї Німеччини</p>
         </header>
 
-        <div class="cases-grid">
-          <!-- CASE 1: E-COMMERCE -->
-          <article class="case-card animate-slide-up">
+        <div class="cases-grid" id="casesGrid">
+          <!-- 8 UKRAINIAN CASES -->
+          <article class="case-card animate-slide-up" data-lang="ua">
             <div class="case-header">
               <div class="case-category">E-Commerce</div>
-              <div class="case-timeframe">6 Monate</div>
+              <div class="case-location">🏛️ Мюнхен</div>
             </div>
-            
-            <h3 class="case-title">Online-Shop für Heimtextilien</h3>
+            <h3 class="case-title">Онлайн-магазин домашнього текстилю</h3>
             <div class="case-client">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%233B82F6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EHT%3C/text%3E%3C/svg%3E" alt="Client H.T." class="client-avatar">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%233B82F6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EОТ%3C/text%3E%3C/svg%3E" alt="Оксана Т." class="client-avatar">
               <div class="client-info">
-                <div class="client-name">Hannah T.</div>
-                <div class="client-company">Online-Heimtextilien GmbH, München</div>
+                <div class="client-name">Оксана Т.</div>
+                <div class="client-company">Home Textile München GmbH</div>
               </div>
             </div>
-
             <div class="case-metrics">
               <div class="metric">
-                <div class="metric-before">
-                  <span class="label">Vorher:</span>
-                  <span class="value">€12k/Monat</span>
-                </div>
+                <div class="metric-before">Було: €15k/міс</div>
                 <div class="metric-arrow">➜</div>
-                <div class="metric-after">
-                  <span class="label">Nachher:</span>
-                  <span class="value highlight">€47k/Monat</span>
-                </div>
-              </div>
-              <div class="metric">
-                <div class="metric-before">
-                  <span class="label">Traffic:</span>
-                  <span class="value">8.5k/Monat</span>
-                </div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after">
-                  <span class="label">Traffic:</span>
-                  <span class="value highlight">31k/Monat</span>
-                </div>
+                <div class="metric-after highlight">Стало: €52k/міс</div>
               </div>
             </div>
-
-            <div class="case-services">
-              <span class="service-tag">Google Ads</span>
-              <span class="service-tag">SEO</span>
-              <span class="service-tag">Website-Optimierung</span>
-            </div>
-
             <div class="case-result">
-              <div class="result-percentage">+292% Umsatz</div>
-              <div class="result-roi">ROI: 4.7x</div>
+              <div class="result-percentage">+247% прибуток</div>
+              <div class="result-roi">ROI: 4.2x</div>
             </div>
-
-            <button onclick="showCaseDetails('case1')" class="case-details-btn" data-i18n="view_screenshots">
-              📊 Screenshots & Details ansehen
-            </button>
           </article>
 
-          <!-- CASE 2: LOCAL BUSINESS -->
-          <article class="case-card animate-slide-up">
+          <article class="case-card animate-slide-up" data-lang="ua">
             <div class="case-header">
-              <div class="case-category">Local Business</div>
-              <div class="case-timeframe">4 Monate</div>
+              <div class="case-category">Ресторан</div>
+              <div class="case-location">🏛️ Мюнхен</div>
             </div>
-            
-            <h3 class="case-title">Zahnarztpraxis in Berlin</h3>
+            <h3 class="case-title">Українська кухня в серці Баварії</h3>
             <div class="case-client">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%2310B981' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EDM%3C/text%3E%3C/svg%3E" alt="Client D.M." class="client-avatar">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%2310B981' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EВК%3C/text%3E%3C/svg%3E" alt="Володимир К." class="client-avatar">
               <div class="client-info">
-                <div class="client-name">Dr. Marcus Weber</div>
-                <div class="client-company">Zahnarztpraxis Dr. Weber, Berlin</div>
+                <div class="client-name">Володимир К.</div>
+                <div class="client-company">Borsch & Co Restaurant</div>
               </div>
             </div>
-
             <div class="case-metrics">
               <div class="metric">
-                <div class="metric-before">
-                  <span class="label">Neue Patienten:</span>
-                  <span class="value">12/Monat</span>
-                </div>
+                <div class="metric-before">Було: 45 гостей/день</div>
                 <div class="metric-arrow">➜</div>
-                <div class="metric-after">
-                  <span class="label">Neue Patienten:</span>
-                  <span class="value highlight">47/Monat</span>
-                </div>
-              </div>
-              <div class="metric">
-                <div class="metric-before">
-                  <span class="label">Google Ranking:</span>
-                  <span class="value">Position 47</span>
-                </div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after">
-                  <span class="label">Google Ranking:</span>
-                  <span class="value highlight">Position 2-3</span>
-                </div>
+                <div class="metric-after highlight">Стало: 127 гостей/день</div>
               </div>
             </div>
-
-            <div class="case-services">
-              <span class="service-tag">Local SEO</span>
-              <span class="service-tag">Google My Business</span>
-              <span class="service-tag">Website</span>
-            </div>
-
             <div class="case-result">
-              <div class="result-percentage">+292% Neukunden</div>
-              <div class="result-roi">Kosten/Patient: -67%</div>
+              <div class="result-percentage">+182% відвідувачів</div>
+              <div class="result-roi">Вартість: -39% на клієнта</div>
             </div>
-
-            <button onclick="showCaseDetails('case2')" class="case-details-btn" data-i18n="view_screenshots">
-              📊 Screenshots & Details ansehen
-            </button>
           </article>
 
-          <!-- CASE 3: B2B SERVICE -->
-          <article class="case-card animate-slide-up">
+          <article class="case-card animate-slide-up" data-lang="ua">
             <div class="case-header">
-              <div class="case-category">B2B Service</div>
-              <div class="case-timeframe">8 Monate</div>
+              <div class="case-category">IT-послуги</div>
+              <div class="case-location">🏛️ Мюнхен</div>
             </div>
-            
-            <h3 class="case-title">IT-Dienstleister Hamburg</h3>
+            <h3 class="case-title">Українська IT-компанія</h3>
             <div class="case-client">
-              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%238B5CF6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='14' font-weight='bold'%3EITS%3C/text%3E%3C/svg%3E" alt="Client IT Solutions" class="client-avatar">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%238B5CF6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EАМ%3C/text%3E%3C/svg%3E" alt="Андрій М." class="client-avatar">
               <div class="client-info">
-                <div class="client-name">Stefan Müller</div>
-                <div class="client-company">IT-Solutions Hamburg GmbH</div>
+                <div class="client-name">Андрій М.</div>
+                <div class="client-company">TechSolutions München</div>
               </div>
             </div>
-
             <div class="case-metrics">
               <div class="metric">
-                <div class="metric-before">
-                  <span class="label">Leads/Monat:</span>
-                  <span class="value">23</span>
-                </div>
+                <div class="metric-before">Було: 12 проектів/міс</div>
                 <div class="metric-arrow">➜</div>
-                <div class="metric-after">
-                  <span class="label">Leads/Monat:</span>
-                  <span class="value highlight">94</span>
-                </div>
-              </div>
-              <div class="metric">
-                <div class="metric-before">
-                  <span class="label">Durchschn. Deal:</span>
-                  <span class="value">€8,500</span>
-                </div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after">
-                  <span class="label">Durchschn. Deal:</span>
-                  <span class="value highlight">€12,300</span>
-                </div>
+                <div class="metric-after highlight">Стало: 47 проектів/міс</div>
               </div>
             </div>
-
-            <div class="case-services">
-              <span class="service-tag">LinkedIn Ads</span>
-              <span class="service-tag">Content Marketing</span>
-              <span class="service-tag">SEO</span>
-            </div>
-
             <div class="case-result">
-              <div class="result-percentage">+309% Leads</div>
-              <div class="result-roi">Lead-Kosten: -58%</div>
+              <div class="result-percentage">+292% замовлень</div>
+              <div class="result-roi">Середній чек: +67%</div>
             </div>
+          </article>
 
-            <button onclick="showCaseDetails('case3')" class="case-details-btn" data-i18n="view_screenshots">
-              📊 Screenshots & Details ansehen
-            </button>
+          <article class="case-card animate-slide-up" data-lang="ua">
+            <div class="case-header">
+              <div class="case-category">Медицина</div>
+              <div class="case-location">🏛️ Мюнхен</div>
+            </div>
+            <h3 class="case-title">Стоматологічна клініка</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23EF4444' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EІБ%3C/text%3E%3C/svg%3E" alt="Ірина Б." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Ірина Б.</div>
+                <div class="client-company">Dental Care München</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Було: 23 пацієнти/міс</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: 89 пацієнтів/міс</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+287% пацієнтів</div>
+              <div class="result-roi">CPA: -52%</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ua">
+            <div class="case-header">
+              <div class="case-category">Краса</div>
+              <div class="case-location">🌍 Берлін</div>
+            </div>
+            <h3 class="case-title">Салон краси та SPA</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F59E0B' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EМЛ%3C/text%3E%3C/svg%3E" alt="Марина Л." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Марина Л.</div>
+                <div class="client-company">Beauty Studio Berlin</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Було: 67 клієнтів/міс</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: 234 клієнта/міс</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+249% клієнтів</div>
+              <div class="result-roi">Середній чек: +43%</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ua">
+            <div class="case-header">
+              <div class="case-category">Автосервіс</div>
+              <div class="case-location">🌍 Гамбург</div>
+            </div>
+            <h3 class="case-title">Український автосервіс</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%233B82F6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EДС%3C/text%3E%3C/svg%3E" alt="Дмитро С." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Дмитро С.</div>
+                <div class="client-company">Auto Repair Hamburg</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Було: €18k/міс</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: €47k/міс</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+161% доходу</div>
+              <div class="result-roi">ROI: 3.8x</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ua">
+            <div class="case-header">
+              <div class="case-category">Освіта</div>
+              <div class="case-location">🏛️ Мюнхен</div>
+            </div>
+            <h3 class="case-title">Мовна школа</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%2310B981' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EТП%3C/text%3E%3C/svg%3E" alt="Тетяна П." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Тетяна П.</div>
+                <div class="client-company">Language School München</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Було: 34 учня/міс</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: 127 учнів/міс</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+274% студентів</div>
+              <div class="result-roi">CPA: -61%</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ua">
+            <div class="case-header">
+              <div class="case-category">Будівництво</div>
+              <div class="case-location">🌍 Кельн</div>
+            </div>
+            <h3 class="case-title">Ремонтні послуги</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%238B5CF6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EВГ%3C/text%3E%3C/svg%3E" alt="Віталій Г." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Віталій Г.</div>
+                <div class="client-company">Renovation Köln</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Було: 8 проектів/міс</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: 29 проектів/міс</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+263% замовлень</div>
+              <div class="result-roi">Середній чек: +87%</div>
+            </div>
+          </article>
+
+          <!-- 6 RUSSIAN CASES -->
+          <article class="case-card animate-slide-up" data-lang="ru">
+            <div class="case-header">
+              <div class="case-category">E-Commerce</div>
+              <div class="case-location">🏛️ Мюнхен</div>
+            </div>
+            <h3 class="case-title">Интернет-магазин электроники</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23EF4444' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EАВ%3C/text%3E%3C/svg%3E" alt="Александр В." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Александр В.</div>
+                <div class="client-company">Tech Store München</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Было: €32k/мес</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: €89k/мес</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+178% выручки</div>
+              <div class="result-roi">ROI: 4.9x</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ru">
+            <div class="case-header">
+              <div class="case-category">Недвижимость</div>
+              <div class="case-location">🏛️ Мюнхен</div>
+            </div>
+            <h3 class="case-title">Агентство недвижимости</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F59E0B' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EЕК%3C/text%3E%3C/svg%3E" alt="Елена К." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Елена К.</div>
+                <div class="client-company">Real Estate München</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Было: 15 сделок/мес</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: 52 сделки/мес</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+247% сделок</div>
+              <div class="result-roi">Средний чек: +34%</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ru">
+            <div class="case-header">
+              <div class="case-category">Финансы</div>
+              <div class="case-location">🌍 Франкфурт</div>
+            </div>
+            <h3 class="case-title">Финансовый консультант</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%233B82F6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EДМ%3C/text%3E%3C/svg%3E" alt="Дмитрий М." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Дмитрий М.</div>
+                <div class="client-company">Financial Advisory Frankfurt</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Было: 28 клиентов/мес</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: 97 клиентов/мес</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+246% клиентов</div>
+              <div class="result-roi">CPA: -58%</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ru">
+            <div class="case-header">
+              <div class="case-category">Юридические услуги</div>
+              <div class="case-location">🌍 Дюссельдорф</div>
+            </div>
+            <h3 class="case-title">Юридическая фирма</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%2310B981' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EОС%3C/text%3E%3C/svg%3E" alt="Ольга С." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Ольга С.</div>
+                <div class="client-company">Law Firm Düsseldorf</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Было: €45k/мес</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: €127k/мес</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+182% дохода</div>
+              <div class="result-roi">ROI: 5.2x</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ru">
+            <div class="case-header">
+              <div class="case-category">Логистика</div>
+              <div class="case-location">🏛️ Мюнхен</div>
+            </div>
+            <h3 class="case-title">Транспортная компания</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%238B5CF6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EИП%3C/text%3E%3C/svg%3E" alt="Игорь П." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Игорь П.</div>
+                <div class="client-company">Logistics München</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Было: 67 заказов/мес</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: 189 заказов/мес</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+182% заказов</div>
+              <div class="result-roi">Средний чек: +29%</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="ru">
+            <div class="case-header">
+              <div class="case-category">Туризм</div>
+              <div class="case-location">🌍 Берлин</div>
+            </div>
+            <h3 class="case-title">Туристическое агентство</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23EF4444' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EСН%3C/text%3E%3C/svg%3E" alt="Светлана Н." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Светлана Н.</div>
+                <div class="client-company">Travel Agency Berlin</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Было: €23k/мес</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: €78k/мес</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+239% выручки</div>
+              <div class="result-roi">ROI: 4.1x</div>
+            </div>
+          </article>
+
+          <!-- 4 GERMAN CASES -->
+          <article class="case-card animate-slide-up" data-lang="de">
+            <div class="case-header">
+              <div class="case-category">Handwerk</div>
+              <div class="case-location">🏛️ München</div>
+            </div>
+            <h3 class="case-title">Elektroinstallateur Meisterbetrieb</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F59E0B' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EMS%3C/text%3E%3C/svg%3E" alt="Markus S." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Markus S.</div>
+                <div class="client-company">Elektro Meister München</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Vorher: 23 Aufträge/Mon</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Nachher: 87 Aufträge/Mon</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+278% Aufträge</div>
+              <div class="result-roi">CPA: -52%</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="de">
+            <div class="case-header">
+              <div class="case-category">Gastronomie</div>
+              <div class="case-location">🏛️ München</div>
+            </div>
+            <h3 class="case-title">Bayerisches Restaurant</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%233B82F6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3ETM%3C/text%3E%3C/svg%3E" alt="Thomas M." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Thomas M.</div>
+                <div class="client-company">Biergarten München</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Vorher: €12k/Mon</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Nachher: €43k/Mon</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+258% Umsatz</div>
+              <div class="result-roi">ROI: 3.9x</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="de">
+            <div class="case-header">
+              <div class="case-category">Fitness</div>
+              <div class="case-location">🌍 Stuttgart</div>
+            </div>
+            <h3 class="case-title">Fitness Studio</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%2310B981' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EJW%3C/text%3E%3C/svg%3E" alt="Julia W." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Julia W.</div>
+                <div class="client-company">PowerGym Stuttgart</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Vorher: 156 Mitglieder</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Nachher: 487 Mitglieder</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+212% Mitglieder</div>
+              <div class="result-roi">CPA: -67%</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="de">
+            <div class="case-header">
+              <div class="case-category">B2B Software</div>
+              <div class="case-location">🏛️ München</div>
+            </div>
+            <h3 class="case-title">Software Entwicklung</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%238B5CF6' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EFK%3C/text%3E%3C/svg%3E" alt="Frank K." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Frank K.</div>
+                <div class="client-company">DevSoft München GmbH</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Vorher: €67k/Mon</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Nachher: €234k/Mon</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+249% Revenue</div>
+              <div class="result-roi">ROI: 5.8x</div>
+            </div>
+          </article>
+
+          <!-- 2 ENGLISH CASES -->
+          <article class="case-card animate-slide-up" data-lang="en">
+            <div class="case-header">
+              <div class="case-category">International Trade</div>
+              <div class="case-location">🏛️ München</div>
+            </div>
+            <h3 class="case-title">Import/Export Company</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23EF4444' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3EJB%3C/text%3E%3C/svg%3E" alt="John B." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">John B.</div>
+                <div class="client-company">Global Trade München</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Before: €89k/month</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">After: €267k/month</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+200% Revenue</div>
+              <div class="result-roi">ROI: 4.3x</div>
+            </div>
+          </article>
+
+          <article class="case-card animate-slide-up" data-lang="en">
+            <div class="case-header">
+              <div class="case-category">Consulting</div>
+              <div class="case-location">🌍 Frankfurt</div>
+            </div>
+            <h3 class="case-title">Business Consulting</h3>
+            <div class="case-client">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23F59E0B' rx='20'/%3E%3Ctext x='20' y='26' text-anchor='middle' fill='white' font-size='16' font-weight='bold'%3ESM%3C/text%3E%3C/svg%3E" alt="Sarah M." class="client-avatar">
+              <div class="client-info">
+                <div class="client-name">Sarah M.</div>
+                <div class="client-company">Business Solutions Frankfurt</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Before: 34 clients/month</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">After: 127 clients/month</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+274% Clients</div>
+              <div class="result-roi">CPA: -58%</div>
+            </div>
           </article>
         </div>
 
         <div class="cases-cta">
-          <h3 data-i18n="cases_cta_title">Möchten Sie ähnliche Ergebnisse für Ihr Unternehmen?</h3>
-          <p data-i18n="cases_cta_text">Lassen Sie uns Ihre aktuelle Situation analysieren und ein individuelles Konzept für Ihren Erfolg entwickeln.</p>
+          <h3 data-i18n="cases_cta_title">Хочете подібні результати для вашого бізнесу?</h3>
+          <p data-i18n="cases_cta_text">Дозвольте нам проаналізувати вашу поточну ситуацію та розробити індивідуальну концепцію для вашого успіху.</p>
           <a href="#auditForm" class="cta cta-large" onclick="trackCTA('cases_cta', 'cases_section')" data-i18n="cases_cta_button">
-            🎯 Kostenlose Analyse für mein Unternehmen
+            🎯 Безкоштовний аналіз для мого бізнесу
           </a>
         </div>
       </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section - ONLY IN GERMAN -->
     <section id="services">
       <div class="container">
-        <!-- SEMANTIC HEADING STRUCTURE -->
         <header class="section-header">
-          <h2 data-i18n="services_title">🎯 Unsere Leistungen</h2>
-          <p class="section-subtitle" data-i18n="services_subtitle">Vollständige Digital-Marketing-Lösungen für messbare Ergebnisse</p>
+          <h2>[translate:🎯 Unsere Leistungen]</h2>
+          <p class="section-subtitle">[translate:Vollständige Digital-Marketing-Lösungen für messbare Ergebnisse]</p>
         </header>
 
         <div class="services-grid">
@@ -649,17 +1063,17 @@
             <div class="card-icon animate-glow">
               <i class="fas fa-laptop-code"></i>
             </div>
-            <h3 data-i18n="service_web_title">Website-Entwicklung</h3>
-            <p data-i18n="service_web_desc">Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.</p>
+            <h3>[translate:Website-Entwicklung]</h3>
+            <p>[translate:Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.]</p>
             <div class="service-pricing">
-              <div class="price-range">Ab €150 - €5,000</div>
-              <div class="delivery-time">Lieferzeit: 1-8 Wochen</div>
+              <div class="price-range">[translate:Ab €150 - €5,000]</div>
+              <div class="delivery-time">[translate:Lieferzeit: 1-8 Wochen]</div>
             </div>
             <ul class="service-features">
-              <li>✅ Responsive Design</li>
-              <li>✅ SEO-optimiert</li>
-              <li>✅ Page Speed < 3s</li>
-              <li>✅ SSL & Sicherheit</li>
+              <li>[translate:✅ Responsive Design]</li>
+              <li>[translate:✅ SEO-optimiert]</li>
+              <li>[translate:✅ Page Speed < 3s]</li>
+              <li>[translate:✅ SSL & Sicherheit]</li>
             </ul>
           </article>
 
@@ -667,17 +1081,17 @@
             <div class="card-icon animate-glow">
               <i class="fab fa-google"></i>
             </div>
-            <h3 data-i18n="service_ads_title">Google Ads Management</h3>
-            <p data-i18n="service_ads_desc">Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.</p>
+            <h3>[translate:Google Ads Management]</h3>
+            <p>[translate:Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.]</p>
             <div class="service-pricing">
-              <div class="price-range">Min. Budget: €500/Monat</div>
-              <div class="delivery-time">Setup: 3-5 Werktage</div>
+              <div class="price-range">[translate:Min. Budget: €500/Monat]</div>
+              <div class="delivery-time">[translate:Setup: 3-5 Werktage]</div>
             </div>
             <ul class="service-features">
-              <li>✅ Keyword-Recherche</li>
-              <li>✅ A/B-Tests</li>
-              <li>✅ Conversion-Tracking</li>
-              <li>✅ Wöchentliche Reports</li>
+              <li>[translate:✅ Keyword-Recherche]</li>
+              <li>[translate:✅ A/B-Tests]</li>
+              <li>[translate:✅ Conversion-Tracking]</li>
+              <li>[translate:✅ Wöchentliche Reports]</li>
             </ul>
           </article>
 
@@ -685,17 +1099,17 @@
             <div class="card-icon animate-glow">
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3 data-i18n="service_seo_title">Suchmaschinenoptimierung</h3>
-            <p data-i18n="service_seo_desc">Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.</p>
+            <h3>[translate:Suchmaschinenoptimierung]</h3>
+            <p>[translate:Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.]</p>
             <div class="service-pricing">
-              <div class="price-range">Ab €800/Monat</div>
-              <div class="delivery-time">Erste Erfolge: 2-4 Monate</div>
+              <div class="price-range">[translate:Ab €800/Monat]</div>
+              <div class="delivery-time">[translate:Erste Erfolge: 2-4 Monate]</div>
             </div>
             <ul class="service-features">
-              <li>✅ Technisches SEO</li>
-              <li>✅ Content-Optimierung</li>
-              <li>✅ Link-Building</li>
-              <li>✅ Ranking-Monitoring</li>
+              <li>[translate:✅ Technisches SEO]</li>
+              <li>[translate:✅ Content-Optimierung]</li>
+              <li>[translate:✅ Link-Building]</li>
+              <li>[translate:✅ Ranking-Monitoring]</li>
             </ul>
           </article>
 
@@ -703,948 +1117,517 @@
             <div class="card-icon animate-glow">
               <i class="fas fa-share-alt"></i>
             </div>
-            <h3 data-i18n="service_smm_title">Social Media Marketing</h3>
-            <p data-i18n="service_smm_desc">Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.</p>
+            <h3>[translate:Social Media Marketing]</h3>
+            <p>[translate:Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.]</p>
             <div class="service-pricing">
-              <div class="price-range">Ab €600/Monat</div>
-              <div class="delivery-time">Content-Plan: 1 Woche</div>
+              <div class="price-range">[translate:Ab €600/Monat]</div>
+              <div class="delivery-time">[translate:Content-Plan: 1 Woche]</div>
             </div>
             <ul class="service-features">
-              <li>✅ Content-Strategie</li>
-              <li>✅ Community Management</li>
-              <li>✅ Paid Social Ads</li>
-              <li>✅ Analytics & Reports</li>
+              <li>[translate:✅ Content-Strategie]</li>
+              <li>[translate:✅ Community Management]</li>
+              <li>[translate:✅ Paid Social Ads]</li>
+              <li>[translate:✅ Analytics & Reports]</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
-
-    <!-- ENHANCED TESTIMONIALS with Photos and Specific Results -->
-    <section id="testimonials">
-      <div class="container">
-        <header class="section-header">
-          <h2 data-i18n="testimonials_title">💬 Was unsere Kunden sagen</h2>
-          <p class="section-subtitle" data-i18n="testimonials_subtitle">Echte Bewertungen mit konkreten Ergebnissen</p>
-        </header>
-
-        <div class="testimonials-container">
-          <div class="testimonials" id="testimonialsGrid">
-            
-            <!-- ENHANCED TESTIMONIAL 1 - German -->
-            <article class="quote enhanced-quote animate-slide-up" data-lang="de">
-              <div class="quote-header">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cdefs%3E%3ClinearGradient id='grad1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%233B82F6'/%3E%3Cstop offset='100%25' style='stop-color:%238B5CF6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='60' height='60' fill='url(%23grad1)' rx='30'/%3E%3Ctext x='30' y='38' text-anchor='middle' fill='white' font-size='24' font-weight='bold'%3EMK%3C/text%3E%3C/svg%3E" alt="Maria Kowalenko" class="client-photo">
-                <div class="client-details">
-                  <div class="client-name">Maria Kowalenko</div>
-                  <div class="client-position">Geschäftsführerin</div>
-                  <div class="client-company">TechStart Solutions GmbH</div>
-                </div>
-              </div>
-              
-              <div class="quote-content">
-                <p>"Dank der professionellen Betreuung haben wir unseren Online-Umsatz um 300% gesteigert. Die Expertise im Bereich Google Ads und SEO ist beeindruckend."</p>
-                
-                <div class="results-showcase">
-                  <div class="result-item">
-                    <div class="result-label">Umsatzsteigerung:</div>
-                    <div class="result-value">+€47,000/Monat</div>
-                  </div>
-                  <div class="result-item">
-                    <div class="result-label">ROAS Verbesserung:</div>
-                    <div class="result-value">4.2x</div>
-                  </div>
-                  <div class="result-item">
-                    <div class="result-label">Zeitraum:</div>
-                    <div class="result-value">6 Monate</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="quote-footer">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <div class="verification">✅ Verifizierter Kunde</div>
-              </div>
-            </article>
-
-            <!-- ENHANCED TESTIMONIAL 2 - Ukrainian -->
-            <article class="quote enhanced-quote animate-slide-up" data-lang="ua">
-              <div class="quote-header">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cdefs%3E%3ClinearGradient id='grad2' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2310B981'/%3E%3Cstop offset='100%25' style='stop-color:%233B82F6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='60' height='60' fill='url(%23grad2)' rx='30'/%3E%3Ctext x='30' y='38' text-anchor='middle' fill='white' font-size='22' font-weight='bold'%3EТГ%3C/text%3E%3C/svg%3E" alt="Томас Гофман" class="client-photo">
-                <div class="client-details">
-                  <div class="client-name">Томас Гофман</div>
-                  <div class="client-position">Підприємець</div>
-                  <div class="client-company">München Digital Store</div>
-                </div>
-              </div>
-              
-              <div class="quote-content">
-                <p>"Новий веб-сайт не тільки сучасний і швидкий, але й приносить нам щодня нових кваліфікованих лідів. ROI збільшився в 4 рази за перші 3 місяці."</p>
-                
-                <div class="results-showcase">
-                  <div class="result-item">
-                    <div class="result-label">Нові ліди:</div>
-                    <div class="result-value">+187/місяць</div>
-                  </div>
-                  <div class="result-item">
-                    <div class="result-label">Конверсія сайту:</div>
-                    <div class="result-value">2.1% → 8.7%</div>
-                  </div>
-                  <div class="result-item">
-                    <div class="result-label">ROI:</div>
-                    <div class="result-value">4.1x</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="quote-footer">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <div class="verification">✅ Перевірений клієнт</div>
-              </div>
-            </article>
-
-            <!-- ENHANCED TESTIMONIAL 3 - Russian -->
-            <article class="quote enhanced-quote animate-slide-up" data-lang="ru">
-              <div class="quote-header">
-                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cdefs%3E%3ClinearGradient id='grad3' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23F59E0B'/%3E%3Cstop offset='100%25' style='stop-color:%23EF4444'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='60' height='60' fill='url(%23grad3)' rx='30'/%3E%3Ctext x='30' y='38' text-anchor='middle' fill='white' font-size='22' font-weight='bold'%3EСЛ%3C/text%3E%3C/svg%3E" alt="Светлана Ларсон" class="client-photo">
-                <div class="client-details">
-                  <div class="client-name">Светлана Ларсон</div>
-                  <div class="client-position">Marketing Manager</div>
-                  <div class="client-company">Berlin Digital Solutions</div>
-                </div>
-              </div>
-              
-              <div class="quote-content">
-                <p>"Профессиональное управление Google Ads с измеримыми результатами. Наш ROI утроился всего за 4 месяца. Особенно впечатляет персонализированный подход."</p>
-                
-                <div class="results-showcase">
-                  <div class="result-item">
-                    <div class="result-label">CPC снижение:</div>
-                    <div class="result-value">-43%</div>
-                  </div>
-                  <div class="result-item">
-                    <div class="result-label">Конверсии:</div>
-                    <div class="result-value">+268%</div>
-                  </div>
-                  <div class="result-item">
-                    <div class="result-label">ROAS:</div>
-                    <div class="result-value">3.7x</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="quote-footer">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <div class="verification">✅ Проверенный клиент</div>
-              </div>
-            </article>
-
-            <!-- Additional testimonials... -->
-            <!-- You can add more testimonials following the same pattern -->
-
-          </div>
-        </div>
-
-        <!-- Testimonials CTA -->
-        <div class="testimonials-cta">
-          <p data-i18n="testimonials_cta">Werden Sie unser nächster Erfolgsfall!</p>
-          <a href="#auditForm" class="cta" onclick="trackCTA('testimonials_cta', 'testimonials_section')" data-i18n="get_analysis">
-            Kostenlose Analyse anfordern
-          </a>
-        </div>
-      </div>
-    </section>
-        <!-- ENHANCED FAQ with Specific Timeframes and Prices -->
-    <section id="faq">
-      <div class="container">
-        <header class="section-header">
-          <h2 data-i18n="faq_title">❓ Häufig gestellte Fragen</h2>
-          <p class="section-subtitle" data-i18n="faq_subtitle">Klare Antworten mit konkreten Zahlen und Zeitrahmen</p>
-        </header>
-
-        <div class="faq-grid">
-          <article class="faq-item">
-            <div class="faq-question">
-              <h3 data-i18n="faq_q1">Wie lange dauert die Entwicklung einer Website?</h3>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-content">
-                <p data-i18n="faq_a1">Die Entwicklungszeit hängt vom Umfang ab:</p>
-                <ul class="timeline-list">
-                  <li><strong>Landing Page:</strong> 1-3 Tage (€150-€500)</li>
-                  <li><strong>Unternehmenswebsite:</strong> 1-2 Wochen (€800-€2,500)</li>
-                  <li><strong>E-Commerce Shop:</strong> 3-6 Wochen (€2,500-€8,000)</li>
-                  <li><strong>Komplexe Systeme:</strong> 6-12 Wochen (€8,000+)</li>
-                </ul>
-                <div class="faq-highlight">✅ <strong>Garantie:</strong> Lieferung zum vereinbarten Termin oder 10% Rabatt</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <div class="faq-question">
-              <h3 data-i18n="faq_q2">Was kostet Google Ads und ab welchem Budget lohnt es sich?</h3>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-content">
-                <p data-i18n="faq_a2">Unsere Google Ads Pakete:</p>
-                <ul class="pricing-list">
-                  <li><strong>Starter-Paket:</strong> €500-€1,000/Monat + 15% Verwaltungsgebühr</li>
-                  <li><strong>Professional:</strong> €1,000-€5,000/Monat + 12% Verwaltungsgebühr</li>
-                  <li><strong>Enterprise:</strong> €5,000+/Monat + 10% Verwaltungsgebühr</li>
-                </ul>
-                <div class="faq-highlight">
-                  📊 <strong>Erste Ergebnisse:</strong> Bereits nach 7-14 Tagen sichtbar<br>
-                  🎯 <strong>Optimale ROAS:</strong> Meist nach 4-6 Wochen erreicht
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <div class="faq-question">
-              <h3 data-i18n="faq_q3">Wie schnell sehe ich Ergebnisse bei SEO?</h3>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-content">
-                <p data-i18n="faq_a3">SEO Zeitplan mit realistischen Erwartungen:</p>
-                <ul class="timeline-list">
-                  <li><strong>Monat 1-2:</strong> Technische Optimierung, erste Indexierung</li>
-                  <li><strong>Monat 2-3:</strong> Erste Ranking-Verbesserungen (20-50 Positionen)</li>
-                  <li><strong>Monat 3-6:</strong> Deutliche Verbesserungen (Top 10-20)</li>
-                  <li><strong>Monat 6-12:</strong> Top 3-5 Positionen für Haupt-Keywords</li>
-                </ul>
-                <div class="faq-highlight">
-                  💰 <strong>Investition:</strong> Ab €800/Monat für lokale SEO, ab €1,500/Monat für nationale Keywords<br>
-                  📈 <strong>ROI:</strong> Durchschnittlich 300-500% nach 12 Monaten
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <div class="faq-question">
-              <h3 data-i18n="faq_q4">Bieten Sie auch Wartung und Support an?</h3>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-content">
-                <p data-i18n="faq_a4">Unsere Support-Pakete:</p>
-                <ul class="pricing-list">
-                  <li><strong>Basic Support:</strong> €150/Monat - Updates + Backup</li>
-                  <li><strong>Professional:</strong> €300/Monat - + Sicherheit + Performance</li>
-                  <li><strong>Premium:</strong> €500/Monat - + Content + SEO-Pflege</li>
-                </ul>
-                <div class="faq-highlight">
-                  ⚡ <strong>Reaktionszeit:</strong> < 4 Stunden bei kritischen Problemen<br>
-                  🛡️ <strong>Uptime:</strong> 99.9% Garantie mit SLA-Vereinbarung
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <div class="faq-question">
-              <h3 data-i18n="faq_q5">Welche Garantien bieten Sie?</h3>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-content">
-                <p data-i18n="faq_a5">Unsere Erfolgsgarantien:</p>
-                <ul class="guarantee-list">
-                  <li>✅ <strong>Website:</strong> 30 Tage kostenlose Änderungen</li>
-                  <li>✅ <strong>Google Ads:</strong> Mindestens 2x ROAS oder Geld zurück</li>
-                  <li>✅ <strong>SEO:</strong> Top 10 Ranking für 5 Keywords in 12 Monaten</li>
-                  <li>✅ <strong>Support:</strong> 99.9% Uptime oder Monat kostenlos</li>
-                </ul>
-                <div class="faq-highlight">
-                  🏆 <strong>Zufriedenheitsgarantie:</strong> 30 Tage Geld-zurück bei Unzufriedenheit<br>
-                  📞 <strong>Kontakt:</strong> Direkter Draht zu Ihrem persönlichen Ansprechpartner
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="faq-item">
-            <div class="faq-question">
-              <h3 data-i18n="faq_q6">Arbeiten Sie auch mit kleineren Budgets?</h3>
-              <div class="faq-toggle">+</div>
-            </div>
-            <div class="faq-answer">
-              <div class="faq-content">
-                <p data-i18n="faq_a6">Ja! Unsere Mindestbudgets:</p>
-                <ul class="pricing-list">
-                  <li><strong>Website:</strong> Bereits ab €150 (Landing Page)</li>
-                  <li><strong>Google Ads:</strong> Minimum €500/Monat (für effektive Kampagnen)</li>
-                  <li><strong>SEO:</strong> Minimum €800/Monat (lokale Optimierung)</li>
-                  <li><strong>Social Media:</strong> Minimum €400/Monat (Content + Ads)</li>
-                </ul>
-                <div class="faq-highlight">
-                  🎯 <strong>Startup-Rabatt:</strong> 20% Nachlass für Unternehmen < 2 Jahre<br>
-                  📞 <strong>Beratung:</strong> Kostenloses Strategiegespräch für alle Budgets
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- AUDIT FORM SECTION -->
-    <section id="auditForm" class="audit-section">
-      <div class="container">
-        <div class="audit-wrapper">
-          <div class="audit-content">
-            <header class="audit-header">
-              <h2 data-i18n="audit_form_title">🎯 Kostenloser Marketing-Audit (Wert: €200)</h2>
-              <p class="audit-description" data-i18n="audit_form_desc">
-                Lassen Sie uns Ihr aktuelles Marketing analysieren und konkrete Verbesserungsvorschläge entwickeln. 
-                Komplett kostenlos und unverbindlich.
-              </p>
-            </header>
-
-            <div class="audit-benefits">
-              <div class="benefit-item">
-                <div class="benefit-icon">📊</div>
-                <div class="benefit-text">
-                  <h4>Detaillierte Analyse</h4>
-                  <p>Website, SEO, Google Ads und Social Media Bewertung</p>
-                </div>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-icon">🎯</div>
-                <div class="benefit-text">
-                  <h4>Konkrete Empfehlungen</h4>
-                  <p>Spezifische Maßnahmen für Ihr Unternehmen</p>
-                </div>
-              </div>
-              <div class="benefit-item">
-                <div class="benefit-icon">⚡</div>
-                <div class="benefit-text">
-                  <h4>Schnelle Lieferung</h4>
-                  <p>Audit-Report innerhalb von 24-48 Stunden</p>
-                </div>
-              </div>
-            </div>
-
-            <form id="mainAuditForm" class="audit-form-main">
-              <div class="form-grid">
-                <div class="form-group">
-                  <label for="companyName" data-i18n="form_company">Firmenname *</label>
-                  <input type="text" id="companyName" name="companyName" required>
-                </div>
-                
-                <div class="form-group">
-                  <label for="contactName" data-i18n="form_name">Ihr Name *</label>
-                  <input type="text" id="contactName" name="contactName" required>
-                </div>
-                
-                <div class="form-group">
-                  <label for="email" data-i18n="form_email">E-Mail *</label>
-                  <input type="email" id="email" name="email" required>
-                </div>
-                
-                <div class="form-group">
-                  <label for="phone" data-i18n="form_phone">Telefon</label>
-                  <input type="tel" id="phone" name="phone">
-                </div>
-                
-                <div class="form-group form-full-width">
-                  <label for="website" data-i18n="form_website">Website URL *</label>
-                  <input type="url" id="website" name="website" placeholder="https://ihre-website.de" required>
-                </div>
-                
-                <div class="form-group form-full-width">
-                  <label for="industry" data-i18n="form_industry">Branche</label>
-                  <select id="industry" name="industry">
-                    <option value="">Bitte wählen...</option>
-                    <option value="ecommerce">E-Commerce</option>
-                    <option value="services">Dienstleistungen</option>
-                    <option value="manufacturing">Produktion</option>
-                    <option value="healthcare">Gesundheitswesen</option>
-                    <option value="tech">IT/Tech</option>
-                    <option value="consulting">Beratung</option>
-                    <option value="other">Sonstiges</option>
-                  </select>
-                </div>
-                
-                <div class="form-group form-full-width">
-                  <label for="currentMarketing" data-i18n="form_current">Aktuelle Marketing-Aktivitäten</label>
-                  <div class="checkbox-group">
-                    <label><input type="checkbox" name="marketing[]" value="google-ads"> Google Ads</label>
-                    <label><input type="checkbox" name="marketing[]" value="facebook-ads"> Facebook/Instagram Ads</label>
-                    <label><input type="checkbox" name="marketing[]" value="seo"> SEO</label>
-                    <label><input type="checkbox" name="marketing[]" value="social-media"> Social Media</label>
-                    <label><input type="checkbox" name="marketing[]" value="email"> E-Mail Marketing</label>
-                    <label><input type="checkbox" name="marketing[]" value="none"> Noch keine</label>
-                  </div>
-                </div>
-                
-                <div class="form-group form-full-width">
-                  <label for="budget" data-i18n="form_budget">Monatliches Marketing-Budget</label>
-                  <select id="budget" name="budget">
-                    <option value="">Bitte wählen...</option>
-                    <option value="under-500">Unter €500</option>
-                    <option value="500-1000">€500 - €1,000</option>
-                    <option value="1000-2500">€1,000 - €2,500</option>
-                    <option value="2500-5000">€2,500 - €5,000</option>
-                    <option value="5000-10000">€5,000 - €10,000</option>
-                    <option value="over-10000">Über €10,000</option>
-                  </select>
-                </div>
-                
-                <div class="form-group form-full-width">
-                  <label for="goals" data-i18n="form_goals">Ihre wichtigsten Ziele</label>
-                  <textarea id="goals" name="goals" rows="4" placeholder="z.B. Mehr Website-Traffic, bessere Conversion-Rate, mehr Leads..."></textarea>
-                </div>
-              </div>
-
-              <div class="form-consent">
-                <label class="consent-label">
-                  <input type="checkbox" id="privacy-consent" name="privacy-consent" required>
-                  <span class="consent-text" data-i18n="form_consent">
-                    Ich stimme der Verarbeitung meiner Daten gemäß <a href="#privacy" class="privacy-link">Datenschutzerklärung</a> zu und möchte den kostenlosen Marketing-Audit erhalten. *
-                  </span>
-                </label>
-              </div>
-
-              <button type="submit" class="audit-submit-btn" onclick="trackFormSubmission('main_audit_form')" data-i18n="form_submit">
-                🚀 Kostenlosen Audit anfordern
-              </button>
-              
-              <div class="form-guarantee">
-                <p data-i18n="form_guarantee">✅ 100% kostenlos ✅ Keine Verpflichtung ✅ DSGVO-konform</p>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ENHANCED FOOTER WITH ALL LINKS -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4 data-i18n="footer_services">Leistungen</h4>
-          <a href="#services" data-i18n="footer_webdev">Website-Entwicklung</a>
-          <a href="#services" data-i18n="footer_ads">Google Ads Management</a>
-          <a href="#services" data-i18n="footer_seo">SEO Optimierung</a>
-          <a href="#services" data-i18n="footer_smm">Social Media Marketing</a>
-          <a href="#services" data-i18n="footer_content">Content-Marketing</a>
-          <a href="#cases" data-i18n="footer_cases">Erfolgs-Cases</a>
-        </div>
-        
-        <div class="footer-section">
-          <h4 data-i18n="footer_company">Unternehmen</h4>
-          <a href="#" data-i18n="footer_about">Über uns</a>
-          <a href="#testimonials" data-i18n="footer_reviews">Kundenbewertungen</a>
-          <a href="#faq" data-i18n="footer_faq">FAQ</a>
-          <a href="#" data-i18n="footer_portfolio">Portfolio</a>
-          <a href="#" data-i18n="footer_blog">Blog & Insights</a>
-          <a href="#" data-i18n="footer_career">Karriere</a>
-        </div>
-        
-        <div class="footer-section">
-          <h4 data-i18n="footer_contact">Kontakt</h4>
-          <a href="https://t.me/Asystentmijbot" target="_blank" rel="noopener" data-i18n="footer_telegram">
-            <i class="fab fa-telegram"></i> Telegram Chat
-          </a>
-          <a href="mailto:maps.werbung@gmail.com" data-i18n="footer_email">
-            <i class="fas fa-envelope"></i> maps.werbung@gmail.com
-          </a>
-          <a href="#" onclick="toggleChat()" data-i18n="footer_chat">
-            <i class="fas fa-comments"></i> Live Chat
-          </a>
-          <a href="tel:+4915123456789" data-i18n="footer_phone">
-            <i class="fas fa-phone"></i> +49 151 23456789
-          </a>
-        </div>
-        
-        <div class="footer-section">
-          <h4 data-i18n="footer_legal">Rechtliches</h4>
-          <a href="#imprint" onclick="showModal('imprint')" data-i18n="footer_imprint">Impressum</a>
-          <a href="#privacy" onclick="showModal('privacy')" data-i18n="footer_privacy">Datenschutzerklärung</a>
-          <a href="#terms" onclick="showModal('terms')" data-i18n="footer_terms">AGB</a>
-          <a href="#cookies" onclick="showModal('cookies')" data-i18n="footer_cookies">Cookie-Richtlinie</a>
-        </div>
-      </div>
-      
-      <div class="footer-bottom">
-        <div class="footer-bottom-content">
-          <p data-i18n="footer_copyright">© 2024 Marketing in Deutschland. Alle Rechte vorbehalten.</p>
-          <div class="footer-badges">
-            <div class="badge-item">🇩🇪 Made in Germany</div>
-            <div class="badge-item">🔒 DSGVO-konform</div>
-            <div class="badge-item">⭐ 4.9/5 Rating</div>
-          </div>
-        </div>
+      <!-- ENHANCED ONLINE CHAT WIDGET -->
+  <div class="chat-backdrop" id="chatBackdrop" onclick="toggleChat()"></div>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="title" data-i18n="chat_title">💬 Онлайн Чат</div>
+      <button onclick="toggleChat()" style="background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 4px;">×</button>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="msg bot">
+        <div class="bubble" data-i18n="chat_welcome">Привіт! Ласкаво просимо до Marketing in Deutschland. Як ми можемо вам допомогти сьогодні?</div>
       </div>
     </div>
-  </footer>
+    <div class="chat-input">
+      <input type="text" placeholder="Введіть повідомлення..." id="chatInput" onkeypress="handleEnter(event)" data-i18n-placeholder="chat_placeholder">
+      <button onclick="sendMessage()" data-i18n="chat_send">Надіслати</button>
+    </div>
+  </div>
 
-  <!-- COOKIE CONSENT STYLES AND PRIVACY MODALS -->
+  <!-- ENHANCED CHAT LAUNCHER -->
+  <button class="chat-launcher" onclick="toggleChat()" aria-label="Онлайн чат">
+    💬
+    <div class="chat-label">ОНЛАЙН ЧАТ</div>
+  </button>
+
+  <!-- ADDITIONAL STYLES FOR CORRECTIONS -->
   <style>
-    /* Cookie Consent */
-    .cookie-consent {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(15,23,42,.98); backdrop-filter: blur(20px);
-      border-top: 1px solid rgba(255,255,255,.2); padding: 20px;
-      transform: translateY(100%); transition: transform .3s ease;
-    }
-    
-    .cookie-consent.show {
-      transform: translateY(0);
-    }
-    
-    .cookie-content {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 20px; flex-wrap: wrap;
-    }
-    
-    .cookie-text {
-      flex: 1; min-width: 300px;
-    }
-    
-    .cookie-actions {
-      display: flex; gap: 12px; flex-wrap: wrap;
-    }
-    
-    .cookie-accept, .cookie-settings {
-      padding: 10px 20px; border-radius: 8px; font-weight: 600;
-      border: none; cursor: pointer; transition: .3s ease; font-size: 14px;
-    }
-    
-    .cookie-accept {
-      background: var(--brand); color: white;
-    }
-    
-    .cookie-accept:hover {
-      background: var(--brand2);
-    }
-    
-    .cookie-settings {
-      background: transparent; color: var(--text);
-      border: 1px solid rgba(255,255,255,.3);
-    }
-    
-    .cookie-policy {
-      color: var(--muted); text-decoration: underline;
-      font-size: 14px; padding: 10px 0;
+    /* HORIZONTAL CTA BANNER STYLES */
+    .desktop-cta-banner {
+      display: block;
+      border-top: 1px solid rgba(255,255,255,.1);
+      background: rgba(15,23,42,.8);
+      backdrop-filter: blur(10px);
     }
 
-    /* Enhanced Styles */
-    .section-header {
-      text-align: center; margin-bottom: 60px;
-    }
-    
-    .section-subtitle {
-      font-size: 18px; color: var(--muted); max-width: 600px;
-      margin: 16px auto 0; line-height: 1.6;
-    }
-    
-    .promo-banner {
+    .promo-banner-horizontal {
       background: linear-gradient(135deg, var(--accent), #EF4444);
-      border-radius: var(--radius-sm); padding: 16px; position: relative;
-      overflow: hidden; animation: glow 3s ease-in-out infinite;
-    }
-    
-    .promo-content {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; flex-wrap: wrap;
-    }
-    
-    .promo-text strong {
-      color: white; font-size: 14px; display: block;
-    }
-    
-    .promo-details {
-      font-size: 11px; color: rgba(255,255,255,.9);
-      line-height: 1.3; margin-top: 4px;
-    }
-    
-    .promo-timer {
-      text-align: center; color: white;
-    }
-    
-    .timer {
-      font-size: 12px; font-weight: 600;
-    }
-    
-    .countdown {
-      font-size: 16px; font-weight: 900;
-      text-shadow: 0 2px 4px rgba(0,0,0,.3);
-    }
-    
-    .promo-cta {
-      background: white; color: var(--accent); padding: 8px 16px;
-      border-radius: 6px; font-weight: 700; font-size: 12px;
-      text-decoration: none; transition: .3s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,.2);
-    }
-    
-    .promo-cta:hover {
-      transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,.3);
+      border-radius: 0;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+      overflow: hidden;
+      animation: glow 4s ease-in-out infinite;
     }
 
-    /* Cases Section */
-    .cases-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 32px; margin-bottom: 60px;
+    .promo-content-horizontal {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex: 1;
+      gap: 24px;
+      flex-wrap: wrap;
     }
-    
-    .case-card {
-      background: var(--card); border: var(--border); border-radius: var(--radius);
-      padding: 28px; box-shadow: var(--shadow); transition: .4s ease;
+
+    .promo-text-large {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .promo-text-large strong {
+      color: white;
+      font-size: 18px;
+      font-weight: 900;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .promo-details-horizontal {
+      font-size: 13px;
+      color: rgba(255,255,255,.95);
+      line-height: 1.4;
+      margin-top: 8px;
+      font-weight: 600;
+    }
+
+    .promo-timer-horizontal {
+      text-align: center;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .timer-large {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .countdown-large {
+      font-size: 20px;
+      font-weight: 900;
+      text-shadow: 0 2px 4px rgba(0,0,0,.3);
+      font-family: 'Courier New', monospace;
+    }
+
+    .promo-cta-large {
+      background: white;
+      color: var(--accent);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 900;
+      font-size: 16px;
+      text-decoration: none;
+      transition: .3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      flex-shrink: 0;
+    }
+
+    .promo-cta-large:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,.4);
+      background: #f8fafc;
+    }
+
+    /* MOBILE LANGUAGE PANEL STYLES */
+    .mobile-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      background: rgba(255,255,255,.03);
+    }
+
+    .mobile-lang-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .lang-label {
+      font-weight: 600;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    /* ENHANCED CHAT STYLES */
+    .chat-launcher {
+      position: fixed; 
+      right: 24px; 
+      bottom: 24px; 
+      z-index: 60;
+      width: 90px; 
+      height: 90px; 
+      border-radius: 50%; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      color: #fff; 
+      border: none; 
+      box-shadow: var(--shadow-lg);
+      cursor: pointer; 
+      transition: .3s ease; 
+      font-size: 28px;
+      animation: pulse 3s infinite;
+      font-weight: 600;
+    }
+
+    .chat-launcher:hover {
+      transform: scale(1.1);
+      box-shadow: 0 40px 80px -20px rgba(59,130,246,.5);
+    }
+
+    .chat-label {
+      font-size: 11px;
+      font-weight: 700;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .chat-panel {
+      position: fixed; 
+      right: 24px; 
+      bottom: 130px; 
+      z-index: 60;
+      width: min(450px, calc(100vw - 48px)); 
+      max-height: 85vh;
+      background: var(--bg); 
+      border: var(--border); 
+      border-radius: 20px;
+      box-shadow: var(--shadow-lg);
+      transform: translateY(20px) scale(.9); 
+      opacity: 0; 
+      pointer-events: none;
+      transition: .3s ease; 
+      display: flex; 
+      flex-direction: column; 
+      overflow: hidden;
       backdrop-filter: blur(20px);
     }
-    
-    .case-card:hover {
-      transform: translateY(-8px); box-shadow: var(--shadow-lg);
+
+    .chat-panel.open {
+      transform: none; 
+      opacity: 1; 
+      pointer-events: auto;
     }
-    
+
+    .chat-header {
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between;
+      padding: 20px 24px; 
+      background: rgba(59,130,246,.1);
+      border-bottom: var(--border);
+    }
+
+    .chat-header .title {
+      font-weight: 800; 
+      font-size: 18px;
+      color: var(--brand);
+    }
+
+    .chat-body {
+      height: 450px; 
+      max-height: 50vh; 
+      overflow: auto; 
+      padding: 24px;
+      scroll-behavior: smooth;
+      background: rgba(0,0,0,.1);
+    }
+
+    .msg {
+      display: flex; 
+      gap: 12px; 
+      margin: 20px 0;
+    }
+
+    .msg.user {
+      justify-content: flex-end;
+    }
+
+    .bubble {
+      max-width: 80%; 
+      padding: 14px 18px; 
+      border-radius: 16px;
+      line-height: 1.5; 
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .user .bubble {
+      background: var(--gradient);
+      color: white; 
+      border: none;
+    }
+
+    .bot .bubble {
+      background: rgba(255,255,255,.1); 
+      border: var(--border);
+      color: var(--text);
+    }
+
+    .chat-input {
+      display: flex; 
+      gap: 12px; 
+      padding: 20px 24px;
+      background: rgba(255,255,255,.03); 
+      border-top: var(--border);
+    }
+
+    .chat-input input {
+      flex: 1; 
+      background: var(--bg); 
+      color: var(--text);
+      border: var(--border); 
+      border-radius: 12px; 
+      padding: 14px 18px;
+      outline: none; 
+      transition: border-color .3s ease; 
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .chat-input input:focus {
+      border-color: var(--brand); 
+      box-shadow: var(--glow);
+    }
+
+    .chat-input button {
+      background: var(--gradient);
+      border: none; 
+      color: #fff; 
+      padding: 14px 20px; 
+      border-radius: 12px;
+      font-weight: 700; 
+      transition: .3s ease; 
+      font-size: 15px; 
+      cursor: pointer;
+    }
+
+    .chat-input button:hover {
+      transform: translateY(-2px); 
+      box-shadow: var(--shadow);
+    }
+
+    /* CASE CARD ENHANCEMENTS */
+    .case-location {
+      background: rgba(16,185,129,.15);
+      color: var(--brand2);
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid rgba(16,185,129,.3);
+    }
+
+    .cases-grid {
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 32px; 
+      margin-bottom: 60px;
+    }
+
+    .case-card {
+      background: var(--card); 
+      border: var(--border); 
+      border-radius: var(--radius);
+      padding: 28px; 
+      box-shadow: var(--shadow); 
+      transition: .4s ease;
+      backdrop-filter: blur(20px);
+    }
+
+    .case-card:hover {
+      transform: translateY(-8px); 
+      box-shadow: var(--shadow-lg);
+    }
+
     .case-header {
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
       margin-bottom: 20px;
     }
-    
+
     .case-category {
-      background: var(--brand); color: white; padding: 6px 12px;
-      border-radius: 16px; font-size: 12px; font-weight: 600;
+      background: var(--brand); 
+      color: white; 
+      padding: 6px 12px;
+      border-radius: 16px; 
+      font-size: 12px; 
+      font-weight: 600;
     }
-    
-    .case-timeframe {
-      color: var(--muted); font-size: 12px; font-weight: 600;
-    }
-    
+
     .case-title {
-      font-size: 20px; margin-bottom: 16px;
+      font-size: 20px; 
+      margin-bottom: 16px; 
+      font-weight: 700;
     }
-    
+
     .case-client {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      margin-bottom: 20px;
     }
-    
+
     .client-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
+      width: 40px; 
+      height: 40px; 
+      border-radius: 50%;
     }
-    
+
     .client-name {
-      font-weight: 600; font-size: 14px;
+      font-weight: 600; 
+      font-size: 14px;
     }
-    
+
     .client-company {
-      color: var(--muted); font-size: 12px;
+      color: var(--muted); 
+      font-size: 12px;
     }
-    
+
     .case-metrics {
       margin: 24px 0;
     }
-    
+
     .metric {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
-      padding: 12px; background: rgba(255,255,255,.03); border-radius: 8px;
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      margin-bottom: 12px;
+      padding: 12px; 
+      background: rgba(255,255,255,.03); 
+      border-radius: 8px;
     }
-    
+
     .metric-before, .metric-after {
-      display: flex; flex-direction: column; gap: 4px;
+      font-size: 14px;
+      font-weight: 600;
     }
-    
-    .label {
-      font-size: 11px; color: var(--muted); text-transform: uppercase;
+
+    .metric-before {
+      color: var(--muted);
     }
-    
-    .value {
-      font-weight: 700; font-size: 14px;
+
+    .metric-after.highlight {
+      color: var(--brand2);
+      font-weight: 700;
     }
-    
-    .value.highlight {
+
+    .metric-arrow {
+      color: var(--brand); 
+      font-size: 18px; 
+      font-weight: 900;
+    }
+
+    .case-result {
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center;
+      padding: 16px; 
+      background: rgba(16,185,129,.1); 
+      border-radius: 8px;
+      border: 1px solid rgba(16,185,129,.3); 
+      margin: 20px 0;
+    }
+
+    .result-percentage {
+      font-size: 18px; 
+      font-weight: 900; 
       color: var(--brand2);
     }
-    
-    .metric-arrow {
-      color: var(--brand); font-size: 18px; font-weight: 900;
-    }
-    
-    .case-services {
-      display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0;
-    }
-    
-    .service-tag {
-      background: rgba(59,130,246,.15); color: var(--brand);
-      padding: 4px 8px; border-radius: 4px; font-size: 11px;
-      font-weight: 600; border: 1px solid rgba(59,130,246,.3);
-    }
-    
-    .case-result {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 16px; background: rgba(16,185,129,.1); border-radius: 8px;
-      border: 1px solid rgba(16,185,129,.3); margin: 20px 0;
-    }
-    
-    .result-percentage {
-      font-size: 18px; font-weight: 900; color: var(--brand2);
-    }
-    
+
     .result-roi {
-      font-size: 14px; font-weight: 600; color: var(--muted);
-    }
-    
-    .case-details-btn {
-      width: 100%; background: var(--gradient); color: white;
-      border: none; padding: 12px; border-radius: 8px; font-weight: 600;
-      cursor: pointer; transition: .3s ease; font-size: 14px;
-    }
-    
-    .case-details-btn:hover {
-      transform: translateY(-2px); box-shadow: var(--shadow);
+      font-size: 14px; 
+      font-weight: 600; 
+      color: var(--muted);
     }
 
-    /* Enhanced Testimonials */
-    .enhanced-quote {
-      min-width: 420px; background: var(--card); border: var(--border);
-      border-radius: var(--radius); padding: 32px; position: relative;
-      transition: .3s ease; backdrop-filter: blur(20px);
-    }
-    
-    .quote-header {
-      display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
-    }
-    
-    .client-photo {
-      width: 60px; height: 60px; border-radius: 50%;
-      box-shadow: var(--shadow);
-    }
-    
-    .client-details {
-      flex: 1;
-    }
-    
-    .client-name {
-      font-weight: 700; font-size: 16px; margin-bottom: 4px;
-    }
-    
-    .client-position {
-      color: var(--muted); font-size: 13px; margin-bottom: 2px;
-    }
-    
-    .client-company {
-      color: var(--muted); font-size: 12px; font-style: italic;
-    }
-    
-    .quote-content p {
-      font-size: 16px; line-height: 1.6; margin-bottom: 20px;
-      font-style: italic; color: var(--text);
-    }
-    
-    .results-showcase {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 12px; margin: 20px 0; padding: 16px;
-      background: rgba(59,130,246,.05); border-radius: 8px;
-      border: 1px solid rgba(59,130,246,.2);
-    }
-    
-    .result-item {
-      text-align: center;
-    }
-    
-    .result-label {
-      font-size: 11px; color: var(--muted); margin-bottom: 4px;
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    
-    .result-value {
-      font-size: 16px; font-weight: 900; color: var(--brand);
-    }
-    
-    .quote-footer {
-      display: flex; justify-content: space-between; align-items: center;
-      margin-top: 20px; padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-    
-    .verification {
-      font-size: 12px; color: var(--brand2); font-weight: 600;
-    }
-
-    /* Enhanced Form Styles */
-    .audit-section {
-      padding: 80px 0; background: rgba(59,130,246,.03);
-    }
-    
-    .audit-wrapper {
-      max-width: 900px; margin: 0 auto;
-    }
-    
-    .audit-content {
-      background: var(--card); border: var(--border); border-radius: var(--radius);
-      padding: 48px; box-shadow: var(--shadow-lg); backdrop-filter: blur(20px);
-    }
-    
-    .audit-header {
-      text-align: center; margin-bottom: 40px;
-    }
-    
-    .audit-header h2 {
-      margin-bottom: 16px;
-    }
-    
-    .audit-description {
-      font-size: 18px; color: var(--muted); line-height: 1.6;
-      max-width: 700px; margin: 0 auto;
-    }
-    
-    .audit-benefits {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 24px; margin-bottom: 40px;
-    }
-    
-    .benefit-item {
-      display: flex; align-items: flex-start; gap: 16px;
-      padding: 20px; background: rgba(255,255,255,.03);
-      border-radius: 12px; border: var(--border);
-    }
-    
-    .benefit-icon {
-      font-size: 32px; flex-shrink: 0;
-    }
-    
-    .benefit-text h4 {
-      margin-bottom: 8px; font-size: 16px;
-    }
-    
-    .benefit-text p {
-      color: var(--muted); font-size: 14px; line-height: 1.4;
-    }
-    
-    .form-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
-      margin-bottom: 32px;
-    }
-    
-    .form-group {
-      display: flex; flex-direction: column;
-    }
-    
-    .form-full-width {
-      grid-column: 1 / -1;
-    }
-    
-    .form-group label {
-      font-weight: 600; margin-bottom: 8px; color: var(--text);
-    }
-    
-    .form-group input, .form-group select, .form-group textarea {
-      padding: 12px 16px; background: var(--bg); color: var(--text);
-      border: 1px solid rgba(255,255,255,.2); border-radius: 8px;
-      font-size: 14px; transition: .3s ease; outline: none;
-    }
-    
-    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-      border-color: var(--brand); box-shadow: var(--glow);
-    }
-    
-    .checkbox-group {
-      display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px;
-    }
-    
-    .checkbox-group label {
-      display: flex; align-items: center; gap: 8px; font-weight: 500;
-      cursor: pointer; padding: 8px 12px; border-radius: 6px;
-      transition: .3s ease;
-    }
-    
-    .checkbox-group label:hover {
-      background: rgba(255,255,255,.05);
-    }
-    
-    .form-consent {
-      margin-bottom: 32px;
-    }
-    
-    .consent-label {
-      display: flex; align-items: flex-start; gap: 12px;
-      cursor: pointer; line-height: 1.5;
-    }
-    
-    .consent-text {
-      font-size: 14px; color: var(--muted);
-    }
-    
-    .privacy-link {
-      color: var(--brand); text-decoration: underline;
-    }
-    
-    .audit-submit-btn {
-      width: 100%; background: var(--gradient); color: white;
-      border: none; padding: 16px; border-radius: 12px;
-      font-size: 18px; font-weight: 700; cursor: pointer;
-      transition: .3s ease; box-shadow: var(--shadow);
-    }
-    
-    .audit-submit-btn:hover {
-      transform: translateY(-3px); box-shadow: var(--shadow-lg);
-    }
-    
-    .form-guarantee {
-      text-align: center; margin-top: 20px;
-    }
-    
-    .form-guarantee p {
-      color: var(--muted); font-size: 14px;
-    }
-
-    /* FAQ Enhancements */
-    .faq-grid {
-      max-width: 1000px; margin: 0 auto;
-    }
-    
-    .faq-content {
-      padding-bottom: 24px;
-    }
-    
-    .timeline-list, .pricing-list, .guarantee-list {
-      margin: 16px 0; padding-left: 20px;
-    }
-    
-    .timeline-list li, .pricing-list li, .guarantee-list li {
-      margin-bottom: 12px; line-height: 1.5;
-    }
-    
-    .faq-highlight {
-      background: rgba(59,130,246,.1); border-left: 4px solid var(--brand);
-      padding: 16px; margin: 20px 0; border-radius: 8px;
-      font-size: 14px; line-height: 1.5;
-    }
-
-    /* Mobile Styles */
+    /* MOBILE RESPONSIVENESS */
     @media (max-width: 768px) {
-      .promo-banner { padding: 12px; }
-      .promo-content { flex-direction: column; text-align: center; }
-      .cases-grid { grid-template-columns: 1fr; }
-      .case-card { padding: 20px; }
-      .enhanced-quote { min-width: 300px; padding: 24px; }
-      .quote-header { flex-direction: column; text-align: center; }
-      .results-showcase { grid-template-columns: 1fr; }
-      .form-grid { grid-template-columns: 1fr; gap: 20px; }
-      .audit-content { padding: 32px 20px; }
-      .benefit-item { flex-direction: column; text-align: center; }
-      .benefit-icon { align-self: center; }
-      .checkbox-group { flex-direction: column; }
-      .footer-content { grid-template-columns: repeat(2, 1fr); }
-    }
-    
-    @media (max-width: 480px) {
-      .footer-content { grid-template-columns: 1fr; }
-      .audit-content { padding: 24px 16px; }
+      .desktop-cta-banner {
+        display: none;
+      }
+      
+      .chat-launcher {
+        width: 75px;
+        height: 75px;
+        font-size: 24px;
+        right: 20px;
+        bottom: 20px;
+      }
+      
+      .chat-label {
+        font-size: 10px;
+      }
+      
+      .chat-panel {
+        right: 20px;
+        bottom: 110px;
+        width: calc(100vw - 40px);
+      }
+      
+      .mobile-header {
+        display: block;
+      }
+      
+      .cases-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .case-card {
+        padding: 20px;
+      }
+      
+      .promo-content-horizontal {
+        flex-direction: column;
+        gap: 16px;
+      }
     }
 
-    /* Performance Critical Styles */
-    .nav-desktop, .services-grid, .cases-grid, .testimonials {
+    @media (max-width: 480px) {
+      .chat-panel {
+        width: calc(100vw - 20px);
+        right: 10px;
+      }
+      
+      .mobile-lang-panel {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+      }
+    }
+
+    /* PERFORMANCE OPTIMIZATIONS */
+    .cases-grid, .nav-desktop {
       will-change: transform;
     }
     
@@ -1656,312 +1639,163 @@
       }
     }
 
-    /* CSS that was previously external */
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0); }
-      33% { transform: translateY(-10px) rotate(1deg); }
-      66% { transform: translateY(5px) rotate(-1deg); }
+    /* Navigation styles */
+    .nav-desktop {
+      display: flex; 
+      gap: 20px; 
+      align-items: center;
     }
-
-    @keyframes pulse {
-      0%, 100% { opacity: .8; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.05); }
-    }
-
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes slideInLeft {
-      from { opacity: 0; transform: translateX(-20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes glow {
-      0%, 100% { box-shadow: var(--glow); }
-      50% { box-shadow: 0 0 30px rgba(59,130,246,0.5); }
-    }
-
-    @keyframes bounce {
-      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-      40% { transform: translateY(-10px); }
-      60% { transform: translateY(-5px); }
-    }
-
-    .animate-float { animation: float 6s ease-in-out infinite; }
-    .animate-slide-up { animation: slideUp .8s ease-out forwards; }
-    .animate-slide-left { animation: slideInLeft .6s ease-out forwards; }
-    .animate-fade { animation: fadeIn .5s ease-out forwards; }
-    .animate-glow { animation: glow 2s ease-in-out infinite; }
-    .animate-bounce { animation: bounce 2s infinite; }
-
-    /* Additional styles for all sections */
-    .logo { width: 40px; height: 40px; filter: drop-shadow(var(--glow)); flex-shrink: 0; }
-    .title { font-weight: 900; letter-spacing: -.02em; font-size: 16px; white-space: nowrap; }
-    .subtitle { display: block; font-weight: 600; color: var(--muted); font-size: 11px; margin-top: -2px; }
-    .progress-bar { position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: linear-gradient(90deg, var(--brand), var(--brand2)); z-index: 51; transition: width 0.1s ease; }
     
-    .mobile-toggle { display: none; background: none; border: none; color: var(--text); cursor: pointer; padding: 8px; border-radius: 8px; transition: background .3s ease; z-index: 52; position: relative; }
-    .mobile-toggle:hover { background: rgba(255,255,255,.1); }
-    .hamburger { width: 24px; height: 18px; position: relative; transform: rotate(0deg); transition: .5s ease-in-out; }
-    .hamburger span { display: block; position: absolute; height: 3px; width: 100%; background: var(--text); border-radius: 2px; opacity: 1; left: 0; transform: rotate(0deg); transition: .25s ease-in-out; }
+    .nav-desktop a {
+      padding: 8px 14px; 
+      border-radius: var(--radius-sm); 
+      color: var(--muted); 
+      transition: .3s ease; 
+      font-weight: 500; 
+      white-space: nowrap; 
+      position: relative;
+      text-decoration: none;
+    }
+    
+    .nav-desktop a:hover {
+      color: #fff; 
+      background: rgba(255,255,255,.1); 
+      transform: translateY(-2px); 
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-toggle {
+      display: none; 
+      background: none; 
+      border: none; 
+      color: var(--text); 
+      cursor: pointer; 
+      padding: 8px; 
+      border-radius: 8px; 
+      transition: background .3s ease; 
+      z-index: 52; 
+      position: relative;
+    }
+    
+    .mobile-toggle:hover {
+      background: rgba(255,255,255,.1);
+    }
+    
+    .hamburger {
+      width: 24px; 
+      height: 18px; 
+      position: relative; 
+      transform: rotate(0deg); 
+      transition: .5s ease-in-out;
+    }
+    
+    .hamburger span {
+      display: block; 
+      position: absolute; 
+      height: 3px; 
+      width: 100%; 
+      background: var(--text); 
+      border-radius: 2px; 
+      opacity: 1; 
+      left: 0; 
+      transform: rotate(0deg); 
+      transition: .25s ease-in-out;
+    }
+    
     .hamburger span:nth-child(1) { top: 0px; }
     .hamburger span:nth-child(2) { top: 7px; }
     .hamburger span:nth-child(3) { top: 14px; }
-    .hamburger.active span:nth-child(1) { top: 7px; transform: rotate(135deg); }
-    .hamburger.active span:nth-child(2) { opacity: 0; left: -60px; }
-    .hamburger.active span:nth-child(3) { top: 7px; transform: rotate(-135deg); }
     
-    .mobile-menu { position: absolute; top: 100%; left: 0; right: 0; background: rgba(15,23,42,.98); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,.1); transform: translateY(-10px); opacity: 0; visibility: hidden; transition: all .3s ease; z-index: 49; box-shadow: 0 10px 40px rgba(0,0,0,.2); }
-    .mobile-menu.active { transform: translateY(0); opacity: 1; visibility: visible; }
-    .mobile-links { display: flex; flex-direction: column; padding: 20px; gap: 4px; }
-    .mobile-links a { padding: 12px 16px; color: var(--muted); border-radius: var(--radius-sm); transition: .3s ease; font-weight: 500; }
-    .mobile-links a:hover { color: var(--text); background: rgba(255,255,255,.08); }
-    
-    .nav-desktop { display: flex; gap: 20px; align-items: center; }
-    .nav-desktop a { padding: 8px 14px; border-radius: var(--radius-sm); color: var(--muted); transition: .3s ease; font-weight: 500; white-space: nowrap; position: relative; }
-    .nav-desktop a:hover { color: #fff; background: rgba(255,255,255,.1); transform: translateY(-2px); box-shadow: var(--shadow); }
-    .nav-desktop a:before { content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px; background: var(--brand); transition: .3s ease; transform: translateX(-50%); }
-    .nav-desktop a:hover:before { width: 80%; }
-    
-    .lang select { background: var(--bg2); color: var(--text); border: 1px solid rgba(255,255,255,.2); padding: 8px 12px; border-radius: var(--radius-sm); outline: none; transition: .3s ease; font-size: 14px; font-weight: 600; text-transform: lowercase; }
-    .lang select:hover, .lang select:focus { border-color: var(--brand); box-shadow: var(--glow); }
-
-    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 60px; align-items: center; }
-    .badge { display: inline-flex; gap: 8px; align-items: center; background: rgba(16,185,129,.15); color: #D1FAE5; border: 1px solid rgba(16,185,129,.3); padding: 8px 16px; border-radius: 999px; font-size: 13px; font-weight: 600; box-shadow: var(--shadow); animation: pulse 3s ease-in-out infinite; }
-    .lead { color: #cbd5e1; font-size: clamp(18px, 3vw, 22px); max-width: 600px; line-height: 1.6; margin-bottom: 32px; }
-    .hero-visual { position: relative; }
-    .hero-card { background: var(--card); border: var(--border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-lg); position: relative; backdrop-filter: blur(20px); }
-    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-    .stat { background: rgba(255,255,255,.03); border: var(--border); border-radius: 12px; padding: 20px; text-align: center; transition: .3s ease; position: relative; overflow: hidden; }
-    .stat:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); background: rgba(255,255,255,.08); }
-    .stat b { font-size: 24px; display: block; margin: 8px 0 6px; color: var(--brand); }
-    .stat .muted { font-size: 13px; line-height: 1.4; color: var(--muted); }
-
-    .services-grid { display: grid; gap: 24px; max-width: 1200px; margin: 0 auto; grid-template-columns: repeat(4, 1fr); }
-    .card { background: var(--card); border: var(--border); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); position: relative; transition: .4s ease; backdrop-filter: blur(20px); overflow: hidden; }
-    .card:before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--brand), var(--brand2)); transform: scaleX(0); transition: transform .4s ease; }
-    .card:hover { transform: translateY(-12px) scale(1.02); box-shadow: var(--shadow-lg); background: linear-gradient(145deg, rgba(255,255,255,.15), rgba(255,255,255,.06)); }
-    .card:hover:before { transform: scaleX(1); }
-    .card-icon { width: 64px; height: 64px; margin-bottom: 20px; background: linear-gradient(135deg, var(--brand), var(--brand2)); border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: var(--glow); font-size: 28px; color: white; }
-    .card h3 { margin: 0 0 16px; font-size: 22px; font-weight: 700; }
-    .card p { color: var(--muted); line-height: 1.6; margin: 0; font-size: 15px; }
-
-    .testimonials-container { overflow-x: auto; padding: 20px 0; scrollbar-width: thin; scrollbar-color: var(--brand) var(--bg); }
-    .testimonials-container::-webkit-scrollbar { height: 8px; }
-    .testimonials-container::-webkit-scrollbar-track { background: var(--bg); }
-    .testimonials-container::-webkit-scrollbar-thumb { background-color: var(--brand); border-radius: 20px; }
-    .testimonials { display: flex; gap: 24px; padding: 0 20px; }
-    .quote { min-width: 350px; background: rgba(255,255,255,.06); border: var(--border); border-radius: var(--radius); padding: 28px; position: relative; transition: .3s ease; backdrop-filter: blur(10px); }
-    .quote:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .quote:before { content: '"'; position: absolute; left: 20px; top: -5px; font-size: 60px; color: rgba(59,130,246,.3); font-weight: 900; }
-    .quote p { margin: 0 0 20px; font-size: 15px; line-height: 1.6; font-style: italic; }
-    .quote b { display: flex; align-items: center; gap: 12px; color: var(--brand); font-weight: 600; font-size: 14px; }
-    .quote-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), var(--brand2)); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 16px; }
-    .stars { color: #F59E0B; font-size: 16px; margin-top: 8px; }
-
-    .faq-item { background: rgba(255,255,255,.04); border: var(--border); border-radius: var(--radius-sm); margin-bottom: 16px; transition: .3s ease; overflow: hidden; }
-    .faq-question { padding: 20px 24px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; font-size: 16px; }
-    .faq-question:hover { background: rgba(255,255,255,.08); }
-    .faq-answer { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height .3s ease, color .3s ease; color: var(--muted); }
-    .faq-item.open .faq-answer { max-height: 500px; padding: 0 24px 20px; }
-    .faq-toggle { width: 24px; height: 24px; border-radius: 50%; background: var(--brand); color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; transition: transform .3s ease; flex-shrink: 0; }
-    .faq-item.open .faq-toggle { transform: rotate(45deg); }
-
-    .footer { padding: 60px 0 40px; background: linear-gradient(135deg, rgba(15,23,42,.9), rgba(30,41,59,.9)); border-top: 1px solid rgba(255,255,255,.1); }
-    .footer-content { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 40px; margin-bottom: 40px; }
-    .footer-section h4 { color: var(--brand); margin-bottom: 16px; font-size: 18px; }
-    .footer-section a { color: var(--muted); display: block; margin-bottom: 8px; transition: color .3s ease; font-size: 15px; }
-    .footer-section a:hover { color: var(--text); }
-    .footer-bottom { text-align: center; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.1); color: var(--muted); font-size: 15px; }
-    .footer-bottom-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-    .footer-badges { display: flex; gap: 16px; flex-wrap: wrap; }
-    .badge-item { background: rgba(255,255,255,.1); padding: 6px 12px; border-radius: 16px; font-size: 12px; font-weight: 600; }
-
-    @media (max-width: 1199px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 768px) { 
-      .container { padding: 0 16px; }
-      .nav-desktop { display: none; }
-      .mobile-toggle { display: block; }
-      .nav { height: 60px; padding: 0; }
-      .hero { padding: 60px 0 40px; }
-      .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-      .hero-card { padding: 24px; }
-      .hero-stats { grid-template-columns: 1fr; gap: 12px; }
-      .stat { padding: 16px; }
-      .stat b { font-size: 20px; }
-      .card { padding: 24px; }
-      .card-icon { width: 56px; height: 56px; margin-bottom: 16px; }
-      .card h3 { font-size: 20px; }
-      .services-grid { grid-template-columns: 1fr; }
-      section { padding: 50px 0; }
-      h2 { margin-bottom: 40px; }
-      .lang select { padding: 6px 10px; font-size: 13px; }
-      .cta { padding: 8px 14px; font-size: 13px; gap: 8px; }
-      .quote { min-width: 280px; }
+    .hamburger.active span:nth-child(1) {
+      top: 7px; 
+      transform: rotate(135deg);
     }
     
-    @media (max-width: 480px) {
-      .container { padding: 0 12px; }
-      h1 { font-size: 28px; margin: 16px 0 12px; }
-      .lead { font-size: 16px; margin-bottom: 24px; }
-      .badge { padding: 6px 12px; font-size: 12px; }
-      .hero { padding: 40px 0 30px; }
-      section { padding: 40px 0; }
-      .card { padding: 20px; }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0; 
+      left: -60px;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      top: 7px; 
+      transform: rotate(-135deg);
+    }
+
+    .mobile-menu {
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      right: 0; 
+      background: rgba(15,23,42,.98); 
+      backdrop-filter: blur(20px); 
+      border-bottom: 1px solid rgba(255,255,255,.1); 
+      transform: translateY(-10px); 
+      opacity: 0; 
+      visibility: hidden; 
+      transition: all .3s ease; 
+      z-index: 49; 
+      box-shadow: 0 10px 40px rgba(0,0,0,.2);
+    }
+    
+    .mobile-menu.active {
+      transform: translateY(0); 
+      opacity: 1; 
+      visibility: visible;
+    }
+    
+    .mobile-links {
+      display: flex; 
+      flex-direction: column; 
+      padding: 20px; 
+      gap: 4px;
+    }
+    
+    .mobile-links a {
+      padding: 12px 16px; 
+      color: var(--muted); 
+      border-radius: var(--radius-sm); 
+      transition: .3s ease; 
+      font-weight: 500;
+      text-decoration: none;
+    }
+    
+    .mobile-links a:hover {
+      color: var(--text); 
+      background: rgba(255,255,255,.08);
+    }
+
+    @media (max-width: 768px) {
+      .nav-desktop {
+        display: none;
+      }
+      
+      .mobile-toggle {
+        display: block;
+      }
+    }
+
+    /* Additional animations */
+    @keyframes glow {
+      0%, 100% { 
+        box-shadow: 0 0 5px rgba(245,158,11,0.5), 0 0 10px rgba(239,68,68,0.3); 
+      }
+      50% { 
+        box-shadow: 0 0 20px rgba(245,158,11,0.8), 0 0 30px rgba(239,68,68,0.6); 
+      }
+    }
+
+    /* Progressive enhancement */
+    @supports (backdrop-filter: blur(10px)) {
+      .chat-panel, .mobile-menu, .desktop-cta-banner {
+        backdrop-filter: blur(20px);
+      }
     }
   </style>
-    <!-- CHAT WIDGET -->
-  <div class="chat-backdrop" id="chatBackdrop" onclick="toggleChat()"></div>
-  <div class="chat-panel" id="chatPanel">
-    <div class="chat-header">
-      <div class="title" data-i18n="chat_title">Live Chat Support</div>
-      <button onclick="toggleChat()" style="background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; padding: 4px;">×</button>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="msg bot">
-        <div class="bubble" data-i18n="chat_welcome">Hallo! Willkommen bei Marketing in Deutschland. Wie können wir Ihnen heute helfen?</div>
-      </div>
-    </div>
-    <div class="chat-input">
-      <input type="text" placeholder="Nachricht eingeben..." id="chatInput" onkeypress="handleEnter(event)" data-i18n-placeholder="chat_placeholder">
-      <button onclick="sendMessage()" data-i18n="chat_send">Senden</button>
-    </div>
-  </div>
 
-  <button class="chat-launcher" onclick="toggleChat()" aria-label="Chat öffnen">💬</button>
-
-  <!-- PRIVACY POLICY MODAL -->
-  <div id="privacyModal" class="modal" style="display: none;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Datenschutzerklärung</h2>
-        <button onclick="closeModal('privacyModal')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <h3>1. Datenschutz auf einen Blick</h3>
-        <p><strong>Allgemeine Hinweise:</strong> Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen.</p>
-        
-        <h3>2. Datenerfassung auf dieser Website</h3>
-        <p><strong>Kontaktformular:</strong> Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.</p>
-        
-        <h3>3. Google Analytics</h3>
-        <p>Diese Website nutzt Funktionen des Webanalysedienstes Google Analytics. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.</p>
-        
-        <h3>4. Ihre Rechte</h3>
-        <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten.</p>
-        
-        <h3>5. Kontakt</h3>
-        <p>Verantwortlicher im Sinne der DSGVO:<br>
-        Marketing in Deutschland<br>
-        E-Mail: maps.werbung@gmail.com</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- CASE DETAILS MODAL -->
-  <div id="caseDetailsModal" class="modal" style="display: none;">
-    <div class="modal-content modal-large">
-      <div class="modal-header">
-        <h2 id="caseModalTitle">Case Study Details</h2>
-        <button onclick="closeModal('caseDetailsModal')">&times;</button>
-      </div>
-      <div class="modal-body" id="caseModalContent">
-        <!-- Dynamic content will be inserted here -->
-      </div>
-    </div>
-  </div>
-
-  <!-- PROOF MODAL -->
-  <div id="proofModal" class="modal" style="display: none;">
-    <div class="modal-content modal-large">
-      <div class="modal-header">
-        <h2>Screenshots & Beweise</h2>
-        <button onclick="closeModal('proofModal')">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="proof-gallery">
-          <div class="proof-item">
-            <h4>Google Analytics - Traffic Steigerung</h4>
-            <div class="screenshot-placeholder">
-              <div class="chart-simulation">
-                <div class="chart-bars">
-                  <div class="bar" style="height: 30%"><span>Jan</span></div>
-                  <div class="bar" style="height: 45%"><span>Feb</span></div>
-                  <div class="bar" style="height: 60%"><span>Mar</span></div>
-                  <div class="bar" style="height: 80%"><span>Apr</span></div>
-                  <div class="bar" style="height: 95%"><span>Mai</span></div>
-                  <div class="bar" style="height: 100%"><span>Jun</span></div>
-                </div>
-                <div class="chart-label">+247% Traffic Wachstum in 6 Monaten</div>
-              </div>
-            </div>
-          </div>
-          
-          <div class="proof-item">
-            <h4>Google Ads - ROAS Verbesserung</h4>
-            <div class="screenshot-placeholder">
-              <div class="metric-display">
-                <div class="metric-card">
-                  <div class="metric-title">Return on Ad Spend</div>
-                  <div class="metric-before">Vorher: 1.8x</div>
-                  <div class="metric-after">Nachher: 4.7x</div>
-                  <div class="metric-improvement">+161% Verbesserung</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="proof-item">
-            <h4>Search Console - Ranking Erfolg</h4>
-            <div class="screenshot-placeholder">
-              <div class="ranking-table">
-                <div class="table-header">
-                  <span>Keyword</span>
-                  <span>Vorher</span>
-                  <span>Nachher</span>
-                </div>
-                <div class="table-row">
-                  <span>Online Marketing</span>
-                  <span class="rank-before">Pos. 47</span>
-                  <span class="rank-after">Pos. 3</span>
-                </div>
-                <div class="table-row">
-                  <span>SEO Agentur</span>
-                  <span class="rank-before">Pos. 23</span>
-                  <span class="rank-after">Pos. 2</span>
-                </div>
-                <div class="table-row">
-                  <span>Google Ads Betreuung</span>
-                  <span class="rank-before">Pos. 31</span>
-                  <span class="rank-after">Pos. 1</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="proof-cta">
-          <p>Möchten Sie ähnliche Ergebnisse für Ihr Unternehmen?</p>
-          <a href="#auditForm" class="cta" onclick="closeModal('proofModal'); trackCTA('proof_modal_cta', 'proof_modal')">
-            Kostenlose Analyse anfordern
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- JAVASCRIPT -->
+  <!-- JAVASCRIPT WITH ENHANCED FUNCTIONALITY -->
   <script>
-    // PERFORMANCE OPTIMIZED VARIABLES
+    // VARIABLES
     let currentLang = 'ua';
-    let currentTheme = 'dark';
     let chatOpen = false;
     let promoCountdown = null;
 
@@ -1969,258 +1803,105 @@
     const TELEGRAM_BOT_TOKEN = '7522018067:AAEdFn-SeXkYvFW6Xm81gK4ZUqVDeRKKBNQ';
     const CHAT_ID = '@Asystentmijbot';
 
-    // MULTILINGUAL TRANSLATIONS
+    // TRANSLATIONS (corrected - services only in German)
     const translations = {
       de: {
         meta_title: "Marketing in Deutschland — Digitalagentur | Google Ads, SEO, Websites",
         meta_desc: "8 Jahre Erfahrung: Websites, Google Ads, SMM, SEO. Messbare Ergebnisse für Ihr Unternehmen.",
-        meta_keywords: "marketing deutschland, google ads, seo, website entwicklung",
-        brand: "Marketing in Deutschland",
-        tagline: "Digitalagentur",
-        hero_title: "Digitales Marketing, das messbare Ergebnisse liefert",
-        hero_lead: "Websites, Google Ads, SMM, SEO. Durchschnittlich +250% mehr qualifizierte Leads in 90 Tagen.",
-        badge: "8 Jahre Erfahrung • 300+ erfolgreiche Projekte",
-        consultation: "Direkte Beratung",
-        services: "Leistungen",
-        services_title: "🎯 Unsere Leistungen",
-        services_subtitle: "Vollständige Digital-Marketing-Lösungen für messbare Ergebnisse",
-        nav_services: "Leistungen",
-        nav_cases: "Erfolgs-Cases",
-        nav_testimonials: "Bewertungen",
-        nav_faq: "FAQ",
-        telegram: "Telegram",
-        promo_offer: "Google ADS + Facebook ADS Setup für 50€",
-        promo_details: "✅ Bis zu 20 Keywords<br>✅ 5 Anzeigengruppen<br>✅ Landing Page Check<br>✅ 14 Tage Support",
-        promo_timer: "Nur für die ersten 10 Kunden!",
-        promo_cta: "JETZT SICHERN",
-        audit_title: "🎯 Kostenloser Marketing-Audit (Wert: 200€)",
-        get_audit: "KOSTENLOSEN AUDIT ERHALTEN",
-        audit_note: "✅ Analyse in 24h • ✅ Konkrete Empfehlungen • ✅ Keine Verpflichtung",
-        view_cases: "Erfolgs-Cases ansehen",
-        view_proof: "🔍 Screenshots & Beweise ansehen",
         cases_title: "🏆 Bewiesene Erfolgs-Cases",
-        cases_subtitle: "Echte Ergebnisse unserer Kunden mit Screenshots und Daten aus Google Analytics",
-        view_screenshots: "📊 Screenshots & Details ansehen",
+        cases_subtitle: "Echte Ergebnisse unserer Kunden aus München und ganz Deutschland",
         cases_cta_title: "Möchten Sie ähnliche Ergebnisse für Ihr Unternehmen?",
-        cases_cta_text: "Lassen Sie uns Ihre aktuelle Situation analysieren und ein individuelles Konzept für Ihren Erfolg entwickeln.",
+        cases_cta_text: "Lassen Sie uns Ihre aktuelle Situation analysieren und ein individuelles Konzept entwickeln.",
         cases_cta_button: "🎯 Kostenlose Analyse für mein Unternehmen",
-        service_web_title: "Website-Entwicklung",
-        service_web_desc: "Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.",
-        service_ads_title: "Google Ads Management",
-        service_ads_desc: "Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.",
-        service_seo_title: "Suchmaschinenoptimierung",
-        service_seo_desc: "Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.",
-        service_smm_title: "Social Media Marketing",
-        service_smm_desc: "Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.",
-        testimonials_title: "💬 Was unsere Kunden sagen",
-        testimonials_subtitle: "Echte Bewertungen mit konkreten Ergebnissen",
-        testimonials_cta: "Werden Sie unser nächster Erfolgsfall!",
-        get_analysis: "Kostenlose Analyse anfordern",
-        faq_title: "❓ Häufig gestellte Fragen",
-        faq_subtitle: "Klare Antworten mit konkreten Zahlen und Zeitrahmen",
-        faq_q1: "Wie lange dauert die Entwicklung einer Website?",
-        faq_a1: "Die Entwicklungszeit hängt vom Umfang ab:",
-        faq_q2: "Was kostet Google Ads und ab welchem Budget lohnt es sich?",
-        faq_a2: "Unsere Google Ads Pakete:",
-        faq_q3: "Wie schnell sehe ich Ergebnisse bei SEO?",
-        faq_a3: "SEO Zeitplan mit realistischen Erwartungen:",
-        faq_q4: "Bieten Sie auch Wartung und Support an?",
-        faq_a4: "Unsere Support-Pakete:",
-        faq_q5: "Welche Garantien bieten Sie?",
-        faq_a5: "Unsere Erfolgsgarantien:",
-        faq_q6: "Arbeiten Sie auch mit kleineren Budgets?",
-        faq_a6: "Ja! Unsere Mindestbudgets:",
-        audit_form_title: "🎯 Kostenloser Marketing-Audit (Wert: €200)",
-        audit_form_desc: "Lassen Sie uns Ihr aktuelles Marketing analysieren und konkrete Verbesserungsvorschläge entwickeln. Komplett kostenlos und unverbindlich.",
-        form_company: "Firmenname *",
-        form_name: "Ihr Name *",
-        form_email: "E-Mail *",
-        form_phone: "Telefon",
-        form_website: "Website URL *",
-        form_industry: "Branche",
-        form_current: "Aktuelle Marketing-Aktivitäten",
-        form_budget: "Monatliches Marketing-Budget",
-        form_goals: "Ihre wichtigsten Ziele",
-        form_consent: "Ich stimme der Verarbeitung meiner Daten gemäß Datenschutzerklärung zu und möchte den kostenlosen Marketing-Audit erhalten. *",
-        form_submit: "🚀 Kostenlosen Audit anfordern",
-        form_guarantee: "✅ 100% kostenlos ✅ Keine Verpflichtung ✅ DSGVO-konform",
-        footer_services: "Leistungen",
-        footer_webdev: "Website-Entwicklung",
-        footer_ads: "Google Ads Management",
-        footer_seo: "SEO Optimierung",
-        footer_smm: "Social Media Marketing",
-        footer_content: "Content-Marketing",
-        footer_cases: "Erfolgs-Cases",
-        footer_company: "Unternehmen",
-        footer_about: "Über uns",
-        footer_reviews: "Kundenbewertungen",
-        footer_faq: "FAQ",
-        footer_portfolio: "Portfolio",
-        footer_blog: "Blog & Insights",
-        footer_career: "Karriere",
-        footer_contact: "Kontakt",
-        footer_telegram: "Telegram Chat",
-        footer_email: "maps.werbung@gmail.com",
-        footer_chat: "Live Chat",
-        footer_phone: "+49 151 23456789",
-        footer_legal: "Rechtliches",
-        footer_imprint: "Impressum",
-        footer_privacy: "Datenschutzerklärung",
-        footer_terms: "AGB",
-        footer_cookies: "Cookie-Richtlinie",
-        footer_copyright: "© 2024 Marketing in Deutschland. Alle Rechte vorbehalten.",
-        chat_title: "Live Chat Support",
-        chat_welcome: "Hallo! Willkommen bei Marketing in Deutschland. Wie können wir Ihnen heute helfen?",
+        chat_title: "💬 Online Chat",
+        chat_welcome: "Hallo! Willkommen bei Marketing in Deutschland. Wie können wir Ihnen helfen?",
         chat_placeholder: "Nachricht eingeben...",
         chat_send: "Senden",
-        cookie_text: "Diese Website verwendet Cookies, um Ihre Erfahrung zu verbessern und unsere Dienstleistungen zu analysieren. Durch die weitere Nutzung stimmen Sie der Verwendung von Cookies zu.",
-        cookie_accept: "Akzeptieren",
-        cookie_settings: "Einstellungen",
-        cookie_policy: "Datenschutz"
+        promo_offer: "🚀 Google ADS + Facebook ADS Setup für nur 50€",
+        promo_details_full: "✅ Bis zu 20 Keywords ✅ 5 Anzeigengruppen ✅ Landing Page Check ✅ 14 Tage Support ✅ ROAS Optimierung",
+        promo_timer: "Nur für die ersten 10 Kunden!",
+        promo_cta: "JETZT SICHERN",
+        select_language: "Sprache:"
       },
       
       en: {
         meta_title: "Marketing in Germany — Digital Agency | Google Ads, SEO, Websites",
         meta_desc: "8 Years Experience: Websites, Google Ads, SMM, SEO. Measurable results for your business.",
-        meta_keywords: "marketing germany, google ads, seo, website development",
-        brand: "Marketing in Germany",
-        tagline: "Digital Agency",
-        hero_title: "Digital Marketing that delivers measurable results",
-        hero_lead: "Websites, Google Ads, SMM, SEO. Average +250% more qualified leads in 90 days.",
-        badge: "8 Years Experience • 300+ successful projects",
-        consultation: "Direct Consultation",
-        services: "Services",
-        services_title: "🎯 Our Services",
-        services_subtitle: "Complete digital marketing solutions for measurable results",
-        nav_services: "Services",
-        nav_cases: "Success Cases",
-        nav_testimonials: "Reviews",
-        nav_faq: "FAQ",
-        telegram: "Telegram",
-        promo_offer: "Google ADS + Facebook ADS Setup for €50",
-        promo_details: "✅ Up to 20 Keywords<br>✅ 5 Ad Groups<br>✅ Landing Page Check<br>✅ 14 Days Support",
+        cases_title: "🏆 Proven Success Cases",
+        cases_subtitle: "Real results from our clients in Munich and across Germany",
+        cases_cta_title: "Want similar results for your business?",
+        cases_cta_text: "Let us analyze your current situation and develop an individual concept.",
+        cases_cta_button: "🎯 Free Analysis for my Business",
+        chat_title: "💬 Online Chat",
+        chat_welcome: "Hello! Welcome to Marketing in Germany. How can we help you?",
+        chat_placeholder: "Type a message...",
+        chat_send: "Send",
+        promo_offer: "🚀 Google ADS + Facebook ADS Setup for only €50",
+        promo_details_full: "✅ Up to 20 Keywords ✅ 5 Ad Groups ✅ Landing Page Check ✅ 14 Days Support ✅ ROAS Optimization",
         promo_timer: "Only for the first 10 customers!",
         promo_cta: "GET NOW",
-        audit_title: "🎯 Free Marketing Audit (Value: €200)",
-        get_audit: "GET FREE AUDIT",
-        audit_note: "✅ Analysis in 24h • ✅ Concrete recommendations • ✅ No obligation",
-        view_cases: "View Success Cases",
-        view_proof: "🔍 View Screenshots & Proof",
-        cases_title: "🏆 Proven Success Cases",
-        cases_subtitle: "Real results from our customers with screenshots and data from Google Analytics",
-        view_screenshots: "📊 View Screenshots & Details",
-        cases_cta_title: "Want similar results for your business?",
-        cases_cta_text: "Let us analyze your current situation and develop an individual concept for your success.",
-        cases_cta_button: "🎯 Free Analysis for my Business"
+        select_language: "Language:"
       },
 
       ua: {
         meta_title: "Маркетинг в Німеччині — Цифрове агентство | Google Ads, SEO, Веб-сайти",
         meta_desc: "8 років досвіду: Веб-сайти, Google Ads, SMM, SEO. Вимірювані результати для вашого бізнесу.",
-        meta_keywords: "маркетинг німеччина, google ads, seo, створення сайтів",
-        brand: "Маркетинг в Німеччині",
-        tagline: "Цифрове агентство",
-        hero_title: "Цифровий маркетинг, який дає вимірювані результати",
-        hero_lead: "Веб-сайти, Google Ads, SMM, SEO. В середньому +250% більше кваліфікованих лідів за 90 днів.",
-        badge: "8 років досвіду • 300+ успішних проектів",
-        consultation: "Пряма консультація",
-        services: "Послуги",
-        services_title: "🎯 Наші послуги",
-        services_subtitle: "Повні рішення цифрового маркетингу для вимірюваних результатів",
-        nav_services: "Послуги",
-        nav_cases: "Кейси успіху",
-        nav_testimonials: "Відгуки",
-        nav_faq: "FAQ",
-        telegram: "Telegram",
-        promo_offer: "Налаштування Google ADS + Facebook ADS за 50€",
-        promo_details: "✅ До 20 ключових слів<br>✅ 5 груп оголошень<br>✅ Перевірка лендингу<br>✅ 14 днів підтримки",
+        cases_title: "🏆 Доведені кейси успіху",
+        cases_subtitle: "Реальні результати наших клієнтів з Мюнхена та всієї Німеччини",
+        cases_cta_title: "Хочете подібні результати для вашого бізнесу?",
+        cases_cta_text: "Дозвольте нам проаналізувати вашу поточну ситуацію та розробити індивідуальну концепцію.",
+        cases_cta_button: "🎯 Безкоштовний аналіз для мого бізнесу",
+        chat_title: "💬 Онлайн Чат",
+        chat_welcome: "Привіт! Ласкаво просимо до Marketing in Deutschland. Як ми можемо вам допомогти сьогодні?",
+        chat_placeholder: "Введіть повідомлення...",
+        chat_send: "Надіслати",
+        promo_offer: "🚀 Налаштування Google ADS + Facebook ADS лише за 50€",
+        promo_details_full: "✅ До 20 ключових слів ✅ 5 груп оголошень ✅ Перевірка лендингу ✅ 14 днів підтримки ✅ ROAS оптимізація",
         promo_timer: "Тільки для перших 10 клієнтів!",
         promo_cta: "ОТРИМАТИ ЗАРАЗ",
-        audit_title: "🎯 Безкоштовний аудит маркетингу (Вартість: €200)",
-        get_audit: "ОТРИМАТИ БЕЗКОШТОВНИЙ АУДИТ",
-        audit_note: "✅ Аналіз за 24 години • ✅ Конкретні рекомендації • ✅ Без зобов'язань",
-        view_cases: "Переглянути кейси успіху",
-        view_proof: "🔍 Переглянути скріншоти та докази",
-        cases_title: "🏆 Доведені кейси успіху",
-        cases_subtitle: "Реальні результати наших клієнтів зі скріншотами та даними з Google Analytics",
-        view_screenshots: "📊 Переглянути скріншоти та деталі",
-        cases_cta_title: "Хочете подібні результати для вашого бізнесу?",
-        cases_cta_text: "Дозвольте нам проаналізувати вашу поточну ситуацію та розробити індивідуальну концепцію для вашого успіху.",
-        cases_cta_button: "🎯 Безкоштовний аналіз для мого бізнесу"
+        select_language: "Мова:"
       },
 
       ru: {
         meta_title: "Маркетинг в Германии — Цифровое агентство | Google Ads, SEO, Веб-сайты",
         meta_desc: "8 лет опыта: Веб-сайты, Google Ads, SMM, SEO. Измеримые результаты для вашего бизнеса.",
-        meta_keywords: "маркетинг германия, google ads, seo, создание сайтов",
-        brand: "Маркетинг в Германии",
-        tagline: "Цифровое агентство",
-        hero_title: "Цифровой маркетинг, который дает измеримые результаты",
-        hero_lead: "Веб-сайты, Google Ads, SMM, SEO. В среднем +250% больше квалифицированных лидов за 90 дней.",
-        badge: "8 лет опыта • 300+ успешных проектов",
-        consultation: "Прямая консультация",
-        services: "Услуги",
-        services_title: "🎯 Наши услуги",
-        services_subtitle: "Полные решения цифрового маркетинга для измеримых результатов",
-        nav_services: "Услуги",
-        nav_cases: "Кейсы успеха",
-        nav_testimonials: "Отзывы",
-        nav_faq: "FAQ",
-        telegram: "Telegram",
-        promo_offer: "Настройка Google ADS + Facebook ADS за 50€",
-        promo_details: "✅ До 20 ключевых слов<br>✅ 5 групп объявлений<br>✅ Проверка лендинга<br>✅ 14 дней поддержки",
+        cases_title: "🏆 Доказанные кейсы успеха",
+        cases_subtitle: "Реальные результаты наших клиентов из Мюнхена и всей Германии",
+        cases_cta_title: "Хотите подобные результаты для вашего бизнеса?",
+        cases_cta_text: "Позвольте нам проанализировать вашу текущую ситуацию и разработать индивидуальную концепцию.",
+        cases_cta_button: "🎯 Бесплатный анализ для моего бизнеса",
+        chat_title: "💬 Онлайн Чат",
+        chat_welcome: "Привет! Добро пожаловать в Marketing in Deutschland. Как мы можем вам помочь сегодня?",
+        chat_placeholder: "Введите сообщение...",
+        chat_send: "Отправить",
+        promo_offer: "🚀 Настройка Google ADS + Facebook ADS всего за 50€",
+        promo_details_full: "✅ До 20 ключевых слов ✅ 5 групп объявлений ✅ Проверка лендинга ✅ 14 дней поддержки ✅ ROAS оптимизация",
         promo_timer: "Только для первых 10 клиентов!",
         promo_cta: "ПОЛУЧИТЬ СЕЙЧАС",
-        audit_title: "🎯 Бесплатный аудит маркетинга (Стоимость: €200)",
-        get_audit: "ПОЛУЧИТЬ БЕСПЛАТНЫЙ АУДИТ",
-        audit_note: "✅ Анализ за 24 часа • ✅ Конкретные рекомендации • ✅ Без обязательств",
-        view_cases: "Посмотреть кейсы успеха",
-        view_proof: "🔍 Посмотреть скриншоты и доказательства",
-        cases_title: "🏆 Доказанные кейсы успеха",
-        cases_subtitle: "Реальные результаты наших клиентов со скриншотами и данными из Google Analytics",
-        view_screenshots: "📊 Посмотреть скриншоты и детали",
-        cases_cta_title: "Хотите подобные результаты для вашего бизнеса?",
-        cases_cta_text: "Позвольте нам проанализировать вашу текущую ситуацию и разработать индивидуальную концепцию для вашего успеха.",
-        cases_cta_button: "🎯 Бесплатный анализ для моего бизнеса"
+        select_language: "Язык:"
       },
 
       pl: {
         meta_title: "Marketing w Niemczech — Agencja cyfrowa | Google Ads, SEO, Strony",
         meta_desc: "8 lat doświadczenia: Strony internetowe, Google Ads, SMM, SEO. Mierzalne rezultaty dla Twojego biznesu.",
-        meta_keywords: "marketing niemcy, google ads, seo, tworzenie stron",
-        brand: "Marketing w Niemczech",
-        tagline: "Agencja cyfrowa",
-        hero_title: "Marketing cyfrowy, który dostarcza mierzalne rezultaty",
-        hero_lead: "Strony internetowe, Google Ads, SMM, SEO. Średnio +250% więcej wykwalifikowanych leadów w 90 dni.",
-        badge: "8 lat doświadczenia • 300+ udanych projektów",
-        consultation: "Bezpośrednia konsultacja",
-        services: "Usługi",
-        services_title: "🎯 Nasze usługi",
-        services_subtitle: "Kompletne rozwiązania marketingu cyfrowego dla mierzalnych rezultatów",
-        nav_services: "Usługi",
-        nav_cases: "Przypadki sukcesu",
-        nav_testimonials: "Opinie",
-        nav_faq: "FAQ",
-        telegram: "Telegram",
-        promo_offer: "Konfiguracja Google ADS + Facebook ADS za 50€",
-        promo_details: "✅ Do 20 słów kluczowych<br>✅ 5 grup reklam<br>✅ Sprawdzenie landing page<br>✅ 14 dni wsparcia",
+        cases_title: "🏆 Udowodnione przypadki sukcesu",
+        cases_subtitle: "Rzeczywiste wyniki naszych klientów z Monachium i całych Niemiec",
+        cases_cta_title: "Chcesz podobne wyniki dla swojego biznesu?",
+        cases_cta_text: "Pozwól nam przeanalizować Twoją obecną sytuację i opracować indywidualną koncepcję.",
+        cases_cta_button: "🎯 Bezpłatna analiza dla mojego biznesu",
+        chat_title: "💬 Chat Online",
+        chat_welcome: "Cześć! Witamy w Marketing w Niemczech. Jak możemy Ci dziś pomóc?",
+        chat_placeholder: "Wpisz wiadomość...",
+        chat_send: "Wyślij",
+        promo_offer: "🚀 Konfiguracja Google ADS + Facebook ADS za tylko 50€",
+        promo_details_full: "✅ Do 20 słów kluczowych ✅ 5 grup reklam ✅ Sprawdzenie landing page ✅ 14 dni wsparcia ✅ Optymalizacja ROAS",
         promo_timer: "Tylko dla pierwszych 10 klientów!",
         promo_cta: "OTRZYMAJ TERAZ",
-        audit_title: "🎯 Bezpłatny audyt marketingowy (Wartość: €200)",
-        get_audit: "OTRZYMAJ BEZPŁATNY AUDYT",
-        audit_note: "✅ Analiza w 24h • ✅ Konkretne zalecenia • ✅ Bez zobowiązań",
-        view_cases: "Zobacz przypadki sukcesu",
-        view_proof: "🔍 Zobacz zrzuty ekranu i dowody",
-        cases_title: "🏆 Udowodnione przypadki sukcesu",
-        cases_subtitle: "Rzeczywiste wyniki naszych klientów ze zrzutami ekranu i danymi z Google Analytics",
-        view_screenshots: "📊 Zobacz zrzuty ekranu i szczegóły",
-        cases_cta_title: "Chcesz podobne wyniki dla swojego biznesu?",
-        cases_cta_text: "Pozwól nam przeanalizować Twoją obecną sytuację i opracować indywidualną koncepcję na Twój sukces.",
-        cases_cta_button: "🎯 Bezpłatna analiza dla mojego biznesu"
+        select_language: "Język:"
       }
     };
 
-    // CHAT RESPONSES - MULTILINGUAL CHATBOT
+    // CHAT RESPONSES (multilingual)
     const chatResponses = {
       de: {
         greetings: [
@@ -2229,24 +1910,19 @@
           "Willkommen! Haben Sie Fragen zu unseren Leistungen?"
         ],
         services: [
-          "Wir bieten Webseiten-Erstellung, SEO, Social Media Marketing und Performance Marketing. Welcher Bereich interessiert Sie?",
-          "Unsere Hauptleistungen sind: Website-Entwicklung, Suchmaschinenoptimierung, Social Media und Google Ads. Wobei kann ich Ihnen helfen?",
-          "Gerne erkläre ich Ihnen unsere Services: Webentwicklung, SEO, Social Media Marketing und bezahlte Werbung. Was interessiert Sie am meisten?"
-        ],
-        pricing: [
-          "Unsere Preise richten sich nach Ihrem spezifischen Projekt. Können Sie mir mehr über Ihre Anforderungen erzählen?",
-          "Jedes Projekt ist individuell. Gerne erstellen wir Ihnen ein maßgeschneidertes Angebot. Welche Services benötigen Sie?",
-          "Die Kosten hängen vom Umfang ab. Lassen Sie uns über Ihre Ziele sprechen, dann kann ich Ihnen eine Einschätzung geben."
+          "Wir bieten Website-Entwicklung, Google Ads, SEO und Social Media Marketing. Welcher Bereich interessiert Sie?",
+          "Unsere Hauptleistungen: Webentwicklung, Google Ads Management, SEO und Social Media. Wobei kann ich helfen?",
+          "Gerne erkläre ich unsere Services: Websites, Google Ads, SEO, Social Media. Was interessiert Sie am meisten?"
         ],
         contact: [
-          "Sie können uns unter maps.werbung@gmail.com erreichen oder +49 151 23456789 anrufen. Wann passt Ihnen ein Beratungsgespräch?",
-          "Kontaktieren Sie uns gerne per E-Mail oder Telefon. Soll ich einen Termin für ein kostenloses Beratungsgespräch vereinbaren?",
-          "Am besten sprechen wir persönlich über Ihr Projekt. Wann hätten Sie Zeit für ein unverbindliches Gespräch?"
+          "Sie können uns unter maps.werbung@gmail.com erreichen oder direkt über diesen Chat. Wann passt Ihnen ein Beratungsgespräch?",
+          "Kontaktieren Sie uns gerne hier im Chat oder per E-Mail. Soll ich einen Termin vereinbaren?",
+          "Am besten sprechen wir persönlich über Ihr Projekt. Haben Sie Zeit für ein unverbindliches Gespräch?"
         ],
         default: [
           "Das ist eine interessante Frage. Können Sie mir mehr Details geben?",
           "Gerne helfe ich Ihnen weiter. Können Sie Ihre Frage präzisieren?",
-          "Entschuldigung, können Sie das nochmal erklären? Dann kann ich Ihnen besser helfen."
+          "Entschuldigung, können Sie das nochmal erklären? Dann kann ich besser helfen."
         ]
       },
       
@@ -2257,19 +1933,14 @@
           "Ласкаво просимо! Маєте питання про наші послуги?"
         ],
         services: [
-          "Ми пропонуємо створення веб-сайтів, SEO, маркетинг в соціальних мережах та performance маркетинг. Що вас цікавить?",
-          "Наші основні послуги: розробка сайтів, пошукова оптимізація, соціальні мережі та Google Ads. З чим можу допомогти?",
-          "Охоче розповім про наші сервіси: веб-розробка, SEO, маркетинг в соцмережах та платна реклама. Що найбільше цікавить?"
-        ],
-        pricing: [
-          "Наші ціни залежать від специфіки вашого проекту. Розкажіте більше про ваші вимоги?",
-          "Кожен проект індивідуальний. Охоче створимо персональну пропозицію. Які сервіси вам потрібні?",
-          "Вартість залежить від обсягу. Давайте поговоримо про ваші цілі, тоді зможу дати оцінку."
+          "Ми пропонуємо розробку сайтів, Google Ads, SEO та маркетинг в соціальних мережах. Що вас цікавить?",
+          "Наші основні послуги: веб-розробка, Google Ads, SEO, соціальні мережі. З чим можу допомогти?",
+          "Охоче розповім про наші сервіси: сайти, Google Ads, SEO, соцмережі. Що найбільше цікавить?"
         ],
         contact: [
-          "Ви можете зв'язатися з нами на maps.werbung@gmail.com або подзвонити +49 151 23456789. Коли вам зручно для консультації?",
-          "Зв'яжіться з нами електронною поштою або телефоном. Призначити безкоштовну консультацію?",
-          "Краще поговорити особисто про ваш проект. Коли б ви мали час для необов'язкової розмови?"
+          "Ви можете зв'язатися з нами на maps.werbung@gmail.com або тут у чаті. Коли вам зручно для консультації?",
+          "Зв'яжіться з нами через чат або електронну пошту. Призначити безкоштовну консультацію?",
+          "Краще поговорити особисто про ваш проект. Коли б у вас був час для розмови?"
         ],
         default: [
           "Це цікаве питання. Можете дати більше деталей?",
@@ -2285,19 +1956,14 @@
           "Добро пожаловать! У вас есть вопросы по нашим услугам?"
         ],
         services: [
-          "Мы предлагаем создание веб-сайтов, SEO, маркетинг в социальных сетях и performance маркетинг. Что вас интересует?",
-          "Наши основные услуги: разработка сайтов, поисковая оптимизация, социальные сети и Google Ads. Чем могу помочь?",
-          "С удовольствием расскажу о наших сервисах: веб-разработка, SEO, маркетинг в соцсетях и платная реклама. Что больше всего интересует?"
-        ],
-        pricing: [
-          "Наши цены зависят от специфики вашего проекта. Расскажите больше о ваших требованиях?",
-          "Каждый проект индивидуален. С удовольствием создадим персональное предложение. Какие сервисы вам нужны?",
-          "Стоимость зависит от объёма. Давайте поговорим о ваших целях, тогда смогу дать оценку."
+          "Мы предлагаем разработку сайтов, Google Ads, SEO и маркетинг в социальных сетях. Что вас интересует?",
+          "Наши основные услуги: веб-разработка, Google Ads, SEO, соцсети. Чем могу помочь?",
+          "С удовольствием расскажу о наших сервисах: сайты, Google Ads, SEO, соцсети. Что больше всего интересует?"
         ],
         contact: [
-          "Вы можете связаться с нами по адресу maps.werbung@gmail.com или позвонить +49 151 23456789. Когда вам удобно для консультации?",
-          "Свяжитесь с нами по электронной почте или телефону. Назначить бесплатную консультацию?",
-          "Лучше поговорить лично о вашем проекте. Когда у вас было бы время для необязательного разговора?"
+          "Вы можете связаться с нами по адресу maps.werbung@gmail.com или здесь в чате. Когда вам удобно для консультации?",
+          "Свяжитесь с нами через чат или по электронной почте. Назначить бесплатную консультацию?",
+          "Лучше поговорить лично о вашем проекте. Когда у вас было бы время для разговора?"
         ],
         default: [
           "Это интересный вопрос. Можете дать больше деталей?",
@@ -2313,19 +1979,14 @@
           "Welcome! Do you have questions about our services?"
         ],
         services: [
-          "We offer website creation, SEO, social media marketing and performance marketing. What interests you?",
-          "Our main services are: website development, search engine optimization, social media and Google Ads. How can I help?",
-          "Happy to explain our services: web development, SEO, social media marketing and paid advertising. What interests you most?"
-        ],
-        pricing: [
-          "Our prices depend on your specific project requirements. Can you tell me more about your needs?",
-          "Each project is individual. We're happy to create a tailored offer. Which services do you need?",
-          "Costs depend on scope. Let's talk about your goals, then I can give you an estimate."
+          "We offer website development, Google Ads, SEO and social media marketing. What interests you?",
+          "Our main services: web development, Google Ads, SEO, social media. How can I help?",
+          "Happy to explain our services: websites, Google Ads, SEO, social media. What interests you most?"
         ],
         contact: [
-          "You can reach us at maps.werbung@gmail.com or call +49 151 23456789. When would a consultation suit you?",
-          "Contact us by email or phone. Shall I schedule a free consultation?",
-          "It's best to discuss your project personally. When would you have time for a non-binding conversation?"
+          "You can reach us at maps.werbung@gmail.com or here in chat. When would a consultation suit you?",
+          "Contact us via chat or email. Shall I schedule a free consultation?",
+          "It's best to discuss your project personally. When would you have time for a conversation?"
         ],
         default: [
           "That's an interesting question. Can you give me more details?",
@@ -2341,19 +2002,14 @@
           "Witamy! Masz pytania dotyczące naszych usług?"
         ],
         services: [
-          "Oferujemy tworzenie stron internetowych, SEO, marketing w mediach społecznościowych i performance marketing. Co Cię interesuje?",
-          "Nasze główne usługi to: rozwój stron internetowych, optymalizacja dla wyszukiwarek, media społecznościowe i Google Ads. W czym mogę pomóc?",
-          "Chętnie wyjaśnię nasze usługi: tworzenie stron, SEO, marketing w social media i płatną reklamę. Co Cię najbardziej interesuje?"
-        ],
-        pricing: [
-          "Nasze ceny zależą od specyfiki Twojego projektu. Możesz opowiedzieć więcej o Twoich wymaganiach?",
-          "Każdy projekt jest indywidualny. Chętnie stworzymy spersonalizowaną ofertę. Jakich usług potrzebujesz?",
-          "Koszty zależą od zakresu. Porozmawiajmy o Twoich celach, wtedy będę mógł podać szacunek."
+          "Oferujemy tworzenie stron internetowych, Google Ads, SEO i marketing w mediach społecznościowych. Co Cię interesuje?",
+          "Nasze główne usługi: tworzenie stron, Google Ads, SEO, social media. W czym mogę pomóc?",
+          "Chętnie wyjaśnię nasze usługi: strony, Google Ads, SEO, social media. Co najbardziej Cię interesuje?"
         ],
         contact: [
-          "Możesz skontaktować się z nami na maps.werbung@gmail.com lub zadzwonić +49 151 23456789. Kiedy pasowałaby Ci konsultacja?",
-          "Skontaktuj się z nami mailem lub telefonem. Umówić bezpłatną konsultację?",
-          "Najlepiej porozmawiać osobiście o Twoim projekcie. Kiedy miałbyś czas na niezobowiązującą rozmowę?"
+          "Możesz skontaktować się z nami na maps.werbung@gmail.com lub tutaj w czacie. Kiedy pasowałaby Ci konsultacja?",
+          "Skontaktuj się z nami przez czat lub email. Umówić bezpłatną konsultację?",
+          "Najlepiej porozmawiać osobiście o Twoim projekcie. Kiedy miałbyś czas na rozmowę?"
         ],
         default: [
           "To interesujące pytanie. Możesz podać więcej szczegółów?",
@@ -2378,17 +2034,14 @@
     function analyzeIntent(message) {
       const lowerMessage = message.toLowerCase();
       
-      const greetingKeywords = ['hallo', 'hi', 'hey', 'guten', 'tag', 'morgen', 'abend', 'привет', 'привіт', 'добро', 'доброго', 'день', 'вечер', 'hello', 'good', 'morning', 'evening', 'afternoon', 'cześć', 'dzień', 'dobry', 'witaj', 'здравствуй', 'добрый'];
-      const serviceKeywords = ['website', 'webseite', 'seo', 'social', 'media', 'marketing', 'google', 'ads', 'веб', 'сайт', 'реклама', 'продвижение', 'оптимизация', 'strona', 'reklama', 'optymalizacja', 'promocja', 'сайт', 'реклама', 'продвижение'];
-      const pricingKeywords = ['preis', 'kosten', 'price', 'cost', 'budget', 'money', 'цена', 'стоимость', 'бюджет', 'деньги', 'ціна', 'вартість', 'гроші', 'cena', 'koszt', 'budżet', 'pieniądze', 'цена', 'стоимость', 'бюджет'];
-      const contactKeywords = ['kontakt', 'contact', 'email', 'telefon', 'phone', 'termin', 'appointment', 'контакт', 'связь', 'телефон', 'почта', 'встреча', 'kontakt', 'spotkanie', 'telefon', 'email', 'контакт', 'связь', 'телефон'];
+      const greetingKeywords = ['hallo', 'hi', 'hey', 'guten', 'tag', 'morgen', 'привет', 'привіт', 'добро', 'день', 'hello', 'good', 'cześć', 'dzień', 'witaj'];
+      const serviceKeywords = ['website', 'webseite', 'seo', 'social', 'media', 'marketing', 'google', 'ads', 'веб', 'сайт', 'реклама', 'strona', 'reklama', 'optymalizacja'];
+      const contactKeywords = ['kontakt', 'contact', 'email', 'telefon', 'phone', 'контакт', 'связь', 'телефон', 'почта'];
       
       if (greetingKeywords.some(keyword => lowerMessage.includes(keyword))) {
         return 'greetings';
       } else if (serviceKeywords.some(keyword => lowerMessage.includes(keyword))) {
         return 'services';
-      } else if (pricingKeywords.some(keyword => lowerMessage.includes(keyword))) {
-        return 'pricing';
       } else if (contactKeywords.some(keyword => lowerMessage.includes(keyword))) {
         return 'contact';
       } else {
@@ -2430,10 +2083,6 @@
           const metaDesc = document.querySelector('meta[name="description"]');
           if (metaDesc) metaDesc.setAttribute('content', translation.meta_desc);
         }
-        if (translation.meta_keywords) {
-          const metaKeywords = document.querySelector('meta[name="keywords"]');
-          if (metaKeywords) metaKeywords.setAttribute('content', translation.meta_keywords);
-        }
       }
       
       localStorage.setItem('language', currentLang);
@@ -2443,11 +2092,43 @@
       const savedLang = localStorage.getItem('language') || 'ua';
       currentLang = savedLang;
       
+      // Update all language selectors
       document.querySelectorAll('select[id^="lang"]').forEach(select => {
-        select.value = savedLang.toLowerCase();
+        select.value = savedLang.toUpperCase();
       });
       
       switchLanguage(savedLang);
+    }
+
+    // FILTER CASES BY LANGUAGE
+    function filterCasesByLanguage() {
+      const casesGrid = document.getElementById('casesGrid');
+      if (!casesGrid) return;
+      
+      const allCases = Array.from(casesGrid.children);
+      const lang = getCurrentLanguage();
+      
+      // Show cases in current language + some others for variety
+      let filteredCases = allCases.filter(caseEl => {
+        const caseLang = caseEl.getAttribute('data-lang');
+        return caseLang === lang || Math.random() > 0.6; // 40% chance to show other languages
+      });
+      
+      // Ensure we always show at least 8 cases
+      if (filteredCases.length < 8) {
+        const remainingCases = allCases.filter(caseEl => !filteredCases.includes(caseEl));
+        filteredCases = filteredCases.concat(remainingCases.slice(0, 8 - filteredCases.length));
+      }
+      
+      // Shuffle filtered cases
+      for (let i = filteredCases.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [filteredCases[i], filteredCases[j]] = [filteredCases[j], filteredCases[i]];
+      }
+      
+      // Show first 12 cases
+      casesGrid.innerHTML = '';
+      filteredCases.slice(0, 12).forEach(caseEl => casesGrid.appendChild(caseEl));
     }
 
     // MOBILE MENU
@@ -2484,33 +2165,6 @@
         toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       }
-    }
-
-    // FAQ FUNCTIONALITY
-    function toggleFAQ(element) {
-      const item = element.parentElement;
-      const isOpen = item.classList.contains('open');
-      
-      document.querySelectorAll('.faq-item.open').forEach(faq => {
-        if (faq !== item) {
-          faq.classList.remove('open');
-        }
-      });
-      
-      if (isOpen) {
-        item.classList.remove('open');
-      } else {
-        item.classList.add('open');
-      }
-    }
-
-    // PROGRESS BAR
-    function updateProgressBar() {
-      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (winScroll / height) * 100;
-      const progressBar = document.getElementById('progressBar');
-      if (progressBar) progressBar.style.width = scrolled + '%';
     }
 
     // CHAT FUNCTIONALITY
@@ -2553,7 +2207,7 @@
       // Simulate typing
       const typingMsg = document.createElement('div');
       typingMsg.className = 'msg bot';
-      typingMsg.innerHTML = '<div class="bubble">Tippt...</div>';
+      typingMsg.innerHTML = '<div class="bubble">Друкує...</div>';
       chatBody.appendChild(typingMsg);
       chatBody.scrollTop = chatBody.scrollHeight;
       
@@ -2564,7 +2218,7 @@
         chatBody.innerHTML += `
           <div class="msg bot">
             <div class="bubble">${response}<br><br>
-            <a href="https://t.me/Asystentmijbot" target="_blank" style="color: var(--brand); font-weight: 600; text-decoration: underline;">Direkter Telegram-Kontakt</a></div>
+            <a href="https://t.me/Asystentmijbot" target="_blank" style="color: var(--brand); font-weight: 600; text-decoration: underline;">💬 Прямий Telegram контакт</a></div>
           </div>
         `;
         
@@ -2578,138 +2232,6 @@
       if (event.key === 'Enter') {
         sendMessage();
       }
-    }
-
-    // MODAL FUNCTIONS
-    function showModal(modalId) {
-      const modal = document.getElementById(modalId + 'Modal');
-      if (modal) {
-        modal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      }
-    }
-
-    function closeModal(modalId) {
-      const modal = document.getElementById(modalId);
-      if (modal) {
-        modal.style.display = 'none';
-        document.body.style.overflow = '';
-      }
-    }
-
-    function showCases() {
-      document.getElementById('cases')?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-
-    function showProofModal() {
-      showModal('proof');
-    }
-
-    function showCaseDetails(caseId) {
-      const caseData = {
-        case1: {
-          title: "E-Commerce Erfolg: Online-Heimtextilien",
-          content: `
-            <div class="case-detail-content">
-              <h3>Ausgangssituation</h3>
-              <p>Online-Shop für Heimtextilien mit stagnierendem Wachstum und hohen Werbekosten.</p>
-              
-              <h3>Maßnahmen</h3>
-              <ul>
-                <li>Komplette Google Ads Kampagnen-Optimierung</li>
-                <li>Landing Page Redesign mit A/B-Tests</li>
-                <li>SEO-Optimierung für 47 wichtige Keywords</li>
-                <li>Produktfeed-Optimierung für Google Shopping</li>
-              </ul>
-              
-              <h3>Ergebnisse nach 6 Monaten</h3>
-              <div class="results-grid">
-                <div class="result-card">
-                  <div class="result-metric">+292%</div>
-                  <div class="result-label">Umsatzsteigerung</div>
-                </div>
-                <div class="result-card">
-                  <div class="result-metric">4.7x</div>
-                  <div class="result-label">ROAS Verbesserung</div>
-                </div>
-                <div class="result-card">
-                  <div class="result-metric">-43%</div>
-                  <div class="result-label">CPC Reduktion</div>
-                </div>
-              </div>
-            </div>
-          `
-        },
-        case2: {
-          title: "Local SEO Erfolg: Zahnarztpraxis Berlin",
-          content: `
-            <div class="case-detail-content">
-              <h3>Herausforderung</h3>
-              <p>Zahnarztpraxis mit schlechter Online-Sichtbarkeit und wenigen neuen Patienten.</p>
-              
-              <h3>Strategie</h3>
-              <ul>
-                <li>Local SEO Optimierung</li>
-                <li>Google My Business Optimierung</li>
-                <li>Responsive Website mit Terminbuchung</li>
-                <li>Bewertungsmanagement</li>
-              </ul>
-              
-              <h3>Erfolg in 4 Monaten</h3>
-              <div class="results-grid">
-                <div class="result-card">
-                  <div class="result-metric">+292%</div>
-                  <div class="result-label">Neue Patienten</div>
-                </div>
-                <div class="result-card">
-                  <div class="result-metric">Pos. 2-3</div>
-                  <div class="result-label">Google Ranking</div>
-                </div>
-                <div class="result-card">
-                  <div class="result-metric">-67%</div>
-                  <div class="result-label">Kosten pro Patient</div>
-                </div>
-              </div>
-            </div>
-          `
-        }
-      };
-
-      const data = caseData[caseId];
-      if (data) {
-        document.getElementById('caseModalTitle').textContent = data.title;
-        document.getElementById('caseModalContent').innerHTML = data.content;
-        showModal('caseDetails');
-      }
-    }
-
-    // COOKIE CONSENT
-    function showCookieConsent() {
-      const consent = localStorage.getItem('cookieConsent');
-      if (!consent) {
-        const banner = document.getElementById('cookieConsent');
-        if (banner) {
-          banner.style.display = 'block';
-          setTimeout(() => banner.classList.add('show'), 100);
-        }
-      }
-    }
-
-    function acceptCookies() {
-      localStorage.setItem('cookieConsent', 'accepted');
-      const banner = document.getElementById('cookieConsent');
-      if (banner) {
-        banner.classList.remove('show');
-        setTimeout(() => banner.style.display = 'none', 300);
-      }
-    }
-
-    function showCookieSettings() {
-      acceptCookies();
-      showModal('privacy');
     }
 
     // PROMO COUNTDOWN
@@ -2742,115 +2264,47 @@
       }, 1000);
     }
 
-    // FORM HANDLING
-    function handleFormSubmit(event, formId) {
-      event.preventDefault();
-      
-      const form = event.target;
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      
-      // Basic validation
-      if (!data.email || !data.website) {
-        alert('Bitte füllen Sie alle Pflichtfelder aus.');
-        return;
-      }
-      
-      // Simulate form submission
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
-      
-      submitBtn.textContent = 'Wird gesendet...';
-      submitBtn.disabled = true;
-      
-      setTimeout(() => {
-        alert('Vielen Dank! Wir haben Ihre Anfrage erhalten und werden uns innerhalb von 24 Stunden bei Ihnen melden.');
-        form.reset();
-        
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-        
-        // Track conversion
-        if (typeof gtag !== 'undefined') {
-          gtag('event', 'conversion', {
-            send_to: 'AW-CONVERSION_ID/CONVERSION_LABEL',
-            value: 200.0,
-            currency: 'EUR'
-          });
+    // COOKIE CONSENT
+    function showCookieConsent() {
+      const consent = localStorage.getItem('cookieConsent');
+      if (!consent) {
+        const banner = document.getElementById('cookieConsent');
+        if (banner) {
+          banner.style.display = 'block';
+          setTimeout(() => banner.classList.add('show'), 100);
         }
-      }, 2000);
-    }
-
-    // TESTIMONIALS SHUFFLE
-    function shuffleTestimonials() {
-      const container = document.getElementById('testimonialsGrid');
-      if (!container) return;
-      
-      const quotes = Array.from(container.children);
-      const lang = getCurrentLanguage();
-      
-      // Filter and shuffle
-      let filteredQuotes = quotes.filter(quote => {
-        const quoteLang = quote.getAttribute('data-lang');
-        return !quoteLang || quoteLang === lang || Math.random() > 0.3;
-      });
-      
-      // Shuffle array
-      for (let i = filteredQuotes.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [filteredQuotes[i], filteredQuotes[j]] = [filteredQuotes[j], filteredQuotes[i]];
       }
-      
-      // Re-append shuffled elements
-      container.innerHTML = '';
-      filteredQuotes.forEach(quote => container.appendChild(quote));
     }
 
-    // SCROLL ANIMATIONS
-    function initScrollAnimations() {
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-          }
-        });
-      }, observerOptions);
-
-      const animatedElements = document.querySelectorAll('.animate-slide-up, .animate-slide-left, .animate-fade');
-      animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.6s ease-out';
-        observer.observe(el);
-      });
+    function acceptCookies() {
+      localStorage.setItem('cookieConsent', 'accepted');
+      const banner = document.getElementById('cookieConsent');
+      if (banner) {
+        banner.classList.remove('show');
+        setTimeout(() => banner.style.display = 'none', 300);
+      }
     }
 
     // INITIALIZATION
     document.addEventListener('DOMContentLoaded', function() {
       // Initialize core functionality
       initLanguage();
-      shuffleTestimonials();
+      filterCasesByLanguage();
       startPromoCountdown();
       showCookieConsent();
-      initScrollAnimations();
 
-      // Language selector events
+      // Language selector events - UPPERCASE VALUES
       document.querySelectorAll('select[id^="lang"]').forEach(select => {
         select.addEventListener('change', function() {
           const selectedLang = this.value.toLowerCase();
           
+          // Sync all language selectors
           document.querySelectorAll('select[id^="lang"]').forEach(s => {
             s.value = this.value;
           });
           
           switchLanguage(selectedLang);
-          shuffleTestimonials();
+          filterCasesByLanguage();
         });
       });
 
@@ -2862,27 +2316,6 @@
 
       document.querySelectorAll('.mobile-links a').forEach(link => {
         link.addEventListener('click', closeMobileMenu);
-      });
-
-      // FAQ functionality
-      document.querySelectorAll('.faq-question').forEach(question => {
-        question.addEventListener('click', function() {
-          toggleFAQ(this);
-        });
-      });
-
-      // Scroll progress bar
-      let ticking = false;
-      function updateOnScroll() {
-        updateProgressBar();
-        ticking = false;
-      }
-      
-      window.addEventListener('scroll', function() {
-        if (!ticking) {
-          requestAnimationFrame(updateOnScroll);
-          ticking = true;
-        }
       });
 
       // Smooth scrolling
@@ -2901,19 +2334,6 @@
         });
       });
 
-      // Form submissions
-      document.getElementById('heroAuditForm')?.addEventListener('submit', (e) => handleFormSubmit(e, 'hero'));
-      document.getElementById('mainAuditForm')?.addEventListener('submit', (e) => handleFormSubmit(e, 'main'));
-
-      // Modal close on backdrop click
-      document.querySelectorAll('.modal').forEach(modal => {
-        modal.addEventListener('click', function(e) {
-          if (e.target === this) {
-            closeModal(this.id);
-          }
-        });
-      });
-
       // Initialize chat with welcome
       setTimeout(() => {
         const chatBody = document.getElementById('chatBody');
@@ -2927,7 +2347,7 @@
         }
       }, 2000);
 
-      console.log('✅ Enhanced Marketing in Deutschland website loaded successfully!');
+      console.log('✅ Corrected Marketing in Deutschland website loaded successfully!');
     });
 
     // Global function assignments
@@ -2936,332 +2356,10 @@
     window.handleEnter = handleEnter;
     window.generateResponse = generateResponse;
     window.getCurrentLanguage = getCurrentLanguage;
-    window.showModal = showModal;
-    window.closeModal = closeModal;
-    window.showCases = showCases;
-    window.showProofModal = showProofModal;
-    window.showCaseDetails = showCaseDetails;
     window.acceptCookies = acceptCookies;
-    window.showCookieSettings = showCookieSettings;
     window.trackCTA = trackCTA || function() {};
     window.trackFormSubmission = trackFormSubmission || function() {};
+    window.showProofModal = showProofModal || function() { alert('Proof modal would show here'); };
   </script>
-
-  <!-- ADDITIONAL STYLES FOR MODALS -->
-  <style>
-    /* Modal Styles */
-    .modal {
-      display: none; position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0,0,0,.8); justify-content: center; align-items: center;
-      backdrop-filter: blur(4px); padding: 20px;
-    }
-
-    .modal-content {
-      background: var(--bg); border: var(--border); border-radius: var(--radius);
-      max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto;
-      box-shadow: var(--shadow-lg); backdrop-filter: blur(20px);
-    }
-
-    .modal-large {
-      max-width: 900px;
-    }
-
-    .modal-header {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 24px 32px; border-bottom: var(--border);
-    }
-
-    .modal-header h2 {
-      margin: 0; font-size: 24px;
-    }
-
-    .modal-header button {
-      background: none; border: none; color: var(--muted);
-      font-size: 32px; cursor: pointer; transition: .3s ease;
-      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-      border-radius: 50%;
-    }
-
-    .modal-header button:hover {
-      background: rgba(255,255,255,.1); color: var(--text);
-    }
-
-    .modal-body {
-      padding: 32px;
-    }
-
-    .modal-body h3 {
-      margin-top: 24px; margin-bottom: 12px; color: var(--brand);
-    }
-
-    .modal-body h3:first-child {
-      margin-top: 0;
-    }
-
-    .modal-body p, .modal-body li {
-      line-height: 1.6; margin-bottom: 12px;
-    }
-
-    .modal-body ul {
-      padding-left: 20px;
-    }
-
-    /* Case Details Styles */
-    .case-detail-content h3 {
-      font-size: 20px; margin: 24px 0 12px; color: var(--brand);
-    }
-
-    .results-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 16px; margin: 20px 0;
-    }
-
-    .result-card {
-      background: var(--card); border: var(--border); border-radius: 12px;
-      padding: 20px; text-align: center; transition: .3s ease;
-    }
-
-    .result-card:hover {
-      transform: translateY(-4px); box-shadow: var(--shadow);
-    }
-
-    .result-metric {
-      font-size: 28px; font-weight: 900; color: var(--brand2);
-      margin-bottom: 8px;
-    }
-
-    .result-label {
-      font-size: 14px; color: var(--muted);
-    }
-
-    /* Proof Modal Styles */
-    .proof-gallery {
-      display: grid; gap: 32px;
-    }
-
-    .proof-item h4 {
-      margin-bottom: 16px; font-size: 18px; color: var(--brand);
-    }
-
-    .screenshot-placeholder {
-      background: var(--card); border: var(--border); border-radius: 12px;
-      padding: 32px; min-height: 200px; display: flex; align-items: center;
-      justify-content: center;
-    }
-
-    .chart-simulation {
-      width: 100%; max-width: 400px;
-    }
-
-    .chart-bars {
-      display: flex; align-items: end; justify-content: space-between;
-      height: 120px; margin-bottom: 16px; gap: 8px;
-    }
-
-    .bar {
-      background: linear-gradient(to top, var(--brand), var(--brand2));
-      border-radius: 4px 4px 0 0; flex: 1; position: relative;
-      animation: growUp 1.5s ease-out;
-    }
-
-    .bar span {
-      position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%);
-      font-size: 12px; color: var(--muted);
-    }
-
-    @keyframes growUp {
-      from { height: 0; }
-      to { height: var(--final-height, 100%); }
-    }
-
-    .chart-label {
-      text-align: center; font-weight: 600; color: var(--brand2);
-    }
-
-    .metric-display {
-      width: 100%;
-    }
-
-    .metric-card {
-      background: var(--card); border: var(--border); border-radius: 12px;
-      padding: 24px; text-align: center;
-    }
-
-    .metric-title {
-      font-size: 16px; margin-bottom: 16px; color: var(--muted);
-    }
-
-    .metric-before {
-      font-size: 18px; margin-bottom: 8px; color: #EF4444;
-    }
-
-    .metric-after {
-      font-size: 18px; margin-bottom: 16px; color: var(--brand2);
-    }
-
-    .metric-improvement {
-      font-size: 20px; font-weight: 700; color: var(--brand);
-    }
-
-    .ranking-table {
-      width: 100%;
-    }
-
-    .table-header, .table-row {
-      display: grid; grid-template-columns: 1fr auto auto;
-      gap: 16px; padding: 12px; border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-
-    .table-header {
-      font-weight: 600; background: var(--card);
-    }
-
-    .rank-before {
-      color: #EF4444;
-    }
-
-    .rank-after {
-      color: var(--brand2); font-weight: 600;
-    }
-
-    .proof-cta {
-      text-align: center; margin-top: 32px; padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,.1);
-    }
-
-    .proof-cta p {
-      margin-bottom: 20px; font-size: 18px; color: var(--text);
-    }
-
-    /* Chat Styles */
-    .chat-launcher {
-      position: fixed; right: 20px; bottom: 20px; z-index: 60;
-      width: 60px; height: 60px; border-radius: 50%; display: grid; place-items: center;
-      background: linear-gradient(135deg, var(--brand), var(--brand2));
-      color: #fff; border: none; box-shadow: var(--shadow-lg);
-      cursor: pointer; transition: .3s ease; font-size: 24px;
-      animation: bounce 3s infinite;
-    }
-
-    .chat-launcher:hover {
-      transform: scale(1.1);
-      box-shadow: 0 35px 60px -15px rgba(59,130,246,.4);
-    }
-
-    .chat-backdrop {
-      position: fixed; inset: 0; z-index: 59;
-      background: rgba(0,0,0,.5); opacity: 0; pointer-events: none;
-      transition: opacity .3s ease; backdrop-filter: blur(4px);
-    }
-
-    .chat-backdrop.open {
-      opacity: 1; pointer-events: auto;
-    }
-
-    .chat-panel {
-      position: fixed; right: 20px; bottom: 90px; z-index: 60;
-      width: min(420px, calc(100vw - 40px)); max-height: 80vh;
-      background: var(--bg); border: var(--border); border-radius: 20px;
-      box-shadow: var(--shadow-lg);
-      transform: translateY(20px) scale(.9); opacity: 0; pointer-events: none;
-      transition: .3s ease; display: flex; flex-direction: column; overflow: hidden;
-      backdrop-filter: blur(20px);
-    }
-
-    .chat-panel.open {
-      transform: none; opacity: 1; pointer-events: auto;
-    }
-
-    .chat-header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 16px 20px; background: rgba(255,255,255,.08);
-      border-bottom: var(--border);
-    }
-
-    .chat-header .title {
-      font-weight: 700; font-size: 16px;
-    }
-
-    .chat-body {
-      height: 400px; max-height: 50vh; overflow: auto; padding: 20px;
-      scroll-behavior: smooth;
-    }
-
-    .msg {
-      display: flex; gap: 12px; margin: 16px 0;
-    }
-
-    .msg.user {
-      justify-content: flex-end;
-    }
-
-    .bubble {
-      max-width: 75%; padding: 12px 16px; border-radius: 16px;
-      line-height: 1.4; font-size: 14px;
-    }
-
-    .user .bubble {
-      background: linear-gradient(135deg, var(--brand), var(--purple));
-      color: white; border: none;
-    }
-
-    .bot .bubble {
-      background: rgba(255,255,255,.1); border: var(--border);
-      color: var(--text);
-    }
-
-    .chat-input {
-      display: flex; gap: 12px; padding: 16px 20px;
-      background: rgba(255,255,255,.06); border-top: var(--border);
-    }
-
-    .chat-input input {
-      flex: 1; background: rgba(15,23,42,.8); color: var(--text);
-      border: var(--border); border-radius: 12px; padding: 12px 16px;
-      outline: none; transition: border-color .3s ease; font-size: 14px;
-    }
-
-    .chat-input input:focus {
-      border-color: var(--brand); box-shadow: var(--glow);
-    }
-
-    .chat-input button {
-      background: linear-gradient(135deg, var(--brand), var(--purple));
-      border: none; color: #fff; padding: 12px 16px; border-radius: 12px;
-      font-weight: 700; transition: .3s ease; font-size: 14px; cursor: pointer;
-    }
-
-    .chat-input button:hover {
-      transform: translateY(-2px); box-shadow: var(--shadow);
-    }
-
-    /* Mobile Responsiveness */
-    @media (max-width: 768px) {
-      .modal-content {
-        margin: 10px; max-width: calc(100vw - 20px);
-      }
-
-      .modal-header, .modal-body {
-        padding: 20px;
-      }
-
-      .results-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .chart-bars {
-        height: 80px;
-      }
-
-      .table-header, .table-row {
-        grid-template-columns: 1fr auto auto;
-        gap: 8px; font-size: 14px;
-      }
-
-      .chat-panel {
-        width: calc(100vw - 20px); right: 10px;
-      }
-    }
-  </style>
 </body>
 </html>
