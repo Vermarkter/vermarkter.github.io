@@ -17,7 +17,7 @@ const chatResponses = {
             "Die Kosten hängen vom Umfang ab. Lassen Sie uns über Ihre Ziele sprechen, dann kann ich Ihnen eine Einschätzung geben."
         ],
         contact: [
-            "Sie können uns unter info@vermarkter.de erreichen oder +49 123 456 789 anrufen. Wann passt Ihnen ein Beratungsgespräch?",
+            "Sie können uns unter info@vermarkter.de erreichen oder +49 155 103 0538 anrufen. Wann passt Ihnen ein Beratungsgespräch?",
             "Kontaktieren Sie uns gerne per E-Mail oder Telefon. Soll ich einen Termin für ein kostenloses Beratungsgespräch vereinbaren?",
             "Am besten sprechen wir persönlich über Ihr Projekt. Wann hätten Sie Zeit für ein unverbindliches Gespräch?"
         ],
