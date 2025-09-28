@@ -3,33 +3,76 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Маркетинг в Німеччині — Цифрове агентство | Google Ads, SEO, Веб-сайти</title>
-  <meta name="description" content="8 років досвіду: Веб-сайти, Google Ads, SMM, SEO. Вимірювані результати для вашого бізнесу."/>
-  <meta name="keywords" content="маркетинг німеччина, google ads, seo, створення сайтів"/>
+  <title>Маркетинг в Німеччині - Розробка сайтів, Google Ads, SEO, SMM | Цифрове агентство</title>
+  <meta name="description" content="Професійне цифрове маркетинг-агентство в Німеччині: створення сайтів, Google Ads, SEO оптимізація, маркетинг в соцмережах. 8 років досвіду, 300+ проектів. Збільшуємо прибуток на 250% за 90 днів."/>
+  <meta name="keywords" content="маркетинг німеччина, google ads, seo оптимізація, створення сайтів, smm, цифровий маркетинг, розробка веб сайтів, пошукова оптимізація, реклама google, маркетинг мюнхен, веб дизайн, інтернет маркетинг"/>
   <meta name="theme-color" content="#0F172A"/>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
   
   <!-- HREFLANG TAGS FOR ALL LANGUAGES -->
   <link rel="alternate" hreflang="de" href="https://vermarkter.github.io/de/" />
   <link rel="alternate" hreflang="en" href="https://vermarkter.github.io/en/" />
-  <link rel="alternate" hreflang="uk" href="https://vermarkter.github.io/" />
+  <link rel="alternate" hreflang="uk" href="https://vermarkter.github.io/ua/" />
   <link rel="alternate" hreflang="ru" href="https://vermarkter.github.io/ru/" />
   <link rel="alternate" hreflang="pl" href="https://vermarkter.github.io/pl/" />
-  <link rel="alternate" hreflang="x-default" href="https://vermarkter.github.io/" />
+  <link rel="alternate" hreflang="x-default" href="https://vermarkter.github.io/ua/" />
   
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Маркетинг в Німеччині — Цифрове агентство">
-  <meta property="og:description" content="8 років досвіду: Веб-сайти, Google Ads, SMM, SEO. Вимірювані результати для вашого бізнесу.">
+  <meta property="og:title" content="Маркетинг в Німеччині - Цифрове агентство | Google Ads, SEO, Веб-сайти">
+  <meta property="og:description" content="Професійне цифрове маркетинг-агентство: створення сайтів, Google Ads, SEO. Збільшуємо прибуток на 250% за 90 днів.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://vermarkter.github.io">
+  <meta property="og:url" content="https://vermarkter.github.io/ua/">
   <meta property="og:image" content="https://vermarkter.github.io/og-image.jpg">
   <meta property="og:site_name" content="Marketing in Deutschland">
+  <meta property="og:locale" content="uk_UA">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Маркетинг в Німеччині — Цифрове агентство">
-  <meta name="twitter:description" content="8 років досвіду: Веб-сайти, Google Ads, SMM, SEO.">
+  <meta name="twitter:title" content="Маркетинг в Німеччині - Цифрове агентство">
+  <meta name="twitter:description" content="Професійне цифрове маркетинг-агентство: Google Ads, SEO, створення сайтів. +250% прибуток за 90 днів.">
   <meta name="twitter:image" content="https://vermarkter.github.io/og-image.jpg">
+  <meta name="twitter:site" content="@marketing_de">
+
+  <!-- Structured Data / Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Marketing in Deutschland",
+    "alternateName": "Маркетинг в Німеччині",
+    "description": "Професійне цифрове маркетинг-агентство в Німеччині",
+    "url": "https://vermarkter.github.io/ua/",
+    "logo": "https://vermarkter.github.io/logo.png",
+    "sameAs": [
+      "https://t.me/Asystentmijbot"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+49-151-23456789",
+      "contactType": "customer service",
+      "email": "maps.werbung@gmail.com",
+      "availableLanguage": ["Ukrainian", "German", "English", "Russian", "Polish"],
+      "areaServed": "DE"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "DE"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "147"
+    },
+    "offers": {
+      "@type": "Service",
+      "serviceType": "Digital Marketing",
+      "provider": {
+        "@type": "Organization",
+        "name": "Marketing in Deutschland"
+      }
+    }
+  }
+  </script>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -37,7 +80,11 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'G-XXXXXXXXXX', {
+      page_title: document.title,
+      page_location: window.location.href,
+      content_group1: 'UA'
+    });
   </script>
 
   <!-- STYLES -->
@@ -169,6 +216,13 @@
       outline: none; 
       font-weight: 700;
       text-transform: uppercase;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+
+    .lang select:hover {
+      border-color: var(--brand);
+      box-shadow: var(--glow);
     }
 
     /* MOBILE MENU */
@@ -201,6 +255,21 @@
     .hamburger span:nth-child(2) { top: 7px; }
     .hamburger span:nth-child(3) { top: 14px; }
 
+    .hamburger.active span:nth-child(1) {
+      top: 7px; 
+      transform: rotate(135deg);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+      opacity: 0; 
+      left: -60px;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+      top: 7px; 
+      transform: rotate(-135deg);
+    }
+
     .mobile-menu {
       position: absolute; 
       top: 100%; 
@@ -212,12 +281,15 @@
       opacity: 0; 
       visibility: hidden; 
       transition: all .3s ease;
+      max-height: 0;
+      overflow: hidden;
     }
     
     .mobile-menu.active {
       transform: translateY(0); 
       opacity: 1; 
       visibility: visible;
+      max-height: 500px;
     }
 
     .mobile-header {
@@ -254,11 +326,17 @@
       text-decoration: none;
     }
 
-    /* IMPROVED CTA BANNER */
+    .mobile-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+    }
+
+    /* IMPROVED BLUE CTA BANNER */
     .desktop-cta-banner {
-      background: rgba(59,130,246,.05);
-      border-bottom: 1px solid rgba(59,130,246,.2);
-      padding: 12px 0;
+      background: linear-gradient(135deg, rgba(59,130,246,.1), rgba(16,185,129,.05));
+      border-bottom: 1px solid rgba(59,130,246,.3);
+      padding: 16px 0;
+      box-shadow: 0 2px 10px rgba(59,130,246,.1);
     }
 
     .cta-banner {
@@ -279,12 +357,14 @@
       font-size: 16px;
       font-weight: 700;
       margin-bottom: 4px;
+      text-shadow: 0 1px 2px rgba(0,0,0,.1);
     }
 
     .cta-details {
       font-size: 13px;
-      color: var(--muted);
+      color: #B8D4F0;
       line-height: 1.4;
+      font-weight: 500;
     }
 
     .cta-timer {
@@ -303,23 +383,27 @@
       font-size: 16px;
       font-weight: 700;
       font-family: 'Courier New', monospace;
+      color: #60A5FA;
+      text-shadow: 0 1px 2px rgba(0,0,0,.2);
     }
 
     .cta-button {
-      background: var(--gradient);
+      background: linear-gradient(135deg, var(--brand), #1E40AF);
       color: white;
-      padding: 10px 20px;
+      padding: 12px 20px;
       border-radius: 8px;
       font-weight: 700;
       font-size: 14px;
       text-decoration: none;
       transition: .3s ease;
       white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(59,130,246,.3);
     }
 
     .cta-button:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      box-shadow: 0 8px 25px rgba(59,130,246,.4);
+      background: linear-gradient(135deg, #2563EB, #1E40AF);
     }
 
     /* HERO SECTION */
@@ -390,11 +474,16 @@
       border: 1px solid rgba(255,255,255,.2);
       border-radius: 8px;
       outline: none;
+      font-size: 14px;
     }
 
     .audit-form input:focus {
       border-color: var(--brand);
       box-shadow: var(--glow);
+    }
+
+    .audit-form input::placeholder {
+      color: var(--muted);
     }
 
     .cta {
@@ -694,7 +783,7 @@
       font-size: 18px;
     }
 
-    /* SERVICES SECTION */
+    /* SERVICES SECTION - RESPONSIVE GRID */
     .services-section {
       padding: 80px 0;
     }
@@ -704,7 +793,20 @@
       gap: 24px; 
       max-width: 1200px; 
       margin: 0 auto; 
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      /* Responsive: 4 in row -> 2x2 -> single column */
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     .card {
@@ -777,6 +879,173 @@
       padding: 4px 0;
       font-size: 14px;
       color: var(--muted);
+    }
+
+    /* TESTIMONIALS SECTION */
+    .testimonials-section {
+      padding: 80px 0;
+      background: rgba(0,0,0,.1);
+    }
+
+    .testimonials-carousel {
+      position: relative;
+      margin-top: 60px;
+    }
+
+    .testimonials-track {
+      display: flex;
+      gap: 32px;
+      overflow-x: auto;
+      padding: 20px 0;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .testimonials-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-card {
+      background: var(--card);
+      border: var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: .4s ease;
+      backdrop-filter: blur(20px);
+      position: relative;
+      min-width: 350px;
+      max-width: 400px;
+      flex-shrink: 0;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-size: 60px;
+      color: var(--brand);
+      position: absolute;
+      top: -10px;
+      left: 20px;
+      font-family: serif;
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: 24px;
+      line-height: 1.6;
+      padding-top: 20px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
+
+    .author-info h5 {
+      margin: 0;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .author-info .company {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .author-info .result {
+      color: var(--brand2);
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    .testimonial-form {
+      margin-top: 60px;
+      background: var(--card);
+      border: var(--border);
+      border-radius: var(--radius);
+      padding: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      backdrop-filter: blur(20px);
+    }
+
+    .testimonial-form h3 {
+      text-align: center;
+      margin-bottom: 24px;
+      color: var(--brand);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      outline: none;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--brand);
+      box-shadow: var(--glow);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-rating {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .star {
+      font-size: 24px;
+      color: var(--muted);
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .star:hover,
+    .star.active {
+      color: #FFD700;
     }
 
     /* FOOTER */
@@ -889,7 +1158,6 @@
       .hero-stats { grid-template-columns: 1fr; gap: 12px; }
       .cases-grid { grid-template-columns: 1fr; }
       .case-card { padding: 20px; }
-      .services-grid { grid-template-columns: 1fr; }
       .card { padding: 24px; }
       .audit-form { flex-direction: column; }
       .audit-form input { min-width: auto; }
@@ -897,6 +1165,18 @@
       .mobile-lang-panel { flex-direction: column; gap: 12px; align-items: flex-start; }
       .chat-launcher { width: 70px; height: 70px; font-size: 20px; }
       .chat-label { font-size: 9px; }
+      .testimonials-track { 
+        gap: 16px;
+        padding: 10px 0;
+      }
+      .testimonial-card { 
+        min-width: 300px;
+        padding: 24px;
+      }
+      .testimonial-form { 
+        padding: 24px; 
+        margin: 40px 16px 0;
+      }
     }
 
     @media (max-width: 480px) {
@@ -904,6 +1184,34 @@
       h1 { font-size: 28px; }
       .lead { font-size: 16px; }
       .section-header h2 { font-size: 24px; }
+      .testimonial-card { 
+        min-width: 280px; 
+      }
+    }
+
+    /* Animation classes */
+    .animate-slide-up {
+      animation: slideUp 0.6s ease-out forwards;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 
@@ -929,8 +1237,9 @@
         
         <!-- Desktop Menu -->
         <div class="nav-desktop">
-          <a href="#services">Послуги</a>
+          <a href="#services">Наші послуги</a>
           <a href="#cases">Кейси успіху</a>
+          <a href="#testimonials">Відгуки</a>
           <a href="#contact">Контакти</a>
           
           <!-- Language Selector -->
@@ -971,8 +1280,9 @@
             </div>
           </div>
           <div class="mobile-links">
-            <a href="#services" onclick="closeMobileMenu()">Послуги</a>
+            <a href="#services" onclick="closeMobileMenu()">Наші послуги</a>
             <a href="#cases" onclick="closeMobileMenu()">Кейси успіху</a>
+            <a href="#testimonials" onclick="closeMobileMenu()">Відгуки</a>
             <a href="#contact" onclick="closeMobileMenu()">Контакти</a>
           </div>
         </div>
@@ -1003,15 +1313,15 @@
       <div class="container">
         <div class="hero-grid">
           <div>
-            <div class="badge">
+            <div class="badge animate-fade-in">
               ✨ 8 років досвіду • 300+ успішних проектів
             </div>
             
-            <h1>Цифровий маркетинг, який дає вимірювані результати</h1>
-            <p class="lead">Веб-сайти, Google Ads, SMM, SEO. В середньому +250% більше кваліфікованих лідів за 90 днів.</p>
+            <h1 class="animate-slide-up">Цифровий маркетинг, який дає вимірювані результати</h1>
+            <p class="lead animate-slide-up">Веб-сайти, Google Ads, SMM, SEO. В середньому +250% більше кваліфікованих лідів за 90 днів.</p>
             
-            <div class="hero-actions">
-              <h3>🎯 Безкоштовний маркетинг-аудит (Вартість: 200€)</h3>
+            <div class="hero-actions animate-slide-up">
+              <h3 id="audit">🎯 Безкоштовний маркетинг-аудит (Вартість: 200€)</h3>
               <form class="audit-form" id="auditForm" onsubmit="submitAuditForm(event)">
                 <input type="url" placeholder="URL вашого сайту" required>
                 <input type="email" placeholder="E-mail для звіту" required>
@@ -1024,7 +1334,7 @@
           </div>
           
           <!-- Hero Visual -->
-          <div class="hero-visual">
+          <div class="hero-visual animate-fade-in">
             <div class="hero-card">
               <div class="card-header">
                 <h3>📊 Реальні результати клієнтів</h3>
@@ -1071,7 +1381,7 @@
 
         <div class="cases-grid">
           <!-- Ukrainian Cases -->
-          <div class="case-card">
+          <div class="case-card animate-slide-up">
             <div class="case-header">
               <div class="case-category">E-Commerce</div>
               <div class="case-location">🏛️ Мюнхен</div>
@@ -1097,33 +1407,7 @@
             </div>
           </div>
 
-          <div class="case-card">
-            <div class="case-header">
-              <div class="case-category">Ресторан</div>
-              <div class="case-location">🏛️ Мюнхен</div>
-            </div>
-            <h3 class="case-title">Українська кухня в серці Баварії</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: var(--brand2); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ВК</div>
-              <div>
-                <div class="client-name">Володимир К.</div>
-                <div class="client-company">Borsch & Co Restaurant</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Було: 45 гостей/день</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Стало: 127 гостей/день</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+182% відвідувачів</div>
-              <div class="result-roi">Вартість: -39% на клієнта</div>
-            </div>
-          </div>
-
-          <div class="case-card">
+          <div class="case-card animate-slide-up">
             <div class="case-header">
               <div class="case-category">IT-послуги</div>
               <div class="case-location">🏛️ Мюнхен</div>
@@ -1149,17 +1433,17 @@
             </div>
           </div>
 
-          <div class="case-card">
+          <div class="case-card animate-slide-up">
             <div class="case-header">
               <div class="case-category">Медицина</div>
-              <div class="case-location">🏛️ Мюнхен</div>
+              <div class="case-location">🌍 Чернівці</div>
             </div>
             <h3 class="case-title">Стоматологічна клініка</h3>
             <div class="case-client">
               <div class="client-avatar" style="background: #EF4444; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ІБ</div>
               <div>
                 <div class="client-name">Ірина Б.</div>
-                <div class="client-company">Dental Care München</div>
+                <div class="client-company">Dental Care Chernivtsi</div>
               </div>
             </div>
             <div class="case-metrics">
@@ -1175,34 +1459,34 @@
             </div>
           </div>
 
-          <!-- Russian Cases -->
-          <div class="case-card">
+          <!-- Russian Case - Changed to Toy Store in Warsaw -->
+          <div class="case-card animate-slide-up">
             <div class="case-header">
               <div class="case-category">E-Commerce</div>
-              <div class="case-location">🏛️ Мюнхен</div>
+              <div class="case-location">🌍 Варшава</div>
             </div>
-            <h3 class="case-title">Интернет-магазин электроники</h3>
+            <h3 class="case-title">Интернет-магазин игрушек</h3>
             <div class="case-client">
               <div class="client-avatar" style="background: #EF4444; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">АВ</div>
               <div>
-                <div class="client-name">Александр В.</div>
-                <div class="client-company">Tech Store München</div>
+                <div class="client-name">Анна В.</div>
+                <div class="client-company">Toys Store Warsaw</div>
               </div>
             </div>
             <div class="case-metrics">
               <div class="metric">
-                <div class="metric-before">Было: €32k/мес</div>
+                <div class="metric-before">Было: €18k/мес</div>
                 <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Стало: €89k/мес</div>
+                <div class="metric-after highlight">Стало: €67k/мес</div>
               </div>
             </div>
             <div class="case-result">
-              <div class="result-percentage">+178% выручки</div>
-              <div class="result-roi">ROI: 4.9x</div>
+              <div class="result-percentage">+272% выручки</div>
+              <div class="result-roi">ROI: 5.1x</div>
             </div>
           </div>
 
-          <div class="case-card">
+          <div class="case-card animate-slide-up">
             <div class="case-header">
               <div class="case-category">Недвижимость</div>
               <div class="case-location">🏛️ Мюнхен</div>
@@ -1229,7 +1513,7 @@
           </div>
 
           <!-- German Cases -->
-          <div class="case-card">
+          <div class="case-card animate-slide-up">
             <div class="case-header">
               <div class="case-category">Handwerk</div>
               <div class="case-location">🏛️ München</div>
@@ -1255,7 +1539,7 @@
             </div>
           </div>
 
-          <div class="case-card">
+          <div class="case-card animate-slide-up">
             <div class="case-header">
               <div class="case-category">Gastronomie</div>
               <div class="case-location">🏛️ München</div>
@@ -1280,6 +1564,32 @@
               <div class="result-roi">ROI: 3.9x</div>
             </div>
           </div>
+
+          <div class="case-card animate-slide-up">
+            <div class="case-header">
+              <div class="case-category">Software</div>
+              <div class="case-location">🌍 Берлін</div>
+            </div>
+            <h3 class="case-title">B2B Software Entwicklung</h3>
+            <div class="case-client">
+              <div class="client-avatar" style="background: var(--purple); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">FK</div>
+              <div>
+                <div class="client-name">Frank K.</div>
+                <div class="client-company">DevSoft Berlin GmbH</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Vorher: €45k/Mon</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Nachher: €156k/Mon</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">+247% Revenue</div>
+              <div class="result-roi">ROI: 4.8x</div>
+            </div>
+          </div>
         </div>
 
         <div class="cases-cta">
@@ -1296,82 +1606,401 @@
     <section id="services" class="services-section">
       <div class="container">
         <div class="section-header">
-          <h2>🎯 Unsere Leistungen</h2>
-          <p class="section-subtitle">Vollständige Digital-Marketing-Lösungen für messbare Ergebnisse</p>
+          <h2>🎯 Наші послуги</h2>
+          <p class="section-subtitle">Повні рішення цифрового маркетингу для вимірюваних результатів</p>
         </div>
 
         <div class="services-grid">
-          <div class="card">
+          <div class="card animate-slide-up">
             <div class="card-icon">
               <i class="fas fa-laptop-code"></i>
             </div>
-            <h3>Website-Entwicklung</h3>
-            <p>Moderne, responsive Websites mit optimaler Performance und Benutzerfreundlichkeit. Von Landing Pages bis zu komplexen E-Commerce-Lösungen.</p>
+            <h3>Розробка веб-сайтів</h3>
+            <p>Сучасні, адаптивні веб-сайти з оптимальною продуктивністю та зручністю використання. Від посадкових сторінок до складних рішень для електронної комерції.</p>
             <div class="service-pricing">
-              <div class="price-range">Ab €150 - €5,000</div>
-              <div class="delivery-time">Lieferzeit: 1-8 Wochen</div>
+              <div class="price-range">Від €150 - €5,000</div>
+              <div class="delivery-time">Час виконання: 1-8 тижнів</div>
             </div>
             <ul class="service-features">
-              <li>✅ Responsive Design</li>
-              <li>✅ SEO-optimiert</li>
-              <li>✅ Page Speed < 3s</li>
-              <li>✅ SSL & Sicherheit</li>
+              <li>✅ Адаптивний дизайн</li>
+              <li>✅ SEO-оптимізація</li>
+              <li>✅ Швидкість сторінки < 3с</li>
+              <li>✅ SSL і безпека</li>
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card animate-slide-up">
             <div class="card-icon">
               <i class="fab fa-google"></i>
             </div>
-            <h3>Google Ads Management</h3>
-            <p>Professionelle Google Ads Kampagnen für maximale Reichweite und optimale Conversion-Raten. Strategische Keyword-Analyse und Bid-Management.</p>
+            <h3>Управління Google Ads</h3>
+            <p>Професійні кампанії Google Ads для максимального охоплення та оптимальних коефіцієнтів конверсії. Стратегічний аналіз ключових слів та управління ставками.</p>
             <div class="service-pricing">
-              <div class="price-range">Min. Budget: €500/Monat</div>
-              <div class="delivery-time">Setup: 3-5 Werktage</div>
+              <div class="price-range">Мін. бюджет: €500/місяць</div>
+              <div class="delivery-time">Налаштування: 3-5 робочих днів</div>
             </div>
             <ul class="service-features">
-              <li>✅ Keyword-Recherche</li>
-              <li>✅ A/B-Tests</li>
-              <li>✅ Conversion-Tracking</li>
-              <li>✅ Wöchentliche Reports</li>
+              <li>✅ Дослідження ключових слів</li>
+              <li>✅ A/B тестування</li>
+              <li>✅ Відстеження конверсій</li>
+              <li>✅ Щотижневі звіти</li>
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card animate-slide-up">
             <div class="card-icon">
               <i class="fas fa-chart-line"></i>
             </div>
-            <h3>Suchmaschinenoptimierung</h3>
-            <p>Organische Sichtbarkeit erhöhen und langfristig bessere Rankings in Google erzielen. Technisches SEO, Content-Optimierung und Link-Building.</p>
+            <h3>Пошукова оптимізація</h3>
+            <p>Підвищення органічної видимості та довгострокове досягнення кращих рейтингів у Google. Технічне SEO, оптимізація контенту та побудова посилань.</p>
             <div class="service-pricing">
-              <div class="price-range">Ab €800/Monat</div>
-              <div class="delivery-time">Erste Erfolge: 2-4 Monate</div>
+              <div class="price-range">Від €800/місяць</div>
+              <div class="delivery-time">Перші успіхи: 2-4 місяці</div>
             </div>
             <ul class="service-features">
-              <li>✅ Technisches SEO</li>
-              <li>✅ Content-Optimierung</li>
-              <li>✅ Link-Building</li>
-              <li>✅ Ranking-Monitoring</li>
+              <li>✅ Технічне SEO</li>
+              <li>✅ Оптимізація контенту</li>
+              <li>✅ Побудова посилань</li>
+              <li>✅ Моніторинг рейтингу</li>
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card animate-slide-up">
             <div class="card-icon">
               <i class="fas fa-share-alt"></i>
             </div>
-            <h3>Social Media Marketing</h3>
-            <p>Strategische Social Media Kampagnen für mehr Engagement und Kundenbindung. Content-Erstellung, Community Management und Influencer Marketing.</p>
+            <h3>Маркетинг у соціальних мережах</h3>
+            <p>Стратегічні кампанії в соціальних мережах для більшого залучення та лояльності клієнтів. Створення контенту, управління спільнотою та інфлюенсер-маркетинг.</p>
             <div class="service-pricing">
-              <div class="price-range">Ab €600/Monat</div>
-              <div class="delivery-time">Content-Plan: 1 Woche</div>
+              <div class="price-range">Від €600/місяць</div>
+              <div class="delivery-time">План контенту: 1 тиждень</div>
             </div>
             <ul class="service-features">
-              <li>✅ Content-Strategie</li>
-              <li>✅ Community Management</li>
-              <li>✅ Paid Social Ads</li>
-              <li>✅ Analytics & Reports</li>
+              <li>✅ Контент-стратегія</li>
+              <li>✅ Управління спільнотою</li>
+              <li>✅ Платна реклама в соцмережах</li>
+              <li>✅ Аналітика та звіти</li>
             </ul>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>💬 Що говорять наші клієнти</h2>
+          <p class="section-subtitle">Справжні відгуки з конкретними результатами</p>
+        </div>
+
+        <div class="testimonials-carousel">
+          <div class="testimonials-track" id="testimonialsTrack">
+            <!-- 8 Ukrainian Testimonials -->
+            <div class="testimonial-card" data-lang="ua">
+              <div class="testimonial-text">
+                Завдяки Marketing in Deutschland наш інтернет-магазин збільшив продажі на 247% за 6 місяців. Професійна команда, чіткі звіти, постійна підтримка. Рекомендую всім, хто хоче реальних результатів!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--gradient);">ОТ</div>
+                <div class="author-info">
+                  <h5>Оксана Тарасенко</h5>
+                  <div class="company">Home Textile München GmbH</div>
+                  <div class="result">Результат: +247% продажів</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ua">
+              <div class="testimonial-text">
+                Наш IT-стартап завдяки їхній стратегії отримав +292% замовлень. Особливо вражає їхній підхід до таргетування - знають свою справу! За 4 місяці окупили витрати і плануємо довгострокову співпрацю.
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--purple);">АМ</div>
+                <div class="author-info">
+                  <h5>Андрій Мельник</h5>
+                  <div class="company">TechSolutions München</div>
+                  <div class="result">Результат: +292% замовлень</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ua">
+              <div class="testimonial-text">
+                Моя стоматологічна клініка в Чернівцях тепер має постійний потік пацієнтів завдяки їхній роботі. +287% нових пацієнтів за 5 місяців! Вартість залучення клієнта знизилася вдвічі.
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: #EF4444;">ІБ</div>
+                <div class="author-info">
+                  <h5>Ірина Береза</h5>
+                  <div class="company">Dental Care Chernivtsi</div>
+                  <div class="result">Результат: +287% пацієнтів</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ua">
+              <div class="testimonial-text">
+                Наша косметична клініка в Берліні подвоїла кількість клієнтів завдяки їхній комплексній стратегії. Професійний SMM, таргетована реклама, і відмінна аналітика. Рекомендую!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--brand2);">МЛ</div>
+                <div class="author-info">
+                  <h5>Марина Левченко</h5>
+                  <div class="company">Beauty Clinic Berlin</div>
+                  <div class="result">Результат: +198% клієнтів</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ua">
+              <div class="testimonial-text">
+                Український автосервіс у Гамбурзі отримав нове життя! Збільшення доходу на 161%, нові клієнти, професійний сайт. Дякуємо команді Marketing in Deutschland за відмінну роботу.
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--brand);">ДС</div>
+                <div class="author-info">
+                  <h5>Дмитро Савченко</h5>
+                  <div class="company">Auto Repair Hamburg</div>
+                  <div class="result">Результат: +161% доходу</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ua">
+              <div class="testimonial-text">
+                Мовна школа в Мюнхені завдяки їхній роботі збільшила кількість студентів на 274%. Особливо ефективною виявилася локальна SEO-стратегія. Професіонали своєї справи!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--brand2);">ТП</div>
+                <div class="author-info">
+                  <h5>Тетяна Павленко</h5>
+                  <div class="company">Language School München</div>
+                  <div class="result">Результат: +274% студентів</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ua">
+              <div class="testimonial-text">
+                Будівельна компанія в Кельні отримала +263% замовлень завдяки їхній роботі. Професійний сайт, ефективна реклама, постійний моніторинг результатів. Дуже задоволений співпрацею!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--purple);">ВГ</div>
+                <div class="author-info">
+                  <h5>Віталій Герасименко</h5>
+                  <div class="company">Renovation Köln</div>
+                  <div class="result">Результат: +263% замовлень</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ua">
+              <div class="testimonial-text">
+                Фотостудія в Дюссельдорфі завдяки їхній стратегії подвоїла кількість замовлень. Відмінна робота з Instagram та Facebook, професійний підхід. Рекомендую всім творчим особистостям!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--accent);">ОП</div>
+                <div class="author-info">
+                  <h5>Олена Петренко</h5>
+                  <div class="company">Photo Studio Düsseldorf</div>
+                  <div class="result">Результат: +215% замовлень</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 5 Russian Testimonials -->
+            <div class="testimonial-card" data-lang="ru">
+              <div class="testimonial-text">
+                Интернет-магазин игрушек в Варшаве увеличил выручку на 272% за 4 месяца. Отличная работа с Google Ads и SEO. Особенно впечатляет аналитика - все прозрачно и понятно.
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: #EF4444;">АВ</div>
+                <div class="author-info">
+                  <h5>Анна Волкова</h5>
+                  <div class="company">Toys Store Warsaw</div>
+                  <div class="result">Результат: +272% выручки</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ru">
+              <div class="testimonial-text">
+                Работаем с агентством уже полтора года. ROI по Google Ads вырос в 4.9 раза, органический трафик увеличился на 180%. Особенно нравится их подход к аналитике - всё прозрачно и понятно.
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--accent);">ЕК</div>
+                <div class="author-info">
+                  <h5>Елена Козлова</h5>
+                  <div class="company">Real Estate München</div>
+                  <div class="result">Результат: ROI 4.9x</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ru">
+              <div class="testimonial-text">
+                Наша консалтинговая фирма во Франкфурте увеличила количество клиентов на 246%. Профессиональная команда, четкая стратегия, отличные результаты. Рекомендую всем!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--brand);">ДМ</div>
+                <div class="author-info">
+                  <h5>Дмитрий Михайлов</h5>
+                  <div class="company">Financial Advisory Frankfurt</div>
+                  <div class="result">Результат: +246% клиентов</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ru">
+              <div class="testimonial-text">
+                Юридическая фирма в Дюссельдорфе благодаря их работе увеличила доход на 182%. Отличная работа с локальным SEO и контекстной рекламой. Очень доволен результатом!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--brand2);">ОС</div>
+                <div class="author-info">
+                  <h5>Ольга Смирнова</h5>
+                  <div class="company">Law Firm Düsseldorf</div>
+                  <div class="result">Результат: +182% дохода</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="ru">
+              <div class="testimonial-text">
+                Туристическое агентство в Берлине увеличило продажи на 239% благодаря их комплексной стратегии. Профессиональный подход к каждому каналу продвижения. Превосходно!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: #EF4444;">СН</div>
+                <div class="author-info">
+                  <h5>Светлана Новикова</h5>
+                  <div class="company">Travel Agency Berlin</div>
+                  <div class="result">Результат: +239% выручки</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 German Testimonials -->
+            <div class="testimonial-card" data-lang="de">
+              <div class="testimonial-text">
+                Als Handwerksmeister war ich skeptisch gegenüber Online-Marketing. Aber die Ergebnisse sprechen für sich: 278% mehr Aufträge in nur 4 Monaten! Die Investition hat sich bereits mehrfach bezahlt gemacht.
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--accent);">MS</div>
+                <div class="author-info">
+                  <h5>Markus Schmidt</h5>
+                  <div class="company">Elektro Meister München</div>
+                  <div class="result">Ergebnis: +278% Aufträge</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="de">
+              <div class="testimonial-text">
+                Unser bayerisches Restaurant in München hat dank ihrer Strategie 258% mehr Umsatz gemacht. Besonders beeindruckend ist die lokale SEO-Arbeit. Wir sind sehr zufrieden mit der Zusammenarbeit!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--brand);">TM</div>
+                <div class="author-info">
+                  <h5>Thomas Müller</h5>
+                  <div class="company">Biergarten München</div>
+                  <div class="result">Ergebnis: +258% Umsatz</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="de">
+              <div class="testimonial-text">
+                Unsere Software-Entwicklungsfirma in Berlin hat den Umsatz um 247% gesteigert. Professionelle B2B-Marketingstrategie, excellente Betreuung. Können wir nur weiterempfehlen!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--purple);">FK</div>
+                <div class="author-info">
+                  <h5>Frank Köhler</h5>
+                  <div class="company">DevSoft Berlin GmbH</div>
+                  <div class="result">Ergebnis: +247% Revenue</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2 English Testimonials -->
+            <div class="testimonial-card" data-lang="en">
+              <div class="testimonial-text">
+                Outstanding results! Our import/export business in Munich increased revenue by 200% within 6 months. Their data-driven approach and constant optimization made all the difference. Highly professional team.
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: #EF4444;">JB</div>
+                <div class="author-info">
+                  <h5>John Brown</h5>
+                  <div class="company">Global Trade München</div>
+                  <div class="result">Result: +200% Revenue</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card" data-lang="en">
+              <div class="testimonial-text">
+                Our business consulting firm in Frankfurt saw a 274% increase in clients thanks to their comprehensive digital marketing strategy. Professional approach, detailed reporting, excellent results!
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--brand2);">SM</div>
+                <div class="author-info">
+                  <h5>Sarah Martinez</h5>
+                  <div class="company">Business Solutions Frankfurt</div>
+                  <div class="result">Result: +274% Clients</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 1 Polish Testimonial -->
+            <div class="testimonial-card" data-lang="pl">
+              <div class="testimonial-text">
+                Dzięki współpracy z Marketing in Deutschland nasza firma konsultingowa zwiększyła liczbę klientów o 274%! Profesjonalne podejście, szczegółowe raporty i stały kontakt. Polecam każdemu przedsiębiorcy w Niemczech.
+              </div>
+              <div class="testimonial-author">
+                <div class="author-avatar" style="background: var(--brand2);">АК</div>
+                <div class="author-info">
+                  <h5>Anna Kowalska</h5>
+                  <div class="company">Business Solutions Berlin</div>
+                  <div class="result">Wynik: +274% klientów</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add Review Form -->
+        <div class="testimonial-form">
+          <h3>📝 Залишити відгук</h3>
+          <form id="reviewForm" onsubmit="submitReview(event)">
+            <div class="form-group">
+              <label for="reviewName">Ваше ім'я *</label>
+              <input type="text" id="reviewName" required>
+            </div>
+            <div class="form-group">
+              <label for="reviewCompany">Назва компанії</label>
+              <input type="text" id="reviewCompany">
+            </div>
+            <div class="form-group">
+              <label for="reviewResult">Досягнутий результат</label>
+              <input type="text" id="reviewResult" placeholder="Наприклад: +150% продажів">
+            </div>
+            <div class="form-group">
+              <label for="reviewText">Ваш відгук *</label>
+              <textarea id="reviewText" required placeholder="Розкажіть про ваш досвід співпраці з нами..."></textarea>
+            </div>
+            <div class="form-group">
+              <label>Ваша оцінка</label>
+              <div class="form-rating">
+                <span class="star" data-rating="1">⭐</span>
+                <span class="star" data-rating="2">⭐</span>
+                <span class="star" data-rating="3">⭐</span>
+                <span class="star" data-rating="4">⭐</span>
+                <span class="star" data-rating="5">⭐</span>
+              </div>
+            </div>
+            <button type="submit" class="cta">Надіслати відгук (після модерації)</button>
+          </form>
         </div>
       </div>
     </section>
@@ -1409,9 +2038,9 @@
     <div class="container">
       <div class="footer-content">
         <div class="footer-section">
-          <h4>Послуги</h4>
+          <h4>Наші послуги</h4>
           <a href="#services">Створення веб-сайтів</a>
-          <a href="#services">Google Ads управління</a>
+          <a href="#services">Управління Google Ads</a>
           <a href="#services">SEO оптимізація</a>
           <a href="#services">Маркетинг в соцмережах</a>
           <a href="#cases">Кейси успіху</a>
@@ -1421,6 +2050,7 @@
           <h4>Компанія</h4>
           <a href="#cases">Наші результати</a>
           <a href="#contact">Контакти</a>
+          <a href="#testimonials">Відгуки клієнтів</a>
           <a href="#services">Портфоліо</a>
         </div>
         
@@ -1464,8 +2094,13 @@
     <div class="chat-label">ОНЛАЙН ЧАТ</div>
   </button>
 
+  <!-- EXTERNAL CHAT.JS REFERENCE -->
+  <script src="https://raw.githubusercontent.com/Vermarkter/vermarkter.github.io/main/chat.js"></script>
+
   <!-- JavaScript -->
   <script>
+    let currentRating = 0;
+    
     // Countdown Timer
     function startCountdown() {
       const countdownElement = document.getElementById('countdown');
@@ -1493,6 +2128,9 @@
       
       menu.classList.toggle('active');
       hamburger.classList.toggle('active');
+      
+      // Prevent body scroll when menu is open
+      document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     }
 
     function closeMobileMenu() {
@@ -1501,12 +2139,13 @@
       
       menu.classList.remove('active');
       hamburger.classList.remove('active');
+      document.body.style.overflow = '';
     }
 
-    // Language Change
+    // Language Change - REDIRECT TO DIFFERENT URLS
     function changeLanguage(lang) {
       const routes = {
-        'UA': '/',
+        'UA': '/ua/',
         'DE': '/de/',
         'EN': '/en/',
         'RU': '/ru/',
@@ -1514,7 +2153,8 @@
       };
       
       if (routes[lang]) {
-        window.location.href = routes[lang];
+        const baseUrl = 'https://vermarkter.github.io';
+        window.location.href = baseUrl + routes[lang];
       }
     }
 
@@ -1523,6 +2163,37 @@
       event.preventDefault();
       alert('Дякуємо! Ми отримали вашу заявку і зв\'яжемося з вами протягом 24 годин.');
       trackCTA('audit_form_submit');
+    }
+
+    // Review Form Submission
+    function submitReview(event) {
+      event.preventDefault();
+      
+      const formData = {
+        name: document.getElementById('reviewName').value,
+        company: document.getElementById('reviewCompany').value,
+        result: document.getElementById('reviewResult').value,
+        text: document.getElementById('reviewText').value,
+        rating: currentRating
+      };
+      
+      // In real implementation, this would send to backend
+      alert('Дякуємо за ваш відгук! Після модерації він буде опублікований на сайті.');
+      
+      // Reset form
+      document.getElementById('reviewForm').reset();
+      currentRating = 0;
+      updateStars();
+      
+      trackCTA('review_submit');
+    }
+
+    // Star Rating
+    function updateStars() {
+      const stars = document.querySelectorAll('.star');
+      stars.forEach((star, index) => {
+        star.classList.toggle('active', index < currentRating);
+      });
     }
 
     // Analytics Tracking
@@ -1536,9 +2207,15 @@
       console.log('CTA tracked:', action);
     }
 
-    // Chat
+    // Chat - Uses external chat.js
     function openChat() {
-      window.open('https://t.me/Asystentmijbot', '_blank');
+      // This function should be in chat.js
+      if (typeof initChat === 'function') {
+        initChat();
+      } else {
+        // Fallback to Telegram
+        window.open('https://t.me/Asystentmijbot', '_blank');
+      }
       trackCTA('chat_open');
     }
 
@@ -1546,6 +2223,21 @@
     function showProof() {
       alert('Тут будуть відображені скріншоти з Google Analytics та результати кампаній наших клієнтів.');
       trackCTA('proof_view');
+    }
+
+    // Random Testimonials Display
+    function shuffleTestimonials() {
+      const track = document.getElementById('testimonialsTrack');
+      const testimonials = Array.from(track.children);
+      
+      // Shuffle array
+      for (let i = testimonials.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [testimonials[i], testimonials[j]] = [testimonials[j], testimonials[i]];
+      }
+      
+      // Re-append in new order
+      testimonials.forEach(testimonial => track.appendChild(testimonial));
     }
 
     // Smooth Scrolling
@@ -1566,6 +2258,7 @@
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
       startCountdown();
+      shuffleTestimonials();
       
       // Sync language selectors
       const langSelectors = document.querySelectorAll('#lang, #lang-mobile');
@@ -1573,6 +2266,50 @@
         selector.addEventListener('change', function() {
           langSelectors.forEach(s => s.value = this.value);
         });
+      });
+      
+      // Star rating event listeners
+      document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function() {
+          currentRating = parseInt(this.getAttribute('data-rating'));
+          updateStars();
+        });
+      });
+      
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', function(e) {
+        const menu = document.getElementById('mobileMenu');
+        const toggle = document.getElementById('mobileToggle');
+        
+        if (menu.classList.contains('active') && 
+            !menu.contains(e.target) && 
+            !toggle.contains(e.target)) {
+          closeMobileMenu();
+        }
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observe all cards and sections
+      document.querySelectorAll('.case-card, .card, .testimonial-card').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
       });
     });
   </script>
