@@ -399,7 +399,20 @@
       font-size: clamp(16px, 3vw, 20px); 
       max-width: 600px; 
       line-height: 1.6; 
-      margin-bottom: 32px;
+      margin-bottom: 16px;
+    }
+    .ai-solution {
+      background: rgba(16,185,129,.1); 
+      color: #D1FAE5; 
+      padding: 16px; 
+      border-radius: 12px; 
+      border: 1px solid rgba(16,185,129,.3); 
+      font-size: 14px; 
+      line-height: 1.6; 
+      margin-bottom: 20px;
+    }
+    .ai-solution strong {
+      color: var(--brand2);
     }
     .hero-actions {
       display: flex;
@@ -691,15 +704,20 @@
       gap: 24px; 
       max-width: 1200px; 
       margin: 0 auto; 
-      /* Responsive: 4 in row -> 2x2 -> single column */
-      grid-template-columns: repeat(4, 1fr);
+      /* Responsive: 6 in row -> 3x2 -> 2x3 -> 1x6 */
+      grid-template-columns: repeat(6, 1fr);
     }
     @media (max-width: 1024px) {
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+    @media (max-width: 768px) {
       .services-grid {
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    @media (max-width: 640px) {
+    @media (max-width: 480px) {
       .services-grid {
         grid-template-columns: 1fr;
       }
@@ -996,6 +1014,85 @@
       letter-spacing: 0.5px;
       line-height: 1;
     }
+    /* UP ARROW */
+    .up-arrow {
+      position: fixed; 
+      right: 24px; 
+      bottom: 100px; 
+      z-index: 59;
+      width: 50px; 
+      height: 50px; 
+      border-radius: 50%; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--gradient);
+      color: #fff; 
+      border: none; 
+      box-shadow: var(--shadow-lg);
+      cursor: pointer; 
+      transition: .3s ease; 
+      font-size: 20px;
+      opacity: 0;
+      pointer-events: none;
+    }
+    .up-arrow.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .up-arrow:hover {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-lg);
+    }
+    /* COOKIE BANNER */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg2);
+      color: var(--text);
+      padding: 20px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+    .cookie-banner.show {
+      transform: translateY(0);
+    }
+    .cookie-banner p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .cookie-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .cookie-btn {
+      padding: 8px 16px;
+      border-radius: 8px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .cookie-btn.accept-all {
+      background: var(--brand2);
+      color: white;
+    }
+    .cookie-btn.accept-necessary {
+      background: var(--brand);
+      color: white;
+    }
+    .cookie-btn:hover {
+      opacity: 0.9;
+    }
     /* MOBILE RESPONSIVE */
     @media (max-width: 768px) {
       .container { padding: 0 16px; }
@@ -1027,6 +1124,7 @@
         padding: 24px; 
         margin: 40px 16px 0;
       }
+      .up-arrow { bottom: 160px; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 12px; }
@@ -1139,7 +1237,7 @@
               <div class="timer-text">Тільки для перших 10 клієнтів!</div>
               <div class="countdown" id="countdown">23:59:42</div>
             </div>
-            <a href="#audit" class="cta-button" onclick="trackCTA('promo_click')">ОТРИМАТИ ЗАРАЗ</a>
+            <a href="https://t.me/Asystentmijbot" class="cta-button" onclick="trackCTA('expert_click')">ЗВЕРНІТЬСЯ ДО ЕКСПЕРТА ЗАРАЗ!</a>
           </div>
         </div>
       </div>
@@ -1156,15 +1254,12 @@
             </div>
             <h1 class="animate-slide-up">AI-маркетинг, який дає результати в 10 разів швидше</h1>
             <p class="lead animate-slide-up">Ми — не агентство. Ми — рішення на основі штучного інтелекту для малого бізнесу в Європейському Союзі.</p>
+            <div class="ai-solution animate-slide-up">
+              <strong>Marketing in Europa</strong> — це не просто агентство цифрового маркетингу для малого бізнесу. Це — рішення на базі штучного інтелекту, розроблене спеціально для розвитку малого бізнесу. Ми не просто розробляємо стратегії, ми створюємо масовий високоякісний контент та реалізуємо повноцінні кампанії, які дають результати в 10 разів швидше та в 5 разів ефективніше, ніж традиційні маркетингові агентства.
+            </div>
             <div class="hero-actions animate-slide-up">
               <h3 id="audit">🎯 Безкоштовний маркетинг-аудит (Вартість: <s>200€</s>)</h3>
-              <form class="audit-form" id="auditForm" onsubmit="submitAuditForm(event)">
-                <input type="url" placeholder="URL вашого сайту" required>
-                <input type="email" placeholder="E-mail для звіту" required>
-                <button type="submit" class="cta">
-                  🚀 ОТРИМАТИ БЕЗКОШТОВНИЙ АУДИТ
-                </button>
-              </form>
+              <a href="https://t.me/Asystentmijbot" class="cta" onclick="trackCTA('expert_click')">ЗВЕРНІТЬСЯ ДО ЕКСПЕРТА ЗАРАЗ!</a>
               <div class="audit-note">✅ Аналіз за 24 години • ✅ Конкретні рекомендації • ✅ Без зобов'язань</div>
             </div>
           </div>
@@ -1209,6 +1304,9 @@
     <section id="cases" class="cases-section">
       <div class="container">
         <div class="section-header">
+          <div class="badge animate-fade-in">
+            ✨ Створено для українців, які будують бізнес у Європі
+          </div>
           <h2>🏆 Доведені кейси успіху</h2>
           <p class="section-subtitle">Реальні результати наших клієнтів з Мюнхена та всієї Європи</p>
         </div>
@@ -1420,7 +1518,7 @@
         <div class="cases-cta">
           <h3>Хочете подібні результати для вашого бізнесу?</h3>
           <p>Дозвольте нам проаналізувати вашу поточну ситуацію та розробити індивідуальну концепцію для вашого успіху.</p>
-          <a href="#audit" class="cta cta-large">
+          <a href="https://t.me/Asystentmijbot" class="cta cta-large" onclick="trackCTA('expert_click')">
             🎯 Безкоштовний аналіз для мого бізнесу
           </a>
         </div>
@@ -1519,6 +1617,23 @@
               <li>✅ Звіти з ROI/ROAS</li>
             </ul>
           </div>
+          <div class="card animate-slide-up">
+            <div class="card-icon">
+              <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h3>Email-маркетинг</h3>
+            <p>Автоматизовані розсилки, сегментація аудиторії, A/B-тестування листів. Підвищення конверсій та утримання клієнтів.</p>
+            <div class="service-pricing">
+              <div class="price-range">Від €100/місяць</div>
+              <div class="delivery-time">Налаштування: 1-2 тижні</div>
+            </div>
+            <ul class="service-features">
+              <li>✅ Створення бази</li>
+              <li>✅ Дизайн листів</li>
+              <li>✅ Автоматизація</li>
+              <li>✅ Аналітика відкриттів</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -1586,7 +1701,7 @@
             </div>
             <div class="testimonial-card" data-lang="ua">
               <div class="testimonial-text">
-                Український автосервіс у Гамбурзі отримав нове життя! Збільшення доходу на 161%, нові клієнти, професійний сайт. Дякуємо команді Marketing in Europa за відмінну роботу.
+                Український автосервіс у Гамбурзі отримав нове життя! Збільшення доходу на 161%, нові клієнти, професійний сайт. Дякуємо команді Marketing in Deutschland за відмінну роботу.
               </div>
               <div class="testimonial-author">
                 <div class="author-avatar" style="background: var(--brand);">ДС</div>
@@ -1772,7 +1887,7 @@
             <!-- 1 Polish Testimonial -->
             <div class="testimonial-card" data-lang="pl">
               <div class="testimonial-text">
-                Dzięki współpracy z Marketing in Europa nasza firma konsultingowa zwiększyła liczbę klientów o 274%! Profesjonalne podejście, szczegółowe raporty i stały kontakt. Polecam każdemu przedsiębiorcy w Niemczech.
+                Dzięki współpracy z Marketing in Deutschland nasza firma konsultingowa zwiększyła liczbę klientów o 274%! Profesjonalne podejście, szczegółowe raporty i stały kontakt. Polecam każdemu przedsiębiorcy w Niemczech.
               </div>
               <div class="testimonial-author">
                 <div class="author-avatar" style="background: var(--brand2);">АК</div>
@@ -1783,8 +1898,8 @@
                 </div>
               </div>
             </div>
-            <!-- НОВІ ВІДГУКИ (15) -->
-            <!-- Українські (9) -->
+            <!-- NEW 15 TESTIMONIALS -->
+            <!-- Ukrainian -->
             <div class="testimonial-card" data-lang="ua">
               <div class="testimonial-text">За 6 тижнів подвоїли кількість клієнтів у салоні. Реклама працює як годинник!</div>
               <div class="testimonial-author">
@@ -1814,14 +1929,12 @@
             <div class="testimonial-card" data-lang="ua"><div class="testimonial-text">Сайт переробили за 5 днів. Тепер клієнти самі знаходять нас у Google!</div><div class="testimonial-author"><div class="author-avatar" style="background: var(--brand);">ВК</div><div class="author-info"><h5>Вікторія</h5><div class="company">Студія краси (Штутгарт)</div><div class="result">+15 лідів/тиждень</div></div></div></div>
             <div class="testimonial-card" data-lang="ua"><div class="testimonial-text">Запустили кампанію в Facebook — за тиждень 12 нових клієнтів. Це магія!</div><div class="testimonial-author"><div class="author-avatar" style="background: var(--purple);">ДМ</div><div class="author-info"><h5>Дмитро</h5><div class="company">Тату-салон (Лейпциг)</div><div class="result">12 клієнтів за 7 днів</div></div></div></div>
             <div class="testimonial-card" data-lang="ua"><div class="testimonial-text">AI-план дій допоміг зрозуміти, куди вкладати гроші. Тепер немає марних витрат!</div><div class="testimonial-author"><div class="author-avatar" style="background: #EF4444;">ОК</div><div class="author-info"><h5>Оксана</h5><div class="company">Майстер нарощування (Бремен)</div><div class="result">–75% марних витрат</div></div></div></div>
-
-            <!-- Російські (4) -->
+            <!-- Russian -->
             <div class="testimonial-card" data-lang="ru"><div class="testimonial-text">За два месяца увеличили поток клиентов в 3 раза. Очень доволен!</div><div class="testimonial-author"><div class="author-avatar" style="background: var(--brand);">СТ</div><div class="author-info"><h5>Сергей</h5><div class="company">Тату-мастер (Ганновер)</div><div class="result">+200% клиентов</div></div></div></div>
             <div class="testimonial-card" data-lang="ru"><div class="testimonial-text">Реклама в Instagram работает идеально. Клиенты сами пишут в Direct!</div><div class="testimonial-author"><div class="author-avatar" style="background: var(--brand2);">АЛ</div><div class="author-info"><h5>Алена</h5><div class="company">Мастер маникюра (Нюрнберг)</div><div class="result">30+ сообщений/неделю</div></div></div></div>
             <div class="testimonial-card" data-lang="ru"><div class="testimonial-text">Новый сайт + SEO — теперь находимся в ТОП-3 по запросу в городе!</div><div class="testimonial-author"><div class="author-avatar" style="background: var(--purple);">ЕЛ</div><div class="author-info"><h5>Елена</h5><div class="company">Салон красоты (Дортмунд)</div><div class="result">ТОП-3 Google</div></div></div></div>
             <div class="testimonial-card" data-lang="ru"><div class="testimonial-text">Бесплатный аудит показал, где теряли клиентов. Исправили — и сразу рост!</div><div class="testimonial-author"><div class="author-avatar" style="background: #EF4444;">МК</div><div class="author-info"><h5>Максим</h5><div class="company">Барбершоп (Кельн)</div><div class="result">+150% клиентов</div></div></div></div>
-
-            <!-- Німецькі (2) -->
+            <!-- German -->
             <div class="testimonial-card" data-lang="de"><div class="testimonial-text">Endlich mehr Kunden durch Google! Die Kampagne läuft perfekt.</div><div class="testimonial-author"><div class="author-avatar" style="background: var(--brand2);">JN</div><div class="author-info"><h5>Julia</h5><div class="company">Nagelstudio (Berlin)</div><div class="result">+80% Kunden</div></div></div></div>
             <div class="testimonial-card" data-lang="de"><div class="testimonial-text">Unser Tattoo-Shop ist jetzt ausgebucht. Danke für die Social-Media-Strategie!</div><div class="testimonial-author"><div class="author-avatar" style="background: var(--brand);">LK</div><div class="author-info"><h5>Lukas</h5><div class="company">Tätowierer (München)</div><div class="result">Ausgebucht für 3 Wochen</div></div></div></div>
           </div>
@@ -1897,6 +2010,7 @@
           <a href="#services">Управління Google Ads</a>
           <a href="#services">SEO оптимізація</a>
           <a href="#services">Маркетинг в соцмережах</a>
+          <a href="#services">Таргетована реклама</a>
           <a href="#cases">Кейси успіху</a>
         </div>
         <div class="footer-section">
@@ -1942,6 +2056,18 @@
     💬
     <div class="chat-label">ОНЛАЙН ЧАТ</div>
   </button>
+  <!-- Up Arrow -->
+  <button class="up-arrow" id="upArrow" onclick="scrollToTop()">
+    ⬆
+  </button>
+  <!-- Cookie Banner -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>Цей сайт використовує файли куки для покращення якості сервісу та аналітики. Ви можете прийняти всі або лише необхідні файли.</p>
+    <div class="cookie-buttons">
+      <button class="cookie-btn accept-all" onclick="acceptCookies('all')">Прийняти всі</button>
+      <button class="cookie-btn accept-necessary" onclick="acceptCookies('necessary')">Прийняти необхідні</button>
+    </div>
+  </div>
   <!-- EXTERNAL CHAT.JS REFERENCE -->
   <script src="chat.js"></script>
   <!-- JavaScript -->
@@ -2075,6 +2201,44 @@
         }
       });
     });
+    // Scroll to Top
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    // Up Arrow Visibility
+    function handleUpArrow() {
+      const upArrow = document.getElementById('upArrow');
+      if (window.scrollY > 300) {
+        upArrow.classList.add('show');
+      } else {
+        upArrow.classList.remove('show');
+      }
+    }
+    // Cookie Banner
+    function checkCookieConsent() {
+      const consent = localStorage.getItem('cookieConsent');
+      if (consent === 'accepted' || consent === 'necessary') {
+        if (consent === 'necessary') {
+          // Disable Google Analytics
+          window['ga-disable-G-XXXXXXXXXX'] = true;
+        }
+        return true;
+      }
+      return false;
+    }
+    function acceptCookies(type) {
+      if (type === 'all') {
+        localStorage.setItem('cookieConsent', 'accepted');
+      } else {
+        localStorage.setItem('cookieConsent', 'necessary');
+        // Disable Google Analytics
+        window['ga-disable-G-XXXXXXXXXX'] = true;
+      }
+      document.getElementById('cookieBanner').classList.remove('show');
+    }
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
       startCountdown();
@@ -2124,6 +2288,14 @@
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
       });
+      // Up Arrow
+      window.addEventListener('scroll', handleUpArrow);
+      // Cookie Banner
+      if (!checkCookieConsent()) {
+        setTimeout(() => {
+          document.getElementById('cookieBanner').classList.add('show');
+        }, 1000);
+      }
     });
   </script>
 </body>
