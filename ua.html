@@ -8,14 +8,12 @@
   <meta name="keywords" content="маркетинг єс, google ads, seo оптимізація, створення сайтів, smm, цифровий маркетинг, розробка веб сайтів, пошукова оптимізація, реклама google, маркетинг мюнхен, веб дизайн, інтернет маркетинг"/>
   <meta name="theme-color" content="#0F172A"/>
   <link rel="icon" href="../favicon.ico" type="image/x-icon">
-  <!-- HREFLANG TAGS FOR ALL LANGUAGES -->
   <link rel="alternate" hreflang="de" href="https://vermarkter.github.io/de/" />
   <link rel="alternate" hreflang="en" href="https://vermarkter.github.io/en/" />
   <link rel="alternate" hreflang="uk" href="https://vermarkter.github.io/ua/" />
   <link rel="alternate" hreflang="ru" href="https://vermarkter.github.io/ru/" />
   <link rel="alternate" hreflang="pl" href="https://vermarkter.github.io/pl/" />
   <link rel="alternate" hreflang="x-default" href="https://vermarkter.github.io/ua/" />
-  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Маркетинг в ЄС - Цифрове агентство | Google Ads, SEO, Веб-сайти">
   <meta property="og:description" content="Професійне цифрове маркетинг-агентство: створення сайтів, Google Ads, SEO. Збільшуємо прибуток на 250% за 90 днів.">
   <meta property="og:type" content="website">
@@ -23,13 +21,11 @@
   <meta property="og:image" content="https://vermarkter.github.io/og-image.jpg">
   <meta property="og:site_name" content="Marketing in Europa">
   <meta property="og:locale" content="uk_UA">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Маркетинг в ЄС - Цифрове агентство">
   <meta name="twitter:description" content="Професійне цифрове маркетинг-агентство: Google Ads, SEO, створення сайтів. +250% прибуток за 90 днів.">
   <meta name="twitter:image" content="https://vermarkter.github.io/og-image.jpg">
   <meta name="twitter:site" content="@marketing_de">
-  <!-- Structured Data / Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,9 +35,7 @@
     "description": "Професійне цифрове маркетинг-агентство в Європейському Союзі",
     "url": "https://vermarkter.github.io/ua/",
     "logo": "https://vermarkter.github.io/logo.png",
-    "sameAs": [
-      "https://t.me/Asystentmijbot"
-    ],
+    "sameAs": ["https://t.me/Asystentmijbot"],
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+49-151-23456789",
@@ -58,30 +52,16 @@
       "@type": "AggregateRating",
       "ratingValue": "4.9",
       "reviewCount": "147"
-    },
-    "offers": {
-      "@type": "Service",
-      "serviceType": "Digital Marketing",
-      "provider": {
-        "@type": "Organization",
-        "name": "Marketing in Europa"
-      }
     }
   }
   </script>
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-87QSTLWLNR"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-87QSTLWLNR', {
-      page_title: document.title,
-      page_location: window.location.href,
-      content_group1: 'UA'
-    });
+    gtag('config', 'G-XXXXXXXXXX');
   </script>
-  <!-- STYLES -->
   <style>
     :root {
       --bg: #0F172A;
@@ -92,6 +72,8 @@
       --brand2: #10B981;
       --accent: #F59E0B;
       --purple: #8B5CF6;
+      --ua-blue: #0057B7;
+      --ua-yellow: #FFD700;
       --shadow: 0 25px 50px -12px rgba(0,0,0,.25);
       --shadow-lg: 0 35px 60px -15px rgba(0,0,0,.3);
       --card: linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
@@ -122,7 +104,6 @@
       margin: 0 auto; 
       padding: 0 20px; 
     }
-    /* HEADER STYLES */
     header {
       position: sticky; 
       top: 0; 
@@ -168,7 +149,6 @@
       font-size: 11px; 
       margin-top: -2px;
     }
-    /* NAVIGATION */
     .nav-desktop {
       display: flex; 
       gap: 20px; 
@@ -203,7 +183,6 @@
       border-color: var(--brand);
       box-shadow: var(--glow);
     }
-    /* MOBILE MENU */
     .mobile-toggle {
       display: none; 
       background: none; 
@@ -294,7 +273,6 @@
       color: var(--text);
       background: rgba(255,255,255,.05);
     }
-    /* IMPROVED BLUE CTA BANNER */
     .desktop-cta-banner {
       background: linear-gradient(135deg, rgba(59,130,246,.1), rgba(16,185,129,.05));
       border-bottom: 1px solid rgba(59,130,246,.3);
@@ -359,7 +337,6 @@
       box-shadow: 0 8px 25px rgba(59,130,246,.4);
       background: linear-gradient(135deg, #2563EB, #1E40AF);
     }
-    /* HERO SECTION */
     .hero {
       padding: 80px 0 60px; 
       position: relative;
@@ -373,16 +350,32 @@
     }
     .badge {
       display: inline-flex; 
-      gap: 8px; 
+      gap: 12px; 
       align-items: center; 
-      background: rgba(16,185,129,.15); 
-      color: #D1FAE5; 
-      border: 1px solid rgba(16,185,129,.3); 
-      padding: 8px 16px; 
+      background: linear-gradient(180deg, var(--ua-blue) 50%, var(--ua-yellow) 50%);
+      color: white;
+      border: 2px solid rgba(255,215,0,.5);
+      padding: 10px 20px; 
       border-radius: 50px; 
-      font-size: 13px; 
-      font-weight: 600; 
+      font-size: 14px; 
+      font-weight: 700; 
       margin-bottom: 20px;
+      box-shadow: 0 4px 15px rgba(0,87,183,.3);
+      animation: ukrainianPulse 2s ease-in-out infinite;
+    }
+    @keyframes ukrainianPulse {
+      0%, 100% { box-shadow: 0 4px 15px rgba(0,87,183,.3); }
+      50% { box-shadow: 0 8px 25px rgba(255,215,0,.5); }
+    }
+    .ua-flag {
+      font-size: 24px;
+      animation: wave 1.5s ease-in-out infinite;
+      display: inline-block;
+    }
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-10deg); }
+      75% { transform: rotate(10deg); }
     }
     h1 {
       font-size: clamp(32px, 6vw, 56px); 
@@ -453,7 +446,6 @@
       color: var(--muted);
       margin-top: 8px;
     }
-    /* HERO VISUAL */
     .hero-visual {
       position: relative;
     }
@@ -528,7 +520,6 @@
       transform: translateY(-2px);
       box-shadow: var(--shadow);
     }
-    /* CASES SECTION */
     .cases-section {
       padding: 80px 0;
       background: rgba(0,0,0,.1);
@@ -547,6 +538,47 @@
       max-width: 600px;
       margin: 16px auto 0; 
       line-height: 1.6;
+    }
+    .progress-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 32px 0;
+    }
+    .progress-dots {
+      display: flex;
+      gap: 8px;
+    }
+    .progress-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.2);
+      transition: .3s ease;
+      cursor: pointer;
+    }
+    .progress-dot.active {
+      background: var(--brand);
+      width: 32px;
+      border-radius: 5px;
+    }
+    .carousel-btn {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: .3s ease;
+    }
+    .carousel-btn:hover {
+      background: var(--brand);
+      border-color: var(--brand);
     }
     .cases-grid {
       display: grid; 
@@ -682,7 +714,6 @@
       padding: 16px 32px;
       font-size: 18px;
     }
-    /* SERVICES SECTION - RESPONSIVE GRID */
     .services-section {
       padding: 80px 0;
     }
@@ -691,16 +722,16 @@
       gap: 24px; 
       max-width: 1200px; 
       margin: 0 auto; 
-      grid-template-columns: repeat(3, 1fr); /* 3 in row */
+      grid-template-columns: repeat(3, 1fr);
     }
     @media (max-width: 1024px) {
       .services-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 in row */
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     @media (max-width: 640px) {
       .services-grid {
-        grid-template-columns: 1fr; /* 1 in row */
+        grid-template-columns: 1fr;
       }
     }
     .card {
@@ -765,7 +796,6 @@
       font-size: 14px;
       color: var(--muted);
     }
-    /* TESTIMONIALS SECTION */
     .testimonials-section {
       padding: 80px 0;
       background: rgba(0,0,0,.1);
@@ -909,7 +939,213 @@
     .star.active {
       color: #FFD700;
     }
-    /* FOOTER */
+    
+    /* CHATBOT MODAL */
+    .chatbot-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .chatbot-modal.active {
+      display: flex;
+    }
+    .chatbot-container {
+      background: var(--bg);
+      border: var(--border);
+      border-radius: var(--radius);
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--shadow-lg);
+    }
+    .chatbot-header {
+      padding: 20px;
+      background: var(--gradient);
+      border-radius: var(--radius) var(--radius) 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chatbot-header h3 {
+      margin: 0;
+      color: white;
+      font-size: 18px;
+    }
+    .chatbot-close {
+      background: rgba(255,255,255,.2);
+      border: none;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      transition: .3s ease;
+    }
+    .chatbot-close:hover {
+      background: rgba(255,255,255,.3);
+    }
+    .chatbot-body {
+      padding: 24px;
+      overflow-y: auto;
+      flex: 1;
+    }
+    .chatbot-step {
+      display: none;
+      animation: fadeInUp .3s ease;
+    }
+    .chatbot-step.active {
+      display: block;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .chatbot-question {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .chatbot-input {
+      width: 100%;
+      padding: 12px 16px;
+      background: var(--bg2);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 16px;
+      outline: none;
+    }
+    .chatbot-input:focus {
+      border-color: var(--brand);
+      box-shadow: var(--glow);
+    }
+    .chatbot-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .chatbot-btn {
+      padding: 10px 20px;
+      background: rgba(59,130,246,.1);
+      border: 1px solid var(--brand);
+      border-radius: 8px;
+      color: var(--brand);
+      cursor: pointer;
+      transition: .3s ease;
+      font-weight: 600;
+    }
+    .chatbot-btn:hover {
+      background: var(--brand);
+      color: white;
+    }
+    .chatbot-next {
+      width: 100%;
+      padding: 12px;
+      background: var(--gradient);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .3s ease;
+      margin-top: 16px;
+    }
+    .chatbot-next:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .chatbot-progress {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+    .progress-bar {
+      flex: 1;
+      height: 4px;
+      background: rgba(255,255,255,.1);
+      border-radius: 2px;
+      transition: .3s ease;
+    }
+    .progress-bar.completed {
+      background: var(--brand);
+    }
+    .chatbot-summary {
+      background: rgba(59,130,246,.05);
+      padding: 16px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .summary-label {
+      color: var(--muted);
+    }
+    .summary-value {
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    /* PRIVACY POLICY */
+    .privacy-section {
+      padding: 80px 0;
+      background: rgba(0,0,0,.1);
+    }
+    .privacy-content {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border: var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      backdrop-filter: blur(20px);
+    }
+    .privacy-content h3 {
+      color: var(--brand);
+      margin-top: 32px;
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+    .privacy-content h3:first-of-type {
+      margin-top: 0;
+    }
+    .privacy-content p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .privacy-content ul {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      padding-left: 24px;
+    }
+    .privacy-content li {
+      margin-bottom: 8px;
+    }
+    
     .footer {
       padding: 60px 0 40px; 
       background: linear-gradient(135deg, rgba(15,23,42,.9), rgba(30,41,59,.9)); 
@@ -937,6 +1173,9 @@
     .footer-section a:hover {
       color: var(--text);
     }
+    .footer-lang {
+      margin-top: 20px;
+    }
     .footer-bottom {
       text-align: center; 
       padding-top: 40px; 
@@ -962,7 +1201,6 @@
       font-size: 12px; 
       font-weight: 600;
     }
-    /* CHAT WIDGET */
     .chat-launcher {
       position: fixed; 
       right: 24px; 
@@ -995,11 +1233,17 @@
       letter-spacing: 0.5px;
       line-height: 1;
     }
-    /* MOBILE RESPONSIVE */
+    .mobile-lang-selector {
+      display: none;
+      padding: 12px 20px;
+      background: rgba(255,255,255,.03);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+    }
     @media (max-width: 768px) {
       .container { padding: 0 16px; }
       .nav-desktop { display: none; }
       .mobile-toggle { display: block; }
+      .mobile-lang-selector { display: block; }
       .desktop-cta-banner { display: none; }
       .hero { padding: 60px 0 40px; }
       .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
@@ -1026,6 +1270,9 @@
         padding: 24px; 
         margin: 40px 16px 0;
       }
+      .privacy-content {
+        padding: 24px;
+      }
     }
     @media (max-width: 480px) {
       .container { padding: 0 12px; }
@@ -1036,7 +1283,6 @@
         min-width: 280px; 
       }
     }
-    /* Animation classes */
     .animate-slide-up {
       animation: slideUp 0.6s ease-out forwards;
     }
@@ -1058,18 +1304,31 @@
       to { opacity: 1; }
     }
   </style>
-  <!-- PRELOAD FONTS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
-  <!-- Header -->
   <header>
+    <div class="mobile-lang-selector">
+      <div class="container">
+        <div class="mobile-lang-panel">
+          <span class="lang-label">Мова:</span>
+          <div class="lang">
+            <select id="lang-mobile-top" onchange="changeLanguage(this.value)">
+              <option value="UA" selected>🇺🇦 UA</option>
+              <option value="DE">🇩🇪 DE</option>
+              <option value="EN">🇬🇧 EN</option>
+              <option value="RU">🇷🇺 RU</option>
+              <option value="PL">🇵🇱 PL</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="container">
       <nav class="nav">
-        <!-- Brand -->
         <div class="brand">
           <div class="logo">MiE</div>
           <div>
@@ -1077,24 +1336,21 @@
             <div class="subtitle">Цифрове агентство</div>
           </div>
         </div>
-        <!-- Desktop Menu -->
         <div class="nav-desktop">
           <a href="#services">Наші послуги</a>
           <a href="#cases">Кейси успіху</a>
           <a href="#testimonials">Відгуки</a>
           <a href="#contact">Контакти</a>
-          <!-- Language Selector -->
           <div class="lang">
             <select id="lang" onchange="changeLanguage(this.value)">
-              <option value="UA" selected>UA</option>
-              <option value="DE">DE</option>
-              <option value="EN">EN</option>
-              <option value="RU">RU</option>
-              <option value="PL">PL</option>
+              <option value="UA" selected>🇺🇦 UA</option>
+              <option value="DE">🇩🇪 DE</option>
+              <option value="EN">🇬🇧 EN</option>
+              <option value="RU">🇷🇺 RU</option>
+              <option value="PL">🇵🇱 PL</option>
             </select>
           </div>
         </div>
-        <!-- Mobile Toggle -->
         <button class="mobile-toggle" id="mobileToggle" onclick="toggleMobileMenu()">
           <div class="hamburger" id="hamburger">
             <span></span>
@@ -1102,22 +1358,7 @@
             <span></span>
           </div>
         </button>
-        <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
-          <div class="mobile-header">
-            <div class="mobile-lang-panel">
-              <span class="lang-label">Мова:</span>
-              <div class="lang">
-                <select id="lang-mobile" onchange="changeLanguage(this.value)">
-                  <option value="UA" selected>UA</option>
-                  <option value="DE">DE</option>
-                  <option value="EN">EN</option>
-                  <option value="RU">RU</option>
-                  <option value="PL">PL</option>
-                </select>
-              </div>
-            </div>
-          </div>
           <div class="mobile-links">
             <a href="#services" onclick="closeMobileMenu()">Наші послуги</a>
             <a href="#cases" onclick="closeMobileMenu()">Кейси успіху</a>
@@ -1126,7 +1367,6 @@
           </div>
         </div>
       </nav>
-      <!-- Desktop CTA Banner -->
       <div class="desktop-cta-banner">
         <div class="container">
           <div class="cta-banner">
@@ -1145,13 +1385,13 @@
     </div>
   </header>
   <main>
-    <!-- Hero Section -->
     <section class="hero">
       <div class="container">
         <div class="hero-grid">
           <div>
             <div class="badge animate-fade-in">
-              ✨ Створено для українців, які будують бізнес у ЄС
+              <span class="ua-flag">🇺🇦</span>
+              Створено для українців, які будують бізнес у ЄС
             </div>
             <h1 class="animate-slide-up">AI-маркетинг, який дає результати в 10 разів швидше</h1>
             <p class="lead animate-slide-up">Ми — не агентство. Ми — рішення на основі штучного інтелекту для малого бізнесу в Європейському Союзі.</p>
@@ -1167,7 +1407,6 @@
               <div class="audit-note">✅ Аналіз за 24 години • ✅ Конкретні рекомендації • ✅ Без зобов'язань</div>
             </div>
           </div>
-          <!-- Hero Visual -->
           <div class="hero-visual animate-fade-in">
             <div class="hero-card">
               <div class="card-header">
@@ -1204,218 +1443,18 @@
         </div>
       </div>
     </section>
-    <!-- Cases Section -->
     <section id="cases" class="cases-section">
       <div class="container">
         <div class="section-header">
           <h2>🏆 Доведені кейси успіху</h2>
           <p class="section-subtitle">Реальні результати наших клієнтів з Мюнхена та всієї Європи</p>
         </div>
-        <div class="cases-grid">
-          <!-- Ukrainian Cases -->
-          <div class="case-card animate-slide-up">
-            <div class="case-header">
-              <div class="case-category">E-Commerce</div>
-              <div class="case-location">🏛️ Мюнхен</div>
-            </div>
-            <h3 class="case-title">Онлайн-магазин домашнього текстилю</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: var(--gradient); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ОТ</div>
-              <div>
-                <div class="client-name">Оксана Т.</div>
-                <div class="client-company">Home Textile München GmbH</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Було: €15k/міс</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Стало: €52k/міс</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+247% прибуток</div>
-              <div class="result-roi">ROI: 4.2x</div>
-            </div>
-          </div>
-          <div class="case-card animate-slide-up">
-            <div class="case-header">
-              <div class="case-category">IT-послуги</div>
-              <div class="case-location">🏛️ Мюнхен</div>
-            </div>
-            <h3 class="case-title">Українська IT-компанія</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: var(--purple); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">АМ</div>
-              <div>
-                <div class="client-name">Андрій М.</div>
-                <div class="client-company">TechSolutions München</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Було: 12 проектів/міс</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Стало: 47 проектів/міс</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+292% замовлень</div>
-              <div class="result-roi">Середній чек: +67%</div>
-            </div>
-          </div>
-          <div class="case-card animate-slide-up">
-            <div class="case-header">
-              <div class="case-category">Медицина</div>
-              <div class="case-location">🌍 Чернівці</div>
-            </div>
-            <h3 class="case-title">Стоматологічна клініка</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: #EF4444; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ІБ</div>
-              <div>
-                <div class="client-name">Ірина Б.</div>
-                <div class="client-company">Dental Care Chernivtsi</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Було: 23 пацієнти/міс</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Стало: 89 пацієнтів/міс</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+287% пацієнтів</div>
-              <div class="result-roi">CPA: -52%</div>
-            </div>
-          </div>
-          <!-- Russian Case - Changed to Toy Store in Warsaw -->
-          <div class="case-card animate-slide-up">
-            <div class="case-header">
-              <div class="case-category">E-Commerce</div>
-              <div class="case-location">🌍 Варшава</div>
-            </div>
-            <h3 class="case-title">Интернет-магазин игрушек</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: #EF4444; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">АВ</div>
-              <div>
-                <div class="client-name">Анна В.</div>
-                <div class="client-company">Toys Store Warsaw</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Было: €18k/мес</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Стало: €67k/мес</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+272% выручки</div>
-              <div class="result-roi">ROI: 5.1x</div>
-            </div>
-          </div>
-          <div class="case-card animate-slide-up">
-            <div class="case-header">
-              <div class="case-category">Недвижимость</div>
-              <div class="case-location">🏛️ Мюнхен</div>
-            </div>
-            <h3 class="case-title">Агентство недвижимости</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">ЕК</div>
-              <div>
-                <div class="client-name">Елена К.</div>
-                <div class="client-company">Real Estate München</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Было: 15 сделок/мес</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Стало: 52 сделки/мес</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+247% сделок</div>
-              <div class="result-roi">Средний чек: +34%</div>
-            </div>
-          </div>
-          <!-- German Cases -->
-          <div class="case-card animate-slide-up">
-            <div class="case-header">
-              <div class="case-category">Handwerk</div>
-              <div class="case-location">🏛️ München</div>
-            </div>
-            <h3 class="case-title">Elektroinstallateur Meisterbetrieb</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: var(--accent); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">MS</div>
-              <div>
-                <div class="client-name">Markus S.</div>
-                <div class="client-company">Elektro Meister München</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Vorher: 23 Aufträge/Mon</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Nachher: 87 Aufträge/Mon</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+278% Aufträge</div>
-              <div class="result-roi">CPA: -52%</div>
-            </div>
-          </div>
-          <div class="case-card animate-slide-up">
-            <div class="case-header">
-              <div class="case-category">Gastronomie</div>
-              <div class="case-location">🏛️ München</div>
-            </div>
-            <h3 class="case-title">Bayerisches Restaurant</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: var(--brand); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">TM</div>
-              <div>
-                <div class="client-name">Thomas M.</div>
-                <div class="client-company">Biergarten München</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Vorher: €12k/Mon</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Nachher: €43k/Mon</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+258% Umsatz</div>
-              <div class="result-roi">ROI: 3.9x</div>
-            </div>
-          </div>
-          <div class="case-card animate-slide-up">
-            <div class="case-header">
-              <div class="case-category">Software</div>
-              <div class="case-location">🌍 Берлін</div>
-            </div>
-            <h3 class="case-title">B2B Software Entwicklung</h3>
-            <div class="case-client">
-              <div class="client-avatar" style="background: var(--purple); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">FK</div>
-              <div>
-                <div class="client-name">Frank K.</div>
-                <div class="client-company">DevSoft Berlin GmbH</div>
-              </div>
-            </div>
-            <div class="case-metrics">
-              <div class="metric">
-                <div class="metric-before">Vorher: €45k/Mon</div>
-                <div class="metric-arrow">➜</div>
-                <div class="metric-after highlight">Nachher: €156k/Mon</div>
-              </div>
-            </div>
-            <div class="case-result">
-              <div class="result-percentage">+247% Revenue</div>
-              <div class="result-roi">ROI: 4.8x</div>
-            </div>
-          </div>
+        <div class="progress-container">
+          <button class="carousel-btn" onclick="scrollCases(-1)">←</button>
+          <div class="progress-dots" id="casesDots"></div>
+          <button class="carousel-btn" onclick="scrollCases(1)">→</button>
         </div>
+        <div class="cases-grid" id="casesGrid"></div>
         <div class="cases-cta">
           <h3>Хочете подібні результати для вашого бізнесу?</h3>
           <p>Дозвольте нам проаналізувати вашу поточну ситуацію та розробити індивідуальну концепцію для вашого успіху.</p>
@@ -1425,7 +1464,6 @@
         </div>
       </div>
     </section>
-    <!-- Services Section -->
     <section id="services" class="services-section">
       <div class="container">
         <div class="section-header">
@@ -1538,270 +1576,20 @@
         </div>
       </div>
     </section>
-    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials-section">
       <div class="container">
         <div class="section-header">
           <h2>💬 Що говорять наші клієнти</h2>
-          <p class="section-subtitle">Салони краси, тату-майстри, манікюрники — реальні результати</p>
+          <p class="section-subtitle">Реальні відгуки від бізнесів у Європі</p>
+        </div>
+        <div class="progress-container">
+          <button class="carousel-btn" onclick="scrollTestimonials(-1)">←</button>
+          <div class="progress-dots" id="testimonialsDots"></div>
+          <button class="carousel-btn" onclick="scrollTestimonials(1)">→</button>
         </div>
         <div class="testimonials-carousel">
-          <div class="testimonials-track" id="testimonialsTrack">
-            <!-- 8 Ukrainian Testimonials -->
-            <div class="testimonial-card" data-lang="ua">
-              <div class="testimonial-text">
-                Завдяки Marketing in Europa наш інтернет-магазин збільшив продажі на 247% за 6 місяців. Професійна команда, чіткі звіти, постійна підтримка. Рекомендую всім, хто хоче реальних результатів!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--gradient);">ОТ</div>
-                <div class="author-info">
-                  <h5>Оксана Тарасенко</h5>
-                  <div class="company">Home Textile München GmbH</div>
-                  <div class="result">Результат: +247% продажів</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ua">
-              <div class="testimonial-text">
-                Наш IT-стартап завдяки їхній стратегії отримав +292% замовлень. Особливо вражає їхній підхід до таргетування - знають свою справу! За 4 місяці окупили витрати і плануємо довгострокову співпрацю.
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--purple);">АМ</div>
-                <div class="author-info">
-                  <h5>Андрій Мельник</h5>
-                  <div class="company">TechSolutions München</div>
-                  <div class="result">Результат: +292% замовлень</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ua">
-              <div class="testimonial-text">
-                Моя стоматологічна клініка в Чернівцях тепер має постійний потік пацієнтів завдяки їхній роботі. +287% нових пацієнтів за 5 місяців! Вартість залучення клієнта знизилася вдвічі.
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: #EF4444;">ІБ</div>
-                <div class="author-info">
-                  <h5>Ірина Береза</h5>
-                  <div class="company">Dental Care Chernivtsi</div>
-                  <div class="result">Результат: +287% пацієнтів</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ua">
-              <div class="testimonial-text">
-                Наша косметична клініка в Берліні подвоїла кількість клієнтів завдяки їхній комплексній стратегії. Професійний SMM, таргетована реклама, і відмінна аналітика. Рекомендую!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--brand2);">МЛ</div>
-                <div class="author-info">
-                  <h5>Марина Левченко</h5>
-                  <div class="company">Beauty Clinic Berlin</div>
-                  <div class="result">Результат: +198% клієнтів</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ua">
-              <div class="testimonial-text">
-                Український автосервіс у Гамбурзі отримав нове життя! Збільшення доходу на 161%, нові клієнти, професійний сайт. Дякуємо команді Marketing in Europa за відмінну роботу.
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--brand);">ДС</div>
-                <div class="author-info">
-                  <h5>Дмитро Савченко</h5>
-                  <div class="company">Auto Repair Hamburg</div>
-                  <div class="result">Результат: +161% доходу</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ua">
-              <div class="testimonial-text">
-                Мовна школа в Мюнхені завдяки їхній роботі збільшила кількість студентів на 274%. Особливо ефективною виявилася локальна SEO-стратегія. Професіонали своєї справи!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--brand2);">ТП</div>
-                <div class="author-info">
-                  <h5>Тетяна Павленко</h5>
-                  <div class="company">Language School München</div>
-                  <div class="result">Результат: +274% студентів</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ua">
-              <div class="testimonial-text">
-                Будівельна компанія в Кельні отримала +263% замовлень завдяки їхній роботі. Професійний сайт, ефективна реклама, постійний моніторинг результатів. Дуже задоволений співпрацею!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--purple);">ВГ</div>
-                <div class="author-info">
-                  <h5>Віталій Герасименко</h5>
-                  <div class="company">Renovation Köln</div>
-                  <div class="result">Результат: +263% замовлень</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ua">
-              <div class="testimonial-text">
-                Фотостудія в Дюссельдорфі завдяки їхній стратегії подвоїла кількість замовлень. Відмінна робота з Instagram та Facebook, професійний підхід. Рекомендую всім творчим особистостям!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--accent);">ОП</div>
-                <div class="author-info">
-                  <h5>Олена Петренко</h5>
-                  <div class="company">Photo Studio Düsseldorf</div>
-                  <div class="result">Результат: +215% замовлень</div>
-                </div>
-              </div>
-            </div>
-            <!-- 5 Russian Testimonials -->
-            <div class="testimonial-card" data-lang="ru">
-              <div class="testimonial-text">
-                Интернет-магазин игрушек в Варшаве увеличил выручку на 272% за 4 месяца. Отличная работа с Google Ads и SEO. Особенно впечатляет аналитика - все прозрачно и понятно.
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: #EF4444;">АВ</div>
-                <div class="author-info">
-                  <h5>Анна Волкова</h5>
-                  <div class="company">Toys Store Warsaw</div>
-                  <div class="result">Результат: +272% выручки</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ru">
-              <div class="testimonial-text">
-                Работаем с агентством уже полтора года. ROI по Google Ads вырос в 4.9 раза, органический трафик увеличился на 180%. Особенно нравится их подход к аналитике - всё прозрачно и понятно.
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--accent);">ЕК</div>
-                <div class="author-info">
-                  <h5>Елена Козлова</h5>
-                  <div class="company">Real Estate München</div>
-                  <div class="result">Результат: ROI 4.9x</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ru">
-              <div class="testimonial-text">
-                Наша консалтинговая фирма во Франкфурте увеличила количество клиентов на 246%. Профессиональная команда, четкая стратегия, отличные результаты. Рекомендую всем!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--brand);">ДМ</div>
-                <div class="author-info">
-                  <h5>Дмитрий Михайлов</h5>
-                  <div class="company">Financial Advisory Frankfurt</div>
-                  <div class="result">Результат: +246% клиентов</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ru">
-              <div class="testimonial-text">
-                Юридическая фирма в Дюссельдорфе благодаря их работе увеличила доход на 182%. Отличная работа с локальным SEO и контекстной рекламой. Очень доволен результатом!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--brand2);">ОС</div>
-                <div class="author-info">
-                  <h5>Ольга Смирнова</h5>
-                  <div class="company">Law Firm Düsseldorf</div>
-                  <div class="result">Результат: +182% дохода</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="ru">
-              <div class="testimonial-text">
-                Туристическое агентство в Берлине увеличило продажи на 239% благодаря их комплексной стратегии. Профессиональный подход к каждому каналу продвижения. Превосходно!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: #EF4444;">СН</div>
-                <div class="author-info">
-                  <h5>Светлана Новикова</h5>
-                  <div class="company">Travel Agency Berlin</div>
-                  <div class="result">Результат: +239% выручки</div>
-                </div>
-              </div>
-            </div>
-            <!-- 3 German Testimonials -->
-            <div class="testimonial-card" data-lang="de">
-              <div class="testimonial-text">
-                Als Handwerksmeister war ich skeptisch gegenüber Online-Marketing. Aber die Ergebnisse sprechen für sich: 278% mehr Aufträge in nur 4 Monaten! Die Investition hat sich bereits mehrfach bezahlt gemacht.
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--accent);">MS</div>
-                <div class="author-info">
-                  <h5>Markus Schmidt</h5>
-                  <div class="company">Elektro Meister München</div>
-                  <div class="result">Ergebnis: +278% Aufträge</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="de">
-              <div class="testimonial-text">
-                Unser bayerisches Restaurant in München hat dank ihrer Strategie 258% mehr Umsatz gemacht. Besonders beeindruckend ist die lokale SEO-Arbeit. Wir sind sehr zufrieden mit der Zusammenarbeit!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--brand);">TM</div>
-                <div class="author-info">
-                  <h5>Thomas Müller</h5>
-                  <div class="company">Biergarten München</div>
-                  <div class="result">Ergebnis: +258% Umsatz</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="de">
-              <div class="testimonial-text">
-                Unsere Software-Entwicklungsfirma in Berlin hat den Umsatz um 247% gesteigert. Professionelle B2B-Marketingstrategie, excellente Betreuung. Können wir nur weiterempfehlen!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--purple);">FK</div>
-                <div class="author-info">
-                  <h5>Frank Köhler</h5>
-                  <div class="company">DevSoft Berlin GmbH</div>
-                  <div class="result">Ergebnis: +247% Revenue</div>
-                </div>
-              </div>
-            </div>
-            <!-- 2 English Testimonials -->
-            <div class="testimonial-card" data-lang="en">
-              <div class="testimonial-text">
-                Outstanding results! Our import/export business in Munich increased revenue by 200% within 6 months. Their data-driven approach and constant optimization made all the difference. Highly professional team.
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: #EF4444;">JB</div>
-                <div class="author-info">
-                  <h5>John Brown</h5>
-                  <div class="company">Global Trade München</div>
-                  <div class="result">Result: +200% Revenue</div>
-                </div>
-              </div>
-            </div>
-            <div class="testimonial-card" data-lang="en">
-              <div class="testimonial-text">
-                Our business consulting firm in Frankfurt saw a 274% increase in clients thanks to their comprehensive digital marketing strategy. Professional approach, detailed reporting, excellent results!
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--brand2);">SM</div>
-                <div class="author-info">
-                  <h5>Sarah Martinez</h5>
-                  <div class="company">Business Solutions Frankfurt</div>
-                  <div class="result">Result: +274% Clients</div>
-                </div>
-              </div>
-            </div>
-            <!-- 1 Polish Testimonial -->
-            <div class="testimonial-card" data-lang="pl">
-              <div class="testimonial-text">
-                Dzięki współpracy z Marketing in Europa nasza firma konsultingowa zwiększyła liczbę klientów o 274%! Profesjonalne podejście, szczegółowe raporty i stały kontakt. Polecam każdemu przedsiębiorcy w Niemczech.
-              </div>
-              <div class="testimonial-author">
-                <div class="author-avatar" style="background: var(--brand2);">АК</div>
-                <div class="author-info">
-                  <h5>Anna Kowalska</h5>
-                  <div class="company">Business Solutions Berlin</div>
-                  <div class="result">Wynik: +274% klientów</div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div class="testimonials-track" id="testimonialsTrack"></div>
         </div>
-        <!-- Add Review Form -->
         <div class="testimonial-form">
           <h3>📝 Залишити відгук</h3>
           <form id="reviewForm" onsubmit="submitReview(event)">
@@ -1831,13 +1619,12 @@
                 <span class="star" data-rating="5">⭐</span>
               </div>
             </div>
-            <button type="submit" class="cta">Надіслати відгук (після модерації)</button>
+            <button type="submit" class="cta">Надіслати відгук</button>
           </form>
         </div>
       </div>
     </section>
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section" style="padding: 80px 0;">
       <div class="container">
         <div class="section-header">
           <h2>📞 Зв'яжіться з нами</h2>
@@ -1847,22 +1634,157 @@
           <div style="display: inline-flex; gap: 40px; flex-wrap: wrap; justify-content: center;">
             <div>
               <h4>📧 Email</h4>
-              <a href="mailto:maps.werbung@gmail.com" style="color: var(--brand); font-size: 18px; font-weight: 600;">maps.werbung@gmail.com</a>
+              <a href="mailto:maps.werbung@gmail.com" style="color: var(--brand); font-size: 18px; font-weight: 600; text-decoration: none;">maps.werbung@gmail.com</a>
             </div>
             <div>
               <h4>💬 Telegram</h4>
-              <a href="https://t.me/Asystentmijbot" target="_blank" style="color: var(--brand); font-size: 18px; font-weight: 600;">@Asystentmijbot</a>
+              <a href="https://t.me/Asystentmijbot" target="_blank" style="color: var(--brand); font-size: 18px; font-weight: 600; text-decoration: none;">@Asystentmijbot</a>
             </div>
             <div>
               <h4>📱 Телефон</h4>
-              <a href="tel:+4915123456789" style="color: var(--brand); font-size: 18px; font-weight: 600;">+49 151 23456789</a>
+              <a href="tel:+4915123456789" style="color: var(--brand); font-size: 18px; font-weight: 600; text-decoration: none;">+49 151 23456789</a>
             </div>
           </div>
         </div>
       </div>
     </section>
+    <section id="privacy" class="privacy-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>🔒 Політика конфіденційності</h2>
+          <p class="section-subtitle">Остання редакція: 08 жовтня 2024</p>
+        </div>
+        <div class="privacy-content">
+          <p>Marketing in Europa ("ми", "наш", "нас") поважає вашу конфіденційність і зобов'язується захищати ваші персональні дані. Ця Політика конфіденційності пояснює, як ми збираємо, використовуємо та захищаємо вашу інформацію відповідно до Загального регламенту захисту даних ЄС (GDPR).</p>
+          
+          <h3>1. Контролер даних</h3>
+          <p>Marketing in Europa<br>
+          Email: maps.werbung@gmail.com<br>
+          Телефон: +49 151 23456789<br>
+          Місцезнаходження: Європейський Союз, Німеччина</p>
+          
+          <h3>2. Які дані ми збираємо</h3>
+          <p>Ми можемо збирати наступну інформацію:</p>
+          <ul>
+            <li><strong>Контактна інформація:</strong> ім'я, email, телефон, назва компанії</li>
+            <li><strong>Технічні дані:</strong> IP-адреса, тип браузера, операційна система</li>
+            <li><strong>Дані про використання:</strong> сторінки, які ви відвідуєте, час перебування на сайті</li>
+            <li><strong>Маркетингові дані:</strong> ваші вподобання щодо отримання маркетингових повідомлень</li>
+            <li><strong>Бізнес-дані:</strong> інформація про ваш бізнес, бюджет, потреби в маркетингу</li>
+          </ul>
+          
+          <h3>3. Як ми збираємо дані</h3>
+          <p>Ми збираємо дані через:</p>
+          <ul>
+            <li>Форми на нашому веб-сайті (форми зворотного зв'язку, заявки на аудит)</li>
+            <li>Email-кореспонденцію</li>
+            <li>Телефонні розмови</li>
+            <li>Чат-бот на сайті</li>
+            <li>Cookies та аналітичні інструменти (Google Analytics)</li>
+          </ul>
+          
+          <h3>4. Для чого ми використовуємо ваші дані</h3>
+          <p>Ми використовуємо ваші персональні дані для:</p>
+          <ul>
+            <li>Надання маркетингових послуг</li>
+            <li>Відповідей на ваші запити та консультацій</li>
+            <li>Проведення безкоштовного маркетинг-аудиту</li>
+            <li>Відправки комерційних пропозицій (лише за вашою згодою)</li>
+            <li>Покращення нашого веб-сайту та послуг</li>
+            <li>Дотримання юридичних зобов'язань</li>
+            <li>Аналізу ефективності маркетингових кампаній</li>
+          </ul>
+          
+          <h3>5. Правова основа обробки</h3>
+          <p>Ми обробляємо ваші дані на основі:</p>
+          <ul>
+            <li><strong>Вашої згоди:</strong> коли ви надаєте явну згоду на обробку даних</li>
+            <li><strong>Виконання контракту:</strong> коли обробка необхідна для надання наших послуг</li>
+            <li><strong>Законні інтереси:</strong> покращення наших послуг та маркетингу</li>
+            <li><strong>Юридичні зобов'язання:</strong> дотримання законодавства ЄС</li>
+          </ul>
+          
+          <h3>6. Передача даних третім сторонам</h3>
+          <p>Ми можемо передавати ваші дані:</p>
+          <ul>
+            <li><strong>Постачальникам послуг:</strong> хостинг, email-сервіси, аналітика</li>
+            <li><strong>Платіжним системам:</strong> для обробки платежів</li>
+            <li><strong>Правоохоронним органам:</strong> за вимогою закону</li>
+          </ul>
+          <p>Ми не продаємо ваші персональні дані третім сторонам. Всі наші постачальники послуг дотримуються GDPR.</p>
+          
+          <h3>7. Міжнародні передачі даних</h3>
+          <p>Деякі наші постачальники послуг можуть знаходитися за межами ЄС. У таких випадках ми забезпечуємо адекватний рівень захисту відповідно до GDPR через стандартні договірні положення або інші законні механізми.</p>
+          
+          <h3>8. Як довго ми зберігаємо дані</h3>
+          <p>Ми зберігаємо ваші дані:</p>
+          <ul>
+            <li><strong>Контактні дані:</strong> до 3 років після останньої взаємодії</li>
+            <li><strong>Дані клієнтів:</strong> протягом надання послуг + 7 років (податкові вимоги)</li>
+            <li><strong>Маркетингові дані:</strong> до відкликання згоди або 2 роки неактивності</li>
+            <li><strong>Технічні дані:</strong> до 14 місяців</li>
+          </ul>
+          
+          <h3>9. Ваші права за GDPR</h3>
+          <p>Ви маєте право на:</p>
+          <ul>
+            <li><strong>Доступ:</strong> отримати копію ваших персональних даних</li>
+            <li><strong>Виправлення:</strong> виправити неточні дані</li>
+            <li><strong>Видалення:</strong> запросити видалення ваших даних ("право на забуття")</li>
+            <li><strong>Обмеження обробки:</strong> обмежити використання ваших даних</li>
+            <li><strong>Портативність даних:</strong> отримати дані в структурованому форматі</li>
+            <li><strong>Заперечення:</strong> заперечити проти обробки для маркетингових цілей</li>
+            <li><strong>Відкликання згоди:</strong> відкликати раніше надану згоду</li>
+          </ul>
+          <p>Для реалізації цих прав зв'яжіться з нами за адресою: maps.werbung@gmail.com</p>
+          
+          <h3>10. Cookies (Файли cookie)</h3>
+          <p>Наш сайт використовує cookies для:</p>
+          <ul>
+            <li>Забезпечення функціонування сайту</li>
+            <li>Аналізу відвідуваності (Google Analytics)</li>
+            <li>Покращення користувацького досвіду</li>
+            <li>Маркетингових цілей (ремаркетинг)</li>
+          </ul>
+          <p>Ви можете налаштувати використання cookies в налаштуваннях вашого браузера.</p>
+          
+          <h3>11. Безпека даних</h3>
+          <p>Ми застосовуємо технічні та організаційні заходи для захисту ваших даних:</p>
+          <ul>
+            <li>SSL-шифрування для передачі даних</li>
+            <li>Безпечні сервери та бази даних</li>
+            <li>Обмеження доступу до персональних даних</li>
+            <li>Регулярні перевірки безпеки</li>
+            <li>Навчання персоналу з питань захисту даних</li>
+          </ul>
+          
+          <h3>12. Діти</h3>
+          <p>Наші послуги не призначені для осіб віком до 18 років. Ми свідомо не збираємо персональні дані від дітей. Якщо ви вважаєте, що дитина надала нам персональні дані, зв'яжіться з нами.</p>
+          
+          <h3>13. Зміни до Політики конфіденційності</h3>
+          <p>Ми можемо оновлювати цю Політику конфіденційності час від часу. Ми повідомимо вас про будь-які суттєві зміни через наш веб-сайт або email.</p>
+          
+          <h3>14. Скарги</h3>
+          <p>Якщо ви вважаєте, що ваші права на захист даних були порушені, ви маєте право подати скаргу до наглядового органу:</p>
+          <p><strong>Федеральний комісар з питань захисту даних та інформаційної свободи (Німеччина)</strong><br>
+          Веб-сайт: www.bfdi.bund.de<br>
+          Email: poststelle@bfdi.bund.de</p>
+          
+          <h3>15. Контактна інформація</h3>
+          <p>Для питань щодо цієї Політики конфіденційності або ваших персональних даних, зв'яжіться з нами:</p>
+          <p>
+          <strong>Marketing in Europa</strong><br>
+          Email: maps.werbung@gmail.com<br>
+          Телефон: +49 151 23456789<br>
+          Telegram: @Asystentmijbot
+          </p>
+          
+          <h3>16. Згода</h3>
+          <p>Використовуючи наш веб-сайт та послуги, ви погоджуєтеся з умовами цієї Політики конфіденційності. Якщо ви не погоджуєтеся, будь ласка, не використовуйте наш веб-сайт.</p>
+        </div>
+      </div>
+    </section>
   </main>
-  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -1879,7 +1801,7 @@
           <a href="#cases">Наші результати</a>
           <a href="#contact">Контакти</a>
           <a href="#testimonials">Відгуки клієнтів</a>
-          <a href="#services">Портфоліо</a>
+          <a href="#privacy">Політика конфіденційності</a>
         </div>
         <div class="footer-section">
           <h4>Контакти</h4>
@@ -1894,10 +1816,16 @@
           </a>
         </div>
         <div class="footer-section">
-          <h4>Правова інформація</h4>
-          <a href="#privacy">Політика конфіденційності</a>
-          <a href="#terms">Умови користування</a>
-          <a href="#cookies">Політика cookies</a>
+          <h4>Мова</h4>
+          <div class="footer-lang">
+            <select id="lang-footer" onchange="changeLanguage(this.value)" style="background: var(--bg2); color: var(--text); border: 1px solid rgba(255,255,255,.2); padding: 8px 12px; border-radius: 8px; cursor: pointer; width: 100%;">
+              <option value="UA" selected>🇺🇦 Українська</option>
+              <option value="DE">🇩🇪 Deutsch</option>
+              <option value="EN">🇬🇧 English</option>
+              <option value="RU">🇷🇺 Русский</option>
+              <option value="PL">🇵🇱 Polski</option>
+            </select>
+          </div>
         </div>
       </div>
       <div class="footer-bottom">
@@ -1912,24 +1840,250 @@
       </div>
     </div>
   </footer>
-  <!-- Chat Widget -->
-  <button class="chat-launcher" onclick="openChat()">
-    💬
-    <div class="chat-label">ОНЛАЙН ЧАТ</div>
-  </button>
-  <!-- EXTERNAL CHAT.JS REFERENCE -->
-  <script src="chat.js"></script>
-  <!-- JavaScript -->
+  
+  <!-- Chatbot Modal -->
+  <div class="chatbot-modal" id="chatbotModal">
+    <div class="chatbot-container">
+      <div class="chatbot-header">
+        <h3>💬 Чат-бот консультант</h3>
+        <button class="chatbot-close" onclick="closeChatbot()">×</button>
+      </div>
+      <div class="chatbot-body">
+        <div class="chatbot-progress">
+          <div class="progress-bar" id="progress1"></div>
+          <div class="progress-bar" id="progress2"></div>
+          <div class="progress-bar" id="progress3"></div>
+          <div class="progress-bar" id="progress4"></div>
+          <div class="progress-bar" id="progress5"></div>
+          <div class="progress-bar" id="progress6"></div>
+        </div>
+        
+        <div class="chatbot-step active" id="step1">
+          <div class="chatbot-question">🎯 Яка ваша ніша або сфера бізнесу?</div>
+          <input type="text" class="chatbot-input" id="niche" placeholder="Наприклад: E-commerce, Стоматологія, IT...">
+          <button class="chatbot-next" onclick="nextStep(2)">Далі →</button>
+        </div>
+        
+        <div class="chatbot-step" id="step2">
+          <div class="chatbot-question">🌐 Чи є у вас сайт?</div>
+          <input type="url" class="chatbot-input" id="website" placeholder="https://ваш-сайт.com">
+          <div class="chatbot-buttons">
+            <button class="chatbot-btn" onclick="document.getElementById('website').value='Немає сайту'">Немає сайту</button>
+          </div>
+          <button class="chatbot-next" onclick="nextStep(3)">Далі →</button>
+        </div>
+        
+        <div class="chatbot-step" id="step3">
+          <div class="chatbot-question">🎯 Які ваші основні задачі?</div>
+          <div class="chatbot-buttons">
+            <button class="chatbot-btn" onclick="selectTask(this, 'Більше клієнтів')">Більше клієнтів</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'Збільшити продажі')">Збільшити продажі</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'Створити сайт')">Створити сайт</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'SEO просування')">SEO просування</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'Соцмережі')">Соцмережі</button>
+          </div>
+          <input type="hidden" id="tasks" value="">
+          <button class="chatbot-next" onclick="nextStep(4)">Далі →</button>
+        </div>
+        
+        <div class="chatbot-step" id="step4">
+          <div class="chatbot-question">📢 Яку рекламу хочете запустити?</div>
+          <div class="chatbot-buttons">
+            <button class="chatbot-btn" onclick="selectAd(this, 'Google Ads')">Google Ads</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'Facebook/Instagram')">Facebook/Instagram</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'TikTok')">TikTok</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'YouTube')">YouTube</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'Не знаю')">Не знаю</button>
+          </div>
+          <input type="hidden" id="ads" value="">
+          <button class="chatbot-next" onclick="nextStep(5)">Далі →</button>
+        </div>
+        
+        <div class="chatbot-step" id="step5">
+          <div class="chatbot-question">💰 Який ваш бюджет на маркетинг?</div>
+          <div class="chatbot-buttons">
+            <button class="chatbot-btn" onclick="selectBudget('€500-€1000/міс')">€500-€1000/міс</button>
+            <button class="chatbot-btn" onclick="selectBudget('€1000-€3000/міс')">€1000-€3000/міс</button>
+            <button class="chatbot-btn" onclick="selectBudget('€3000-€5000/міс')">€3000-€5000/міс</button>
+            <button class="chatbot-btn" onclick="selectBudget('€5000+/міс')">€5000+/міс</button>
+          </div>
+          <input type="hidden" id="budget" value="">
+          <button class="chatbot-next" onclick="nextStep(6)">Далі →</button>
+        </div>
+        
+        <div class="chatbot-step" id="step6">
+          <div class="chatbot-question">📍 Місце розташування вашого бізнесу</div>
+          <input type="text" class="chatbot-input" id="location" placeholder="Країна/Місто">
+          <button class="chatbot-next" onclick="submitChatbot()">Відправити заявку ✓</button>
+        </div>
+        
+        <div class="chatbot-step" id="stepFinal">
+          <div class="chatbot-question">✅ Дякуємо! Ваша заявка відправлена</div>
+          <div class="chatbot-summary" id="summary"></div>
+          <p style="color: var(--muted); text-align: center; margin-top: 20px;">Ми зв'яжемося з вами протягом 24 годин!</p>
+          <div class="chatbot-buttons" style="margin-top: 20px; justify-content: center;">
+            <a href="https://t.me/Asystentmijbot" target="_blank" class="chatbot-btn" style="text-decoration: none;">
+              <i class="fab fa-telegram"></i> Перейти в Telegram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Chat Launcher Buttons -->
+  <div style="position: fixed; right: 24px; bottom: 24px; z-index: 60; display: flex; flex-direction: column; gap: 12px;">
+    <button class="chat-launcher" onclick="openChatbot()" style="width: 70px; height: 70px;">
+      🤖
+      <div class="chat-label">ЧАТ-БОТ</div>
+    </button>
+    <a href="https://t.me/Asystentmijbot" target="_blank" class="chat-launcher" style="width: 70px; height: 70px; text-decoration: none;">
+      💬
+      <div class="chat-label">TELEGRAM</div>
+    </a>
+  </div>
+
   <script>
     let currentRating = 0;
-    // Countdown Timer
+    let currentCaseIndex = 0;
+    let currentTestimonialIndex = 0;
+    let selectedTasks = [];
+    let selectedAds = [];
+    
+    const casesData = [
+      {category: "E-Commerce", location: "🏛️ Мюнхен", title: "Онлайн-магазин домашнього текстилю", avatar: "ОТ", name: "Оксана Т.", company: "Home Textile München GmbH", before: "€15k/міс", after: "€52k/міс", percentage: "+247% прибуток", roi: "ROI: 4.2x", color: "var(--gradient)"},
+      {category: "IT-послуги", location: "🏛️ Мюнхен", title: "Українська IT-компанія", avatar: "АМ", name: "Андрій М.", company: "TechSolutions München", before: "12 проектів/міс", after: "47 проектів/міс", percentage: "+292% замовлень", roi: "Середній чек: +67%", color: "var(--purple)"},
+      {category: "Медицина", location: "🌍 Чернівці", title: "Стоматологічна клініка", avatar: "ІБ", name: "Ірина Б.", company: "Dental Care Chernivtsi", before: "23 пацієнти/міс", after: "89 пацієнтів/міс", percentage: "+287% пацієнтів", roi: "CPA: -52%", color: "#EF4444"},
+      {category: "E-Commerce", location: "🌍 Варшава", title: "Интернет-магазин игрушек", avatar: "АВ", name: "Анна В.", company: "Toys Store Warsaw", before: "€18k/мес", after: "€67k/мес", percentage: "+272% выручки", roi: "ROI: 5.1x", color: "#EF4444"},
+      {category: "Недвижимость", location: "🏛️ Мюнхен", title: "Агентство недвижимости", avatar: "ЕК", name: "Елена К.", company: "Real Estate München", before: "15 сделок/мес", after: "52 сделки/мес", percentage: "+247% сделок", roi: "Средний чек: +34%", color: "var(--accent)"},
+      {category: "Handwerk", location: "🏛️ München", title: "Elektroinstallateur Meisterbetrieb", avatar: "MS", name: "Markus S.", company: "Elektro Meister München", before: "23 Aufträge/Mon", after: "87 Aufträge/Mon", percentage: "+278% Aufträge", roi: "CPA: -52%", color: "var(--accent)"},
+      {category: "Gastronomie", location: "🏛️ München", title: "Bayerisches Restaurant", avatar: "TM", name: "Thomas M.", company: "Biergarten München", before: "€12k/Mon", after: "€43k/Mon", percentage: "+258% Umsatz", roi: "ROI: 3.9x", color: "var(--brand)"},
+      {category: "Software", location: "🌍 Берлін", title: "B2B Software Entwicklung", avatar: "FK", name: "Frank K.", company: "DevSoft Berlin GmbH", before: "€45k/Mon", after: "€156k/Mon", percentage: "+247% Revenue", roi: "ROI: 4.8x", color: "var(--purple)"}
+    ];
+    
+    const testimonialsData = [
+      {text: "Завдяки Marketing in Europa наш інтернет-магазин збільшив продажі на 247% за 6 місяців. Професійна команда, чіткі звіти, постійна підтримка. Рекомендую всім, хто хоче реальних результатів!", avatar: "ОТ", name: "Оксана Тарасенко", company: "Home Textile München GmbH", result: "+247% продажів", color: "var(--gradient)"},
+      {text: "Наш IT-стартап завдяки їхній стратегії отримав +292% замовлень. Особливо вражає їхній підхід до таргетування - знають свою справу! За 4 місяці окупили витрати і плануємо довгострокову співпрацю.", avatar: "АМ", name: "Андрій Мельник", company: "TechSolutions München", result: "+292% замовлень", color: "var(--purple)"},
+      {text: "Моя стоматологічна клініка в Чернівцях тепер має постійний потік пацієнтів завдяки їхній роботі. +287% нових пацієнтів за 5 місяців! Вартість залучення клієнта знизилася вдвічі.", avatar: "ІБ", name: "Ірина Береза", company: "Dental Care Chernivtsi", result: "+287% пацієнтів", color: "#EF4444"},
+      {text: "Наша косметична клініка в Берліні подвоїла кількість клієнтів завдяки їхній комплексній стратегії. Професійний SMM, таргетована реклама, і відмінна аналітика. Рекомендую!", avatar: "МЛ", name: "Марина Левченко", company: "Beauty Clinic Berlin", result: "+198% клієнтів", color: "var(--brand2)"},
+      {text: "Український автосервіс у Гамбурзі отримав нове життя! Збільшення доходу на 161%, нові клієнти, професійний сайт. Дякуємо команді Marketing in Europa за відмінну роботу.", avatar: "ДС", name: "Дмитро Савченко", company: "Auto Repair Hamburg", result: "+161% доходу", color: "var(--brand)"},
+      {text: "Интернет-магазин игрушек в Варшаве увеличил выручку на 272% за 4 месяца. Отличная работа с Google Ads и SEO. Особенно впечатляет аналитика - все прозрачно и понятно.", avatar: "АВ", name: "Анна Волкова", company: "Toys Store Warsaw", result: "+272% выручки", color: "#EF4444"},
+      {text: "Работаем с агентством уже полтора года. ROI по Google Ads вырос в 4.9 раза, органический трафик увеличился на 180%. Особенно нравится их подход к аналитике - всё прозрачно и понятно.", avatar: "ЕК", name: "Елена Козлова", company: "Real Estate München", result: "ROI 4.9x", color: "var(--accent)"},
+      {text: "Als Handwerksmeister war ich skeptisch gegenüber Online-Marketing. Aber die Ergebnisse sprechen für sich: 278% mehr Aufträge in nur 4 Monaten! Die Investition hat sich bereits mehrfach bezahlt gemacht.", avatar: "MS", name: "Markus Schmidt", company: "Elektro Meister München", result: "+278% Aufträge", color: "var(--accent)"},
+      {text: "Unser bayerisches Restaurant in München hat dank ihrer Strategie 258% mehr Umsatz gemacht. Besonders beeindruckend ist die lokale SEO-Arbeit. Wir sind sehr zufrieden mit der Zusammenarbeit!", avatar: "TM", name: "Thomas Müller", company: "Biergarten München", result: "+258% Umsatz", color: "var(--brand)"}
+    ];
+    
+    function renderCases() {
+      const grid = document.getElementById('casesGrid');
+      const dots = document.getElementById('casesDots');
+      grid.innerHTML = '';
+      dots.innerHTML = '';
+      
+      const visibleCases = 3;
+      const startIndex = currentCaseIndex;
+      const endIndex = Math.min(startIndex + visibleCases, casesData.length);
+      
+      for (let i = startIndex; i < endIndex; i++) {
+        const c = casesData[i];
+        grid.innerHTML += `
+          <div class="case-card animate-slide-up">
+            <div class="case-header">
+              <div class="case-category">${c.category}</div>
+              <div class="case-location">${c.location}</div>
+            </div>
+            <h3 class="case-title">${c.title}</h3>
+            <div class="case-client">
+              <div class="client-avatar" style="background: ${c.color}; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">${c.avatar}</div>
+              <div>
+                <div class="client-name">${c.name}</div>
+                <div class="client-company">${c.company}</div>
+              </div>
+            </div>
+            <div class="case-metrics">
+              <div class="metric">
+                <div class="metric-before">Було: ${c.before}</div>
+                <div class="metric-arrow">➜</div>
+                <div class="metric-after highlight">Стало: ${c.after}</div>
+              </div>
+            </div>
+            <div class="case-result">
+              <div class="result-percentage">${c.percentage}</div>
+              <div class="result-roi">${c.roi}</div>
+            </div>
+          </div>
+        `;
+      }
+      
+      const totalPages = Math.ceil(casesData.length / visibleCases);
+      for (let i = 0; i < totalPages; i++) {
+        dots.innerHTML += `<div class="progress-dot ${i === Math.floor(currentCaseIndex / visibleCases) ? 'active' : ''}" onclick="goToCasePage(${i})"></div>`;
+      }
+    }
+    
+    function scrollCases(direction) {
+      const visibleCases = 3;
+      currentCaseIndex += direction * visibleCases;
+      if (currentCaseIndex < 0) currentCaseIndex = 0;
+      if (currentCaseIndex >= casesData.length) currentCaseIndex = Math.max(0, casesData.length - visibleCases);
+      renderCases();
+    }
+    
+    function goToCasePage(page) {
+      currentCaseIndex = page * 3;
+      renderCases();
+    }
+    
+    function renderTestimonials() {
+      const track = document.getElementById('testimonialsTrack');
+      const dots = document.getElementById('testimonialsDots');
+      track.innerHTML = '';
+      dots.innerHTML = '';
+      
+      testimonialsData.forEach((t, idx) => {
+        track.innerHTML += `
+          <div class="testimonial-card" data-index="${idx}">
+            <div class="testimonial-text">${t.text}</div>
+            <div class="testimonial-author">
+              <div class="author-avatar" style="background: ${t.color};">${t.avatar}</div>
+              <div class="author-info">
+                <h5>${t.name}</h5>
+                <div class="company">${t.company}</div>
+                <div class="result">${t.result}</div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      for (let i = 0; i < testimonialsData.length; i++) {
+        dots.innerHTML += `<div class="progress-dot ${i === currentTestimonialIndex ? 'active' : ''}" onclick="goToTestimonial(${i})"></div>`;
+      }
+    }
+    
+    function scrollTestimonials(direction) {
+      const track = document.getElementById('testimonialsTrack');
+      const cardWidth = 382;
+      currentTestimonialIndex += direction;
+      if (currentTestimonialIndex < 0) currentTestimonialIndex = testimonialsData.length - 1;
+      if (currentTestimonialIndex >= testimonialsData.length) currentTestimonialIndex = 0;
+      track.scrollLeft = currentTestimonialIndex * cardWidth;
+      renderTestimonials();
+    }
+    
+    function goToTestimonial(index) {
+      const track = document.getElementById('testimonialsTrack');
+      currentTestimonialIndex = index;
+      track.scrollLeft = index * 382;
+      renderTestimonials();
+    }
+    
     function startCountdown() {
       const countdownElement = document.getElementById('countdown');
       if (!countdownElement) return;
-      let timeLeft = 24 * 60 * 60; // 24 hours in seconds
+      let timeLeft = 24 * 60 * 60;
       setInterval(() => {
         timeLeft--;
-        if (timeLeft <= 0) timeLeft = 24 * 60 * 60; // Reset
+        if (timeLeft <= 0) timeLeft = 24 * 60 * 60;
         const hours = Math.floor(timeLeft / 3600);
         const minutes = Math.floor((timeLeft % 3600) / 60);
         const seconds = timeLeft % 60;
@@ -1937,15 +2091,15 @@
           `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
       }, 1000);
     }
-    // Mobile Menu Toggle
+    
     function toggleMobileMenu() {
       const menu = document.getElementById('mobileMenu');
       const hamburger = document.getElementById('hamburger');
       menu.classList.toggle('active');
       hamburger.classList.toggle('active');
-      // Prevent body scroll when menu is open
       document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
     }
+    
     function closeMobileMenu() {
       const menu = document.getElementById('mobileMenu');
       const hamburger = document.getElementById('hamburger');
@@ -1953,7 +2107,7 @@
       hamburger.classList.remove('active');
       document.body.style.overflow = '';
     }
-    // Language Change - REDIRECT TO DIFFERENT URLS
+    
     function changeLanguage(lang) {
       const routes = {
         'UA': '/ua/',
@@ -1967,13 +2121,13 @@
         window.location.href = baseUrl + routes[lang];
       }
     }
-    // Form Submission
+    
     function submitAuditForm(event) {
       event.preventDefault();
       alert('Дякуємо! Ми отримали вашу заявку і зв\'яжемося з вами протягом 24 годин.');
       trackCTA('audit_form_submit');
     }
-    // Review Form Submission
+    
     function submitReview(event) {
       event.preventDefault();
       const formData = {
@@ -1983,22 +2137,20 @@
         text: document.getElementById('reviewText').value,
         rating: currentRating
       };
-      // In real implementation, this would send to backend
       alert('Дякуємо за ваш відгук! Після модерації він буде опублікований на сайті.');
-      // Reset form
       document.getElementById('reviewForm').reset();
       currentRating = 0;
       updateStars();
       trackCTA('review_submit');
     }
-    // Star Rating
+    
     function updateStars() {
       const stars = document.querySelectorAll('.star');
       stars.forEach((star, index) => {
         star.classList.toggle('active', index < currentRating);
       });
     }
-    // Analytics Tracking
+    
     function trackCTA(action) {
       if (typeof gtag !== 'undefined') {
         gtag('event', 'click', {
@@ -2008,67 +2160,119 @@
       }
       console.log('CTA tracked:', action);
     }
-    // Chat - Uses external chat.js
-    function openChat() {
-      // This function should be in chat.js
-      if (typeof initChat === 'function') {
-        initChat();
-      } else {
-        // Fallback to Telegram
-        window.open('https://t.me/Asystentmijbot', '_blank');
-      }
-      trackCTA('chat_open');
-    }
-    // Show Proof
+    
     function showProof() {
       alert('Тут будуть відображені скріншоти з Google Analytics та результати кампаній наших клієнтів.');
       trackCTA('proof_view');
     }
-    // Random Testimonials Display
-    function shuffleTestimonials() {
-      const track = document.getElementById('testimonialsTrack');
-      const testimonials = Array.from(track.children);
-      // Shuffle array
-      for (let i = testimonials.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [testimonials[i], testimonials[j]] = [testimonials[j], testimonials[i]];
-      }
-      // Re-append in new order
-      testimonials.forEach(testimonial => track.appendChild(testimonial));
+    
+    // Chatbot functions
+    function openChatbot() {
+      document.getElementById('chatbotModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+      trackCTA('chatbot_open');
     }
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-          target.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-          closeMobileMenu();
-        }
-      });
-    });
-    // Initialize
+    
+    function closeChatbot() {
+      document.getElementById('chatbotModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    
+    function nextStep(stepNum) {
+      document.querySelectorAll('.chatbot-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('step' + stepNum).classList.add('active');
+      
+      for (let i = 1; i < stepNum; i++) {
+        document.getElementById('progress' + i).classList.add('completed');
+      }
+    }
+    
+    function selectTask(btn, task) {
+      btn.classList.toggle('active');
+      if (selectedTasks.includes(task)) {
+        selectedTasks = selectedTasks.filter(t => t !== task);
+      } else {
+        selectedTasks.push(task);
+      }
+      document.getElementById('tasks').value = selectedTasks.join(', ');
+    }
+    
+    function selectAd(btn, ad) {
+      btn.classList.toggle('active');
+      if (selectedAds.includes(ad)) {
+        selectedAds = selectedAds.filter(a => a !== ad);
+      } else {
+        selectedAds.push(ad);
+      }
+      document.getElementById('ads').value = selectedAds.join(', ');
+    }
+    
+    function selectBudget(budget) {
+      document.getElementById('budget').value = budget;
+      document.querySelectorAll('#step5 .chatbot-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+    
+    function submitChatbot() {
+      const data = {
+        niche: document.getElementById('niche').value,
+        website: document.getElementById('website').value,
+        tasks: document.getElementById('tasks').value,
+        ads: document.getElementById('ads').value,
+        budget: document.getElementById('budget').value,
+        location: document.getElementById('location').value
+      };
+      
+      const summary = `
+        <div class="summary-item"><span class="summary-label">Ніша:</span><span class="summary-value">${data.niche}</span></div>
+        <div class="summary-item"><span class="summary-label">Сайт:</span><span class="summary-value">${data.website}</span></div>
+        <div class="summary-item"><span class="summary-label">Задачі:</span><span class="summary-value">${data.tasks}</span></div>
+        <div class="summary-item"><span class="summary-label">Реклама:</span><span class="summary-value">${data.ads}</span></div>
+        <div class="summary-item"><span class="summary-label">Бюджет:</span><span class="summary-value">${data.budget}</span></div>
+        <div class="summary-item"><span class="summary-label">Локація:</span><span class="summary-value">${data.location}</span></div>
+      `;
+      
+      document.getElementById('summary').innerHTML = summary;
+      
+      // Send to email (in real implementation)
+      const emailBody = `
+Нова заявка з чат-бота:
+Ніша: ${data.niche}
+Сайт: ${data.website}
+Задачі: ${data.tasks}
+Реклама: ${data.ads}
+Бюджет: ${data.budget}
+Локація: ${data.location}
+      `;
+      
+      console.log('Email would be sent:', emailBody);
+      
+      document.querySelectorAll('.chatbot-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('stepFinal').classList.add('active');
+      document.querySelectorAll('.progress-bar').forEach(p => p.classList.add('completed'));
+      
+      trackCTA('chatbot_submit');
+    }
+    
     document.addEventListener('DOMContentLoaded', function() {
       startCountdown();
-      shuffleTestimonials();
-      // Sync language selectors
-      const langSelectors = document.querySelectorAll('#lang, #lang-mobile');
+      renderCases();
+      renderTestimonials();
+      
+      const langSelectors = document.querySelectorAll('#lang, #lang-mobile-top, #lang-footer');
       langSelectors.forEach(selector => {
         selector.addEventListener('change', function() {
           langSelectors.forEach(s => s.value = this.value);
         });
       });
-      // Star rating event listeners
+      
       document.querySelectorAll('.star').forEach(star => {
         star.addEventListener('click', function() {
           currentRating = parseInt(this.getAttribute('data-rating'));
           updateStars();
         });
       });
-      // Close mobile menu when clicking outside
+      
       document.addEventListener('click', function(e) {
         const menu = document.getElementById('mobileMenu');
         const toggle = document.getElementById('mobileToggle');
@@ -2078,7 +2282,7 @@
           closeMobileMenu();
         }
       });
-      // Intersection Observer for animations
+      
       const observerOptions = {
         root: null,
         rootMargin: '0px',
@@ -2092,7 +2296,7 @@
           }
         });
       }, observerOptions);
-      // Observe all cards and sections
+      
       document.querySelectorAll('.case-card, .card, .testimonial-card').forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
