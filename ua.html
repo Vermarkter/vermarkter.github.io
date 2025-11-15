@@ -331,7 +331,6 @@
       transition: .3s ease;
       white-space: nowrap;
       box-shadow: 0 4px 15px rgba(59,130,246,.3);
-      cursor: pointer;
     }
     .cta-button:hover {
       transform: translateY(-2px);
@@ -354,8 +353,7 @@
       gap: 12px; 
       align-items: center; 
       background: linear-gradient(180deg, var(--ua-blue) 50%, var(--ua-yellow) 50%);
-      color: #000;
-      text-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+      color: white;
       border: 2px solid rgba(255,215,0,.5);
       padding: 10px 20px; 
       border-radius: 50px; 
@@ -424,20 +422,6 @@
     .audit-form input::placeholder {
       color: var(--muted);
     }
-    .audit-form-message {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 8px;
-      font-weight: 600;
-      margin-top: 10px;
-      text-align: center;
-      display: none;
-    }
-    .audit-form-message.success {
-      background-color: rgba(16, 185, 129, 0.1);
-      color: var(--brand2);
-      border: 1px solid var(--brand2);
-    }
     .cta {
       display: inline-flex; 
       align-items: center; 
@@ -499,16 +483,11 @@
       border-radius: 12px; 
       padding: 20px; 
       text-align: center; 
-      transition: all .3s ease;
+      transition: .3s ease;
     }
     .stat:hover {
       transform: translateY(-2px); 
       box-shadow: var(--shadow);
-    }
-    .stat-highlight {
-      border-color: var(--brand);
-      box-shadow: var(--glow);
-      transform: scale(1.05);
     }
     .stat strong {
       font-size: 24px; 
@@ -1074,7 +1053,7 @@
       transition: .3s ease;
       font-weight: 600;
     }
-    .chatbot-btn:hover, .chatbot-btn.selected {
+    .chatbot-btn:hover {
       background: var(--brand);
       color: white;
     }
@@ -1120,20 +1099,13 @@
       justify-content: space-between;
       margin-bottom: 8px;
       font-size: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding-bottom: 8px;
-    }
-    .summary-item:last-child {
-        border-bottom: none;
     }
     .summary-label {
       color: var(--muted);
-      flex-basis: 40%;
     }
     .summary-value {
       color: var(--text);
       font-weight: 600;
-      text-align: right;
     }
     
     /* PRIVACY POLICY */
@@ -1229,18 +1201,13 @@
       font-size: 12px; 
       font-weight: 600;
     }
-    .chat-launcher-container {
+    .chat-launcher {
       position: fixed; 
       right: 24px; 
       bottom: 24px; 
-      z-index: 60; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 12px;
-    }
-    .chat-launcher {
-      width: 70px; 
-      height: 70px; 
+      z-index: 60;
+      width: 80px; 
+      height: 80px; 
       border-radius: 50%; 
       display: flex;
       flex-direction: column;
@@ -1253,10 +1220,9 @@
       cursor: pointer; 
       transition: .3s ease; 
       font-size: 24px;
-      text-decoration: none;
     }
     .chat-launcher:hover {
-      transform: scale(1.1) rotate(5deg);
+      transform: scale(1.1);
       box-shadow: var(--shadow-lg);
     }
     .chat-label {
@@ -1282,7 +1248,7 @@
       .hero { padding: 60px 0 40px; }
       .hero-grid { grid-template-columns: 1fr; gap: 32px; text-align: center; }
       .hero-card { padding: 24px; }
-      .hero-stats { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .hero-stats { grid-template-columns: 1fr; gap: 12px; }
       .cases-grid { grid-template-columns: 1fr; }
       .case-card { padding: 20px; }
       .card { padding: 24px; }
@@ -1290,8 +1256,8 @@
       .audit-form input { min-width: auto; }
       .cta-banner { flex-direction: column; text-align: center; }
       .mobile-lang-panel { flex-direction: column; gap: 12px; align-items: flex-start; }
-      .chat-launcher { width: 60px; height: 60px; font-size: 20px; }
-      .chat-label { font-size: 8px; }
+      .chat-launcher { width: 70px; height: 70px; font-size: 20px; }
+      .chat-label { font-size: 9px; }
       .testimonials-track { 
         gap: 16px;
         padding: 10px 0;
@@ -1351,11 +1317,11 @@
           <span class="lang-label">Мова:</span>
           <div class="lang">
             <select id="lang-mobile-top" onchange="changeLanguage(this.value)">
-              <option value="UA" selected>UA</option>
-              <option value="DE">DE</option>
-              <option value="EN">EN</option>
-              <option value="RU">RU</option>
-              <option value="PL">PL</option>
+              <option value="UA" selected>🇺🇦 UA</option>
+              <option value="DE">🇩🇪 DE</option>
+              <option value="EN">🇬🇧 EN</option>
+              <option value="RU">🇷🇺 RU</option>
+              <option value="PL">🇵🇱 PL</option>
             </select>
           </div>
         </div>
@@ -1377,11 +1343,11 @@
           <a href="#contact">Контакти</a>
           <div class="lang">
             <select id="lang" onchange="changeLanguage(this.value)">
-              <option value="UA" selected>UA</option>
-              <option value="DE">DE</option>
-              <option value="EN">EN</option>
-              <option value="RU">RU</option>
-              <option value="PL">PL</option>
+              <option value="UA" selected>🇺🇦 UA</option>
+              <option value="DE">🇩🇪 DE</option>
+              <option value="EN">🇬🇧 EN</option>
+              <option value="RU">🇷🇺 RU</option>
+              <option value="PL">🇵🇱 PL</option>
             </select>
           </div>
         </div>
@@ -1412,7 +1378,7 @@
               <div class="timer-text">Тільки для перших 10 клієнтів!</div>
               <div class="countdown" id="countdown">23:59:42</div>
             </div>
-            <a href="#audit" class="cta-button" onclick="openChatbot(); trackCTA('promo_click')">ОТРИМАТИ ЗАРАЗ</a>
+            <a href="#audit" class="cta-button" onclick="trackCTA('promo_click')">ОТРИМАТИ ЗАРАЗ</a>
           </div>
         </div>
       </div>
@@ -1432,12 +1398,11 @@
             <div class="hero-actions animate-slide-up">
               <h3 id="audit">🎯 Безкоштовний маркетинг-аудит (Вартість: <s>200€</s>)</h3>
               <form class="audit-form" id="auditForm" onsubmit="submitAuditForm(event)">
-                <input type="url" name="website_url" placeholder="URL вашого сайту" required>
-                <input type="email" name="email" placeholder="E-mail для звіту" required>
+                <input type="url" placeholder="URL вашого сайту" required>
+                <input type="email" placeholder="E-mail для звіту" required>
                 <button type="submit" class="cta">
                   🚀 ОТРИМАТИ БЕЗКОШТОВНИЙ АУДИТ
                 </button>
-                 <div id="auditMessage" class="audit-form-message"></div>
               </form>
               <div class="audit-note">✅ Аналіз за 24 години • ✅ Конкретні рекомендації • ✅ Без зобов'язань</div>
             </div>
@@ -1687,7 +1652,7 @@
       <div class="container">
         <div class="section-header">
           <h2>🔒 Політика конфіденційності</h2>
-          <p class="section-subtitle">Остання редакція: 10 жовтня 2025</p>
+          <p class="section-subtitle">Остання редакція: 08 жовтня 2024</p>
         </div>
         <div class="privacy-content">
           <p>Marketing in Europa ("ми", "наш", "нас") поважає вашу конфіденційність і зобов'язується захищати ваші персональні дані. Ця Політика конфіденційності пояснює, як ми збираємо, використовуємо та захищаємо вашу інформацію відповідно до Загального регламенту захисту даних ЄС (GDPR).</p>
@@ -1854,18 +1819,18 @@
           <h4>Мова</h4>
           <div class="footer-lang">
             <select id="lang-footer" onchange="changeLanguage(this.value)" style="background: var(--bg2); color: var(--text); border: 1px solid rgba(255,255,255,.2); padding: 8px 12px; border-radius: 8px; cursor: pointer; width: 100%;">
-              <option value="UA" selected>Українська</option>
-              <option value="DE">Deutsch</option>
-              <option value="EN">English</option>
-              <option value="RU">Русский</option>
-              <option value="PL">Polski</option>
+              <option value="UA" selected>🇺🇦 Українська</option>
+              <option value="DE">🇩🇪 Deutsch</option>
+              <option value="EN">🇬🇧 English</option>
+              <option value="RU">🇷🇺 Русский</option>
+              <option value="PL">🇵🇱 Polski</option>
             </select>
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <div class="footer-bottom-content">
-          <p>© 2025 Marketing in Europa. Всі права захищені.</p>
+          <p>© 2024 Marketing in Europa. Всі права захищені.</p>
           <div class="footer-badges">
             <div class="badge-item">🇪🇺 Для бізнесу в ЄС</div>
             <div class="badge-item">🔒 GDPR compliant</div>
@@ -1876,6 +1841,7 @@
     </div>
   </footer>
   
+  <!-- Chatbot Modal -->
   <div class="chatbot-modal" id="chatbotModal">
     <div class="chatbot-container">
       <div class="chatbot-header">
@@ -1890,79 +1856,74 @@
           <div class="progress-bar" id="progress4"></div>
           <div class="progress-bar" id="progress5"></div>
           <div class="progress-bar" id="progress6"></div>
-          <div class="progress-bar" id="progress7"></div>
         </div>
         
         <div class="chatbot-step active" id="step1">
           <div class="chatbot-question">🎯 Яка ваша ніша або сфера бізнесу?</div>
-          <input type="text" class="chatbot-input" id="niche" placeholder="Наприклад: Салон краси, E-commerce, Будівництво...">
+          <input type="text" class="chatbot-input" id="niche" placeholder="Наприклад: E-commerce, Стоматологія, IT...">
           <button class="chatbot-next" onclick="nextStep(2)">Далі →</button>
         </div>
         
         <div class="chatbot-step" id="step2">
-          <div class="chatbot-question">🌐 Чи є у вас сайт? (Якщо ні, напишіть "немає")</div>
+          <div class="chatbot-question">🌐 Чи є у вас сайт?</div>
           <input type="url" class="chatbot-input" id="website" placeholder="https://ваш-сайт.com">
+          <div class="chatbot-buttons">
+            <button class="chatbot-btn" onclick="document.getElementById('website').value='Немає сайту'">Немає сайту</button>
+          </div>
           <button class="chatbot-next" onclick="nextStep(3)">Далі →</button>
         </div>
         
         <div class="chatbot-step" id="step3">
-          <div class="chatbot-question">🏆 Які ваші основні задачі? (можна декілька)</div>
+          <div class="chatbot-question">🎯 Які ваші основні задачі?</div>
           <div class="chatbot-buttons">
-            <button class="chatbot-btn" onclick="selectMulti(this, 'tasks')">Більше клієнтів</button>
-            <button class="chatbot-btn" onclick="selectMulti(this, 'tasks')">Збільшити продажі</button>
-            <button class="chatbot-btn" onclick="selectMulti(this, 'tasks')">Створити сайт</button>
-            <button class="chatbot-btn" onclick="selectMulti(this, 'tasks')">SEO просування</button>
-            <button class="chatbot-btn" onclick="selectMulti(this, 'tasks')">Соцмережі</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'Більше клієнтів')">Більше клієнтів</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'Збільшити продажі')">Збільшити продажі</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'Створити сайт')">Створити сайт</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'SEO просування')">SEO просування</button>
+            <button class="chatbot-btn" onclick="selectTask(this, 'Соцмережі')">Соцмережі</button>
           </div>
           <input type="hidden" id="tasks" value="">
           <button class="chatbot-next" onclick="nextStep(4)">Далі →</button>
         </div>
         
         <div class="chatbot-step" id="step4">
-          <div class="chatbot-question">📢 Яку рекламу хочете запустити? (можна декілька)</div>
+          <div class="chatbot-question">📢 Яку рекламу хочете запустити?</div>
           <div class="chatbot-buttons">
-            <button class="chatbot-btn" onclick="selectMulti(this, 'ads')">Google Ads</button>
-            <button class="chatbot-btn" onclick="selectMulti(this, 'ads')">Facebook/Instagram</button>
-            <button class="chatbot-btn" onclick="selectMulti(this, 'ads')">TikTok</button>
-            <button class="chatbot-btn" onclick="selectMulti(this, 'ads')">YouTube</button>
-            <button class="chatbot-btn" onclick="selectMulti(this, 'ads')">Не знаю</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'Google Ads')">Google Ads</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'Facebook/Instagram')">Facebook/Instagram</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'TikTok')">TikTok</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'YouTube')">YouTube</button>
+            <button class="chatbot-btn" onclick="selectAd(this, 'Не знаю')">Не знаю</button>
           </div>
           <input type="hidden" id="ads" value="">
           <button class="chatbot-next" onclick="nextStep(5)">Далі →</button>
         </div>
         
         <div class="chatbot-step" id="step5">
-            <div class="chatbot-question">⚔️ Хто ваші основні конкуренти? (Необов'язково)</div>
-            <input type="text" class="chatbot-input" id="competitors" placeholder="Наприклад: назва або сайт конкурента">
-            <button class="chatbot-next" onclick="nextStep(6)">Далі →</button>
-        </div>
-
-        <div class="chatbot-step" id="step6">
-          <div class="chatbot-question">💰 Який ваш орієнтовний бюджет на маркетинг на місяць?</div>
+          <div class="chatbot-question">💰 Який ваш бюджет на маркетинг?</div>
           <div class="chatbot-buttons">
-            <button class="chatbot-btn" onclick="selectBudget('€500 - €1000')">€500 - €1000</button>
-            <button class="chatbot-btn" onclick="selectBudget('€1000 - €3000')">€1000 - €3000</button>
-            <button class="chatbot-btn" onclick="selectBudget('€3000 - €5000')">€3000 - €5000</button>
-            <button class="chatbot-btn" onclick="selectBudget('€5000+')">€5000+</button>
-            <button class="chatbot-btn" onclick="selectBudget('Потрібна консультація')">Потрібна консультація</button>
+            <button class="chatbot-btn" onclick="selectBudget('€500-€1000/міс')">€500-€1000/міс</button>
+            <button class="chatbot-btn" onclick="selectBudget('€1000-€3000/міс')">€1000-€3000/міс</button>
+            <button class="chatbot-btn" onclick="selectBudget('€3000-€5000/міс')">€3000-€5000/міс</button>
+            <button class="chatbot-btn" onclick="selectBudget('€5000+/міс')">€5000+/міс</button>
           </div>
           <input type="hidden" id="budget" value="">
-          <button class="chatbot-next" onclick="nextStep(7)">Далі →</button>
+          <button class="chatbot-next" onclick="nextStep(6)">Далі →</button>
         </div>
         
-        <div class="chatbot-step" id="step7">
-          <div class="chatbot-question">📍 Вкажіть регіон вашого бізнесу</div>
-          <input type="text" class="chatbot-input" id="location" placeholder="Країна, місто">
+        <div class="chatbot-step" id="step6">
+          <div class="chatbot-question">📍 Місце розташування вашого бізнесу</div>
+          <input type="text" class="chatbot-input" id="location" placeholder="Країна/Місто">
           <button class="chatbot-next" onclick="submitChatbot()">Відправити заявку ✓</button>
         </div>
         
         <div class="chatbot-step" id="stepFinal">
           <div class="chatbot-question">✅ Дякуємо! Ваша заявка відправлена</div>
           <div class="chatbot-summary" id="summary"></div>
-          <p style="color: var(--muted); text-align: center; margin-top: 20px;">Ми зв'яжемося з вами протягом 24 годин для детальної консультації!</p>
+          <p style="color: var(--muted); text-align: center; margin-top: 20px;">Ми зв'яжемося з вами протягом 24 годин!</p>
           <div class="chatbot-buttons" style="margin-top: 20px; justify-content: center;">
             <a href="https://t.me/Asystentmijbot" target="_blank" class="chatbot-btn" style="text-decoration: none;">
-              <i class="fab fa-telegram"></i> Написати в Telegram
+              <i class="fab fa-telegram"></i> Перейти в Telegram
             </a>
           </div>
         </div>
@@ -1970,12 +1931,13 @@
     </div>
   </div>
   
-  <div class="chat-launcher-container">
-    <button class="chat-launcher" onclick="openChatbot()">
+  <!-- Chat Launcher Buttons -->
+  <div style="position: fixed; right: 24px; bottom: 24px; z-index: 60; display: flex; flex-direction: column; gap: 12px;">
+    <button class="chat-launcher" onclick="openChatbot()" style="width: 70px; height: 70px;">
       🤖
       <div class="chat-label">ЧАТ-БОТ</div>
     </button>
-    <a href="https://t.me/Asystentmijbot" target="_blank" class="chat-launcher">
+    <a href="https://t.me/Asystentmijbot" target="_blank" class="chat-launcher" style="width: 70px; height: 70px; text-decoration: none;">
       💬
       <div class="chat-label">TELEGRAM</div>
     </a>
@@ -1985,11 +1947,8 @@
     let currentRating = 0;
     let currentCaseIndex = 0;
     let currentTestimonialIndex = 0;
-    let chatbotData = {
-        tasks: [],
-        ads: []
-    };
-    let statAnimationInterval;
+    let selectedTasks = [];
+    let selectedAds = [];
     
     const casesData = [
       {category: "E-Commerce", location: "🏛️ Мюнхен", title: "Онлайн-магазин домашнього текстилю", avatar: "ОТ", name: "Оксана Т.", company: "Home Textile München GmbH", before: "€15k/міс", after: "€52k/міс", percentage: "+247% прибуток", roi: "ROI: 4.2x", color: "var(--gradient)"},
@@ -2003,7 +1962,6 @@
     ];
     
     const testimonialsData = [
-      // Існуючі відгуки
       {text: "Завдяки Marketing in Europa наш інтернет-магазин збільшив продажі на 247% за 6 місяців. Професійна команда, чіткі звіти, постійна підтримка. Рекомендую всім, хто хоче реальних результатів!", avatar: "ОТ", name: "Оксана Тарасенко", company: "Home Textile München GmbH", result: "+247% продажів", color: "var(--gradient)"},
       {text: "Наш IT-стартап завдяки їхній стратегії отримав +292% замовлень. Особливо вражає їхній підхід до таргетування - знають свою справу! За 4 місяці окупили витрати і плануємо довгострокову співпрацю.", avatar: "АМ", name: "Андрій Мельник", company: "TechSolutions München", result: "+292% замовлень", color: "var(--purple)"},
       {text: "Моя стоматологічна клініка в Чернівцях тепер має постійний потік пацієнтів завдяки їхній роботі. +287% нових пацієнтів за 5 місяців! Вартість залучення клієнта знизилася вдвічі.", avatar: "ІБ", name: "Ірина Береза", company: "Dental Care Chernivtsi", result: "+287% пацієнтів", color: "#EF4444"},
@@ -2012,48 +1970,7 @@
       {text: "Интернет-магазин игрушек в Варшаве увеличил выручку на 272% за 4 месяца. Отличная работа с Google Ads и SEO. Особенно впечатляет аналитика - все прозрачно и понятно.", avatar: "АВ", name: "Анна Волкова", company: "Toys Store Warsaw", result: "+272% выручки", color: "#EF4444"},
       {text: "Работаем с агентством уже полтора года. ROI по Google Ads вырос в 4.9 раза, органический трафик увеличился на 180%. Особенно нравится их подход к аналитике - всё прозрачно и понятно.", avatar: "ЕК", name: "Елена Козлова", company: "Real Estate München", result: "ROI 4.9x", color: "var(--accent)"},
       {text: "Als Handwerksmeister war ich skeptisch gegenüber Online-Marketing. Aber die Ergebnisse sprechen für sich: 278% mehr Aufträge in nur 4 Monaten! Die Investition hat sich bereits mehrfach bezahlt gemacht.", avatar: "MS", name: "Markus Schmidt", company: "Elektro Meister München", result: "+278% Aufträge", color: "var(--accent)"},
-      {text: "Unser bayerisches Restaurant in München hat dank ihrer Strategie 258% mehr Umsatz gemacht. Besonders beeindruckend ist die lokale SEO-Arbeit. Wir sind sehr zufrieden mit der Zusammenarbeit!", avatar: "TM", name: "Thomas Müller", company: "Biergarten München", result: "+258% Umsatz", color: "var(--brand)"},
-      
-      // Нові 30 відгуків
-      // Манікюрні салони
-      {text: "Мій манікюрний салон у Франкфурті тепер повністю заброньований на 2 тижні вперед! Все завдяки грамотному таргету в Instagram. Дуже задоволена співпрацею.", avatar: "ЮК", name: "Юлія Ковальчук", company: "Nails & Beauty Frankfurt", result: "+400% записів онлайн", color: "#EC4899"},
-      {text: "Наконец-то я нашла специалистов, которые понимают бьюти-сферу! Количество подписчиков и, главное, реальных клиентов выросло в разы. Спасибо!", avatar: "СВ", name: "Светлана Вольф", company: "Svetlana Nails Berlin", result: "+150% новых клиентов", color: "#F472B6"},
-      {text: "Als neuer Nagelstudio-Besitzer in Wien war ich verloren. Marketing in Europa hat mir eine klare Strategie gegeben und die Kundengewinnung automatisiert. Unglaublich!", avatar: "AK", name: "Anna Klein", company: "Wiener Nagelkunst", result: "Volle Auslastung", color: "#EC4899"},
-      {text: "З невеликого кабінету ми перетворилися на повноцінний салон завдяки постійному потоку клієнтів. Раніше не вірила в онлайн-маркетинг, тепер не уявляю бізнес без нього.", avatar: "ОВ", name: "Олена Войтко", company: "Perfect Nails Prague", result: "Розширення бізнесу", color: "#F472B6"},
-      
-      // Салони краси
-      {text: "Косметологія - це довіра. Команда допомогла нам не тільки залучити клієнтів, але й побудувати бренд, якому довіряють. Результати перевершили всі очікування.", avatar: "НП", name: "Наталія Попова", company: "Aesthetica Clinic Warsaw", result: "Середній чек +70%", color: "#D946EF"},
-      {text: "Запустили рекламу на лазерну епіляцію. За 2 місяці отримали стільки заявок, скільки раніше за півроку. Професіонали своєї справи!", avatar: "ІФ", name: "Ірина Франко", company: "Laser & Beauty Hamburg", result: "CPL знижено на 60%", color: "#A855F7"},
-      {text: "Unser Friseursalon in München ist jetzt eine lokale Berühmtheit. Dank der gezielten lokalen SEO und Social-Media-Kampagnen sind wir die erste Wahl in unserem Viertel.", avatar: "LS", name: "Laura Schmidt", company: "Haar-Magie München", result: "+200% Laufkundschaft", color: "#D946EF"},
-      {text: "Мы предоставляем услуги перманентного макияжа. Агентство помогло нам найти нашу целевую аудиторию и донести ценность наших услуг. Очень довольны ростом!", avatar: "МА", name: "Мария Антонова", company: "Permanent Art Berlin", result: "+180% записей", color: "#A855F7"},
-      {text: "Зробили нам чудовий сайт і налаштували рекламу. Тепер клієнти знаходять нас легко, а запис йде через зручну онлайн-форму. Це значно спростило роботу.", avatar: "ТГ", name: "Тетяна Гриценко", company: "Egoista Beauty Hub", result: "Новий сайт + CRM", color: "#D946EF"},
-
-      // Будівельні бригади
-      {text: "Ми займаємось ремонтом квартир у Мюнхені. Раніше шукали клієнтів через знайомих. Тепер 90% замовлень приходить з сайту та Google Ads. Це змінило все.", avatar: "ВК", name: "Василь Коваль", company: "Bau-Team Koval", result: "+500% запитів з сайту", color: "#F59E0B"},
-      {text: "Наша бригада по укладке плитки в Польше теперь не сидит без работы. Заявки идут стабильно, можем планировать на месяцы вперед. Спасибо за отличную работу!", avatar: "АЗ", name: "Андрей Захаров", company: "Fach-Majster Polska", result: "Стабільний потік замовлень", color: "#FBBF24"},
-      {text: "Als Elektriker war ich auf Empfehlungen angewiesen. Jetzt finden mich die Leute online. Die Anfragen sind qualitativ hochwertiger und die Projekte größer. Top-Agentur!", avatar: "MW", name: "Michael Weber", company: "Weber Elektroinstallation", result: "Середній чек +120%", color: "#F59E0B"},
-      {text: "Будуємо каркасні будинки. Специфічна ніша, але команда знайшла підхід. Отримуємо кваліфіковані ліди, які розуміють, що вони хочуть. Це економить наш час.", avatar: "ОС", name: "Олексій Савчук", company: "EcoBud Germany", result: "Якісні ліди", color: "#FBBF24"},
-      {text: "Займаємось монтажем сонячних панелей. Завдяки їхній SEO-роботі, наш сайт на перших позиціях у Google по ключових запитах. Клієнти знаходять нас самі.", avatar: "ПЛ", name: "Петро Лисенко", company: "Solartec EU", result: "ТОП-3 в Google", color: "#F59E0B"},
-      {text: "Помогают нам с рекламой услуг по утеплению фасадов. Очень конкурентный рынок, но они находят клиентов. Результатом довольны, продолжаем сотрудничество.", avatar: "ДМ", name: "Дмитрий Макаров", company: "Fassade Profi", result: "ROI 3.5x в сезон", color: "#FBBF24"},
-
-      // E-commerce
-      {text: "Продаємо українську кераміку по всій Європі. Допомогли налаштувати Shopify та запустити рекламу. Продажі зросли втричі за перші 4 місяці!", avatar: "КБ", name: "Катерина Бойко", company: "Glyniana EU", result: "+300% продажів", color: "#10B981"},
-      {text: "У меня интернет-магазин автозапчастей. Огромный ассортимент, высокая конкуренция. Ребята сделали чудо с Google Shopping и SEO. Трафик и продажи растут каждый месяц.", avatar: "ИС", name: "Игорь Семенов", company: "Auto-Teile Express", result: "Органічний трафік +150%", color: "#6EE7B7"},
-      {text: "Wir verkaufen handgemachten Schmuck. Dank der Kampagnen auf Instagram und Pinterest haben wir unsere Zielgruppe perfekt erreicht. Der Umsatz hat sich vervierfacht.", avatar: "JS", name: "Julia Schneider", company: "Schmuckstück Manufaktur", result: "Umsatz x4", color: "#10B981"},
-      {text: "Наш магазин дитячого одягу отримав друге дихання. Дуже креативні кампанії в соцмережах і ефективний email-маркетинг. Рекомендую!", avatar: "ОН", name: "Ольга Новікова", company: "Baby Moda Shop", result: "Повторні покупки +80%", color: "#6EE7B7"},
-      {text: "Продаємо каву власного обсмаження. Допомогли створити бренд і залучити перших клієнтів через таргетовану рекламу. Зараз маємо стабільну базу постійних покупців.", avatar: "МК", name: "Максим Коваль", company: "Kava Makers EU", result: "Від 0 до 500 клієнтів", color: "#10B981"},
-      {text: "Мой магазин спортивного питания вышел на новый уровень. Комплексный подход: SEO, PPC, SMM. Результат - стабильный рост и узнаваемость бренда.", avatar: "АК", name: "Алексей Кузнецов", company: "Sport Nutrition Pro", result: "+120% доходу", color: "#6EE7B7"},
-      
-      // Інші ніші
-      {text: "Наша школа іноземних мов онлайн отримала студентів з усієї Європи. Дуже ефективні кампанії на YouTube та в Google. Дякую!", avatar: "АП", name: "Анна Петренко", company: "Lingua World Online", result: "Географія клієнтів: +15 країн", color: "#3B82F6"},
-      {text: "Я юрист, що спеціалізується на міграційному праві. Допомогли мені чітко сформулювати пропозицію та залучити клієнтів, яким справді потрібна допомога.", avatar: "РШ", name: "Роман Шевченко", company: "Lawyer Shevchenko", result: "Потік цільових клієнтів", color: "#60A5FA"},
-      {text: "Als Fotografin in Berlin brauchte ich mehr Hochzeitsbuchungen. Ihre SEO-Arbeit hat meine Website auf die erste Seite von Google gebracht. Mein Kalender ist jetzt voll.", avatar: "SK", name: "Sabine Koch", company: "Koch Fotografie", result: "ТОП-1 по запиту 'Hochzeitsfotograf Berlin'", color: "#3B82F6"},
-      {text: "Мы - клининговая компания. Конкуренция огромная, но они смогли выделить нас и привлечь как частных, так и корпоративных клиентов. Сервис на высшем уровне!", avatar: "ОЛ", name: "Ольга Лебедева", company: "Clean Perfect", result: "+20 корпоративних клієнтів", color: "#60A5FA"},
-      {text: "Допомогли запустити сервіс доставки здорової їжі. Від розробки сайту до перших 100 клієнтів. Повний супровід та залученість у проект.", avatar: "ДП", name: "Дарина Павленко", company: "Fit Food Delivery", result: "Запуск бізнесу 'під ключ'", color: "#3B82F6"},
-      {text: "Моє невеличке видавництво дитячих книжок тепер знають у всій Німеччині. Допомогли з Amazon-рекламою та просуванням у соцмережах. Продажі неймовірні!", avatar: "ГМ", name: "Ганна Мельник", company: "Kazka Verlag", result: "Бестселер на Amazon", color: "#60A5FA"},
-      {text: "Я персональний тренер. Завдяки їхній роботі я запустив свій онлайн-курс і набрав першу групу. Це повністю змінило мій бізнес.", avatar: "ВЛ", name: "Віталій Литвин", company: "Vitality Coaching", result: "Запуск онлайн-курсу", color: "#3B82F6"},
-      {text: "Unsere Autowerkstatt bekommt jetzt täglich Anfragen über Google. Früher waren es 2-3 pro Woche. Ein riesiger Unterschied!", avatar: "FS", name: "Frank Steiner", company: "KFZ-Service Steiner", result: "Щоденні запити з Google", color: "#60A5FA"},
-      {text: "Допомогли розкрутити наш український ресторан у Празі. Тепер у нас бронюють столики за тиждень, і серед гостей не лише українці, а й багато місцевих. Супер!", avatar: "ІС", name: "Ігор Сидоренко", company: "Borsch & Varenyky Prague", result: "Повна посадка у вихідні", color: "#3B82F6"}
+      {text: "Unser bayerisches Restaurant in München hat dank ihrer Strategie 258% mehr Umsatz gemacht. Besonders beeindruckend ist die lokale SEO-Arbeit. Wir sind sehr zufrieden mit der Zusammenarbeit!", avatar: "TM", name: "Thomas Müller", company: "Biergarten München", result: "+258% Umsatz", color: "var(--brand)"}
     ];
     
     function renderCases() {
@@ -2138,59 +2055,26 @@
         `;
       });
       
-      const totalPages = testimonialsData.length;
-      for (let i = 0; i < totalPages; i++) {
+      for (let i = 0; i < testimonialsData.length; i++) {
         dots.innerHTML += `<div class="progress-dot ${i === currentTestimonialIndex ? 'active' : ''}" onclick="goToTestimonial(${i})"></div>`;
       }
     }
     
     function scrollTestimonials(direction) {
       const track = document.getElementById('testimonialsTrack');
-      const card = track.querySelector('.testimonial-card');
-      if (!card) return;
-      
-      const cardWidth = card.offsetWidth;
-      const gap = parseInt(window.getComputedStyle(track).gap);
-      const scrollAmount = cardWidth + gap;
-
+      const cardWidth = 382;
       currentTestimonialIndex += direction;
-      
-      if (currentTestimonialIndex < 0) {
-        currentTestimonialIndex = testimonialsData.length - 1;
-      } else if (currentTestimonialIndex >= testimonialsData.length) {
-        currentTestimonialIndex = 0;
-      }
-      
-      track.scrollTo({
-        left: currentTestimonialIndex * scrollAmount,
-        behavior: 'smooth'
-      });
-      updateTestimonialDots();
+      if (currentTestimonialIndex < 0) currentTestimonialIndex = testimonialsData.length - 1;
+      if (currentTestimonialIndex >= testimonialsData.length) currentTestimonialIndex = 0;
+      track.scrollLeft = currentTestimonialIndex * cardWidth;
+      renderTestimonials();
     }
-
-    function updateTestimonialDots() {
-        const dots = document.getElementById('testimonialsDots');
-        if (!dots) return;
-        dots.querySelectorAll('.progress-dot').forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentTestimonialIndex);
-        });
-    }
-
+    
     function goToTestimonial(index) {
       const track = document.getElementById('testimonialsTrack');
-      const card = track.querySelector('.testimonial-card');
-       if (!card) return;
-
-      const cardWidth = card.offsetWidth;
-      const gap = parseInt(window.getComputedStyle(track).gap);
-      const scrollAmount = cardWidth + gap;
-      
       currentTestimonialIndex = index;
-      track.scrollTo({
-          left: currentTestimonialIndex * scrollAmount,
-          behavior: 'smooth'
-      });
-      updateTestimonialDots();
+      track.scrollLeft = index * 382;
+      renderTestimonials();
     }
     
     function startCountdown() {
@@ -2239,20 +2123,9 @@
     }
     
     function submitAuditForm(event) {
-        event.preventDefault();
-        const form = event.target;
-        const messageDiv = document.getElementById('auditMessage');
-        
-        messageDiv.textContent = 'Дякуємо! Вашу заявку прийнято. Ми надішлемо аудит на вашу пошту протягом 24 годин.';
-        messageDiv.className = 'audit-form-message success';
-        messageDiv.style.display = 'block';
-
-        form.reset();
-        trackCTA('audit_form_submit');
-        
-        setTimeout(() => {
-            messageDiv.style.display = 'none';
-        }, 5000);
+      event.preventDefault();
+      alert('Дякуємо! Ми отримали вашу заявку і зв\'яжемося з вами протягом 24 годин.');
+      trackCTA('audit_form_submit');
     }
     
     function submitReview(event) {
@@ -2307,44 +2180,47 @@
     
     function nextStep(stepNum) {
       document.querySelectorAll('.chatbot-step').forEach(s => s.classList.remove('active'));
-      const nextStepElement = document.getElementById('step' + stepNum);
-      if (nextStepElement) {
-        nextStepElement.classList.add('active');
-      }
+      document.getElementById('step' + stepNum).classList.add('active');
       
-      document.querySelectorAll('.chatbot-progress .progress-bar').forEach((bar, index) => {
-        if (index < stepNum - 1) {
-            bar.classList.add('completed');
-        }
-      });
+      for (let i = 1; i < stepNum; i++) {
+        document.getElementById('progress' + i).classList.add('completed');
+      }
     }
     
-    function selectMulti(btn, type) {
-        const value = btn.textContent;
-        btn.classList.toggle('selected');
-        if (chatbotData[type].includes(value)) {
-            chatbotData[type] = chatbotData[type].filter(item => item !== value);
-        } else {
-            chatbotData[type].push(value);
-        }
-        document.getElementById(type).value = chatbotData[type].join(', ');
+    function selectTask(btn, task) {
+      btn.classList.toggle('active');
+      if (selectedTasks.includes(task)) {
+        selectedTasks = selectedTasks.filter(t => t !== task);
+      } else {
+        selectedTasks.push(task);
+      }
+      document.getElementById('tasks').value = selectedTasks.join(', ');
+    }
+    
+    function selectAd(btn, ad) {
+      btn.classList.toggle('active');
+      if (selectedAds.includes(ad)) {
+        selectedAds = selectedAds.filter(a => a !== ad);
+      } else {
+        selectedAds.push(ad);
+      }
+      document.getElementById('ads').value = selectedAds.join(', ');
     }
     
     function selectBudget(budget) {
       document.getElementById('budget').value = budget;
-      document.querySelectorAll('#step6 .chatbot-btn').forEach(b => b.classList.remove('selected'));
-      event.target.classList.add('selected');
+      document.querySelectorAll('#step5 .chatbot-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
     }
     
     function submitChatbot() {
       const data = {
-        niche: document.getElementById('niche').value || "Не вказано",
-        website: document.getElementById('website').value || "Не вказано",
-        tasks: document.getElementById('tasks').value || "Не вказано",
-        ads: document.getElementById('ads').value || "Не вказано",
-        competitors: document.getElementById('competitors').value || "Не вказано",
-        budget: document.getElementById('budget').value || "Не вказано",
-        location: document.getElementById('location').value || "Не вказано"
+        niche: document.getElementById('niche').value,
+        website: document.getElementById('website').value,
+        tasks: document.getElementById('tasks').value,
+        ads: document.getElementById('ads').value,
+        budget: document.getElementById('budget').value,
+        location: document.getElementById('location').value
       };
       
       const summary = `
@@ -2352,59 +2228,41 @@
         <div class="summary-item"><span class="summary-label">Сайт:</span><span class="summary-value">${data.website}</span></div>
         <div class="summary-item"><span class="summary-label">Задачі:</span><span class="summary-value">${data.tasks}</span></div>
         <div class="summary-item"><span class="summary-label">Реклама:</span><span class="summary-value">${data.ads}</span></div>
-        <div class="summary-item"><span class="summary-label">Конкуренти:</span><span class="summary-value">${data.competitors}</span></div>
         <div class="summary-item"><span class="summary-label">Бюджет:</span><span class="summary-value">${data.budget}</span></div>
-        <div class="summary-item"><span class="summary-label">Регіон:</span><span class="summary-value">${data.location}</span></div>
+        <div class="summary-item"><span class="summary-label">Локація:</span><span class="summary-value">${data.location}</span></div>
       `;
       
       document.getElementById('summary').innerHTML = summary;
       
       // Send to email (in real implementation)
-      console.log('Нова заявка з чат-бота:', data);
+      const emailBody = `
+Нова заявка з чат-бота:
+Ніша: ${data.niche}
+Сайт: ${data.website}
+Задачі: ${data.tasks}
+Реклама: ${data.ads}
+Бюджет: ${data.budget}
+Локація: ${data.location}
+      `;
       
-      nextStep('Final');
-      document.querySelectorAll('.chatbot-progress .progress-bar').forEach(p => p.classList.add('completed'));
+      console.log('Email would be sent:', emailBody);
+      
+      document.querySelectorAll('.chatbot-step').forEach(s => s.classList.remove('active'));
+      document.getElementById('stepFinal').classList.add('active');
+      document.querySelectorAll('.progress-bar').forEach(p => p.classList.add('completed'));
       
       trackCTA('chatbot_submit');
-    }
-
-    function handleStatAnimation() {
-        const stats = document.querySelectorAll('.hero-stats .stat');
-        if (!stats.length) return;
-        let currentIndex = 0;
-
-        const animate = () => {
-            stats.forEach(stat => stat.classList.remove('stat-highlight'));
-            stats[currentIndex].classList.add('stat-highlight');
-            currentIndex = (currentIndex + 1) % stats.length;
-        };
-
-        if (window.innerWidth > 768) {
-            if (!statAnimationInterval) {
-                statAnimationInterval = setInterval(animate, 2000);
-            }
-        } else {
-            if (statAnimationInterval) {
-                clearInterval(statAnimationInterval);
-                statAnimationInterval = null;
-                stats.forEach(stat => stat.classList.remove('stat-highlight'));
-            }
-        }
     }
     
     document.addEventListener('DOMContentLoaded', function() {
       startCountdown();
       renderCases();
       renderTestimonials();
-      updateTestimonialDots();
-      handleStatAnimation();
-      window.addEventListener('resize', handleStatAnimation);
       
       const langSelectors = document.querySelectorAll('#lang, #lang-mobile-top, #lang-footer');
       langSelectors.forEach(selector => {
         selector.addEventListener('change', function() {
           langSelectors.forEach(s => s.value = this.value);
-          changeLanguage(this.value);
         });
       });
       
@@ -2418,7 +2276,9 @@
       document.addEventListener('click', function(e) {
         const menu = document.getElementById('mobileMenu');
         const toggle = document.getElementById('mobileToggle');
-        if (menu.classList.contains('active') && !menu.contains(e.target) && !toggle.contains(e.target) && !toggle.contains(e.target.parentElement)) {
+        if (menu.classList.contains('active') && 
+            !menu.contains(e.target) && 
+            !toggle.contains(e.target)) {
           closeMobileMenu();
         }
       });
@@ -2433,7 +2293,6 @@
           if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
           }
         });
       }, observerOptions);
