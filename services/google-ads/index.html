@@ -312,34 +312,28 @@
 
   <script src="../../script.js"></script>
   <script>
-    const TELEGRAM_BOT_TOKEN = window.TELEGRAM_BOT_TOKEN || '';
-    const TELEGRAM_CHAT_ID = window.TELEGRAM_CHAT_ID || '';
+    async function sendToTelegram(formData) {
+        const token = 'YOUR_BOT_TOKEN'; // Я заміню це пізніше
+        const chatId = 'YOUR_CHAT_ID'; // Я заміню це пізніше
+        const text = `
+🚀 Нова заявка (Ads):
+👤 Ім'я: ${formData.get('name')}
+📧 Email: ${formData.get('email')}
+✈️ Telegram: ${formData.get('telegram') || 'Не вказано'}
+📝 Повідомлення: ${formData.get('message')}
+        `;
 
-    async function sendToTelegram(formData, sourceLabel) {
-      if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-        console.warn('Configure TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID to enable lead delivery.');
-        throw new Error('Інтеграція Telegram ще не налаштована.');
-      }
-
-      const message = [
-        `🆕 Заявка: ${sourceLabel}`,
-        `Ім'я: ${formData.name}`,
-        `Email: ${formData.email}`,
-        `Telegram: ${formData.telegram || '—'}`,
-        `Повідомлення: ${formData.message}`
-      ].join('\n');
-
-      const response = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message })
-      });
-
-      if (!response.ok) {
-        throw new Error('Помилка відправки');
-      }
-
-      return response.json();
+        try {
+            await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ chat_id: chatId, text: text })
+            });
+            return true;
+        } catch (e) {
+            console.error(e);
+            return false;
+        }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -403,14 +397,14 @@
         status.textContent = 'Відправляємо...';
         status.className = 'status';
 
-        const formData = Object.fromEntries(new FormData(form).entries());
+        const formData = new FormData(form);
 
-        try {
-          await sendToTelegram(formData, 'Google Ads UA');
+        const ok = await sendToTelegram(formData);
+        if (ok) {
           status.textContent = 'Дякуємо! Ми вже готуємо план запуску і відповімо протягом 2 годин.';
           status.classList.add('success');
           form.reset();
-        } catch (error) {
+        } else {
           status.textContent = 'Не вдалося відправити заявку. Напишіть у Telegram @Asystentmijbot або на email.';
           status.classList.add('error');
         }
