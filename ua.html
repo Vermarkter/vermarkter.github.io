@@ -1604,15 +1604,87 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <section id="calculator-section" class="content-section bg-light">
     <div class="container">
-        <h2>Калькулятор Контекстної Реклами Google 📊</h2>
-        <div id="ads-calculator">
-            <p>Введіть дані для розрахунку потенційного прибутку та ROI:</p>
-            <form id="calculator-form">
-                <p>... тут будуть поля як у прикладі: середній чек, маржа, конверсія ...</p>
-                <input type="email" name="Email" placeholder="Ваш Email для отримання результатів" required>
-                <button type="submit" class="btn btn-secondary">Розрахувати та Надіслати</button>
-            </form>
-            <div id="calculator-results"></div>
+        <div class="calc-header">
+          <div>
+            <h2>Калькулятор реклами 📊</h2>
+            <p class="calc-lede">Швидкий прогноз як у adwservice: виберіть платформу, гео та бюджет — отримайте приблизні кліки, покази та вартість.</p>
+          </div>
+          <span class="calc-badge">30 сек</span>
+        </div>
+
+        <div class="calc-grid">
+          <form id="calculator-form" class="calc-panel">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="calc-platform">Платформа</label>
+                <select id="calc-platform" required>
+                  <option value="google">Google Ads</option>
+                  <option value="meta">Meta Ads (Facebook / Instagram)</option>
+                  <option value="tiktok">TikTok Ads</option>
+                  <option value="linkedin">LinkedIn Ads</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="calc-geo">Гео</label>
+                <select id="calc-geo" required>
+                  <option value="germany">Німеччина</option>
+                  <option value="poland">Польща</option>
+                  <option value="spain">Іспанія</option>
+                  <option value="france">Франція</option>
+                  <option value="italy">Італія</option>
+                  <option value="europe">Уся Європа</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="budget">Бюджет, €</label>
+              <div class="budget-control">
+                <input type="number" id="budget" min="100" max="5000" step="50" value="200" required>
+                <input type="range" id="budget-range" min="100" max="5000" step="50" value="200" aria-label="Бюджет слайдер">
+              </div>
+              <small class="input-hint">Потягніть повзунок або введіть суму вручну</small>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="calc-goal">Ціль</label>
+                <select id="calc-goal">
+                  <option value="traffic">Трафік на сайт</option>
+                  <option value="leads">Ліди / заявки</option>
+                  <option value="sales">Продажі eCommerce</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="calc-cta">Отримати консультацію</label>
+                <a class="btn btn-secondary" href="#audit" style="width:100%; text-align:center;">Залишити заявку</a>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;">Розрахувати прогноз</button>
+            <p id="calc-status" class="calc-status"></p>
+          </form>
+
+          <div class="calc-results" id="calculator-results">
+            <div class="result-card">
+              <p class="result-label">Прогноз кліків</p>
+              <p class="result-value" id="result-clicks">0</p>
+              <p class="result-sub">CPC: <span id="result-cpc">—</span></p>
+            </div>
+            <div class="result-card">
+              <p class="result-label">Покази</p>
+              <p class="result-value" id="result-impressions">0</p>
+              <p class="result-sub">CTR: <span id="result-ctr">—</span></p>
+            </div>
+            <div class="result-card">
+              <p class="result-label">Ліди</p>
+              <p class="result-value" id="result-leads">0</p>
+              <p class="result-sub">CPA: <span id="result-cpa">—</span></p>
+            </div>
+            <div class="result-summary" id="result-summary">
+              Оберіть параметри, щоб побачити прогноз по вашому бюджету.
+            </div>
+          </div>
         </div>
     </div>
 </section>
@@ -2162,6 +2234,126 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         ads: []
     };
     let statAnimationInterval;
+
+    const platformData = {
+      google: { label: 'Google Ads', cpc: 0.65, ctr: 0.035 },
+      meta: { label: 'Meta Ads', cpc: 0.45, ctr: 0.022 },
+      tiktok: { label: 'TikTok Ads', cpc: 0.3, ctr: 0.028 },
+      linkedin: { label: 'LinkedIn Ads', cpc: 1.1, ctr: 0.018 }
+    };
+
+    const geoMultiplier = {
+      germany: 1,
+      poland: 0.72,
+      spain: 0.82,
+      france: 1.05,
+      italy: 0.9,
+      europe: 1.12
+    };
+
+    const goalConversion = {
+      traffic: 0.015,
+      leads: 0.035,
+      sales: 0.024
+    };
+
+    function formatNumber(value) {
+      return Number(value || 0).toLocaleString('uk-UA');
+    }
+
+    function calculateForecast({ platform, geo, goal, budget }) {
+      const platformMeta = platformData[platform];
+      if (!platformMeta) {
+        return { effectiveCpc: 0, ctr: 0, clicks: 0, impressions: 0, leads: 0, cpa: null };
+      }
+      const multiplier = geoMultiplier[geo] || 1;
+      const conversionRate = goalConversion[goal] || 0.02;
+      const effectiveCpc = Number((platformMeta.cpc * multiplier).toFixed(2));
+      const ctr = platformMeta.ctr * (goal === 'traffic' ? 1.05 : goal === 'sales' ? 0.9 : 1);
+      const clicks = Math.max(0, Math.floor(budget / effectiveCpc));
+      const impressions = ctr > 0 ? Math.max(0, Math.round(clicks / ctr)) : 0;
+      const leads = Math.max(0, Math.round(clicks * conversionRate));
+      const cpa = leads > 0 ? Number((budget / leads).toFixed(2)) : null;
+
+      return {
+        effectiveCpc,
+        ctr,
+        clicks,
+        impressions,
+        leads,
+        cpa
+      };
+    }
+
+    function updateCalculatorUI({ platform, geo, goal, budget }) {
+      const forecast = calculateForecast({ platform, geo, goal, budget });
+      const clicksEl = document.getElementById('result-clicks');
+      const impressionsEl = document.getElementById('result-impressions');
+      const leadsEl = document.getElementById('result-leads');
+      const cpcEl = document.getElementById('result-cpc');
+      const ctrEl = document.getElementById('result-ctr');
+      const cpaEl = document.getElementById('result-cpa');
+      const summaryEl = document.getElementById('result-summary');
+      const statusEl = document.getElementById('calc-status');
+
+      if (!clicksEl || !impressionsEl || !leadsEl || !cpcEl || !ctrEl || !cpaEl || !summaryEl) return;
+
+      clicksEl.textContent = formatNumber(forecast.clicks);
+      impressionsEl.textContent = formatNumber(forecast.impressions);
+      leadsEl.textContent = formatNumber(forecast.leads);
+      cpcEl.textContent = `${forecast.effectiveCpc.toFixed(2)} €`;
+      ctrEl.textContent = `${(forecast.ctr * 100).toFixed(1)}%`;
+      cpaEl.textContent = forecast.cpa ? `${forecast.cpa.toFixed(2)} €` : '—';
+
+      const geoLabel = document.querySelector(`#calc-geo option[value="${geo}"]`)?.textContent || 'Європа';
+      const platformLabel = platformData[platform]?.label || 'Ads';
+      const goalLabel = document.querySelector(`#calc-goal option[value="${goal}"]`)?.textContent || '';
+
+      summaryEl.textContent = `Бюджет ${budget}€ → ${platformLabel} у регіоні ${geoLabel}: до ${formatNumber(forecast.impressions)} показів, ${formatNumber(forecast.clicks)} кліків та приблизно ${formatNumber(forecast.leads)} лідів (${goalLabel}).`;
+      if (statusEl) {
+        statusEl.textContent = `Прогноз оновлено під бюджет ${budget}€`;
+      }
+    }
+
+    function initAdsCalculator() {
+      const form = document.getElementById('calculator-form');
+      const platformInput = document.getElementById('calc-platform');
+      const geoInput = document.getElementById('calc-geo');
+      const goalInput = document.getElementById('calc-goal');
+      const budgetInput = document.getElementById('budget');
+      const budgetRange = document.getElementById('budget-range');
+
+      if (!form || !platformInput || !geoInput || !goalInput || !budgetInput || !budgetRange) return;
+
+      const syncAndUpdate = () => {
+        const budgetValue = Number(budgetInput.value) || 0;
+        updateCalculatorUI({
+          platform: platformInput.value,
+          geo: geoInput.value,
+          goal: goalInput.value,
+          budget: budgetValue
+        });
+      };
+
+      budgetInput.addEventListener('input', () => {
+        budgetRange.value = budgetInput.value;
+        syncAndUpdate();
+      });
+
+      budgetRange.addEventListener('input', () => {
+        budgetInput.value = budgetRange.value;
+        syncAndUpdate();
+      });
+
+      [platformInput, geoInput, goalInput].forEach(el => el.addEventListener('change', syncAndUpdate));
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        syncAndUpdate();
+      });
+
+      syncAndUpdate();
+    }
     
     const casesData = [
       {category: "E-Commerce", location: "🏛️ Мюнхен", title: "Онлайн-магазин домашнього текстилю", avatar: "ОТ", name: "Оксана Т.", company: "Home Textile München GmbH", before: "€15k/міс", after: "€52k/міс", percentage: "+247% прибуток", roi: "ROI: 4.2x", color: "var(--gradient)"},
@@ -2642,6 +2834,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       updateTestimonialDots();
       handleStatAnimation();
       window.addEventListener('resize', handleStatAnimation);
+      initAdsCalculator();
       
       const langSelectors = document.querySelectorAll('#lang, #lang-mobile-top, #lang-footer');
       langSelectors.forEach(selector => {
