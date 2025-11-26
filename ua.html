@@ -333,6 +333,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: #60A5FA;
       text-shadow: 0 1px 2px rgba(0,0,0,.2);
     }
+    .countdown.expired {
+      color: #94A3B8;
+      text-shadow: none;
+    }
+    .timer-box.expired {
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      color: #94A3B8;
+    }
     .cta-button {
       background: linear-gradient(135deg, var(--brand), #1E40AF);
       color: white;
@@ -2340,17 +2348,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     function startCountdown() {
       const countdownElement = document.getElementById('countdown');
-      if (!countdownElement) return;
-      let timeLeft = 24 * 60 * 60;
-      setInterval(() => {
-        timeLeft--;
-        if (timeLeft <= 0) timeLeft = 24 * 60 * 60;
-        const hours = Math.floor(timeLeft / 3600);
-        const minutes = Math.floor((timeLeft % 3600) / 60);
-        const seconds = timeLeft % 60;
-        countdownElement.textContent = 
-          `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      }, 1000);
+      const timerDisplay = document.getElementById('timer-display');
+
+      if (!countdownElement && !timerDisplay) return;
+
+      const storageKey = 'ua_offer_expiration';
+      const durationMs = 24 * 60 * 60 * 1000;
+      const expiredMessage = 'Акція завершена';
+
+      const markExpired = () => {
+        if (countdownElement) {
+          countdownElement.textContent = expiredMessage;
+          countdownElement.classList.add('expired');
+        }
+        if (timerDisplay) {
+          timerDisplay.textContent = expiredMessage;
+          const timerBox = timerDisplay.closest('.timer-box');
+          if (timerBox) timerBox.classList.add('expired');
+        }
+      };
+
+      const savedExpiration = localStorage.getItem(storageKey);
+      if (savedExpiration === 'expired') {
+        markExpired();
+        return;
+      }
+
+      let expiration = parseInt(savedExpiration || '', 10);
+      const now = Date.now();
+
+      if (!expiration || Number.isNaN(expiration) || expiration <= now) {
+        expiration = now + durationMs;
+        localStorage.setItem(storageKey, expiration.toString());
+      }
+
+      const updateCountdown = () => {
+        const remaining = expiration - Date.now();
+
+        if (remaining <= 0) {
+          markExpired();
+          localStorage.setItem(storageKey, 'expired');
+          clearInterval(timer);
+          return;
+        }
+
+        const hours = Math.floor(remaining / (1000 * 60 * 60));
+        const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+        const formatted = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        if (countdownElement) countdownElement.textContent = formatted;
+        if (timerDisplay) timerDisplay.textContent = formatted;
+      };
+
+      updateCountdown();
+      const timer = setInterval(updateCountdown, 1000);
     }
     
     function toggleMobileMenu() {
