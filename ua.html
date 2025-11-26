@@ -333,6 +333,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: #60A5FA;
       text-shadow: 0 1px 2px rgba(0,0,0,.2);
     }
+    .countdown.expired {
+      color: #94A3B8;
+      text-shadow: none;
+    }
+    .timer-box.expired {
+      border: 1px dashed rgba(148, 163, 184, 0.6);
+      color: #94A3B8;
+    }
     .cta-button {
       background: linear-gradient(135deg, var(--brand), #1E40AF);
       color: white;
@@ -1434,29 +1442,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <section id="hero" class="hero-section">
         <div class="container">
-            
-            <h1>ГОТОВИЙ СТАРТ В ЄС: Сайт + Google Ads + Meta Ads (Facebook/Instagram) за 200€!</h1>
-            <p class="subtitle">Повноцінна онлайн-присутність та перші цільові кліки для малого бізнесу в Європі. Обмежена пропозиція!</p>
-            
+            <div class="badge ua-highlight">🇺🇦 Створено для українців, які будують бізнес у ЄС</div>
+            <h1>ГОТОВИЙ СТАРТ В ЄС — за 200€</h1>
+            <p class="subtitle">Сайт + Google Ads + Meta Ads + 14 днів підтримки. Отримайте перші цільові кліки без зайвих ризиків.</p>
+
             <div class="usp-features">
                 <ul>
-                    <li>✅ Створення Landing Page/Сайту-візитівки</li>
-                    <li>✅ Налаштування Google Ads (Пошук)</li>
-                    <li>✅ Налаштування Meta Ads (Facebook/Instagram)</li>
-                    <li>✅ 14 днів підтримки та оптимізації</li>
+                    <li>✅ Розробка Landing Page / Сайту-візитівки</li>
+                    <li>✅ Налаштування Google Ads та Meta Ads</li>
+                    <li>✅ Тестовий бюджет та відстеження конверсій</li>
+                    <li>✅ Персональний маркетолог і підтримка</li>
                 </ul>
             </div>
-            
+
             <div id="countdown-timer" class="timer-box">
-                <p>Пропозиція діє лише для перших 10 клієнтів!</p>
-                <p>Залишилось часу: <span id="timer-display">00:00:00</span></p>
+                <p>Діє лише для перших 10 клієнтів • Ліміт часу: <span id="timer-display">00:00:00</span></p>
+                <div class="lead-note">Якщо таймер обнулиться, пропозиція закриється для вашої сесії.</div>
             </div>
 
-            <button id="main-cta" class="btn btn-primary">ОТРИМАТИ ЗАРАЗ</button> 
+            <div class="hero-actions" style="gap: 12px;">
+              <button id="main-cta" class="btn btn-primary" onclick="openChatbot(); trackCTA('hero_offer');">Отримати пропозицію</button>
+              <a class="btn btn-secondary" href="#contact">Запросити консультацію</a>
+            </div>
         </div>
     </section>
-
-    ```
 
   <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQGRZVV9"
@@ -1809,6 +1818,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="section-header">
           <h2>📞 Зв'яжіться з нами</h2>
           <p class="section-subtitle">Готові розпочати ваш проект? Ми тут, щоб допомогти!</p>
+        </div>
+        <div class="contact-grid" style="display: grid; gap: 24px; max-width: 720px; margin: 0 auto 40px;">
+          <form id="contactForm" class="audit-form" onsubmit="submitContactForm(event)">
+            <div style="display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+              <input type="text" name="name" placeholder="Ваше ім'я" required>
+              <input type="email" name="email" placeholder="Ваш email" required>
+            </div>
+            <input type="text" name="telegram" placeholder="Telegram (необов'язково)">
+            <textarea name="message" rows="4" placeholder="Опишіть ваш запит або задачу" required></textarea>
+            <button type="submit" class="cta">Запросити пропозицію</button>
+            <div id="contactMessage" class="audit-form-message"></div>
+          </form>
+          <div class="contact-note" style="color: var(--muted); font-size: 14px; text-align: center;">Відповімо протягом 24 годин та надішлемо персональну пропозицію.</div>
         </div>
         <div style="text-align: center; margin-top: 40px;">
           <div style="display: inline-flex; gap: 40px; flex-wrap: wrap; justify-content: center;">
@@ -2340,17 +2362,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     function startCountdown() {
       const countdownElement = document.getElementById('countdown');
-      if (!countdownElement) return;
-      let timeLeft = 24 * 60 * 60;
-      setInterval(() => {
-        timeLeft--;
-        if (timeLeft <= 0) timeLeft = 24 * 60 * 60;
-        const hours = Math.floor(timeLeft / 3600);
-        const minutes = Math.floor((timeLeft % 3600) / 60);
-        const seconds = timeLeft % 60;
-        countdownElement.textContent = 
-          `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-      }, 1000);
+      const timerDisplay = document.getElementById('timer-display');
+
+      if (!countdownElement && !timerDisplay) return;
+
+      const storageKey = 'ua_offer_expiration';
+      const durationMs = 24 * 60 * 60 * 1000;
+      const expiredMessage = 'Акція завершена';
+
+      const markExpired = () => {
+        if (countdownElement) {
+          countdownElement.textContent = expiredMessage;
+          countdownElement.classList.add('expired');
+        }
+        if (timerDisplay) {
+          timerDisplay.textContent = expiredMessage;
+          const timerBox = timerDisplay.closest('.timer-box');
+          if (timerBox) timerBox.classList.add('expired');
+        }
+      };
+
+      const savedExpiration = localStorage.getItem(storageKey);
+      if (savedExpiration === 'expired') {
+        markExpired();
+        return;
+      }
+
+      let expiration = parseInt(savedExpiration || '', 10);
+      const now = Date.now();
+
+      if (!expiration || Number.isNaN(expiration) || expiration <= now) {
+        expiration = now + durationMs;
+        localStorage.setItem(storageKey, expiration.toString());
+      }
+
+      const updateCountdown = () => {
+        const remaining = expiration - Date.now();
+
+        if (remaining <= 0) {
+          markExpired();
+          localStorage.setItem(storageKey, 'expired');
+          clearInterval(timer);
+          return;
+        }
+
+        const hours = Math.floor(remaining / (1000 * 60 * 60));
+        const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+        const formatted = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        if (countdownElement) countdownElement.textContent = formatted;
+        if (timerDisplay) timerDisplay.textContent = formatted;
+      };
+
+      updateCountdown();
+      const timer = setInterval(updateCountdown, 1000);
     }
     
     function toggleMobileMenu() {
@@ -2387,19 +2453,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         event.preventDefault();
         const form = event.target;
         const messageDiv = document.getElementById('auditMessage');
-        
+
         messageDiv.textContent = 'Дякуємо! Вашу заявку прийнято. Ми надішлемо аудит на вашу пошту протягом 24 годин.';
         messageDiv.className = 'audit-form-message success';
         messageDiv.style.display = 'block';
 
         form.reset();
         trackCTA('audit_form_submit');
-        
+
         setTimeout(() => {
             messageDiv.style.display = 'none';
         }, 5000);
     }
-    
+
+    function submitContactForm(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const name = formData.get('name')?.trim();
+        const email = formData.get('email')?.trim();
+        const message = formData.get('message')?.trim();
+        const statusNode = document.getElementById('contactMessage');
+
+        if (!name || !email || !message) {
+          statusNode.textContent = 'Будь ласка, заповніть ім\'я, email та повідомлення.';
+          statusNode.className = 'audit-form-message error';
+          statusNode.style.display = 'block';
+          return;
+        }
+
+        statusNode.textContent = 'Запит відправлено! Ми відповімо на email протягом 24 годин.';
+        statusNode.className = 'audit-form-message success';
+        statusNode.style.display = 'block';
+        trackCTA('contact_form_submit');
+        form.reset();
+
+        setTimeout(() => {
+          statusNode.style.display = 'none';
+        }, 5000);
+    }
+
     function submitReview(event) {
       event.preventDefault();
       const formData = {
