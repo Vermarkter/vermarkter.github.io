@@ -288,3 +288,26 @@ window.addEventListener('scroll', function() {
             : 'rgba(255, 255, 255, 0.95)';
     }
 });
+async function sendToTelegram(formData) {
+    const token = '7522018067:AAEdFn-SeXkYvFW6Xm81gK4ZUqVDeRKKBNQ';
+    const chatId = '766286196';
+    const text = `
+🚀 Нова заявка (Ads):
+👤 Ім'я: ${formData.get('name')}
+📧 Email: ${formData.get('email')}
+✈️ Telegram: ${formData.get('telegram') || 'Не вказано'}
+📝 Повідомлення: ${formData.get('message')}
+    `;
+
+    try {
+        await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ chat_id: chatId, text: text })
+        });
+        return true;
+    } catch (e) {
+        console.error('❌ Помилка при надсиланні в Telegram:', e);
+        return false;
+    }
+}
