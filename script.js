@@ -247,15 +247,44 @@ function handleChatKeypress(event) {
         sendMessage();
     }
 }
-
-// Smooth scrolling for navigation links
-document.addEventListener('DOMContentLoaded', function() {
-    initTheme();
-    initLanguage();
-    generateReviews();
     
     // Add smooth scrolling to navigation links
     const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+    document.addEventListener('DOMContentLoaded', function() {
+    initTheme();
+    initLanguage();
+    generateReviews();
+
+    // ======== Обробка форми =========
+    const form = document.getElementById('lead-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        status.textContent = 'Відправляємо...';
+        status.className = 'status';
+
+        const formData = new FormData(form);
+
+        try {
+            const success = await sendToTelegram(formData);
+            if (success) {
+                status.textContent = '✅ Дякуємо! Ми відповімо протягом 2 годин.';
+                status.classList.add('success');
+                form.reset();
+            } else {
+                throw new Error('Не вдалося відправити');
+            }
+        } catch (error) {
+            status.textContent = '❌ Помилка. Напишіть нам у Telegram або на email.';
+            status.classList.add('error');
+            console.error(error);
+        }
+    });
+
+    // Add smooth scrolling to navigation links
+    const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
