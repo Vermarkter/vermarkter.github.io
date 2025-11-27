@@ -26,7 +26,7 @@
 
     await injectScript('https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX');
     window.gtag('js', new Date());
-    window.gtag('config', 'G-XXXXXXXXXX');
+    window.gtag('config', 'G-Q707N1FHS1');
   }
 
   function hideBanner(banner) {
