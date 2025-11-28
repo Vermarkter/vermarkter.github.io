@@ -1,1 +1,508 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Маркетинг в ЄС - Розробка сайтів, Google Ads, SEO, SMM | Цифрове агентство</title>
+  <meta name="description" content="Професійне цифрове маркетинг-агентство в Європейському Союзі: створення сайтів, Google Ads, SEO оптимізація, маркетинг в соцмережах. Збільшуємо прибуток на 250% за 90 днів."/>
+  <meta name="theme-color" content="#0F172A"/>
+  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="css/chatbot.css">
 
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WQGRZVV9');</script>
+  
+  <!-- Google Analytics Config -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q707N1FHS1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-Q707N1FHS1');
+  </script>
+</head>
+<body>
+  
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQGRZVV9"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header>
+    <div class="mobile-lang-selector">
+      <div class="container">
+        <div class="mobile-lang-panel">
+          <span class="lang-label">Мова:</span>
+          <div class="lang">
+            <select id="lang-mobile-top" onchange="changeLanguage(this.value)">
+              <option value="UA" selected>UA</option>
+              <option value="DE">DE</option>
+              <option value="EN">EN</option>
+              <option value="RU">RU</option>
+              <option value="PL">PL</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <div class="logo">MiE</div>
+          <div>
+            <div class="title">Marketing in Europa</div>
+            <div class="subtitle">Цифрове агентство</div>
+          </div>
+        </div>
+        <div class="nav-desktop">
+          <a href="#services">Наші послуги</a>
+          <a href="/services/google-ads/">Google Ads</a>
+          <a href="/services/meta-ads/">Meta Ads</a>
+          <a href="#cases">Кейси успіху</a>
+          <a href="#testimonials">Відгуки</a>
+          <a href="#contact">Контакти</a>
+          <div class="lang">
+            <select id="lang" onchange="changeLanguage(this.value)">
+              <option value="UA" selected>UA</option>
+              <option value="DE">DE</option>
+              <option value="EN">EN</option>
+              <option value="RU">RU</option>
+              <option value="PL">PL</option>
+            </select>
+          </div>
+        </div>
+        <button class="mobile-toggle" id="mobileToggle" onclick="toggleMobileMenu()">
+          <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </button>
+        <div class="mobile-menu" id="mobileMenu">
+          <div class="mobile-links">
+            <a href="#services" onclick="closeMobileMenu()">Наші послуги</a>
+            <a href="/services/google-ads/" onclick="closeMobileMenu()">Google Ads</a>
+            <a href="/services/meta-ads/" onclick="closeMobileMenu()">Meta Ads</a>
+            <a href="#cases" onclick="closeMobileMenu()">Кейси успіху</a>
+            <a href="#testimonials" onclick="closeMobileMenu()">Відгуки</a>
+            <a href="#contact" onclick="closeMobileMenu()">Контакти</a>
+          </div>
+        </div>
+      </nav>
+      <div class="desktop-cta-banner">
+        <div class="container">
+          <div class="cta-banner">
+            <div class="cta-content">
+              <div class="cta-title">🚀 Google ADS + Facebook ADS налаштування за 50€</div>
+              <div class="cta-details">До 20 ключових слів • 5 груп оголошень • Перевірка сайту • 14 днів підтримки</div>
+            </div>
+            <div class="cta-timer">
+              <div class="timer-text">Тільки для перших 10 клієнтів!</div>
+              <div class="countdown" id="countdown">23:59:42</div>
+            </div>
+            <a href="#audit" class="cta-button" onclick="openChatbot(); trackCTA('promo_click')">ОТРИМАТИ ЗАРАЗ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <div class="badge animate-fade-in">
+              <span class="ua-flag">🇺🇦</span>
+              Створено для українців, які будують бізнес у ЄС
+            </div>
+            <h1 class="animate-slide-up">AI-маркетинг, який дає результати в 10 разів швидше</h1>
+            <p class="lead animate-slide-up">Ми — не агентство. Ми — рішення на основі штучного інтелекту для малого бізнесу в Європейському Союзі.</p>
+            <div class="hero-actions animate-slide-up">
+              <h3 id="audit">🎯 Безкоштовний маркетинг-аудит (Вартість: <s>200€</s>)</h3>
+              <form class="audit-form" id="auditForm" onsubmit="submitAuditForm(event)">
+                <input type="url" name="website_url" placeholder="URL вашого сайту" required>
+                <input type="email" name="email" placeholder="E-mail для звіту" required>
+                <button type="submit" class="cta">🚀 ОТРИМАТИ БЕЗКОШТОВНИЙ АУДИТ</button>
+                 <div id="auditMessage" class="audit-form-message"></div>
+              </form>
+              <div class="audit-note">✅ Аналіз за 24 години • ✅ Конкретні рекомендації • ✅ Без зобов'язань</div>
+            </div>
+          </div>
+          <div class="hero-visual animate-fade-in">
+            <div class="hero-card">
+              <div class="card-header">
+                <h3>📊 Реальні результати клієнтів</h3>
+                <div class="live-indicator">🟢 Live Data</div>
+              </div>
+              <div class="hero-stats">
+                <div class="stat">
+                  <strong>+247%</strong>
+                  <div class="muted">Зростання трафіку</div>
+                </div>
+                <div class="stat">
+                  <strong>€87k</strong>
+                  <div class="muted">Щомісячний дохід</div>
+                </div>
+                <div class="stat">
+                  <strong>4.7x</strong>
+                  <div class="muted">Покращення ROAS</div>
+                </div>
+                <div class="stat">
+                  <strong>4.9/5</strong>
+                  <div class="muted">Оцінка клієнтів</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases" class="cases-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>🏆 Доведені кейси успіху</h2>
+          <p class="section-subtitle">Реальні результати наших клієнтів з Мюнхена та всієї Європи</p>
+        </div>
+        <div class="progress-container">
+          <button class="carousel-btn" onclick="scrollCases(-1)">←</button>
+          <div class="progress-dots" id="casesDots"></div>
+          <button class="carousel-btn" onclick="scrollCases(1)">→</button>
+        </div>
+        <div class="cases-grid" id="casesGrid"></div>
+      </div>
+    </section>
+
+    <!-- Секція Калькулятора -->
+    <section id="calculator-section" class="content-section bg-light">
+      <div class="container">
+          <div class="calc-header">
+            <div>
+              <h2>Калькулятор реклами 📊</h2>
+              <p class="calc-lede">Швидкий прогноз як у adwservice: виберіть платформу, гео та бюджет.</p>
+            </div>
+            <span class="calc-badge">30 сек</span>
+          </div>
+  
+          <div class="calc-grid">
+            <form id="calculator-form" class="calc-panel">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="calc-platform">Платформа</label>
+                  <select id="calc-platform" required>
+                    <option value="google">Google Ads</option>
+                    <option value="meta">Meta Ads</option>
+                    <option value="tiktok">TikTok Ads</option>
+                    <option value="linkedin">LinkedIn Ads</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="calc-geo">Гео</label>
+                  <select id="calc-geo" required>
+                    <option value="germany">Німеччина</option>
+                    <option value="poland">Польща</option>
+                    <option value="spain">Іспанія</option>
+                    <option value="france">Франція</option>
+                    <option value="europe">Уся Європа</option>
+                  </select>
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="budget">Бюджет, €</label>
+                <div class="budget-control">
+                  <input type="number" id="budget" min="100" max="5000" step="50" value="200" required>
+                  <input type="range" id="budget-range" min="100" max="5000" step="50" value="200">
+                </div>
+              </div>
+  
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="calc-goal">Ціль</label>
+                  <select id="calc-goal">
+                    <option value="traffic">Трафік на сайт</option>
+                    <option value="leads">Ліди / заявки</option>
+                    <option value="sales">Продажі eCommerce</option>
+                  </select>
+                </div>
+              </div>
+  
+              <button type="submit" class="btn btn-primary" style="width:100%;">Розрахувати прогноз</button>
+              <p id="calc-status" class="calc-status"></p>
+            </form>
+  
+            <div class="calc-results" id="calculator-results">
+              <div class="result-card">
+                <p class="result-label">Прогноз кліків</p>
+                <p class="result-value" id="result-clicks">0</p>
+                <p class="result-sub">CPC: <span id="result-cpc">—</span></p>
+              </div>
+              <div class="result-card">
+                <p class="result-label">Покази</p>
+                <p class="result-value" id="result-impressions">0</p>
+                <p class="result-sub">CTR: <span id="result-ctr">—</span></p>
+              </div>
+              <div class="result-card">
+                <p class="result-label">Ліди</p>
+                <p class="result-value" id="result-leads">0</p>
+                <p class="result-sub">CPA: <span id="result-cpa">—</span></p>
+              </div>
+              <div class="result-summary" id="result-summary">
+                Оберіть параметри, щоб побачити прогноз по вашому бюджету.
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Секція Послуг -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>🎯 Наші послуги</h2>
+          <p class="section-subtitle">Повні рішення цифрового маркетингу для вимірюваних результатів</p>
+        </div>
+        <div class="services-grid">
+          <div class="card animate-slide-up">
+            <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
+            <h3>Розробка веб-сайтів</h3>
+            <p>Сучасні, адаптивні веб-сайти з оптимальною продуктивністю. Від Landing Page до E-commerce.</p>
+            <div class="service-pricing"><div class="price-range">Від €150</div></div>
+            <ul class="service-features"><li>✅ Адаптивний дизайн</li><li>✅ Швидкість < 3с</li></ul>
+          </div>
+          <div class="card animate-slide-up">
+            <div class="card-icon"><i class="fab fa-google"></i></div>
+            <h3>Google Ads</h3>
+            <p>Професійні кампанії для максимального охоплення та ROI.</p>
+            <div class="service-pricing"><div class="price-range">Мін. бюджет: €500</div></div>
+            <a href="/services/google-ads/" class="btn btn-secondary" style="margin-top:10px; width:100%; text-align:center; display:block;">Детальніше</a>
+          </div>
+          <div class="card animate-slide-up">
+            <div class="card-icon"><i class="fas fa-share-alt"></i></div>
+            <h3>Meta Ads (SMM)</h3>
+            <p>Таргетована реклама в Instagram та Facebook.</p>
+            <div class="service-pricing"><div class="price-range">Від €40/тиждень</div></div>
+            <a href="/services/meta-ads/" class="btn btn-secondary" style="margin-top:10px; width:100%; text-align:center; display:block;">Детальніше</a>
+          </div>
+          <div class="card animate-slide-up">
+            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>SEO Оптимізація</h3>
+            <p>Підвищення органічної видимості та позицій в Google.</p>
+            <div class="service-pricing"><div class="price-range">Від €150/міс</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Секція Відгуків -->
+    <section id="testimonials" class="testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>💬 Що говорять наші клієнти</h2>
+        </div>
+        <div class="progress-container">
+          <button class="carousel-btn" onclick="scrollTestimonials(-1)">←</button>
+          <div class="progress-dots" id="testimonialsDots"></div>
+          <button class="carousel-btn" onclick="scrollTestimonials(1)">→</button>
+        </div>
+        <div class="testimonials-carousel">
+          <div class="testimonials-track" id="testimonialsTrack"></div>
+        </div>
+        <div class="testimonial-form">
+          <h3>📝 Залишити відгук</h3>
+          <form id="reviewForm" onsubmit="submitReview(event)">
+            <div class="form-group"><input type="text" id="reviewName" placeholder="Ваше ім'я" required></div>
+            <div class="form-group"><input type="text" id="reviewResult" placeholder="Результат (напр. +150% продажів)"></div>
+            <div class="form-group"><textarea id="reviewText" required placeholder="Ваш відгук..."></textarea></div>
+            <div class="form-group"><div class="form-rating"><span class="star" data-rating="5">⭐</span><span class="star" data-rating="4">⭐</span></div></div>
+            <button type="submit" class="cta">Надіслати</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section id="privacy" class="privacy-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>🔒 Політика конфіденційності</h2>
+          <p class="section-subtitle">Остання редакція: 10 жовтня 2025</p>
+        </div>
+        <div class="privacy-content">
+          <h3>1. Контролер даних</h3>
+          <p>Marketing in Europa<br>Email: maps.werbung@gmail.com<br>Місцезнаходження: Європейський Союз</p>
+          <h3>2. Дані та Cookies</h3>
+          <p>Ми збираємо мінімальні дані для аналітики та зворотного зв'язку. Використовуючи сайт, ви погоджуєтесь з умовами.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section" style="padding: 80px 0;">
+      <div class="container">
+        <div class="section-header"><h2>📞 Зв'яжіться з нами</h2></div>
+        <div style="text-align: center; margin-top: 40px;">
+          <div style="display: inline-flex; gap: 40px; flex-wrap: wrap; justify-content: center;">
+            <div><h4>📧 Email</h4><a href="mailto:maps.werbung@gmail.com" style="color: var(--brand);">maps.werbung@gmail.com</a></div>
+            <div><h4>💬 Telegram</h4><a href="https://t.me/Asystentmijbot" target="_blank" style="color: var(--brand);">@Asystentmijbot</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Наші послуги</h4>
+          <a href="/services/google-ads/">Google Ads</a>
+          <a href="/services/meta-ads/">Meta Ads</a>
+          <a href="#services">Всі послуги</a>
+        </div>
+        <div class="footer-section">
+          <h4>Контакти</h4>
+          <a href="https://t.me/Asystentmijbot">Telegram чат</a>
+          <a href="mailto:maps.werbung@gmail.com">Email</a>
+        </div>
+        <div class="footer-section">
+          <h4>Мова</h4>
+          <select id="lang-footer" onchange="changeLanguage(this.value)" style="background:var(--bg2); color:white; border:1px solid #333; padding:5px;">
+             <option value="UA">UA</option><option value="DE">DE</option>
+          </select>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Marketing in Europa. Всі права захищені.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Chatbot Container -->
+  <div class="chatbot-shell">
+    <div class="chatbot-window" id="chatbot-window">
+      <div class="chatbot-header">
+        <h4>AI-помічник Vermarkter</h4>
+        <button id="chatbot-close" class="chatbot-close">×</button>
+      </div>
+      <div class="chatbot-body" id="chatbot-body"></div>
+      <div class="chatbot-actions" id="chatbot-actions"></div>
+    </div>
+    <button class="chatbot-toggle" id="chatbot-toggle">🤖</button>
+  </div>
+
+  <!-- Модальні вікна -->
+  <div id="modal-google-ads" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Google Ads</h3></div></div>
+  <div id="modal-meta-ads" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Meta Ads</h3></div></div>
+  <div id="modal-website-dev" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Сайт</h3></div></div>
+  <div id="modal-seo" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>SEO</h3></div></div>
+
+  <!-- Cookie Banner -->
+  <div id="cookie-banner" class="cookie-banner">
+    <div class="cookie-content">
+      <p>Ми використовуємо файли cookie для покращення роботи сайту та аналітики.</p>
+      <div class="cookie-buttons">
+        <button id="accept-cookies" class="btn btn-primary">Прийняти всі</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    // Дані для кейсів
+    const casesData = [
+      {category: "E-Commerce", location: "🏛️ Мюнхен", title: "Онлайн-магазин текстилю", avatar: "ОТ", name: "Оксана Т.", company: "Home Textile", before: "€15k", after: "€52k", percentage: "+247%", roi: "ROI: 4.2x", color: "var(--gradient)"},
+      {category: "IT-послуги", location: "🏛️ Мюнхен", title: "IT-компанія", avatar: "АМ", name: "Андрій М.", company: "TechSolutions", before: "12 пр.", after: "47 пр.", percentage: "+292%", roi: "Чек +67%", color: "var(--purple)"},
+      {category: "Медицина", location: "🌍 Чернівці", title: "Стоматологія", avatar: "ІБ", name: "Ірина Б.", company: "Dental Care", before: "23 пац.", after: "89 пац.", percentage: "+287%", roi: "CPA -52%", color: "#EF4444"}
+    ];
+    // Дані для відгуків
+    const testimonialsData = [
+      {text: "Збільшили продажі на 247% за 6 місяців.", avatar: "ОТ", name: "Оксана Т.", company: "Home Textile", result: "+247% продажів", color: "var(--gradient)"},
+      {text: "Дуже професійний підхід до таргетування.", avatar: "АМ", name: "Андрій М.", company: "TechSolutions", result: "+292% замовлень", color: "var(--purple)"}
+    ];
+
+    let currentCaseIndex = 0;
+    let currentTestimonialIndex = 0;
+
+    function renderCases() {
+      const grid = document.getElementById('casesGrid');
+      if(!grid) return;
+      grid.innerHTML = '';
+      const endIndex = Math.min(currentCaseIndex + 3, casesData.length);
+      for (let i = currentCaseIndex; i < endIndex; i++) {
+        const c = casesData[i];
+        grid.innerHTML += `<div class="case-card animate-slide-up"><div class="case-header"><div class="case-category">${c.category}</div></div><h3 class="case-title">${c.title}</h3><div class="case-result"><div class="result-percentage">${c.percentage}</div></div></div>`;
+      }
+    }
+    function scrollCases(dir) {
+      currentCaseIndex += dir * 3;
+      if (currentCaseIndex < 0) currentCaseIndex = 0;
+      if (currentCaseIndex >= casesData.length) currentCaseIndex = 0;
+      renderCases();
+    }
+    function renderTestimonials() {
+        const track = document.getElementById('testimonialsTrack');
+        if(!track) return;
+        track.innerHTML = '';
+        testimonialsData.forEach(t => {
+            track.innerHTML += `<div class="testimonial-card"><div class="testimonial-text">${t.text}</div><div class="testimonial-author"><h5>${t.name}</h5></div></div>`;
+        });
+    }
+    function scrollTestimonials(dir) {
+        document.getElementById('testimonialsTrack').scrollBy({left: dir * 300, behavior: 'smooth'});
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('active');
+      document.getElementById('hamburger').classList.toggle('active');
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('active');
+      document.getElementById('hamburger').classList.remove('active');
+    }
+    function changeLanguage(lang) {
+      const routes = {'UA': '/ua/', 'DE': '/de/', 'EN': '/en/', 'RU': '/ru/', 'PL': '/pl/'};
+      if (routes[lang]) window.location.href = 'https://vermarkter.github.io' + routes[lang];
+    }
+
+    function submitAuditForm(e) { e.preventDefault(); alert("Дякуємо! Аудит буде надіслано."); }
+    function submitReview(e) { e.preventDefault(); alert("Дякуємо за відгук!"); }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderCases();
+      renderTestimonials();
+      document.querySelectorAll('.close-button').forEach(btn => {
+        btn.onclick = function() { this.closest('.modal').style.display = "none"; }
+      });
+      window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) event.target.style.display = "none";
+      }
+      document.querySelectorAll('[data-modal-target]').forEach(btn => {
+        btn.onclick = function() {
+          const modalId = this.getAttribute('data-modal-target');
+          document.getElementById(modalId).style.display = 'block';
+        }
+      });
+    });
+  </script>
+
+  <!-- External JS Modules -->
+  <script src="js/calculator.js"></script>
+  <script src="js/chatbot.js"></script>
+  <script src="js/consent.js"></script>
+
+</body>
+</html>
