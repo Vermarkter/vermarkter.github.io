@@ -9,12 +9,13 @@
   
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   
-  <!-- ✅ ПІДКЛЮЧЕННЯ СТИЛІВ -->
+  <!-- CSS Files -->
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="css/chatbot.css">
 
@@ -36,6 +37,7 @@
 </head>
 <body>
   
+  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQGRZVV9"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
@@ -100,6 +102,21 @@
           </div>
         </div>
       </nav>
+      <div class="desktop-cta-banner">
+        <div class="container">
+          <div class="cta-banner">
+            <div class="cta-content">
+              <div class="cta-title">🚀 Google ADS + Facebook ADS налаштування за 50€</div>
+              <div class="cta-details">До 20 ключових слів • 5 груп оголошень • Перевірка сайту • 14 днів підтримки</div>
+            </div>
+            <div class="cta-timer">
+              <div class="timer-text">Тільки для перших 10 клієнтів!</div>
+              <div class="countdown" id="countdown">23:59:42</div>
+            </div>
+            <a href="#audit" class="cta-button" onclick="openChatbot(); trackCTA('promo_click')">ОТРИМАТИ ЗАРАЗ</a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -167,19 +184,6 @@
           <button class="carousel-btn" onclick="scrollCases(1)">→</button>
         </div>
         <div class="cases-grid" id="casesGrid"></div>
-      </div>
-    </section>
-
-    <section id="process" class="content-section bg-light">
-      <div class="container">
-          <h2>Наш Комплексний Старт: Від Ідеї до Клієнтів за 7 Днів.</h2>
-          <div class="process-steps"> <!-- Стилі для цього блоку мають бути в styles.css -->
-              <div class="step">1. Аудит Ідеї та Ніші</div>
-              <div class="step">2. Створення Сайту (LP)</div>
-              <div class="step">3. Збір Аудиторії та Ключових Слів</div>
-              <div class="step">4. Запуск та Інтеграція</div>
-              <div class="step">5. 14 Днів Підтримки</div>
-          </div>
       </div>
     </section>
 
@@ -318,7 +322,6 @@
         <div class="testimonials-carousel">
           <div class="testimonials-track" id="testimonialsTrack"></div>
         </div>
-        <!-- Форма відгуку -->
         <div class="testimonial-form">
           <h3>📝 Залишити відгук</h3>
           <form id="reviewForm" onsubmit="submitReview(event)">
@@ -360,6 +363,7 @@
       </div>
     </section>
   </main>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -400,7 +404,7 @@
     <button class="chatbot-toggle" id="chatbot-toggle">🤖</button>
   </div>
 
-  <!-- Модальні вікна (заглушки для функціоналу) -->
+  <!-- Модальні вікна -->
   <div id="modal-google-ads" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Google Ads</h3></div></div>
   <div id="modal-meta-ads" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Meta Ads</h3></div></div>
   <div id="modal-website-dev" class="modal"><div class="modal-content"><span class="close-button">&times;</span><h3>Сайт</h3></div></div>
@@ -416,7 +420,7 @@
     </div>
   </div>
 
-  <!-- MAIN SCRIPTS -->
+  <!-- Scripts -->
   <script>
     // Дані для кейсів
     const casesData = [
@@ -433,7 +437,6 @@
     let currentCaseIndex = 0;
     let currentTestimonialIndex = 0;
 
-    // Функції слайдерів
     function renderCases() {
       const grid = document.getElementById('casesGrid');
       if(!grid) return;
@@ -459,11 +462,9 @@
         });
     }
     function scrollTestimonials(dir) {
-        // Проста логіка скролу для прикладу
         document.getElementById('testimonialsTrack').scrollBy({left: dir * 300, behavior: 'smooth'});
     }
 
-    // Мобільне меню
     function toggleMobileMenu() {
       document.getElementById('mobileMenu').classList.toggle('active');
       document.getElementById('hamburger').classList.toggle('active');
@@ -477,30 +478,28 @@
       if (routes[lang]) window.location.href = 'https://vermarkter.github.io' + routes[lang];
     }
 
-    // Відправка форм
-    function submitAuditForm(e) {
-        e.preventDefault();
-        alert("Дякуємо! Аудит буде надіслано.");
-    }
-    function submitReview(e) {
-        e.preventDefault();
-        alert("Дякуємо за відгук!");
-    }
+    function submitAuditForm(e) { e.preventDefault(); alert("Дякуємо! Аудит буде надіслано."); }
+    function submitReview(e) { e.preventDefault(); alert("Дякуємо за відгук!"); }
 
     document.addEventListener('DOMContentLoaded', function() {
       renderCases();
       renderTestimonials();
-      // Закриття модалок
       document.querySelectorAll('.close-button').forEach(btn => {
         btn.onclick = function() { this.closest('.modal').style.display = "none"; }
       });
       window.onclick = function(event) {
         if (event.target.classList.contains('modal')) event.target.style.display = "none";
       }
+      document.querySelectorAll('[data-modal-target]').forEach(btn => {
+        btn.onclick = function() {
+          const modalId = this.getAttribute('data-modal-target');
+          document.getElementById(modalId).style.display = 'block';
+        }
+      });
     });
   </script>
 
-  <!-- ✅ ПІДКЛЮЧЕННЯ НОВИХ МОДУЛІВ -->
+  <!-- External JS Modules -->
   <script src="js/calculator.js"></script>
   <script src="js/chatbot.js"></script>
   <script src="js/consent.js"></script>
