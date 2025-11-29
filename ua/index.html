@@ -1,446 +1,614 @@
 <!doctype html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Marketing in Europa | Vermarkter</title>
-  <meta name="description" content="Комплексний маркетинг в ЄС: Google Ads, Meta Ads, TikTok, Розробка сайтів. Отримайте клієнтів за 7 днів."/>
-  <meta name="theme-color" content="#0F172A"/>
-  
-  <link rel="icon" href="../favicon.ico" type="image/x-icon">
-  
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vermarkter — Сайт + Google Ads + Meta Ads за 200€</title>
+  <meta name="description" content="Комплексний старт для бізнесу в ЄС: сайт, Google Ads, Meta Ads і CRM інтеграція за 200€. Перші заявки вже за 7 днів." />
+  <meta name="keywords" content="Google Ads, Meta Ads, TikTok Ads, SEO, CRM, Landing Page, маркетинг в ЄС" />
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <link rel="alternate" hreflang="de" href="https://vermarkter.github.io/de/" />
+  <link rel="alternate" hreflang="en" href="https://vermarkter.github.io/en/" />
+  <link rel="alternate" hreflang="uk" href="https://vermarkter.github.io/ua/" />
+  <link rel="alternate" hreflang="ru" href="https://vermarkter.github.io/ru/" />
+  <link rel="alternate" hreflang="pl" href="https://vermarkter.github.io/pl/" />
+  <link rel="alternate" hreflang="x-default" href="https://vermarkter.github.io/ua/" />
+  <meta property="og:title" content="Vermarkter — Сайт + Google Ads + Meta Ads за 200€" />
+  <meta property="og:description" content="Комплексний старт у ЄС: сайт, Google Ads, Meta Ads та CRM інтеграція за 200€. Перші заявки за 7 днів." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vermarkter.github.io/ua/" />
+  <meta property="og:image" content="https://vermarkter.github.io/og-image.jpg" />
+  <meta property="og:site_name" content="Vermarkter" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vermarkter — Сайт + Google Ads + Meta Ads" />
+  <meta name="twitter:description" content="Сайт, Google Ads, Meta Ads, CRM інтеграція. Перші заявки за 7 днів." />
+  <meta name="twitter:image" content="https://vermarkter.github.io/og-image.jpg" />
+  <meta name="twitter:site" content="@marketing_de" />
+  <link rel="stylesheet" href="../styles.css" />
   <style>
-    /* --- ОСНОВНІ ЗМІННІ (PREMIUM DARK) --- */
-    :root {
-      --bg: #0F172A;
-      --bg-card: #1E293B;
-      --text: #F8FAFC;
-      --text-muted: #94A3B8;
-      --primary: #3B82F6;
-      --primary-hover: #2563EB;
-      --accent: #F59E0B;
-      --success: #10B981;
-      --border: 1px solid rgba(255,255,255,0.1);
-      --radius: 16px;
-      --gradient: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-      --shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
-    }
-
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-      /* Щоб хедер не перекривав контент */
-      padding-top: 70px; 
-    }
-
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    ul { list-style: none; }
-    
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-    /* --- HEADER (КОМПАКТНИЙ) --- */
-    header {
-        background: rgba(15, 23, 42, 0.95);
-        border-bottom: var(--border);
-        height: 70px;
-        position: fixed; 
-        top: 0; left: 0; right: 0;
-        z-index: 1000;
-        backdrop-filter: blur(10px);
-        display: flex; align-items: center;
-    }
-
-    .nav { width: 100%; display: flex; justify-content: space-between; align-items: center; }
-    
-    .brand { font-size: 20px; font-weight: 900; display: flex; align-items: center; gap: 8px; color: white; }
-    .brand span { color: var(--primary); }
-
-    .nav-desktop { display: flex; gap: 25px; align-items: center; }
-    .nav-desktop a { font-size: 15px; font-weight: 600; color: var(--text-muted); }
-    .nav-desktop a:hover { color: white; }
-
-    .lang-switch {
-        background: var(--bg-card); color: white; border: var(--border);
-        padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 700;
-        cursor: pointer;
-    }
-
-    .mobile-toggle { display: none; background: none; border: none; color: white; font-size: 24px; }
-
-    /* --- HERO --- */
-    .hero {
-        padding: 80px 0;
-        text-align: center;
-        background: radial-gradient(circle at 50% 20%, rgba(59, 130, 246, 0.15), transparent 60%);
-    }
-    .badge {
-        display: inline-block;
-        background: rgba(59, 130, 246, 0.15);
-        border: 1px solid rgba(59, 130, 246, 0.3);
-        color: var(--primary);
-        padding: 6px 12px;
-        border-radius: 50px;
-        font-size: 13px; font-weight: 700;
-        margin-bottom: 20px;
-    }
-    h1 {
-        font-size: clamp(32px, 5vw, 56px);
-        line-height: 1.1; font-weight: 900; margin-bottom: 20px;
-        background: linear-gradient(to right, #fff, #94a3b8);
-        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .subtitle {
-        font-size: 18px; color: var(--text-muted);
-        max-width: 600px; margin: 0 auto 30px;
-    }
-    .cta-btn {
-        display: inline-block;
-        background: var(--gradient);
-        color: white; padding: 14px 28px;
-        border-radius: 12px; font-weight: 700;
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-    }
-    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); }
-
-    /* --- STATS --- */
-    .hero-stats {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px; margin-top: 60px;
-    }
-    .stat-card {
-        background: var(--bg-card); border: var(--border); padding: 25px; border-radius: var(--radius);
-    }
-    .stat-number { display: block; font-size: 36px; color: var(--primary); font-weight: 800; }
-    .stat-label { font-size: 13px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
-
-    /* --- SERVICES (ВИПРАВЛЕНО) --- */
-    .services-section { padding: 80px 0; }
-    .section-title { text-align: center; font-size: 32px; font-weight: 800; margin-bottom: 40px; }
-    
-    .services-grid {
-        display: grid; gap: 24px;
-        grid-template-columns: repeat(3, 1fr); /* 3 в ряд */
-    }
-    .service-card {
-        background: var(--bg-card); border: var(--border); padding: 30px; border-radius: var(--radius);
-        transition: 0.3s; display: flex; flex-direction: column; height: 100%;
-    }
-    .service-card:hover { border-color: var(--primary); transform: translateY(-5px); box-shadow: var(--shadow); }
-    .icon { 
-        font-size: 32px; margin-bottom: 15px; 
-        background: rgba(59, 130, 246, 0.1); width: 60px; height: 60px; 
-        display: flex; align-items: center; justify-content: center; border-radius: 12px; 
-    }
-    .service-card h3 { font-size: 20px; margin-bottom: 10px; color: white; }
-    .service-card p { font-size: 15px; color: var(--text-muted); line-height: 1.5; flex: 1; }
-
-    /* --- CALCULATOR (КОМПАКТНИЙ) --- */
-    .calculator-section {
-        background: #0B1120; padding: 80px 0;
-        border-top: var(--border); border-bottom: var(--border);
-    }
-    .calc-layout {
-        display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px;
-        max-width: 1000px; margin: 0 auto; /* Обмежена ширина */
-        background: var(--bg-card); padding: 40px; border-radius: 24px; border: var(--border);
-    }
-    .calc-inputs { border-right: 1px solid rgba(255,255,255,0.05); padding-right: 30px; }
-    .calc-results {
-        display: grid; grid-template-columns: 1fr; gap: 15px; align-content: center;
-    }
-    
-    .form-group { margin-bottom: 20px; }
-    .form-group label { display: block; margin-bottom: 8px; font-size: 14px; color: var(--text-muted); font-weight: 600; }
-    .form-group input, .form-group select {
-        width: 100%; padding: 14px; background: rgba(0,0,0,0.3); 
-        border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; 
-        color: white; font-size: 16px;
-    }
-    input[type="range"] { padding: 0; margin-top: 10px; height: 6px; accent-color: var(--primary); }
-
-    .res-card {
-        background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.2);
-        padding: 20px; border-radius: 16px; text-align: center;
-    }
-    .res-val { display: block; font-size: 32px; font-weight: 800; color: white; margin-bottom: 5px; }
-    .res-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
-
-    /* --- TESTIMONIALS (СІТКА ВІДГУКІВ) --- */
-    .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .case-card { background: var(--bg-card); border: var(--border); padding: 25px; border-radius: var(--radius); }
-    .case-author { font-weight: 700; color: white; margin-bottom: 5px; display: block; }
-    .case-text { font-style: italic; color: var(--text-muted); font-size: 14px; margin-bottom: 15px; }
-    .star { color: var(--accent); }
-
-    /* --- FOOTER --- */
-    footer {
-        padding: 50px 0; background: #020617; border-top: var(--border);
-        margin-top: 80px; text-align: center; color: var(--text-muted); font-size: 14px;
-    }
-    footer a { margin: 0 10px; }
-
-    /* --- RESPONSIVE --- */
-    @media (max-width: 900px) {
-        .calc-layout { grid-template-columns: 1fr; padding: 20px; } 
-        .calc-inputs { border-right: none; padding-right: 0; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 20px; margin-bottom: 20px; }
-        .calc-results { grid-template-columns: repeat(3, 1fr); }
-    }
-    @media (max-width: 768px) {
-        body { padding-top: 0; }
-        header { position: relative; } /* Хедер не липне на мобільному */
-        .nav-desktop { display: none; }
-        .mobile-toggle { display: block; }
-        .services-grid, .cases-grid, .hero-stats { grid-template-columns: 1fr; }
-        .calc-results { grid-template-columns: 1fr; }
-        h1 { font-size: 36px; }
-    }
+:root {
+  --brand: #2563eb;
+  --brand-2: #3b82f6;
+  --accent: #f59e0b;
+  --dark: #0f172a;
+  --dark-2: #0b1223;
+  --light: #f8fafc;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border: rgba(255, 255, 255, 0.12);
+  --card: rgba(255, 255, 255, 0.04);
+  --shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
+  --glow: 0 0 30px rgba(37, 99, 235, 0.35);
+  --radius: 16px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #0b1223 60%, #0f172a 100%);
+  color: var(--text);
+  line-height: 1.6;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.tag { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(37,99,235,0.12); color: #bfdbfe; font-weight: 700; }
+.badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid var(--border); color: #fff; font-weight: 700; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 22px; border-radius: 12px; font-weight: 800; border: none; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; box-shadow: var(--shadow); }
+.btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; }
+.btn-secondary { background: transparent; color: #fff; border: 1px solid var(--border); }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(0,0,0,0.25); }
+h1, h2, h3, h4 { color: #fff; }
+p { color: var(--muted); }
+.animate-fade-in { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
+.animate-fade-in.visible { opacity: 1; transform: translateY(0); }
+.animate-slide-up { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+.animate-slide-up.visible { opacity: 1; transform: translateY(0); }
+header { position: sticky; top: 0; z-index: 80; background: rgba(15,23,42,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 18px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand img { width: 44px; height: 44px; border-radius: 12px; box-shadow: var(--glow); }
+.brand-title { font-weight: 900; font-size: 18px; }
+.brand-subtitle { font-size: 12px; color: var(--muted); margin-top: -4px; }
+.nav-links { display: flex; gap: 14px; align-items: center; }
+.nav-links a { padding: 9px 14px; border-radius: 12px; color: var(--muted); transition: all .25s ease; }
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+.lang-switcher { display: inline-flex; gap: 6px; border: 1px solid var(--border); border-radius: 12px; padding: 6px; background: rgba(255,255,255,0.05); }
+.lang-switcher a { padding: 8px 12px; border-radius: 10px; color: #fff; font-weight: 800; letter-spacing: .5px; border: 1px solid rgba(255,255,255,0.3); }
+.lang-switcher a.active { background: var(--brand); border-color: var(--brand); box-shadow: var(--glow); }
+.mobile-toggle { display: none; background: none; border: 1px solid var(--border); color: #fff; padding: 8px 10px; border-radius: 10px; }
+.mobile-lang-selector { display: none; }
+.mobile-menu { display: none; flex-direction: column; gap: 10px; padding: 16px; background: rgba(15,23,42,0.95); border-bottom: 1px solid var(--border); }
+.mobile-menu a { padding: 10px 12px; border-radius: 10px; color: var(--muted); }
+.mobile-menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+@media (max-width: 1023px) { .nav-links { display: none; } .mobile-toggle { display: inline-block; } .mobile-menu.show { display: flex; } }
+@media (min-width: 769px) { .mobile-toggle, .mobile-lang-selector { display: none !important; } }
+.hero { padding: 140px 0 100px; position: relative; overflow: hidden; }
+.hero::after { content:""; position:absolute; inset:0; background: radial-gradient(circle at 20% 20%, rgba(59,130,246,0.18), transparent 35%), radial-gradient(circle at 80% 10%, rgba(245,158,11,0.2), transparent 30%); z-index:-1; }
+.hero-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: 30px; align-items: center; }
+.hero h1 { font-size: clamp(34px, 4vw, 48px); line-height: 1.15; margin: 18px 0 14px; }
+.hero p { color: #cbd5e1; font-size: 18px; margin-bottom: 22px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+.hero-meta { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 14px; margin-top: 10px; }
+.meta-box { padding: 14px; border-radius: 14px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); box-shadow: var(--shadow); }
+.meta-box strong { display: block; font-size: 22px; margin-bottom: 6px; }
+.hero-card { background: #0b1223; border: 1px solid var(--border); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); }
+.hero-card h3 { margin-bottom: 8px; }
+.hero-card ul { list-style: none; color: #cbd5e1; display: grid; gap: 8px; margin: 14px 0; }
+.hero-card .price { font-size: 34px; font-weight: 800; }
+section { padding: 80px 0; }
+.section-header { text-align: center; margin-bottom: 40px; }
+.section-header h2 { font-size: 32px; margin-bottom: 8px; }
+.section-header p { color: #cbd5e1; max-width: 720px; margin: 0 auto; }
+.services { background: #0b1223; }
+.services-grid { display: grid; gap: 18px; grid-template-columns: repeat(1,minmax(0,1fr)); }
+.service-card { padding: 20px; border-radius: 16px; border: 1px solid var(--border); background: rgba(255,255,255,0.04); box-shadow: var(--shadow); transition: transform .2s ease, box-shadow .2s ease; height: 100%; display: flex; flex-direction: column; gap: 10px; }
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+.service-card .icon { font-size: 24px; }
+.service-card h3 { font-size: 20px; }
+.service-card p { color: #cbd5e1; flex: 1; }
+@media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (min-width: 1024px) { .services-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+.cards-grid { display: grid; gap: 18px; grid-template-columns: repeat(1,minmax(0,1fr)); }
+@media (min-width: 768px) { .cards-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media (min-width: 1024px) { .cards-grid { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+.case-card, .testimonial-card { padding: 20px; border-radius: 16px; border: 1px solid var(--border); background: #0f172a; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; }
+.case-card h3 { font-size: 20px; }
+.case-meta { color: var(--muted); font-weight: 600; }
+.testimonial-card .author { font-weight: 800; color: #fff; }
+.testimonial-card .role { color: var(--muted); }
+.more-btn { margin-top: 18px; display: inline-block; padding: 12px 18px; border-radius: 12px; border: 1px solid var(--border); color: #fff; }
+.calculator-section { padding: 80px 0; background: #0f172a; }
+.calculator-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); align-items: start; }
+.calculator-form { background: #0b1223; border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); }
+.calculator-form .form-group { margin-bottom: 14px; }
+.calculator-form label { display: block; margin-bottom: 6px; font-weight: 700; color: #fff; }
+.calculator-form select, .calculator-form input[type="number"], .calculator-form input[type="range"] { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--border); background: #0f172a; color: #fff; }
+.calculator-form input[type="range"] { accent-color: var(--brand); }
+.budget-inputs { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.budget-inputs input[type="number"] { max-width: 140px; }
+.calculator-form button { width: 100%; padding: 14px; border-radius: 12px; border: none; background: linear-gradient(135deg,#2563eb,#3b82f6); color: #fff; font-weight: 800; cursor: pointer; box-shadow: var(--glow); }
+.calculator-results { display: grid; gap: 12px; }
+.calculator-results .result-card { background: rgba(255,255,255,0.04); border: 1px solid var(--border); padding: 16px; border-radius: 14px; }
+.result-value { font-size: 28px; font-weight: 800; }
+.result-summary { background: rgba(37,99,235,0.12); border: 1px dashed rgba(59,130,246,0.4); padding: 16px; border-radius: 14px; color: #bfdbfe; }
+.privacy { padding: 70px 0; background: #0b1223; border-top: 1px solid var(--border); }
+.privacy h2 { margin-bottom: 12px; }
+.privacy p { color: #cbd5e1; max-width: 900px; }
+.contact { padding: 80px 0; }
+.contact-grid { display: grid; gap: 16px; max-width: 760px; margin: 0 auto; }
+.audit-form { display: grid; gap: 12px; }
+.audit-form input, .audit-form textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: #0b1223; color: #fff; }
+.audit-form button { padding: 14px; border-radius: 12px; border: none; background: linear-gradient(135deg,#2563eb,#3b82f6); color: #fff; font-weight: 800; cursor: pointer; }
+.audit-form-message { margin-top: 6px; color: #22c55e; font-weight: 700; }
+.footer { background: #0f172a; padding: 50px 0 30px; border-top: 1px solid var(--border); }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 18px; }
+.footer h4 { margin-bottom: 10px; }
+.footer a { color: #cbd5e1; display: block; margin-bottom: 8px; }
+.footer a:hover { color: #fff; }
+.footer-bottom { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; color: var(--muted); }
+.social-links { display: flex; gap: 10px; }
+.social-links a { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border); display: inline-flex; align-items: center; justify-content: center; color: #fff; }
+.chatbot-section { position: fixed; bottom: 20px; right: 20px; z-index: 95; }
+.chatbot-toggle { background: linear-gradient(135deg,#2563eb,#3b82f6); color: #fff; border: none; border-radius: 14px; padding: 12px 14px; display: inline-flex; align-items: center; gap: 8px; box-shadow: var(--shadow); cursor: pointer; }
+.chatbot-widget { display: none; flex-direction: column; position: absolute; bottom: 70px; right: 0; width: min(360px, 86vw); background: #0b1223; border: 1px solid var(--border); border-radius: 18px; box-shadow: 0 25px 70px rgba(0,0,0,0.5); }
+.chatbot-widget.show { display: flex; }
+.chatbot-header { display: flex; align-items: center; justify-content: space-between; padding: 14px; border-bottom: 1px solid var(--border); color: #fff; }
+.chatbot-title { font-weight: 800; }
+.chatbot-subtitle { color: #cbd5e1; font-size: 13px; }
+.chatbot-body { max-height: 420px; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+.chatbot-message { padding: 10px 12px; border-radius: 12px; max-width: 84%; color: #fff; }
+.chatbot-message.bot { background: rgba(255,255,255,0.05); border: 1px solid var(--border); align-self: flex-start; }
+.chatbot-message.user { background: linear-gradient(135deg,#2563eb,#3b82f6); align-self: flex-end; }
+.chatbot-footer { display: flex; gap: 8px; padding: 12px 14px; border-top: 1px solid var(--border); }
+.chatbot-footer input { flex: 1; background: #0f172a; border: 1px solid var(--border); color: #fff; border-radius: 10px; padding: 10px 12px; }
+.chatbot-footer button { background: var(--brand); color: #fff; border: none; border-radius: 10px; padding: 10px 12px; cursor: pointer; }
+.typing-indicator { display: inline-flex; gap: 4px; padding: 8px 12px; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid var(--border); }
+.typing-indicator span { width: 6px; height: 6px; border-radius: 50%; background: #cbd5e1; animation: blink 1.3s infinite; }
+.typing-indicator span:nth-child(2) { animation-delay: .2s; }
+.typing-indicator span:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%, 80%, 100% { opacity: .2; } 40% { opacity: 1; } }
+.cookie-banner { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 600px; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 16px; padding: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); z-index: 9999; display: none; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.cookie-banner.show { display: flex; }
+.cookie-text { flex: 1; min-width: 220px; font-size: 14px; line-height: 1.5; color: #f8fafc; }
+.cookie-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.cookie-btn { border: none; border-radius: 10px; padding: 10px 16px; font-weight: 700; cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.cookie-btn.primary { background: linear-gradient(135deg, #2563eb, #3b82f6); color: #fff; box-shadow: 0 10px 30px -12px rgba(37, 99, 235, 0.8); }
+.cookie-btn.secondary { background: transparent; color: #93c5fd; text-decoration: underline; }
+.cookie-btn:hover { transform: translateY(-1px); }
+.cookie-settings-info { width: 100%; font-size: 13px; color: #cbd5e1; margin-top: 4px; display: none; }
+.cookie-settings-info.show { display: block; }
+@media (max-width: 640px) { .cookie-banner { bottom: 12px; padding: 16px; } .cookie-actions { width: 100%; } }
+@media (max-width: 767px) { .hero h1 { font-size: 32px; } .hero { padding-top: 110px; } .cta-row { width: 100%; } }
+@media (max-width: 480px) { .container { padding: 0 16px; } .btn { width: 100%; justify-content: center; } .hero-grid { grid-template-columns: 1fr; } }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Vermarkter",
+    "alternateName": "Маркетинг в ЄС",
+    "url": "https://vermarkter.github.io/ua/",
+    "logo": "https://vermarkter.github.io/logo.png",
+    "sameAs": [
+      "https://www.linkedin.com/company/vermarkter",
+      "https://t.me/vermarkter",
+      "https://www.instagram.com/vermarkter"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+49-151-23456789",
+      "contactType": "sales",
+      "email": "maps.werbung@gmail.com",
+      "availableLanguage": ["Ukrainian", "German", "English"],
+      "areaServed": "EU"
+    }
+  }
+  </script>
 </head>
 <body>
+  <div id="cookie-banner" class="cookie-banner" aria-hidden="true" style="display:none;">
+    <div class="cookie-text">
+      Ми використовуємо файли cookie для покращення роботи сайту та аналітики.
+      <span id="cookie-settings-info" class="cookie-settings-info">Тут можна було б вимкнути маркетинг-куки</span>
+    </div>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="cookie-btn primary">Прийняти всі</button>
+      <button id="cookie-settings" class="cookie-btn secondary">Налаштування</button>
+    </div>
+  </div>
 
   <header>
-    <div class="container">
-      <nav class="nav">
-        <a href="#" class="brand"><i class="fas fa-bolt"></i> Vermarkter</a>
-        <div class="nav-desktop">
-          <a href="#services">Послуги</a>
-          <a href="#cases">Кейси</a>
-          <a href="#calculator-section">Калькулятор</a>
-          <a href="#testimonials">Відгуки</a>
-          <a href="#contact">Контакти</a>
-          <select class="lang-switch" onchange="window.location.href='../'+this.value+'/'">
-            <option value="ua" selected>UA</option>
-            <option value="de">DE</option>
-          </select>
+    <div class="container nav">
+      <div class="brand">
+        <a href="../index.html" aria-label="Vermarkter">
+          <img src="../logo.png" alt="Vermarkter" />
+        </a>
+        <div>
+          <div class="brand-title">Vermarkter</div>
+          <div class="brand-subtitle">Маркетинг у ЄС</div>
         </div>
-        <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+      </div>
+      <nav class="nav-links">
+        <a href="#services">Послуги</a>
+        <a href="../services/google-ads/">Google Ads</a>
+        <a href="../services/meta-ads/">Meta Ads</a>
+        <a href="#cases">Кейси</a>
+        <a href="#calculator">Калькулятор</a>
+        <a href="#contact">Контакти</a>
       </nav>
+      <div class="lang-switcher">
+        <a class="active" href="/ua/">UA</a>
+        <a href="/de/">DE</a>
+      </div>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Меню">☰</button>
     </div>
-    <!-- Мобільне меню -->
-    <div id="mobileMenu" style="display:none; background:#1E293B; padding:20px; text-align:center;">
-        <a href="#services" style="display:block; padding:10px; color:white;">Послуги</a>
-        <a href="#cases" style="display:block; padding:10px; color:white;">Кейси</a>
-        <a href="#contact" style="display:block; padding:10px; color:white;">Контакти</a>
+    <div class="mobile-menu" id="mobile-menu">
+      <a href="#services">Послуги</a>
+      <a href="../services/google-ads/">Google Ads</a>
+      <a href="../services/meta-ads/">Meta Ads</a>
+      <a href="#cases">Кейси</a>
+      <a href="#calculator">Калькулятор</a>
+      <a href="#contact">Контакти</a>
+      <div class="lang-switcher mobile-lang-selector">
+        <a class="active" href="/ua/">UA</a>
+        <a href="/de/">DE</a>
+      </div>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <div class="badge">🚀 Сайт + Google Ads + Meta Ads = 200€</div>
-        <h1>Запустіть бізнес в ЄС<br>за 7 днів</h1>
-        <p class="subtitle">Комплексний маркетинг для українців. Створюємо сайти, налаштовуємо рекламу, підключаємо CRM. Перші клієнти вже за тиждень.</p>
-        <a href="#contact" class="cta-btn">Отримати пропозицію</a>
-
-        <!-- Статистика -->
-        <div class="hero-stats" id="statsSection">
-          <div class="stat-card">
-            <span class="stat-number" data-target="87">0</span>
-            <span class="stat-label">тис. € Дохід клієнтів</span>
+    <section class="hero animate-fade-in">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Створено для українців у ЄС</div>
+          <h1>Сайт + Google Ads + Meta Ads = 200€</h1>
+          <p>Комплексний старт для вашого бізнесу в ЄС. Отримайте перші заявки вже за 7 днів. Налаштування CRM у подарунок.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Отримати пропозицію</a>
+            <a class="btn btn-secondary" href="#chatbot">Запустити AI-бота</a>
           </div>
-          <div class="stat-card">
-            <span class="stat-number" data-target="470">0</span>
-            <span class="stat-label">% Середній ROAS</span>
+          <div class="hero-meta">
+            <div class="meta-box">
+              <strong>24:00:00</strong>
+              <small id="countdown-label">Акційний старт</small>
+            </div>
+            <div class="meta-box">
+              <strong>10 місць</strong>
+              <small>Доступно для першої хвилі</small>
+            </div>
+            <div class="meta-box">
+              <strong>CRM</strong>
+              <small>Інтеграція в Telegram/Таблицю</small>
+            </div>
           </div>
-          <div class="stat-card">
-            <span class="stat-number" data-target="24">0</span>
-            <span class="stat-label">Години на запуск</span>
-          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Стартовий план</h3>
+          <div class="price">€200</div>
+          <ul>
+            <li>Лендинг, що продає</li>
+            <li>Google Ads + Meta Ads налаштування</li>
+            <li>3 креативи та 2 тестові зв'язки</li>
+            <li>CRM інтеграція в подарунок</li>
+          </ul>
+          <a class="btn btn-primary" href="#contact">Замовити запуск</a>
         </div>
       </div>
     </section>
 
-    <!-- ПОСЛУГИ -->
-    <section id="services" class="services-section">
+    <section id="services" class="services animate-slide-up">
       <div class="container">
-        <h2 class="section-title">Що ми робимо</h2>
+        <div class="section-header">
+          <h2>6 послуг для швидкого результату</h2>
+          <p>Симетрична сітка без «висячих» карток — усе, що потрібно для старту та масштабування у ЄС.</p>
+        </div>
         <div class="services-grid">
           <div class="service-card">
             <div class="icon">💻</div>
             <h3>Розробка Сайтів</h3>
-            <p>Landing Page, що продає. Швидкий, адаптивний, з аналітикою та конверсійними формами.</p>
+            <p>Лендинг, що продає. UX/UI, швидкість, конверсії. Готово за 5 днів.</p>
           </div>
           <div class="service-card">
             <div class="icon">🔍</div>
             <h3>Google Ads</h3>
-            <p>Гарячі клієнти з пошуку. Налаштування PMax, Search та ремаркетингу.</p>
+            <p>Гарячі клієнти з пошуку. Пошукові, PMax і ремаркетинг-кампанії.</p>
           </div>
           <div class="service-card">
             <div class="icon">📱</div>
             <h3>Meta Ads</h3>
-            <p>Таргет в Instagram та Facebook. Лід-форми, продажі товарів, прогрів бренду.</p>
+            <p>Facebook та Instagram для лідів і продажів. Креативи, тестування, оптимізація.</p>
           </div>
           <div class="service-card">
             <div class="icon">🎵</div>
             <h3>TikTok Ads</h3>
-            <p>Вірусне охоплення. Створення UGC-креативів, що залітають в рекомендації.</p>
+            <p>Вірусне відео та швидке охоплення. Під молоді аудиторії ЄС.</p>
           </div>
           <div class="service-card">
             <div class="icon">📈</div>
             <h3>SEO Оптимізація</h3>
-            <p>Виводимо ваш сайт в ТОП Google органічно. Технічний аудит та контент.</p>
+            <p>Органічний трафік: технічний аудит, контент, посилання. Ріст за 60 днів.</p>
           </div>
           <div class="service-card">
             <div class="icon">🤝</div>
             <h3>CRM Інтеграція</h3>
-            <p>Заявки падають прямо в Telegram або таблицю. Жодних втрачених лідів.</p>
+            <p>Всі заявки в Telegram/Таблицю. Автоматизація статусів та нагадувань.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- КАЛЬКУЛЯТОР -->
-    <section id="calculator-section" class="calculator-section">
+    <section id="cases" class="animate-slide-up">
       <div class="container">
-        <h2 class="section-title">Калькулятор Бюджету</h2>
-        <div class="calc-layout">
-            <!-- Зліва: Ввід -->
-            <div class="calc-inputs">
-                <div class="form-group">
-                    <label>Ваш місячний бюджет (€)</label>
-                    <input type="number" id="budget" value="500" min="200" step="50">
-                    <input type="range" id="budget-range" min="200" max="5000" step="50" value="500">
-                </div>
-                <div class="form-group">
-                    <label>Платформа</label>
-                    <select id="platform">
-                        <option value="1">Google Ads (Пошук)</option>
-                        <option value="1.5">Meta Ads (Social)</option>
-                        <option value="2">TikTok (Вірусне)</option>
-                    </select>
-                </div>
-                <button type="button" class="cta-btn" style="width:100%; border:none; font-size:16px;" onclick="calculate()">Розрахувати</button>
+        <div class="section-header">
+          <h2>Топ кейси</h2>
+          <p>Реальні результати українських бізнесів у Європі.</p>
+        </div>
+        <div class="cards-grid">
+          <div class="case-card">
+            <h3>E-commerce DE</h3>
+            <div class="case-meta">Google Ads + Meta Ads</div>
+            <p>+180% конверсій за 60 днів, CPC -22%, ROAS 4.2.</p>
+          </div>
+          <div class="case-card">
+            <h3>Local Services PL</h3>
+            <div class="case-meta">Meta Ads</div>
+            <p>120 заявок/міс, CPL €6.5. Ремаркетинг та lookalike.</p>
+          </div>
+          <div class="case-card">
+            <h3>B2B SaaS EU</h3>
+            <div class="case-meta">Google Ads + CRM</div>
+            <p>Cost per lead -30%, аналітика та PDF-звіти щотижня.</p>
+          </div>
+        </div>
+        <div style="text-align:center; margin-top:22px;">
+          <a class="more-btn" href="#contact">Дивитися більше</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="calculator" class="calculator-section animate-fade-in">
+      <div class="container">
+        <div class="section-header">
+          <h2>Калькулятор реклами</h2>
+          <p>Оцініть охоплення, кліки та вартість заявки перед запуском.</p>
+        </div>
+        <div class="calculator-grid">
+          <form id="ads-calculator" class="calculator-form">
+            <div class="form-group">
+              <label for="platform">Платформа</label>
+              <select id="platform" name="platform">
+                <option value="google">Google Ads</option>
+                <option value="meta">Meta Ads</option>
+                <option value="tiktok">TikTok Ads</option>
+              </select>
             </div>
-            
-            <!-- Справа: Результат -->
-            <div class="calc-results">
-                <div class="res-card">
-                    <span class="res-val" id="res-impr">12 000</span>
-                    <span class="res-label">Показів</span>
-                </div>
-                <div class="res-card">
-                    <span class="res-val" id="res-clicks">400</span>
-                    <span class="res-label">Кліків</span>
-                </div>
-                <div class="res-card">
-                    <span class="res-val" id="res-leads">20</span>
-                    <span class="res-label">Лідів (прогноз)</span>
-                </div>
+            <div class="form-group">
+              <label for="geo">Регіон</label>
+              <select id="geo" name="geo">
+                <option value="germany">Німеччина</option>
+                <option value="poland">Польща</option>
+                <option value="eu">Вся Європа</option>
+              </select>
             </div>
+            <div class="form-group">
+              <label for="goal">Мета</label>
+              <select id="goal" name="goal">
+                <option value="leads">Ліди</option>
+                <option value="sales">Продажі</option>
+                <option value="traffic">Трафік</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="budget">Бюджет (€)</label>
+              <div class="budget-inputs">
+                <input type="number" id="budget" name="budget" min="100" max="5000" step="50" value="500" />
+                <input type="range" id="budget-range" min="100" max="5000" step="50" value="500" />
+              </div>
+            </div>
+            <button type="submit">Розрахувати</button>
+            <p class="calculator-note">* Показники орієнтовні. Ми підготуємо точний прогноз під вашу нішу.</p>
+          </form>
+          <div class="calculator-results">
+            <div class="result-card">
+              <span class="result-label">Охоплення</span>
+              <div id="impressions" class="result-value">—</div>
+            </div>
+            <div class="result-card">
+              <span class="result-label">Кліки</span>
+              <div id="clicks" class="result-value">—</div>
+            </div>
+            <div class="result-card">
+              <span class="result-label">CTR</span>
+              <div id="ctr" class="result-value">—</div>
+            </div>
+            <div class="result-card">
+              <span class="result-label">CPC</span>
+              <div id="cpc" class="result-value">—</div>
+            </div>
+            <div class="result-card">
+              <span class="result-label">CPA</span>
+              <div id="cpa" class="result-value">—</div>
+            </div>
+            <div class="result-summary">
+              <p id="summary-text">Введіть бюджет, щоб побачити прогноз.</p>
+              <a href="#contact" class="btn btn-secondary" style="border:1px solid rgba(191,219,254,0.5);">Отримати консультацію</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ВІДГУКИ (Реальні, плиткою) -->
-    <section id="testimonials" class="services-section">
+    <section id="testimonials" class="animate-slide-up">
       <div class="container">
-        <h2 class="section-title">Клієнти говорять</h2>
-        <div class="cases-grid">
-          <div class="case-card">
-            <span class="case-author">Оксана Т. (Home Textile)</span>
-            <div class="case-text">"Збільшили продажі на 247% за 3 місяці. Дуже задоволена роботою команди, особливо звітами."</div>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
+        <div class="section-header">
+          <h2>Відгуки</h2>
+          <p>Три найкращі історії клієнтів, які вже масштабуються в ЄС.</p>
+        </div>
+        <div class="cards-grid">
+          <div class="testimonial-card">
+            <div class="author">Олена, E-commerce</div>
+            <div class="role">Берлін</div>
+            <p>«Запустили Google Ads + Meta Ads, заявки пішли на 5-й день. CRM інтеграція зекономила час менеджерів.»</p>
           </div>
-          <div class="case-card">
-            <span class="case-author">Андрій М. (TechSolutions)</span>
-            <div class="case-text">"Професійний підхід до B2B лідогенерації. Отримали перших клієнтів з Німеччини вже на другий тиждень."</div>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="testimonial-card">
+            <div class="author">Ігор, SaaS</div>
+            <div class="role">Прага</div>
+            <p>«Прогноз із калькулятора збігся з фактом. CPL знижено на 28%, репорти щотижня.»</p>
           </div>
-          <div class="case-card">
-            <span class="case-author">Ірина Б. (Стоматологія)</span>
-            <div class="case-text">"Запустили рекламу на імплантацію. Повний запис на місяць вперед. Дякую за налаштування CRM!"</div>
-            <div class="stars">⭐⭐⭐⭐⭐</div>
+          <div class="testimonial-card">
+            <div class="author">Марія, Beauty</div>
+            <div class="role">Варшава</div>
+            <p>«TikTok Ads дали вірусне охоплення, Meta — стабільні продажі. Команда реагує за години.»</p>
           </div>
+        </div>
+        <div style="text-align:center; margin-top:22px;">
+          <a class="more-btn" href="#contact">Дивитися більше</a>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="hero">
+    <section id="contact" class="contact animate-fade-in">
       <div class="container">
-        <h2 class="section-title">Контакти</h2>
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <a href="https://t.me/Asystentmijbot" class="cta-btn"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="mailto:maps.werbung@gmail.com" class="btn-secondary" style="padding:14px 28px; border-radius:12px; display:inline-block; font-weight:700; border:1px solid white;">Email</a>
+        <div class="section-header">
+          <h2>📞 Зв'яжіться з нами</h2>
+          <p>Готові запустити ваш проект? Відповідаємо протягом 24 годин.</p>
         </div>
+        <div class="contact-grid">
+          <form id="contactForm" class="audit-form" onsubmit="submitContactForm(event)">
+            <input type="text" name="name" placeholder="Ваше ім'я" required />
+            <input type="email" name="email" placeholder="Ваш email" required />
+            <input type="text" name="telegram" placeholder="Telegram (необов'язково)" />
+            <textarea name="message" rows="4" placeholder="Опишіть задачу" required></textarea>
+            <button type="submit">Запросити пропозицію</button>
+            <div id="contactMessage" class="audit-form-message"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="privacy animate-slide-up">
+      <div class="container">
+        <h2>Політика конфіденційності</h2>
+        <p>Ми зберігаємо та обробляємо дані виключно для надання послуг та аналітики. Ви можете запросити видалення або зміну своїх даних у будь-який момент, написавши на maps.werbung@gmail.com. Аналітика вмикається лише після згоди на cookies.</p>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2025 Vermarkter Agency. <a href="#">Impressum</a> <a href="#privacy">Privacy</a></p>
+  <section id="chatbot" class="chatbot-section">
+    <div class="chatbot-widget" id="chatbot-widget">
+      <div class="chatbot-header">
+        <div>
+          <div class="chatbot-title">Vermarkter</div>
+          <div class="chatbot-subtitle">AI-маркетолог</div>
+        </div>
+        <button id="chatbot-close" aria-label="Закрити" style="background:none;border:none;color:#fff;font-size:18px;">×</button>
+      </div>
+      <div class="chatbot-body" id="chatbot-body">
+        <div class="typing-indicator" id="typing-indicator"><span></span><span></span><span></span></div>
+      </div>
+      <div class="chatbot-footer">
+        <input type="text" id="chatbot-input" placeholder="Ваша відповідь..." />
+        <button id="chatbot-send" aria-label="Надіслати">→</button>
+      </div>
+    </div>
+    <button id="chatbot-toggle" class="chatbot-toggle"><span class="toggle-label">AI-бот</span> 💬</button>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <img src="../logo.png" alt="Vermarkter" style="width:140px; margin-bottom:10px;" />
+        <p>Маркетингова агенція для українського бізнесу в ЄС. Запускаємо рекламу, SEO, SMM та веб-розробку.</p>
+        <div class="social-links">
+          <a href="https://t.me/vermarkter" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://www.linkedin.com/company/vermarkter" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/vermarkter" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Навігація</h4>
+        <a href="#services">Послуги</a>
+        <a href="../services/google-ads/">Google Ads</a>
+        <a href="../services/meta-ads/">Meta Ads</a>
+        <a href="#cases">Кейси</a>
+        <a href="#contact">Контакти</a>
+      </div>
+      <div>
+        <h4>Документи</h4>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#privacy">Impressum</a>
+      </div>
+      <div>
+        <h4>Контакти</h4>
+        <p>Email: <a href="mailto:maps.werbung@gmail.com">maps.werbung@gmail.com</a></p>
+        <p>Telegram: <a href="https://t.me/vermarkter" target="_blank" rel="noopener">@vermarkter</a></p>
+        <p>Офіс: Берлін, Варшава, Київ</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2024 Vermarkter. Всі права захищені.</p>
+      <a href="#cookie-banner" class="cookie-link">Налаштування cookies</a>
     </div>
   </footer>
 
-  <!-- SCRIPT -->
+  <script src="https://kit.fontawesome.com/6c5b916708.js" crossorigin="anonymous"></script>
+  <script src="../script.js"></script>
   <script>
-    // 1. Анімація цифр
-    const counters = document.querySelectorAll('.stat-number');
-    const speed = 200; 
-    let animated = false;
-
-    const animateCounters = () => {
-        counters.forEach(counter => {
-            const updateCount = () => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const inc = target / speed;
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + inc);
-                    setTimeout(updateCount, 20);
-                } else {
-                    counter.innerText = target + (target === 470 ? '%' : '+');
-                }
-            };
-            updateCount();
+    const countdownDuration = 24 * 60 * 60 * 1000;
+    const storageKey = 'uaCountdownDeadline';
+    const timerElement = document.querySelector('.meta-box strong');
+    function formatTime(ms) {
+      const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+      const hours = String(Math.floor(totalSeconds / 3600)).padStart(2, '0');
+      const minutes = String(Math.floor((totalSeconds % 3600) / 60)).padStart(2, '0');
+      const seconds = String(totalSeconds % 60).padStart(2, '0');
+      return `${hours}:${minutes}:${seconds}`;
+    }
+    function getDeadline() {
+      const stored = localStorage.getItem(storageKey);
+      if (stored) return parseInt(stored, 10);
+      const deadline = Date.now() + countdownDuration;
+      localStorage.setItem(storageKey, deadline);
+      return deadline;
+    }
+    function updateTimer() {
+      const deadline = getDeadline();
+      const remaining = deadline - Date.now();
+      if (!timerElement) return;
+      if (remaining <= 0) {
+        timerElement.textContent = 'Акція завершена';
+        timerElement.classList.add('expired');
+        document.getElementById('countdown-label').textContent = 'Пропозиція недоступна';
+        return;
+      }
+      timerElement.textContent = formatTime(remaining);
+      requestAnimationFrame(updateTimer);
+    }
+    updateTimer();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
         });
-    }
-
-    window.addEventListener('scroll', () => {
-        const section = document.getElementById('statsSection');
-        if (section && window.scrollY + window.innerHeight > section.offsetTop && !animated) {
-            animateCounters();
-            animated = true;
-        }
-    });
-
-    // 2. Калькулятор
-    function calculate() {
-      const budget = parseFloat(document.getElementById('budget').value);
-      const multiplier = parseFloat(document.getElementById('platform').value);
-      
-      const clicks = Math.round((budget / 0.5) * multiplier);
-      const impr = Math.round(clicks * 35);
-      const leads = Math.round(clicks * 0.04); 
-
-      document.getElementById('res-clicks').innerText = clicks.toLocaleString();
-      document.getElementById('res-impr').innerText = impr.toLocaleString();
-      document.getElementById('res-leads').innerText = leads.toLocaleString();
-    }
-    
-    const bInput = document.getElementById('budget');
-    const bRange = document.getElementById('budget-range');
-    bInput.addEventListener('input', (e) => { bRange.value = e.target.value; calculate(); });
-    bRange.addEventListener('input', (e) => { bInput.value = e.target.value; calculate(); });
-
-    // 3. Мобільне меню
-    const mobileBtn = document.querySelector('.mobile-toggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileBtn.addEventListener('click', () => {
-        mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
+      }, { threshold: 0.2 });
+      document.querySelectorAll('.animate-fade-in, .animate-slide-up').forEach((el) => observer.observe(el));
+      const mobileToggle = document.getElementById('mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileToggle && mobileMenu) {
+        mobileToggle.addEventListener('click', () => mobileMenu.classList.toggle('show'));
+      }
     });
   </script>
-
+  <script src="../js/calculator.js"></script>
+  <script src="../js/chatbot.js"></script>
+  <script src="../js/consent.js"></script>
 </body>
 </html>
