@@ -1,24 +1,24 @@
 (function() {
   const platformData = {
-    google: { label: 'Google Ads', cpc: 0.65, ctr: 0.035 },
-    meta: { label: 'Meta Ads', cpc: 0.45, ctr: 0.022 },
-    tiktok: { label: 'TikTok Ads', cpc: 0.3, ctr: 0.028 },
-    linkedin: { label: 'LinkedIn Ads', cpc: 1.1, ctr: 0.018 }
+    google: { label: 'Google Ads', reach: 260, ctr: 0.034 },
+    meta: { label: 'Meta Ads', reach: 220, ctr: 0.028 },
+    tiktok: { label: 'TikTok Ads', reach: 280, ctr: 0.03 },
+    linkedin: { label: 'LinkedIn Ads', reach: 180, ctr: 0.022 }
   };
 
   const geoMultiplier = {
     germany: 1,
-    poland: 0.72,
-    spain: 0.82,
+    poland: 1.08,
+    spain: 0.92,
     france: 1.05,
-    italy: 0.9,
+    italy: 0.95,
     europe: 1.12
   };
 
   const goalConversion = {
-    traffic: 0.015,
-    leads: 0.035,
-    sales: 0.024
+    traffic: 0.01,
+    leads: 0.05,
+    sales: 0.02
   };
 
   function formatNumber(value) {
@@ -28,25 +28,19 @@
   function calculateForecast({ platform, geo, goal, budget }) {
     const platformMeta = platformData[platform];
     if (!platformMeta) {
-      return { effectiveCpc: 0, ctr: 0, clicks: 0, impressions: 0, leads: 0, cpa: null };
+      return { cpc: 0, ctr: 0, clicks: 0, impressions: 0, leads: 0, cpa: null };
     }
-    const multiplier = geoMultiplier[geo] || 1;
+
+    const reachFactor = platformMeta.reach * (geoMultiplier[geo] || 1);
+    const impressions = Math.max(0, Math.round(budget * reachFactor));
+    const ctr = platformMeta.ctr * (goal === 'traffic' ? 1.1 : goal === 'sales' ? 0.85 : 1);
+    const clicks = Math.max(1, Math.round(impressions * ctr));
+    const cpc = budget > 0 ? Number((budget / clicks).toFixed(2)) : 0;
     const conversionRate = goalConversion[goal] || 0.02;
-    const effectiveCpc = Number((platformMeta.cpc * multiplier).toFixed(2));
-    const ctr = platformMeta.ctr * (goal === 'traffic' ? 1.05 : goal === 'sales' ? 0.9 : 1);
-    const clicks = Math.max(0, Math.floor(budget / effectiveCpc));
-    const impressions = ctr > 0 ? Math.max(0, Math.round(clicks / ctr)) : 0;
     const leads = Math.max(0, Math.round(clicks * conversionRate));
     const cpa = leads > 0 ? Number((budget / leads).toFixed(2)) : null;
 
-    return {
-      effectiveCpc,
-      ctr,
-      clicks,
-      impressions,
-      leads,
-      cpa
-    };
+    return { cpc, ctr, clicks, impressions, leads, cpa };
   }
 
   function updateCalculatorUI({ platform, geo, goal, budget }) {
@@ -65,7 +59,7 @@
     clicksEl.textContent = formatNumber(forecast.clicks);
     impressionsEl.textContent = formatNumber(forecast.impressions);
     leadsEl.textContent = formatNumber(forecast.leads);
-    cpcEl.textContent = `${forecast.effectiveCpc.toFixed(2)} €`;
+    cpcEl.textContent = `${forecast.cpc.toFixed(2)} €`;
     ctrEl.textContent = `${(forecast.ctr * 100).toFixed(1)}%`;
     cpaEl.textContent = forecast.cpa ? `${forecast.cpa.toFixed(2)} €` : '—';
 
@@ -121,5 +115,3 @@
 
   document.addEventListener('DOMContentLoaded', initAdsCalculator);
 })();
-js/chatbot.js
-Новий
