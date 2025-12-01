@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="uk" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM інтеграція | Vermarkter</title>
+  <meta name="description" content="CRM інтеграція: заявки з реклами в Telegram/таблицю, автоматизація, аналітика." />
+  <meta property="og:title" content="CRM інтеграція — Vermarkter" />
+  <meta property="og:description" content="Підключимо форми, чат-боти, рекламу до CRM і Telegram. Автоматизація та дашборди." />
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../css/chatbot.css">
+  <script src="https://kit.fontawesome.com/6c5b916708.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="cookie-banner" class="cookie-banner" aria-live="polite">
+    <div class="cookie-text">Ми використовуємо файли cookie для покращення роботи сайту та аналітики. <span id="cookie-settings-info" class="cookie-settings-info">Тут можна було б вимкнути маркетинг-куки.</span></div>
+    <div class="cookie-actions">
+      <button id="cookie-accept" class="cookie-btn primary">Прийняти всі</button>
+      <button id="cookie-settings" class="cookie-btn secondary" type="button">Налаштування</button>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <a href="../../ua/"><img src="../../logo.png" alt="Vermarkter"></a>
+        <div><div class="brand-title">Vermarkter</div><div class="brand-subtitle">Маркетинг в ЄС</div></div>
+      </div>
+      <nav class="nav-links" aria-label="Основне меню">
+        <a href="../../ua/#services">Послуги</a>
+        <a href="../../ua/#cases">Кейси</a>
+        <a href="../../ua/#calculator">Калькулятор</a>
+        <a href="../../ua/#testimonials">Відгуки</a>
+        <a href="../../ua/#contact">Контакти</a>
+      </nav>
+      <div class="lang-switcher" aria-label="Перемикач мов">
+        <a href="#" class="active" aria-current="page">UA</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true" title="Незабаром">DE</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true" title="Незабаром">EN</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true" title="Незабаром">PL</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true" title="Незабаром">RU</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true" title="Незабаром">TR</a>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Перемикач теми">🌙</button>
+      <button id="mobile-toggle" class="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu">☰</button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu" aria-label="Мобільне меню">
+      <a href="../../ua/#services">Послуги</a>
+      <a href="../../ua/#cases">Кейси</a>
+      <a href="../../ua/#calculator">Калькулятор</a>
+      <a href="../../ua/#testimonials">Відгуки</a>
+      <a href="../../ua/#contact">Контакти</a>
+      <div class="mobile-lang-selector lang-switcher">
+        <a href="#" class="active" aria-current="page">UA</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true">DE</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true">EN</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true">PL</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true">RU</a>
+        <a href="../../ua/" class="disabled" aria-disabled="true">TR</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="animate-slide-up">
+          <div class="badge">CRM</div>
+          <h1>CRM інтеграція та автоматизація</h1>
+          <h2 class="subtitle-ua">Заявки з реклами одразу в Telegram або таблицю.</h2>
+          <p>Налаштовуємо форми, чат-боти, підключаємо GA4/Pixel, будуємо дашборди. Менше ручної роботи — більше лідів.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Підключити CRM</a>
+            <a class="btn btn-ghost" href="../../ua/#calculator">Додати рекламу</a>
+          </div>
+          <div class="hero-meta">
+            <div class="meta-box"><strong>1 день</strong><span>До інтеграції</span></div>
+            <div class="meta-box"><strong>Автоматизація</strong><span>Статуси, нагадування</span></div>
+            <div class="meta-box"><strong>Аналітика</strong><span>Дашборд + PDF</span></div>
+          </div>
+        </div>
+        <div class="hero-card animate-fade-in">
+          <div class="tag">У пакеті</div>
+          <ul>
+            <li>Підключення форм та чат-ботів</li>
+            <li>Вебхуки у Telegram/таблицю</li>
+            <li>Автоматичні статуси та нагадування</li>
+            <li>Аналітика заявок</li>
+          </ul>
+          <a class="btn btn-primary" href="#contact">Запросити підключення</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="steps">
+      <div class="container">
+        <div class="section-header">
+          <h2>Етапи</h2>
+          <p>Швидка інтеграція без розриву кампаній.</p>
+        </div>
+        <div class="services-grid">
+          <div class="service-card"><div class="icon">1</div><h3>Мапа подій</h3><p>Визначаємо точки збору даних і канали.</p></div>
+          <div class="service-card"><div class="icon">2</div><h3>Інтеграція</h3><p>Налаштовуємо вебхуки, CRM, чат-бот.</p></div>
+          <div class="service-card"><div class="icon">3</div><h3>Авто-репорти</h3><p>Статуси, нагадування, дашборди.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <h2>Підключити CRM</h2>
+          <p>Залиште контакти — налаштуємо за день.</p>
+        </div>
+        <div class="calc-wrapper">
+          <form id="contactForm" class="calc-form" onsubmit="submitContactForm(event)">
+            <div class="form-group"><label for="name">Ім'я</label><input id="name" name="name" required></div>
+            <div class="form-group"><label for="email">Email</label><input id="email" name="email" type="email" required></div>
+            <div class="form-group"><label for="telegram">Telegram</label><input id="telegram" name="telegram" placeholder="@username"></div>
+            <div class="form-group"><label for="message">Задача</label><textarea id="message" name="message" rows="4" required></textarea></div>
+            <button class="btn btn-primary" type="submit">Надіслати</button>
+            <div id="contactMessage" aria-live="polite"></div>
+          </form>
+          <div class="calc-results">
+            <div class="result-card"><div class="result-label">Старт</div><div class="result-value">від €150</div></div>
+            <div class="result-card"><div class="result-label">Термін</div><div class="result-value">1 день</div></div>
+            <div class="result-card"><div class="result-label">Формат</div><div class="result-value">Telegram/таблиця</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="chatbot" class="chatbot-section">
+    <div class="chatbot-widget" id="chatbot-widget">
+      <div class="chatbot-header"><div><div class="chatbot-title">Vermarkter</div><div class="chatbot-subtitle">AI-маркетолог</div></div><button id="chatbot-close" aria-label="Закрити чат">×</button></div>
+      <div class="chatbot-body" id="chatbot-body"><div class="typing-indicator" id="typing-indicator"><span></span><span></span><span></span></div></div>
+      <div class="chatbot-footer"><input type="text" id="chatbot-input" placeholder="Ваша відповідь..."><button id="chatbot-send" aria-label="Надіслати">→</button></div>
+    </div>
+    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Відкрити чат">💬</button>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <img src="../../logo.png" alt="Vermarkter" width="120" height="40">
+        <p>Агенція для українського бізнесу в ЄС.</p>
+        <div class="social">
+          <a href="https://t.me/vermarkter" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="https://www.linkedin.com/company/vermarkter" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://www.instagram.com/vermarkter" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Навігація</h4>
+        <a href="../../ua/#services">Послуги</a>
+        <a href="../google-ads/">Google Ads</a>
+        <a href="../meta-ads/">Meta Ads</a>
+        <a href="../tiktok-ads/">TikTok Ads</a>
+        <a href="../seo/">SEO</a>
+        <a href="../crm-integration/">CRM</a>
+      </div>
+      <div>
+        <h4>Документи</h4>
+        <a href="../../ua/#privacy">Privacy Policy</a>
+        <a href="../../ua/#privacy">Impressum</a>
+      </div>
+      <div>
+        <h4>Контакти</h4>
+        <a href="mailto:maps.werbung@gmail.com">maps.werbung@gmail.com</a>
+        <a href="https://t.me/vermarkter" target="_blank" rel="noopener">@vermarkter</a>
+        <p>Берлін · Варшава · Київ</p>
+      </div>
+    </div>
+    <div class="bottom">© 2024 Vermarkter. Всі права захищені.</div>
+  </footer>
+
+  <script src="../../js/chatbot.js"></script>
+  <script src="../../js/consent.js"></script>
+  <script>
+    (function(){ const body=document.documentElement; const btn=document.getElementById('theme-toggle'); const stored=localStorage.getItem('theme'); if(stored){body.setAttribute('data-theme',stored); btn.textContent=stored==='light'?'🌞':'🌙';} btn?.addEventListener('click',()=>{const current=body.getAttribute('data-theme')==='light'?'dark':'light'; body.setAttribute('data-theme',current); localStorage.setItem('theme',current); btn.textContent=current==='light'?'🌞':'🌙';}); })();
+    (function(){ const toggle=document.getElementById('mobile-toggle'); const menu=document.getElementById('mobile-menu'); toggle?.addEventListener('click',()=>{const expanded=toggle.getAttribute('aria-expanded')==='true'; toggle.setAttribute('aria-expanded',String(!expanded)); menu?.classList.toggle('show');}); })();
+    window.submitContactForm = async function(event){
+      event.preventDefault();
+      const form = event.target; const status = document.getElementById('contactMessage'); const formData = new FormData(form);
+      status.textContent = 'Відправляємо...';
+      try {
+        await fetch('https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ chat_id:'YOUR_CHAT_ID', text:`CRM заявка\nІм'я: ${formData.get('name')}\nEmail: ${formData.get('email')}\nTelegram: ${formData.get('telegram')||'Не вказано'}\nЗапит: ${formData.get('message')}` })
+        });
+        status.textContent='Дякуємо! Заявку отримано.';
+        form.reset();
+      } catch(e){ status.textContent='Сталася помилка. Спробуйте ще раз.'; }
+    }
+  </script>
+</body>
+</html>
