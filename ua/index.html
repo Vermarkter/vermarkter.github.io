@@ -1,408 +1,678 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Vermarkter — Запустіть бізнес в ЄС за 7 днів</title>
-  <meta name="description" content="Сайт + реклама Google Ads і Meta Ads під ключ для українців у ЄС. Запустимо за 7 днів, налаштуємо CRM та аналітику.">
-  <meta name="keywords" content="маркетинг ЄС, Google Ads, Meta Ads, TikTok Ads, SEO, CRM, сайт за 7 днів">
-  <link rel="icon" href="../favicon.ico">
-  <link rel="stylesheet" href="../styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vermarkter — Запустіть бізнес в ЄС за 7 днів</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --success: #10b981;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover { color: var(--text-light); }
+        
+        .lang-selector {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-light);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        
+        .stat-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+        }
+        
+        /* Calculator Section */
+        .calculator {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 4rem 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-muted);
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .result-item {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-dark);
+            border-radius: 8px;
+        }
+        
+        .result-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 12px;
+            margin: 4rem 0;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Chatbot */
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
+        }
+        
+        .chat-window {
+            display: none;
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            flex-direction: column;
+        }
+        
+        .chat-window.active {
+            display: flex;
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 1rem;
+            border-radius: 12px 12px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .chat-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+        }
+        
+        .chat-message.bot {
+            background: var(--bg-dark);
+        }
+        
+        .chat-message.user {
+            background: var(--primary);
+            margin-left: 20%;
+        }
+        
+        .chat-input-area {
+            padding: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .chat-input {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-light);
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+            .hero h1 { font-size: 2rem; }
+            .form-row { grid-template-columns: 1fr; }
+            .chat-window { width: calc(100% - 40px); right: 20px; }
+        }
+    </style>
 </head>
-<body class="theme-dark">
-  <header class="site-header" aria-label="Головна навігація">
-    <div class="container nav-bar">
-      <div class="brand">
-        <a href="/" class="logo" aria-label="Vermarkter">Vermarkter</a>
-      </div>
-      <nav class="nav-desktop" aria-label="Основне меню">
-        <a href="#services">Послуги</a>
-        <a href="#cases">Кейси</a>
-        <a href="#calculator">Калькулятор</a>
-        <a href="#testimonials">Відгуки</a>
-        <a href="#contact">Контакти</a>
-      </nav>
-      <div class="nav-actions">
-        <div class="lang-switcher" aria-label="Перемикач мов">
-          <button class="lang-toggle" aria-haspopup="true" aria-expanded="false">UA</button>
-          <ul class="lang-menu" aria-label="Список мов">
-            <li><button class="lang-option active" data-lang="UA">UA</button></li>
-            <li><button class="lang-option" data-lang="DE" title="Незабаром" disabled>DE</button></li>
-            <li><button class="lang-option" data-lang="EN" title="Незабаром" disabled>EN</button></li>
-            <li><button class="lang-option" data-lang="PL" title="Незабаром" disabled>PL</button></li>
-            <li><button class="lang-option" data-lang="RU" title="Незабаром" disabled>RU</button></li>
-            <li><button class="lang-option" data-lang="TR" title="Незабаром" disabled>TR</button></li>
-          </ul>
-        </div>
-        <button class="theme-toggle" aria-label="Перемкнути тему">
-          <span class="icon-sun" aria-hidden="true">☀️</span>
-          <span class="icon-moon" aria-hidden="true">🌙</span>
-        </button>
-        <button class="mobile-toggle" aria-label="Відкрити меню">☰</button>
-      </div>
-    </div>
-    <div class="mobile-menu" aria-label="Мобільне меню">
-      <a href="#services">Послуги</a>
-      <a href="#cases">Кейси</a>
-      <a href="#calculator">Калькулятор</a>
-      <a href="#testimonials">Відгуки</a>
-      <a href="#contact">Контакти</a>
-    </div>
-  </header>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Vermarkter</div>
+            <ul class="nav-links">
+                <li><a href="#services">Послуги</a></li>
+                <li><a href="#cases">Кейси</a></li>
+                <li><a href="#calculator">Калькулятор</a></li>
+                <li><a href="#testimonials">Відгуки</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+            <select class="lang-selector" onchange="changeLang(this.value)">
+                <option value="UA" selected>UA</option>
+                <option value="DE">DE</option>
+                <option value="EN">EN</option>
+                <option value="PL">PL</option>
+                <option value="RU">RU</option>
+            </select>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
 
-  <main>
-    <section class="hero" id="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="badge">Спеціальна пропозиція</p>
-          <h1>Запустіть бізнес в ЄС за 7 днів</h1>
-          <h2 class="hero-subtitle flag-highlight">Створено для українців, які будують бізнес у ЄС.</h2>
-          <p class="hero-lede">Сайт + Google Ads + Meta Ads + CRM інтеграція. Отримайте перші заявки вже за 7 днів із гарантією результату.</p>
-          <div class="hero-cta">
-            <a class="btn primary" href="#contact">Отримати пропозицію</a>
-            <a class="btn ghost" href="#calculator">Розрахувати бюджет</a>
-          </div>
-          <div class="hero-offer">
-            <div class="countdown">
-              <div class="label">Акція діє ще</div>
-              <div id="countdown-timer" class="timer">24:00:00</div>
-              <div class="note">Залишилось 10 місць</div>
+    <section class="hero">
+        <div class="container">
+            <h1>Запустіть бізнес в ЄС за 7 днів</h1>
+            <p>Створено для українців, які будують бізнес у ЄС</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Отримати пропозицію</a>
+                <a href="#calculator" class="btn btn-secondary">Розрахувати бюджет</a>
             </div>
-            <div class="progress-wrap">
-              <div class="progress-label">
-                <span>Прогрес запуску</span>
-                <span id="progress-value">0%</span>
-              </div>
-              <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-                <span class="progress-fill" id="progress-fill"></span>
-              </div>
-            </div>
-          </div>
-          <div class="hero-stats">
-            <div class="stat-card">
-              <span class="stat-value" data-target="247">0%</span>
-              <span class="stat-label">зростання заявок</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value" data-target="48">0</span>
-              <span class="stat-label">годин до запуску</span>
-            </div>
-            <div class="stat-card">
-              <span class="stat-value" data-target="15">0</span>
-              <span class="stat-label">країн ЄС</span>
-            </div>
-          </div>
         </div>
-        <div class="hero-card">
-          <h3>Пакет «Старт» — 200€</h3>
-          <ul>
-            <li>Landing Page під ключ</li>
-            <li>Google Ads + Meta Ads</li>
-            <li>CRM та аналітика у подарунок</li>
-            <li>Старт за 7 днів</li>
-          </ul>
-          <a class="btn primary full" href="#contact">Запустити зараз</a>
-        </div>
-      </div>
     </section>
 
-    <section class="services" id="services">
-      <div class="container">
-        <div class="section-header">
-          <p class="badge subtle">Що робимо</p>
-          <h2>Повний цикл запуску</h2>
-          <p class="section-lede">Шість ключових напрямів, що дають швидкий результат та масштабування у ЄС.</p>
+    <section class="container">
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="stat1">247</div>
+                <div class="stat-label">% зростання заявок</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="stat2">168</div>
+                <div class="stat-label">годин до запуску</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="stat3">27</div>
+                <div class="stat-label">країн ЄС</div>
+            </div>
         </div>
+    </section>
+
+    <section id="services" class="container services">
+        <h2 class="section-title">Наші послуги</h2>
+        <p class="section-subtitle">Комплексні маркетингові рішення для швидкого запуску та масштабування бізнесу в ЄС</p>
         <div class="services-grid">
-          <article class="service-card">
-            <div class="icon">💻</div>
-            <h3>Розробка Сайтів</h3>
-            <p>Лендінги, що продають, із швидким завантаженням та аналітикою.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon">🔍</div>
-            <h3>Google Ads</h3>
-            <p>Гарячі клієнти з пошуку та Performance Max для ЄС.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon">📱</div>
-            <h3>Meta Ads</h3>
-            <p>Facebook та Instagram для лідогенерації та продажів.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon">🎵</div>
-            <h3>TikTok Ads</h3>
-            <p>Відеокреативи та вірусне охоплення у TikTok.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon">📈</div>
-            <h3>SEO Оптимізація</h3>
-            <p>Органічний трафік з локалізованим контентом для ЄС.</p>
-          </article>
-          <article class="service-card">
-            <div class="icon">🤝</div>
-            <h3>CRM Інтеграція</h3>
-            <p>Усі заявки в Telegram/таблицю + автоворонки.</p>
-          </article>
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Розробка Сайтів</h3>
+                <p>Лендінги, що продають, із швидким завантаженням та аналітикою.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Google Ads</h3>
+                <p>Гарячі клієнти з пошуку та Performance Max для ЄС.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📱</div>
+                <h3>Meta Ads</h3>
+                <p>Facebook та Instagram для лідогенерації та продажів.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎵</div>
+                <h3>TikTok Ads</h3>
+                <p>Відеокреативи та вірусне охоплення у TikTok.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>SEO Оптимізація</h3>
+                <p>Органічний трафік з локалізованим контентом для ЄС.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>CRM Інтеграція</h3>
+                <p>Усі заявки в Telegram/таблицю + автоворонки.</p>
+            </div>
         </div>
-      </div>
     </section>
 
-    <section class="cases" id="cases">
-      <div class="container">
-        <div class="section-header">
-          <p class="badge subtle">Кейси</p>
-          <h2>Результати клієнтів</h2>
-          <p class="section-lede">Статичні приклади без слайдерів — чесна вибірка наших проєктів.</p>
+    <section id="calculator" class="container">
+        <div class="calculator">
+            <h2 class="section-title">Калькулятор бюджету</h2>
+            <p class="section-subtitle">Розрахуйте прогноз охоплення та вартості</p>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Платформа</label>
+                    <select id="platform">
+                        <option value="google">Google Ads</option>
+                        <option value="meta">Meta Ads</option>
+                        <option value="tiktok">TikTok Ads</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Регіон</label>
+                    <select id="region">
+                        <option value="de">Німеччина</option>
+                        <option value="pl">Польща</option>
+                        <option value="eu">Вся Європа</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Бюджет (€)</label>
+                    <input type="number" id="budget" placeholder="1000" value="1000">
+                </div>
+                <div class="form-group">
+                    <label>Середній чек (€)</label>
+                    <input type="number" id="avgCheck" placeholder="50" value="50">
+                </div>
+            </div>
+            
+            <button class="btn btn-primary" onclick="calculate()" style="width: 100%; margin-top: 1rem;">Розрахувати</button>
+            
+            <div class="results" id="results" style="display: none;">
+                <div class="result-item">
+                    <div class="result-value" id="reach">—</div>
+                    <div class="stat-label">Охоплення</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="clicks">—</div>
+                    <div class="stat-label">Кліки</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="ctr">—</div>
+                    <div class="stat-label">CTR %</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="cpc">—</div>
+                    <div class="stat-label">CPC €</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="leads">—</div>
+                    <div class="stat-label">Заявки</div>
+                </div>
+                <div class="result-item">
+                    <div class="result-value" id="revenue">—</div>
+                    <div class="stat-label">Дохід €</div>
+                </div>
+            </div>
         </div>
-        <div class="cases-grid">
-          <article class="case-card">
-            <div class="case-top">
-              <span class="case-tag">E-commerce DE</span>
-              <span class="case-metric">+247% ROI</span>
-            </div>
-            <p>Google Ads + CRO, 7 днів до перших продажів.</p>
-          </article>
-          <article class="case-card">
-            <div class="case-top">
-              <span class="case-tag">B2B SaaS EU</span>
-              <span class="case-metric">-32% CPL</span>
-            </div>
-            <p>LinkedIn/Meta ремаркетинг + автоматизовані ліди.</p>
-          </article>
-          <article class="case-card">
-            <div class="case-top">
-              <span class="case-tag">Послуги PL</span>
-              <span class="case-metric">+118 заявок</span>
-            </div>
-            <p>Локальний таргетинг та лендінг із формою запису.</p>
-          </article>
-        </div>
-      </div>
     </section>
 
-    <section class="calculator" id="calculator">
-      <div class="container">
-        <div class="section-header">
-          <p class="badge subtle">Калькулятор</p>
-          <h2>Оцініть бюджет та заявки</h2>
-          <p class="section-lede">Вкажіть майданчик, регіон та бюджет, щоб побачити прогноз охоплення та кліків.</p>
+    <section id="contact" class="container">
+        <div class="contact-form">
+            <h2 class="section-title">Готові стартувати?</h2>
+            <p class="section-subtitle">Заповніть форму, і ми надішлемо персональну пропозицію</p>
+            
+            <div class="form-row">
+                <input type="text" placeholder="Ім'я" required>
+                <input type="email" placeholder="Email" required>
+            </div>
+            <input type="text" placeholder="Telegram (опційно)">
+            <textarea placeholder="Ваш запит"></textarea>
+            <button class="btn btn-primary" style="width: 100%;">Відправити</button>
         </div>
-        <div class="calc-grid">
-          <form id="ads-form" class="calc-panel" aria-label="Калькулятор реклами">
-            <div class="form-group">
-              <label for="platform">Платформа</label>
-              <select id="platform" name="platform">
-                <option value="google">Google Ads</option>
-                <option value="meta">Meta Ads</option>
-                <option value="tiktok">TikTok Ads</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="geo">Регіон</label>
-              <select id="geo" name="geo">
-                <option value="germany">Німеччина</option>
-                <option value="poland">Польща</option>
-                <option value="eu">Вся Європа</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="goal">Мета</label>
-              <select id="goal" name="goal">
-                <option value="leads">Ліди</option>
-                <option value="sales">Продажі</option>
-                <option value="traffic">Трафік</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="budget">Бюджет (€)</label>
-              <div class="budget-pair">
-                <input type="number" id="budget" name="budget" min="100" max="5000" step="50" value="500" aria-describedby="budget-help">
-                <input type="range" id="budget-range" min="100" max="5000" step="50" value="500">
-              </div>
-              <small id="budget-help">Синхронізовані поле та повзунок.</small>
-            </div>
-            <button type="submit" class="btn primary full">Розрахувати</button>
-          </form>
-          <div class="calc-results" aria-live="polite">
-            <div class="result-card">
-              <span class="result-label">Охоплення</span>
-              <span class="result-value" id="impressions">—</span>
-            </div>
-            <div class="result-card">
-              <span class="result-label">Кліки</span>
-              <span class="result-value" id="clicks">—</span>
-            </div>
-            <div class="result-card">
-              <span class="result-label">CTR</span>
-              <span class="result-value" id="ctr">—</span>
-            </div>
-            <div class="result-card">
-              <span class="result-label">CPC</span>
-              <span class="result-value" id="cpc">—</span>
-            </div>
-            <div class="result-card">
-              <span class="result-label">CPA</span>
-              <span class="result-value" id="cpa">—</span>
-            </div>
-            <div class="result-summary" id="result-summary">
-              Введіть бюджет, щоб отримати прогноз.
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section class="testimonials" id="testimonials">
-      <div class="container">
-        <div class="section-header">
-          <p class="badge subtle">Відгуки</p>
-          <h2>40+ позитивних відгуків</h2>
-          <p class="section-lede">Різними мовами, перекладені українською для вашої зручності.</p>
+    <div class="chatbot">
+        <button class="chat-button" onclick="toggleChat()">💬</button>
+        <div class="chat-window" id="chatWindow">
+            <div class="chat-header">
+                <h3>AI-маркетолог</h3>
+                <button class="chat-close" onclick="toggleChat()">×</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="chat-message bot">
+                    Вітаю! Я AI-асистент Vermarkter. Як можу допомогти вам запустити бізнес в ЄС?
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Напишіть повідомлення..." onkeypress="if(event.key==='Enter') sendMessage()">
+            </div>
         </div>
-      </div>
-      <div class="marquee" aria-label="Стрічка відгуків">
-        <div class="marquee-track">
-          <article class="review-card"><p>“Запуск за 6 днів, 32 ліди. Рекомендую.”</p><span>Олена — UA</span></article>
-          <article class="review-card"><p>“Starker Partner für Google Ads in DE.”</p><span>Markus — DE</span></article>
-          <article class="review-card"><p>“Świetna komunikacja, wyniki od 1 tygodnia.”</p><span>Agnieszka — PL</span></article>
-          <article class="review-card"><p>“Meta Ads дали 2.4x ROAS. Дякую!”</p><span>Ігор — UA</span></article>
-          <article class="review-card"><p>“TikTok відео стали вірусними, 120к переглядів.”</p><span>Галина — UA</span></article>
-          <article class="review-card"><p>“Sehr gute SEO-Optimierung, mehr Leads.”</p><span>Anna — DE</span></article>
-          <article class="review-card"><p>“CRM інтеграція в Telegram — топ.”</p><span>Руслан — UA</span></article>
-          <article class="review-card"><p>“Отримали перші заявки з Google вже в понеділок.”</p><span>Андрій — UA</span></article>
-          <article class="review-card"><p>“Meta remarketing повернув 18% кошика.”</p><span>Юлія — UA</span></article>
-          <article class="review-card"><p>“SEO контент під ЄС дав 3x трафік.”</p><span>Влад — UA</span></article>
-          <article class="review-card"><p>“Guter Service, klare Reports.”</p><span>Sabine — DE</span></article>
-          <article class="review-card"><p>“Leads стали дешевші на 27%.”</p><span>Степан — UA</span></article>
-          <article class="review-card"><p>“Landing з конверсією 14%. Вражена.”</p><span>Марія — UA</span></article>
-          <article class="review-card"><p>“Perfekter Support, schnelle Umsetzung.”</p><span>Jonas — DE</span></article>
-          <article class="review-card"><p>“Kampanie Meta w PL działają super.”</p><span>Piotr — PL</span></article>
-          <article class="review-card"><p>“Ретаргетинг повернув 22% користувачів.”</p><span>Катерина — UA</span></article>
-          <article class="review-card"><p>“CRM + Ads = повний контроль лідів.”</p><span>Оксана — UA</span></article>
-          <article class="review-card"><p>“Traffic auf DE-Shop gestiegen, danke.”</p><span>Felix — DE</span></article>
-          <article class="review-card"><p>“Szybkie wdrożenie, jasne raporty.”</p><span>Magda — PL</span></article>
-          <article class="review-card"><p>“SEO та Google дали стабільні продажі.”</p><span>Роман — UA</span></article>
-        </div>
-      </div>
-      <div class="marquee marquee-dup" aria-hidden="true">
-        <div class="marquee-track">
-          <!-- дубль для безперервності -->
-          <article class="review-card"><p>“Запуск за 6 днів, 32 ліди. Рекомендую.”</p><span>Олена — UA</span></article>
-          <article class="review-card"><p>“Starker Partner für Google Ads in DE.”</p><span>Markus — DE</span></article>
-          <article class="review-card"><p>“Świetna komunikacja, wyniki od 1 tygodnia.”</p><span>Agnieszka — PL</span></article>
-          <article class="review-card"><p>“Meta Ads дали 2.4x ROAS. Дякую!”</p><span>Ігор — UA</span></article>
-          <article class="review-card"><p>“TikTok відео стали вірусними, 120к переглядів.”</p><span>Галина — UA</span></article>
-          <article class="review-card"><p>“Sehr gute SEO-Optimierung, mehr Leads.”</p><span>Anna — DE</span></article>
-          <article class="review-card"><p>“CRM інтеграція в Telegram — топ.”</p><span>Руслан — UA</span></article>
-          <article class="review-card"><p>“Отримали перші заявки з Google вже в понеділок.”</p><span>Андрій — UA</span></article>
-          <article class="review-card"><p>“Meta remarketing повернув 18% кошика.”</p><span>Юлія — UA</span></article>
-          <article class="review-card"><p>“SEO контент під ЄС дав 3x трафік.”</p><span>Влад — UA</span></article>
-          <article class="review-card"><p>“Guter Service, klare Reports.”</p><span>Sabine — DE</span></article>
-          <article class="review-card"><p>“Leads стали дешевші на 27%.”</p><span>Степан — UA</span></article>
-          <article class="review-card"><p>“Landing з конверсією 14%. Вражена.”</p><span>Марія — UA</span></article>
-          <article class="review-card"><p>“Perfekter Support, schnelle Umsetzung.”</p><span>Jonas — DE</span></article>
-          <article class="review-card"><p>“Kampanie Meta w PL działają super.”</p><span>Piotr — PL</span></article>
-          <article class="review-card"><p>“Ретаргетинг повернув 22% користувачів.”</p><span>Катерина — UA</span></article>
-          <article class="review-card"><p>“CRM + Ads = повний контроль лідів.”</p><span>Оксана — UA</span></article>
-          <article class="review-card"><p>“Traffic auf DE-Shop gestiegen, danke.”</p><span>Felix — DE</span></article>
-          <article class="review-card"><p>“Szybkie wdrożenie, jasne raportы.”</p><span>Magda — PL</span></article>
-          <article class="review-card"><p>“SEO та Google дали стабільні продажі.”</p><span>Роман — UA</span></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="container contact-grid">
-        <div class="contact-info">
-          <p class="badge subtle">Зв'яжіться</p>
-          <h2>Готові стартувати?</h2>
-          <p class="section-lede">Заповніть форму, і ми надішлемо персональну пропозицію.</p>
-          <ul class="contact-list">
-            <li>Email: <a href="mailto:maps.werbung@gmail.com">maps.werbung@gmail.com</a></li>
-            <li>Telegram: <a href="https://t.me/vermarkter" target="_blank" rel="noopener">@vermarkter</a></li>
-            <li>Офіси: Берлін, Варшава, Київ</li>
-          </ul>
-        </div>
-        <form id="contact-form" class="contact-form" aria-label="Форма зв'язку">
-          <div class="form-row">
-            <label>
-              Ім'я
-              <input type="text" name="name" required>
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" required>
-            </label>
-          </div>
-          <label>
-            Telegram (опційно)
-            <input type="text" name="telegram" placeholder="@username">
-          </label>
-          <label>
-            Ваш запит
-            <textarea name="message" rows="4" required></textarea>
-          </label>
-          <button type="submit" class="btn primary full">Відправити</button>
-          <div id="contact-status" role="status" aria-live="polite"></div>
-        </form>
-      </div>
-    </section>
-
-    <section class="privacy" id="privacy">
-      <div class="container">
-        <h2>Політика конфіденційності</h2>
-        <p>Ми використовуємо cookies та аналітику лише після вашої згоди. Дані заявок обробляються конфіденційно відповідно до GDPR.</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div>
-        <h3>Vermarkter</h3>
-        <p>Маркетингова агенція для українців у ЄС.</p>
-      </div>
-      <div>
-        <h4>Навігація</h4>
-        <a href="#services">Послуги</a>
-        <a href="#cases">Кейси</a>
-        <a href="#calculator">Калькулятор</a>
-        <a href="#testimonials">Відгуки</a>
-        <a href="#contact">Контакти</a>
-      </div>
-      <div>
-        <h4>Юридично</h4>
-        <a href="#privacy">Privacy Policy</a>
-        <a href="#privacy">Impressum</a>
-      </div>
     </div>
-    <p class="footer-bottom">© 2024 Vermarkter. Всі права захищені.</p>
-  </footer>
 
-  <div id="cookie-banner" class="cookie-banner" aria-live="polite">
-    <div class="cookie-text">Ми використовуємо файли cookie для покращення роботи сайту та аналітики.</div>
-    <div class="cookie-actions">
-      <button id="cookie-accept" class="btn primary">Прийняти</button>
-      <button id="cookie-settings" class="btn ghost">Налаштування</button>
-    </div>
-  </div>
+    <script>
+        // Animation for stats
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            const range = end - start;
+            const increment = end > start ? 1 : -1;
+            const stepTime = Math.abs(Math.floor(duration / range));
+            let current = start;
+            const timer = setInterval(() => {
+                current += increment;
+                obj.textContent = current;
+                if (current === end) clearInterval(timer);
+            }, stepTime);
+        }
 
-  <div class="chatbot">
-    <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Відкрити чат-бот">💬</button>
-    <div id="chatbot-window" class="chatbot-window" role="dialog" aria-modal="true" aria-label="AI чат-бот">
-      <div class="chatbot-header">
-        <span>AI-маркетолог</span>
-        <button id="chatbot-close" class="chatbot-close" aria-label="Закрити">×</button>
-      </div>
-      <div class="chatbot-body" id="chatbot-body"></div>
-      <div class="chatbot-footer">
-        <input type="text" id="chatbot-input" placeholder="Ваша відповідь..." aria-label="Поле вводу для чат-бота">
-        <button id="chatbot-send" class="btn primary" aria-label="Надіслати">→</button>
-      </div>
-    </div>
-  </div>
+        window.addEventListener('load', () => {
+            animateValue('stat1', 0, 247, 2000);
+            animateValue('stat2', 0, 168, 2000);
+            animateValue('stat3', 0, 27, 2000);
+        });
 
-  <script src="../js/main.js" defer></script>
+        // Calculator
+        function calculate() {
+            const budget = parseFloat(document.getElementById('budget').value);
+            const avgCheck = parseFloat(document.getElementById('avgCheck').value);
+            const platform = document.getElementById('platform').value;
+            
+            let cpc, ctr;
+            if (platform === 'google') {
+                cpc = 0.5;
+                ctr = 3.5;
+            } else if (platform === 'meta') {
+                cpc = 0.3;
+                ctr = 2.5;
+            } else {
+                cpc = 0.2;
+                ctr = 4.5;
+            }
+            
+            const clicks = Math.floor(budget / cpc);
+            const reach = Math.floor(clicks / (ctr / 100));
+            const conversionRate = 5;
+            const leads = Math.floor(clicks * (conversionRate / 100));
+            const revenue = Math.floor(leads * avgCheck);
+            
+            document.getElementById('reach').textContent = reach.toLocaleString();
+            document.getElementById('clicks').textContent = clicks.toLocaleString();
+            document.getElementById('ctr').textContent = ctr.toFixed(1);
+            document.getElementById('cpc').textContent = cpc.toFixed(2);
+            document.getElementById('leads').textContent = leads;
+            document.getElementById('revenue').textContent = revenue.toLocaleString();
+            
+            document.getElementById('results').style.display = 'grid';
+        }
+
+        // Chatbot
+        const responses = {
+            привіт: 'Привіт! Чим можу допомогти?',
+            ціна: 'Наші послуги стартують від 200€. Хочете детальнішу консультацію?',
+            послуги: 'Ми пропонуємо: розробку сайтів, Google Ads, Meta Ads, TikTok Ads, SEO та CRM інтеграцію.',
+            контакт: 'Напишіть нам: maps.werbung@gmail.com або Telegram: @vermarkter'
+        };
+
+        function toggleChat() {
+            document.getElementById('chatWindow').classList.toggle('active');
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim().toLowerCase();
+            if (!message) return;
+            
+            const chatBody = document.getElementById('chatBody');
+            chatBody.innerHTML += `<div class="chat-message user">${input.value}</div>`;
+            
+            let response = 'Дякую за ваше повідомлення! Наш менеджер зв\'яжеться з вами найближчим часом.';
+            for (let key in responses) {
+                if (message.includes(key)) {
+                    response = responses[key];
+                    break;
+                }
+            }
+            
+            setTimeout(() => {
+                chatBody.innerHTML += `<div class="chat-message bot">${response}</div>`;
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }, 500);
+            
+            input.value = '';
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function changeLang(lang) {
+            const routes = {
+                'UA': '/ua',
+                'DE': '/de',
+                'EN': '/en',
+                'PL': '/pl',
+                'RU': '/ru'
+            };
+            if (routes[lang]) {
+                window.location.href = 'https://vermarkter.github.io' + routes[lang];
+            }
+        }
+    </script>
 </body>
 </html>
