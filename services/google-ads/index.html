@@ -7,506 +7,6 @@
     <meta name="description" content="Професійне налаштування Google Ads для бізнесу в Німеччині та ЄС. ROAS 400%+, запуск за 48 годин. Оплата за результат.">
     <link rel="icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --primary: #2563eb;
-            --secondary: #7c3aed;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-light: #f1f5f9;
-            --text-muted: #94a3b8;
-            --google-blue: #4285f4;
-            --google-red: #ea4335;
-            --google-yellow: #fbbc04;
-            --google-green: #34a853;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Header */
-        header {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo { 
-            font-size: 1.5rem; 
-            font-weight: bold; 
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover { color: var(--text-light); }
-        
-        .lang-selector {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-light);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 6rem 0 4rem;
-            text-align: center;
-        }
-        
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, var(--google-blue), var(--google-green));
-            color: white;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, var(--google-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            display: inline-block;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--google-blue), var(--google-green));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(66, 133, 244, 0.3);
-        }
-        
-        /* KPI Stats */
-        .kpi-section {
-            padding: 3rem 0;
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .stat-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--google-blue);
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-        
-        /* Section Styles */
-        .section {
-            padding: 4rem 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            color: var(--text-muted);
-            font-size: 1.125rem;
-        }
-        
-        /* Problems & Solutions Grid */
-        .solutions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .solution-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .problem {
-            color: var(--google-red);
-            font-weight: 700;
-            font-size: 1.125rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .solution {
-            color: var(--google-green);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .solution-text {
-            color: var(--text-muted);
-        }
-        
-        /* Pricing Cards */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .price-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-            transition: transform 0.3s;
-        }
-        
-        .price-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .price-card.featured {
-            border: 2px solid var(--google-blue);
-            transform: scale(1.05);
-        }
-        
-        .price-card.featured::before {
-            content: "ПОПУЛЯРНИЙ";
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--google-blue), var(--google-green));
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-        }
-        
-        .price-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .price-amount {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--google-blue);
-            margin-bottom: 0.5rem;
-        }
-        
-        .price-period {
-            color: var(--text-muted);
-            margin-bottom: 1.5rem;
-        }
-        
-        .price-features {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-        
-        .price-features li {
-            padding: 0.5rem 0;
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .price-features li::before {
-            content: "✓";
-            color: var(--google-green);
-            font-weight: 700;
-        }
-        
-        /* Process Steps */
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .step {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            position: relative;
-        }
-        
-        .step-number {
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--google-blue), var(--google-green));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-size: 1.25rem;
-        }
-        
-        .step h3 {
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .step p {
-            color: var(--text-muted);
-        }
-        
-        /* FAQ */
-        .faq-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        details {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            padding: 1rem;
-        }
-        
-        summary {
-            font-weight: 600;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        summary::after {
-            content: "+";
-            font-size: 1.5rem;
-            color: var(--google-blue);
-        }
-        
-        details[open] summary::after {
-            content: "−";
-        }
-        
-        details p {
-            margin-top: 1rem;
-            color: var(--text-muted);
-        }
-        
-        /* Testimonials */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .testimonial-text {
-            color: var(--text-muted);
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--text-light);
-        }
-        
-        .testimonial-company {
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-        
-        /* Contact Section */
-        .contact-section {
-            background: var(--bg-card);
-            padding: 3rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            text-align: center;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 2rem auto 0;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--bg-dark);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            color: var(--text-light);
-        }
-        
-        .contact-form textarea {
-            min-height: 120px;
-            resize: vertical;
-            margin-bottom: 1rem;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--bg-dark);
-            padding: 3rem 0 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 4rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h4 {
-            margin-bottom: 1rem;
-            color: var(--google-blue);
-        }
-        
-        .footer-section a {
-            display: block;
-            color: var(--text-muted);
-            text-decoration: none;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: var(--text-light);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-muted);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .mobile-menu-btn { display: block; }
-            .hero h1 { font-size: 2rem; }
-            .form-row { grid-template-columns: 1fr; }
-            .price-card.featured { transform: scale(1); }
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -519,234 +19,338 @@
                 <li><a href="../../ua#testimonials">Відгуки</a></li>
                 <li><a href="#contact">Контакти</a></li>
             </ul>
-            <select class="lang-selector" onchange="changeLang(this.value)">
-                <option value="UA" selected>UA</option>
-                <option value="DE">DE</option>
-                <option value="EN">EN</option>
-                <option value="PL">PL</option>
-                <option value="RU">RU</option>
-            </select>
-            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-controls">
+                <select class="lang-selector" onchange="changeLang(this.value)">
+                    <option value="UA" selected>UA</option>
+                    <option value="DE">DE</option>
+                    <option value="EN">EN</option>
+                    <option value="PL">PL</option>
+                    <option value="RU">RU</option>
+                    <option value="TR">TR</option>
+                </select>
+                <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
         </nav>
+        <div class="mobile-menu">
+            <div class="mobile-links">
+                <a href="../../ua#services">Послуги</a>
+                <a href="../../ua#cases">Кейси</a>
+                <a href="../../ua#calculator">Калькулятор</a>
+                <a href="../../ua#testimonials">Відгуки</a>
+                <a href="#contact">Контакти</a>
+            </div>
+        </div>
     </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="badge">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-                Google Partner
-            </div>
-            <h1>Google Реклама: Гарячі клієнти вже сьогодні</h1>
-            <p>Налаштуємо потік заявок для вашого бізнесу в Німеччині та ЄС. Оплата лише за результат.</p>
-            <a href="#contact" class="btn btn-primary">Замовити аудит</a>
+    <main>
+        <!-- Breadcrumbs -->
+        <div class="container breadcrumbs">
+            <nav>
+                <a href="../../ua">Головна</a>
+                <span>&gt;</span>
+                <a href="../../ua#services">Послуги</a>
+                <span>&gt;</span>
+                <span class="current">Google Ads</span>
+            </nav>
         </div>
-    </section>
 
-    <section class="kpi-section">
-        <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="badge badge-google animate-fade-in">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Google Partner
+                </div>
+                <h1 class="animate-slide-up">Google Реклама: Гарячі клієнти вже сьогодні</h1>
+                <p class="lead animate-slide-up">Налаштуємо потік заявок для вашого бізнесу в Німеччині та ЄС. Оплата лише за результат.</p>
+                <div class="hero-actions animate-slide-up">
+                    <a href="#contact" class="cta">Замовити аудит →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI Stats -->
+        <section class="container">
             <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-number">400%+</div>
-                    <div class="stat-label">ROAS в середньому</div>
+                <div class="stat">
+                    <strong style="color: var(--google-blue);">400%+</strong>
+                    <div class="muted">ROAS в середньому</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">5-12%</div>
-                    <div class="stat-label">CTR оголошень</div>
+                <div class="stat">
+                    <strong style="color: var(--google-blue);">5-12%</strong>
+                    <div class="muted">CTR оголошень</div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">48 год</div>
-                    <div class="stat-label">До запуску кампанії</div>
+                <div class="stat">
+                    <strong style="color: var(--google-blue);">48 год</strong>
+                    <div class="muted">До запуску кампанії</div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Проблеми та рішення</h2>
-                <p class="section-subtitle">Типові помилки в Google Ads і як ми їх виправляємо</p>
-            </div>
-            <div class="solutions-grid">
-                <div class="solution-card">
-                    <div class="problem">❌ Зливаєте бюджет?</div>
-                    <div class="solution">✓ Рішення:</div>
-                    <p class="solution-text">Точні мінус-слова та налаштування конверсій. Збираємо семантику 500+ ключів і прибираємо непотрібний трафік.</p>
+        <!-- Problems & Solutions -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Проблеми та рішення</h2>
+                    <p class="section-subtitle">Типові помилки в Google Ads і як ми їх виправляємо</p>
                 </div>
-                <div class="solution-card">
-                    <div class="problem">❌ Мало клієнтів?</div>
-                    <div class="solution">✓ Рішення:</div>
-                    <p class="solution-text">Використовуємо PMax та пошукові кампанії для максимального охоплення вашої цільової аудиторії в ЄС.</p>
-                </div>
-                <div class="solution-card">
-                    <div class="problem">❌ Конкуренти тиснуть?</div>
-                    <div class="solution">✓ Рішення:</div>
-                    <p class="solution-text">Аналізуємо їх слабкі місця і б'ємо туди. Конкурентний аудит та унікальні пропозиції.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: rgba(0,0,0,0.2);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Тарифи Google Ads</h2>
-                <p class="section-subtitle">Виберіть пакет для вашого бізнесу</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="price-card">
-                    <div class="price-name">Start</div>
-                    <div class="price-amount">200€</div>
-                    <div class="price-period">одноразово + бюджет</div>
-                    <ul class="price-features">
-                        <li>Пошукова мережа</li>
-                        <li>До 100 ключових слів</li>
-                        <li>5 оголошень</li>
-                        <li>Базова аналітика</li>
-                        <li>Щотижневі звіти</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary" style="width: 100%;">Замовити</a>
-                </div>
-                
-                <div class="price-card featured">
-                    <div class="price-name">Growth</div>
-                    <div class="price-amount">450€</div>
-                    <div class="price-period">одноразово + бюджет</div>
-                    <ul class="price-features">
-                        <li>Пошук + Performance Max</li>
-                        <li>YouTube та Google Maps</li>
-                        <li>Ремаркетинг</li>
-                        <li>До 500 ключових слів</li>
-                        <li>Розширена аналітика</li>
-                        <li>Щоденні звіти</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary" style="width: 100%;">Замовити</a>
-                </div>
-                
-                <div class="price-card">
-                    <div class="price-name">Pro</div>
-                    <div class="price-amount">800€+</div>
-                    <div class="price-period">одноразово + бюджет</div>
-                    <ul class="price-features">
-                        <li>Google Shopping</li>
-                        <li>Динамічний ремаркетинг</li>
-                        <li>Наскрізна аналітика</li>
-                        <li>Необмежена семантика</li>
-                        <li>A/B тести креативів</li>
-                        <li>Особистий менеджер</li>
-                    </ul>
-                    <a href="#contact" class="btn btn-primary" style="width: 100%;">Замовити</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Процес роботи</h2>
-                <p class="section-subtitle">4 простих кроки до результату</p>
-            </div>
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Аудит та Стратегія</h3>
-                    <p>Аналізуємо ваш бізнес, конкурентів та цільову аудиторію. Складаємо стратегію запуску.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Збір семантики</h3>
-                    <p>Підбираємо 100-500 ключових слів, відсіюємо нерелевантні запити, формуємо мінус-слова.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Креативи та оголошення</h3>
-                    <p>Пишемо продаючі тексти оголошень, створюємо банери для медійних кампаній.</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Запуск та оптимізація</h3>
-                    <p>Запускаємо кампанії, щодня моніторимо, коригуємо ставки та тестуємо гіпотези.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" style="background: rgba(0,0,0,0.2);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Часті питання</h2>
-            </div>
-            <div class="faq-list">
-                <details>
-                    <summary>Який мінімальний бюджет для старту?</summary>
-                    <p>Рекомендуємо мінімум 500€ на місяць для рекламного бюджету + вартість налаштування. Для e-commerce краще стартувати від 1000€, щоб отримати достатньо даних для оптимізації.</p>
-                </details>
-                <details>
-                    <summary>Як швидко з'являться перші результати?</summary>
-                    <p>Перші кліки та заявки можуть з'явитися вже через 24-48 годин після запуску. Однак для стабільних результатів потрібно 2-4 тижні на збір даних та оптимізацію кампаній.</p>
-                </details>
-                <details>
-                    <summary>Чи гарантуєте ви результат?</summary>
-                    <p>Ми гарантуємо якісне налаштування кампаній згідно з найкращими практиками Google Ads. Конкретні показники (CTR, CPC, конверсії) залежать від багатьох факторів: ніші, конкуренції, якості сайту, пропозиції. Ми прагнемо досягти ROAS 300-400%+ для більшості клієнтів.</p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Відгуки клієнтів</h2>
-                <p class="section-subtitle">Що кажуть про Google Ads від Vermarkter</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Google Ads від Vermarkter окупилися за перший тиждень. CTR 8.2%, конверсія 12%. Тепер масштабуємо."</p>
-                    <div class="testimonial-author">Андрій К.</div>
-                    <div class="testimonial-company">E-commerce, Німеччина</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Endlich vernünftige Google Ads. CPA um 40% gesunken, Leads verdoppelt. Sehr professionell."</p>
-                    <div class="testimonial-author">Marcus W.</div>
-                    <div class="testimonial-company">B2B Services, Berlin</div>
-                </div>
-                <div class="testimonial-card">
-                    <p class="testimonial-text">"Прозорі звіти щодня, швидка реакція на питання. Performance Max дав 340% ROAS за 3 місяці."</p>
-                    <div class="testimonial-author">Ольга Т.</div>
-                    <div class="testimonial-company">Online курси, Польща</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="container">
-            <div class="contact-section">
-                <h2 class="section-title">Замовити аудит Google Ads</h2>
-                <p class="section-subtitle">Безкоштовний аналіз вашого акаунту або конкурентів</p>
-                <form class="contact-form" onsubmit="return submitForm(event)">
-                    <div class="form-row">
-                        <input type="text" placeholder="Ім'я" required>
-                        <input type="email" placeholder="Email" required>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">❌</div>
+                        <h3 style="color: var(--google-red); margin-bottom: 1rem;">Зливаєте бюджет?</h3>
+                        <p style="font-weight: 600; color: var(--google-green); margin-bottom: 0.5rem;">✓ Рішення:</p>
+                        <p>Точні мінус-слова та налаштування конверсій. Збираємо семантику 500+ ключів і прибираємо непотрібний трафік.</p>
                     </div>
-                    <input type="text" placeholder="Telegram (опційно)" style="width: 100%; margin-bottom: 1rem;">
-                    <textarea placeholder="Розкажіть про ваш бізнес та цілі"></textarea>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Отримати аудит</button>
-                </form>
-                <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
-                    Або напишіть нам: <a href="mailto:maps.werbung@gmail.com" style="color: var(--google-blue);">maps.werbung@gmail.com</a> | 
-                    <a href="https://t.me/vermarkter" style="color: var(--google-blue);">Telegram</a>
-                </p>
+                    <div class="card animate-slide-up">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">❌</div>
+                        <h3 style="color: var(--google-red); margin-bottom: 1rem;">Мало клієнтів?</h3>
+                        <p style="font-weight: 600; color: var(--google-green); margin-bottom: 0.5rem;">✓ Рішення:</p>
+                        <p>Використовуємо PMax та пошукові кампанії для максимального охоплення вашої цільової аудиторії в ЄС.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">❌</div>
+                        <h3 style="color: var(--google-red); margin-bottom: 1rem;">Конкуренти тиснуть?</h3>
+                        <p style="font-weight: 600; color: var(--google-green); margin-bottom: 0.5rem;">✓ Рішення:</p>
+                        <p>Аналізуємо їх слабкі місця і б'ємо туди. Конкурентний аудит та унікальні пропозиції.</p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
+        <!-- Pricing -->
+        <section class="services-section" style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Тарифи Google Ads</h2>
+                    <p class="section-subtitle">Виберіть пакет для вашого бізнесу</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--google-blue), var(--google-green));">💼</div>
+                        <h3>Start</h3>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--google-blue); margin: 1rem 0;">200€</div>
+                        <p style="color: var(--muted); margin-bottom: 1.5rem;">одноразово + бюджет</p>
+                        <ul class="service-features">
+                            <li>Пошукова мережа</li>
+                            <li>До 100 ключових слів</li>
+                            <li>5 оголошень</li>
+                            <li>Базова аналітика</li>
+                            <li>Щотижневі звіти</li>
+                        </ul>
+                        <a href="#contact" class="cta" style="width: 100%; text-align: center; margin-top: 1rem;">Замовити</a>
+                    </div>
+                    
+                    <div class="card animate-slide-up" style="border: 2px solid var(--google-blue); transform: scale(1.05);">
+                        <div class="badge-popular">ПОПУЛЯРНИЙ</div>
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--google-blue), var(--google-green));">🚀</div>
+                        <h3>Growth</h3>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--google-blue); margin: 1rem 0;">450€</div>
+                        <p style="color: var(--muted); margin-bottom: 1.5rem;">одноразово + бюджет</p>
+                        <ul class="service-features">
+                            <li>Пошук + Performance Max</li>
+                            <li>YouTube та Google Maps</li>
+                            <li>Ремаркетинг</li>
+                            <li>До 500 ключових слів</li>
+                            <li>Розширена аналітика</li>
+                            <li>Щоденні звіти</li>
+                        </ul>
+                        <a href="#contact" class="cta" style="width: 100%; text-align: center; margin-top: 1rem;">Замовити</a>
+                    </div>
+                    
+                    <div class="card animate-slide-up">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--google-blue), var(--google-green));">⭐</div>
+                        <h3>Pro</h3>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--google-blue); margin: 1rem 0;">800€+</div>
+                        <p style="color: var(--muted); margin-bottom: 1.5rem;">одноразово + бюджет</p>
+                        <ul class="service-features">
+                            <li>Google Shopping</li>
+                            <li>Динамічний ремаркетинг</li>
+                            <li>Наскрізна аналітика</li>
+                            <li>Необмежена семантика</li>
+                            <li>A/B тести креативів</li>
+                            <li>Особистий менеджер</li>
+                        </ul>
+                        <a href="#contact" class="cta" style="width: 100%; text-align: center; margin-top: 1rem;">Замовити</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Процес роботи</h2>
+                    <p class="section-subtitle">4 простих кроки до результату</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <div class="step-number step-number-google">1</div>
+                        <h3 style="margin-top: 1rem;">Аудит та Стратегія</h3>
+                        <p>Аналізуємо ваш бізнес, конкурентів та цільову аудиторію. Складаємо стратегію запуску.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="step-number step-number-google">2</div>
+                        <h3 style="margin-top: 1rem;">Збір семантики</h3>
+                        <p>Підбираємо 100-500 ключових слів, відсіюємо нерелевантні запити, формуємо мінус-слова.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="step-number step-number-google">3</div>
+                        <h3 style="margin-top: 1rem;">Креативи та оголошення</h3>
+                        <p>Пишемо продаючі тексти оголошень, створюємо банери для медійних кампаній.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="step-number step-number-google">4</div>
+                        <h3 style="margin-top: 1rem;">Запуск та оптимізація</h3>
+                        <p>Запускаємо кампанії, щодня моніторимо, коригуємо ставки та тестуємо гіпотези.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="services-section" style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Часті питання</h2>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <details style="background: var(--card); border: var(--border); border-radius: 12px; margin-bottom: 1rem; padding: 1.5rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Який мінімальний бюджет для старту?
+                            <span style="font-size: 1.5rem; color: var(--google-blue);">+</span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--muted);">Рекомендуємо мінімум 500€ на місяць для рекламного бюджету + вартість налаштування. Для e-commerce краще стартувати від 1000€, щоб отримати достатньо даних для оптимізації.</p>
+                    </details>
+                    <details style="background: var(--card); border: var(--border); border-radius: 12px; margin-bottom: 1rem; padding: 1.5rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Як швидко з'являться перші результати?
+                            <span style="font-size: 1.5rem; color: var(--google-blue);">+</span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--muted);">Перші кліки та заявки можуть з'явитися вже через 24-48 годин після запуску. Однак для стабільних результатів потрібно 2-4 тижні на збір даних та оптимізацію кампаній.</p>
+                    </details>
+                    <details style="background: var(--card); border: var(--border); border-radius: 12px; margin-bottom: 1rem; padding: 1.5rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Чи гарантуєте ви результат?
+                            <span style="font-size: 1.5rem; color: var(--google-blue);">+</span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--muted);">Ми гарантуємо якісне налаштування кампаній згідно з найкращими практиками Google Ads. Конкретні показники залежать від багатьох факторів. Ми прагнемо досягти ROAS 300-400%+ для більшості клієнтів.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Відгуки клієнтів</h2>
+                    <p class="section-subtitle">Що кажуть про Google Ads від Vermarkter</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem;">"Google Ads від Vermarkter окупилися за перший тиждень. CTR 8.2%, конверсія 12%. Тепер масштабуємо."</p>
+                        <div style="font-weight: 600;">Андрій К.</div>
+                        <div style="color: var(--muted); font-size: 0.875rem;">E-commerce, Німеччина</div>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem;">"Endlich vernünftige Google Ads. CPA um 40% gesunken, Leads verdoppelt. Sehr professionell."</p>
+                        <div style="font-weight: 600;">Marcus W.</div>
+                        <div style="color: var(--muted); font-size: 0.875rem;">B2B Services, Berlin</div>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem;">"Прозорі звіти щодня, швидка реакція на питання. Performance Max дав 340% ROAS за 3 місяці."</p>
+                        <div style="font-weight: 600;">Ольга Т.</div>
+                        <div style="color: var(--muted); font-size: 0.875rem;">Online курси, Польща</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Services -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Інші послуги</h2>
+                    <p class="section-subtitle">Комплексні рішення для вашого бізнесу</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <div class="card-icon">📱</div>
+                        <h3>Meta Ads</h3>
+                        <p>Facebook та Instagram для лідогенерації та продажів. Ремаркетинг та lookalike аудиторії.</p>
+                        <a href="../meta-ads/" style="color: var(--brand); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Дізнатися більше →</a>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="card-icon">📈</div>
+                        <h3>SEO Оптимізація</h3>
+                        <p>Органічний трафік з локалізованим контентом для ЄС. Довгострокові результати.</p>
+                        <a href="../seo/" style="color: var(--brand); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Дізнатися більше →</a>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="card-icon">🤝</div>
+                        <h3>CRM Інтеграція</h3>
+                        <p>Усі заявки в Telegram/таблицю + автоворонки. Повний контроль над лідами.</p>
+                        <a href="../crm/" style="color: var(--brand); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Дізнатися більше →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact" class="services-section" style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="hero-card">
+                    <div class="section-header">
+                        <h2>Замовити аудит Google Ads</h2>
+                        <p class="section-subtitle">Безкоштовний аналіз вашого акаунту або конкурентів</p>
+                    </div>
+                    <form class="audit-form">
+                        <input type="text" name="name" placeholder="Ім'я" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="text" name="telegram" placeholder="Telegram (опційно)" style="grid-column: 1 / -1;">
+                        <textarea name="message" placeholder="Розкажіть про ваш бізнес та цілі" style="grid-column: 1 / -1; min-height: 120px; resize: vertical;"></textarea>
+                        <button type="submit" class="cta" style="grid-column: 1 / -1;">Отримати аудит</button>
+                    </form>
+                    <p style="margin-top: 1.5rem; color: var(--muted); font-size: 0.875rem; text-align: center;">
+                        Або напишіть нам: <a href="mailto:maps.werbung@gmail.com" style="color: var(--brand);">maps.werbung@gmail.com</a> | 
+                        <a href="https://t.me/vermarkter" style="color: var(--brand);">Telegram</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Vermarkter</h4>
-                    <p style="color: var(--text-muted);">Маркетингова агенція для українців у ЄС.</p
+                    <p>Маркетингова агенція для українців у ЄС.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <a href="../../ua#services">Послуги</a>
+                    <a href="../../ua#cases">Кейси</a>
+                    <a href="../../ua#calculator">Калькулятор</a>
+                    <a href="../../ua#testimonials">Відгуки</a>
+                    <a href="#contact">Контакти</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Юридично</h4>
+                    <a href="../../ua#privacy">Privacy Policy</a>
+                    <a href="../../ua#privacy">Impressum</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Vermarkter. Всі права захищені.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js" defer></script>
+</body>
+</html>
