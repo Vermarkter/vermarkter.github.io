@@ -3,676 +3,354 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vermarkter — Запустіть бізнес в ЄС за 7 днів</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        :root {
-            --primary: #2563eb;
-            --secondary: #7c3aed;
-            --success: #10b981;
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-light: #f1f5f9;
-            --text-muted: #94a3b8;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Header */
-        header {
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover { color: var(--text-light); }
-        
-        .lang-selector {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-light);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 6rem 0 4rem;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        /* Stats Section */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 4rem 0;
-        }
-        
-        .stat-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .stat-label {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-        
-        /* Services Section */
-        .services {
-            padding: 4rem 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-muted);
-            margin-bottom: 3rem;
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: var(--bg-card);
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-            margin-bottom: 1rem;
-        }
-        
-        /* Calculator Section */
-        .calculator {
-            background: var(--bg-card);
-            padding: 3rem;
-            border-radius: 12px;
-            margin: 4rem 0;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-muted);
-        }
-        
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--bg-dark);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-        
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-        
-        .results {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .result-item {
-            text-align: center;
-            padding: 1rem;
-            background: var(--bg-dark);
-            border-radius: 8px;
-        }
-        
-        .result-value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        /* Contact Form */
-        .contact-form {
-            background: var(--bg-card);
-            padding: 3rem;
-            border-radius: 12px;
-            margin: 4rem 0;
-        }
-        
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--bg-dark);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-        
-        .contact-form textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        /* Chatbot */
-        .chatbot {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        
-        .chat-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
-        }
-        
-        .chat-window {
-            display: none;
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            width: 350px;
-            height: 500px;
-            background: var(--bg-card);
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-            flex-direction: column;
-        }
-        
-        .chat-window.active {
-            display: flex;
-        }
-        
-        .chat-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            padding: 1rem;
-            border-radius: 12px 12px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .chat-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        .chat-body {
-            flex: 1;
-            padding: 1rem;
-            overflow-y: auto;
-        }
-        
-        .chat-message {
-            margin-bottom: 1rem;
-            padding: 0.75rem;
-            border-radius: 8px;
-        }
-        
-        .chat-message.bot {
-            background: var(--bg-dark);
-        }
-        
-        .chat-message.user {
-            background: var(--primary);
-            margin-left: 20%;
-        }
-        
-        .chat-input-area {
-            padding: 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-        
-        .chat-input {
-            width: 100%;
-            padding: 0.75rem;
-            background: var(--bg-dark);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            color: var(--text-light);
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .mobile-menu-btn { display: block; }
-            .hero h1 { font-size: 2rem; }
-            .form-row { grid-template-columns: 1fr; }
-            .chat-window { width: calc(100% - 40px); right: 20px; }
-        }
-    </style>
+    <title>Google Ads — Реклама в Google для бізнесу в ЄС | Vermarkter</title>
+    <meta name="description" content="Професійне налаштування Google Ads для бізнесу в Німеччині та ЄС. ROAS 400%+, запуск за 48 годин. Оплата за результат.">
+    <link rel="icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles.css">
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Vermarkter</div>
+            <a href="../../ua" class="logo">Vermarkter</a>
             <ul class="nav-links">
-                <li><a href="#services">Послуги</a></li>
-                <li><a href="#cases">Кейси</a></li>
-                <li><a href="#calculator">Калькулятор</a></li>
-                <li><a href="#testimonials">Відгуки</a></li>
+                <li><a href="../../ua#services">Послуги</a></li>
+                <li><a href="../../ua#cases">Кейси</a></li>
+                <li><a href="../../ua#calculator">Калькулятор</a></li>
+                <li><a href="../../ua#testimonials">Відгуки</a></li>
                 <li><a href="#contact">Контакти</a></li>
             </ul>
-            <select class="lang-selector" onchange="changeLang(this.value)">
-                <option value="UA" selected>UA</option>
-                <option value="DE">DE</option>
-                <option value="EN">EN</option>
-                <option value="PL">PL</option>
-                <option value="RU">RU</option>
-            </select>
-            <button class="mobile-menu-btn">☰</button>
+            <div class="nav-controls">
+                <select class="lang-selector" onchange="changeLang(this.value)">
+                    <option value="UA" selected>UA</option>
+                    <option value="DE">DE</option>
+                    <option value="EN">EN</option>
+                    <option value="PL">PL</option>
+                    <option value="RU">RU</option>
+                    <option value="TR">TR</option>
+                </select>
+                <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+            </div>
         </nav>
+        <div class="mobile-menu">
+            <div class="mobile-links">
+                <a href="../../ua#services">Послуги</a>
+                <a href="../../ua#cases">Кейси</a>
+                <a href="../../ua#calculator">Калькулятор</a>
+                <a href="../../ua#testimonials">Відгуки</a>
+                <a href="#contact">Контакти</a>
+            </div>
+        </div>
     </header>
 
-    <section class="hero">
+    <main>
+        <!-- Breadcrumbs -->
+        <div class="container breadcrumbs">
+            <nav>
+                <a href="../../ua">Головна</a>
+                <span>&gt;</span>
+                <a href="../../ua#services">Послуги</a>
+                <span>&gt;</span>
+                <span class="current">Google Ads</span>
+            </nav>
+        </div>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="badge badge-google animate-fade-in">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    Google Partner
+                </div>
+                <h1 class="animate-slide-up">Google Реклама: Гарячі клієнти вже сьогодні</h1>
+                <p class="lead animate-slide-up">Налаштуємо потік заявок для вашого бізнесу в Німеччині та ЄС. Оплата лише за результат.</p>
+                <div class="hero-actions animate-slide-up">
+                    <a href="#contact" class="cta">Замовити аудит →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI Stats -->
+        <section class="container">
+            <div class="stats">
+                <div class="stat">
+                    <strong style="color: var(--google-blue);">400%+</strong>
+                    <div class="muted">ROAS в середньому</div>
+                </div>
+                <div class="stat">
+                    <strong style="color: var(--google-blue);">5-12%</strong>
+                    <div class="muted">CTR оголошень</div>
+                </div>
+                <div class="stat">
+                    <strong style="color: var(--google-blue);">48 год</strong>
+                    <div class="muted">До запуску кампанії</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problems & Solutions -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Проблеми та рішення</h2>
+                    <p class="section-subtitle">Типові помилки в Google Ads і як ми їх виправляємо</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">❌</div>
+                        <h3 style="color: var(--google-red); margin-bottom: 1rem;">Зливаєте бюджет?</h3>
+                        <p style="font-weight: 600; color: var(--google-green); margin-bottom: 0.5rem;">✓ Рішення:</p>
+                        <p>Точні мінус-слова та налаштування конверсій. Збираємо семантику 500+ ключів і прибираємо непотрібний трафік.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">❌</div>
+                        <h3 style="color: var(--google-red); margin-bottom: 1rem;">Мало клієнтів?</h3>
+                        <p style="font-weight: 600; color: var(--google-green); margin-bottom: 0.5rem;">✓ Рішення:</p>
+                        <p>Використовуємо PMax та пошукові кампанії для максимального охоплення вашої цільової аудиторії в ЄС.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div style="font-size: 2.5rem; margin-bottom: 1rem;">❌</div>
+                        <h3 style="color: var(--google-red); margin-bottom: 1rem;">Конкуренти тиснуть?</h3>
+                        <p style="font-weight: 600; color: var(--google-green); margin-bottom: 0.5rem;">✓ Рішення:</p>
+                        <p>Аналізуємо їх слабкі місця і б'ємо туди. Конкурентний аудит та унікальні пропозиції.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing -->
+        <section class="services-section" style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Тарифи Google Ads</h2>
+                    <p class="section-subtitle">Виберіть пакет для вашого бізнесу</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--google-blue), var(--google-green));">💼</div>
+                        <h3>Start</h3>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--google-blue); margin: 1rem 0;">200€</div>
+                        <p style="color: var(--muted); margin-bottom: 1.5rem;">одноразово + бюджет</p>
+                        <ul class="service-features">
+                            <li>Пошукова мережа</li>
+                            <li>До 100 ключових слів</li>
+                            <li>5 оголошень</li>
+                            <li>Базова аналітика</li>
+                            <li>Щотижневі звіти</li>
+                        </ul>
+                        <a href="#contact" class="cta" style="width: 100%; text-align: center; margin-top: 1rem;">Замовити</a>
+                    </div>
+                    
+                    <div class="card animate-slide-up" style="border: 2px solid var(--google-blue); transform: scale(1.05);">
+                        <div class="badge-popular">ПОПУЛЯРНИЙ</div>
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--google-blue), var(--google-green));">🚀</div>
+                        <h3>Growth</h3>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--google-blue); margin: 1rem 0;">450€</div>
+                        <p style="color: var(--muted); margin-bottom: 1.5rem;">одноразово + бюджет</p>
+                        <ul class="service-features">
+                            <li>Пошук + Performance Max</li>
+                            <li>YouTube та Google Maps</li>
+                            <li>Ремаркетинг</li>
+                            <li>До 500 ключових слів</li>
+                            <li>Розширена аналітика</li>
+                            <li>Щоденні звіти</li>
+                        </ul>
+                        <a href="#contact" class="cta" style="width: 100%; text-align: center; margin-top: 1rem;">Замовити</a>
+                    </div>
+                    
+                    <div class="card animate-slide-up">
+                        <div class="card-icon" style="background: linear-gradient(135deg, var(--google-blue), var(--google-green));">⭐</div>
+                        <h3>Pro</h3>
+                        <div style="font-size: 2.5rem; font-weight: 900; color: var(--google-blue); margin: 1rem 0;">800€+</div>
+                        <p style="color: var(--muted); margin-bottom: 1.5rem;">одноразово + бюджет</p>
+                        <ul class="service-features">
+                            <li>Google Shopping</li>
+                            <li>Динамічний ремаркетинг</li>
+                            <li>Наскрізна аналітика</li>
+                            <li>Необмежена семантика</li>
+                            <li>A/B тести креативів</li>
+                            <li>Особистий менеджер</li>
+                        </ul>
+                        <a href="#contact" class="cta" style="width: 100%; text-align: center; margin-top: 1rem;">Замовити</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Процес роботи</h2>
+                    <p class="section-subtitle">4 простих кроки до результату</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <div class="step-number step-number-google">1</div>
+                        <h3 style="margin-top: 1rem;">Аудит та Стратегія</h3>
+                        <p>Аналізуємо ваш бізнес, конкурентів та цільову аудиторію. Складаємо стратегію запуску.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="step-number step-number-google">2</div>
+                        <h3 style="margin-top: 1rem;">Збір семантики</h3>
+                        <p>Підбираємо 100-500 ключових слів, відсіюємо нерелевантні запити, формуємо мінус-слова.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="step-number step-number-google">3</div>
+                        <h3 style="margin-top: 1rem;">Креативи та оголошення</h3>
+                        <p>Пишемо продаючі тексти оголошень, створюємо банери для медійних кампаній.</p>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="step-number step-number-google">4</div>
+                        <h3 style="margin-top: 1rem;">Запуск та оптимізація</h3>
+                        <p>Запускаємо кампанії, щодня моніторимо, коригуємо ставки та тестуємо гіпотези.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="services-section" style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Часті питання</h2>
+                </div>
+                <div style="max-width: 800px; margin: 0 auto;">
+                    <details style="background: var(--card); border: var(--border); border-radius: 12px; margin-bottom: 1rem; padding: 1.5rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Який мінімальний бюджет для старту?
+                            <span style="font-size: 1.5rem; color: var(--google-blue);">+</span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--muted);">Рекомендуємо мінімум 500€ на місяць для рекламного бюджету + вартість налаштування. Для e-commerce краще стартувати від 1000€, щоб отримати достатньо даних для оптимізації.</p>
+                    </details>
+                    <details style="background: var(--card); border: var(--border); border-radius: 12px; margin-bottom: 1rem; padding: 1.5rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Як швидко з'являться перші результати?
+                            <span style="font-size: 1.5rem; color: var(--google-blue);">+</span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--muted);">Перші кліки та заявки можуть з'явитися вже через 24-48 годин після запуску. Однак для стабільних результатів потрібно 2-4 тижні на збір даних та оптимізацію кампаній.</p>
+                    </details>
+                    <details style="background: var(--card); border: var(--border); border-radius: 12px; margin-bottom: 1rem; padding: 1.5rem;">
+                        <summary style="font-weight: 600; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                            Чи гарантуєте ви результат?
+                            <span style="font-size: 1.5rem; color: var(--google-blue);">+</span>
+                        </summary>
+                        <p style="margin-top: 1rem; color: var(--muted);">Ми гарантуємо якісне налаштування кампаній згідно з найкращими практиками Google Ads. Конкретні показники залежать від багатьох факторів. Ми прагнемо досягти ROAS 300-400%+ для більшості клієнтів.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="testimonials-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Відгуки клієнтів</h2>
+                    <p class="section-subtitle">Що кажуть про Google Ads від Vermarkter</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem;">"Google Ads від Vermarkter окупилися за перший тиждень. CTR 8.2%, конверсія 12%. Тепер масштабуємо."</p>
+                        <div style="font-weight: 600;">Андрій К.</div>
+                        <div style="color: var(--muted); font-size: 0.875rem;">E-commerce, Німеччина</div>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem;">"Endlich vernünftige Google Ads. CPA um 40% gesunken, Leads verdoppelt. Sehr professionell."</p>
+                        <div style="font-weight: 600;">Marcus W.</div>
+                        <div style="color: var(--muted); font-size: 0.875rem;">B2B Services, Berlin</div>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <p style="font-style: italic; color: var(--muted); margin-bottom: 1.5rem;">"Прозорі звіти щодня, швидка реакція на питання. Performance Max дав 340% ROAS за 3 місяці."</p>
+                        <div style="font-weight: 600;">Ольга Т.</div>
+                        <div style="color: var(--muted); font-size: 0.875rem;">Online курси, Польща</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Services -->
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Інші послуги</h2>
+                    <p class="section-subtitle">Комплексні рішення для вашого бізнесу</p>
+                </div>
+                <div class="services-grid">
+                    <div class="card animate-slide-up">
+                        <div class="card-icon">📱</div>
+                        <h3>Meta Ads</h3>
+                        <p>Facebook та Instagram для лідогенерації та продажів. Ремаркетинг та lookalike аудиторії.</p>
+                        <a href="../meta-ads/" style="color: var(--brand); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Дізнатися більше →</a>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="card-icon">📈</div>
+                        <h3>SEO Оптимізація</h3>
+                        <p>Органічний трафік з локалізованим контентом для ЄС. Довгострокові результати.</p>
+                        <a href="../seo/" style="color: var(--brand); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Дізнатися більше →</a>
+                    </div>
+                    <div class="card animate-slide-up">
+                        <div class="card-icon">🤝</div>
+                        <h3>CRM Інтеграція</h3>
+                        <p>Усі заявки в Telegram/таблицю + автоворонки. Повний контроль над лідами.</p>
+                        <a href="../crm/" style="color: var(--brand); text-decoration: none; font-weight: 600; margin-top: 1rem; display: inline-block;">Дізнатися більше →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form -->
+        <section id="contact" class="services-section" style="background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="hero-card">
+                    <div class="section-header">
+                        <h2>Замовити аудит Google Ads</h2>
+                        <p class="section-subtitle">Безкоштовний аналіз вашого акаунту або конкурентів</p>
+                    </div>
+                    <form class="audit-form">
+                        <input type="text" name="name" placeholder="Ім'я" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="text" name="telegram" placeholder="Telegram (опційно)" style="grid-column: 1 / -1;">
+                        <textarea name="message" placeholder="Розкажіть про ваш бізнес та цілі" style="grid-column: 1 / -1; min-height: 120px; resize: vertical;"></textarea>
+                        <button type="submit" class="cta" style="grid-column: 1 / -1;">Отримати аудит</button>
+                    </form>
+                    <p style="margin-top: 1.5rem; color: var(--muted); font-size: 0.875rem; text-align: center;">
+                        Або напишіть нам: <a href="mailto:maps.werbung@gmail.com" style="color: var(--brand);">maps.werbung@gmail.com</a> | 
+                        <a href="https://t.me/vermarkter" style="color: var(--brand);">Telegram</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
         <div class="container">
-            <h1>Запустіть бізнес в ЄС за 7 днів</h1>
-            <p>Створено для українців, які будують бізнес у ЄС</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Отримати пропозицію</a>
-                <a href="#calculator" class="btn btn-secondary">Розрахувати бюджет</a>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Vermarkter</h4>
+                    <p>Маркетингова агенція для українців у ЄС.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навігація</h4>
+                    <a href="../../ua#services">Послуги</a>
+                    <a href="../../ua#cases">Кейси</a>
+                    <a href="../../ua#calculator">Калькулятор</a>
+                    <a href="../../ua#testimonials">Відгуки</a>
+                    <a href="#contact">Контакти</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Юридично</h4>
+                    <a href="../../ua#privacy">Privacy Policy</a>
+                    <a href="../../ua#privacy">Impressum</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Vermarkter. Всі права захищені.</p>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <section class="container">
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number" id="stat1">247</div>
-                <div class="stat-label">% зростання заявок</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="stat2">168</div>
-                <div class="stat-label">годин до запуску</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="stat3">27</div>
-                <div class="stat-label">країн ЄС</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="container services">
-        <h2 class="section-title">Наші послуги</h2>
-        <p class="section-subtitle">Комплексні маркетингові рішення для швидкого запуску та масштабування бізнесу в ЄС</p>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">💻</div>
-                <h3>Розробка Сайтів</h3>
-                <p>Лендінги, що продають, із швидким завантаженням та аналітикою.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🔍</div>
-                <h3>Google Ads</h3>
-                <p>Гарячі клієнти з пошуку та Performance Max для ЄС.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📱</div>
-                <h3>Meta Ads</h3>
-                <p>Facebook та Instagram для лідогенерації та продажів.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎵</div>
-                <h3>TikTok Ads</h3>
-                <p>Відеокреативи та вірусне охоплення у TikTok.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📈</div>
-                <h3>SEO Оптимізація</h3>
-                <p>Органічний трафік з локалізованим контентом для ЄС.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🤝</div>
-                <h3>CRM Інтеграція</h3>
-                <p>Усі заявки в Telegram/таблицю + автоворонки.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="calculator" class="container">
-        <div class="calculator">
-            <h2 class="section-title">Калькулятор бюджету</h2>
-            <p class="section-subtitle">Розрахуйте прогноз охоплення та вартості</p>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Платформа</label>
-                    <select id="platform">
-                        <option value="google">Google Ads</option>
-                        <option value="meta">Meta Ads</option>
-                        <option value="tiktok">TikTok Ads</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Регіон</label>
-                    <select id="region">
-                        <option value="de">Німеччина</option>
-                        <option value="pl">Польща</option>
-                        <option value="eu">Вся Європа</option>
-                    </select>
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Бюджет (€)</label>
-                    <input type="number" id="budget" placeholder="1000" value="1000">
-                </div>
-                <div class="form-group">
-                    <label>Середній чек (€)</label>
-                    <input type="number" id="avgCheck" placeholder="50" value="50">
-                </div>
-            </div>
-            
-            <button class="btn btn-primary" onclick="calculate()" style="width: 100%; margin-top: 1rem;">Розрахувати</button>
-            
-            <div class="results" id="results" style="display: none;">
-                <div class="result-item">
-                    <div class="result-value" id="reach">—</div>
-                    <div class="stat-label">Охоплення</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-value" id="clicks">—</div>
-                    <div class="stat-label">Кліки</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-value" id="ctr">—</div>
-                    <div class="stat-label">CTR %</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-value" id="cpc">—</div>
-                    <div class="stat-label">CPC €</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-value" id="leads">—</div>
-                    <div class="stat-label">Заявки</div>
-                </div>
-                <div class="result-item">
-                    <div class="result-value" id="revenue">—</div>
-                    <div class="stat-label">Дохід €</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="container">
-        <div class="contact-form">
-            <h2 class="section-title">Готові стартувати?</h2>
-            <p class="section-subtitle">Заповніть форму, і ми надішлемо персональну пропозицію</p>
-            
-            <div class="form-row">
-                <input type="text" placeholder="Ім'я" required>
-                <input type="email" placeholder="Email" required>
-            </div>
-            <input type="text" placeholder="Telegram (опційно)">
-            <textarea placeholder="Ваш запит"></textarea>
-            <button class="btn btn-primary" style="width: 100%;">Відправити</button>
-        </div>
-    </section>
-
-    <div class="chatbot">
-        <button class="chat-button" onclick="toggleChat()">💬</button>
-        <div class="chat-window" id="chatWindow">
-            <div class="chat-header">
-                <h3>AI-маркетолог</h3>
-                <button class="chat-close" onclick="toggleChat()">×</button>
-            </div>
-            <div class="chat-body" id="chatBody">
-                <div class="chat-message bot">
-                    Вітаю! Я AI-асистент Vermarkter. Як можу допомогти вам запустити бізнес в ЄС?
-                </div>
-            </div>
-            <div class="chat-input-area">
-                <input type="text" class="chat-input" id="chatInput" placeholder="Напишіть повідомлення..." onkeypress="if(event.key==='Enter') sendMessage()">
-            </div>
-        </div>
-    </div>
-
-    <script>
-        // Animation for stats
-        function animateValue(id, start, end, duration) {
-            const obj = document.getElementById(id);
-            const range = end - start;
-            const increment = end > start ? 1 : -1;
-            const stepTime = Math.abs(Math.floor(duration / range));
-            let current = start;
-            const timer = setInterval(() => {
-                current += increment;
-                obj.textContent = current;
-                if (current === end) clearInterval(timer);
-            }, stepTime);
-        }
-
-        window.addEventListener('load', () => {
-            animateValue('stat1', 0, 247, 2000);
-            animateValue('stat2', 0, 168, 2000);
-            animateValue('stat3', 0, 27, 2000);
-        });
-
-        // Calculator
-        function calculate() {
-            const budget = parseFloat(document.getElementById('budget').value);
-            const avgCheck = parseFloat(document.getElementById('avgCheck').value);
-            const platform = document.getElementById('platform').value;
-            
-            let cpc, ctr;
-            if (platform === 'google') {
-                cpc = 0.5;
-                ctr = 3.5;
-            } else if (platform === 'meta') {
-                cpc = 0.3;
-                ctr = 2.5;
-            } else {
-                cpc = 0.2;
-                ctr = 4.5;
-            }
-            
-            const clicks = Math.floor(budget / cpc);
-            const reach = Math.floor(clicks / (ctr / 100));
-            const conversionRate = 5;
-            const leads = Math.floor(clicks * (conversionRate / 100));
-            const revenue = Math.floor(leads * avgCheck);
-            
-            document.getElementById('reach').textContent = reach.toLocaleString();
-            document.getElementById('clicks').textContent = clicks.toLocaleString();
-            document.getElementById('ctr').textContent = ctr.toFixed(1);
-            document.getElementById('cpc').textContent = cpc.toFixed(2);
-            document.getElementById('leads').textContent = leads;
-            document.getElementById('revenue').textContent = revenue.toLocaleString();
-            
-            document.getElementById('results').style.display = 'grid';
-        }
-
-        // Chatbot
-        const responses = {
-            привіт: 'Привіт! Чим можу допомогти?',
-            ціна: 'Наші послуги стартують від 200€. Хочете детальнішу консультацію?',
-            послуги: 'Ми пропонуємо: розробку сайтів, Google Ads, Meta Ads, TikTok Ads, SEO та CRM інтеграцію.',
-            контакт: 'Напишіть нам: maps.werbung@gmail.com або Telegram: @vermarkter'
-        };
-
-        function toggleChat() {
-            document.getElementById('chatWindow').classList.toggle('active');
-        }
-
-        function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim().toLowerCase();
-            if (!message) return;
-            
-            const chatBody = document.getElementById('chatBody');
-            chatBody.innerHTML += `<div class="chat-message user">${input.value}</div>`;
-            
-            let response = 'Дякую за ваше повідомлення! Наш менеджер зв\'яжеться з вами найближчим часом.';
-            for (let key in responses) {
-                if (message.includes(key)) {
-                    response = responses[key];
-                    break;
-                }
-            }
-            
-            setTimeout(() => {
-                chatBody.innerHTML += `<div class="chat-message bot">${response}</div>`;
-                chatBody.scrollTop = chatBody.scrollHeight;
-            }, 500);
-            
-            input.value = '';
-            chatBody.scrollTop = chatBody.scrollHeight;
-        }
-
-        function changeLang(lang) {
-            const routes = {
-                'UA': '/ua',
-                'DE': '/de',
-                'EN': '/en',
-                'PL': '/pl',
-                'RU': '/ru'
-            };
-            if (routes[lang]) {
-                window.location.href = 'https://vermarkter.github.io' + routes[lang];
-            }
-        }
-    </script>
+    <script src="../../js/main.js" defer></script>
 </body>
 </html>
