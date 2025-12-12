@@ -1,299 +1,440 @@
-// Vermarkter - Global JavaScript
+// ============================================
+// VERMARKTER - MAIN JAVASCRIPT
+// Complete logic for marketing agency website
+// ============================================
 
-// Language Switcher
-function changeLang(lang) {
-    const routes = {
-        'UA': '/ua',
-        'DE': '/de',
-        'EN': '/en',
-        'PL': '/pl',
-        'RU': '/ru',
-        'TR': '/tr'
-    };
-    
-    if (routes[lang]) {
-        const baseUrl = 'https://vermarkter.github.io';
-        // Check if we're on a service page
-        const currentPath = window.location.pathname;
-        const serviceMatch = currentPath.match(/\/services\/([^\/]+)/);
-        
-        if (serviceMatch) {
-            // Redirect to service page in new language
-            window.location.href = `${baseUrl}${routes[lang]}/services/${serviceMatch[1]}`;
-        } else {
-            // Redirect to homepage in new language
-            window.location.href = baseUrl + routes[lang];
-        }
-    }
-}
+// ==================== CONSTANTS ====================
+const CALCULATOR_COEFFICIENTS = {
+    google: { cpc: 0.8, ctr: 3.5, conversion: 5 },
+    meta: { cpc: 0.5, ctr: 2.5, conversion: 4 },
+    tiktok: { cpc: 0.2, ctr: 4.5, conversion: 3 }
+};
 
-// Sync all language selectors
-function syncLangSelectors() {
-    const selectors = document.querySelectorAll('.lang-selector');
-    selectors.forEach(selector => {
-        selector.addEventListener('change', function() {
-            selectors.forEach(s => s.value = this.value);
+// ==================== MOBILE MENU ====================
+const mobileToggle = document.getElementById('mobileToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+
+if (mobileToggle && mobileMenu) {
+    mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+        const isActive = mobileMenu.classList.contains('active');
+        mobileToggle.textContent = isActive ? '✕' : '☰';
+        document.body.style.overflow = isActive ? 'hidden' : '';
+    });
+
+    // Close on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            mobileToggle.textContent = '☰';
+            document.body.style.overflow = '';
         });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+        if (mobileMenu.classList.contains('active') && 
+            !mobileMenu.contains(e.target) && 
+            !mobileToggle.contains(e.target)) {
+            mobileMenu.classList.remove('active');
+            mobileToggle.textContent = '☰';
+            document.body.style.overflow = '';
+        }
     });
 }
 
-// Mobile Menu Toggle
-function toggleMobileMenu() {
-    const menu = document.querySelector('.mobile-menu');
-    const btn = document.querySelector('.mobile-menu-btn');
-    
-    if (menu) {
-        menu.classList.toggle('active');
-        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
-    }
+// ==================== THEME TOGGLE ====================
+const themeToggle = document.getElementById('themeToggle');
+
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.body.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
 }
 
-// Close mobile menu when clicking links
-function closeMobileMenu() {
-    const menu = document.querySelector('.mobile-menu');
-    if (menu) {
-        menu.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-}
-
-// Theme Toggle
-function toggleTheme() {
-    const currentTheme = document.body.getAttribute('data-theme') || 'dark';
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    document.body.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    
-    // Update icon
-    const themeToggle = document.querySelector('.theme-toggle');
+function updateThemeIcon(theme) {
     if (themeToggle) {
-        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
 }
 
-// Form Submission
-function submitForm(event) {
-    event.preventDefault();
-    
-    const form = event.target;
-    const formData = new FormData(form);
-    
-    // Here you would normally send data to backend
-    // For now, just show success message
-    alert('Дякуємо! Ми зв\'яжемося з вами протягом 24 годин.');
-    
-    // Reset form
-    form.reset();
-    
-    return false;
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
+    });
 }
 
-// Calculator Logic
-function calculate() {
-    const budget = parseFloat(document.getElementById('budget')?.value || 0);
-    const avgCheck = parseFloat(document.getElementById('avgCheck')?.value || 0);
-    const platform = document.getElementById('platform')?.value || 'google';
-    
-    if (!budget || budget <= 0) {
-        alert('Будь ласка, введіть коректний бюджет');
-        return;
-    }
-    
-    let cpc, ctr;
-    if (platform === 'google') {
-        cpc = 0.5;
-        ctr = 3.5;
-    } else if (platform === 'meta') {
-        cpc = 0.3;
-        ctr = 2.5;
-    } else {
-        cpc = 0.2;
-        ctr = 4.5;
-    }
-    
-    const clicks = Math.floor(budget / cpc);
-    const reach = Math.floor(clicks / (ctr / 100));
-    const conversionRate = 5;
-    const leads = Math.floor(clicks * (conversionRate / 100));
-    const revenue = avgCheck ? Math.floor(leads * avgCheck) : 0;
-    
-    // Update results
-    const resultsDiv = document.getElementById('results');
-    if (resultsDiv) {
-        document.getElementById('reach').textContent = reach.toLocaleString();
-        document.getElementById('clicks').textContent = clicks.toLocaleString();
-        document.getElementById('ctr').textContent = ctr.toFixed(1);
-        document.getElementById('cpc').textContent = cpc.toFixed(2);
-        document.getElementById('leads').textContent = leads;
-        if (document.getElementById('revenue')) {
-            document.getElementById('revenue').textContent = revenue.toLocaleString();
-        }
+// ==================== LANGUAGE SELECTOR ====================
+const langSelector = document.getElementById('langSelector');
+
+if (langSelector) {
+    langSelector.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        const routes = {
+            'UA': '/ua',
+            'DE': '/de',
+            'EN': '/en',
+            'PL': '/pl',
+            'RU': '/ru',
+            'TR': '/tr'
+        };
         
-        resultsDiv.style.display = 'grid';
-    }
+        if (routes[lang]) {
+            window.location.href = 'https://vermarkter.github.io' + routes[lang];
+        }
+    });
 }
 
-// Stats Animation
-function animateValue(element, start, end, duration) {
+// ==================== CALCULATOR ====================
+const budgetSlider = document.getElementById('budgetSlider');
+const budgetInput = document.getElementById('budgetInput');
+const budgetValue = document.getElementById('budgetValue');
+const platform = document.getElementById('platform');
+const niche = document.getElementById('niche');
+const calculateBtn = document.getElementById('calculateBtn');
+
+// Sync slider and input
+function syncBudget(value) {
+    if (budgetSlider) budgetSlider.value = value;
+    if (budgetInput) budgetInput.value = value;
+    if (budgetValue) budgetValue.textContent = value;
+}
+
+if (budgetSlider) {
+    budgetSlider.addEventListener('input', (e) => {
+        syncBudget(e.target.value);
+    });
+}
+
+if (budgetInput) {
+    budgetInput.addEventListener('input', (e) => {
+        let value = parseInt(e.target.value) || 100;
+        value = Math.max(100, Math.min(10000, value));
+        syncBudget(value);
+    });
+}
+
+// Calculate function
+function calculate() {
+    const budget = parseInt(budgetSlider?.value || 1000);
+    const selectedPlatform = platform?.value || 'google';
+    const selectedNiche = niche?.value || 'ecommerce';
+    
+    const coef = CALCULATOR_COEFFICIENTS[selectedPlatform];
+    
+    // Calculate metrics
+    const clicks = Math.floor(budget / coef.cpc);
+    const impressions = Math.floor(clicks / (coef.ctr / 100));
+    const leads = Math.floor(clicks * (coef.conversion / 100));
+    
+    // Apply niche multiplier
+    const nicheMultipliers = {
+        'ecommerce': 1.0,
+        'services': 0.9,
+        'b2b': 0.8,
+        'saas': 0.85,
+        'local': 1.1
+    };
+    
+    const multiplier = nicheMultipliers[selectedNiche] || 1.0;
+    const adjustedLeads = Math.floor(leads * multiplier);
+    
+    // Update UI with animation
+    animateNumber('impressions', 0, impressions, 1000);
+    animateNumber('clicks', 0, clicks, 1000);
+    animateNumber('leads', 0, adjustedLeads, 1000);
+}
+
+function animateNumber(elementId, start, end, duration) {
+    const element = document.getElementById(elementId);
     if (!element) return;
     
     const range = end - start;
-    const increment = end > start ? 1 : -1;
-    const stepTime = Math.abs(Math.floor(duration / range));
+    const increment = range / (duration / 16); // 60fps
     let current = start;
     
     const timer = setInterval(() => {
         current += increment;
-        element.textContent = current;
-        if (current === end) clearInterval(timer);
-    }, stepTime);
+        if ((increment > 0 && current >= end) || (increment < 0 && current <= end)) {
+            current = end;
+            clearInterval(timer);
+        }
+        element.textContent = Math.floor(current).toLocaleString();
+    }, 16);
 }
 
-function initStatsAnimation() {
-    const stats = document.querySelectorAll('.stat strong, .stat-number');
+if (calculateBtn) {
+    calculateBtn.addEventListener('click', calculate);
+}
+
+// ==================== HERO STATS ANIMATION ====================
+function animateStatsOnScroll() {
+    const statNumbers = document.querySelectorAll('.stat-number');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting && !entry.target.dataset.animated) {
-                const targetValue = parseInt(entry.target.textContent);
-                if (!isNaN(targetValue)) {
-                    animateValue(entry.target, 0, targetValue, 2000);
-                    entry.target.dataset.animated = 'true';
-                }
+                const target = parseInt(entry.target.dataset.target);
+                animateCounter(entry.target, 0, target, 2000);
+                entry.target.dataset.animated = 'true';
             }
         });
     }, { threshold: 0.5 });
     
-    stats.forEach(stat => observer.observe(stat));
+    statNumbers.forEach(stat => observer.observe(stat));
 }
 
-// FAQ Toggle Animation
-function initFAQ() {
-    document.querySelectorAll('details').forEach(detail => {
-        detail.addEventListener('toggle', function() {
-            const icon = this.querySelector('summary span');
-            if (icon) {
-                icon.textContent = this.open ? '−' : '+';
-            }
+function animateCounter(element, start, end, duration) {
+    const range = end - start;
+    const increment = range / (duration / 16);
+    let current = start;
+    
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= end) {
+            current = end;
+            clearInterval(timer);
+        }
+        
+        // Add % or other suffix based on context
+        const suffix = element.dataset.target === '7' ? '' : '%';
+        element.textContent = Math.floor(current) + suffix;
+    }, 16);
+}
+
+// ==================== TESTIMONIALS MARQUEE ====================
+function initMarquee() {
+    const marqueeContent = document.getElementById('marqueeContent');
+    
+    if (marqueeContent) {
+        // Clone testimonials for seamless loop
+        const clone = marqueeContent.cloneNode(true);
+        marqueeContent.parentElement.appendChild(clone);
+        
+        // Pause on hover
+        const marqueeElements = document.querySelectorAll('.marquee-content');
+        marqueeElements.forEach(element => {
+            element.addEventListener('mouseenter', () => {
+                element.style.animationPlayState = 'paused';
+            });
+            
+            element.addEventListener('mouseleave', () => {
+                element.style.animationPlayState = 'running';
+            });
         });
+    }
+}
+
+// ==================== COOKIE BANNER ====================
+const cookieBanner = document.getElementById('cookieBanner');
+const acceptCookies = document.getElementById('acceptCookies');
+const declineCookies = document.getElementById('declineCookies');
+
+function initCookieBanner() {
+    const cookieConsent = localStorage.getItem('cookieConsent');
+    
+    if (!cookieConsent && cookieBanner) {
+        setTimeout(() => {
+            cookieBanner.classList.add('show');
+        }, 1000);
+    }
+}
+
+if (acceptCookies) {
+    acceptCookies.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'accepted');
+        cookieBanner?.classList.remove('show');
     });
 }
 
-// Smooth Scroll
+if (declineCookies) {
+    declineCookies.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'declined');
+        cookieBanner?.classList.remove('show');
+    });
+}
+
+// ==================== CHATBOT ====================
+const chatbotButton = document.getElementById('chatbotButton');
+
+if (chatbotButton) {
+    chatbotButton.addEventListener('click', () => {
+        // Open Telegram chat or custom chatbot
+        window.open('https://t.me/vermarkter', '_blank');
+    });
+}
+
+// ==================== SCROLL ANIMATIONS ====================
+function initScrollAnimations() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+    
+    elements.forEach(el => observer.observe(el));
+}
+
+// ==================== SMOOTH SCROLL ====================
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#') return;
+            if (href === '#' || href === '#!') return;
             
             e.preventDefault();
             const target = document.querySelector(href);
             
             if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerOffset = 80;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
                 });
-                closeMobileMenu();
             }
         });
     });
 }
 
-// Intersection Observer for Animations
-function initScrollAnimations() {
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
+// ==================== PREVENT HEADER OVERLAP ====================
+function preventHeaderOverlap() {
+    // Ensure body has correct padding
+    const header = document.querySelector('header');
+    if (header) {
+        const headerHeight = header.offsetHeight;
+        document.body.style.paddingTop = headerHeight + 'px';
+    }
+}
+
+// ==================== FORM SUBMISSIONS ====================
+function initForms() {
+    const forms = document.querySelectorAll('form');
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
+    forms.forEach(form => {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            alert('Дякуємо! Ми зв\'яжемося з вами найближчим часом.');
+            
+            // Reset form
+            form.reset();
+            
+            // In production, send to backend
+            console.log('Form submitted:', data);
         });
-    }, observerOptions);
-    
-    document.querySelectorAll('.card, .service-card, .stat').forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
     });
 }
 
-// Close mobile menu when clicking outside
-function initClickOutside() {
-    document.addEventListener('click', function(e) {
-        const menu = document.querySelector('.mobile-menu');
-        const toggle = document.querySelector('.mobile-menu-btn');
-        
-        if (menu && menu.classList.contains('active') && 
-            !menu.contains(e.target) && 
-            !toggle.contains(e.target)) {
-            closeMobileMenu();
+// ==================== CTA BUTTONS ====================
+function initCTAButtons() {
+    const ctaButtons = document.querySelectorAll('.btn-primary, .btn-secondary');
+    
+    ctaButtons.forEach(button => {
+        if (!button.getAttribute('href') && button.tagName === 'BUTTON') {
+            button.addEventListener('click', () => {
+                // Scroll to contact or open modal
+                const contactSection = document.getElementById('contact');
+                if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
         }
     });
 }
 
-// Initialize on DOM Load
-document.addEventListener('DOMContentLoaded', function() {
-    // Load saved theme
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.body.setAttribute('data-theme', savedTheme);
+// ==================== PERFORMANCE OPTIMIZATION ====================
+// Debounce function for performance
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Optimize scroll events
+const optimizedScroll = debounce(() => {
+    // Add scroll-based animations or effects here
+}, 100);
+
+window.addEventListener('scroll', optimizedScroll);
+
+// ==================== INIT ON LOAD ====================
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('🚀 Vermarkter website initialized');
     
-    // Update theme toggle icon
-    const themeToggle = document.querySelector('.theme-toggle');
-    if (themeToggle) {
-        themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
-    }
-    
-    // Initialize features
-    syncLangSelectors();
-    initStatsAnimation();
-    initFAQ();
-    initSmoothScroll();
+    // Initialize all features
+    initTheme();
+    initCookieBanner();
+    initMarquee();
+    animateStatsOnScroll();
     initScrollAnimations();
-    initClickOutside();
+    initSmoothScroll();
+    preventHeaderOverlap();
+    initForms();
+    initCTAButtons();
     
-    // Attach mobile menu toggle to buttons
-    const mobileToggle = document.querySelector('.mobile-menu-btn');
-    if (mobileToggle) {
-        mobileToggle.addEventListener('click', toggleMobileMenu);
-    }
-    
-    // Attach theme toggle
-    const themeBtn = document.querySelector('.theme-toggle');
-    if (themeBtn) {
-        themeBtn.addEventListener('click', toggleTheme);
-    }
-    
-    // Attach to mobile links
-    const mobileLinks = document.querySelectorAll('.mobile-links a');
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', closeMobileMenu);
-    });
-    
-    // Calculator button
-    const calcBtn = document.querySelector('[onclick*="calculate"]');
-    if (calcBtn) {
-        calcBtn.onclick = calculate;
-    }
-    
-    // Form submissions
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
-        form.addEventListener('submit', submitForm);
-    });
+    // Add loaded class for animations
+    document.body.classList.add('loaded');
 });
 
-// Export functions for inline use
-window.changeLang = changeLang;
-window.toggleMobileMenu = toggleMobileMenu;
-window.closeMobileMenu = closeMobileMenu;
-window.submitForm = submitForm;
-window.calculate = calculate;
-window.toggleTheme = toggleTheme;
+// Recalculate on resize
+window.addEventListener('resize', debounce(() => {
+    preventHeaderOverlap();
+}, 250));
+
+// ==================== ANALYTICS (Optional) ====================
+function trackEvent(category, action, label) {
+    // Google Analytics or custom analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', action, {
+            'event_category': category,
+            'event_label': label
+        });
+    }
+    console.log('Event tracked:', { category, action, label });
+}
+
+// Track important interactions
+if (calculateBtn) {
+    calculateBtn.addEventListener('click', () => {
+        trackEvent('Calculator', 'Calculate', 'Budget Calculator Used');
+    });
+}
+
+if (chatbotButton) {
+    chatbotButton.addEventListener('click', () => {
+        trackEvent('Engagement', 'Click', 'Chatbot Opened');
+    });
+}
+
+// ==================== EXPORT FOR EXTERNAL USE ====================
+window.Vermarkter = {
+    calculate,
+    trackEvent,
+    initTheme,
+    animateNumber
+};
