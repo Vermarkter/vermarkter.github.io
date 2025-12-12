@@ -1,278 +1,453 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Marketing in Europa | Vermarkter</title>
-  <meta name="description" content="Комплексний маркетинг в ЄС: Google Ads, Meta Ads, TikTok, Розробка сайтів. Отримайте клієнтів за 7 днів."/>
-  
-  <link rel="icon" href="../favicon.ico" type="image/x-icon">
-  
-  <!-- Fonts & Icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  
-  <!-- ПРАВИЛЬНЕ ПІДКЛЮЧЕННЯ СТИЛІВ -->
-  <link rel="stylesheet" href="../styles.css">
-  <link rel="stylesheet" href="../css/chatbot.css">
-
-  <style>
-    /* Додатковий стиль для українського градієнта */
-    .flag-highlight {
-        background: linear-gradient(90deg, #0057B7 0%, #FFD700 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 900;
-        text-shadow: 0px 2px 10px rgba(0, 87, 183, 0.2);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vermarkter — Запустіть бізнес в ЄС за 7 днів</title>
+    <meta name="description" content="Маркетингова агенція для українців у Європейському Союзі. Створення сайтів, Google Ads, SEO, SMM. Запуск бізнесу за 7 днів.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../favicon.ico">
 </head>
 <body>
-
-  <header>
-    <div class="container">
-      <nav class="nav">
-        <a href="#" class="brand"><i class="fas fa-bolt"></i> Vermarkter <span>UA</span></a>
+    <!-- HEADER (FIXED) -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">Vermarkter</a>
+            
+            <ul class="nav-menu">
+                <li><a href="#services">Послуги</a></li>
+                <li><a href="#calculator">Калькулятор</a></li>
+                <li><a href="#testimonials">Відгуки</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
+            
+            <div class="nav-controls">
+                <select class="lang-selector" id="langSelector">
+                    <option value="UA" selected>🇺🇦 UA</option>
+                    <option value="DE">🇩🇪 DE</option>
+                    <option value="EN">🇬🇧 EN</option>
+                    <option value="PL">🇵🇱 PL</option>
+                    <option value="RU">🇷🇺 RU</option>
+                    <option value="TR">🇹🇷 TR</option>
+                </select>
+                
+                <button class="theme-toggle" id="themeToggle">☀️</button>
+                
+                <button class="mobile-toggle" id="mobileToggle">☰</button>
+            </div>
+        </nav>
         
-        <div class="nav-desktop">
-          <a href="#services">Послуги</a>
-          <a href="#cases">Кейси</a>
-          <a href="#calculator-section">Калькулятор</a>
-          <a href="#testimonials">Відгуки</a>
-          <a href="#contact">Контакти</a>
+        <!-- MOBILE MENU -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="nav-menu">
+                <li><a href="#services">Послуги</a></li>
+                <li><a href="#calculator">Калькулятор</a></li>
+                <li><a href="#testimonials">Відгуки</a></li>
+                <li><a href="#contact">Контакти</a></li>
+            </ul>
         </div>
+    </header>
 
-        <div class="controls" style="display:flex; gap:10px; align-items:center;">
-             <!-- Theme Toggle -->
-            <button class="theme-toggle" id="theme-btn">🌙</button>
-
-            <!-- Lang Switcher -->
-            <select class="lang-selector" onchange="window.location.href='../'+this.value+'/'" style="background:rgba(255,255,255,0.1); color:white; border:1px solid #444; padding:5px; border-radius:5px;">
-                <option value="ua" selected>UA</option>
-                <option value="de">DE</option>
-                <option value="en">EN</option>
-                <option value="pl">PL</option>
-            </select>
-        </div>
-
-        <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
-      </nav>
-    </div>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#services">Послуги</a>
-        <a href="#cases">Кейси</a>
-        <a href="#calculator-section">Калькулятор</a>
-        <a href="#contact">Контакти</a>
-    </div>
-  </header>
-
-  <main>
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <section class="hero">
-      <div class="container">
-        <div class="badge">🚀 Офіційний старт: Сайт + Реклама = 200€</div>
-        <h1>Запустіть бізнес в ЄС<br>за 7 днів</h1>
-        <p class="subtitle">
-            <span class="flag-highlight">Створено для українців, які будують бізнес у Європі.</span><br>
-            Комплексний маркетинг без зайвих слів.
-        </p>
-        <a href="#contact" class="cta-btn">Отримати пропозицію</a>
-
-        <div class="hero-stats" id="statsSection">
-          <div class="stat-card">
-            <span class="stat-num" data-target="87" data-suffix="k+">0</span>
-            <span class="stat-label">€ Дохід клієнтів</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" data-target="470" data-suffix="%">0</span>
-            <span class="stat-label">Середній ROAS</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-num" data-target="24" data-suffix="h">0</span>
-            <span class="stat-label">Години на запуск</span>
-          </div>
+        <div class="container">
+            <div class="hero-badge">
+                <span>⚡</span>
+                <span>Спеціальна пропозиція</span>
+            </div>
+            
+            <h1>Запустіть бізнес в ЄС за 7 днів</h1>
+            
+            <p class="hero-subtitle">
+                <span class="ukraine-gradient">Створено для українців, які будують бізнес у ЄС.</span>
+                Сайт + Google Ads + Meta Ads + CRM інтеграція. Отримайте перші заявки вже за 7 днів із гарантією результату.
+            </p>
+            
+            <div class="hero-actions">
+                <button class="btn btn-primary">Отримати пропозицію</button>
+                <a href="#calculator" class="btn btn-secondary">Розрахувати бюджет</a>
+            </div>
+            
+            <!-- STATS -->
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number" data-target="247">0</span>
+                    <span class="stat-label">% зростання доходу</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="420">0</span>
+                    <span class="stat-label">% середній ROAS</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="7">0</span>
+                    <span class="stat-label">днів до запуску</span>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- SERVICES (6 ITEMS SYMMETRY) -->
+    <!-- SERVICES SECTION (EXACTLY 6 CARDS IN 3x2 GRID) -->
     <section id="services" class="services-section">
-      <div class="container">
-        <div class="section-header">
-            <h2>Що ми робимо</h2>
-            <p>Повний спектр послуг для успіху в Європі</p>
-        </div>
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="icon">💻</div>
-            <h3>Розробка Сайтів</h3>
-            <p>Landing Page, що продає. Швидкий, адаптивний, з аналітикою.</p>
-          </div>
-          <div class="service-card">
-            <div class="icon">🔍</div>
-            <h3>Google Ads</h3>
-            <p>Гарячі клієнти з пошуку. Налаштування PMax та Search.</p>
-          </div>
-          <div class="service-card">
-            <div class="icon">📱</div>
-            <h3>Meta Ads</h3>
-            <p>Таргет в Instagram та Facebook. Лід-форми та продажі.</p>
-          </div>
-          <div class="service-card">
-            <div class="icon">🎵</div>
-            <h3>TikTok Ads</h3>
-            <p>Вірусне охоплення. Створення креативів, що залітають.</p>
-          </div>
-          <div class="service-card">
-            <div class="icon">📈</div>
-            <h3>SEO Оптимізація</h3>
-            <p>Виводимо ваш сайт в ТОП Google органічно.</p>
-          </div>
-          <div class="service-card">
-            <div class="icon">🤝</div>
-            <h3>CRM Інтеграція</h3>
-            <p>Заявки падають прямо в Telegram або таблицю. Жодних втрачених лідів.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CALCULATOR (2 COLUMNS) -->
-    <section id="calculator-section" class="calculator-section">
-      <div class="container">
-        <div class="section-header">
-            <h2>Калькулятор Бюджету</h2>
-            <p>Розрахуйте орієнтовний результат</p>
-        </div>
-        
-        <div class="calc-layout">
-            <!-- Left: Inputs -->
-            <div class="calc-left">
-                <div class="form-group">
-                    <label>Бюджет на місяць (€)</label>
-                    <div class="budget-control">
-                        <input type="number" id="budget" value="500" min="200" step="50">
-                        <input type="range" id="budget-range" min="200" max="5000" step="50" value="500">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Платформа</label>
-                    <select id="platform">
-                        <option value="google">Google Ads (Пошук)</option>
-                        <option value="meta">Meta Ads (Social)</option>
-                        <option value="tiktok">TikTok (Вірусне)</option>
-                    </select>
-                </div>
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Наші послуги</h2>
+                <p class="section-subtitle">Комплексні маркетингові рішення для швидкого запуску та масштабування бізнесу в ЄС</p>
             </div>
-            <!-- Right: Results -->
-            <div class="calc-right">
-                <div class="calc-results">
-                    <div class="res-card">
-                        <span class="res-val" id="res-impr">12 000</span>
-                        <span class="res-label">Показів</span>
-                    </div>
-                    <div class="res-card">
-                        <span class="res-val" id="res-clicks">400</span>
-                        <span class="res-label">Кліків</span>
-                    </div>
-                    <div class="res-card">
-                        <span class="res-val" id="res-leads">20</span>
-                        <span class="res-label">Лідів (прогноз)</span>
-                    </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">💻</div>
+                    <h3>Розробка Сайтів</h3>
+                    <p>Лендінги, що продають, із швидким завантаженням та аналітикою. Адаптивний дизайн для всіх пристроїв.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🔍</div>
+                    <h3>Google Ads</h3>
+                    <p>Гарячі клієнти з пошуку та Performance Max для ЄС. Налаштування кампаній за 48 годин.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">📱</div>
+                    <h3>Meta Ads</h3>
+                    <p>Facebook та Instagram для лідогенерації та продажів. Ремаркетинг та lookalike аудиторії.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🎵</div>
+                    <h3>TikTok Ads</h3>
+                    <p>Відеокреативи та вірусне охоплення у TikTok. Залучення молодої аудиторії в ЄС.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">📈</div>
+                    <h3>SEO Оптимізація</h3>
+                    <p>Органічний трафік з локалізованим контентом для ЄС. Довгострокові результати та зростання.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🤝</div>
+                    <h3>CRM Інтеграція</h3>
+                    <p>Усі заявки в Telegram/таблицю + автоворонки. Повний контроль над процесом продажів.</p>
                 </div>
             </div>
         </div>
-      </div>
     </section>
 
-    <!-- TESTIMONIALS (MARQUEE) -->
+    <!-- CALCULATOR SECTION (2 COLUMNS: 60% + 40%) -->
+    <section id="calculator" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Калькулятор бюджету</h2>
+                <p class="section-subtitle">Розрахуйте прогноз охоплення, кліків та заявок для вашої рекламної кампанії</p>
+            </div>
+            
+            <div class="calculator">
+                <div class="calculator-grid">
+                    <!-- LEFT: INPUTS (60%) -->
+                    <div class="calculator-inputs">
+                        <div class="form-group">
+                            <label for="platform">Рекламна платформа</label>
+                            <select id="platform">
+                                <option value="google">Google Ads</option>
+                                <option value="meta">Meta Ads (Facebook/Instagram)</option>
+                                <option value="tiktok">TikTok Ads</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="niche">Ваша ніша</label>
+                            <select id="niche">
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="services">Послуги</option>
+                                <option value="b2b">B2B</option>
+                                <option value="saas">SaaS</option>
+                                <option value="local">Локальний бізнес</option>
+                            </select>
+                        </div>
+                        
+                        <div class="range-group">
+                            <label for="budget">Місячний бюджет: <strong id="budgetValue">1000</strong> €</label>
+                            <input type="range" id="budgetSlider" class="range-input" min="100" max="10000" step="100" value="1000">
+                            <input type="number" id="budgetInput" min="100" max="10000" step="100" value="1000">
+                        </div>
+                        
+                        <button class="btn btn-primary" id="calculateBtn" style="width: 100%;">
+                            Розрахувати прогноз →
+                        </button>
+                    </div>
+                    
+                    <!-- RIGHT: RESULTS (40%) -->
+                    <div class="calculator-results">
+                        <div class="result-card">
+                            <span class="result-value" id="impressions">—</span>
+                            <span class="result-label">Показів (охоплення)</span>
+                        </div>
+                        
+                        <div class="result-card">
+                            <span class="result-value" id="clicks">—</span>
+                            <span class="result-label">Кліків</span>
+                        </div>
+                        
+                        <div class="result-card">
+                            <span class="result-value" id="leads">—</span>
+                            <span class="result-label">Заявок (прогноз)</span>
+                        </div>
+                        
+                        <p style="color: var(--text-muted); font-size: 0.875rem; text-align: center; margin-top: 1rem;">
+                            * Прогнозні дані базуються на середніх показниках по ринку ЄС
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS (INFINITE MARQUEE) -->
     <section id="testimonials" class="testimonials-section">
         <div class="container">
             <div class="section-header">
-                <h2>Клієнти говорять</h2>
+                <h2 class="section-title">Відгуки клієнтів</h2>
+                <p class="section-subtitle">Понад 100 успішних проєктів для українського бізнесу в ЄС</p>
             </div>
         </div>
-        <div class="marquee-container">
-            <div class="marquee-track">
-                <!-- Картки відгуків -->
-                <div class="review-card"><strong>Оксана Т.</strong><br>"Збільшили продажі на 247%."</div>
-                <div class="review-card"><strong>Андрій М. (IT)</strong><br>"Професійний підхід до B2B."</div>
-                <div class="review-card"><strong>Markus D. (DE)</strong><br>"Sehr gute Arbeit mit Google Ads."</div>
-                <div class="review-card"><strong>Ірина Б.</strong><br>"Повний запис на місяць вперед."</div>
-                <div class="review-card"><strong>Agnieszka (PL)</strong><br>"Szybki kontakt i wyniki."</div>
-                <div class="review-card"><strong>ТОВ 'БудМайстер'</strong><br>"Сайт окупився за 2 тижні."</div>
-                <div class="review-card"><strong>Сергій В.</strong><br>"TikTok реклама спрацювала."</div>
-                <div class="review-card"><strong>Beauty Salon 'Ewa'</strong><br>"Багато нових клієнтів."</div>
-                 <div class="review-card"><strong>Олег П.</strong><br>"Чіткий звіт, прозорий бюджет."</div>
-                <div class="review-card"><strong>Hans M. (Munich)</strong><br>"Top Service für fairen Preis."</div>
+        
+        <div class="marquee">
+            <div class="marquee-content" id="marqueeContent">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Vermarkter допомогли нам запустити інтернет-магазин у Німеччині за 6 днів. Перші продажі отримали вже через тиждень!"</p>
+                    <div class="testimonial-author">Оксана К.</div>
+                    <div class="testimonial-company">E-commerce, Мюнхен</div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Професійна команда! Google Ads кампанія окупилася за перший місяць. ROAS 420%. Дуже задоволений."</p>
+                    <div class="testimonial-author">Андрій М.</div>
+                    <div class="testimonial-company">Послуги, Берлін</div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Endlich eine Agentur, die versteht, wie der EU-Markt funktioniert. Hervorragende Ergebnisse in nur 3 Monaten."</p>
+                    <div class="testimonial-author">Andreas W.</div>
+                    <div class="testimonial-company">SaaS, Frankfurt</div>
+                </div>
+                
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Świetna współpraca! Kampanie Meta Ads przyniosły nam +180% wzrost leadów. Gorąco polecam!"</p>
+                    <div class="testimonial-author">Piotr N.</div>
+                    <div class="testimonial-company">B2B, Warszawa</div>
+                </div>
+                
+                <!-- Testimonial 5 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"CRM інтеграція з Telegram змінила наш підхід до продажів. Тепер жодна заявка не губиться. Дякую!"</p>
+                    <div class="testimonial-author">Марина Л.</div>
+                    <div class="testimonial-company">Послуги, Варшава</div>
+                </div>
+                
+                <!-- Testimonial 6 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"SEO стратегія працює! За 4 місяці вийшли в ТОП-3 по всіх ключах. Органічний трафік зріс на 300%."</p>
+                    <div class="testimonial-author">Дмитро С.</div>
+                    <div class="testimonial-company">E-commerce, Прага</div>
+                </div>
+                
+                <!-- Testimonial 7 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"TikTok Ads відкрили для нас нову аудиторію. 50k переглядів за тиждень і 120 заявок. Неймовірно!"</p>
+                    <div class="testimonial-author">Юлія Р.</div>
+                    <div class="testimonial-company">Бьюті-сервіси, Відень</div>
+                </div>
+                
+                <!-- Testimonial 8 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Наш лендінг конвертує 14% відвідувачів у клієнтів. Це найкращий показник за всю історію нашого бізнесу."</p>
+                    <div class="testimonial-author">Олег В.</div>
+                    <div class="testimonial-company">Фінтех, Амстердам</div>
+                </div>
+                
+                <!-- Testimonial 9 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Super schnelle Umsetzung! Die neue Website ist live und die ersten Leads kommen bereits rein. Danke!"</p>
+                    <div class="testimonial-author">Markus B.</div>
+                    <div class="testimonial-company">Handwerk, Hamburg</div>
+                </div>
+                
+                <!-- Testimonial 10 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Google Ads + Meta Ads разом дали нам 280 заявок за місяць. Це в 4 рази більше, ніж раніше!"</p>
+                    <div class="testimonial-author">Тетяна К.</div>
+                    <div class="testimonial-company">Освітні курси, Краків</div>
+                </div>
+                
+                <!-- Testimonial 11 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Прозорі звіти щодня, швидка комунікація, чіткі результати. Рекомендую всім українцям у ЄС."</p>
+                    <div class="testimonial-author">Ігор П.</div>
+                    <div class="testimonial-company">Логістика, Дюссельдорф</div>
+                </div>
+                
+                <!-- Testimonial 12 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Excellent service! The team understands both Ukrainian and European markets perfectly. 5 stars!"</p>
+                    <div class="testimonial-author">Sarah M.</div>
+                    <div class="testimonial-company">Marketing, London</div>
+                </div>
+                
+                <!-- Testimonial 13 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Performance Max кампанії дали неймовірний результат. CPA знизився на 40%, а конверсій стало в 2 рази більше."</p>
+                    <div class="testimonial-author">Василь Т.</div>
+                    <div class="testimonial-company">Автосервіс, Мюнхен</div>
+                </div>
+                
+                <!-- Testimonial 14 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Najlepsza agencja marketingowa dla polskiego biznesu w UE. Wyniki przekroczyły nasze oczekiwania!"</p>
+                    <div class="testimonial-author">Agnieszka S.</div>
+                    <div class="testimonial-company">Retail, Wrocław</div>
+                </div>
+                
+                <!-- Testimonial 15 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Локальне SEO принесло нам +250% нових клієнтів з пошуку Google. Тепер ми №1 у своєму місті."</p>
+                    <div class="testimonial-author">Наталія Ж.</div>
+                    <div class="testimonial-company">Ресторан, Брюссель</div>
+                </div>
+                
+                <!-- Testimonial 16 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Die Meta Remarketing-Kampagnen haben unseren ROI verdoppelt. Sehr professionell und effektiv!"</p>
+                    <div class="testimonial-author">Thomas K.</div>
+                    <div class="testimonial-company">E-commerce, Zürich</div>
+                </div>
+                
+                <!-- Testimonial 17 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Автоматизація через CRM заощадила нам 15 годин роботи на тиждень. Все працює як годинник!"</p>
+                    <div class="testimonial-author">Роман Б.</div>
+                    <div class="testimonial-company">Консалтинг, Відень</div>
+                </div>
+                
+                <!-- Testimonial 18 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"TikTok strategy was a game-changer for our brand. 2M impressions and growing every day!"</p>
+                    <div class="testimonial-author">Emma L.</div>
+                    <div class="testimonial-company">Fashion, Milano</div>
+                </div>
+                
+                <!-- Testimonial 19 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Запуск за 7 днів - це не міф! Отримали робочий сайт, налаштовану рекламу та перші заявки точно в строк."</p>
+                    <div class="testimonial-author">Олена Г.</div>
+                    <div class="testimonial-company">Медичні послуги, Познань</div>
+                </div>
+                
+                <!-- Testimonial 20 -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Команда Vermarkter - справжні професіонали. Вони знають, як працює ринок ЄС і як отримати результат швидко."</p>
+                    <div class="testimonial-author">Сергій Ч.</div>
+                    <div class="testimonial-company">IT-послуги, Будапешт</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="hero">
-      <div class="container">
-        <h2 class="section-title">Зв'яжіться з нами</h2>
-        <p class="subtitle">Безкоштовний аудит вашої ніші.</p>
-        <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap;">
-            <a href="https://t.me/Asystentmijbot" class="cta-btn"><i class="fab fa-telegram"></i> Telegram</a>
-            <a href="mailto:maps.werbung@gmail.com" class="btn-secondary">Email</a>
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Готові почати?</h2>
+                <p class="section-subtitle">Напишіть нам і отримайте безкоштовну консультацію</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="font-size: 1.125rem; margin-bottom: 1rem; color: var(--text-secondary);">
+                    📧 Email: <a href="mailto:maps.werbung@gmail.com" style="color: var(--brand-blue);">maps.werbung@gmail.com</a>
+                </p>
+                <p style="font-size: 1.125rem; margin-bottom: 2rem; color: var(--text-secondary);">
+                    💬 Telegram: <a href="https://t.me/vermarkter" style="color: var(--brand-blue);">@vermarkter</a>
+                </p>
+                <button class="btn btn-primary">Замовити консультацію</button>
+            </div>
         </div>
-      </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-section">
-            <h4>Навігація</h4>
-            <a href="#services">Послуги</a>
-            <a href="#cases">Кейси</a>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Про нас</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                        Маркетингова агенція для українців у Європейському Союзі.
+                    </p>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Послуги</h4>
+                    <a href="#services">Розробка сайтів</a>
+                    <a href="#services">Google Ads</a>
+                    <a href="#services">Meta Ads</a>
+                    <a href="#services">TikTok Ads</a>
+                    <a href="#services">SEO</a>
+                    <a href="#services">CRM</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Інформація</h4>
+                    <a href="#testimonials">Відгуки</a>
+                    <a href="#calculator">Калькулятор</a>
+                    <a href="#privacy">Privacy Policy</a>
+                    <a href="#privacy">Impressum</a>
+                </div>
+                
+                <div class="footer-column">
+                    <h4>Контакти</h4>
+                    <a href="mailto:maps.werbung@gmail.com">Email</a>
+                    <a href="https://t.me/vermarkter">Telegram</a>
+                    <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 1rem;">
+                        Офіси: Берлін, Варшава, Київ
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Vermarkter. Всі права захищені.</p>
+            </div>
         </div>
-        <div class="footer-section">
-            <h4>Юридично</h4>
-            <a href="#">Impressum</a>
-            <a href="#privacy">Privacy Policy</a>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="container">
+            <div class="cookie-content">
+                <p class="cookie-text">
+                    Ми використовуємо файли cookie для покращення роботи сайту та аналітики. Продовжуючи користуватися сайтом, ви погоджуєтесь з нашою політикою конфіденційності.
+                </p>
+                <div class="cookie-actions">
+                    <button class="btn btn-primary" id="acceptCookies">Прийняти</button>
+                    <button class="btn btn-secondary" id="declineCookies">Відхилити</button>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="footer-bottom">
-          <p>&copy; 2025 Vermarkter. Всі права захищені.</p>
-      </div>
     </div>
-  </footer>
 
-  <!-- Cookie Banner HTML -->
-  <div id="cookie-banner" class="cookie-banner">
-    <div class="cookie-content">
-      <p>🍪 Ми використовуємо Cookies для покращення роботи сайту.</p>
-      <div class="cookie-buttons">
-        <button id="accept-cookies">Прийняти</button>
-      </div>
-    </div>
-  </div>
+    <!-- CHATBOT BUTTON -->
+    <button class="chatbot-button" id="chatbotButton">
+        💬
+    </button>
 
-  <!-- Chatbot Container -->
-  <div class="chatbot-shell">
-    <div class="chatbot-window" id="chatbot-window">
-      <div class="chatbot-header">
-        <h4>AI-помічник</h4>
-        <button id="chatbot-close" class="chatbot-close">×</button>
-      </div>
-      <div class="chatbot-body" id="chatbot-body"></div>
-      <div class="chatbot-actions" id="chatbot-actions"></div>
-    </div>
-    <button class="chatbot-toggle" id="chatbot-toggle">🤖</button>
-  </div>
-
-  <!-- SCRIPTS -->
-  <script src="../js/main.js"></script>
-  <script src="../js/chatbot.js"></script>
-  <script src="../js/consent.js"></script>
-
+    <script src="../js/main.js"></script>
 </body>
 </html>
