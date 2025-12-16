@@ -144,115 +144,378 @@
         </div>
     </section>
 
-  <section id="calculator-section" class="calculator-section">
-        <div class="container">
-            <div class="calculator">
-                <div class="calculator__header">
-                    <h2 class="calculator__title">Smart Медіаплан 📊</h2>
-                    <p style="color:#94A3B8;">Оберіть вашу нішу або налаштуйте параметри вручну для точного прогнозу ROI</p>
-                </div>
+  // ============================================
+// VERMARKTER - SMART MEDIA CALCULATOR
+// Complete calculator logic with presets
+// ============================================
 
-                <div class="calculator__grid">
-                    <!-- Left: Inputs -->
-                    <!-- Left Column: Inputs -->
-                    <div class="calculator__inputs">
-                        
-                        <!-- 1. ПЛАТФОРМА (Повернули!) -->
-                        <div class="calculator__input-group" style="border-color: var(--brand);">
-                            <label style="display:block; margin-bottom:10px; color:#fff; font-weight:600;">Рекламна платформа:</label>
-                            <select id="platformSelector" class="niche-select">
-                                <option value="google">Google Ads (Пошук)</option>
-                                <option value="meta">Meta Ads (Facebook/Instagram)</option>
-                                <option value="tiktok">TikTok Ads</option>
-                            </select>
-                        </div>
+// PRESETS DATABASE
+const CALCULATOR_PRESETS = {
+    platforms: {
+        google: {
+            name: 'Google Ads',
+            cpc: 0.80,
+            cpcRange: [0.5, 2.0],
+            conversionBonus: 1.2
+        },
+        meta: {
+            name: 'Meta Ads',
+            cpc: 0.50,
+            cpcRange: [0.3, 1.2],
+            conversionBonus: 1.0
+        },
+        tiktok: {
+            name: 'TikTok Ads',
+            cpc: 0.30,
+            cpcRange: [0.15, 0.8],
+            conversionBonus: 0.8
+        }
+    },
+    niches: {
+        average: {
+            name: 'Середнє по ринку',
+            cpc: 0.80,
+            conversion: 2.5,
+            aov: 120,
+            margin: 35
+        },
+        ecommerce: {
+            name: 'E-commerce',
+            cpc: 0.60,
+            conversion: 2.0,
+            aov: 80,
+            margin: 30
+        },
+        services: {
+            name: 'Послуги',
+            cpc: 0.70,
+            conversion: 3.5,
+            aov: 150,
+            margin: 60
+        },
+        realestate: {
+            name: 'Нерухомість',
+            cpc: 2.50,
+            conversion: 1.5,
+            aov: 3000,
+            margin: 20
+        },
+        b2b: {
+            name: 'B2B / Опт',
+            cpc: 1.50,
+            conversion: 2.0,
+            aov: 800,
+            margin: 40
+        },
+        infobiz: {
+            name: 'Інфобізнес',
+            cpc: 0.40,
+            conversion: 4.0,
+            aov: 200,
+            margin: 80
+        }
+    }
+};
 
-                        <!-- 2. НІША -->
-                        <div class="niche-select-group">
-                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-size:14px;">Ваша ніша (впливає на ціну):</label>
-                            <select id="nicheSelector" class="niche-select">
-                                <option value="average">-- Середнє по ринку --</option>
-                                <option value="ecommerce">E-commerce (Товари)</option>
-                                <option value="services">Послуги (Бьюті, Ремонт)</option>
-                                <option value="realestate">Нерухомість (Високий чек)</option>
-                                <option value="b2b">B2B / Опт</option>
-                                <option value="infobiz">Інфобізнес / Навчання</option>
-                            </select>
-                        </div>
+class SmartCalculator {
+    constructor() {
+        this.currentMargin = 35; // Default margin
+        this.isUpdating = false; // Prevent circular updates
+        
+        // Get all DOM elements
+        this.elements = {
+            // Selectors
+            platformSelector: document.getElementById('platformSelector'),
+            nicheSelector: document.getElementById('nicheSelector'),
+            
+            // Budget
+            budgetSlider: document.getElementById('budgetSlider'),
+            budgetInput: document.getElementById('budgetInput'),
+            budgetValue: document.getElementById('budgetValue'),
+            
+            // CPC
+            cpcSlider: document.getElementById('cpcSlider'),
+            cpcInput: document.getElementById('cpcInput'),
+            
+            // Conversion Rate
+            crSlider: document.getElementById('crSlider'),
+            crInput: document.getElementById('crInput'),
+            
+            // AOV (Average Order Value)
+            aovSlider: document.getElementById('aovSlider'),
+            aovInput: document.getElementById('aovInput'),
+            
+            // Results
+            resultClicks: document.getElementById('resultClicks'),
+            resultLeads: document.getElementById('resultLeads'),
+            resultCPA: document.getElementById('resultCPA'),
+            resultROAS: document.getElementById('resultROAS'),
+            resultProfit: document.getElementById('resultProfit'),
+            roasFill: document.getElementById('roasFill'),
+            roasStatus: document.getElementById('roasStatus'),
+            roasCard: document.getElementById('roasCard')
+        };
+        
+        this.init();
+    }
+    
+    init() {
+        // Platform selector
+        if (this.elements.platformSelector) {
+            this.elements.platformSelector.addEventListener('change', () => this.handlePlatformChange());
+        }
+        
+        // Niche selector
+        if (this.elements.nicheSelector) {
+            this.elements.nicheSelector.addEventListener('change', () => this.handleNicheChange());
+        }
+        
+        // Budget sync
+        this.syncInputs(this.elements.budgetSlider, this.elements.budgetInput, this.elements.budgetValue);
+        
+        // CPC sync
+        this.syncInputs(this.elements.cpcSlider, this.elements.cpcInput);
+        
+        // CR sync
+        this.syncInputs(this.elements.crSlider, this.elements.crInput);
+        
+        // AOV sync
+        this.syncInputs(this.elements.aovSlider, this.elements.aovInput);
+        
+        // Initial calculation
+        this.calculate();
+    }
+    
+    syncInputs(slider, input, displayValue = null) {
+        if (!slider || !input) return;
+        
+        // Slider changes input
+        slider.addEventListener('input', (e) => {
+            if (this.isUpdating) return;
+            this.isUpdating = true;
+            
+            const value = parseFloat(e.target.value);
+            input.value = value;
+            if (displayValue) {
+                displayValue.textContent = Math.round(value);
+            }
+            
+            this.isUpdating = false;
+            this.calculate();
+        });
+        
+        // Input changes slider
+        input.addEventListener('input', (e) => {
+            if (this.isUpdating) return;
+            this.isUpdating = true;
+            
+            let value = parseFloat(e.target.value) || parseFloat(slider.min);
+            const min = parseFloat(slider.min);
+            const max = parseFloat(slider.max);
+            value = Math.max(min, Math.min(max, value));
+            
+            slider.value = value;
+            if (displayValue) {
+                displayValue.textContent = Math.round(value);
+            }
+            
+            this.isUpdating = false;
+            this.calculate();
+        });
+    }
+    
+    handlePlatformChange() {
+        const platform = this.elements.platformSelector.value;
+        const preset = CALCULATOR_PRESETS.platforms[platform];
+        
+        if (!preset) return;
+        
+        // Update CPC based on platform
+        const currentNiche = this.elements.nicheSelector.value;
+        const nichePreset = CALCULATOR_PRESETS.niches[currentNiche];
+        
+        if (nichePreset) {
+            // Adjust CPC based on platform multiplier
+            const baseCPC = nichePreset.cpc;
+            const platformMultiplier = preset.cpc / 0.80; // Normalize to google base
+            const newCPC = (baseCPC * platformMultiplier).toFixed(2);
+            
+            this.updateInput(this.elements.cpcSlider, this.elements.cpcInput, parseFloat(newCPC));
+        }
+        
+        this.calculate();
+    }
+    
+    handleNicheChange() {
+        const niche = this.elements.nicheSelector.value;
+        const preset = CALCULATOR_PRESETS.niches[niche];
+        
+        if (!preset) return;
+        
+        // Update all parameters based on niche
+        const platform = this.elements.platformSelector.value;
+        const platformPreset = CALCULATOR_PRESETS.platforms[platform];
+        
+        // CPC (adjusted for platform)
+        let cpc = preset.cpc;
+        if (platformPreset) {
+            const platformMultiplier = platformPreset.cpc / 0.80;
+            cpc = preset.cpc * platformMultiplier;
+        }
+        
+        // Conversion Rate (adjusted for platform)
+        let conversion = preset.conversion;
+        if (platformPreset) {
+            conversion = preset.conversion * platformPreset.conversionBonus;
+        }
+        
+        this.updateInput(this.elements.cpcSlider, this.elements.cpcInput, parseFloat(cpc.toFixed(2)));
+        this.updateInput(this.elements.crSlider, this.elements.crInput, parseFloat(conversion.toFixed(1)));
+        this.updateInput(this.elements.aovSlider, this.elements.aovInput, preset.aov);
+        
+        // Update margin
+        this.currentMargin = preset.margin;
+        
+        this.calculate();
+    }
+    
+    updateInput(slider, input, value) {
+        if (!slider || !input) return;
+        
+        this.isUpdating = true;
+        slider.value = value;
+        input.value = value;
+        this.isUpdating = false;
+    }
+    
+    calculate() {
+        // Get current values
+        const budget = parseFloat(this.elements.budgetSlider.value);
+        const cpc = parseFloat(this.elements.cpcSlider.value);
+        const cr = parseFloat(this.elements.crSlider.value);
+        const aov = parseFloat(this.elements.aovSlider.value);
+        const margin = this.currentMargin;
+        
+        // Validate
+        if (!budget || !cpc || !cr || !aov) {
+            console.warn('Invalid calculator inputs');
+            return;
+        }
+        
+        // FORMULAS
+        const clicks = Math.floor(budget / cpc);
+        const leads = Math.floor(clicks * (cr / 100));
+        const cpa = leads > 0 ? budget / leads : 0;
+        const revenue = leads * aov;
+        const roas = budget > 0 ? (revenue / budget) * 100 : 0;
+        const profit = (revenue * (margin / 100)) - budget;
+        
+        // Update UI
+        this.updateResults({
+            clicks,
+            leads,
+            cpa,
+            revenue,
+            roas,
+            profit
+        });
+    }
+    
+    updateResults(data) {
+        // Traffic (Clicks)
+        if (this.elements.resultClicks) {
+            this.elements.resultClicks.textContent = this.formatNumber(data.clicks);
+        }
+        
+        // Leads
+        if (this.elements.resultLeads) {
+            this.elements.resultLeads.textContent = this.formatNumber(data.leads);
+        }
+        
+        // CPA
+        if (this.elements.resultCPA) {
+            this.elements.resultCPA.textContent = '€' + this.formatNumber(data.cpa.toFixed(2));
+        }
+        
+        // ROAS
+        if (this.elements.resultROAS) {
+            this.elements.resultROAS.textContent = Math.round(data.roas) + '%';
+        }
+        
+        // ROAS Visual Indicator
+        this.updateROASIndicator(data.roas);
+        
+        // Profit
+        if (this.elements.resultProfit) {
+            const profitText = (data.profit >= 0 ? '+' : '') + '€' + this.formatNumber(Math.abs(data.profit).toFixed(0));
+            this.elements.resultProfit.textContent = profitText;
+            
+            // Color coding
+            if (data.profit > 0) {
+                this.elements.resultProfit.className = 'calculator__result-value calculator__result-value--success';
+            } else if (data.profit < 0) {
+                this.elements.resultProfit.className = 'calculator__result-value calculator__result-value--error';
+            } else {
+                this.elements.resultProfit.className = 'calculator__result-value';
+            }
+        }
+    }
+    
+    updateROASIndicator(roas) {
+        if (!this.elements.roasFill || !this.elements.roasStatus || !this.elements.roasCard) return;
+        
+        // Calculate fill percentage (scale: 500% ROAS = 100% fill)
+        const fillPercent = Math.min((roas / 500) * 100, 100);
+        this.elements.roasFill.style.width = fillPercent + '%';
+        
+        // Status and colors
+        if (roas < 100) {
+            this.elements.roasStatus.textContent = 'Збитки';
+            this.elements.roasFill.style.background = 'linear-gradient(90deg, #EF4444, #DC2626)';
+            this.elements.roasCard.classList.remove('calculator__result-card--highlight');
+            this.elements.roasCard.classList.add('calculator__result-card--negative');
+            this.elements.resultROAS.className = 'calculator__result-value calculator__result-value--error';
+        } else if (roas < 150) {
+            this.elements.roasStatus.textContent = 'Низький';
+            this.elements.roasFill.style.background = 'linear-gradient(90deg, #F59E0B, #D97706)';
+            this.elements.roasCard.classList.remove('calculator__result-card--negative');
+            this.elements.roasCard.classList.add('calculator__result-card--highlight');
+            this.elements.resultROAS.className = 'calculator__result-value';
+        } else if (roas < 300) {
+            this.elements.roasStatus.textContent = 'Добре';
+            this.elements.roasFill.style.background = 'linear-gradient(90deg, #10B981, #059669)';
+            this.elements.roasCard.classList.remove('calculator__result-card--negative');
+            this.elements.roasCard.classList.add('calculator__result-card--highlight');
+            this.elements.resultROAS.className = 'calculator__result-value calculator__result-value--success';
+        } else {
+            this.elements.roasStatus.textContent = 'Відмінно';
+            this.elements.roasFill.style.background = 'linear-gradient(90deg, #10B981, #06B6D4)';
+            this.elements.roasCard.classList.remove('calculator__result-card--negative');
+            this.elements.roasCard.classList.add('calculator__result-card--highlight');
+            this.elements.resultROAS.className = 'calculator__result-value calculator__result-value--success';
+        }
+    }
+    
+    formatNumber(num) {
+        if (typeof num === 'string') {
+            num = parseFloat(num);
+        }
+        
+        if (isNaN(num)) return '0';
+        
+        // Format with thousands separator
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+}
 
-                        <!-- 3. БЮДЖЕТ -->
-                        <div class="calculator__input-group" data-input="budget">
-                            <div class="calculator__label">
-                                <span class="calculator__label-text">Рекламний бюджет</span>
-                                <span class="calculator__label-value">€<span id="budgetValue">1000</span></span>
-                            </div>
-                            <div class="calculator__controls">
-                                <input type="range" class="calculator__range" id="budgetSlider" min="200" max="20000" step="100" value="1000">
-                                <input type="number" class="calculator__number-input" id="budgetInput" value="1000">
-                            </div>
-                        </div>
-
-                        <!-- ДЕТАЛІ (CPC, CR, AOV) -->
-                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
-                            <!-- CPC (Ціна кліка) -->
-                            <div class="calculator__input-group" data-input="cpc">
-                                <label style="font-size:12px; color:#94A3B8;">Ціна кліка CPC (€)</label>
-                                <div style="display:flex; align-items:center; gap:5px;">
-                                    <input type="range" id="cpcSlider" min="0.1" max="10" step="0.05" value="0.8" style="flex:1;">
-                                    <input type="number" class="calculator__number-input" id="cpcInput" value="0.8" style="width:70px;">
-                                </div>
-                            </div>
-                            <!-- Conversion (CR) -->
-                            <div class="calculator__input-group" data-input="cr">
-                                <label style="font-size:12px; color:#94A3B8;">Конверсія сайту (%)</label>
-                                <div style="display:flex; align-items:center; gap:5px;">
-                                    <input type="range" id="crSlider" min="0.1" max="15" step="0.1" value="2.5" style="flex:1;">
-                                    <input type="number" class="calculator__number-input" id="crInput" value="2.5" style="width:70px;">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- AOV (Середній чек) -->
-                        <div class="calculator__input-group" data-input="aov">
-                            <label style="font-size:12px; color:#94A3B8;">Середній чек (€)</label>
-                            <div style="display:flex; align-items:center; gap:5px;">
-                                <input type="range" id="aovSlider" min="10" max="5000" step="10" value="120" style="flex:1;">
-                                <input type="number" class="calculator__number-input" id="aovInput" value="120" style="width:80px;">
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Right: Results -->
-                    <div class="calculator__results">
-                        <div class="calculator__result-card">
-                            <div class="calculator__result-label">Трафік (Кліки)</div>
-                            <div class="calculator__result-value" id="resultClicks">0</div>
-                        </div>
-                        <div class="calculator__result-card">
-                            <div class="calculator__result-label">Ліди (Заявки)</div>
-                            <div class="calculator__result-value calculator__result-value--primary" id="resultLeads">0</div>
-                        </div>
-                         <div class="calculator__result-card">
-                            <div class="calculator__result-label">Вартість ліда (CPA)</div>
-                            <div class="calculator__result-value" id="resultCPA">€0</div>
-                        </div>
-                        <div class="calculator__result-card calculator__result-card--highlight" id="roasCard">
-                            <div class="calculator__result-label">ROAS (Окупність)</div>
-                            <div class="calculator__result-value calculator__result-value--success" id="resultROAS">0%</div>
-                            <div class="calculator__roas-indicator">
-                                <div class="calculator__roas-bar"><div class="calculator__roas-fill" id="roasFill"></div></div>
-                                <span class="calculator__roas-text" id="roasStatus">-</span>
-                            </div>
-                        </div>
-                        <div class="calculator__result-card">
-                            <div class="calculator__result-label">Чистий Прибуток</div>
-                            <div class="calculator__result-value" id="resultProfit">€0</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+// Initialize calculator when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        new SmartCalculator();
+    });
+} else {
+    new SmartCalculator();
+}
 
     <!-- TESTIMONIALS (INFINITE MARQUEE) -->
     <section id="testimonials" class="testimonials-section">
