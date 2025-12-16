@@ -11,42 +11,46 @@
 <body>
     <!-- HEADER (FIXED) -->
     <header>
-        <nav class="container">
-            <a href="#" class="logo">Vermarkter</a>
-            
-            <ul class="nav-menu">
-                <li><a href="#services">Послуги</a></li>
-                <li><a href="#calculator">Калькулятор</a></li>
-                <li><a href="#testimonials">Відгуки</a></li>
-                <li><a href="#contact">Контакти</a></li>
-            </ul>
-            
-            <div class="nav-controls">
-                <select class="lang-selector" id="langSelector">
-                    <option value="UA" selected>🇺🇦 UA</option>
-                    <option value="DE">🇩🇪 DE</option>
-                    <option value="EN">🇬🇧 EN</option>
-                    <option value="PL">🇵🇱 PL</option>
-                    <option value="RU">🇷🇺 RU</option>
-                    <option value="TR">🇹🇷 TR</option>
-                </select>
-                
-                <button class="theme-toggle" id="themeToggle">☀️</button>
-                
-                <button class="mobile-toggle" id="mobileToggle">☰</button>
-            </div>
-        </nav>
+    <div class="container">
+      <nav class="nav">
+        <a href="#" class="brand"><i class="fas fa-bolt"></i> Vermarkter</a>
         
-        <!-- MOBILE MENU -->
-        <div class="mobile-menu" id="mobileMenu">
-            <ul class="nav-menu">
-                <li><a href="#services">Послуги</a></li>
-                <li><a href="#calculator">Калькулятор</a></li>
-                <li><a href="#testimonials">Відгуки</a></li>
-                <li><a href="#contact">Контакти</a></li>
-            </ul>
+        <div class="nav-desktop">
+          <a href="#services">Послуги</a>
+          <a href="#cases">Кейси</a>
+          <a href="#calculator-section">Калькулятор</a>
+          <a href="#testimonials">Відгуки</a>
+          <a href="#contact">Контакти</a>
         </div>
-    </header>
+
+        <div class="controls" style="display:flex; gap:15px; align-items:center;">
+             <!-- Theme Toggle -->
+            <button class="theme-toggle" id="theme-btn" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer;">🌙</button>
+
+            <!-- Lang Switcher (ВИПРАВЛЕНО) -->
+            <!-- Ми використовуємо простий select без зайвого тексту навколо -->
+            <select class="lang-switch" onchange="window.location.href='../'+this.value+'/'" style="background:#1E293B; color:white; border:1px solid rgba(255,255,255,0.2); padding:8px; border-radius:8px; font-weight:700; cursor:pointer;">
+                <option value="ua" selected>UA</option>
+                <option value="de">DE</option>
+                <option value="en">EN</option>
+                <option value="pl">PL</option>
+                <option value="ru">RU</option>
+                <option value="tr">TR</option>
+            </select>
+        </div>
+
+        <button class="mobile-toggle"><i class="fas fa-bars"></i></button>
+      </nav>
+    </div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#services">Послуги</a>
+        <a href="#cases">Кейси</a>
+        <a href="#calculator-section">Калькулятор</a>
+        <a href="#contact">Контакти</a>
+    </div>
+  </header>
 
     <!-- HERO SECTION -->
     <section class="hero">
