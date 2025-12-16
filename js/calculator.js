@@ -181,6 +181,10 @@ class ROICalculator {
 }
 
 // Ініціалізація
+// Ми додаємо перевірку, чи існує елемент калькулятора, щоб не було помилок на інших сторінках
 document.addEventListener('DOMContentLoaded', () => {
-    new ROICalculator();
+    if (document.getElementById('calculator')) {
+        new ROICalculator();
+        console.log("Calculator initialized"); // Це для перевірки
+    }
 });
