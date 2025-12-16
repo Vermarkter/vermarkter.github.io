@@ -140,69 +140,114 @@
         </div>
     </section>
 
-    <!-- CALCULATOR SECTION (2 COLUMNS: 60% + 40%) -->
-    <section id="calculator" class="calculator-section">
+  <section id="calculator-section" class="calculator-section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Калькулятор бюджету</h2>
-                <p class="section-subtitle">Розрахуйте прогноз охоплення, кліків та заявок для вашої рекламної кампанії</p>
-            </div>
-            
             <div class="calculator">
-                <div class="calculator-grid">
-                    <!-- LEFT: INPUTS (60%) -->
-                    <div class="calculator-inputs">
-                        <div class="form-group">
-                            <label for="platform">Рекламна платформа</label>
-                            <select id="platform">
-                                <option value="google">Google Ads</option>
-                                <option value="meta">Meta Ads (Facebook/Instagram)</option>
-                                <option value="tiktok">TikTok Ads</option>
+                <div class="calculator__header">
+                    <h2 class="calculator__title">Smart Медіаплан 📊</h2>
+                    <p style="color:#94A3B8;">Оберіть вашу нішу або налаштуйте параметри вручну для точного прогнозу ROI</p>
+                </div>
+
+                <div class="calculator__grid">
+                    <!-- Left: Inputs -->
+                    <div class="calculator__inputs">
+                        
+                        <!-- Вибір Ніші -->
+                        <div class="niche-select-group">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight:600;">Оберіть вашу нішу (авто-підбір цифр):</label>
+                            <select id="nicheSelector" class="niche-select">
+                                <option value="custom">-- Налаштувати вручну --</option>
+                                <option value="ecommerce">Інтернет-магазин (Товари)</option>
+                                <option value="services">Послуги (Ремонт, Бьюті, СТО)</option>
+                                <option value="realestate" selected>Нерухомість</option>
+                                <option value="b2b">B2B / Оптові продажі</option>
+                                <option value="infobiz">Онлайн-школи / Інфобіз</option>
                             </select>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="niche">Ваша ніша</label>
-                            <select id="niche">
-                                <option value="ecommerce">E-commerce</option>
-                                <option value="services">Послуги</option>
-                                <option value="b2b">B2B</option>
-                                <option value="saas">SaaS</option>
-                                <option value="local">Локальний бізнес</option>
-                            </select>
+
+                        <!-- Budget -->
+                        <div class="calculator__input-group" data-input="budget">
+                            <div class="calculator__label">
+                                <span>Рекламний бюджет</span>
+                                <span class="calculator__label-value">€<span id="budgetValue">5000</span></span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="budgetSlider" min="500" max="50000" step="100" value="5000">
+                                <input type="number" class="calculator__number-input" id="budgetInput" value="5000">
+                            </div>
                         </div>
-                        
-                        <div class="range-group">
-                            <label for="budget">Місячний бюджет: <strong id="budgetValue">1000</strong> €</label>
-                            <input type="range" id="budgetSlider" class="range-input" min="100" max="10000" step="100" value="1000">
-                            <input type="number" id="budgetInput" min="100" max="10000" step="100" value="1000">
+
+                        <!-- CPC -->
+                        <div class="calculator__input-group" data-input="cpc">
+                            <div class="calculator__label">
+                                <span>Ціна кліка (CPC)</span>
+                                <span class="calculator__label-value">€<span id="cpcValue">0.80</span></span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="cpcSlider" min="0.1" max="10" step="0.1" value="0.8">
+                                <input type="number" class="calculator__number-input" id="cpcInput" value="0.8">
+                            </div>
                         </div>
-                        
-                        <button class="btn btn-primary" id="calculateBtn" style="width: 100%;">
-                            Розрахувати прогноз →
-                        </button>
+
+                        <!-- Conversion -->
+                        <div class="calculator__input-group" data-input="cr">
+                            <div class="calculator__label">
+                                <span>Конверсія сайту (%)</span>
+                                <span class="calculator__label-value"><span id="crValue">3.0</span>%</span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="crSlider" min="0.1" max="15" step="0.1" value="3">
+                                <input type="number" class="calculator__number-input" id="crInput" value="3">
+                            </div>
+                        </div>
+
+                        <!-- AOV & Margin -->
+                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                            <div class="calculator__input-group" data-input="aov">
+                                <label style="font-size:12px; color:#94A3B8; margin-bottom:5px; display:block;">Середній чек (€)</label>
+                                <div style="display:flex; align-items:center; gap:5px;">
+                                    <input type="range" id="aovSlider" min="10" max="5000" step="10" value="150" style="flex:1;">
+                                    <input type="number" class="calculator__number-input" id="aovInput" value="150" style="width:70px;">
+                                </div>
+                                <span id="aovValue" style="display:none;"></span>
+                            </div>
+                            <div class="calculator__input-group" data-input="margin">
+                                <label style="font-size:12px; color:#94A3B8; margin-bottom:5px; display:block;">Маржа (%)</label>
+                                <div style="display:flex; align-items:center; gap:5px;">
+                                    <input type="range" id="marginSlider" min="5" max="100" step="5" value="30" style="flex:1;">
+                                    <input type="number" class="calculator__number-input" id="marginInput" value="30" style="width:70px;">
+                                </div>
+                                <span id="marginValue" style="display:none;"></span>
+                            </div>
+                         </div>
                     </div>
-                    
-                    <!-- RIGHT: RESULTS (40%) -->
-                    <div class="calculator-results">
-                        <div class="result-card">
-                            <span class="result-value" id="impressions">—</span>
-                            <span class="result-label">Показів (охоплення)</span>
+
+                    <!-- Right: Results -->
+                    <div class="calculator__results">
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Трафік (Кліки)</div>
+                            <div class="calculator__result-value" id="resultClicks">0</div>
                         </div>
-                        
-                        <div class="result-card">
-                            <span class="result-value" id="clicks">—</span>
-                            <span class="result-label">Кліків</span>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Ліди (Заявки)</div>
+                            <div class="calculator__result-value calculator__result-value--primary" id="resultLeads">0</div>
                         </div>
-                        
-                        <div class="result-card">
-                            <span class="result-value" id="leads">—</span>
-                            <span class="result-label">Заявок (прогноз)</span>
+                         <div class="calculator__result-card">
+                            <div class="calculator__result-label">Вартість ліда (CPA)</div>
+                            <div class="calculator__result-value" id="resultCPA">€0</div>
                         </div>
-                        
-                        <p style="color: var(--text-muted); font-size: 0.875rem; text-align: center; margin-top: 1rem;">
-                            * Прогнозні дані базуються на середніх показниках по ринку ЄС
-                        </p>
+                        <div class="calculator__result-card calculator__result-card--highlight" id="roasCard">
+                            <div class="calculator__result-label">ROAS (Окупність)</div>
+                            <div class="calculator__result-value calculator__result-value--success" id="resultROAS">0%</div>
+                            <div class="calculator__roas-indicator">
+                                <div class="calculator__roas-bar"><div class="calculator__roas-fill" id="roasFill"></div></div>
+                                <span class="calculator__roas-text" id="roasStatus">-</span>
+                            </div>
+                        </div>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Чистий Прибуток</div>
+                            <div class="calculator__result-value" id="resultProfit">€0</div>
+                        </div>
                     </div>
                 </div>
             </div>
