@@ -154,78 +154,74 @@
 
                 <div class="calculator__grid">
                     <!-- Left: Inputs -->
+                    <!-- Left Column: Inputs -->
                     <div class="calculator__inputs">
                         
-                        <!-- Вибір Ніші -->
-                        <div class="niche-select-group">
-                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight:600;">Оберіть вашу нішу (авто-підбір цифр):</label>
-                            <select id="nicheSelector" class="niche-select">
-                                <option value="custom">-- Налаштувати вручну --</option>
-                                <option value="ecommerce">Інтернет-магазин (Товари)</option>
-                                <option value="services">Послуги (Ремонт, Бьюті, СТО)</option>
-                                <option value="realestate" selected>Нерухомість</option>
-                                <option value="b2b">B2B / Оптові продажі</option>
-                                <option value="infobiz">Онлайн-школи / Інфобіз</option>
+                        <!-- 1. ПЛАТФОРМА (Повернули!) -->
+                        <div class="calculator__input-group" style="border-color: var(--brand);">
+                            <label style="display:block; margin-bottom:10px; color:#fff; font-weight:600;">Рекламна платформа:</label>
+                            <select id="platformSelector" class="niche-select">
+                                <option value="google">Google Ads (Пошук)</option>
+                                <option value="meta">Meta Ads (Facebook/Instagram)</option>
+                                <option value="tiktok">TikTok Ads</option>
                             </select>
                         </div>
 
-                        <!-- Budget -->
+                        <!-- 2. НІША -->
+                        <div class="niche-select-group">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-size:14px;">Ваша ніша (впливає на ціну):</label>
+                            <select id="nicheSelector" class="niche-select">
+                                <option value="average">-- Середнє по ринку --</option>
+                                <option value="ecommerce">E-commerce (Товари)</option>
+                                <option value="services">Послуги (Бьюті, Ремонт)</option>
+                                <option value="realestate">Нерухомість (Високий чек)</option>
+                                <option value="b2b">B2B / Опт</option>
+                                <option value="infobiz">Інфобізнес / Навчання</option>
+                            </select>
+                        </div>
+
+                        <!-- 3. БЮДЖЕТ -->
                         <div class="calculator__input-group" data-input="budget">
                             <div class="calculator__label">
-                                <span>Рекламний бюджет</span>
-                                <span class="calculator__label-value">€<span id="budgetValue">5000</span></span>
+                                <span class="calculator__label-text">Рекламний бюджет</span>
+                                <span class="calculator__label-value">€<span id="budgetValue">1000</span></span>
                             </div>
                             <div class="calculator__controls">
-                                <input type="range" class="calculator__range" id="budgetSlider" min="500" max="50000" step="100" value="5000">
-                                <input type="number" class="calculator__number-input" id="budgetInput" value="5000">
+                                <input type="range" class="calculator__range" id="budgetSlider" min="200" max="20000" step="100" value="1000">
+                                <input type="number" class="calculator__number-input" id="budgetInput" value="1000">
                             </div>
                         </div>
 
-                        <!-- CPC -->
-                        <div class="calculator__input-group" data-input="cpc">
-                            <div class="calculator__label">
-                                <span>Ціна кліка (CPC)</span>
-                                <span class="calculator__label-value">€<span id="cpcValue">0.80</span></span>
-                            </div>
-                            <div class="calculator__controls">
-                                <input type="range" class="calculator__range" id="cpcSlider" min="0.1" max="10" step="0.1" value="0.8">
-                                <input type="number" class="calculator__number-input" id="cpcInput" value="0.8">
-                            </div>
-                        </div>
-
-                        <!-- Conversion -->
-                        <div class="calculator__input-group" data-input="cr">
-                            <div class="calculator__label">
-                                <span>Конверсія сайту (%)</span>
-                                <span class="calculator__label-value"><span id="crValue">3.0</span>%</span>
-                            </div>
-                            <div class="calculator__controls">
-                                <input type="range" class="calculator__range" id="crSlider" min="0.1" max="15" step="0.1" value="3">
-                                <input type="number" class="calculator__number-input" id="crInput" value="3">
-                            </div>
-                        </div>
-
-                        <!-- AOV & Margin -->
-                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
-                            <div class="calculator__input-group" data-input="aov">
-                                <label style="font-size:12px; color:#94A3B8; margin-bottom:5px; display:block;">Середній чек (€)</label>
+                        <!-- ДЕТАЛІ (CPC, CR, AOV) -->
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                            <!-- CPC (Ціна кліка) -->
+                            <div class="calculator__input-group" data-input="cpc">
+                                <label style="font-size:12px; color:#94A3B8;">Ціна кліка CPC (€)</label>
                                 <div style="display:flex; align-items:center; gap:5px;">
-                                    <input type="range" id="aovSlider" min="10" max="5000" step="10" value="150" style="flex:1;">
-                                    <input type="number" class="calculator__number-input" id="aovInput" value="150" style="width:70px;">
+                                    <input type="range" id="cpcSlider" min="0.1" max="10" step="0.05" value="0.8" style="flex:1;">
+                                    <input type="number" class="calculator__number-input" id="cpcInput" value="0.8" style="width:70px;">
                                 </div>
-                                <span id="aovValue" style="display:none;"></span>
                             </div>
-                            <div class="calculator__input-group" data-input="margin">
-                                <label style="font-size:12px; color:#94A3B8; margin-bottom:5px; display:block;">Маржа (%)</label>
+                            <!-- Conversion (CR) -->
+                            <div class="calculator__input-group" data-input="cr">
+                                <label style="font-size:12px; color:#94A3B8;">Конверсія сайту (%)</label>
                                 <div style="display:flex; align-items:center; gap:5px;">
-                                    <input type="range" id="marginSlider" min="5" max="100" step="5" value="30" style="flex:1;">
-                                    <input type="number" class="calculator__number-input" id="marginInput" value="30" style="width:70px;">
+                                    <input type="range" id="crSlider" min="0.1" max="15" step="0.1" value="2.5" style="flex:1;">
+                                    <input type="number" class="calculator__number-input" id="crInput" value="2.5" style="width:70px;">
                                 </div>
-                                <span id="marginValue" style="display:none;"></span>
                             </div>
-                         </div>
+                        </div>
+                        
+                        <!-- AOV (Середній чек) -->
+                        <div class="calculator__input-group" data-input="aov">
+                            <label style="font-size:12px; color:#94A3B8;">Середній чек (€)</label>
+                            <div style="display:flex; align-items:center; gap:5px;">
+                                <input type="range" id="aovSlider" min="10" max="5000" step="10" value="120" style="flex:1;">
+                                <input type="number" class="calculator__number-input" id="aovInput" value="120" style="width:80px;">
+                            </div>
+                        </div>
+
                     </div>
-
                     <!-- Right: Results -->
                     <div class="calculator__results">
                         <div class="calculator__result-card">
