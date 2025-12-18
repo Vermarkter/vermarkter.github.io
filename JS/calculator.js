@@ -54,6 +54,12 @@ class MediaCalculator {
   }
 
   init() {
+    // Check if calculator elements exist
+    if (!this.inputs.budgetSlider) {
+      console.warn('Calculator elements not found on this page');
+      return;
+    }
+
     // Niche selector
     if (this.nicheSelector) {
       this.nicheSelector.addEventListener('change', (e) => this.applyPreset(e.target.value));
@@ -66,8 +72,11 @@ class MediaCalculator {
     this.syncInput('aov', this.inputs.aovSlider, this.inputs.aovInput, this.valueDisplays.aov);
     this.syncInput('margin', this.inputs.marginSlider, this.inputs.marginInput, this.valueDisplays.margin);
 
-    // Initial calculation
-    this.calculate();
+    // Initial calculation after a small delay to ensure all elements are ready
+    setTimeout(() => {
+      console.log('Running initial calculation...');
+      this.calculate();
+    }, 100);
   }
 
   syncInput(name, slider, numberInput, display) {
@@ -93,36 +102,47 @@ class MediaCalculator {
   }
 
   applyPreset(niche) {
-    if (niche === 'custom') return;
+    console.log('Applying preset for niche:', niche);
+
+    if (niche === 'custom') {
+      console.log('Custom selected - no preset applied');
+      return;
+    }
 
     const preset = this.presets[niche];
-    if (!preset) return;
+    if (!preset) {
+      console.warn('No preset found for:', niche);
+      return;
+    }
 
-    // Apply preset values
-    if (this.inputs.cpcSlider) {
+    console.log('Preset values:', preset);
+
+    // Apply preset values with proper formatting
+    if (this.inputs.cpcSlider && this.inputs.cpcInput) {
       this.inputs.cpcSlider.value = preset.cpc;
       this.inputs.cpcInput.value = preset.cpc;
       if (this.valueDisplays.cpc) this.valueDisplays.cpc.textContent = preset.cpc;
     }
 
-    if (this.inputs.crSlider) {
+    if (this.inputs.crSlider && this.inputs.crInput) {
       this.inputs.crSlider.value = preset.cr;
       this.inputs.crInput.value = preset.cr;
       if (this.valueDisplays.cr) this.valueDisplays.cr.textContent = preset.cr;
     }
 
-    if (this.inputs.aovSlider) {
+    if (this.inputs.aovSlider && this.inputs.aovInput) {
       this.inputs.aovSlider.value = preset.aov;
       this.inputs.aovInput.value = preset.aov;
       if (this.valueDisplays.aov) this.valueDisplays.aov.textContent = preset.aov;
     }
 
-    if (this.inputs.marginSlider) {
+    if (this.inputs.marginSlider && this.inputs.marginInput) {
       this.inputs.marginSlider.value = preset.margin;
       this.inputs.marginInput.value = preset.margin;
       if (this.valueDisplays.margin) this.valueDisplays.margin.textContent = preset.margin;
     }
 
+    console.log('Preset applied, recalculating...');
     this.calculate();
   }
 
@@ -138,9 +158,11 @@ class MediaCalculator {
 
   calculate() {
     const v = this.getValues();
+    console.log('Calculator values:', v);
 
     // Validation
     if (v.budget <= 0 || v.cpc <= 0) {
+      console.warn('Invalid values:', v);
       this.showError();
       return;
     }
@@ -166,6 +188,8 @@ class MediaCalculator {
     // ===== FORMULA 7: ROAS =====
     const roas = v.budget > 0 ? (revenue / v.budget) * 100 : 0;
 
+    console.log('Calculated results:', { clicks, leads, cpa, revenue, grossProfit, netProfit, roas });
+
     // Display results
     this.displayResults({
       clicks,
@@ -177,14 +201,19 @@ class MediaCalculator {
   }
 
   displayResults(results) {
-    if (!this.outputs.clicks) return;
+    if (!this.outputs.clicks) {
+      console.error('Output elements not found');
+      return;
+    }
 
-    // Animate numbers
-    this.animateValue(this.outputs.clicks, results.clicks, '');
-    this.animateValue(this.outputs.leads, results.leads, '');
-    this.animateValue(this.outputs.cpa, results.cpa, '€');
-    this.animateValue(this.outputs.roas, results.roas, '%');
-    this.animateValue(this.outputs.profit, results.profit, '€');
+    console.log('Displaying results:', results);
+
+    // Update values with proper formatting
+    this.outputs.clicks.textContent = Math.round(results.clicks).toLocaleString('de-DE');
+    this.outputs.leads.textContent = Math.round(results.leads).toLocaleString('de-DE');
+    this.outputs.cpa.textContent = '€' + Math.round(results.cpa).toLocaleString('de-DE');
+    this.outputs.roas.textContent = Math.round(results.roas) + '%';
+    this.outputs.profit.textContent = '€' + Math.round(results.profit).toLocaleString('de-DE');
 
     // Color profit based on value
     if (results.profit < 0) {

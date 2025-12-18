@@ -322,26 +322,65 @@ function preventHeaderOverlap() {
 
 // ==================== FORM SUBMISSIONS ====================
 function initForms() {
-    const forms = document.querySelectorAll('form');
-    
-    forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
+    const contactForm = document.getElementById('contactForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
+
             // Get form data
-            const formData = new FormData(form);
+            const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
-            
-            // Show success message
-            alert('Дякуємо! Ми зв\'яжемося з вами найближчим часом.');
-            
-            // Reset form
-            form.reset();
-            
-            // In production, send to backend
-            console.log('Form submitted:', data);
+
+            // Validate email
+            if (!data.email || !data.email.includes('@')) {
+                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Wird gesendet...';
+            submitBtn.disabled = true;
+
+            try {
+                // In production, send to backend API
+                // For now, simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                console.log('Form submitted:', data);
+
+                // Track event
+                if (typeof trackEvent === 'function') {
+                    trackEvent('Contact', 'Submit', 'Contact Form Submission');
+                }
+
+                // Show success message
+                if (formSuccess) {
+                    formSuccess.style.display = 'block';
+                }
+
+                // Reset form
+                contactForm.reset();
+
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    if (formSuccess) {
+                        formSuccess.style.display = 'none';
+                    }
+                }, 5000);
+
+            } catch (error) {
+                alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
+                console.error('Form submission error:', error);
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         });
-    });
+    }
 }
 
 // ==================== CTA BUTTONS ====================
