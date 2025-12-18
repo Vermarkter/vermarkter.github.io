@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Performance-Marketing für kleine Unternehmen in Europa. Wir zeigen echte Zahlen vor dem Start und verkaufen Marketing ohne Druck.">
+    <title>Vermarkter — Performance-Marketing, das zählt</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <section class="section-lg">
+        <div class="container">
+            <div class="hero text-center">
+                <h1>Marketing für kleine Unternehmen,<br>das sich rechnet.</h1>
+                <p class="hero-subtitle">
+                    Wir verkaufen keine Klicks.<br>
+                    Wir berechnen, wie viel Ihr Unternehmen verdienen kann.
+                </p>
+                <div class="cta-group mt-4">
+                    <a href="#calculator" class="btn btn-primary">Gewinnwachstum berechnen</a>
+                    <a href="#services" class="btn btn-secondary">Unsere Leistungen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="text-center mb-4">Leistungen</h2>
+            <div class="services-grid">
+                
+                <a href="SERVICES/google-ads/index.html" class="glass-card service-card">
+                    <h3>Google Ads</h3>
+                    <p class="text-muted">Performance-orientierte Google Ads Kampagnen mit klaren ROI-Zielen.</p>
+                </a>
+
+                <a href="SERVICES/meta-ads/index.html" class="glass-card service-card">
+                    <h3>Meta Ads</h3>
+                    <p class="text-muted">Facebook & Instagram Ads für lokale und E-Commerce Unternehmen.</p>
+                </a>
+
+                <a href="SERVICES/crm-integration/index.html" class="glass-card service-card">
+                    <h3>CRM Integration</h3>
+                    <p class="text-muted">Verbinden Sie Ihre Marketing-Tools mit CRM für besseres Tracking.</p>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR SECTION -->
+    <section id="calculator" class="section glass">
+        <div class="container">
+            <h2 class="text-center">Media Planning Rechner</h2>
+            <p class="text-center text-muted mb-4">
+                Dies ist ein echter Mediaplanung-Rechner.<br>
+                Hier werden dieselben Formeln verwendet, die täglich im Marketing eingesetzt werden.
+            </p>
+
+            <div class="calculator-wrapper">
+                <div class="calculator-inputs">
+                    
+                    <div class="form-group">
+                        <label for="platform">Plattform</label>
+                        <select id="platform">
+                            <option value="google">Google Ads</option>
+                            <option value="meta">Meta Ads</option>
+                            <option value="tiktok">TikTok Ads</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget">Monatliches Budget (€)</label>
+                        <input type="number" id="budget" value="1000" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cpc">Cost per Click (€)</label>
+                        <input type="number" id="cpc" value="0.50" step="0.01" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ctr">Click-Through Rate (%)</label>
+                        <input type="number" id="ctr" value="2" step="0.1" min="0" max="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cr">Conversion Rate (%)</label>
+                        <input type="number" id="cr" value="3" step="0.1" min="0" max="100">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="aov">Durchschnittlicher Bestellwert (€)</label>
+                        <input type="number" id="aov" value="100" min="0">
+                    </div>
+
+                </div>
+
+                <div class="calculator-results">
+                    <h3>Prognose</h3>
+                    
+                    <div class="result-item">
+                        <span class="result-label">Klicks</span>
+                        <span class="result-value" id="result-clicks">—</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="result-label">Conversions</span>
+                        <span class="result-value" id="result-conversions">—</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="result-label">Umsatz</span>
+                        <span class="result-value text-success" id="result-revenue">—</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="result-label">Gewinn</span>
+                        <span class="result-value" id="result-profit">—</span>
+                    </div>
+
+                    <div class="result-item">
+                        <span class="result-label">ROAS</span>
+                        <span class="result-value" id="result-roas">—</span>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="text-center text-muted mt-4">
+                Das Ergebnis ist eine Prognose, kein Versprechen.<br>
+                Marketing beginnt mit ehrlichen Zahlen.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="section">
+        <div class="container text-center">
+            <h2>Bereit zu wachsen?</h2>
+            <p class="text-secondary mb-3">Kontaktieren Sie uns für ein technisches Audit oder Erstberatung.</p>
+            <div class="cta-group">
+                <a href="mailto:info@vermarkter.com" class="btn btn-primary">E-Mail senden</a>
+                <a href="https://t.me/your_username" class="btn btn-secondary" target="_blank">Telegram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="section">
+        <div class="container text-center">
+            <p class="text-muted">&copy; 2025 Vermarkter. Performance-Marketing, das zählt.</p>
+            <p class="text-muted mt-2">
+                <a href="privacy-policy.html">Datenschutz</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="JS/calculator.js"></script>
+    <script src="JS/main.js"></script>
+
+</body>
+</html>
