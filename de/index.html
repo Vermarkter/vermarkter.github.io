@@ -17,6 +17,7 @@
 
                 <div class="nav-desktop">
                     <a href="#services">Leistungen</a>
+                    <a href="#pricing">Preise</a>
                     <a href="#calculator-section">Rechner</a>
                     <a href="#testimonials">Bewertungen</a>
                     <a href="#contact">Kontakt</a>
@@ -142,12 +143,82 @@
         </div>
     </section>
 
+    <!-- PRICING SECTION (PREISE & PAKETE) -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Preise & Pakete</h2>
+                <p class="section-subtitle">Transparente Preise ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Pricing Card 1: STARTER -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">STARTER</h3>
+                    <p class="pricing-subtitle">Perfekt für den Einstieg</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">€399</span>
+                        <span class="price-period">/ Monat</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Werbebudget bis €2.500</li>
+                        <li><span class="check-icon">✓</span> Google Ads ODER Meta Ads</li>
+                        <li><span class="check-icon">✓</span> Einmaliges Setup: €200</li>
+                        <li><span class="check-icon">✓</span> Monatliches Reporting</li>
+                        <li><span class="check-icon">✓</span> E-Mail Support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn">Jetzt starten</a>
+                </div>
+
+                <!-- Pricing Card 2: GROWTH (HIGHLIGHTED) -->
+                <div class="pricing-card pricing-card--featured">
+                    <div class="pricing-badge">Beliebt</div>
+                    <h3 class="pricing-title">GROWTH</h3>
+                    <p class="pricing-subtitle">Für wachstumsstarke Firmen</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">€699</span>
+                        <span class="price-period">/ Monat</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Werbebudget bis €10.000</li>
+                        <li><span class="check-icon">✓</span> Google Ads + Meta Ads (Kombi)</li>
+                        <li><span class="check-icon">✓</span> Einmaliges Setup: €0 (Gratis)</li>
+                        <li><span class="check-icon">✓</span> Live-Dashboard (24/7)</li>
+                        <li><span class="check-icon">✓</span> Priorisierter Support (WhatsApp/Telegram)</li>
+                        <li><span class="check-icon">✓</span> Kreative Anzeigen-Erstellung</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary pricing-btn">Jetzt starten</a>
+                </div>
+
+                <!-- Pricing Card 3: ENTERPRISE -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">ENTERPRISE</h3>
+                    <p class="pricing-subtitle">Maximale Skalierung</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">Individuell</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Werbebudget ab €10.000+</li>
+                        <li><span class="check-icon">✓</span> Full-Funnel Strategie</li>
+                        <li><span class="check-icon">✓</span> TikTok & LinkedIn Ads inklusive</li>
+                        <li><span class="check-icon">✓</span> Wöchentliche Strategy-Calls</li>
+                        <li><span class="check-icon">✓</span> Dedizierter Account Manager</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn">Kontakt aufnehmen</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CALCULATOR SECTION -->
     <section id="calculator-section" class="calculator-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">ROI Rechner</h2>
                 <p class="section-subtitle">Berechnen Sie die Rentabilität Ihrer Werbekampagne</p>
+                <p class="calculator-description" style="text-align: center; margin-top: 1rem; color: var(--text-secondary); font-size: 1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    💡 <strong style="color: var(--brand);">Basiert auf echten Mediaplanungs-Formeln.</strong> Jeder kann seine Kampagne selbst planen – transparent, ehrlich, ohne versteckte Kosten.
+                </p>
             </div>
 
             <div class="calculator">
@@ -164,8 +235,10 @@
                     </select>
                 </div>
 
-                <!-- Inputs Grid -->
-                <div class="calculator__inputs">
+                <!-- Two Column Grid: Left (Inputs) + Right (Results) -->
+                <div class="calculator__grid">
+                    <!-- Left Column: All Input Controls -->
+                    <div class="calculator__inputs">
                     <!-- Budget -->
                     <div class="calculator__input-group" data-input="budget">
                         <label>Monatliches Budget (€)</label>
@@ -217,7 +290,7 @@
                     </div>
                 </div>
 
-                <!-- Results -->
+                <!-- Right Column: Results Display -->
                 <div class="calculator__results">
                     <div class="calculator__result-card">
                         <div class="calculator__result-label">Klicks</div>
@@ -244,6 +317,8 @@
                         <div class="calculator__result-value" id="resultProfit">€0</div>
                     </div>
                 </div>
+                <!-- End of calculator__grid -->
+                </div>
             </div>
 
             <p class="text-center text-muted mt-4">
@@ -264,46 +339,60 @@
 
         <div class="marquee">
             <div class="marquee-content" id="marqueeContent">
-                <!-- Testimonial 1 -->
+                <!-- Testimonial 1 (UA) -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Vermarkter hat uns geholfen, unseren Online-Shop in Deutschland in 6 Tagen zu starten. Erste Verkäufe kamen bereits nach einer Woche!"</p>
-                    <div class="testimonial-author">Oksana K.</div>
-                    <div class="testimonial-company">E-commerce, München</div>
+                    <p class="testimonial-text">"Vermarkter допомогли запустити наш інтернет-магазин у Німеччині за 6 днів. Перші продажі прийшли вже через тиждень!"</p>
+                    <div class="testimonial-author">Оксана К.</div>
+                    <div class="testimonial-company">E-commerce, Мюнхен</div>
                 </div>
 
-                <!-- Testimonial 2 -->
+                <!-- Testimonial 2 (UA) -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Professionelles Team! Die Google Ads Kampagne hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden."</p>
-                    <div class="testimonial-author">Andriy M.</div>
-                    <div class="testimonial-company">Dienstleistungen, Berlin</div>
+                    <p class="testimonial-text">"Професійна команда! Google Ads окупилась за перший місяць. ROAS 420%. Дуже задоволений."</p>
+                    <div class="testimonial-author">Андрій М.</div>
+                    <div class="testimonial-company">Послуги, Берлін</div>
                 </div>
 
-                <!-- Testimonial 3 -->
+                <!-- Testimonial 3 (UA) -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Endlich eine Agentur, die versteht, wie der EU-Markt funktioniert. Hervorragende Ergebnisse in nur 3 Monaten."</p>
-                    <div class="testimonial-author">Andreas W.</div>
-                    <div class="testimonial-company">SaaS, Frankfurt</div>
+                    <p class="testimonial-text">"Нарешті агенція, яка розуміє, як працює ринок ЄС. Відмінні результати всього за 3 місяці."</p>
+                    <div class="testimonial-author">Дмитро С.</div>
+                    <div class="testimonial-company">SaaS, Прага</div>
                 </div>
 
-                <!-- Testimonial 4 -->
+                <!-- Testimonial 4 (UA) -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Świetna współpraca! Kampanie Meta Ads przyniosły nam +180% wzrost leadów. Gorąco polecam!"</p>
-                    <div class="testimonial-author">Piotr N.</div>
-                    <div class="testimonial-company">B2B, Warszawa</div>
+                    <p class="testimonial-text">"Кампанії Meta Ads принесли нам +180% зростання лідів. Гаряче рекомендую!"</p>
+                    <div class="testimonial-author">Марина Л.</div>
+                    <div class="testimonial-company">B2B, Варшава</div>
                 </div>
 
-                <!-- Testimonial 5 -->
+                <!-- Testimonial 5 (RU) -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Die CRM-Integration mit Telegram hat unseren Verkaufsansatz verändert. Jetzt geht kein Lead mehr verloren. Danke!"</p>
-                    <div class="testimonial-author">Marina L.</div>
-                    <div class="testimonial-company">Dienstleistungen, Warschau</div>
+                    <p class="testimonial-text">"CRM-интеграция с Telegram изменила наш подход к продажам. Теперь ни один лид не теряется. Спасибо!"</p>
+                    <div class="testimonial-author">Ольга В.</div>
+                    <div class="testimonial-company">Услуги, Варшава</div>
                 </div>
 
-                <!-- Testimonial 6 -->
+                <!-- Testimonial 6 (UA) -->
                 <div class="testimonial-card">
-                    <p class="testimonial-text">"Die SEO-Strategie funktioniert! In 4 Monaten sind wir in den TOP-3 für alle Keywords. Organischer Traffic um 300% gestiegen."</p>
-                    <div class="testimonial-author">Dmytro S.</div>
-                    <div class="testimonial-company">E-commerce, Prag</div>
+                    <p class="testimonial-text">"SEO-стратегія працює! За 4 місяці ми в ТОП-3 за всіма ключовими словами. Органічний трафік виріс на 300%."</p>
+                    <div class="testimonial-author">Юрій П.</div>
+                    <div class="testimonial-company">E-commerce, Київ</div>
+                </div>
+
+                <!-- Testimonial 7 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Запустили рекламу в Google за 2 дні. Вже через тиждень отримали перші 15 заявок. Раджу всім!"</p>
+                    <div class="testimonial-author">Сергій Т.</div>
+                    <div class="testimonial-company">Будівництво, Дюссельдорф</div>
+                </div>
+
+                <!-- Testimonial 8 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Команда Vermarkter знає свою справу. Прозорі звіти, чіткі KPI, завжди на зв'язку. Працюємо вже 8 місяців."</p>
+                    <div class="testimonial-author">Ірина К.</div>
+                    <div class="testimonial-company">Косметика, Варшава</div>
                 </div>
             </div>
         </div>

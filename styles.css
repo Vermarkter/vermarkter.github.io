@@ -156,9 +156,9 @@ header {
     left: 0;
     right: 0;
     height: 80px;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid var(--glass-border);
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: var(--shadow-md);
     z-index: var(--z-sticky);
 }
@@ -169,6 +169,9 @@ nav {
     align-items: center;
     justify-content: space-between;
     gap: var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 .logo {
@@ -185,7 +188,7 @@ nav {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: var(--spacing-md);
+    gap: 2rem;
     align-items: center;
 }
 
@@ -697,6 +700,45 @@ section, .services-section {
     font-size: 1.1rem;
 }
 
+.calculator__preset {
+    margin-bottom: 32px;
+}
+
+.calculator__preset label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.calculator__preset select,
+.calculator__select {
+    width: 100%;
+    max-width: 400px;
+    padding: 14px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.calculator__preset select:hover,
+.calculator__select:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.calculator__preset select:focus,
+.calculator__select:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+}
+
 .calculator__grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr; /* 60% на 40% */
@@ -714,7 +756,7 @@ section, .services-section {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px;
+    padding: 24px;
     transition: 0.3s ease;
 }
 
@@ -722,6 +764,30 @@ section, .services-section {
 .calculator__input-group--active {
     border-color: var(--brand);
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+}
+
+.calculator__input-group label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-main);
+}
+
+.calculator__input-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.calculator__value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--brand);
+    font-family: 'Courier New', monospace;
+    text-align: right;
+    min-width: 60px;
 }
 
 .calculator__label {
@@ -747,42 +813,87 @@ section, .services-section {
 }
 
 /* Стилізація повзунка (Slider) */
-.calculator__range {
+input[type="range"] {
     -webkit-appearance: none;
     flex: 1;
     height: 6px;
-    background: var(--bg-secondary);
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     outline: none;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
-.calculator__range::-webkit-slider-thumb {
+input[type="range"]:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     background: var(--brand);
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-    transition: transform 0.2s;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.calculator__range::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.8);
 }
 
-/* Інпут з числом */
-.calculator__number-input {
+input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--brand);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 16px rgba(59, 130, 246, 0.8);
+}
+
+/* Інпут з числом - PREMIUM DARK STYLE */
+input[type="number"] {
     width: 100px;
-    padding: 8px;
-    background: var(--bg-body);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-main);
+    padding: 10px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: white;
     font-size: 1rem;
     font-weight: 600;
     text-align: center;
+    transition: all 0.2s;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: var(--brand);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.3);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+input[type="number"]:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Remove arrows from number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
 }
 
 /* --- Right Column: Results --- */
@@ -796,7 +907,7 @@ section, .services-section {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 20px;
+    padding: 24px;
     transition: 0.3s;
     position: relative;
     overflow: hidden;
@@ -1161,3 +1272,228 @@ footer, .footer {
 .mb-1 { margin-bottom: var(--spacing-xs); }
 .mb-2 { margin-bottom: var(--spacing-sm); }
 .mb-3 { margin-bottom: var(--spacing-md); }
+
+/* ============================================
+   FINAL SMART FIX (RESPONSIVE & COMPACT)
+   ============================================ */
+
+/* --- 1. GLOBAL UI FIXES (All Screens) --- */
+/* Темні інпути для всіх */
+input[type="number"],
+input[type="text"],
+select {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+}
+
+/* Розсуваємо меню (працює скрізь, на мобільному сховається в бургер) */
+header nav a, 
+header .nav-menu a {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    text-decoration: none !important;
+    color: var(--text-secondary) !important;
+}
+
+/* --- 2. DESKTOP ONLY (Великі екрани > 1024px) --- */
+@media (min-width: 1024px) {
+    .calculator {
+        max-width: 900px !important; /* Робимо компактно тільки на ПК */
+        margin: 0 auto !important;
+        padding: 40px !important;
+    }
+
+    .calculator__grid {
+        grid-template-columns: 1.2fr 0.8fr !important; /* Дві колонки */
+        gap: 30px !important;
+    }
+
+    .calculator__input-group {
+        padding: 15px 25px !important; /* Акуратні відступи всередині карток */
+    }
+}
+
+/* --- 3. TABLET & MOBILE (< 1024px) --- */
+@media (max-width: 1023px) {
+    .calculator {
+        max-width: 100% !important; /* На планшеті розтягуємо на всю ширину */
+        padding: 20px !important;
+        margin: 0 !important;
+        border-radius: 0 !important; /* Прибираємо скруглення країв на весь екран */
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+    .calculator__grid {
+        grid-template-columns: 1fr !important; /* Одна колонка! */
+        gap: 20px !important;
+    }
+
+    /* Результати (права колонка) переїжджають під низ */
+    .calculator__results {
+        margin-top: 20px !important;
+    }
+
+    /* Робимо інпути більшими, щоб зручно попадати пальцем */
+    input[type="range"] {
+        height: 10px !important; /* Товстіший повзунок */
+    }
+    
+    input[type="range"]::-webkit-slider-thumb {
+        width: 24px !important; /* Більша кнопка повзунка */
+        height: 24px !important;
+    }
+    
+    /* Меню на планшетах часто треба ховати, але поки лишимо відступи меншими */
+    header nav a, 
+    header .nav-menu a {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* ============================================
+   PRICING SECTION (PREISE & PAKETE)
+   ============================================ */
+
+.pricing-section {
+    padding: 80px 0;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.pricing-card {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Featured card (GROWTH) */
+.pricing-card--featured {
+    border: 1px solid var(--brand) !important;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+    transform: scale(1.05);
+}
+
+.pricing-card--featured:hover {
+    transform: scale(1.05) translateY(-8px);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    right: 24px;
+    background: var(--brand);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pricing-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.pricing-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.pricing-price {
+    margin: 2rem 0;
+    padding: 1.5rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.price-amount {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--brand);
+    display: block;
+    line-height: 1;
+}
+
+.price-period {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+.pricing-features {
+    list-style: none;
+    margin: 2rem 0;
+    flex: 1;
+}
+
+.pricing-features li {
+    padding: 0.75rem 0;
+    color: var(--text-main);
+    font-size: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.check-icon {
+    color: var(--success);
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.pricing-btn {
+    width: 100%;
+    margin-top: auto;
+    text-align: center;
+    padding: 14px 24px;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .pricing-card--featured {
+        transform: scale(1);
+    }
+
+    .pricing-card--featured:hover {
+        transform: translateY(-8px);
+    }
+}
