@@ -1639,3 +1639,34 @@ h1 span, h2 span, .text-gradient {
     z-index: -1;
     pointer-events: none;
 }
+
+/* ============================================
+   DROPDOWN MENU FIX (DARK MODE)
+   ============================================ */
+
+/* 1. Змушуємо браузер використовувати темну тему для системних елементів */
+:root {
+    color-scheme: dark; /* Це магічний рядок, який робить скролбари і меню темними */
+}
+
+/* 2. Стиль самого поля вибору */
+select {
+    background-color: rgba(30, 41, 59, 0.8) !important; /* Темно-синій фон */
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    cursor: pointer;
+}
+
+/* 3. Стиль випадаючого списку (опцій) */
+select option {
+    background-color: #0F172A !important; /* Глибокий темний колір (як фон сайту) */
+    color: #ffffff !important;
+    padding: 12px !important;
+}
+
+/* 4. При наведенні (працює не у всіх браузерах, але спробуємо) */
+select option:hover,
+select option:checked {
+    background-color: var(--brand) !important; /* Синій при виборі */
+    color: white !important;
+}
