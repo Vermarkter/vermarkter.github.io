@@ -1497,3 +1497,63 @@ header .nav-menu a {
         transform: translateY(-8px);
     }
 }
+
+/* ============================================
+   LIGHT THEME
+   ============================================ */
+
+[data-theme="light"] {
+    /* Background colors */
+    --bg-body: #F8FAFC;
+    --bg-card: rgba(255, 255, 255, 0.9);
+    --bg-secondary: #FFFFFF;
+    
+    /* Text colors */
+    --text-main: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #64748B;
+    
+    /* Glassmorphism for light theme */
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+    --shadow-glow: 0 0 24px rgba(59, 130, 246, 0.2);
+}
+
+[data-theme="light"] body::before {
+    background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+}
+
+[data-theme="light"] .calculator,
+[data-theme="light"] .service-card,
+[data-theme="light"] .pricing-card {
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .calculator__input-group {
+    background: rgba(0, 0, 0, 0.03);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] input[type="number"],
+[data-theme="light"] input[type="text"],
+[data-theme="light"] select {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.15) !important;
+    color: #0F172A !important;
+}
+
+[data-theme="light"] input[type="range"] {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] header {
+    background: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}

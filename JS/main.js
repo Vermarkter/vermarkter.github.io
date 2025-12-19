@@ -44,11 +44,11 @@ if (mobileToggle && mobileMenu) {
 }
 
 // ==================== THEME TOGGLE ====================
-const themeToggle = document.getElementById('themeToggle');
+const themeToggle = document.getElementById('theme-btn');
 
 function initTheme() {
     const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.body.setAttribute('data-theme', savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
 }
 
@@ -60,13 +60,16 @@ function updateThemeIcon(theme) {
 
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-        const currentTheme = document.body.getAttribute('data-theme') || 'dark';
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.body.setAttribute('data-theme', newTheme);
+        document.documentElement.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
     });
 }
+
+// Initialize theme on load
+initTheme();
 
 // ==================== LANGUAGE SELECTOR ====================
 const langSelector = document.getElementById('langSelector');
