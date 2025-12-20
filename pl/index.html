@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Marketing efektywnościowy dla małych firm w Europie. Pokazujemy prawdziwe liczby przed startem i sprzedajemy marketing bez presji.">
+    <title>Vermarkter — Marketing efektywnościowy, który się liczy</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- HEADER (FIXED) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="brand">⚡ Vermarkter</a>
+
+                <div class="nav-desktop">
+                    <a href="#services">Usługi</a>
+                    <a href="#pricing">Cennik</a>
+                    <a href="#calculator-section">Kalkulator</a>
+                    <a href="#testimonials">Opinie</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-btn" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer;">🌙</button>
+
+                    <!-- Lang Switcher -->
+                    <select class="lang-switch" onchange="window.location.href='../'+this.value+'/'" style="background:#1E293B; color:white; border:1px solid rgba(255,255,255,0.2); padding:8px; border-radius:8px; font-weight:700; cursor:pointer;">
+                        <option value="ua">UA</option>
+                        <option value="de">DE</option>
+                        <option value="en">EN</option>
+                        <option value="pl" selected>PL</option>
+                        <option value="ru">RU</option>
+                        <option value="tr">TR</option>
+                    </select>
+                </div>
+
+                <button class="mobile-toggle">☰</button>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services">Usługi</a>
+            <a href="#calculator-section">Kalkulator</a>
+            <a href="#testimonials">Opinie</a>
+            <a href="#contact">Kontakt</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <span>⚡</span>
+                <span>Dla małych firm</span>
+            </div>
+
+            <h1>Marketing dla małych firm,<br>który się opłaca.</h1>
+
+            <p class="hero-subtitle">
+                Nie sprzedajemy kliknięć.<br>
+                Obliczamy, ile Twoja firma może zarobić.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#calculator-section" class="btn btn-primary">Oblicz wzrost zysku</a>
+                <a href="#services" class="btn btn-secondary">Nasze usługi</a>
+            </div>
+
+            <!-- STATS -->
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number" data-target="247">0</span>
+                    <span class="stat-label">% wzrost sprzedaży</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="420">0</span>
+                    <span class="stat-label">% średni ROAS</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-target="7">0</span>
+                    <span class="stat-label">dni do startu</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION (EXACTLY 6 CARDS IN 3x2 GRID) -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nasze usługi</h2>
+                <p class="section-subtitle">Kompleksowe rozwiązania marketingowe dla szybkiego wzrostu w UE</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">💻</div>
+                    <h3>Tworzenie stron</h3>
+                    <p>Skuteczne landing pages z szybkim ładowaniem i trackingiem. Responsywny design na wszystkie urządzenia.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🔍</div>
+                    <h3>Google Ads</h3>
+                    <p>Gorące leady z wyszukiwania i Performance Max dla UE. Konfiguracja kampanii w 48 godzin.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">📱</div>
+                    <h3>Meta Ads</h3>
+                    <p>Facebook i Instagram do generowania leadów i sprzedaży. Remarketing i grupy Lookalike.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🎵</div>
+                    <h3>TikTok Ads</h3>
+                    <p>Wideo-kreacje i zasięg viralowy na TikTok. Dotarcie do młodej grupy docelowej w UE.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">📈</div>
+                    <h3>Optymalizacja SEO</h3>
+                    <p>Ruch organiczny z zlokalizowanym contentem dla UE. Długoterminowe rezultaty i wzrost.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card animate-on-scroll">
+                    <div class="service-icon">🤝</div>
+                    <h3>Integracja CRM</h3>
+                    <p>Wszystkie leady w Telegram/tabeli + automatyczne lejki. Pełna kontrola nad procesem sprzedaży.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION (CENNIK & PAKIETY) -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Cennik & Pakiety</h2>
+                <p class="section-subtitle">Przejrzyste ceny bez ukrytych kosztów. Wybierz idealny pakiet dla Twojej firmy.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Pricing Card 1: START -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">START</h3>
+                    <p class="pricing-subtitle">Idealny na początek</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">€399</span>
+                        <span class="price-period">/ miesiąc</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Budżet reklamowy do €2.500</li>
+                        <li><span class="check-icon">✓</span> Google Ads LUB Meta Ads</li>
+                        <li><span class="check-icon">✓</span> Jednorazowa konfiguracja: €200</li>
+                        <li><span class="check-icon">✓</span> Miesięczny raport</li>
+                        <li><span class="check-icon">✓</span> Wsparcie Email</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn">Zacznij teraz</a>
+                </div>
+
+                <!-- Pricing Card 2: WZROST (HIGHLIGHTED) -->
+                <div class="pricing-card pricing-card--featured">
+                    <div class="pricing-badge">Popularny</div>
+                    <h3 class="pricing-title">WZROST</h3>
+                    <p class="pricing-subtitle">Dla dynamicznych firm</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">€699</span>
+                        <span class="price-period">/ miesiąc</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Budżet reklamowy do €10.000</li>
+                        <li><span class="check-icon">✓</span> Google Ads + Meta Ads (kombo)</li>
+                        <li><span class="check-icon">✓</span> Jednorazowa konfiguracja: €0 (gratis)</li>
+                        <li><span class="check-icon">✓</span> Live Dashboard (24/7)</li>
+                        <li><span class="check-icon">✓</span> Priorytetowe wsparcie (WhatsApp/Telegram)</li>
+                        <li><span class="check-icon">✓</span> Tworzenie kreacji reklamowych</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary pricing-btn">Zacznij teraz</a>
+                </div>
+
+                <!-- Pricing Card 3: BIZNES -->
+                <div class="pricing-card">
+                    <h3 class="pricing-title">BIZNES</h3>
+                    <p class="pricing-subtitle">Maksymalna skala</p>
+                    <div class="pricing-price">
+                        <span class="price-amount">Indywidualnie</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><span class="check-icon">✓</span> Budżet reklamowy od €10.000+</li>
+                        <li><span class="check-icon">✓</span> Strategia Full-Funnel</li>
+                        <li><span class="check-icon">✓</span> TikTok & LinkedIn Ads w cenie</li>
+                        <li><span class="check-icon">✓</span> Cotygodniowe rozmowy strategiczne</li>
+                        <li><span class="check-icon">✓</span> Dedykowany Account Manager</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn">Skontaktuj się</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULATOR SECTION -->
+    <section id="calculator-section" class="calculator-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Kalkulator ROI</h2>
+                <p class="section-subtitle">Oblicz rentowność swojej kampanii reklamowej</p>
+                <p class="calculator-description" style="text-align: center; margin-top: 1rem; color: var(--text-secondary); font-size: 1rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    💡 <strong style="color: var(--brand);">Oparty na prawdziwych formułach media planningu.</strong> Każdy może zaplanować swoją kampanię – przejrzyście, uczciwie, bez ukrytych kosztów.
+                </p>
+            </div>
+
+            <div class="calculator">
+                <!-- Preset Selector -->
+                <div class="calculator__preset">
+                    <label for="nicheSelector">Wybierz swoją branżę:</label>
+                    <select id="nicheSelector" class="calculator__select">
+                        <option value="custom">Własne dane</option>
+                        <option value="ecommerce">E-commerce (Produkty)</option>
+                        <option value="services">Usługi (Rzemiosło, Beauty)</option>
+                        <option value="realestate">Nieruchomości</option>
+                        <option value="b2b">B2B / Hurt</option>
+                        <option value="infobiz">Infobiznes / Kursy</option>
+                    </select>
+                </div>
+
+                <!-- Two Column Grid: Left (Inputs) + Right (Results) -->
+                <div class="calculator__grid">
+                    <!-- Left Column: All Input Controls -->
+                    <div class="calculator__inputs">
+                    <!-- Budget -->
+                    <div class="calculator__input-group" data-input="budget">
+                        <label>Miesięczny budżet (€)</label>
+                        <div class="calculator__input-row">
+                            <input type="range" id="budgetSlider" min="100" max="10000" step="100" value="1000">
+                            <input type="number" id="budgetInput" min="100" max="10000" step="100" value="1000">
+                        </div>
+                        <div class="calculator__value" id="budgetValue">1000</div>
+                    </div>
+
+                    <!-- CPC -->
+                    <div class="calculator__input-group" data-input="cpc">
+                        <label>Koszt za kliknięcie (€)</label>
+                        <div class="calculator__input-row">
+                            <input type="range" id="cpcSlider" min="0.1" max="5" step="0.1" value="0.8">
+                            <input type="number" id="cpcInput" min="0.1" max="5" step="0.1" value="0.8">
+                        </div>
+                        <div class="calculator__value" id="cpcValue">0.8</div>
+                    </div>
+
+                    <!-- Conversion Rate -->
+                    <div class="calculator__input-group" data-input="cr">
+                        <label>Wskaźnik konwersji (%)</label>
+                        <div class="calculator__input-row">
+                            <input type="range" id="crSlider" min="0.5" max="15" step="0.1" value="3">
+                            <input type="number" id="crInput" min="0.5" max="15" step="0.1" value="3">
+                        </div>
+                        <div class="calculator__value" id="crValue">3</div>
+                    </div>
+
+                    <!-- AOV -->
+                    <div class="calculator__input-group" data-input="aov">
+                        <label>Średnia wartość zamówienia (€)</label>
+                        <div class="calculator__input-row">
+                            <input type="range" id="aovSlider" min="10" max="10000" step="10" value="150">
+                            <input type="number" id="aovInput" min="10" max="10000" step="10" value="150">
+                        </div>
+                        <div class="calculator__value" id="aovValue">150</div>
+                    </div>
+
+                    <!-- Margin -->
+                    <div class="calculator__input-group" data-input="margin">
+                        <label>Marża (%)</label>
+                        <div class="calculator__input-row">
+                            <input type="range" id="marginSlider" min="5" max="95" step="5" value="40">
+                            <input type="number" id="marginInput" min="5" max="95" step="5" value="40">
+                        </div>
+                        <div class="calculator__value" id="marginValue">40</div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Results Display -->
+                <div class="calculator__results">
+                    <div class="calculator__result-card">
+                        <div class="calculator__result-label">Kliknięcia</div>
+                        <div class="calculator__result-value" id="resultClicks">0</div>
+                    </div>
+
+                    <div class="calculator__result-card">
+                        <div class="calculator__result-label">Leady</div>
+                        <div class="calculator__result-value" id="resultLeads">0</div>
+                    </div>
+
+                    <div class="calculator__result-card">
+                        <div class="calculator__result-label">CPA</div>
+                        <div class="calculator__result-value" id="resultCPA">€0</div>
+                    </div>
+
+                    <div class="calculator__result-card">
+                        <div class="calculator__result-label">ROAS</div>
+                        <div class="calculator__result-value" id="resultROAS">0%</div>
+                    </div>
+
+                    <div class="calculator__result-card">
+                        <div class="calculator__result-label">Zysk</div>
+                        <div class="calculator__result-value" id="resultProfit">€0</div>
+                    </div>
+                </div>
+                <!-- End of calculator__grid -->
+                </div>
+            </div>
+
+            <p class="text-center text-muted mt-4">
+                Wynik to prognoza, nie obietnica.<br>
+                Marketing zaczyna się od uczciwych liczb.
+            </p>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS (INFINITE MARQUEE) -->
+    <section id="testimonials" class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Opinie klientów</h2>
+                <p class="section-subtitle">Ponad 100 udanych projektów dla małych firm w UE</p>
+            </div>
+        </div>
+
+        <div class="marquee">
+            <div class="marquee-content" id="marqueeContent">
+                <!-- Testimonial 1 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Vermarkter допомогли запустити наш інтернет-магазин у Німеччині за 6 днів. Перші продажі прийшли вже через тиждень!"</p>
+                    <div class="testimonial-author">Оксана К.</div>
+                    <div class="testimonial-company">E-commerce, Мюнхен</div>
+                </div>
+
+                <!-- Testimonial 2 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Професійна команда! Google Ads окупилась за перший місяць. ROAS 420%. Дуже задоволений."</p>
+                    <div class="testimonial-author">Андрій М.</div>
+                    <div class="testimonial-company">Послуги, Берлін</div>
+                </div>
+
+                <!-- Testimonial 3 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Нарешті агенція, яка розуміє, як працює ринок ЄС. Відмінні результати всього за 3 місяці."</p>
+                    <div class="testimonial-author">Дмитро С.</div>
+                    <div class="testimonial-company">SaaS, Прага</div>
+                </div>
+
+                <!-- Testimonial 4 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Кампанії Meta Ads принесли нам +180% зростання лідів. Гаряче рекомендую!"</p>
+                    <div class="testimonial-author">Марина Л.</div>
+                    <div class="testimonial-company">B2B, Варшава</div>
+                </div>
+
+                <!-- Testimonial 5 (RU) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"CRM-интеграция с Telegram изменила наш подход к продажам. Теперь ни один лид не теряется. Спасибо!"</p>
+                    <div class="testimonial-author">Ольга В.</div>
+                    <div class="testimonial-company">Услуги, Варшава</div>
+                </div>
+
+                <!-- Testimonial 6 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"SEO-стратегія працює! За 4 місяці ми в ТОП-3 за всіма ключовими словами. Органічний трафік виріс на 300%."</p>
+                    <div class="testimonial-author">Юрій П.</div>
+                    <div class="testimonial-company">E-commerce, Київ</div>
+                </div>
+
+                <!-- Testimonial 7 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Запустили рекламу в Google за 2 дні. Вже через тиждень отримали перші 15 заявок. Раджу всім!"</p>
+                    <div class="testimonial-author">Сергій Т.</div>
+                    <div class="testimonial-company">Будівництво, Дюссельдорф</div>
+                </div>
+
+                <!-- Testimonial 8 (UA) -->
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Команда Vermarkter знає свою справу. Прозорі звіти, чіткі KPI, завжди на зв'язку. Працюємо вже 8 місяців."</p>
+                    <div class="testimonial-author">Ірина К.</div>
+                    <div class="testimonial-company">Косметика, Варшава</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="services-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Gotowy na wzrost?</h2>
+                <p class="section-subtitle">Skontaktuj się z nami w sprawie audytu technicznego lub konsultacji</p>
+            </div>
+
+            <!-- Contact Form -->
+            <div style="max-width: 600px; margin: 3rem auto;">
+                <form id="contactForm" class="contact-form" style="background: var(--glass-bg); padding: 2.5rem; border-radius: 16px; border: 1px solid var(--glass-border); backdrop-filter: var(--glass-blur);">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="contactName" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Imię</label>
+                        <input type="text" id="contactName" name="name" placeholder="Twoje imię" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="contactEmail" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Email <span style="color: var(--error, #EF4444);">*</span></label>
+                        <input type="email" id="contactEmail" name="email" required placeholder="twoj.email@przyklad.pl" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="contactPhone" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Telefon (opcjonalnie)</label>
+                        <input type="tel" id="contactPhone" name="phone" placeholder="+48 123 456 789" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label for="contactMessage" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 500;">Wiadomość</label>
+                        <textarea id="contactMessage" name="message" rows="5" placeholder="Opisz swój projekt..." style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem; resize: vertical; min-height: 120px;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">Wyślij zapytanie</button>
+                </form>
+
+                <div id="formSuccess" style="display: none; margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; color: var(--success, #10B981); text-align: center;">
+                    ✓ Dziękujemy! Skontaktujemy się wkrótce.
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="font-size: 1rem; margin-bottom: 1rem; color: var(--text-secondary);">Lub skontaktuj się bezpośrednio:</p>
+                <p style="font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--text-secondary);">
+                    📧 <a href="mailto:maps.werbung@gmail.com" style="color: var(--brand-blue);">maps.werbung@gmail.com</a>
+                </p>
+                <p style="font-size: 1.125rem; color: var(--text-secondary);">
+                    💬 <a href="https://t.me/Asystentmijbot" style="color: var(--brand-blue);">@Asystentmijbot</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>O nas</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                        Agencja marketingowa dla małych firm w Unii Europejskiej.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Usługi</h4>
+                    <a href="#services">Tworzenie stron</a>
+                    <a href="#services">Google Ads</a>
+                    <a href="#services">Meta Ads</a>
+                    <a href="#services">TikTok Ads</a>
+                    <a href="#services">SEO</a>
+                    <a href="#services">CRM</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Informacje</h4>
+                    <a href="#testimonials">Opinie</a>
+                    <a href="#calculator-section">Kalkulator</a>
+                    <a href="../datenschutz.html">Polityka prywatności</a>
+                    <a href="../impressum.html">Impressum</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Kontakt</h4>
+                    <a href="mailto:maps.werbung@gmail.com">Email</a>
+                    <a href="https://t.me/Asystentmijbot">Telegram</a>
+                    <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 1rem;">
+                        Biura: Berlin, Warszawa, Kijów
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 Vermarkter. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="container">
+            <div class="cookie-content">
+                <p class="cookie-text">
+                    Używamy plików cookie, aby poprawić wydajność strony i przeprowadzać analizy. Kontynuując korzystanie ze strony, wyrażasz zgodę na naszą politykę prywatności.
+                </p>
+                <div class="cookie-actions">
+                    <button class="btn btn-primary" id="acceptCookies">Akceptuj</button>
+                    <button class="btn btn-secondary" id="declineCookies">Odrzuć</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHATBOT BUTTON -->
+    <button class="chatbot-button" id="chatbotButton">
+        💬
+    </button>
+
+    <!-- Scripts -->
+    <script src="../JS/calculator.js"></script>
+    <script src="../JS/chatbot.js"></script>
+    <script src="../JS/consent.js"></script>
+    <script src="../JS/main.js"></script>
+</body>
+</html>
