@@ -38,7 +38,7 @@ class VermarkterChatbot {
     return 'de'; // default
   }
 
-  getTranslation(key) {
+  getTranslation() {
     const translations = {
       uk: {
         title: 'Vermarkter Асистент',
@@ -174,7 +174,8 @@ class VermarkterChatbot {
   }
 
   t(key) {
-    return this.getTranslation(key);
+    const translations = this.getTranslation();
+    return translations[key] || key;
   }
 
   init() {
