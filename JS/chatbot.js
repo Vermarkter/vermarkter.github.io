@@ -19,7 +19,13 @@ class VermarkterChatbot {
   detectLanguage() {
     // Detect language from HTML lang attribute or URL path
     const htmlLang = document.documentElement.lang;
-    if (htmlLang) return htmlLang;
+    if (htmlLang) {
+      // Normalize language code to 2 letters (e.g., 'pl-PL' -> 'pl')
+      const normalized = htmlLang.toLowerCase().split('-')[0];
+      // Map uk/ua to uk for consistency
+      if (normalized === 'ua') return 'uk';
+      return normalized;
+    }
 
     const path = window.location.pathname;
     if (path.includes('/ua/')) return 'uk';

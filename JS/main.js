@@ -262,14 +262,7 @@ if (declineCookies) {
 }
 
 // ==================== CHATBOT ====================
-const chatbotButton = document.getElementById('chatbotButton');
-
-if (chatbotButton) {
-    chatbotButton.addEventListener('click', () => {
-        // Open Telegram chat or custom chatbot
-        window.open('https://t.me/vermarkter', '_blank');
-    });
-}
+// Chatbot initialization handled by chatbot.js
 
 // ==================== SCROLL ANIMATIONS ====================
 function initScrollAnimations() {
@@ -467,8 +460,9 @@ if (calculateBtn) {
     });
 }
 
-if (chatbotButton) {
-    chatbotButton.addEventListener('click', () => {
+const chatbotButtonForAnalytics = document.getElementById('chatbotButton');
+if (chatbotButtonForAnalytics) {
+    chatbotButtonForAnalytics.addEventListener('click', () => {
         trackEvent('Engagement', 'Click', 'Chatbot Opened');
     });
 }
