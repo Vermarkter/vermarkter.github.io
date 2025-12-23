@@ -1,15 +1,15 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-// 👇 ВСТАВ СЮДИ ТІ ДАНІ, ЩО ТИ СКОПІЮВАВ У НАЛАШТУВАННЯХ SUPABASE (Крок А)
-const SUPABASE_URL = 'СЮДИ_ВСТАВ_URL_ПРОЕКТУ'; 
-const SUPABASE_ANON_KEY = 'СЮДИ_ВСТАВ_ДОВГИЙ_ANON_KEY'; 
+// 1. Твій URL (я взяв його з твого скріншоту)
+const SUPABASE_URL = 'https://cinufkskitdiuonfibtt.supabase.co'; 
 
-// Ініціалізація (це не чіпай)
+// 2. Твій Ключ (Встав сюди той довгий рядок eyJh..., який ти копіював раніше)
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpbnVma3NraXRkaXVvbmZpYnR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYxODQ1MzksImV4cCI6MjA4MTc2MDUzOX0.V_IySnKEy-xdBcMkgmNKPAjCeV7nLe8OoLJ_rbe-rRw'; 
+
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// Функція відправки (це не чіпай)
 export async function sendToTelegram(message, contactInfo = '') {
-    console.log('Відправка в Telegram через Supabase...');
+    console.log('Sending to Telegram via Supabase...');
     
     try {
         const { data, error } = await supabase.functions.invoke('telegram-proxy', {
@@ -20,10 +20,10 @@ export async function sendToTelegram(message, contactInfo = '') {
         });
 
         if (error) throw error;
-        console.log('Успішно:', data);
+        console.log('Success:', data);
         return true;
     } catch (error) {
-        console.error('Помилка відправки:', error);
+        console.error('Error sending message:', error);
         return false;
     }
 }
