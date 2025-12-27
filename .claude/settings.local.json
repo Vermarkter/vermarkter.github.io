@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git ls-tree:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(netstat:*)",
+      "Bash(findstr:*)",
+      "Bash(taskkill:*)",
+      "Bash(python -m http.server:*)",
+      "Bash(git restore:*)",
+      "Bash(dir:*)",
+      "Bash(tasklist /FI \"PID eq 20204\" /V)",
+      "Bash(git add:*)"
+    ]
+  }
+}
