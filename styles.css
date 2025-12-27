@@ -138,9 +138,17 @@ a:hover {
 
 /* === CONTAINER === */
 .container {
-    max-width: 1200px;
+    max-width: 1400px; /* ОНОВЛЕНО: більше простору */
     margin: 0 auto;
     padding: 0 var(--spacing-md);
+    width: 100%; /* ДОДАНО: використовує повну ширину */
+}
+
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1600px; /* Для великих моніторів */
+        padding: 0 4rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -555,6 +563,12 @@ section, .services-section {
     gap: var(--spacing-md);
 }
 
+/* Якщо 3 картки проблем - розтягнути на всю ширину */
+.services-grid.problem-cards {
+    grid-template-columns: 1fr 1fr 1fr !important;
+    justify-items: stretch;
+}
+
 @media (max-width: 1024px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -666,8 +680,27 @@ section, .services-section {
 
 /* === SMART CALCULATOR STYLES (PREMIUM) === */
 .calculator-section {
-    padding: 80px 0;
+    padding: 40px 0; /* КОМПАКТНО: зменшено з 80px для одного екрана */
     background: rgba(0, 0, 0, 0.2);
+}
+
+.calculator-section .section-header {
+    margin-bottom: 1.5rem !important; /* КОМПАКТНО: зменшено з 3rem */
+}
+
+.calculator-section .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem) !important; /* КОМПАКТНО: менший заголовок */
+    margin-bottom: 0.5rem !important;
+}
+
+.calculator-section .section-subtitle {
+    font-size: 1rem !important; /* КОМПАКТНО: менший підзаголовок */
+    margin-bottom: 0.5rem !important;
+}
+
+.calculator-description {
+    font-size: 0.9rem !important; /* КОМПАКТНО */
+    line-height: 1.5 !important;
 }
 
 .calculator {
@@ -675,7 +708,7 @@ section, .services-section {
     backdrop-filter: blur(12px);
     border: 1px solid var(--border);
     border-radius: 24px;
-    padding: 40px;
+    padding: 24px; /* КОМПАКТНО: зменшено з 40px */
     box-shadow: var(--shadow);
     max-width: 1200px;
     margin: 0 auto;
@@ -683,7 +716,7 @@ section, .services-section {
 
 .calculator__header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* КОМПАКТНО: зменшено з 40px */
 }
 
 .calculator__title {
@@ -742,21 +775,23 @@ section, .services-section {
 .calculator__grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr; /* 60% на 40% */
-    gap: 40px;
+    gap: 24px; /* КОМПАКТНО: зменшено з 40px */
+    max-width: 100%;
+    overflow: hidden;
 }
 
 /* --- Left Column: Inputs --- */
 .calculator__inputs {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 8px; /* КОМПАКТНО: мінімальний проміжок між інпутами */
 }
 
 .calculator__input-group {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 24px;
+    padding: 10px; /* КОМПАКТНО: зменшено для одного екрана */
     transition: 0.3s ease;
 }
 
@@ -768,17 +803,17 @@ section, .services-section {
 
 .calculator__input-group label {
     display: block;
-    margin-bottom: 12px;
+    margin-bottom: 5px; /* КОМПАКТНО: зменшено */
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem; /* Трохи менший шрифт */
     color: var(--text-main);
 }
 
 .calculator__input-row {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 8px;
+    gap: 12px; /* ОНОВЛЕНО: було 16px */
+    margin-bottom: 0; /* ОНОВЛЕНО: було 8px - повзунок і інпут на одній лінії */
 }
 
 .calculator__value {
@@ -900,14 +935,14 @@ input[type="number"] {
 .calculator__results {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 8px; /* КОМПАКТНО: зменшено з 15px */
 }
 
 .calculator__result-card {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 24px;
+    padding: 14px; /* КОМПАКТНО: зменшено з 24px */
     transition: 0.3s;
     position: relative;
     overflow: hidden;
@@ -930,15 +965,15 @@ input[type="number"] {
 .calculator__result-card:hover::before { opacity: 1; }
 
 .calculator__result-label {
-    font-size: 0.85rem;
+    font-size: 0.75rem; /* КОМПАКТНО: менший шрифт */
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 5px;
+    margin-bottom: 3px; /* КОМПАКТНО: менший відступ */
 }
 
 .calculator__result-value {
-    font-size: 2rem;
+    font-size: 1.6rem; /* КОМПАКТНО: зменшено з 2rem */
     font-weight: 900;
     color: var(--text-main);
 }
@@ -996,6 +1031,17 @@ input[type="number"] {
 }
 
 @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+/* Два ряди відгуків: перший вправо, другий вліво */
+@keyframes scrollRight {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+}
+
+@keyframes scrollLeft {
     from { transform: translateX(0); }
     to { transform: translateX(-100%); }
 }
@@ -1256,417 +1302,554 @@ footer, .footer {
     }
 }
 
-/* === UTILITY CLASSES === */
-.text-center { text-align: center; }
-
-.text-gradient {
-    background: linear-gradient(135deg, var(--brand), var(--brand-secondary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.mt-1 { margin-top: var(--spacing-xs); }
-.mt-2 { margin-top: var(--spacing-sm); }
-.mt-3 { margin-top: var(--spacing-md); }
-.mb-1 { margin-bottom: var(--spacing-xs); }
-.mb-2 { margin-bottom: var(--spacing-sm); }
-.mb-3 { margin-bottom: var(--spacing-md); }
-
 /* ============================================
-   FINAL SMART FIX (RESPONSIVE & COMPACT)
+   CTO FINAL FIX: MENU & WIDTH
    ============================================ */
 
-/* --- 1. GLOBAL UI FIXES (All Screens) --- */
-/* Темні інпути для всіх */
-input[type="number"],
-input[type="text"],
-select {
-    background-color: rgba(0, 0, 0, 0.4) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    color: #ffffff !important;
-    border-radius: 6px !important;
+/* 1. МЕНЮ (ГРУБА СИЛА) */
+/* Це змусить розійтися будь-які елементи в навігації */
+header nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 40px !important; /* Розрив між лого і меню */
+}
+
+/* Якщо там список ul li */
+header nav ul {
+    display: flex !important;
+    gap: 30px !important; /* Розрив між словами */
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Якщо там просто посилання a */
+header nav a:not(.logo) {
+    margin-left: 20px !important;
+    display: inline-block !important;
     font-weight: 500 !important;
 }
 
-/* Розсуваємо меню (працює скрізь, на мобільному сховається в бургер) */
-header nav a, 
-header .nav-menu a {
-    margin-left: 20px !important;
-    margin-right: 20px !important;
-    text-decoration: none !important;
-    color: var(--text-secondary) !important;
-}
-
-/* --- 2. DESKTOP ONLY (Великі екрани > 1024px) --- */
+/* 2. КАЛЬКУЛЯТОР (КОМПАКТНІСТЬ) */
 @media (min-width: 1024px) {
+    /* Знаходимо і секцію, і сам калькулятор */
+    .calculator-section, 
     .calculator {
-        max-width: 900px !important; /* Робимо компактно тільки на ПК */
-        margin: 0 auto !important;
-        padding: 40px !important;
+        max-width: 900px !important; /* Жорстке обмеження ширини */
+        margin-left: auto !important;
+        margin-right: auto !important;
+        width: 100% !important;
     }
 
-    .calculator__grid {
-        grid-template-columns: 1.2fr 0.8fr !important; /* Дві колонки */
-        gap: 30px !important;
-    }
-
-    .calculator__input-group {
-        padding: 15px 25px !important; /* Акуратні відступи всередині карток */
+    /* Якщо агент використав container */
+    .calculator-section .container {
+        max-width: 900px !important;
     }
 }
 
-/* --- 3. TABLET & MOBILE (< 1024px) --- */
-@media (max-width: 1023px) {
-    .calculator {
-        max-width: 100% !important; /* На планшеті розтягуємо на всю ширину */
-        padding: 20px !important;
-        margin: 0 !important;
-        border-radius: 0 !important; /* Прибираємо скруглення країв на весь екран */
-        border-left: none !important;
-        border-right: none !important;
-    }
+/* 3. КОЛІР ІНПУТІВ (Ще раз для надійності) */
+input, select {
+    background-color: rgba(15, 23, 42, 0.6) !important;
+    color: white !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+}
 
-    .calculator__grid {
-        grid-template-columns: 1fr !important; /* Одна колонка! */
-        gap: 20px !important;
-    }
+/* КОНТАКТНА ФОРМА - ПОКРАЩЕНА ВИДИМІСТЬ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+    background-color: rgba(0, 0, 0, 0.4) !important; /* ОНОВЛЕНО: темніший фон для кращої видимості */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important; /* ОНОВЛЕНО: яскравіша рамка */
+    color: white !important;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
 
-    /* Результати (права колонка) переїжджають під низ */
-    .calculator__results {
-        margin-top: 20px !important;
-    }
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--brand) !important; /* ДОДАНО: рамка кольору бренду при фокусі */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
 
-    /* Робимо інпути більшими, щоб зручно попадати пальцем */
-    input[type="range"] {
-        height: 10px !important; /* Товстіший повзунок */
-    }
-    
-    input[type="range"]::-webkit-slider-thumb {
-        width: 24px !important; /* Більша кнопка повзунка */
-        height: 24px !important;
-    }
-    
-    /* Меню на планшетах часто треба ховати, але поки лишимо відступи меншими */
-    header nav a, 
-    header .nav-menu a {
-        margin-left: 10px !important;
-        margin-right: 10px !important;
-        font-size: 0.9rem !important;
-    }
+textarea {
+    min-height: 120px;
+    resize: vertical;
 }
 
 /* ============================================
-   PRICING SECTION (PREISE & PAKETE)
+   EMERGENCY CSS INJECTION (VISUALS & MENU)
    ============================================ */
 
-.pricing-section {
-    padding: 80px 0;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.pricing-card {
-    background: rgba(30, 41, 59, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 2.5rem;
-    border-radius: 16px;
-    backdrop-filter: blur(12px);
-    transition: all 0.3s ease;
+/* --- 1. VISUAL BOXES (CSS ART) --- */
+/* Робимо елементи всередині коробок видимими */
+.visual-box {
     position: relative;
+    width: 100%;
+    height: 250px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)); /* ОНОВЛЕНО: яскравіший фон */
+    border: 1px solid rgba(255, 255, 255, 0.15); /* ОНОВЛЕНО: яскравіша рамка */
+    border-radius: 16px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); /* ДОДАНО: тінь */
 }
 
-.pricing-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-    border-color: rgba(255, 255, 255, 0.2);
+/* Лінії пошуку (Audit) */
+.glass-search-bar {
+    height: 12px; width: 100%; 
+    background: rgba(255,255,255,0.2); 
+    border-radius: 6px; margin-bottom: 1rem;
+}
+.glass-line {
+    height: 8px; 
+    background: rgba(255,255,255,0.1); 
+    border-radius: 4px; margin-bottom: 8px;
 }
 
-/* Featured card (GROWTH) */
-.pricing-card--featured {
-    border: 1px solid var(--brand) !important;
-    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
-    transform: scale(1.05);
+/* Перемикачі (Setup) */
+.toggle-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 10px; }
+.toggle {
+    width: 40px; height: 20px; 
+    background: rgba(255,255,255,0.1); 
+    border-radius: 20px; position: relative;
+}
+.toggle.active { background: var(--brand); }
+.toggle::after {
+    content:''; position:absolute; left:2px; top:2px; 
+    width:16px; height:16px; background:white; border-radius:50%;
+}
+.toggle.active::after { left: 22px; }
+.line { height: 6px; flex: 1; background: rgba(255,255,255,0.05); border-radius: 4px; }
+
+/* Графік (Growth) */
+.chart-visual {
+    flex-direction: row !important; 
+    align-items: flex-end !important; 
+    gap: 1rem !important; padding-bottom: 2rem;
+}
+.bar {
+    flex: 1; background: rgba(255,255,255,0.1); 
+    border-radius: 4px 4px 0 0;
+}
+.bar.success {
+    background: linear-gradient(to top, var(--brand), #10B981);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
 }
 
-.pricing-card--featured:hover {
-    transform: scale(1.05) translateY(-8px);
+/* Іконки по центру */
+.search-icon-overlay, .gear-icon-overlay, .chart-icon-overlay {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem; opacity: 0.8;
+    filter: drop-shadow(0 0 10px rgba(0,0,0,0.5));
 }
 
-.pricing-badge {
+/* --- 2. LANGUAGE SWITCHER FIX --- */
+/* Робимо так, щоб меню випадало при наведенні */
+.lang-switcher { position: relative; display: inline-block; }
+.lang-dropdown {
+    display: none; /* Сховано за замовчуванням */
     position: absolute;
-    top: -12px;
-    right: 24px;
-    background: var(--brand);
-    color: white;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    top: 100%; right: 0;
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 0.5rem;
+    min-width: 120px;
+    z-index: 1000;
+}
+/* Магія CSS: показуємо при наведенні */
+.lang-switcher:hover .lang-dropdown { display: block; }
+
+.lang-dropdown a {
+    display: block; padding: 8px 12px;
+    color: white; text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+.lang-dropdown a:hover { background: rgba(255,255,255,0.1); color: var(--brand); }
+
+/* ============================================
+   INTERACTION FIXES (MENU & Z-INDEX)
+   ============================================ */
+
+/* 1. Піднімаємо хедер над усім іншим (щоб меню не перекривалося) */
+header {
+    z-index: 9999 !important;
 }
 
-.pricing-title {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--text-main);
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+/* 2. Логіка випадаючого списку */
+.lang-switcher {
+    position: relative !important;
+    display: inline-block !important;
+    cursor: pointer !important;
 }
 
-.pricing-subtitle {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    margin-bottom: 1.5rem;
+.lang-dropdown {
+    display: none !important; /* Сховано */
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    background: rgba(15, 23, 42, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+    min-width: 140px !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5) !important;
+    z-index: 10000 !important;
 }
 
-.pricing-price {
-    margin: 2rem 0;
-    padding: 1.5rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+/* ГОЛОВНЕ: Показуємо при наведенні */
+.lang-switcher:hover .lang-dropdown {
+    display: block !important;
 }
 
-.price-amount {
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--brand);
-    display: block;
-    line-height: 1;
+/* Стиль посилань у меню */
+.lang-dropdown li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-.price-period {
-    font-size: 1.1rem;
-    color: var(--text-secondary);
-    font-weight: 400;
+.lang-dropdown a {
+    display: block !important;
+    padding: 8px 12px !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    font-size: 0.9rem !important;
+    transition: 0.2s !important;
 }
 
-.pricing-features {
-    list-style: none;
-    margin: 2rem 0;
-    flex: 1;
+.lang-dropdown a:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: var(--brand) !important;
 }
 
-.pricing-features li {
-    padding: 0.75rem 0;
-    color: var(--text-main);
-    font-size: 1rem;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+/* Lang button styling */
+.lang-button {
+    background: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.2) !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    border-radius: 8px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    font-size: 0.9rem !important;
+    transition: all 0.3s !important;
 }
 
-.check-icon {
-    color: var(--success);
-    font-size: 1.2rem;
-    font-weight: 700;
-    flex-shrink: 0;
+.lang-button:hover {
+    background: rgba(255,255,255,0.1) !important;
+    border-color: var(--brand) !important;
 }
 
-.pricing-btn {
-    width: 100%;
-    margin-top: auto;
-    text-align: center;
-    padding: 14px 24px;
-    font-size: 1.05rem;
-    font-weight: 600;
+/* ULTRA IMPORTANT: Force dropdown to work */
+.lang-dropdown {
+    list-style: none !important;
+    padding: 10px !important;
+    margin: 0 !important;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-    .pricing-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-    .pricing-card--featured {
-        transform: scale(1);
-    }
-
-    .pricing-card--featured:hover {
-        transform: translateY(-8px);
-    }
+/* Make sure hover works even with high specificity */
+header .lang-switcher:hover .lang-dropdown,
+.lang-switcher:hover > .lang-dropdown {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* ============================================
-   LIGHT THEME
+   LIGHT THEME SUPPORT
    ============================================ */
 
-[data-theme="light"] {
-    /* Background colors */
-    --bg-body: #F8FAFC;
-    --bg-card: rgba(255, 255, 255, 0.9);
-    --bg-secondary: #FFFFFF;
-    
-    /* Text colors */
-    --text-main: #0F172A;
+[data-theme='light'] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-primary: #0f172a;
     --text-secondary: #475569;
-    --text-muted: #64748B;
-    
-    /* Glassmorphism for light theme */
+    --text-muted: #94a3b8;
     --glass-bg: rgba(255, 255, 255, 0.8);
     --glass-border: rgba(0, 0, 0, 0.1);
-    
-    /* Shadows */
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
-    --shadow-glow: 0 0 24px rgba(59, 130, 246, 0.2);
 }
 
-[data-theme="light"] body::before {
-    background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 50%);
+[data-theme='light'] body {
+    background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #e0e7ff 100%);
+    color: var(--text-primary);
 }
 
-[data-theme="light"] .calculator,
-[data-theme="light"] .service-card,
-[data-theme="light"] .pricing-card {
-    background: rgba(255, 255, 255, 0.9);
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="light"] .calculator__input-group {
-    background: rgba(0, 0, 0, 0.03);
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="light"] input[type="number"],
-[data-theme="light"] input[type="text"],
-[data-theme="light"] select {
-    background-color: rgba(0, 0, 0, 0.05) !important;
-    border-color: rgba(0, 0, 0, 0.15) !important;
-    color: #0F172A !important;
-}
-
-[data-theme="light"] input[type="range"] {
-    background: rgba(0, 0, 0, 0.1);
-}
-
-[data-theme="light"] header {
-    background: rgba(255, 255, 255, 0.9);
+[data-theme='light'] header {
+    background: rgba(255, 255, 255, 0.95);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* ============================================
-   VISUAL UPGRADE: AMBIENT GLOW & DEPTH
-   ============================================ */
-
-/* 1. ГЛИБИНА ФОНУ (Ambient Light) */
-/* Додаємо кольорові плями на задній план, щоб не було просто чорно */
-body {
-    background-color: #0F172A;
-    background-image: 
-        radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.15), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%);
-    background-attachment: fixed; /* Щоб плями не скролилися */
+[data-theme='light'] .nav a {
+    color: var(--text-primary);
 }
 
-/* 2. ПІДСВІТКА КАРТОК (Border Glow) */
-/* Робимо картки не просто сірими, а з легким сяйвом по краях */
-.service-card, 
-.calculator, 
-.calculator__result-card,
-.testimonial-card,
-.pricing-card { /* Якщо додав прайсінг */
-    border: 1px solid rgba(255, 255, 255, 0.08) !important;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
-    background: linear-gradient(180deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%) !important;
-    backdrop-filter: blur(12px) !important;
+[data-theme='light'] .theme-toggle {
+    color: var(--text-primary) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
 }
 
-/* При наведенні - картка "загоряється" брендовим кольором */
-.service-card:hover,
-.pricing-card:hover {
-    border-color: var(--brand) !important;
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.15) !important;
-    transform: translateY(-5px);
+[data-theme='light'] .lang-button {
+    color: var(--text-primary) !important;
+    background: rgba(0, 0, 0, 0.05) !important;
+    border-color: rgba(0, 0, 0, 0.2) !important;
 }
 
-/* 3. СОКОВИТІ КНОПКИ (Juicy Buttons) */
-/* Робимо кнопки більш "смачними" з градієнтом */
-.btn-primary {
-    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%) !important;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.5px !important;
+[data-theme='light'] .lang-dropdown {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
-.btn-primary:hover {
-    box-shadow: 0 0 25px rgba(59, 130, 246, 0.6) !important;
-    transform: translateY(-2px);
-}
-
-/* 4. ТЕКСТОВІ АКЦЕНТИ (Щоб не все було білим) */
-h1 span, h2 span, .text-gradient {
-    background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 100%) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    font-weight: 800 !important;
-}
-
-/* 5. ІКОНКИ В ПОСЛУГАХ */
-/* Якщо там є іконки, даємо їм фон */
-.service-icon {
-    background: rgba(59, 130, 246, 0.1) !important;
-    color: #60A5FA !important;
-    border: 1px solid rgba(59, 130, 246, 0.2) !important;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.2) !important;
-}
-
-/* 6. СЕКЦІЯ HERO (Робимо центр яскравішим) */
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 600px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
-    filter: blur(60px);
-    z-index: -1;
-    pointer-events: none;
+[data-theme='light'] .lang-dropdown a {
+    color: var(--text-primary) !important;
 }
 
 /* ============================================
-   DROPDOWN MENU FIX (DARK MODE)
+   UI POLISH - PRICING SECTION
    ============================================ */
 
-/* 1. Змушуємо браузер використовувати темну тему для системних елементів */
-:root {
-    color-scheme: dark; /* Це магічний рядок, який робить скролбари і меню темними */
+/* Pricing Cards - більше повітря та читабельності */
+.pricing-card,
+.service-card,
+[class*="price"],
+[class*="plan"] {
+    padding: 2.5rem 2rem !important; /* ОНОВЛЕНО: більше padding для breathing room */
 }
 
-/* 2. Стиль самого поля вибору */
-select {
-    background-color: rgba(30, 41, 59, 0.8) !important; /* Темно-синій фон */
-    color: #ffffff !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    cursor: pointer;
+/* Списки в pricing cards - кращий line-height */
+.pricing-card ul li,
+.service-card ul li,
+.service-features li,
+[class*="price"] ul li,
+[class*="plan"] ul li {
+    line-height: 1.6 !important; /* ОНОВЛЕНО: більш читабельний spacing між пунктами */
+    margin-bottom: 0.5rem;
 }
 
-/* 3. Стиль випадаючого списку (опцій) */
-select option {
-    background-color: #0F172A !important; /* Глибокий темний колір (як фон сайту) */
-    color: #ffffff !important;
-    padding: 12px !important;
+/* ============================================
+   VISUAL BOOST (MAKE IT VISIBLE)
+   ============================================ */
+
+/* 1. ВІЗУАЛЬНІ БЛОКИ (Zig-Zag) - Робимо їх світлішими */
+.visual-box {
+    /* Додаємо синій відтінок, щоб блок виділявся на чорному фоні */
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(59, 130, 246, 0.15)) !important;
+    border: 1px solid rgba(148, 163, 184, 0.2) !important; /* Світліша рамка */
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.1) !important; /* Легке світіння */
 }
 
-/* 4. При наведенні (працює не у всіх браузерах, але спробуємо) */
-select option:hover,
-select option:checked {
-    background-color: var(--brand) !important; /* Синій при виборі */
+/* 2. ЕЛЕМЕНТИ ВСЕРЕДИНІ (Лінії та графіки) */
+.glass-line, .glass-search-bar, .bar, .toggle {
+    background: rgba(255, 255, 255, 0.2) !important; /* Більш білі елементи */
+    backdrop-filter: none !important; /* Прибираємо блюр, щоб було чіткіше */
+}
+
+/* 3. КАЛЬКУЛЯТОР (Інпути) */
+/* Робимо поля вводу чітко видимими */
+input[type="number"], select {
+    background-color: rgba(15, 23, 42, 0.8) !important;
+    border: 1px solid rgba(59, 130, 246, 0.3) !important; /* Синя рамка */
     color: white !important;
+    font-weight: bold !important;
+}
+
+/* 4. КНОПКИ (Тіні) */
+.btn-primary {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5) !important; /* Яскрава тінь */
+}
+
+/* ============================================
+   DESKTOP OPTIMIZATION (27" MONITOR FIX)
+   ============================================ */
+
+@media (min-width: 1200px) {
+    /* НЕ обмежуємо ширину - дозволяємо використовувати весь простір */
+
+    /* 2. КАЛЬКУЛЯТОР: Робимо інпути в 2 колонки! */
+    .calculator__inputs {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Дві колонки */
+        gap: 15px !important;
+    }
+
+    /* Розтягуємо останній інпут на всю ширину, якщо їх непарна кількість */
+    .calculator__input-group:last-child {
+        grid-column: span 2;
+    }
+
+    /* 3. Зменшуємо "повітря" всередині карток */
+    .calculator__input-group {
+        padding: 12px 20px !important; /* Менше відступів */
+        margin-bottom: 0 !important;
+    }
+
+    .calculator__result-card {
+        padding: 15px !important; /* Компактніші результати */
+    }
+
+    .calculator__result-value {
+        font-size: 1.8rem !important; /* Трохи менші цифри */
+    }
+
+    /* 4. Загальний масштаб (зменшуємо гігантські шрифти) */
+    h1 { font-size: 3.5rem !important; }
+    h2 { font-size: 2.5rem !important; }
+
+    /* Робимо секції ближчими одна до одної */
+    section { padding: 3rem 0 !important; }
+}
+
+/* ============================================
+   PRICING GRID SYMMETRY FIX
+   ============================================ */
+
+/* Якщо є 3 тарифи - третій по центру */
+.pricing-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 2.5rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* На планшетах - 2 колонки, третя картка по центру */
+@media (max-width: 992px) {
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+    /* Третя картка займає 2 колонки і центрується */
+    .pricing-card:nth-child(3) {
+        grid-column: 1 / -1 !important;
+        max-width: 450px !important;
+        margin: 0 auto !important;
+    }
+}
+
+/* На мобільних - 1 колонка */
+@media (max-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .pricing-card:nth-child(3) {
+        grid-column: auto !important;
+        max-width: 100% !important;
+    }
+}
+
+/* ============================================
+   WIDESCREEN OPTIMIZATION (27" MONITOR)
+   ============================================ */
+
+@media (min-width: 1400px) {
+    /* 1. Ширший контейнер (як на eBay) */
+    .container, nav {
+        max-width: 1600px !important;
+        padding: 0 4rem !important;
+    }
+
+    /* 2. Калькулятор: НЕ робимо вкладену сітку - вона вже є в .calculator__grid */
+    .calculator__inputs {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+
+    /* 3. Послуги: 3 в ряд (3x2 симетрія) */
+    .services-grid:not(.problem-cards) {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+
+    /* 4. Зменшуємо гігантські шрифти */
+    h1 { font-size: 3.5rem !important; }
+    h2 { font-size: 2.5rem !important; }
+
+    /* 5. Компактні відступи */
+    section { padding: 3rem 0 !important; }
+    .hero { padding-top: 6rem !important; padding-bottom: 2rem !important; }
+}
+
+/* ============================================
+   SYMMETRY & BALANCE FIXES
+   ============================================ */
+
+/* 1. КАЛЬКУЛЯТОР: СУВОРА СИМЕТРІЯ 50/50 */
+.calculator__grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* Рівно навпіл */
+    gap: 40px !important;
+    align-items: start !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Вирівнюємо висоту карток результатів, щоб права колонка не виглядала куцою */
+.calculator__results {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    height: 100% !important;
+}
+
+/* Запобігаємо переповненню калькулятора */
+.calculator__inputs,
+.calculator__results {
+    max-width: 100% !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
+}
+
+.calculator__input-group {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. МЕТОДОЛОГІЯ (ZIG-ZAG): ВЕРТИКАЛЬНЕ ВИРІВНЮВАННЯ */
+/* Щоб текст був строго по центру навпроти картинки */
+#process .calculator-wrapper {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 60px !important; /* Більше повітря між текстом і картинкою */
+    align-items: center !important; /* Центрування по вертикалі */
+    margin-bottom: 80px !important;
+}
+
+/* 3. ТЕКСТОВІ БЛОКИ В МЕТОДОЛОГІЇ */
+/* Якщо текст занадто вузький, він виглядає погано. Розтягнемо його. */
+.calculator-inputs {
+    width: 100% !important;
+}
+
+/* 4. ЦЕНТРУВАННЯ ЗАГОЛОВКІВ */
+.section-header, h2 {
+    text-align: center !important;
+    max-width: 800px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* 5. ПОСЛУГИ (SERVICES) */
+/* Робимо картки однакової висоти */
+.services-grid {
+    align-items: stretch !important;
+}
+.service-card {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
 }
