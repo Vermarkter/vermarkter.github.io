@@ -4,6 +4,20 @@ import re
 with open('ru/index.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
+# Protect HTML tags from translation by replacing them with placeholders
+html_tags = {}
+tag_counter = 0
+
+def protect_tag(match):
+    global tag_counter
+    placeholder = f"___HTML_TAG_{tag_counter}___"
+    html_tags[placeholder] = match.group(0)
+    tag_counter += 1
+    return placeholder
+
+# Protect all HTML tags (opening, closing, and self-closing)
+content = re.sub(r'<[^>]+>', protect_tag, content)
+
 translations = {
     # HTML lang attribute
     'lang="de"': 'lang="ru"',
@@ -135,6 +149,15 @@ translations = {
 
     # Services section
     'Von der Strategie bis zur Umsetzung – alles aus einer Hand': 'От стратегии до реализации – все из одних рук',
+
+    # Google Ads service details
+    'Heißer Traffic aus der Suche. Performance Max für E-Commerce. Shopping Ads für Produkte. Launch in 48 Stunden.': 'Горячий трафик из поиска. Performance Max для электронной коммерции. Shopping Ads для товаров. Запуск за 48 часов.',
+    'Search Ads (hohe Kaufabsicht)': 'Search Ads (высокая покупательская способность)',
+    'Performance Max (KI-Optimierung)': 'Performance Max (AI-оптимизация)',
+    'Shopping Ads (für Online-Shops)': 'Shopping Ads (для интернет-магазинов)',
+    'hohe Kaufabsicht': 'высокая покупательская способность',
+    'KI-Optimierung': 'AI-оптимизация',
+    'für Online-Shops': 'для интернет-магазинов',
     'Unsere Leistungen': 'Наши услуги',
 
     'Google Ads Management': 'Управление Google Ads',
@@ -320,6 +343,40 @@ translations = {
     'Ja, die Mindestvertragslaufzeit beträgt 3 Monate. Dies gibt uns genügend Zeit, um Ihre Kampagnen zu optimieren und echte Ergebnisse zu liefern. Danach keine Bindung.': 'Да, минимальный срок контракта составляет 3 месяца. Это дает нам достаточно времени для оптимизации ваших кампаний и достижения реальных результатов. После этого никаких обязательств.',
     'In welchen Ländern arbeiten Sie?': 'В каких странах вы работаете?',
 
+    # Pricing section
+    'Preise und Pakete': 'Цены и пакеты',
+    'und Pakete': 'и пакеты',
+    'Transparente Preise ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.': 'Прозрачные цены без скрытых расходов. Выберите идеальный пакет для вашего бизнеса.',
+    '* Preise exkl. MwSt. Mindestvertrag 3 Monate, danach keine Bindung.': '* Цены без НДС. Минимальный контракт 3 месяца, после этого никаких обязательств.',
+
+    # Calculator section
+    'ROI Rechner': 'ROI калькулятор',
+    'Berechnen Sie die Rentabilität Ihrer Werbekampagne': 'Рассчитайте рентабельность вашей рекламной кампании',
+    'Dies ist ein echtes Mediaplanungs-Tool.': 'Это настоящий инструмент медиапланирования.',
+    'Dieselben Formeln, die große Agenturen verwenden. Transparent, ehrlich, ohne versteckte Kosten.': 'Те же формулы, которые используют крупные агентства. Прозрачно, честно, без скрытых расходов.',
+    'Wählen Sie Ihre Branche:': 'Выберите вашу отрасль:',
+    'Eigene Eingabe': 'Свой вариант',
+    'E-commerce (Produkte)': 'Электронная коммерция (товары)',
+    'Dienstleistungen (Handwerk, Beauty)': 'Услуги (ремесла, красота)',
+    'Immobilien': 'Недвижимость',
+    'B2B / Großhandel': 'B2B / Оптовая торговля',
+    'Infobusiness / Kurse': 'Инфобизнес / Курсы',
+    'Monatliches Budget (€)': 'Месячный бюджет (€)',
+    'Cost per Click (€)': 'Цена за клик (€)',
+    'Conversion Rate (%)': 'Конверсия (%)',
+    'Durchschnittlicher Bestellwert (€)': 'Средний чек (€)',
+    'Gewinnmarge (%)': 'Маржа прибыли (%)',
+
+    # Calculator results
+    'Klicks': 'Клики',
+    'Leads': 'Лиды',
+    'Gewinn': 'Прибыль',
+    '💰 Gewinn berechnen': '💰 Рассчитать прибыль',
+    'Strategie für diese Zahlen erhalten': 'Получить стратегию для этих цифр',
+    'Das Ergebnis ist eine Prognose, kein Versprechen.<br>': 'Результат является прогнозом, а не обещанием.<br>',
+    'Marketing beginnt mit ehrlichen Zahlen.': 'Маркетинг начинается с честных цифр.',
+    'Gewinnwachstum': 'Рост прибыли',
+
     # CTA section
     'Bereit zu starten': 'Готовы начать',
     'Bereit zu starten?': 'Готовы начать?',
@@ -391,6 +448,10 @@ translations = {
 # Apply translations (sorted by key length, longest first to avoid partial replacements)
 for de, ru in sorted(translations.items(), key=lambda x: len(x[0]), reverse=True):
     content = content.replace(de, ru)
+
+# Restore HTML tags
+for placeholder, tag in html_tags.items():
+    content = content.replace(placeholder, tag)
 
 # Write back
 with open('ru/index.html', 'w', encoding='utf-8') as f:
