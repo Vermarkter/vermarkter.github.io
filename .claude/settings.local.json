@@ -13,7 +13,12 @@
       "Bash(tasklist /FI \"PID eq 20204\" /V)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(python translate-de-to-pl.py:*)"
+      "Bash(python translate-de-to-pl.py:*)",
+      "Bash(done)",
+      "Bash(cp:*)",
+      "Bash(python translate-de-to-tr.py:*)",
+      "Bash(python translate-de-to-ru.py:*)",
+      "Bash(python translate-de-to-en.py:*)"
     ]
   }
 }

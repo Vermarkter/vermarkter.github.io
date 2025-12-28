@@ -5,6 +5,23 @@ import re
 with open('pl/index.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
+# Protect HTML tags from translation by replacing them with placeholders
+html_tags = {}
+tag_counter = 0
+
+def protect_tag(match):
+    global tag_counter
+    placeholder = f"___HTML_TAG_{tag_counter}___"
+    html_tags[placeholder] = match.group(0)
+    tag_counter += 1
+    return placeholder
+
+# Replace lang="de" BEFORE protecting HTML tags
+content = content.replace('lang="de"', 'lang="pl"')
+
+# Protect all HTML tags (opening, closing, and self-closing)
+content = re.sub(r'<[^>]+>', protect_tag, content)
+
 # Dictionary of German → Polish translations
 translations = {
     # Navigation
@@ -258,6 +275,10 @@ translations = {
 # Apply translations (sorted by length to avoid partial replacements)
 for de, pl in sorted(translations.items(), key=lambda x: len(x[0]), reverse=True):
     content = content.replace(de, pl)
+
+# Restore HTML tags
+for placeholder, tag in html_tags.items():
+    content = content.replace(placeholder, tag)
 
 # Write result
 with open('pl/index.html', 'w', encoding='utf-8') as f:
