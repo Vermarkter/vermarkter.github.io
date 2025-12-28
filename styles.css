@@ -1853,3 +1853,46 @@ input[type="number"], select {
     flex-direction: column !important;
     justify-content: space-between !important;
 }
+/* ============================================
+   VISUAL BOXES: HIGH CONTRAST FIX
+   ============================================ */
+
+/* 1. Сам контейнер (Екран) */
+.visual-box {
+    /* Робимо фон світлішим і додаємо синє світіння */
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(59, 130, 246, 0.2)) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 0 40px rgba(59, 130, 246, 0.15) !important;
+}
+
+/* 2. Елементи інтерфейсу (Лінії та Пошук) */
+.glass-line, .glass-search-bar {
+    /* Робимо їх ЯСКРАВО БІЛИМИ, а не прозорими */
+    background: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2) !important;
+}
+
+/* 3. Перемикачі (Toggles) */
+.toggle {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+.toggle.active {
+    background: #3B82F6 !important; /* Яскравий синій */
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6) !important;
+}
+
+/* 4. Графік (Bars) */
+.bar {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+.bar.success {
+    background: linear-gradient(to top, #3B82F6, #10B981) !important;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6) !important; /* Зелене світіння */
+}
+
+/* 5. Іконки поверх (Лупа, Шестерня) */
+.search-icon-overlay, .gear-icon-overlay, .chart-icon-overlay {
+    opacity: 1 !important; /* Повна непрозорість */
+    filter: drop-shadow(0 0 15px rgba(0,0,0,0.5)) !important;
+    font-size: 5rem !important;
+}
