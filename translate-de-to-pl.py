@@ -155,6 +155,11 @@ translations = {
     # Calculator Section
     'ROI-Rechner': 'Kalkulator ROI',
     'Berechnen Sie Ihren potenziellen Gewinn': 'Oblicz swój potencjalny zysk',
+    'Wählen Sie Ihre Branche:': 'Wybierz swoją branżę:',
+    'Dienstleistungen (Handwerk, Beauty)': 'Usługi (Rzemiosło, Uroda)',
+    'Immobilien': 'Nieruchomości',
+    'B2B / Großhandel': 'B2B / Hurt',
+    'Gesundheit & Medizin': 'Zdrowie i Medycyna',
     'Monatliches Budget': 'Miesięczny budżet',
     'Kosten pro Klick': 'Koszt za kliknięcie',
     'Cost per Click': 'Koszt za kliknięcie',
