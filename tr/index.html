@@ -553,7 +553,7 @@
                             </li>
                             <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
                                 <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Email Support</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">E-posta Support</span>
                             </li>
                             <li style="padding: 0.75rem 0; display: flex; align-items: start;">
                                 <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
@@ -970,26 +970,26 @@
                 <div style="max-width: 600px; margin: 3rem auto;">
                     <form id="contactForm" class="contact-form" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem;">
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label for="contactName" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Name</label>
-                            <input type="text" id="contactName" name="name" placeholder="Adınız" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
+                            <label for="contactAd" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Ad</label>
+                            <input type="text" id="contactAd" name="name" placeholder="Adınız" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
                         </div>
 
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label for="contactEmail" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Email <span style="color: var(--error, #EF4444);">*</span></label>
-                            <input type="email" id="contactEmail" name="email" required placeholder="ihre.email@beispiel.de" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
+                            <label for="contactE-posta" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">E-posta <span style="color: var(--error, #EF4444);">*</span></label>
+                            <input type="email" id="contactE-posta" name="email" required placeholder="ihre.email@beispiel.de" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
                         </div>
 
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label for="contactPhone" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Telefon (optional)</label>
+                            <label for="contactPhone" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Telefon (isteğe bağlı)</label>
                             <input type="tel" id="contactPhone" name="phone" placeholder="+49 123 456 7890" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
                         </div>
 
                         <div class="form-group" style="margin-bottom: 2rem;">
-                            <label for="contactMessage" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Nachricht</label>
+                            <label for="contactMessage" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Mesaj</label>
                             <textarea id="contactMessage" name="message" rows="5" placeholder="Projenizi açıklayın..." style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem; resize: vertical; min-height: 120px;"></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem;">Anfrage senden</button>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem;">Talep gönder</button>
                     </form>
 
                     <div id="formSuccess" style="display: none; margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; color: var(--success, #10B981); text-align: center;">
@@ -1040,7 +1040,7 @@
 
                 <div class="footer-column">
                     <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">İletişim</h4>
-                    <a href="mailto:maps.werbung@gmail.com" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Email</a>
+                    <a href="mailto:maps.werbung@gmail.com" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">E-posta</a>
                     <a href="https://t.me/Asystentmijbot" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Telegram</a>
                     <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 1rem;">
                         Büros: Berlin, Varşova, Kyiv
