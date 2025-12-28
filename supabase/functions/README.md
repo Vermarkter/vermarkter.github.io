@@ -14,7 +14,7 @@ supabase login
 
 3. Link your project:
 ```bash
-supabase link --project-ref YOUR_PROJECT_REF
+supabase link --project-ref cinufkskitdiuonfibtt
 ```
 
 ## Deploy ai-chat Function
@@ -37,21 +37,15 @@ supabase functions deploy ai-chat
 
 After deployment, your function will be available at:
 ```
-https://YOUR_PROJECT_REF.supabase.co/functions/v1/ai-chat
+https://cinufkskitdiuonfibtt.supabase.co/functions/v1/ai-chat
 ```
 
-### 4. Update Frontend
+### 4. Frontend Already Updated ✅
 
-In `JS/chatbot.js`, replace the placeholder URL on line 528:
-
-```javascript
-const response = await fetch('https://YOUR_SUPABASE_PROJECT.supabase.co/functions/v1/ai-chat', {
-```
-
-With your actual Supabase project URL:
+The `JS/chatbot.js` already contains the correct URL (line 528):
 
 ```javascript
-const response = await fetch('https://YOUR_PROJECT_REF.supabase.co/functions/v1/ai-chat', {
+const response = await fetch('https://cinufkskitdiuonfibtt.supabase.co/functions/v1/ai-chat', {
 ```
 
 ## Testing

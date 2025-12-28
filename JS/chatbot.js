@@ -525,7 +525,7 @@ class VermarkterChatbot {
 
     try {
       // Call Supabase Edge Function
-      const response = await fetch('https://YOUR_SUPABASE_PROJECT.supabase.co/functions/v1/ai-chat', {
+      const response = await fetch('https://cinufkskitdiuonfibtt.supabase.co/functions/v1/ai-chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
