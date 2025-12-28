@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Google Ads Agentur für kleine Unternehmen in Europa. Search Ads, Shopping Ads, Performance Max. Launch in 48 Stunden. Transparente Ergebnisse.">
+    <meta name="keywords" content="Google Ads Agentur, Google Ads Deutschland, Search Ads, Shopping Ads, Performance Max, PPC Marketing">
+    <meta name="author" content="Vermarkter Agency">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vermarkter.eu/de/google-ads">
+    <meta property="og:title" content="Google Ads Agentur — Vermarkter">
+    <meta property="og:description" content="Google Ads für kleine Unternehmen in Europa. Search, Shopping, Performance Max. Launch in 48 Stunden.">
+    <meta property="og:image" content="https://vermarkter.eu/og-image-google-ads-de.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vermarkter.eu/de/google-ads">
+    <meta property="twitter:title" content="Google Ads Agentur — Vermarkter">
+    <meta property="twitter:description" content="Google Ads für kleine Unternehmen in Europa">
+    <meta property="twitter:image" content="https://vermarkter.eu/og-image-google-ads-de.jpg">
+
+    <title>Google Ads Agentur — Vermarkter</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css?v=20251228c">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- HEADER (STICKY) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <!-- SVG Logo (Lightning Bolt) -->
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Text -->
+    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+</a>
+
+                <div class="nav-desktop">
+                    <a href="index.html#services">Leistungen</a>
+                    <a href="#kampagnentypen">Kampagnentypen</a>
+                    <a href="#prozess">Prozess</a>
+                    <a href="#ergebnisse">Ergebnisse</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+                        🌙
+                    </button>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="4" fill="#000"/>
+                                <rect y="4" width="16" height="4" fill="#D00"/>
+                                <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                            </svg>
+                            DE ▼
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../ua/google-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#0057B7"/>
+                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
+                                </svg>
+                                UA
+                            </a></li>
+                            <li><a href="../en/google-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#012169"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
+                                </svg>
+                                EN
+                            </a></li>
+                            <li><a href="../pl/google-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#fff"/>
+                                    <rect y="6" width="16" height="6" fill="#D4213D"/>
+                                </svg>
+                                PL
+                            </a></li>
+                            <li><a href="../ru/google-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#fff"/>
+                                    <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                    <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                                </svg>
+                                RU
+                            </a></li>
+                            <li><a href="../tr/google-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#E30A17"/>
+                                    <circle cx="6" cy="6" r="3" fill="#fff"/>
+                                    <circle cx="7" cy="6" r="2.5" fill="#E30A17"/>
+                                    <path d="M9.5,4.5 L11,6 L9.5,7.5 L10.5,6 Z" fill="#fff"/>
+                                </svg>
+                                TR
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu" style="display:none; background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:8px; cursor:pointer; align-items:center; justify-content:center;">
+                        ☰
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="padding: 8rem 0 6rem; position: relative; overflow: hidden;">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <div style="display: inline-block; background: rgba(66, 133, 244, 0.1); border: 1px solid rgba(66, 133, 244, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 2rem;">
+                    <span style="color: #4285F4; font-weight: 600; font-size: 0.95rem;">🔍 Google Ads Agentur</span>
+                </div>
+
+                <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -0.02em;">
+                    Qualifizierte Leads aus der <span class="text-gradient">Google Suche</span>
+                </h1>
+
+                <p class="hero-subtitle" style="font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 750px; margin: 0 auto 2.5rem; line-height: 1.6; color: var(--text-secondary);">
+                    Search Ads, Shopping Ads, Performance Max.<br>
+                    <strong style="color: var(--text-primary);">Launch in 48 Stunden. Erste Leads in 7 Tagen. Manager in Ihrer Sprache.</strong>
+                </p>
+
+                <div class="hero-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+                    <a href="#contact" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        🚀 Kostenlose Beratung
+                    </a>
+                    <a href="index.html#calculator-section" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        💰 ROI berechnen
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">420%</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">durchschn. ROAS</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">48h</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">bis Launch</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">100+</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">erfolgreiche Projekte</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KAMPAGNENTYPEN -->
+    <section id="kampagnentypen" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Google Ads <span class="text-gradient">Kampagnentypen</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Wir wählen den optimalen Kampagnentyp für Ihr Business
+                </p>
+            </div>
+
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Search Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #4285F4, #34A853); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);">
+                        🔍
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Search Ads</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Textanzeigen in der Google Suche. Nutzer mit hoher Kaufabsicht, die aktiv nach Ihren Produkten/Dienstleistungen suchen.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Hohe Kaufabsicht</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Pay-per-Click Modell</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Schnelle Ergebnisse</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Shopping Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FBBC04, #EA4335); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(251, 188, 4, 0.3);">
+                        🛒
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Shopping Ads</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Produktanzeigen mit Bild, Preis und Name. Ideal für E-Commerce und Online-Shops mit physischen Produkten.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Visuelle Produktanzeigen</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Google Merchant Center</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Hohe Conversion-Rate</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Performance Max -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #34A853, #4285F4); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(52, 168, 83, 0.3);">
+                        🤖
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Performance Max</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        KI-gesteuerte Kampagnen über alle Google-Netzwerke. Automatische Optimierung für maximale Performance.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">KI-Optimierung</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Alle Google-Netzwerke</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Automatische Skalierung</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Display Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #EA4335, #FBBC04); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);">
+                        🎨
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Display Ads</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Banner-Werbung im Google Display-Netzwerk. Reichweite über 2 Millionen Websites. Ideal für Branding und Remarketing.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Riesige Reichweite</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Visuelle Anzeigen</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Remarketing-Kampagnen</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROZESS -->
+    <section id="prozess" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Wie wir <span class="text-gradient">arbeiten</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Von der Strategie bis zur Skalierung — Schritt für Schritt
+                </p>
+            </div>
+
+            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <!-- Step 1 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #4285F4, #34A853); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);">
+                        1
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Analyse</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Wir analysieren Ihr Business, Zielgruppe und Wettbewerb. Keyword-Recherche und Marktanalyse.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #34A853, #FBBC04); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(52, 168, 83, 0.3);">
+                        2
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Setup</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Kampagnen-Struktur, Anzeigentexte, Landing Pages. Conversion-Tracking und Analytics-Integration.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FBBC04, #EA4335); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(251, 188, 4, 0.3);">
+                        3
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Launch</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Kampagnen-Start in 48 Stunden. Erste Optimierungen nach 3 Tagen. Erste Leads in 7 Tagen.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #EA4335, #4285F4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);">
+                        4
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Optimierung</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Tägliche Überwachung, wöchentliche Optimierung. A/B-Tests, Gebotsanpassungen, negative Keywords.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ERGEBNISSE / CASE STUDIES -->
+    <section id="ergebnisse" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    📊 Unsere <span class="text-gradient">Ergebnisse</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Echte Zahlen von unseren Kunden
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Case 1 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(66, 133, 244, 0.1); border: 1px solid rgba(66, 133, 244, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #4285F4; font-weight: 600;">
+                        E-Commerce
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Online-Shop für Haushaltswaren</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Shopping Ads + Performance Max für einen deutschen E-Commerce Shop.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">520%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">ROAS</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">€12k</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Umsatz/Monat</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Nach 2 Monaten haben wir unsere Verkäufe verdoppelt. Das Team ist top!"
+                    </p>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #34A853; font-weight: 600;">
+                        B2B Services
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">IT-Dienstleistungen Berlin</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Search Ads für Managed IT Services in Deutschland.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">€42</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">CPA</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">38</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Leads/Monat</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Qualität der Leads ist hervorragend. ROAS 420%. Sehr zufrieden!"
+                    </p>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(251, 188, 4, 0.1); border: 1px solid rgba(251, 188, 4, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #FBBC04; font-weight: 600;">
+                        Local Business
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Zahnarztpraxis München</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Local Search Ads für eine private Zahnarztpraxis.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">62</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Termine/Monat</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">€28</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">CPL</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Kalender voll gebucht dank Google Ads. Endlich verlässliche Ergebnisse!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Häufig gestellte <span class="text-gradient">Fragen</span>
+                </h2>
+            </div>
+
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        💰 Was kostet Google Ads Management?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Unsere Gebühr beträgt 15-20% vom Werbebudget, mindestens €490/Monat. Für Budgets ab €2.500/Monat empfehlen wir unser BOOST-Paket (€990/Monat) mit Google + Meta Ads Kombo.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        ⏱️ Wie schnell sehe ich Ergebnisse?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Launch in 48 Stunden, erste Optimierungen nach 3 Tagen, erste Leads in 7 Tagen. Stabile Performance nach 4-6 Wochen.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🎯 Für welche Branchen ist Google Ads geeignet?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Google Ads funktioniert für fast alle Branchen: E-Commerce, B2B-Dienstleistungen, lokale Geschäfte, SaaS, Bildung, Gesundheit und mehr. Wir passen die Strategie an Ihre Branche an.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        📊 Welche Reports bekomme ich?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Wöchentliche Performance-Reports mit allen wichtigen Metriken: Klicks, Conversions, CPA, ROAS. Plus monatliche Strategie-Calls mit Ihrem Account Manager.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🔒 Wie lange ist die Vertragsbindung?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Mindestvertrag 3 Monate (Setup + Optimierungsphase). Danach monatlich kündbar. Keine versteckten Gebühren.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🌍 In welchen Ländern schaltet ihr Ads?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Wir arbeiten mit Kunden in ganz Europa: Deutschland, Österreich, Schweiz, Polen, Tschechien, Ukraine und mehr. Support in Deutsch, Englisch, Polnisch, Russisch, Ukrainisch und Türkisch.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="contact-wrapper" style="max-width: 600px; margin: 0 auto;">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Bereit für mehr <span class="text-gradient">Leads?</span>
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary);">
+                        Kostenlose Strategie-Beratung in 24 Stunden
+                    </p>
+                </div>
+
+                <form class="contact-form" id="contactForm" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Ihr Name" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">E-Mail *</label>
+                        <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="phone" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49 123 456 7890" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="budget" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Monatliches Werbebudget</label>
+                        <select id="budget" name="budget" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                            <option value="">Bitte wählen</option>
+                            <option value="<1000">Unter €1.000</option>
+                            <option value="1000-2500">€1.000 - €2.500</option>
+                            <option value="2500-5000">€2.500 - €5.000</option>
+                            <option value="5000-10000">€5.000 - €10.000</option>
+                            <option value=">10000">Über €10.000</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="message" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Nachricht *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Beschreiben Sie Ihr Projekt..." required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #4285F4, #34A853); border: none; border-radius: 12px; color: white; cursor: pointer; box-shadow: 0 8px 24px rgba(66,133,244,0.35); transition: all 0.3s ease;">
+                        🚀 Kostenlose Beratung anfordern
+                    </button>
+
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                        Antwort innerhalb von 24 Stunden garantiert
+                    </p>
+                </form>
+
+                <div id="form-success" style="display: none; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #34A853; font-weight: 600; margin-bottom: 0.5rem;">✓ Nachricht erfolgreich gesendet!</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+                </div>
+
+                <div id="form-error" style="display: none; background: rgba(234, 67, 53, 0.1); border: 1px solid rgba(234, 67, 53, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #EA4335; font-weight: 600;">✗ Fehler beim Senden</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: var(--bg-secondary); padding: 4rem 0 2rem; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-column">
+                    <div class="brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                        <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                        Google Ads Agentur für kleine Unternehmen in Europa. Transparente Ergebnisse, professioneller Support.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Leistungen</h4>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Google Ads</a>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Meta Ads</a>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">TikTok Ads</a>
+                    <a href="index.html#calculator-section" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">ROI Rechner</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Unternehmen</h4>
+                    <a href="index.html#testimonials" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Bewertungen</a>
+                    <a href="#faq" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">FAQ</a>
+                    <a href="#contact" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Kontakt</a>
+                    <a href="https://vermarkter.eu/privacy.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Datenschutz</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Kontakt</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>Telegram:</strong><br>
+                        <a href="https://t.me/vermarkter_eu" style="color: #4285F4; text-decoration: none;">@vermarkter_eu</a>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>E-Mail:</strong><br>
+                        <a href="mailto:info@vermarkter.eu" style="color: #4285F4; text-decoration: none;">info@vermarkter.eu</a>
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    © 2025 Vermarkter. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <button id="chatbot-btn" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #4285F4, #34A853); border: none; box-shadow: 0 8px 24px rgba(66,133,244,0.4); cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💬
+    </button>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" style="display: none; position: fixed; bottom: 100px; right: 30px; width: 380px; max-width: calc(100vw - 60px); height: 500px; background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.3); z-index: 1000; overflow: hidden; flex-direction: column;">
+        <!-- Chatbot Header -->
+        <div style="background: linear-gradient(135deg, #4285F4, #34A853); padding: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-weight: 700; color: white; font-size: 1.1rem;">Vermarkter Assistent</div>
+                <div style="font-size: 0.85rem; color: rgba(255,255,255,0.9);">Wir antworten in Sekunden</div>
+            </div>
+            <button id="chatbot-close" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='none'">
+                ×
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="background: rgba(66,133,244,0.1); border-radius: 12px; padding: 1rem; max-width: 85%; align-self: flex-start;">
+                <p style="color: var(--text-primary); margin: 0; line-height: 1.5;">
+                    Hallo! 👋 Ich bin Ihr Vermarkter Assistent. Wie kann ich Ihnen bei Google Ads helfen?
+                </p>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div style="padding: 1rem; border-top: 1px solid var(--glass-border); background: var(--bg-secondary);">
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="chat-input" placeholder="Schreiben Sie Ihre Frage..." style="flex: 1; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                <button id="chat-send" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #4285F4, #34A853); border: none; border-radius: 12px; color: white; font-weight: 600; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                    Senden
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../script.js?v=20251228c"></script>
+</body>
+</html>
