@@ -237,6 +237,22 @@ translations = {
     'Polityka prywatnościerklärung': 'polityce prywatności',
     'Akzeptieren': 'Akceptuję',
     'Ablehnen': 'Odrzucam',
+
+    # Additional missing translations
+    '* Cennik exkl. MwSt. Mindestvertrag 3 Monate, danach keine Bindung.': '* Ceny bez VAT. Minimalna umowa 3 miesiące, potem brak zobowiązań.',
+    'exkl. MwSt': 'bez VAT',
+    'Mindestvertrag': 'Minimalna umowa',
+    'danach keine Bindung': 'potem brak zobowiązań',
+    'keine Bindung': 'brak zobowiązań',
+    '📊 Unsere Cases': '📊 Nasze projekty',
+    'Das Ergebnis ist eine Prognose, kein Versprechen.<br>': 'Wynik to prognoza, a nie obietnica.<br>',
+    'Das Ergebnis ist eine Prognose, kein Versprechen.': 'Wynik to prognoza, a nie obietnica.',
+    'Marketing beginnt mit ehrlichen Zahlen.': 'Marketing zaczyna się od uczciwych liczb.',
+    'Marketing starts with honest numbers.': 'Marketing zaczyna się od uczciwych liczb.',
+    'Launch Ads': 'Uruchom reklamy',
+    'Launch in 48 Stunden': 'Uruchomienie w 48 godzin',
+    'Für alle': 'Dla wszystkich',
+    'Alle Rechte': 'Wszystkie prawa',
 }
 
 # Apply translations (sorted by length to avoid partial replacements)
