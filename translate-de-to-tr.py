@@ -9,6 +9,8 @@ with open('tr/index.html', 'r', encoding='utf-8') as f:
 translations = {
     # Meta and basic
     'lang="de"': 'lang="tr"',
+    'Performance-Marketing für kleine Unternehmen in Europa. Google Ads, Meta Ads, TikTok. Transparente Ergebnisse, professioneller Support.': 'Avrupa\'daki küçük işletmeler için performans pazarlama. Google Ads, Meta Ads, TikTok. Şeffaf sonuçlar, profesyonel destek.',
+    'Marketing Deutschland, Google Ads Europa, Meta Ads, Performance Marketing, ROI Hesaplayıcı': 'Türkiye Pazarlama, Avrupa Google Ads, Meta Ads, Performans Pazarlama, ROI Hesaplayıcı',
 
     # Navigation
     'Leistungen': 'Hizmetler',
@@ -89,10 +91,11 @@ translations = {
     'Wir bauen Kampagnen nach SKAG-Prinzip. Klares Conversion-Tracking.': 'SKAG ilkesine göre kampanyalar oluşturuyoruz. Net dönüşüm izleme.',
 
     # Services Section
-    'Full Stack <span class="text-gradient">Marketing Hizmetler</span>': 'Tam Yığın <span class="text-gradient">Pazarlama Hizmetleri</span>',
+    'Full Stack Marketing Services': 'Tam Yığın Pazarlama Hizmetleri',
+    'Full Stack <span class="text-gradient">Marketing Services</span>': 'Tam Yığın <span class="text-gradient">Pazarlama Hizmetleri</span>',
     'Von der Strategie bis zur Umsetzung – alles aus einer Hand': 'Stratejiden uygulamaya – hepsi tek elden',
-    'Google Ads': 'Google Ads',
-    'Heißer Traffic aus der Suche. Performance Max für E-Commerce. Shopping Ads für Produkte. Launch w 48 godzin.': 'Aramadan sıcak trafik. E-ticaret için Performance Max. Ürünler için Shopping Ads. 48 saatte başlatma.',
+    'Heißer Traffic aus der Suche. Performance Max für E-Commerce. Shopping Ads für Produkte.': 'Aramadan sıcak trafik. E-ticaret için Performance Max. Ürünler için Shopping Ads.',
+    'Heißer Traffic aus der Suche. Performance Max für E-Commerce. Shopping Ads für Produkte. 48 saat içinde başlatma.': 'Aramadan sıcak trafik. E-ticaret için Performance Max. Ürünler için Shopping Ads. 48 saatte başlatma.',
     'Performance Max (KI-Optimierung)': 'Performance Max (YZ optimizasyonu)',
     'Shopping Ads (für Online-Shops)': 'Shopping Ads (çevrimiçi mağazalar için)',
     'Local SEO (Google Business Profile)': 'Yerel SEO (Google İşletme Profili)',
@@ -199,6 +202,20 @@ translations = {
     'Rechtliches': 'Yasal Bilgiler',
     'Datenschutz': 'Gizlilik Politikası',
     'Impressum': 'Yasal Uyarı',
+
+    # Additional missing translations
+    'Performance-Marketing für Unternehmen. Transparente Ergebnisse, professioneller Support.': 'İşletmeler için performans pazarlama. Şeffaf sonuçlar, profesyonel destek.',
+    'Die SEO-Strategie funktioniert! In 4 Monaten sind wir in den Top 3 für alle Keywords. Organischer Traffic ist um 300% gestiegen.': 'SEO stratejisi çalışıyor! 4 ayda tüm anahtar kelimeler için ilk 3\'teyiz. Organik trafik %300 arttı.',
+    'Transparente Preise ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.': 'Gizli maliyet olmadan şeffaf fiyatlar. İşletmeniz için mükemmel paketi seçin.',
+    'Şeffaf Fiyatlar ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.': 'Gizli maliyet olmadan şeffaf fiyatlar. İşletmeniz için mükemmel paketi seçin.',
+    'ohne versteckte Kosten': 'gizli maliyet olmadan',
+    'Wählen Sie das perfekte Paket für Ihr Unternehmen': 'İşletmeniz için mükemmel paketi seçin',
+    'für Ihr Unternehmen': 'işletmeniz için',
+    'für alle Keywords': 'tüm anahtar kelimeler için',
+    'für effektive Kampagnen': 'etkili kampanyalar için',
+    'für ein technisches Audit': 'teknik denetim için',
+    'für eine Erstberatung': 'ilk danışmanlık için',
+    'Das hängt von Ihrer Nische und Ihren Zielen ab. Mindestbudget für effektive Kampagnen': 'Bu, nişinize ve hedeflerinize bağlıdır. Etkili kampanyalar için minimum bütçe',
 }
 
 # Apply translations
