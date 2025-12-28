@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../styles.css?v=20251228b">
+    <link rel="stylesheet" href="../styles.css?v=20251228c">
 
     <!-- Supabase CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -175,12 +175,12 @@
                         <div class="stat-label" style="color: var(--text-secondary); font-size: 1rem; font-weight: 500;">% durchschn. ROAS</div>
                     </div>
                     <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; text-align: center;">
-                        <div class="stat-number text-gradient" data-target="48" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem;">0</div>
-                        <div class="stat-label" style="color: var(--text-secondary); font-size: 1rem; font-weight: 500;">Stunden bis Launch</div>
+                        <div class="stat-number text-gradient" data-target="92" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem;">0</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 1rem; font-weight: 500;">% Kunden kehren zurück</div>
                     </div>
                     <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; text-align: center;">
-                        <div class="stat-number text-gradient" data-target="15" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem;">0</div>
-                        <div class="stat-label" style="color: var(--text-secondary); font-size: 1rem; font-weight: 500;">% niedrigerer CPC</div>
+                        <div class="stat-number text-gradient" data-target="7" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem;">0</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 1rem; font-weight: 500;">Tage bis Launch</div>
                     </div>
                 </div>
             </div>
@@ -789,62 +789,115 @@
                 </div>
             </div>
 
-            <div class="marquee">
-                <div class="marquee-content" id="marqueeContent">
-                    <!-- Testimonial 1 (DE/UA mix) -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Vermarkter hat uns geholfen, unseren Online-Shop in Deutschland in 6 Tagen zu starten. Die ersten Verkäufe kamen schon nach einer Woche!"</p>
-                        <div class="testimonial-author">Oksana K.</div>
-                        <div class="testimonial-company">E-commerce, München</div>
-                    </div>
+            <!-- Два ряди відгуків, що пливуть назустріч -->
+            <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%;">
+                <!-- Перший ряд: пливе вправо -->
+                <div class="marquee marquee-right" style="width: 100%; overflow: hidden;">
+                    <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollRight 40s linear infinite;">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Vermarkter hat uns geholfen, unseren Online-Shop in Deutschland in 6 Tagen zu starten. Die ersten Verkäufe kamen schon nach einer Woche! ROAS 380%."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, München</div>
+                        </div>
 
-                    <!-- Testimonial 2 (DE/UA mix) -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Professionelles Team! Google Ads hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden."</p>
-                        <div class="testimonial-author">Andrii M.</div>
-                        <div class="testimonial-company">Services, Berlin</div>
-                    </div>
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Professionelles Team! Google Ads hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden, endlich kompetente Marketer gefunden."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii M.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Services, Berlin</div>
+                        </div>
 
-                    <!-- Testimonial 3 (DE/UA mix) -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Endlich eine Agentur, die versteht, wie der EU-Markt funktioniert. Hervorragende Ergebnisse in nur 3 Monaten."</p>
-                        <div class="testimonial-author">Dmytro S.</div>
-                        <div class="testimonial-company">SaaS, Prag</div>
-                    </div>
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Die Meta Ads-Kampagnen brachten uns +180% Lead-Wachstum in 2 Monaten. Empfehle allen, die Transparenz und Ergebnisse suchen!"
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Maryna L.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">B2B, Warschau</div>
+                        </div>
 
-                    <!-- Testimonial 4 (DE/UA mix) -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Die Meta Ads-Kampagnen brachten uns +180% Lead-Wachstum. Kann ich wärmstens empfehlen!"</p>
-                        <div class="testimonial-author">Maryna L.</div>
-                        <div class="testimonial-company">B2B, Warschau</div>
+                        <!-- Дублюємо для безперервної петлі -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Vermarkter hat uns geholfen, unseren Online-Shop in Deutschland in 6 Tagen zu starten. Die ersten Verkäufe kamen schon nach einer Woche! ROAS 380%."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, München</div>
+                        </div>
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Professionelles Team! Google Ads hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden, endlich kompetente Marketer gefunden."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii M.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Services, Berlin</div>
+                        </div>
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Die Meta Ads-Kampagnen brachten uns +180% Lead-Wachstum in 2 Monaten. Empfehle allen, die Transparenz und Ergebnisse suchen!"
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Maryna L.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">B2B, Warschau</div>
+                        </div>
                     </div>
+                </div>
 
-                    <!-- Testimonial 5 (DE/RU mix) -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Die CRM-Integration mit Telegram hat unseren Verkaufsansatz verändert. Jetzt geht kein Lead mehr verloren. Danke!"</p>
-                        <div class="testimonial-author">Olga V.</div>
-                        <div class="testimonial-company">Services, Warschau</div>
-                    </div>
+                <!-- Другий ряд: пливе вліво -->
+                <div class="marquee marquee-left" style="width: 100%; overflow: hidden;">
+                    <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollLeft 40s linear infinite;">
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Die SEO-Strategie funktioniert! In 4 Monaten sind wir in den Top 3 für alle Keywords. Organischer Traffic ist um 300% gestiegen."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Yurii P.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, Warschau</div>
+                        </div>
 
-                    <!-- Testimonial 6 (DE/UA mix) -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Die SEO-Strategie funktioniert! In 4 Monaten sind wir in den Top 3 für alle Keywords. Organischer Traffic ist um 300% gestiegen."</p>
-                        <div class="testimonial-author">Yurii P.</div>
-                        <div class="testimonial-company">E-commerce, Kyiv</div>
-                    </div>
+                        <!-- Testimonial 5 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Google-Werbung in 2 Tagen gestartet. Nach einer Woche bekamen wir die ersten 15 Anfragen. CRM-Integration mit Telegram - einfach Bombe!"
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Serhii T.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Bau, Düsseldorf</div>
+                        </div>
 
-                    <!-- Testimonial 7 (DE/UA mix) -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Google-Werbung in 2 Tagen gestartet. Nach einer Woche bekamen wir die ersten 15 Anfragen. Empfehle ich jedem!"</p>
-                        <div class="testimonial-author">Serhii T.</div>
-                        <div class="testimonial-company">Bau, Düsseldorf</div>
-                    </div>
+                        <!-- Testimonial 6 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Das Vermarkter-Team kennt sich aus. Transparente Reports, klare KPIs, immer auf Deutsch erreichbar. Arbeiten seit 8 Monaten zusammen."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Iryna K.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Kosmetik, Berlin</div>
+                        </div>
 
-                    <!-- Testimonial 8 (DE/UA mix) -->
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">"Das Vermarkter-Team kennt sich aus. Transparente Reports, klare KPIs, immer erreichbar. Arbeiten seit 8 Monaten zusammen."</p>
-                        <div class="testimonial-author">Iryna K.</div>
-                        <div class="testimonial-company">Kosmetik, Warschau</div>
+                        <!-- Дублюємо для безперервної петлі -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Die SEO-Strategie funktioniert! In 4 Monaten sind wir in den Top 3 für alle Keywords. Organischer Traffic ist um 300% gestiegen."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Yurii P.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, Warschau</div>
+                        </div>
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Google-Werbung in 2 Tagen gestartet. Nach einer Woche bekamen wir die ersten 15 Anfragen. CRM-Integration mit Telegram - einfach Bombe!"
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Serhii T.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Bau, Düsseldorf</div>
+                        </div>
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Das Vermarkter-Team kennt sich aus. Transparente Reports, klare KPIs, immer auf Deutsch erreichbar. Arbeiten seit 8 Monaten zusammen."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Iryna K.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Kosmetik, Berlin</div>
+                        </div>
                     </div>
                 </div>
             </div>
