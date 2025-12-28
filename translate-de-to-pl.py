@@ -49,6 +49,7 @@ translations = {
     'Berechnen Sie Ihren potenziellen Gewinn': 'Oblicz swój potencjalny zysk',
     'Monatliches Budget': 'Miesięczny budżet',
     'Kosten pro Klick': 'Koszt za kliknięcie',
+    'Cost per Click': 'Koszt za kliknięcie',
     'Conversion Rate': 'Wskaźnik konwersji',
     'Durchschnittlicher Bestellwert': 'Średnia wartość zamówienia',
     'Gewinnmarge': 'Marża zysku',
@@ -57,6 +58,7 @@ translations = {
     'Kosten pro Lead': 'Koszt za lead',
     'ROAS': 'ROAS',
     'Profit': 'Zysk',
+    'Gewinn': 'Zysk',
     'Strategie für diese Zahlen erhalten': 'Otrzymaj strategię dla tych liczb',
 
     # Testimonials
