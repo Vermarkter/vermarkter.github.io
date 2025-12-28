@@ -434,7 +434,7 @@ class VermarkterChatbot {
     }
   }
 
-  handleUserMessage() {
+  async handleUserMessage() {
     const input = document.getElementById('chatInput');
     if (!input || !input.value.trim()) return;
 
@@ -442,42 +442,111 @@ class VermarkterChatbot {
     this.addUserMessage(userText);
     input.value = '';
 
-    // Simple keyword-based responses
-    setTimeout(() => {
-      this.generateResponse(userText);
-    }, 500);
+    // Show "typing..." indicator
+    const typingIndicator = this.showTypingIndicator();
+
+    try {
+      // Call AI via Supabase Edge Function
+      await this.generateAIResponse(userText);
+    } catch (error) {
+      console.error('AI response error:', error);
+      // Fallback to default message
+      this.addBotMessage('Зараз я перевантажений, залиште контакти менеджеру.');
+    } finally {
+      // Remove typing indicator
+      if (typingIndicator && typingIndicator.parentNode) {
+        typingIndicator.remove();
+      }
+    }
   }
 
-  generateResponse(text) {
-    const lowerText = text.toLowerCase();
+  showTypingIndicator() {
+    const messagesContainer = document.getElementById('chatMessages');
+    if (!messagesContainer) return null;
 
-    // Check for price keywords in multiple languages
-    const priceKeywords = ['preis', 'kosten', 'budget', 'ціна', 'вартість', 'бюджет', 'price', 'cost', 'cena', 'koszt'];
-    if (priceKeywords.some(kw => lowerText.includes(kw))) {
-      this.addBotMessage(this.t('priceBot1'));
-      this.addBotMessage(this.t('priceBot2'));
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'chat-message chat-message-bot typing-indicator';
+    typingDiv.style.cssText = `
+      max-width: 80px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      background: rgba(59, 130, 246, 0.15);
+      align-self: flex-start;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    `;
 
-    } else if (lowerText.includes('google') || lowerText.includes('ads') || lowerText.includes('werbung') || lowerText.includes('реклама')) {
-      this.handleQuickAction('google');
+    // Create 3 animated dots
+    for (let i = 0; i < 3; i++) {
+      const dot = document.createElement('div');
+      dot.style.cssText = `
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--brand-blue, #3B82F6);
+        animation: typingDot 1.4s infinite;
+        animation-delay: ${i * 0.2}s;
+      `;
+      typingDiv.appendChild(dot);
+    }
 
-    } else if (lowerText.includes('facebook') || lowerText.includes('instagram') || lowerText.includes('meta')) {
-      this.handleQuickAction('meta');
+    // Add keyframes animation if not exists
+    if (!document.getElementById('typing-animation-style')) {
+      const style = document.createElement('style');
+      style.id = 'typing-animation-style';
+      style.textContent = `
+        @keyframes typingDot {
+          0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+          30% { opacity: 1; transform: translateY(-8px); }
+        }
+      `;
+      document.head.appendChild(style);
+    }
 
-    } else if (lowerText.includes('rechner') || lowerText.includes('kalkulator') || lowerText.includes('калькулятор') || lowerText.includes('calculator') || lowerText.includes('roi')) {
-      this.handleQuickAction('calculator');
+    messagesContainer.appendChild(typingDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-    } else if (lowerText.includes('kontakt') || lowerText.includes('email') || lowerText.includes('telegram') || lowerText.includes('contact')) {
-      this.handleQuickAction('contact');
+    return typingDiv;
+  }
 
-    } else if (lowerText.includes('hilfe') || lowerText.includes('frage') || lowerText.includes('допомога') || lowerText.includes('help') || lowerText.includes('pomoc')) {
-      this.addBotMessage(this.t('helpBot1'));
-      this.addBotMessage(this.t('helpBot2'));
-      this.showQuickActions();
+  async generateAIResponse(text) {
+    // Map language codes
+    const langMap = {
+      'uk': 'ua',
+      'de': 'de',
+      'en': 'en',
+      'pl': 'pl',
+      'ru': 'ua', // fallback to UA for RU
+      'tr': 'en'  // fallback to EN for TR
+    };
 
-    } else {
-      this.addBotMessage(this.t('defaultBot1'));
-      this.addBotMessage(this.t('defaultBot2'));
-      this.addBotMessage(this.t('defaultBot3'));
+    const language = langMap[this.lang] || 'ua';
+
+    try {
+      // Call Supabase Edge Function
+      const response = await fetch('https://YOUR_SUPABASE_PROJECT.supabase.co/functions/v1/ai-chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: text,
+          language: language
+        })
+      });
+
+      const data = await response.json();
+
+      if (data.reply) {
+        this.addBotMessage(data.reply);
+      } else {
+        throw new Error('No reply from AI');
+      }
+
+    } catch (error) {
+      console.error('Error calling AI:', error);
+      throw error; // Re-throw to be caught by handleUserMessage
     }
   }
 
