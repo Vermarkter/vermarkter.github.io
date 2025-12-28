@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Performance-Marketing für kleine Unternehmen in Europa. Google Ads, Meta Ads, TikTok. Transparente Ergebnisse, professioneller Support.">
+    <meta name="keywords" content="Marketing Deutschland, Google Ads Europa, Meta Ads, Performance Marketing, ROI Rechner">
+    <meta name="author" content="Vermarkter Agency">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vermarkter.eu/de/">
+    <meta property="og:title" content="Vermarkter — Skalieren Sie Ihr Geschäft in Europa">
+    <meta property="og:description" content="Performance-Marketing für Unternehmen. Transparente Ergebnisse, professioneller Support.">
+    <meta property="og:image" content="https://vermarkter.eu/og-image-de.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vermarkter.eu/de/">
+    <meta property="twitter:title" content="Vermarkter — Skalieren Sie Ihr Geschäft in Europa">
+    <meta property="twitter:description" content="Performance-Marketing für Unternehmen">
+    <meta property="twitter:image" content="https://vermarkter.eu/og-image-de.jpg">
+
+    <title>Vermarkter — Scale Your Business in Europe</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css?v=20251228c">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- HEADER (STICKY) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <!-- SVG Logo (Lightning Bolt) -->
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Text -->
+    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+</a>
+
+                <div class="nav-desktop">
+                    <a href="#services">Services</a>
+                    <a href="#cases">Cases</a>
+                    <a href="#calculator-section">Calculator</a>
+                    <a href="#testimonials">Reviews</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Contact</a>
+                </div>
+
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+                        🌙
+                    </button>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="12" fill="#012169"/>
+                                <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
+                                <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
+                                <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
+                                <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
+                            </svg>
+                            EN ▼
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../ua/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#0057B7"/>
+                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
+                                </svg>
+                                UA
+                            </a></li>
+                            <li><a href="../de/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#000"/>
+                                    <rect y="4" width="16" height="4" fill="#D00"/>
+                                    <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                                </svg>
+                                DE
+                            </a></li>
+                            
+                            <li><a href="../pl/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#fff"/>
+                                    <rect y="6" width="16" height="6" fill="#DC143C"/>
+                                </svg>
+                                PL
+                            </a></li>
+                            <li><a href="../ru/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#fff"/>
+                                    <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                    <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                                </svg>
+                                RU
+                            </a></li>
+                            <li><a href="../tr/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#E30A17"/>
+                                    <circle cx="6.4" cy="6" r="3.2" fill="#fff"/>
+                                    <circle cx="7.2" cy="6" r="2.6" fill="#E30A17"/>
+                                    <path d="M9.6,4.8 L10.4,7.2 L8,5.6 H11.2 L8.8,7.2 Z" fill="#fff"/>
+                                </svg>
+                                TR
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <button class="mobile-toggle" aria-label="Toggle mobile menu">☰</button>
+            </nav>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#services">Services</a>
+            <a href="#cases">Cases</a>
+            <a href="#calculator-section">Calculator</a>
+            <a href="#testimonials">Reviews</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="hero" style="padding-top: 100px;">
+            <div class="container">
+                <div class="hero-badge">
+                    <span>⚡</span>
+                    <span>For Small Businesses in the EU</span>
+                </div>
+
+                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin: 2rem 0 1.5rem; font-weight: 900;">
+                    Launch Ads in EU <span class="text-gradient">in 48 Hours</span>
+                </h1>
+
+                <p class="hero-subtitle" style="font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 750px; margin: 0 auto 2.5rem; line-height: 1.6; color: var(--text-secondary);">
+                    Google Ads & Meta Ads for Your Business in Europe.<br>
+                    <strong style="color: var(--text-primary);">First Leads in 7 Days. Technical Manager in Your Language. Weekly Reports.</strong>
+                </p>
+
+                <div class="hero-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+                    <a href="#calculator-section" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        💰 Calculate Profit
+                    </a>
+                    <a href="#testimonials" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        📊 Unsere Cases
+                    </a>
+                </div>
+
+                <!-- STATS GRID -->
+                <div class="stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; text-align: center;">
+                        <div class="stat-number text-gradient" data-target="420" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem;">0</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 1rem; font-weight: 500;">% durchschn. ROAS</div>
+                    </div>
+                    <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; text-align: center;">
+                        <div class="stat-number text-gradient" data-target="92" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem;">0</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 1rem; font-weight: 500;">% Clients Return</div>
+                    </div>
+                    <div class="stat-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; text-align: center;">
+                        <div class="stat-number text-gradient" data-target="7" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 0.5rem;">0</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 1rem; font-weight: 500;">Tage bis Launch</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROBLEM / AGITATION SECTION -->
+        <section class="problem-section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Why 80% of Budget Disappears <span class="text-gradient">Into Nothing?</span>
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                        The Three Most Common Reasons for Failed Ad Campaigns
+                    </p>
+                </div>
+
+                <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <!-- Problem 1 -->
+                    <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 2.5rem; transition: all 0.3s;">
+                        <div class="service-icon" style="width: 64px; height: 64px; background: rgba(239, 68, 68, 0.15); color: #EF4444; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem;">
+                            ❌
+                        </div>
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Wrong Keywords</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            You pay for clicks from users who will never buy. 70% of traffic is "informational" searches without purchase intent.
+                        </p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                Broad Match Type – You Pay for Everything
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                No Negative Keywords – Budget Leaks
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                Ads for Competitors Instead of Target Audience
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Problem 2 -->
+                    <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 2.5rem; transition: all 0.3s;">
+                        <div class="service-icon" style="width: 64px; height: 64px; background: rgba(239, 68, 68, 0.15); color: #EF4444; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem;">
+                            📉
+                        </div>
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Missing End-to-End Tracking</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Without proper tracking, you don't know which ads/keywords bring sales. You're flying blind.
+                        </p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                Google Analytics Misconfigured
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                Conversions Not Sent to Ads
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                No Attribution – Customer Journey Unclear
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Problem 3 -->
+                    <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid rgba(239, 68, 68, 0.3); border-radius: 16px; padding: 2.5rem; transition: all 0.3s;">
+                        <div class="service-icon" style="width: 64px; height: 64px; background: rgba(239, 68, 68, 0.15); color: #EF4444; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.5rem;">
+                            💸
+                        </div>
+                        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Weak Creatives</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Low CTR = High CPC. Poor texts and banners lower Quality Score and you pay more per click.
+                        </p>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                Generic Texts Without USP – Nobody Clicks
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                Banners Made in Paint – Looks Like Spam
+                            </li>
+                            <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
+                                <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
+                                No A/B Tests – You Stick with First Draft
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ZIG-ZAG PROCESS (MIT PLACEHOLDERS) -->
+        <section id="process" class="container" style="padding: 4rem 0;">
+            <h2 class="text-center mb-5">Our Methodology: 3-Step System</h2>
+
+            <!-- SCHRITT 1: AUDIT -->
+            <div class="calculator-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                <div class="calculator-inputs">
+                    <div class="badge badge-google mb-2">STEP 1</div>
+                    <h3>In-Depth Analysis</h3>
+                    <p>We find where your budget disappears. Analysis of competitors, semantics and technical errors.</p>
+                    <ul class="service-features">
+                        <li>Niche Analysis</li>
+                        <li>Search for "Gold" Keywords</li>
+                        <li>Technical Audit</li>
+                    </ul>
+                </div>
+                <!-- VISUALIZATION: CSS ART - GOOGLE ADS AUDIT -->
+                <div class="visual-box audit-visual">
+                    <div class="glass-search-bar"></div>
+                    <div class="glass-line" style="width: 80%"></div>
+                    <div class="glass-line" style="width: 60%"></div>
+                    <div class="glass-line" style="width: 90%"></div>
+                    <div class="search-icon-overlay">🔍</div>
+                </div>
+            </div>
+
+            <!-- SCHRITT 2: SETUP -->
+            <div class="calculator-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                <!-- VISUALIZATION: CSS ART - SETUP -->
+                <div class="visual-box setup-visual">
+                    <div class="toggle-row"><div class="toggle active"></div><div class="line"></div></div>
+                    <div class="toggle-row"><div class="toggle"></div><div class="line"></div></div>
+                    <div class="toggle-row"><div class="toggle active"></div><div class="line"></div></div>
+                    <div class="gear-icon-overlay">⚙️</div>
+                </div>
+                <div class="calculator-inputs">
+                    <div class="badge badge-google mb-2">STEP 2</div>
+                    <h3>Structure and Launch</h3>
+                    <p>We build campaigns based on SKAG principle. Clear conversion tracking.</p>
+                    <ul class="service-features">
+                        <li>Analytics Setup</li>
+                        <li>Ad Creation</li>
+                        <li>Campaign Launch</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- SCHRITT 3: SKALIERUNG -->
+            <div class="calculator-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <div class="calculator-inputs">
+                    <div class="badge badge-google mb-2">STEP 3</div>
+                    <h3>Optimization</h3>
+                    <p>Daily bid adjustments. Budget scaling only with positive ROAS.</p>
+                    <ul class="service-features">
+                        <li>A/B Testing</li>
+                        <li>Reporting</li>
+                        <li>Profit Growth</li>
+                    </ul>
+                </div>
+                <!-- VISUALIZATION: CSS ART - GROWTH CHART -->
+                <div class="visual-box chart-visual">
+                    <div class="bar" style="height: 30%"></div>
+                    <div class="bar" style="height: 50%"></div>
+                    <div class="bar" style="height: 40%"></div>
+                    <div class="bar success" style="height: 80%"></div>
+                    <div class="chart-icon-overlay">📈</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DETAILED SERVICES (2x3 GRID) -->
+        <section id="services" class="services-section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Full Stack <span class="text-gradient">Marketing Services</span>
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                        From Strategy to Implementation – Everything from One Source
+                    </p>
+                </div>
+
+                <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem;">
+                    <!-- Service 1: Google Ads -->
+                    <div class="service-card animate-on-scroll" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s;">
+                        <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #4285F4, #34A853); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);">
+                            🔍
+                        </div>
+                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Google Ads</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Hot Traffic from Search. Performance Max for E-Commerce. Shopping Ads for Products. Launch in 48 Hours.
+                        </p>
+                        <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Search Ads (High Purchase Intent)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Performance Max (AI Optimization)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Shopping Ads (for Online Stores)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2: Meta Ads -->
+                    <div class="service-card animate-on-scroll" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s;">
+                        <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #1877F2, #E4405F); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(24, 119, 242, 0.3);">
+                            📱
+                        </div>
+                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Meta Ads (FB + IG)</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Lead generation and sales via Facebook and Instagram. Lookalike Audiences, Remarketing, Messenger Ads.
+                        </p>
+                        <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #1877F2; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Lead Generation (FB-Formulare)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #1877F2; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Catalog Sales (dynamische Anzeigen)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #1877F2; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Lookalike + Remarketing (Skalierung)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3: TikTok Ads -->
+                    <div class="service-card animate-on-scroll" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s;">
+                        <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FE2C55, #000000); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(254, 44, 85, 0.3);">
+                            🎵
+                        </div>
+                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">TikTok Ads</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Viral content and young audience. In-Feed Ads, Spark Ads, Shopping Ads. Affordfromle traffic for e-commerce.
+                        </p>
+                        <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Spark Ads (organic posts as ads)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Video Creative Production (Dreh + Schnitt)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">TikTok Shop Integration (Direktverkäufe)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4: SEO -->
+                    <div class="service-card animate-on-scroll" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s;">
+                        <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #10B981, #059669); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);">
+                            📈
+                        </div>
+                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">SEO Optimization</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            Organic traffic from Google. Local SEO for EU. Content marketing and link building. Long-term results.
+                        </p>
+                        <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #10B981; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Technisches SEO Audit (Core Web Vitals)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #10B981; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Content-Strategie (Blog, Infografiken)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #10B981; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Local SEO (Google Business Profile)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 5: CRM Integration -->
+                    <div class="service-card animate-on-scroll" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s;">
+                        <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #8B5CF6, #6366F1); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);">
+                            🤝
+                        </div>
+                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">CRM Integration</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            All leads automatically in Telegram/Google Sheets. Email/SMS auto-funnels. Full control over your sales funnel.
+                        </p>
+                        <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #8B5CF6; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Telegram Bot for Leads (instant notifications)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #8B5CF6; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Email Marketing (Mailchimp, SendGrid)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #8B5CF6; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Zapier/Make.com Integrations</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 6: Web Analytics -->
+                    <div class="service-card animate-on-scroll" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s;">
+                        <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #F59E0B, #D97706); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);">
+                            📊
+                        </div>
+                        <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Web Analytics</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                            GA4, GTM, Hotjar, Microsoft Clarity. Complete understanding of user behavior. Dashboards in Looker Studio.
+                        </p>
+                        <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #F59E0B; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">GA4 Setup (Enhanced Ecommerce)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #F59E0B; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Heatmaps & Session Recordings (Hotjar)</span>
+                            </li>
+                            <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                                <span style="color: #F59E0B; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                                <span style="color: var(--text-secondary);">Custom Dashboards (Looker Studio)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRICING SECTION -->
+        <section id="pricing" class="pricing-section" style="padding: 6rem 0;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Pricing <span class="text-gradient">and Packages</span>
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                        Transparent prices without hidden costs. Choose the perfect package for your business.
+                    </p>
+                </div>
+
+                <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- Pricing Card 1: STARTER -->
+                    <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                        <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">STARTER</h3>
+                        <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Perfect for Getting Started</p>
+                        <div class="pricing-price" style="margin-bottom: 2rem;">
+                            <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€399</span>
+                            <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ Monat</span>
+                        </div>
+                        <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Werbebudget bis €2.500</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Google Ads <strong>ODER</strong> Meta Ads</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">One-time Setup: €200</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Monthly Reporting</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Email Support</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Deutschsprachiger Support</strong></span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Start Now</a>
+                    </div>
+
+                    <!-- Pricing Card 2: GROWTH (FEATURED) -->
+                    <div class="pricing-card pricing-card--featured" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid var(--brand); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; transform: scale(1.05); box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);">
+                        <div class="pricing-badge" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--brand), #2563EB); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);">
+                            🔥 BESTSELLER
+                        </div>
+                        <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; color: var(--text-primary);">GROWTH</h3>
+                        <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">For Fast-Growing Businesses</p>
+                        <div class="pricing-price" style="margin-bottom: 2rem;">
+                            <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€699</span>
+                            <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ Monat</span>
+                        </div>
+                        <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Werbebudget bis €10.000</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Google Ads <strong>+</strong> Meta Ads (Kombo)</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Einmaliges Setup: <strong style="color: var(--brand);">€0 (kostenlos)</strong></span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Live-Dashboard (24/7)</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Priorisierter Support (WhatsApp/Telegram)</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Erstellung von Anzeigen-Creatives</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Deutschsprachiger Support</strong></span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-primary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Start Now</a>
+                    </div>
+
+                    <!-- Pricing Card 3: BUSINESS -->
+                    <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                        <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">BUSINESS</h3>
+                        <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Maximale Skalierung</p>
+                        <div class="pricing-price" style="margin-bottom: 2rem;">
+                            <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900;">Individuell</span>
+                        </div>
+                        <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Werbebudget from €10.000+</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Full-Funnel Strategie</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">TikTok & LinkedIn Ads inklusive</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Wöchentliche Strategy-Calls</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Dedicated Account Manager</span>
+                            </li>
+                            <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                                <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Rechtliche Unterstützung für EU</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Get in Touch</a>
+                    </div>
+                </div>
+
+                <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
+                    * Prices excl. VAT. Minimum contract 3 months, after that no commitment.
+                </p>
+            </div>
+        </section>
+
+        <!-- CALCULATOR SECTION -->
+        <section id="calculator-section" class="calculator-section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        <span class="text-gradient">ROI Calculator</span>
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 1.5rem;">
+                        Calculate the Profitfromility of Your Ad Campaign
+                    </p>
+                    <p class="calculator-description" style="text-align: center; color: var(--text-secondary); font-size: 1rem; max-width: 700px; margin: 0 auto; line-height: 1.7;">
+                        💡 <strong style="color: var(--brand);">This is a real media planning tool.</strong> The same formulas that big agencies use. Transparent, honest, without hidden costs.
+                    </p>
+                </div>
+
+                <div class="calculator" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem; max-width: 1200px; margin: 0 auto;">
+                    <!-- Preset Selector -->
+                    <div class="calculator__preset" style="margin-bottom: 3rem; text-align: center;">
+                        <label for="nicheSelector" style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem;">Select Your Industry:</label>
+                        <select id="nicheSelector" class="calculator__select" style="width: 100%; max-width: 400px; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-weight: 500; cursor: pointer;">
+                            <option value="custom">Custom Input</option>
+                            <option value="ecommerce">E-commerce (Products)</option>
+                            <option value="services">Services (Crafts, Beauty)</option>
+                            <option value="realestate">Real Estate</option>
+                            <option value="b2b">B2B / Wholesale</option>
+                            <option value="infobiz">Infobusiness / Courses</option>
+                        </select>
+                    </div>
+
+                    <!-- Two Column Grid: Left (Inputs) + Right (Results) -->
+                    <div class="calculator__grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+                        <!-- Left Column: All Input Controls -->
+                        <div class="calculator__inputs">
+                            <!-- Budget -->
+                            <div class="calculator__input-group" data-input="budget" style="margin-bottom: 2rem;">
+                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Monthly Budget (€)</label>
+                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
+                                    <input type="range" id="budgetSlider" min="100" max="10000" step="100" value="1000" style="flex: 1;">
+                                    <input type="number" id="budgetInput" min="100" max="10000" step="100" value="1000" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                                </div>
+                                <div class="calculator__value" id="budgetValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">1000</div>
+                            </div>
+
+                            <!-- CPC -->
+                            <div class="calculator__input-group" data-input="cpc" style="margin-bottom: 2rem;">
+                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Cost per Click (€)</label>
+                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
+                                    <input type="range" id="cpcSlider" min="0.1" max="5" step="0.1" value="0.8" style="flex: 1;">
+                                    <input type="number" id="cpcInput" min="0.1" max="5" step="0.1" value="0.8" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                                </div>
+                                <div class="calculator__value" id="cpcValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">0.8</div>
+                            </div>
+
+                            <!-- Conversion Rate -->
+                            <div class="calculator__input-group" data-input="cr" style="margin-bottom: 2rem;">
+                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Conversion Rate (%)</label>
+                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
+                                    <input type="range" id="crSlider" min="0.5" max="15" step="0.1" value="3" style="flex: 1;">
+                                    <input type="number" id="crInput" min="0.5" max="15" step="0.1" value="3" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                                </div>
+                                <div class="calculator__value" id="crValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">3</div>
+                            </div>
+
+                            <!-- AOV -->
+                            <div class="calculator__input-group" data-input="aov" style="margin-bottom: 2rem;">
+                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Average Order Value (€)</label>
+                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
+                                    <input type="range" id="aovSlider" min="10" max="10000" step="10" value="150" style="flex: 1;">
+                                    <input type="number" id="aovInput" min="10" max="10000" step="10" value="150" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                                </div>
+                                <div class="calculator__value" id="aovValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">150</div>
+                            </div>
+
+                            <!-- Margin -->
+                            <div class="calculator__input-group" data-input="margin">
+                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Profit Margin (%)</label>
+                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
+                                    <input type="range" id="marginSlider" min="5" max="95" step="5" value="40" style="flex: 1;">
+                                    <input type="number" id="marginInput" min="5" max="95" step="5" value="40" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                                </div>
+                                <div class="calculator__value" id="marginValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">40</div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Results Display -->
+                        <div class="calculator__results">
+                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; text-align: center;">
+                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Clicks</div>
+                                <div class="calculator__result-value text-gradient" id="resultClicks" style="font-size: 2rem; font-weight: 800;">0</div>
+                            </div>
+
+                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; text-align: center;">
+                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Leads</div>
+                                <div class="calculator__result-value text-gradient" id="resultLeads" style="font-size: 2rem; font-weight: 800;">0</div>
+                            </div>
+
+                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; text-align: center;">
+                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">CPA</div>
+                                <div class="calculator__result-value text-gradient" id="resultCPA" style="font-size: 2rem; font-weight: 800;">€0</div>
+                            </div>
+
+                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; text-align: center;">
+                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">ROAS</div>
+                                <div class="calculator__result-value text-gradient" id="resultROAS" style="font-size: 2rem; font-weight: 800;">0%</div>
+                            </div>
+
+                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; text-align: center;">
+                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Profit</div>
+                                <div class="calculator__result-value text-gradient" id="resultProfit" style="font-size: 2rem; font-weight: 800;">€0</div>
+                            </div>
+
+                            <!-- CTA LEAD MAGNET -->
+                            <a href="#contact" class="btn btn-primary" style="display: block; padding: 1.25rem 2rem; font-size: 1.1rem; font-weight: 700; text-align: center; background: linear-gradient(135deg, #4285F4, #34A853); border: none; border-radius: 12px; color: white; text-decoration: none; box-shadow: 0 8px 24px rgba(66,133,244,0.35); transition: all 0.3s ease; margin-top: 1rem;">
+                                🚀 Get Strategy for These Numbers
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
+                    Das Ergebnis ist eine Prognose, kein Versprechen.<br>
+                    Marketing starts with honest numbers.
+                </p>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS (INFINITE MARQUEE) -->
+        <section id="testimonials" class="testimonials-section" style="padding: 6rem 0;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Client Reviews
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                        Over 100 Successful Projects for Small Businesses in the EU
+                    </p>
+                </div>
+            </div>
+
+            <!-- Два ряди відгуків, що пливуть назустріч -->
+            <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%;">
+                <!-- Перший ряд: пливе вправо -->
+                <div class="marquee marquee-right" style="width: 100%; overflow: hidden;">
+                    <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollRight 40s linear infinite;">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Vermarkter helped us launch our online shop in Germany in 6 days. First sales came after just one week! ROAS 380%."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, München</div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Professionelles Team! Google Ads hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden, endlich kompetente Marketer gefunden."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii M.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Services, Berlin</div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Meta Ads campaigns brought us +180% lead growth in 2 months. Recommend to everyone seeking transparency and results!"
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Maryna L.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">B2B, Warschau</div>
+                        </div>
+
+                        <!-- Дублюємо для безперервної петлі -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Vermarkter helped us launch our online shop in Germany in 6 days. First sales came after just one week! ROAS 380%."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, München</div>
+                        </div>
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Professionelles Team! Google Ads hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden, endlich kompetente Marketer gefunden."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii M.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Services, Berlin</div>
+                        </div>
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Meta Ads campaigns brought us +180% lead growth in 2 months. Recommend to everyone seeking transparency and results!"
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Maryna L.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">B2B, Warschau</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Другий ряд: пливе вліво -->
+                <div class="marquee marquee-left" style="width: 100%; overflow: hidden;">
+                    <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollLeft 40s linear infinite;">
+                        <!-- Testimonial 4 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "The SEO strategy works! In 4 months we're in the top 3 for all keywords. Organic traffic increased by 300%."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Yurii P.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, Warschau</div>
+                        </div>
+
+                        <!-- Testimonial 5 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Google Ads launched in 2 days. After one week we got the first 15 inquiries. CRM integration with Telegram - simply awesome!"
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Serhii T.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Bau, Düsseldorf</div>
+                        </div>
+
+                        <!-- Testimonial 6 -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "The Vermarkter team knows their stuff. Transparent reports, clear KPIs, always reachfromle. Working together for 8 months."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Iryna K.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Kosmetik, Berlin</div>
+                        </div>
+
+                        <!-- Дублюємо для безперервної петлі -->
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "The SEO strategy works! In 4 months we're in the top 3 for all keywords. Organic traffic increased by 300%."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Yurii P.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, Warschau</div>
+                        </div>
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "Google Ads launched in 2 days. After one week we got the first 15 inquiries. CRM integration with Telegram - simply awesome!"
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Serhii T.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Bau, Düsseldorf</div>
+                        </div>
+                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
+                                "The Vermarkter team knows their stuff. Transparent reports, clear KPIs, always reachfromle. Working together for 8 months."
+                            </p>
+                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Iryna K.</div>
+                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Kosmetik, Berlin</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq" class="services-section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Frequently Asked Questions
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                        Everything You Need to Know About Our Services
+                    </p>
+                </div>
+
+                <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                    <div class="faq-item" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">How quickly can I expect results?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.7;">
+                            First results are usually visible within 48-72 hours after launch. Optimal performance is reached after 2-4 weeks of optimization.
+                        </p>
+                    </div>
+
+                    <div class="faq-item" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Do I Need My Own Website?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.7;">
+                            Not necessarily. We can create a high-converting landing page for you or you can use our pre-made templates.
+                        </p>
+                    </div>
+
+                    <div class="faq-item" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Is There a Minimum Contract Term?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.7;">
+                            Yes, the minimum contract term is 3 months. This gives us enough time to optimize your campaigns and deliver real results. After that, no commitment.
+                        </p>
+                    </div>
+
+                    <div class="faq-item" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">In Which Countries Do You Work?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.7;">
+                            We specialize in the EU market: Germany, Poland, Czech Republic, Austria and other EU countries. We know the local specifics of each market.
+                        </p>
+                    </div>
+
+                    <div class="faq-item" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem;">
+                        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">What Budget Should I Plan for Advertising?</h3>
+                        <p style="color: var(--text-secondary); line-height: 1.7;">
+                            It depends on your niche and goals. Minimum budget for effective campaigns: €1,000-1,500/month. Use our ROI calculator fromove for an accurate forecast.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="services-section" style="padding: 6rem 0;">
+            <div class="container">
+                <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Ready to Grow?
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                        Contact us for a technical audit or initial consultation
+                    </p>
+                </div>
+
+                <!-- Contact Form -->
+                <div style="max-width: 600px; margin: 3rem auto;">
+                    <form id="contactForm" class="contact-form" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem;">
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label for="contactName" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Name</label>
+                            <input type="text" id="contactName" name="name" placeholder="Your Name" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label for="contactEmail" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Email <span style="color: var(--error, #EF4444);">*</span></label>
+                            <input type="email" id="contactEmail" name="email" required placeholder="your.email@example.com" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 1.5rem;">
+                            <label for="contactPhone" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Phone (optional)</label>
+                            <input type="tel" id="contactPhone" name="phone" placeholder="+44 123 456 7890" style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem;">
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 2rem;">
+                            <label for="contactMessage" style="display: block; margin-bottom: 0.5rem; color: var(--text-primary); font-weight: 600;">Message</label>
+                            <textarea id="contactMessage" name="message" rows="5" placeholder="Describe your project..." style="width: 100%; padding: 12px 16px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); font-size: 1rem; resize: vertical; min-height: 120px;"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 1.1rem;">Send Request</button>
+                    </form>
+
+                    <div id="formSuccess" style="display: none; margin-top: 1.5rem; padding: 1rem; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 8px; color: var(--success, #10B981); text-align: center;">
+                        ✓ Thank you! We will contact you shortly.
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p style="font-size: 1rem; margin-bottom: 1rem; color: var(--text-secondary);">Or contact us directly:</p>
+                    <p style="font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--text-secondary);">
+                        📧 <a href="mailto:maps.werbung@gmail.com" style="color: var(--brand);">maps.werbung@gmail.com</a>
+                    </p>
+                    <p style="font-size: 1.125rem; color: var(--text-secondary);">
+                        💬 <a href="https://t.me/Asystentmijbot" style="color: var(--brand);">@Asystentmijbot</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background: rgba(0,0,0,0.3); padding: 4rem 0 2rem;">
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">About Us</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                        Marketing Agency for Small Businesses in the European Union.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Services</h4>
+                    <a href="#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Google Ads</a>
+                    <a href="#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Meta Ads</a>
+                    <a href="#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">TikTok Ads</a>
+                    <a href="#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">SEO</a>
+                    <a href="#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">CRM</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Informationen</h4>
+                    <a href="#testimonials" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Reviews</a>
+                    <a href="#calculator-section" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Calculator</a>
+                    <a href="../privacy-policy-ua.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Privacyerklärung</a>
+                    <a href="../impressum.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Imprint</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Contact</h4>
+                    <a href="mailto:maps.werbung@gmail.com" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Email</a>
+                    <a href="https://t.me/Asystentmijbot" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Telegram</a>
+                    <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 1rem;">
+                        Büros: Berlin, Warschau, Kyiv
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom" style="text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">© 2025 Vermarkter. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border-top: 1px solid var(--glass-border); padding: 1.5rem; z-index: 1000;">
+        <div class="container">
+            <div class="cookie-content" style="display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <p class="cookie-text" style="flex: 1; color: var(--text-secondary); font-size: 0.95rem;">
+                    Wir verwenden Cookies, um die Website-Leistung zu verbessern und Analysen durchzuführen. Durch die weitere Nutzung der Website stimmen Sie unserer Privacyerklärung zu.
+                </p>
+                <div class="cookie-actions" style="display: flex; gap: 1rem;">
+                    <button class="btn btn-primary" id="acceptCookies" style="padding: 0.75rem 1.5rem;">Akzeptieren</button>
+                    <button class="btn btn-secondary" id="declineCookies" style="padding: 0.75rem 1.5rem;">Ablehnen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHATBOT BUTTON -->
+    <button class="chatbot-button" id="chatbotButton" style="position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), #2563EB); color: white; border: none; font-size: 1.5rem; cursor: pointer; box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4); z-index: 999; transition: transform 0.3s;">
+        💬
+    </button>
+
+    <!-- Scripts -->
+    <script src="../JS/calculator.js"></script>
+    <script src="../JS/chatbot.js"></script>
+    <script src="../JS/consent.js"></script>
+    <script src="../JS/main.js"></script>
+</body>
+</html>
