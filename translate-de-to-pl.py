@@ -156,6 +156,7 @@ translations = {
     'ROI-Rechner': 'Kalkulator ROI',
     'Berechnen Sie Ihren potenziellen Gewinn': 'Oblicz swój potencjalny zysk',
     'Wählen Sie Ihre Branche:': 'Wybierz swoją branżę:',
+    'Eigene Eingabe': 'Własne dane',
     'Dienstleistungen (Handwerk, Beauty)': 'Usługi (Rzemiosło, Uroda)',
     'Immobilien': 'Nieruchomości',
     'B2B / Großhandel': 'B2B / Hurt',

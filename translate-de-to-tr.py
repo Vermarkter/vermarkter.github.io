@@ -150,6 +150,7 @@ translations = {
     'Dies ist ein echtes Mediaplanungs-Tool.': 'Bu gerçek bir medya planlama aracıdır.',
     'Dieselben Formeln, die große Agenturen verwenden. Transparent, ehrlich, ohne versteckte Kosten.': 'Büyük ajansların kullandığı aynı formüller. Şeffaf, dürüst, gizli maliyet yok.',
     'Wählen Sie Ihre Branche:': 'Sektörünüzü seçin:',
+    'Eigene Eingabe': 'Özel Giriş',
     'Dienstleistungen (Handwerk, Beauty)': 'Hizmetler (El Sanatları, Güzellik)',
     'Immobilien': 'Gayrimenkul',
     'B2B / Großhandel': 'B2B / Toptan Satış',
