@@ -191,9 +191,14 @@ translations = {
     'Bereit zu starten': 'Gotowy do startu',
     'Sprechen Sie mit einem Experten': 'Porozmawiaj z ekspertem',
     'Ihr Name': 'Twoje imię',
+    'Name': 'Imię',
     'Ihre E-Mail': 'Twój email',
+    'Email': 'Email',
+    'Telefon (optional)': 'Telefon (opcjonalnie)',
     'Ihre Nachricht': 'Twoja wiadomość',
+    'Nachricht': 'Wiadomość',
     'Nachricht senden': 'Wyślij wiadomość',
+    'Anfrage senden': 'Wyślij zapytanie',
 
     # Footer
     'Folgen Sie uns': 'Śledź nas',
