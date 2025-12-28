@@ -39,6 +39,10 @@ translations = {
     # Page title
     '<title>Performance Marketing Agentur | ROI-fokussiert | Google & Meta Ads</title>': '<title>Агентство эффективного маркетинга | Фокус на ROI | Google & Meta Ads</title>',
 
+    # Hero section - CRITICAL - must be BEFORE navigation
+    'Werbestart in der EU in 48 Stunden': 'Запуск рекламы в ЕС за 48 часов',
+    'Erste Leads in 7 Tagen. Technischer Manager in Ihrer Sprache. Wöchentliche Reports.': 'Первые лиды за 7 дней. Технический менеджер на вашем языке. Еженедельные отчеты.',
+
     # Navigation
     'Transparente Preise ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.': 'Прозрачные цены без скрытых расходов. Выберите идеальный пакет для вашей компании.',
     'Preise & Pakete': 'Цены и пакеты',
@@ -148,6 +152,7 @@ translations = {
     'Wir bauen Kampagnen nach SKAG-Prinzip. Klares Conversion-Tracking.': 'Мы строим кампании по принципу SKAG. Четкое отслеживание конверсий.',
 
     # Services section
+    'Full Stack Marketing Services': 'Комплексные маркетинговые услуги',
     'Von der Strategie bis zur Umsetzung – alles aus einer Hand': 'От стратегии до реализации – все из одних рук',
 
     # Google Ads service details
@@ -452,6 +457,80 @@ for de, ru in sorted(translations.items(), key=lambda x: len(x[0]), reverse=True
 # Restore HTML tags
 for placeholder, tag in html_tags.items():
     content = content.replace(placeholder, tag)
+
+# Fix language switcher - replace German flag with Russian flag
+# Replace the button with German flag
+german_flag_button = '''<button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="4" fill="#000"/>
+                                <rect y="4" width="16" height="4" fill="#D00"/>
+                                <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                            </svg>
+                            DE ▼
+                        </button>'''
+
+russian_flag_button = '''<button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="4" fill="#fff"/>
+                                <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                            </svg>
+                            RU ▼
+                        </button>'''
+
+content = content.replace(german_flag_button, russian_flag_button)
+
+# Add German language to dropdown (remove Russian from dropdown if exists)
+# Find the dropdown and add DE after UA
+ua_dropdown = '''<li><a href="../ua/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#0057B7"/>
+                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
+                                </svg>
+                                UA
+                            </a></li>'''
+
+ua_de_dropdown = '''<li><a href="../ua/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#0057B7"/>
+                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
+                                </svg>
+                                UA
+                            </a></li>
+                            <li><a href="../de/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#000"/>
+                                    <rect y="4" width="16" height="4" fill="#D00"/>
+                                    <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                                </svg>
+                                DE
+                            </a></li>'''
+
+content = content.replace(ua_dropdown, ua_de_dropdown)
+
+# Remove Russian from dropdown if it exists
+ru_dropdown_item = '''<li><a href="../ru/" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#fff"/>
+                                    <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                    <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                                </svg>
+                                RU
+                            </a></li>'''
+
+content = content.replace(ru_dropdown_item, '')
+
+# Fix remaining German text that wasn't translated due to HTML protection
+content = content.replace('Werbestart in der EU', 'Запуск рекламы в ЕС')
+content = content.replace('in 48 Stunden', 'за 48 часов')
+content = content.replace('Full Stack', 'Полный стек')
+content = content.replace('Marketing Services', 'Маркетинговые услуги')
+content = content.replace('Marketing Услуги', 'Маркетинговые услуги')  # Fix partial translation
+content = content.replace('Erste Leads in 7 Tagen', 'Первые лиды за 7 дней')
+content = content.replace('Erste Лиды in 7 Tagen', 'Первые лиды за 7 дней')  # Fix partial
+content = content.replace('Technischer Manager in Ihrer Sprache', 'Технический менеджер на вашем языке')
+content = content.replace('Wöchentliche Reports', 'Еженедельные отчеты')
+content = content.replace('Еженедельные отчеты.', 'Еженедельные отчеты.')  # Ensure period is kept
 
 # Write back
 with open('ru/index.html', 'w', encoding='utf-8') as f:
