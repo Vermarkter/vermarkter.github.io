@@ -120,9 +120,11 @@ translations = {
     'Tägliche Gebotsanpassungen. Budget-Skalierung nur bei positivem ROAS.': 'Günlük teklif ayarlamaları. Yalnızca pozitif ROAS ile bütçe ölçeklendirme.',
 
     # Pricing Section
+    'Preise <span class="text-gradient">und Pakete</span>': 'Fiyatlar <span class="text-gradient">ve Paketler</span>',
+    'Preise und Pakete': 'Fiyatlar ve Paketler',
     'Transparente Preise': 'Şeffaf Fiyatlar',
     'Cennik <span class="text-gradient">i pakiety</span>': 'Fiyatlandırma <span class="text-gradient">ve paketler</span>',
-    'Transparente Cennik ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.': 'Gizli maliyet olmayan şeffaf fiyatlandırma. İşletmeniz için mükemmel paketi seçin.',
+    'Transparente Cennik ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.': 'Gizli maliyet olmadan şeffaf fiyatlandırma. İşletmeniz için mükemmel paketi seçin.',
     'Starter': 'Başlangıç',
     'Perfekt für den Einstieg': 'Başlangıç için mükemmel',
     'Pro Monat': 'Aylık',
@@ -138,6 +140,7 @@ translations = {
     'Dedicated Account Manager': 'Özel Hesap Yöneticisi',
     'Erstellung von Anzeigen-Creatives': 'Reklam kreatiflerinin oluşturulması',
     'Business': 'İş',
+    'Für schnell wachsende Unternehmen': 'Hızlı büyüyen işletmeler için',
     'Rechtliche Unterstützung für EU': 'AB için yasal destek',
     'Kontakt aufnehmen': 'İletişime geçin',
 
@@ -183,6 +186,7 @@ translations = {
     'Wir sind auf den EU-Markt spezialisiert: Deutschland, Polen, Tschechien, Österreich und andere EU-Länder. Wir kennen die lokalen Besonderheiten jedes Marktes.': 'AB pazarında uzmanız: Almanya, Polonya, Çekya, Avusturya ve diğer AB ülkeleri. Her pazarın yerel özelliklerini biliyoruz.',
     'Welches Budget sollte ich für Werbung einplanen?': 'Reklam için ne kadar bütçe planlamalıyım?',
     'Das hängt von Ihrer Nische und Ihren Zielen ab. Mindestbudget für effektive Kampagnen: €1.000-1.500/Monat. Nutzen Sie unseren ROI-Kalkulator oben für eine genaue Prognose.': 'Bu, nişinize ve hedeflerinize bağlıdır. Etkili kampanyalar için minimum bütçe: ayda €1.000-1.500. Kesin bir tahmin için yukarıdaki ROI hesaplayıcımızı kullanın.',
+    'Das hängt von Ihrer Nische und Ihren Zielen ab. Mindestbudget etkili kampanyalar için: €1.000-1.500/Monat. Nutzen Sie unseren ROI-Hesaplayıcı oben für eine genaue Prognose.': 'Bu, nişinize ve hedeflerinize bağlıdır. Etkili kampanyalar için minimum bütçe: ayda €1.000-1.500. Kesin bir tahmin için yukarıdaki ROI hesaplayıcımızı kullanın.',
 
     # Contact Section
     'Bereit zu starten?': 'Başlamaya hazır mısınız?',
@@ -204,6 +208,11 @@ translations = {
     'Impressum': 'Yasal Uyarı',
 
     # Additional missing translations
+    'Skalieren Sie Ihr Geschäft in Europa': 'Avrupa\'da İşinizi Ölçeklendirin',
+    'Vermarkter — Skalieren Sie Ihr Geschäft in Europa': 'Pazarlamacı — Avrupa\'da İşinizi Ölçeklendirin',
+    'Vermarkter hat uns geholfen, unseren Online-Shop in Deutschland in 6 Tagen zu starten. Die ersten Verkäufe kamen schon nach einer Woche! ROAS 380%.': 'Pazarlamacı, Almanya\'daki çevrimiçi mağazamızı 6 günde başlatmamıza yardımcı oldu. İlk satışlar bir hafta sonra geldi! ROAS %380.',
+    'Das Vermarkter-Team kennt sich aus. Transparente Reports, klare KPIs, immer auf Deutsch erreichbar. Arbeiten seit 8 Monaten zusammen.': 'Pazarlamacı ekibi işini biliyor. Şeffaf raporlar, net KPI\'lar, her zaman ulaşılabilir. 8 aydır birlikte çalışıyoruz.',
+    'Alle Rechte vorbehalten': 'Tüm hakları saklıdır',
     'Performance-Marketing für Unternehmen. Transparente Ergebnisse, professioneller Support.': 'İşletmeler için performans pazarlama. Şeffaf sonuçlar, profesyonel destek.',
     'Die SEO-Strategie funktioniert! In 4 Monaten sind wir in den Top 3 für alle Keywords. Organischer Traffic ist um 300% gestiegen.': 'SEO stratejisi çalışıyor! 4 ayda tüm anahtar kelimeler için ilk 3\'teyiz. Organik trafik %300 arttı.',
     'Transparente Preise ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.': 'Gizli maliyet olmadan şeffaf fiyatlar. İşletmeniz için mükemmel paketi seçin.',
