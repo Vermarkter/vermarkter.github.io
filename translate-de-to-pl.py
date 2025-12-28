@@ -225,10 +225,22 @@ translations = {
     'Düsseldorf': 'Düsseldorf',
     'Bau': 'Budowa',
     'Kosmetik': 'Kosmetyka',
+
+    # Pricing - missing translations
+    'Werbebudget bis': 'Budżet reklamowy do',
+    'Werbebudget ab': 'Budżet reklamowy od',
+    '/ Monat': '/ miesiąc',
+    'ODER': 'LUB',
+
+    # Cookies - missing translation
+    'Wir verwenden Cookies, um die Website-Leistung zu verbessern und Analysen durchzuführen. Durch die weitere Nutzung der Website stimmen Sie unserer Polityka prywatnościerklärung zu.': 'Używamy plików cookie, aby poprawić wydajność strony i przeprowadzać analizy. Kontynuując korzystanie ze strony, zgadzasz się z naszą polityką prywatności.',
+    'Polityka prywatnościerklärung': 'polityce prywatności',
+    'Akzeptieren': 'Akceptuję',
+    'Ablehnen': 'Odrzucam',
 }
 
-# Apply translations
-for de, pl in translations.items():
+# Apply translations (sorted by length to avoid partial replacements)
+for de, pl in sorted(translations.items(), key=lambda x: len(x[0]), reverse=True):
     content = content.replace(de, pl)
 
 # Write result
