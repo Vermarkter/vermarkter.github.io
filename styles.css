@@ -710,7 +710,7 @@ section, .services-section {
     border-radius: 24px;
     padding: 24px; /* КОМПАКТНО: зменшено з 40px */
     box-shadow: var(--shadow);
-    max-width: 1200px;
+    max-width: 1400px; /* Збільшено щоб не обрізало праву колонку */
     margin: 0 auto;
 }
 
@@ -777,7 +777,7 @@ section, .services-section {
     grid-template-columns: 1.2fr 0.8fr; /* 60% на 40% */
     gap: 24px; /* КОМПАКТНО: зменшено з 40px */
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible; /* Не обрізаємо праву колонку */
 }
 
 /* --- Left Column: Inputs --- */
@@ -1787,14 +1787,15 @@ input[type="number"], select {
    SYMMETRY & BALANCE FIXES
    ============================================ */
 
-/* 1. КАЛЬКУЛЯТОР: СУВОРА СИМЕТРІЯ 50/50 */
+/* 1. КАЛЬКУЛЯТОР: АДАПТИВНА СІТКА БЕЗ ОБРІЗАННЯ */
 .calculator__grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important; /* Рівно навпіл */
-    gap: 40px !important;
+    gap: 32px !important; /* Зменшено gap щоб більше місця */
     align-items: start !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
+    overflow: visible !important; /* Не обрізаємо праву колонку */
 }
 
 /* Вирівнюємо висоту карток результатів, щоб права колонка не виглядала куцою */
