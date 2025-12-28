@@ -15,12 +15,13 @@ def protect_tag(match):
     tag_counter += 1
     return placeholder
 
+# Replace lang="de" BEFORE protecting HTML tags
+content = content.replace('lang="de"', 'lang="ru"')
+
 # Protect all HTML tags (opening, closing, and self-closing)
 content = re.sub(r'<[^>]+>', protect_tag, content)
 
 translations = {
-    # HTML lang attribute
-    'lang="de"': 'lang="ru"',
 
     # Meta tags - critical for SEO
     'Performance-Marketing für kleine Unternehmen in Europa. Google Ads, Meta Ads, TikTok. Transparente Ergebnisse, professionelle Betreuung.': 'Эффективный маркетинг для малого бизнеса в Европе. Google Ads, Meta Ads, TikTok. Прозрачные результаты, профессиональная поддержка.',
@@ -531,6 +532,12 @@ content = content.replace('Erste Лиды in 7 Tagen', 'Первые лиды з
 content = content.replace('Technischer Manager in Ihrer Sprache', 'Технический менеджер на вашем языке')
 content = content.replace('Wöchentliche Reports', 'Еженедельные отчеты')
 content = content.replace('Еженедельные отчеты.', 'Еженедельные отчеты.')  # Ensure period is kept
+
+# Fix contact form placeholders
+content = content.replace('placeholder="Ihr Name"', 'placeholder="Ваше имя"')
+content = content.replace('placeholder="ihre.email@beispiel.de"', 'placeholder="ваш.email@пример.ru"')
+content = content.replace('placeholder="+49 123 456 7890"', 'placeholder="+7 123 456 7890"')
+content = content.replace('placeholder="Beschreiben Sie Ihr Projekt..."', 'placeholder="Опишите ваш проект..."')
 
 # Write back
 with open('ru/index.html', 'w', encoding='utf-8') as f:
