@@ -497,6 +497,13 @@ content = content.replace('placeholder="ihre.email@beispiel.de"', 'placeholder="
 content = content.replace('placeholder="+49 123 456 7890"', 'placeholder="+44 123 456 7890"')
 content = content.replace('placeholder="Beschreiben Sie Ihr Projekt..."', 'placeholder="Describe your project..."')
 
+# Fix remaining German phrases that were missed
+content = content.replace('📊 Unsere Cases', '📊 Our Cases')
+content = content.replace('Das Ergebnis ist eine Prognose, kein Versprechen.<br>', 'The result is a forecast, not a promise.<br>')
+content = content.replace('Das Ergebnis ist eine Prognose, kein Versprechen.', 'The result is a forecast, not a promise.')
+content = content.replace('Marketing beginnt mit ehrlichen Zahlen.', 'Marketing starts with honest numbers.')
+content = content.replace('* Preise exkl. MwSt. Mindestvertrag 3 Monate, danach keine Bindung.', '* Prices excl. VAT. Minimum contract 3 months, then no commitment.')
+
 # Write back
 with open('en/index.html', 'w', encoding='utf-8') as f:
     f.write(content)
