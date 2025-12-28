@@ -734,7 +734,7 @@ section, .services-section {
 }
 
 .calculator__preset {
-    margin-bottom: 32px;
+    margin-bottom: 20px; /* КОМПАКТНО: зменшено з 32px */
 }
 
 .calculator__preset label {
@@ -935,14 +935,14 @@ input[type="number"] {
 .calculator__results {
     display: flex;
     flex-direction: column;
-    gap: 8px; /* КОМПАКТНО: зменшено з 15px */
+    gap: 6px; /* ULTRA COMPACT: для симетрії з лівою колонкою */
 }
 
 .calculator__result-card {
     background: var(--bg-secondary);
     border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 14px; /* КОМПАКТНО: зменшено з 24px */
+    border-radius: 12px; /* Менший радіус */
+    padding: 8px 14px; /* ULTRA COMPACT: vertical padding зменшено до 8px */
     transition: 0.3s;
     position: relative;
     overflow: hidden;
@@ -969,7 +969,7 @@ input[type="number"] {
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 3px; /* КОМПАКТНО: менший відступ */
+    margin-bottom: 2px; /* ULTRA COMPACT: менший відступ */
 }
 
 .calculator__result-value {
