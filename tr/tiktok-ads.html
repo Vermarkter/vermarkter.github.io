@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Avrupa'daki küçük işletmeler için TikTok Ads ajansı. Gen Z ve Millennials reklamcılığı. Viral içerik, özgün tanıtım. 48 saatte başlangıç.">
+    <meta name="keywords" content="TikTok Ads ajansı, TikTok reklamları, video reklamcılığı, viral pazarlama, Gen Z pazarlama, Spark Ads">
+    <meta name="author" content="Vermarkter Agency">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vermarkter.eu/tr/tiktok-ads">
+    <meta property="og:title" content="TikTok Ads Ajansı — Vermarkter">
+    <meta property="og:description" content="Avrupa'daki küçük işletmeler için TikTok Ads. Gen Z pazarlama, viral içerik. 48 saatte başlangıç.">
+    <meta property="og:image" content="https://vermarkter.eu/og-image-tiktok-ads-tr.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vermarkter.eu/tr/tiktok-ads">
+    <meta property="twitter:title" content="TikTok Ads Ajansı — Vermarkter">
+    <meta property="twitter:description" content="Avrupa'daki küçük işletmeler için TikTok Ads">
+    <meta property="twitter:image" content="https://vermarkter.eu/og-image-tiktok-ads-tr.jpg">
+
+    <title>TikTok Ads Ajansı — Vermarkter</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css?v=20251228c">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- HEADER (STICKY) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <!-- SVG Logo (Lightning Bolt) -->
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Text -->
+    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+</a>
+
+                <div class="nav-desktop">
+                    <a href="index.html#services">Hizmetler</a>
+                    <a href="#kampagnentypen">Kampanya Türleri</a>
+                    <a href="#prozess">Süreç</a>
+                    <a href="#ergebnisse">Sonuçlar</a>
+                    <a href="#faq">SSS</a>
+                    <a href="#contact">İletişim</a>
+                </div>
+
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+                        🌙
+                    </button>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="12" fill="#E30A17"/>
+                                <circle cx="6" cy="6" r="3" fill="#fff"/>
+                                <circle cx="7" cy="6" r="2.5" fill="#E30A17"/>
+                                <path d="M9.5,4.5 L11,6 L9.5,7.5 L10.5,6 Z" fill="#fff"/>
+                            </svg>
+                            TR ▼
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../de/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#000"/>
+                                    <rect y="4" width="16" height="4" fill="#D00"/>
+                                    <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                                </svg>
+                                DE
+                            </a></li>
+                            <li><a href="../ua/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#0057B7"/>
+                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
+                                </svg>
+                                UA
+                            </a></li>
+                            <li><a href="../en/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#012169"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
+                                </svg>
+                                EN
+                            </a></li>
+                            <li><a href="../pl/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#fff"/>
+                                    <rect y="6" width="16" height="6" fill="#D4213D"/>
+                                </svg>
+                                PL
+                            </a></li>
+                            <li><a href="../ru/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#fff"/>
+                                    <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                    <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                                </svg>
+                                RU
+                            </a></li>
+                            <li><a href="../tr/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#E30A17"/>
+                                    <circle cx="6" cy="6" r="3" fill="#fff"/>
+                                    <circle cx="7" cy="6" r="2.5" fill="#E30A17"/>
+                                    <path d="M9.5,4.5 L11,6 L9.5,7.5 L10.5,6 Z" fill="#fff"/>
+                                </svg>
+                                TR
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu" style="display:none; background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:8px; cursor:pointer; align-items:center; justify-content:center;">
+                        ☰
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="padding: 8rem 0 6rem; position: relative; overflow: hidden;">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <div style="display: inline-block; background: rgba(254, 44, 85, 0.1); border: 1px solid rgba(254, 44, 85, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 2rem;">
+                    <span style="color: #FE2C55; font-weight: 600; font-size: 0.95rem;">🎵 TikTok Ads Ajansı</span>
+                </div>
+
+                <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -0.02em;">
+                    <span class="text-gradient">Gen Z ve Millennials</span> için Viral Kampanyalar
+                </h1>
+
+                <p class="hero-subtitle" style="font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 750px; margin: 0 auto 2.5rem; line-height: 1.6; color: var(--text-secondary);">
+                    Özgün içerikle TikTok reklamları. Dikey videolar, viral erişim.<br>
+                    <strong style="color: var(--text-primary);">48 saatte başlangıç. 3 günde ilk veriler. Reklam bütçesinde <span style="color: var(--brand);">komisyon yok</span>.</strong>
+                </p>
+
+                <div class="hero-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+                    <a href="#contact" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        🚀 Ücretsiz Danışmanlık
+                    </a>
+                    <a href="index.html#calculator-section" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        💰 ROI Hesapla
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">%8</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">ortalama Etkileşim</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">€5</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">ortalama CPM</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">1mr+</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">TikTok kullanıcısı</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KAMPAGNENTYPEN -->
+    <section id="kampagnentypen" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    TikTok Ads <span class="text-gradient">Kampanya Türleri</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    İşiniz için en uygun formatı seçiyoruz
+                </p>
+            </div>
+
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- In-Feed Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FE2C55, #FF0050); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(254, 44, 85, 0.3);">
+                        🎬
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Akış İçi Reklamlar</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        For You akışındaki yerel video reklamlar. Organik içerikle doğal entegrasyon.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Yerel sunum</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Dikey video</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Yüksek CTR</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Spark Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #25F4EE, #00D4D4); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(37, 244, 238, 0.3);">
+                        ✨
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Spark Reklamlar</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Organik gönderileri reklam olarak tanıtma. Erişimi artırmak için mevcut içeriği kullanın.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Organik görünüm</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Gönderi güçlendirme</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Özgünlük</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- TopView Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #000000, #333333); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);">
+                        🚀
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">TopView Reklamlar</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Uygulama ilk açıldığında premium yerleşim. Maksimum dikkat ve erişim.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #000000; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">İlk izlenim</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #000000; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Tam ekran video</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #000000; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Maksimum erişim</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Branded Hashtag Challenge -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FE2C55, #25F4EE); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(254, 44, 85, 0.3);">
+                        🎯
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Marka Hashtag Yarışması</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Kullanıcı tarafından oluşturulan içerik kampanyaları. Markanızın dahil olduğu viral yarışmalar.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Viral potansiyel</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">UGC içerik</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Kitlesel katılım</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROZESS -->
+    <section id="prozess" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Nasıl <span class="text-gradient">çalışıyoruz</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Stratejiden ölçeklendirmeye — adım adım
+                </p>
+            </div>
+
+            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <!-- Step 1 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FE2C55, #FF0050); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(254, 44, 85, 0.3);">
+                        1
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Strateji ve Hedef Kitle</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        İşinizi, Gen Z/Millennials hedef kitlenizi analiz ediyoruz. İçerik stratejisi geliştiriyoruz.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #25F4EE, #00D4D4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(37, 244, 238, 0.3);">
+                        2
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">İçerik Oluşturma</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Dikey videolar üretiyoruz, kreatifi TikTok için uyarlıyoruz. Özgün stil, viral potansiyel.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #000000, #333333); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);">
+                        3
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Başlatma ve A/B Testler</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Kampanyaları 48 saatte başlatıyoruz. Kreatif ve hedef kitleyi test ediyoruz. 72 saat içinde ilk veriler.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FE2C55, #25F4EE); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(254, 44, 85, 0.3);">
+                        4
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Optimizasyon ve Ölçeklendirme</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Günlük izleme, haftalık optimizasyon. Başarılı kreatifleri ölçeklendiriyoruz.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ERGEBNISSE / CASE STUDIES -->
+    <section id="ergebnisse" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    📊 <span class="text-gradient">Sonuçlarımız</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Müşterilerimizden gerçek rakamlar
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Case 1 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(254, 44, 85, 0.1); border: 1px solid rgba(254, 44, 85, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #FE2C55; font-weight: 600;">
+                        E-Ticaret
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Moda Giyim Mağazası</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Almanya'daki genç moda mağazası için Akış İçi Reklamlar + Spark Reklamlar.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">%12</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Etkileşim</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">€4.2</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">CPM</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "TikTok bize genç kitleyi getirdi. Satışlar %280 arttı!"
+                    </p>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(37, 244, 238, 0.1); border: 1px solid rgba(37, 244, 238, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #25F4EE; font-weight: 600;">
+                        Hizmetler
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Fitness Stüdyosu Berlin</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Fitness kulübüne genç kitle çekmek için yerel TikTok reklamı.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">156</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Yeni Üyeler</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">€18</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">CPA</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "TikTok bize hedef genç kitleyi verdi. Yerel işletme için en iyi kanal!"
+                    </p>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(0, 0, 0, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #fff; font-weight: 600;">
+                        B2C Uygulama
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Eğitim Uygulaması</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Eğitim uygulaması için TopView + Hashtag Yarışması.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">8.2k</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Kurulumlar</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">€2.8</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">CPI</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Yarışma viral oldu. 50k+ katılımcı, inanılmaz farkındalık!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="pricing-section" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Fiyatlandırma <span class="text-gradient">ve Paketler</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Gizli maliyet olmayan şeffaf fiyatlar. İşletmeniz için mükemmel paketi seçin.
+                </p>
+            </div>
+
+            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+                <!-- Pricing Card 1: STARTER -->
+                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">STARTER</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Başlangıç için mükemmel</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€399</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ ay</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">€2.500'e kadar reklam bütçesi</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Google Ads <strong>VEYA</strong> Meta Ads</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Tek seferlik kurulum: €200</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Aylık raporlama</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">E-posta desteği</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Türkçe destek dahil</strong></span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Şimdi başla</a>
+                </div>
+
+                <!-- Pricing Card 2: GROWTH (FEATURED) -->
+                <div class="pricing-card pricing-card--featured" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid var(--brand); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; transform: scale(1.05); box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);">
+                    <div class="pricing-badge" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--brand), #2563EB); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);">
+                        🔥 EN ÇOK SATAN
+                    </div>
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; color: var(--text-primary);">GROWTH</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Hızlı büyüyen şirketler için</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€699</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ ay</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">€10.000'e kadar reklam bütçesi</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Google Ads <strong>+</strong> Meta Ads (kombinasyon)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Tek seferlik kurulum: <strong style="color: var(--brand);">€0 (ücretsiz)</strong></span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Canlı gösterge paneli (24/7)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Öncelikli destek (WhatsApp/Telegram)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Reklam materyali oluşturma</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Türkçe destek dahil</strong></span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Şimdi başla</a>
+                </div>
+
+                <!-- Pricing Card 3: BUSINESS -->
+                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">BUSINESS</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Maksimum ölçeklendirme</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900;">€1.000'den</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ ay</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">€10.000+ reklam bütçesi</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Tüm satış süreci için strateji</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">TikTok & LinkedIn Ads dahil</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Haftalık strateji görüşmeleri</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Kişisel hesap yöneticisi</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">AB için yasal destek</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">İletişime geç</a>
+                </div>
+            </div>
+
+            <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
+                * Fiyatlar KDV hariç. Minimum 3 ay sözleşme, sonrası bağlayıcılık yok.
+            </p>
+
+            <!-- Cross-Sell to Google Ads -->
+            <div style="text-align: center; margin-top: 2.5rem;">
+                <a href="google-ads.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: rgba(66, 133, 244, 0.1); border: 1px solid rgba(66, 133, 244, 0.3); border-radius: 12px; color: #4285F4; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                    🔍 Google Ads ilginizi mi çekiyor? Buraya tıklayın →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Sıkça Sorulan <span class="text-gradient">Sorular</span>
+                </h2>
+            </div>
+
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        💰 TikTok Ads yönetimi ne kadar?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                        <strong style="color: var(--brand);">%100 sabit fiyat</strong> — <strong style="color: #34A853; font-size: 1.1rem; background: rgba(52, 168, 83, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px;">Reklam harcamalarınızdan komisyon almıyoruz</strong>. Sadece sabit aylık ücreti ödüyorsunuz.
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary); line-height: 1.7;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Starter: €399/ay (€2.500'e kadar bütçe)</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Growth: €699/ay (€10.000'e kadar bütçe, Google + Meta Ads)</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Business: €1.000/ay'dan (€10.000+ bütçe)</span>
+                        </li>
+                    </ul>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 1rem; font-size: 0.95rem;">
+                        <strong>Gizli maliyet yok.</strong> Tam bütçe kontrolü — reklam harcamalarınızın %100'ü doğrudan kampanyalarınıza gider.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🎯 TikTok B2B için uygun mu?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Evet, hedefleme doğruysa! TikTok, genç profesyonelleri (pazarlamacılar, tasarımcılar, IT) hedefleyen B2B için idealdir. Anahtar — özgün içerik ve doğru kitle.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🎬 Profesyonel videolara ihtiyacım var mı?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Hayır! Özgün/ham içerik daha iyi çalışır. TikTok doğallığa değer verir, stüdyo cilalamaya değil. Doğru tarzda etkili videolar oluşturmanıza yardımcı oluruz.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        ⏱️ Sonuçları ne kadar hızlı görürüm?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Başlatmadan 48-72 saat sonra ilk veriler. TikTok algoritması hızlı çalışır — 3 gün sonra ilk optimizasyonlar, 2-3 hafta sonra stabil performans.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        💵 Ne kadar bütçeye ihtiyacım var?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Test için minimum €500/ay. Stabil sonuçlar için €1.000-2.000/ay önerilir. TikTok CPM, Facebook/Instagram'dan daha düşüktür, bu da daha az parayla daha fazla erişim sağlar.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🔒 Sözleşme süresi ne kadar?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Minimum 3 ay sözleşme (kurulum + optimizasyon aşaması). Sonrasında aylık iptal edilebilir. Gizli ücret yok.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="contact-wrapper" style="max-width: 600px; margin: 0 auto;">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        <span class="text-gradient">Viral kampanyalar</span> için hazır mısınız?
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary);">
+                        24 saat içinde ücretsiz strateji danışmanlığı
+                    </p>
+                </div>
+
+                <form class="contact-form" id="contactForm" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Ad *</label>
+                        <input type="text" id="name" name="name" placeholder="Adınız" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">E-posta *</label>
+                        <input type="email" id="email" name="email" placeholder="sizin.email@ornek.com" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="phone" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49 123 456 7890" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="budget" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Aylık reklam bütçesi</label>
+                        <select id="budget" name="budget" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                            <option value="">Lütfen seçin</option>
+                            <option value="<1000">€1.000'den az</option>
+                            <option value="1000-2500">€1.000 - €2.500</option>
+                            <option value="2500-5000">€2.500 - €5.000</option>
+                            <option value="5000-10000">€5.000 - €10.000</option>
+                            <option value=">10000">€10.000'den fazla</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="message" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Mesaj *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Projenizi açıklayın..." required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif; resize: vertical;"></textarea>
+                    </div>
+
+                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; display: flex; align-items: start; gap: 0.75rem;">
+                        <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required style="margin-top: 0.25rem; width: 18px; height: 18px; cursor: pointer;">
+                        <label for="gdpr-consent" style="cursor: pointer; line-height: 1.6;">
+                            <a href="../../datenschutz.html" style="text-decoration: underline; color: var(--brand);">Gizlilik Politikası</a>'nı kabul ediyorum. *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #FE2C55, #25F4EE); border: none; border-radius: 12px; color: white; cursor: pointer; box-shadow: 0 8px 24px rgba(254,44,85,0.35); transition: all 0.3s ease;">
+                        🚀 Ücretsiz danışmanlık talep et
+                    </button>
+
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                        24 saat içinde yanıt garantisi
+                    </p>
+                </form>
+
+                <div id="form-success" style="display: none; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #34A853; font-weight: 600; margin-bottom: 0.5rem;">✓ Mesaj başarıyla gönderildi!</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">24 saat içinde sizinle iletişime geçeceğiz.</p>
+                </div>
+
+                <div id="form-error" style="display: none; background: rgba(234, 67, 53, 0.1); border: 1px solid rgba(234, 67, 53, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #EA4335; font-weight: 600;">✗ Gönderme hatası</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Lütfen daha sonra tekrar deneyin veya doğrudan e-posta ile bizimle iletişime geçin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: var(--bg-secondary); padding: 4rem 0 2rem; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-column">
+                    <div class="brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                        <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                        Avrupa'daki küçük işletmeler için TikTok Ads ajansı. Şeffaf sonuçlar, profesyonel destek.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Hizmetler</h4>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Google Ads</a>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Meta Ads</a>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">TikTok Ads</a>
+                    <a href="index.html#calculator-section" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">ROI Hesaplayıcı</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Şirket</h4>
+                    <a href="index.html#testimonials" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Yorumlar</a>
+                    <a href="#faq" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">SSS</a>
+                    <a href="#contact" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">İletişim</a>
+                    <a href="https://vermarkter.eu/privacy.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Gizlilik</a>
+                    <a href="https://vermarkter.eu/imprint.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Künye</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">İletişim</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>Telegram:</strong><br>
+                        <a href="https://t.me/vermarkter_eu" style="color: #4285F4; text-decoration: none;">@vermarkter_eu</a>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>E-posta:</strong><br>
+                        <a href="mailto:info@vermarkter.eu" style="color: #4285F4; text-decoration: none;">info@vermarkter.eu</a>
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    © 2025 Vermarkter. Tüm hakları saklıdır.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <button id="chatbot-btn" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #FE2C55, #25F4EE); border: none; box-shadow: 0 8px 24px rgba(254,44,85,0.4); cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💬
+    </button>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" style="display: none; position: fixed; bottom: 100px; right: 30px; width: 380px; max-width: calc(100vw - 60px); height: 500px; background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.3); z-index: 1000; overflow: hidden; flex-direction: column;">
+        <!-- Chatbot Header -->
+        <div style="background: linear-gradient(135deg, #FE2C55, #25F4EE); padding: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-weight: 700; color: white; font-size: 1.1rem;">Vermarkter Asistan</div>
+                <div style="font-size: 0.85rem; color: rgba(255,255,255,0.9);">Saniyeler içinde yanıt veriyoruz</div>
+            </div>
+            <button id="chatbot-close" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='none'">
+                ×
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="background: rgba(254,44,85,0.1); border-radius: 12px; padding: 1rem; max-width: 85%; align-self: flex-start;">
+                <p style="color: var(--text-primary); margin: 0; line-height: 1.5;">
+                    Merhaba! 👋 Ben Vermarkter asistanınızım. TikTok Ads konusunda size nasıl yardımcı olabilirim?
+                </p>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div style="padding: 1rem; border-top: 1px solid var(--glass-border); background: var(--bg-secondary);">
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="chat-input" placeholder="Sorunuzu yazın..." style="flex: 1; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                <button id="chat-send" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #FE2C55, #25F4EE); border: none; border-radius: 12px; color: white; font-weight: 600; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                    Gönder
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../script.js?v=20251228c"></script>
+</body>
+</html>

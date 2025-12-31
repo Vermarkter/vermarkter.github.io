@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="TikTok Ads Agentur für kleine Unternehmen in Europa. Gen Z Marketing, virale Kampagnen, authentischer Content. Start in 48 Stunden.">
+    <meta name="keywords" content="TikTok Ads Agentur, TikTok Marketing Deutschland, Gen Z Marketing, Viral Marketing, In-Feed Ads, Spark Ads">
+    <meta name="author" content="Vermarkter Agency">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vermarkter.eu/de/tiktok-ads">
+    <meta property="og:title" content="TikTok Ads Agentur — Vermarkter">
+    <meta property="og:description" content="TikTok Ads für kleine Unternehmen in Europa. Gen Z Marketing & virale Kampagnen. Start in 48 Stunden.">
+    <meta property="og:image" content="https://vermarkter.eu/og-image-tiktok-ads-de.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vermarkter.eu/de/tiktok-ads">
+    <meta property="twitter:title" content="TikTok Ads Agentur — Vermarkter">
+    <meta property="twitter:description" content="TikTok Ads für kleine Unternehmen in Europa">
+    <meta property="twitter:image" content="https://vermarkter.eu/og-image-tiktok-ads-de.jpg">
+
+    <title>TikTok Ads Agentur — Vermarkter</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css?v=20251228c">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- HEADER (STICKY) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <!-- SVG Logo (Lightning Bolt) -->
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Text -->
+    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+</a>
+
+                <div class="nav-desktop">
+                    <a href="index.html#services">Leistungen</a>
+                    <a href="#kampagnentypen">Kampagnentypen</a>
+                    <a href="#prozess">Prozess</a>
+                    <a href="#ergebnisse">Ergebnisse</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+                        🌙
+                    </button>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="4" fill="#000"/>
+                                <rect y="4" width="16" height="4" fill="#D00"/>
+                                <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                            </svg>
+                            DE ▼
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../de/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#000"/>
+                                    <rect y="4" width="16" height="4" fill="#D00"/>
+                                    <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                                </svg>
+                                DE
+                            </a></li>
+                            <li><a href="../en/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#012169"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
+                                </svg>
+                                EN
+                            </a></li>
+                            <li><a href="../pl/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#fff"/>
+                                    <rect y="6" width="16" height="6" fill="#D4213D"/>
+                                </svg>
+                                PL
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu" style="display:none; background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:8px; cursor:pointer; align-items:center; justify-content:center;">
+                        ☰
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="padding: 8rem 0 6rem; position: relative; overflow: hidden;">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <div style="display: inline-block; background: rgba(254, 44, 85, 0.1); border: 1px solid rgba(254, 44, 85, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 2rem;">
+                    <span style="color: #FE2C55; font-weight: 600; font-size: 0.95rem;">🎵 TikTok Ads Agentur</span>
+                </div>
+
+                <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -0.02em;">
+                    Erreichen Sie <span class="text-gradient">Gen Z & Millennials</span> mit viralen Kampagnen
+                </h1>
+
+                <p class="hero-subtitle" style="font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 750px; margin: 0 auto 2.5rem; line-height: 1.6; color: var(--text-secondary);">
+                    Authentischer Content, virale Trends, messbare Ergebnisse.<br>
+                    <strong style="color: var(--text-primary);">Start in 48 Stunden. Erste Ergebnisse in 7 Tagen. <span style="color: var(--brand);">Video-Beratung</span> inklusive.</strong>
+                </p>
+
+                <div class="hero-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+                    <a href="#contact" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        🚀 Kostenlose Beratung
+                    </a>
+                    <a href="index.html#calculator-section" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        💰 ROI berechnen
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">2-5%</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">durchschn. CTR</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">€3-8</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">CPM</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">5-15%</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">Engagement Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KAMPAGNENTYPEN -->
+    <section id="kampagnentypen" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    TikTok Ads <span class="text-gradient">Kampagnentypen</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Wir wählen den optimalen Kampagnentyp für Ihr Business
+                </p>
+            </div>
+
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- In-Feed Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FE2C55, #000000); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(254, 44, 85, 0.3);">
+                        🎬
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">In-Feed Anzeigen</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Native Video Ads im For You Feed. Nahtlos integriert zwischen organischen TikToks für maximale Reichweite.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">For You Feed Platzierung</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">9:16 Vertical Video</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">CTA-Button & Website-Link</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Spark Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #25F4EE, #FE2C55); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(37, 244, 238, 0.3);">
+                        ✨
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Spark Ads</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Boosten Sie organische Posts als Ads. Nutzen Sie vorhandene Engagement und authentische Interaktionen.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Organische Posts boosten</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Authentisches Engagement</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Influencer-Kooperationen</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- TopView Ads -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #000000, #FE2C55); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);">
+                        🚀
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">TopView Ads</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Premium Platzierung beim App-Start. Erste Impression mit maximaler Sichtbarkeit und Engagement.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">App-Start Platzierung</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Bis 60 Sekunden Video</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FE2C55; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Maximale Reichweite</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Branded Hashtag Challenge -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #25F4EE, #000000); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(37, 244, 238, 0.3);">
+                        🎯
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Marken-Hashtag-Challenge</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        User-Generated Content Kampagnen. Community-getriebene Markenbekanntheit mit viralen Challenges.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Branded Hashtag</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">User-Generated Content</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #25F4EE; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Virale Reichweite</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROZESS -->
+    <section id="prozess" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Wie wir <span class="text-gradient">arbeiten</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Von der Strategie bis zur Skalierung — Schritt für Schritt
+                </p>
+            </div>
+
+            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <!-- Step 1 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FE2C55, #000000); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(254, 44, 85, 0.3);">
+                        1
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Strategie & Zielgruppe</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Wir analysieren Ihre Zielgruppe (18-34 Jahre), Trends und Wettbewerb. Content-Strategie für TikTok.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #25F4EE, #FE2C55); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(37, 244, 238, 0.3);">
+                        2
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Content Creation</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Vertical Video Creation (9:16), Trend-Integration, authentischer Content. Video-Beratung inklusive.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #000000, #25F4EE); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);">
+                        3
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Launch & A/B Testing</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Kampagnen-Start in 48 Stunden. A/B-Tests für Creatives, Zielgruppen und Messaging.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FE2C55, #25F4EE); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(254, 44, 85, 0.3);">
+                        4
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Optimierung & Scaling</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Tägliche Performance-Überwachung, Creative-Rotation, Trend-Integration, Budget-Skalierung.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ERGEBNISSE / CASE STUDIES -->
+    <section id="ergebnisse" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    📊 Unsere <span class="text-gradient">Ergebnisse</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Echte Zahlen von unseren Kunden
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Case 1 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(254, 44, 85, 0.1); border: 1px solid rgba(254, 44, 85, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #FE2C55; font-weight: 600;">
+                        Fashion & Lifestyle
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Streetwear Brand Deutschland</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        In-Feed Ads + Spark Ads für eine deutsche Streetwear Marke targeting Gen Z.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">12%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Engagement Rate</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">€4.20</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">CPM</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "TikTok hat unsere Zielgruppe perfekt getroffen. Sales um 280% gestiegen!"
+                    </p>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(37, 244, 238, 0.1); border: 1px solid rgba(37, 244, 238, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #25F4EE; font-weight: 600;">
+                        Beauty & Cosmetics
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Beauty Brand Österreich</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Branded Hashtag Challenge + Influencer Spark Ads für Beauty Produkte.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">2.8M</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Views</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">4.2%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">CTR</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Challenge ging viral! Über 8.500 User-Videos erstellt. Wahnsinn!"
+                    </p>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(0, 0, 0, 0.1); border: 1px solid rgba(0, 0, 0, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #FE2C55; font-weight: 600;">
+                        Food & Beverage
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Restaurant-Kette Schweiz</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Local In-Feed Ads für Restaurant Locations in der Schweiz.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">850</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Reservierungen/Monat</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">€6.80</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">CPM</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Junge Zielgruppe erreicht. Locations durchgehend ausgebucht!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="pricing-section" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Preise <span class="text-gradient">und Pakete</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Transparente Preise ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.
+                </p>
+            </div>
+
+            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+                <!-- Pricing Card 1: STARTER -->
+                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">STARTER</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Perfekt für den Einstieg</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€399</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ Monat</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Werbebudget bis €2.500</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">In-Feed Ads</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Video-Beratung inklusive</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Monatliche Berichterstattung</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Email Support</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Deutschsprachiger Support</strong></span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Jetzt starten</a>
+                </div>
+
+                <!-- Pricing Card 2: GROWTH (FEATURED) -->
+                <div class="pricing-card pricing-card--featured" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid var(--brand); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; transform: scale(1.05); box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);">
+                    <div class="pricing-badge" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--brand), #2563EB); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);">
+                        🔥 BESTSELLER
+                    </div>
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; color: var(--text-primary);">WACHSTUM</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Für schnell wachsende Unternehmen</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€699</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ Monat</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Werbebudget bis €10.000</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">In-Feed + Spark Ads</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Video-Beratung + Creative Support</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Live-Dashboard (24/7)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Priorisierter Support (WhatsApp/Telegram)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Trend-Integration</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Deutschsprachiger Support</strong></span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Jetzt starten</a>
+                </div>
+
+                <!-- Pricing Card 3: BUSINESS -->
+                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">BUSINESS</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Maximale Skalierung</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900;">ab €1.000</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ Monat</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Werbebudget ab €10.000+</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Alle Kampagnentypen (inkl. TopView)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Branded Hashtag Challenges</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Influencer-Kooperationen</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Persönlicher Account Manager</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Wöchentliche Strategiegespräche</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Kontakt aufnehmen</a>
+                </div>
+            </div>
+
+            <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
+                * Preise exkl. MwSt. Mindestvertrag 3 Monate, danach keine Bindung.
+            </p>
+
+            <!-- Cross-Sell to Google Ads / Meta Ads -->
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 2.5rem; flex-wrap: wrap;">
+                <a href="google-ads.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: rgba(66, 133, 244, 0.1); border: 1px solid rgba(66, 133, 244, 0.3); border-radius: 12px; color: #4285F4; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                    🔍 Interessiert an Google Ads? →
+                </a>
+                <a href="meta-ads.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: rgba(24, 119, 242, 0.1); border: 1px solid rgba(24, 119, 242, 0.3); border-radius: 12px; color: #1877F2; font-weight: 600; text-decoration: none; transition: all 0.3s ease;">
+                    📱 Interessiert an Meta Ads? →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Häufig gestellte <span class="text-gradient">Fragen</span>
+                </h2>
+            </div>
+
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🎯 Funktioniert TikTok Ads für B2B?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Ja, wenn die Zielgruppe stimmt! TikTok erreicht mittlerweile auch ältere Zielgruppen (25-45 Jahre). Besonders effektiv für B2B-Unternehmen, die junge Entscheider, Startups oder kreative Branchen ansprechen. Das richtige Targeting ist entscheidend.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        📹 Brauche ich professionelle Videos?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Nein! Auf TikTok performen authentische, "raw" Videos oft besser als hochglanzpolierte Produktionen. Smartphone-Videos mit echter Persönlichkeit und Storytelling funktionieren am besten. Wir beraten Sie bei der Content-Strategie.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        ⏱️ Wie schnell sehe ich Ergebnisse?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Erste Daten nach 48-72 Stunden. A/B-Tests in der ersten Woche. Optimierte Performance nach 3-4 Wochen. TikTok's Algorithmus lernt schnell, aber kontinuierliche Content-Rotation ist wichtig.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        💰 Welches Budget brauche ich?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Minimum €500/Monat für Testing-Phase. Empfohlen: €1.000-€2.500/Monat für stabile Ergebnisse. TikTok Ads haben oft niedrigere CPMs als Facebook/Instagram (€3-8 vs. €8-15), besonders bei jüngeren Zielgruppen.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🎨 Welche Video-Formate funktionieren am besten?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        9:16 Vertical Video (Fullscreen), 15-60 Sekunden Länge. Hook in den ersten 3 Sekunden. Trend-Integration, Musik, Text-Overlays. Authentischer UGC-Style funktioniert besser als werbeähnliche Videos.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🔒 Wie lange ist die Vertragsbindung?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Mindestvertrag 3 Monate (Setup + Testing + Optimierung). Danach monatlich kündbar. TikTok braucht Zeit für Algorithmus-Learning und Creative-Testing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="contact-wrapper" style="max-width: 600px; margin: 0 auto;">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Bereit für <span class="text-gradient">virale Kampagnen?</span>
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary);">
+                        Kostenlose Strategie-Beratung in 24 Stunden
+                    </p>
+                </div>
+
+                <form class="contact-form" id="contactForm" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Ihr Name" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">E-Mail *</label>
+                        <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="phone" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49 123 456 7890" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="budget" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Monatliches Werbebudget</label>
+                        <select id="budget" name="budget" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                            <option value="">Bitte wählen</option>
+                            <option value="<1000">Unter €1.000</option>
+                            <option value="1000-2500">€1.000 - €2.500</option>
+                            <option value="2500-5000">€2.500 - €5.000</option>
+                            <option value="5000-10000">€5.000 - €10.000</option>
+                            <option value=">10000">Über €10.000</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="message" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Nachricht *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Beschreiben Sie Ihr Projekt..." required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif; resize: vertical;"></textarea>
+                    </div>
+
+                    <div style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.5rem; display: flex; align-items: start; gap: 0.75rem;">
+                        <input type="checkbox" id="gdpr-consent" name="gdpr-consent" required style="margin-top: 0.25rem; width: 18px; height: 18px; cursor: pointer;">
+                        <label for="gdpr-consent" style="cursor: pointer; line-height: 1.6;">
+                            Ich stimme der <a href="../../datenschutz.html" style="text-decoration: underline; color: var(--brand);">Datenschutzerklärung</a> zu. *
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #FE2C55, #000000); border: none; border-radius: 12px; color: white; cursor: pointer; box-shadow: 0 8px 24px rgba(254,44,85,0.35); transition: all 0.3s ease;">
+                        🚀 Kostenlose Beratung anfordern
+                    </button>
+
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                        Antwort innerhalb von 24 Stunden garantiert
+                    </p>
+                </form>
+
+                <div id="form-success" style="display: none; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #34A853; font-weight: 600; margin-bottom: 0.5rem;">✓ Nachricht erfolgreich gesendet!</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+                </div>
+
+                <div id="form-error" style="display: none; background: rgba(234, 67, 53, 0.1); border: 1px solid rgba(234, 67, 53, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #EA4335; font-weight: 600;">✗ Fehler beim Senden</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: var(--bg-secondary); padding: 4rem 0 2rem; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-column">
+                    <div class="brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                        <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                        TikTok Ads Agentur für kleine Unternehmen in Europa. Transparente Ergebnisse, professioneller Support.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Leistungen</h4>
+                    <a href="google-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Google Ads</a>
+                    <a href="meta-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Meta Ads</a>
+                    <a href="tiktok-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">TikTok Ads</a>
+                    <a href="index.html#calculator-section" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">ROI Rechner</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Unternehmen</h4>
+                    <a href="index.html#testimonials" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Bewertungen</a>
+                    <a href="#faq" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">FAQ</a>
+                    <a href="#contact" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Kontakt</a>
+                    <a href="https://vermarkter.eu/privacy.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Datenschutz</a>
+                    <a href="https://vermarkter.eu/imprint.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Impressum</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Kontakt</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>Telegram:</strong><br>
+                        <a href="https://t.me/vermarkter_eu" style="color: #4285F4; text-decoration: none;">@vermarkter_eu</a>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>E-Mail:</strong><br>
+                        <a href="mailto:info@vermarkter.eu" style="color: #4285F4; text-decoration: none;">info@vermarkter.eu</a>
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    © 2025 Vermarkter. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <button id="chatbot-btn" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #FE2C55, #000000); border: none; box-shadow: 0 8px 24px rgba(254,44,85,0.4); cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💬
+    </button>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" style="display: none; position: fixed; bottom: 100px; right: 30px; width: 380px; max-width: calc(100vw - 60px); height: 500px; background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.3); z-index: 1000; overflow: hidden; flex-direction: column;">
+        <!-- Chatbot Header -->
+        <div style="background: linear-gradient(135deg, #FE2C55, #000000); padding: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-weight: 700; color: white; font-size: 1.1rem;">Vermarkter Assistent</div>
+                <div style="font-size: 0.85rem; color: rgba(255,255,255,0.9);">Wir antworten in Sekunden</div>
+            </div>
+            <button id="chatbot-close" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='none'">
+                ×
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="background: rgba(254,44,85,0.1); border-radius: 12px; padding: 1rem; max-width: 85%; align-self: flex-start;">
+                <p style="color: var(--text-primary); margin: 0; line-height: 1.5;">
+                    Hallo! 👋 Ich bin Ihr Vermarkter Assistent. Wie kann ich Ihnen bei TikTok Ads helfen?
+                </p>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div style="padding: 1rem; border-top: 1px solid var(--glass-border); background: var(--bg-secondary);">
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="chat-input" placeholder="Schreiben Sie Ihre Frage..." style="flex: 1; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                <button id="chat-send" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #FE2C55, #000000); border: none; border-radius: 12px; color: white; font-weight: 600; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                    Senden
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../script.js?v=20251228c"></script>
+</body>
+</html>
