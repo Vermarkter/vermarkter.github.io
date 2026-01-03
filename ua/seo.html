@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="SEO агентство — Vermarkter. Органічний трафік через професійне SEO. Технічне SEO, контент-стратегія, зворотні посилання. Стійкі позиції в Google.">
+    <meta name="keywords" content="SEO агентство, пошукова оптимізація, технічне SEO, контент-стратегія, зворотні посилання, органічний трафік">
+    <meta name="author" content="Vermarkter Agency">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vermarkter.eu/ua/seo">
+    <meta property="og:title" content="SEO агентство — Vermarkter">
+    <meta property="og:description" content="Органічний трафік через професійне SEO. Технічне SEO, контент-стратегія, зворотні посилання.">
+    <meta property="og:image" content="https://vermarkter.eu/og-image-seo-ua.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vermarkter.eu/ua/seo">
+    <meta property="twitter:title" content="SEO агентство — Vermarkter">
+    <meta property="twitter:description" content="Органічний трафік через професійне SEO">
+    <meta property="twitter:image" content="https://vermarkter.eu/og-image-seo-ua.jpg">
+
+    <title>SEO агентство — Vermarkter</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css?v=20251228c">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- HEADER (STICKY) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <!-- SVG Logo (Lightning Bolt) -->
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Text -->
+    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+</a>
+
+                <div class="nav-desktop">
+                    <a href="index.html#services">Послуги</a>
+                    <a href="#seo-types">Типи SEO</a>
+                    <a href="#process">Процес</a>
+                    <a href="#results">Результати</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Контакт</a>
+                </div>
+
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+                        🌙
+                    </button>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="6" fill="#0057B7"/>
+                                <rect y="6" width="16" height="6" fill="#FFD700"/>
+                            </svg>
+                            UA ▼
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../de/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#000"/>
+                                    <rect y="4" width="16" height="4" fill="#D00"/>
+                                    <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                                </svg>
+                                DE
+                            </a></li>
+                            <li><a href="../ua/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#0057B7"/>
+                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
+                                </svg>
+                                UA
+                            </a></li>
+                            <li><a href="../en/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#012169"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
+                                </svg>
+                                EN
+                            </a></li>
+                            <li><a href="../pl/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#fff"/>
+                                    <rect y="6" width="16" height="6" fill="#D4213D"/>
+                                </svg>
+                                PL
+                            </a></li>
+                            <li><a href="../ru/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#fff"/>
+                                    <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                    <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                                </svg>
+                                RU
+                            </a></li>
+                            <li><a href="../tr/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#E30A17"/>
+                                    <circle cx="6" cy="6" r="3" fill="#fff"/>
+                                    <circle cx="7" cy="6" r="2.5" fill="#E30A17"/>
+                                    <path d="M9.5,4.5 L11,6 L9.5,7.5 L10.5,6 Z" fill="#fff"/>
+                                </svg>
+                                TR
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu" style="display:none; background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:8px; cursor:pointer; align-items:center; justify-content:center;">
+                        ☰
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="padding: 8rem 0 6rem; position: relative; overflow: hidden;">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <div style="display: inline-block; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 2rem;">
+                    <span style="color: #34A853; font-weight: 600; font-size: 0.95rem;">📈 SEO агентство</span>
+                </div>
+
+                <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -0.02em;">
+                    Органічний трафік через <span class="text-gradient">професійне SEO</span>
+                </h1>
+
+                <p class="hero-subtitle" style="font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 750px; margin: 0 auto 2.5rem; line-height: 1.6; color: var(--text-secondary);">
+                    Технічне SEO, контент-стратегія, зворотні посилання.<br>
+                    <strong style="color: var(--text-primary);">Стійке зростання позицій у Google. Довгострокова видимість. <span style="color: var(--brand);">Чесні методи</span>.</strong>
+                </p>
+
+                <div class="hero-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+                    <a href="#contact" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        🚀 Безкоштовна консультація
+                    </a>
+                    <a href="index.html#calculator-section" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        💰 Розрахувати ROI
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">+250%</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">зростання трафіку</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">3-6</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">місяців до результатів</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">90+</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">швидкість сайту</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO TYPES -->
+    <section id="seo-types" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Типи <span class="text-gradient">SEO послуг</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Комплексний підхід до пошукової оптимізації
+                </p>
+            </div>
+
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Technical SEO -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #4285F4, #34A853); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);">
+                        ⚙️
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Технічне SEO</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Швидкість сайту, мобільна оптимізація, Core Web Vitals, індексація, технічна структура.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Швидкість завантаження</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Core Web Vitals</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Індексація та сканування</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- On-Page SEO -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #34A853, #FBBC04); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(52, 168, 83, 0.3);">
+                        📝
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">On-Page SEO</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Оптимізація контенту, ключові слова, мета-теги, структуровані дані, внутрішнє посилання.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Оптимізація контенту</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Мета-теги та заголовки</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Структуровані дані</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Off-Page SEO -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FBBC04, #EA4335); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(251, 188, 4, 0.3);">
+                        🔗
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Off-Page SEO</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Зворотні посилання, нарощування авторитету, локальне SEO, згадки бренду.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Якісні зворотні посилання</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Локальне SEO</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Згадки бренду</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Content Strategy -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #EA4335, #4285F4); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);">
+                        📊
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Контент-стратегія</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Дослідження ключових слів, створення контенту, блог-статті, аналіз конкурентів.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Дослідження ключових слів</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Створення статей</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Аналіз конкурентів</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section id="process" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Як ми <span class="text-gradient">працюємо</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Від аудиту до постійної оптимізації — крок за кроком
+                </p>
+            </div>
+
+            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <!-- Step 1 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #4285F4, #34A853); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);">
+                        1
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">SEO Аудит</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Технічний аналіз, дослідження ключових слів, огляд конкурентів, виявлення проблем.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #34A853, #FBBC04); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(52, 168, 83, 0.3);">
+                        2
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Стратегія</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Дорожня карта, пріоритети, швидкі перемоги, довгостроковий план покращень.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FBBC04, #EA4335); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(251, 188, 4, 0.3);">
+                        3
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Впровадження</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        On-page виправлення, створення контенту, технічні покращення, побудова посилань.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #EA4335, #4285F4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);">
+                        4
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Моніторинг та оптимізація</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Відстеження позицій, аналіз трафіку, постійні покращення, адаптація до оновлень.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESULTS / CASE STUDIES -->
+    <section id="results" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    📊 Наші <span class="text-gradient">результати</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Реальні цифри від наших клієнтів
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Case 1 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(66, 133, 244, 0.1); border: 1px solid rgba(66, 133, 244, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #4285F4; font-weight: 600;">
+                        E-Commerce
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Інтернет-магазин електроніки</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Комплексне SEO для магазину електроніки в Європі.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">+280%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">органічний трафік</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">ТОП-3</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">цільові запити</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "За 9 місяців втричі збільшили органічний трафік. SEO працює!"
+                    </p>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #34A853; font-weight: 600;">
+                        SaaS
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">B2B платформа для аналітики</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Контент-стратегія та технічне SEO для SaaS компанії.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">+320%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">органічні ліди</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">95</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">швидкість сайту</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Тепер 60% лідів приходить з органічного пошуку. Відмінний результат!"
+                    </p>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(251, 188, 4, 0.1); border: 1px solid rgba(251, 188, 4, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #FBBC04; font-weight: 600;">
+                        Локальний бізнес
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Мережа салонів краси</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Локальне SEO для 5 салонів краси в Берліні.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">+150%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">локальний трафік</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">#1</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Google Maps</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Всі салони тепер на перших місцях у Google Maps. Записи збільшились вдвічі!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="pricing-section" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Ціни <span class="text-gradient">та пакети</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Прозорі ціни без прихованих платежів. Виберіть ідеальний пакет для вашого бізнесу.
+                </p>
+            </div>
+
+            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+                <!-- Pricing Card 1: STARTER -->
+                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">STARTER</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Для малого бізнесу</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€799</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ місяць</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">5-10 цільових ключових слів</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Базове технічне SEO</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">On-page оптимізація</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Щомісячна звітність</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Налаштування Google Search Console</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Україномовна підтримка</strong></span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Почати</a>
+                </div>
+
+                <!-- Pricing Card 2: PROFESSIONAL (FEATURED) -->
+                <div class="pricing-card pricing-card--featured" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid var(--brand); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; transform: scale(1.05); box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);">
+                    <div class="pricing-badge" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--brand), #2563EB); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);">
+                        🔥 БЕСТСЕЛЕР
+                    </div>
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; color: var(--text-primary);">PROFESSIONAL</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Для середнього бізнесу</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€1.499</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ місяць</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">20-30 цільових ключових слів</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Повне технічне SEO</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Контент-стратегія + створення</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Побудова зворотних посилань</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Щотижнева звітність</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Пріоритетна підтримка</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Україномовна підтримка</strong></span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Почати</a>
+                </div>
+
+                <!-- Pricing Card 3: ENTERPRISE -->
+                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">ENTERPRISE</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Для великого бізнесу</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900;">від €2.500</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ місяць</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">50+ цільових ключових слів</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Міжнародне SEO</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Розширена контент-стратегія</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Агресивна побудова посилань</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Виділений аккаунт-менеджер</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Щотижневі стратегічні дзвінки</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Зв'язатися</a>
+                </div>
+            </div>
+
+            <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
+                * Ціни без ПДВ. Мінімальний контракт 6 місяців.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Часті <span class="text-gradient">питання</span>
+                </h2>
+            </div>
+
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        ⏱️ Скільки часу потрібно для результатів SEO?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        SEO — це довгострокова стратегія. Перші результати зазвичай видно через 3-6 місяців, значний ефект — через 6-12 місяців. Це залежить від конкуренції, поточного стану сайту та галузі.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🎯 SEO чи реклама — що краще?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Обидва канали доповнюють один одного. SEO забезпечує довгостроковий органічний трафік без постійних витрат на кліки. Реклама (Google Ads, Meta Ads) дає швидкі результати, але потребує постійного бюджету. Ідеально використовувати обидва підходи.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        📊 Ви гарантуєте позиції в пошуку?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Ми не даємо гарантій на конкретні позиції, оскільки алгоритми Google постійно змінюються. Але ми використовуємо лише перевірені білі методи та надаємо повну прозорість звітності. Наш фокус — на стійкому зростанні органічного трафіку та конверсій.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🔄 Чи потрібна постійна підтримка SEO?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Так, SEO потребує постійної роботи. Алгоритми пошукових систем оновлюються, конкуренти не стоять на місці, потрібно створювати новий контент та підтримувати технічні параметри. Без регулярного обслуговування позиції можуть впасти.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        💰 Що входить у вартість SEO?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                        Наші пакети включають:
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary); line-height: 1.7;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Технічний аудит та виправлення</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Дослідження та оптимізацію ключових слів</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Створення та оптимізацію контенту</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Побудову якісних зворотних посилань</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Регулярну звітність та аналітику</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🌍 У яких країнах ви працюєте?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Ми працюємо з клієнтами по всій Європі: Німеччина, Австрія, Швейцарія, Польща, Чехія, Україна, Росія та інші. Підтримка німецькою, англійською, польською, російською, українською та турецькою мовами.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="contact-wrapper" style="max-width: 600px; margin: 0 auto;">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Готові до зростання <span class="text-gradient">трафіку?</span>
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary);">
+                        Безкоштовна стратегічна консультація протягом 24 годин
+                    </p>
+                </div>
+
+                <form class="contact-form" id="contactForm" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Ім'я *</label>
+                        <input type="text" id="name" name="name" placeholder="Ваше ім'я" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@example.com" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="phone" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Телефон</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49 123 456 7890" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="website" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Сайт</label>
+                        <input type="url" id="website" name="website" placeholder="https://yoursite.com" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="message" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Повідомлення *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Опишіть ваш проект..." required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #34A853, #4285F4); border: none; border-radius: 12px; color: white; cursor: pointer; box-shadow: 0 8px 24px rgba(52,168,83,0.35); transition: all 0.3s ease;">
+                        🚀 Запросити безкоштовну консультацію
+                    </button>
+
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                        Гарантована відповідь протягом 24 годин
+                    </p>
+                </form>
+
+                <div id="form-success" style="display: none; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #34A853; font-weight: 600; margin-bottom: 0.5rem;">✓ Повідомлення успішно надіслано!</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Ми зв'яжемось з вами протягом 24 годин.</p>
+                </div>
+
+                <div id="form-error" style="display: none; background: rgba(234, 67, 53, 0.1); border: 1px solid rgba(234, 67, 53, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #EA4335; font-weight: 600;">✗ Помилка при надсиланні</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Будь ласка, спробуйте пізніше або зв'яжіться з нами напряму по email.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: var(--bg-secondary); padding: 4rem 0 2rem; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-column">
+                    <div class="brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                        <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                        SEO агентство для малого бізнесу в Європі. Прозорі результати, професійна підтримка.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Послуги</h4>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Google Ads</a>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Meta Ads</a>
+                    <a href="index.html#services" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">TikTok Ads</a>
+                    <a href="seo.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">SEO</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Компанія</h4>
+                    <a href="index.html#testimonials" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Відгуки</a>
+                    <a href="#faq" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">FAQ</a>
+                    <a href="#contact" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Контакт</a>
+                    <a href="https://vermarkter.eu/privacy.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Конфіденційність</a>
+                    <a href="https://vermarkter.eu/imprint.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Юридична інформація</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Контакт</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>Telegram:</strong><br>
+                        <a href="https://t.me/vermarkter_eu" style="color: #4285F4; text-decoration: none;">@vermarkter_eu</a>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>E-mail:</strong><br>
+                        <a href="mailto:info@vermarkter.eu" style="color: #4285F4; text-decoration: none;">info@vermarkter.eu</a>
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    © 2025 Vermarkter. Всі права захищені.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <button id="chatbot-btn" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #34A853, #4285F4); border: none; box-shadow: 0 8px 24px rgba(52,168,83,0.4); cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💬
+    </button>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" style="display: none; position: fixed; bottom: 100px; right: 30px; width: 380px; max-width: calc(100vw - 60px); height: 500px; background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.3); z-index: 1000; overflow: hidden; flex-direction: column;">
+        <!-- Chatbot Header -->
+        <div style="background: linear-gradient(135deg, #34A853, #4285F4); padding: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-weight: 700; color: white; font-size: 1.1rem;">Помічник Vermarkter</div>
+                <div style="font-size: 0.85rem; color: rgba(255,255,255,0.9);">Відповідаємо протягом кількох секунд</div>
+            </div>
+            <button id="chatbot-close" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='none'">
+                ×
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="background: rgba(52,168,83,0.1); border-radius: 12px; padding: 1rem; max-width: 85%; align-self: flex-start;">
+                <p style="color: var(--text-primary); margin: 0; line-height: 1.5;">
+                    Вітаю! 👋 Я помічник Vermarkter. Як я можу допомогти вам з SEO?
+                </p>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div style="padding: 1rem; border-top: 1px solid var(--glass-border); background: var(--bg-secondary);">
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="chat-input" placeholder="Напишіть ваше питання..." style="flex: 1; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                <button id="chat-send" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #34A853, #4285F4); border: none; border-radius: 12px; color: white; font-weight: 600; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                    Надіслати
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../script.js?v=20251228c"></script>
+</body>
+</html>

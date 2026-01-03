@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Optymalizacja | Agencja Marketingu Cyfrowego</title>
+    <meta name="description" content="Profesjonalna optymalizacja SEO dla Twojej strony internetowej. Zwiększ widoczność w Google, zdobądź więcej ruchu organicznego i wyprzedź konkurencję.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔍</text></svg>">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-green: #34A853;
+            --primary-blue: #4285F4;
+            --dark-green: #2d8e47;
+            --light-green: rgba(52, 168, 83, 0.1);
+            --light-blue: rgba(66, 133, 244, 0.1);
+            --text-dark: #202124;
+            --text-gray: #5f6368;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 2px 12px rgba(0,0,0,0.08);
+            --shadow-hover: 0 4px 20px rgba(0,0,0,0.12);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+            padding: 100px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.4;
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .icon-large {
+            font-size: 80px;
+            margin-bottom: 20px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .language-switcher select {
+            padding: 10px 15px;
+            border: 2px solid var(--white);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            padding-right: 35px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffffff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+        }
+
+        .language-switcher select:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .language-switcher select option {
+            background: var(--white);
+            color: var(--text-dark);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-gray);
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* SEO Types Grid */
+        .seo-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .seo-type-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .seo-type-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-green);
+        }
+
+        .seo-type-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .seo-type-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: var(--primary-green);
+        }
+
+        .seo-type-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .seo-type-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-gray);
+        }
+
+        .seo-type-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .process-step h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .process-step p {
+            color: var(--text-gray);
+        }
+
+        /* Results Section */
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, var(--light-green), var(--light-blue));
+            border-radius: 16px;
+            padding: 35px;
+            border-left: 5px solid var(--primary-green);
+        }
+
+        .result-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .result-stat {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin: 15px 0;
+        }
+
+        .result-details {
+            color: var(--text-gray);
+            margin-top: 15px;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-green);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 30px rgba(52, 168, 83, 0.2);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: var(--white);
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        .pricing-card .price {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-green);
+            margin: 20px 0;
+        }
+
+        .pricing-card .price-period {
+            font-size: 0.5em;
+            color: var(--text-gray);
+            font-weight: normal;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .pricing-card li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-gray);
+        }
+
+        .pricing-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary-green);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* CTA Button */
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: var(--white);
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-item h3 {
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .faq-item p {
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 60px auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px var(--light-green);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 60px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-green);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .pricing-grid,
+            .seo-types-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-switcher {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Background Styles */
+        .bg-light {
+            background: var(--bg-light);
+        }
+
+        /* Chatbot Styles */
+        #chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            transition: all 0.3s ease;
+        }
+
+        #chat-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        #chat-window {
+            display: none;
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #chat-window.active {
+            display: flex;
+        }
+
+        #chat-header {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: var(--white);
+            padding: 20px;
+            font-weight: 600;
+        }
+
+        #chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            line-height: 1.4;
+        }
+
+        .message.bot {
+            background: var(--light-green);
+            align-self: flex-start;
+        }
+
+        .message.user {
+            background: var(--primary-green);
+            color: var(--white);
+            align-self: flex-end;
+        }
+
+        #chat-input-container {
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            gap: 10px;
+        }
+
+        #chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        #chat-send {
+            padding: 10px 20px;
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <select onchange="window.location.href=this.value">
+            <option value="/de/seo.html">🇩🇪 Deutsch</option>
+            <option value="/index.html">🇺🇦 Українська</option>
+            <option value="/en/seo.html">🇬🇧 English</option>
+            <option value="/pl/seo.html" selected>🇵🇱 Polski</option>
+            <option value="/ru/seo.html">🇷🇺 Русский</option>
+            <option value="/tr/seo.html">🇹🇷 Türkçe</option>
+        </select>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <span class="icon-large">🔍</span>
+            <h1>Optymalizacja SEO</h1>
+            <p class="subtitle">Zwiększ widoczność w Google i zdobądź więcej klientów dzięki profesjonalnemu SEO</p>
+            <a href="#contact" class="cta-button">Bezpłatny audyt SEO</a>
+        </div>
+    </header>
+
+    <!-- SEO Types Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Nasze Usługi SEO</h2>
+            <p class="section-subtitle">Kompleksowe podejście do optymalizacji Twojej strony internetowej dla osiągnięcia maksymalnej widoczności w wyszukiwarkach</p>
+
+            <div class="seo-types-grid">
+                <div class="seo-type-card">
+                    <span class="seo-type-icon">⚙️</span>
+                    <h3>Techniczne SEO</h3>
+                    <p>Optymalizacja technicznych aspektów Twojej strony dla lepszego rankingu</p>
+                    <ul>
+                        <li>Optymalizacja szybkości strony</li>
+                        <li>Adaptacja mobilna (Mobile-First)</li>
+                        <li>Core Web Vitals</li>
+                        <li>Struktura URL i nawigacja</li>
+                        <li>Sitemap XML i robots.txt</li>
+                        <li>Naprawa błędów indeksowania</li>
+                    </ul>
+                </div>
+
+                <div class="seo-type-card">
+                    <span class="seo-type-icon">📝</span>
+                    <h3>On-Page SEO</h3>
+                    <p>Optymalizacja treści i elementów strony dla docelowych słów kluczowych</p>
+                    <ul>
+                        <li>Badanie i optymalizacja słów kluczowych</li>
+                        <li>Optymalizacja meta tagów</li>
+                        <li>Optymalizacja treści</li>
+                        <li>Nagłówki H1-H6</li>
+                        <li>Dane strukturalne (Schema.org)</li>
+                        <li>Linkowanie wewnętrzne</li>
+                    </ul>
+                </div>
+
+                <div class="seo-type-card">
+                    <span class="seo-type-icon">🔗</span>
+                    <h3>Off-Page SEO</h3>
+                    <p>Budowanie autorytetu Twojej strony poprzez wysokiej jakości linki zwrotne</p>
+                    <ul>
+                        <li>Budowanie linków zwrotnych</li>
+                        <li>Budowanie autorytetu domeny</li>
+                        <li>Lokalne SEO i Google My Business</li>
+                        <li>Sygnały społecznościowe</li>
+                        <li>Współpraca z influencerami</li>
+                        <li>Guest posting</li>
+                    </ul>
+                </div>
+
+                <div class="seo-type-card">
+                    <span class="seo-type-icon">📊</span>
+                    <h3>Strategia Treści</h3>
+                    <p>Tworzenie wartościowych treści, które przyciągają i konwertują odwiedzających</p>
+                    <ul>
+                        <li>Badanie słów kluczowych</li>
+                        <li>Plan treści</li>
+                        <li>Tworzenie artykułów na bloga</li>
+                        <li>Analiza konkurencji</li>
+                        <li>Optymalizacja konwersji</li>
+                        <li>Content marketing</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Nasz Proces Pracy</h2>
+            <p class="section-subtitle">Sprawdzona metodologia, która przynosi wymierne rezultaty</p>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Audyt SEO</h3>
+                    <p>Kompleksowa analiza techniczna Twojej strony, badanie słów kluczowych i analiza konkurencji</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Strategia</h3>
+                    <p>Opracowanie planu działań, priorytetyzacja zadań i wdrożenie szybkich zwycięstw (quick wins)</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Wdrożenie</h3>
+                    <p>Optymalizacja on-page, tworzenie treści i usprawnienia techniczne według planu</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Monitoring i Optymalizacja</h3>
+                    <p>Śledzenie pozycji, analiza ruchu i ciągłe doskonalenie strategii dla najlepszych wyników</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Nasze Rezultaty</h2>
+            <p class="section-subtitle">Prawdziwe wyniki od naszych klientów</p>
+
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>E-Commerce</h3>
+                    <div class="result-stat">+280%</div>
+                    <p class="result-details">Wzrost ruchu organicznego w 6 miesięcy. Strona zajęła pozycje w TOP 3 dla 45 docelowych słów kluczowych.</p>
+                </div>
+
+                <div class="result-card">
+                    <h3>SaaS Platforma</h3>
+                    <div class="result-stat">+150%</div>
+                    <p class="result-details">Wzrost ruchu organicznego i poprawa Page Speed Score do 92 punktów. Czas ładowania strony skrócony o 60%.</p>
+                </div>
+
+                <div class="result-card">
+                    <h3>Firma Lokalna</h3>
+                    <div class="result-stat">TOP 1</div>
+                    <p class="result-details">Pozycja #1 w lokalnych wynikach wyszukiwania. Wzrost liczby organicznych zapytań o 320%.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Pakiety SEO</h2>
+            <p class="section-subtitle">Wybierz pakiet odpowiedni dla Twojego biznesu</p>
+
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>STARTER</h3>
+                    <div class="price">€799<span class="price-period">/mies.</span></div>
+                    <ul>
+                        <li>5-10 słów kluczowych</li>
+                        <li>Podstawowy audyt SEO</li>
+                        <li>Optymalizacja on-page</li>
+                        <li>Techniczne SEO</li>
+                        <li>Miesięczny raport</li>
+                        <li>Wsparcie e-mail</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Zamów pakiet</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <span class="pricing-badge">BESTSELLER</span>
+                    <h3>PROFESSIONAL</h3>
+                    <div class="price">€1 499<span class="price-period">/mies.</span></div>
+                    <ul>
+                        <li>20-30 słów kluczowych</li>
+                        <li>Pełny audyt SEO</li>
+                        <li>Kompleksowe on-page SEO</li>
+                        <li>Zaawansowane techniczne SEO</li>
+                        <li>Strategia treści</li>
+                        <li>Budowanie linków</li>
+                        <li>Lokalne SEO</li>
+                        <li>Cotygodniowe raporty</li>
+                        <li>Dedykowany manager</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Zamów pakiet</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>ENTERPRISE</h3>
+                    <div class="price">€2 500+<span class="price-period">/mies.</span></div>
+                    <ul>
+                        <li>50+ słów kluczowych</li>
+                        <li>Kompleksowa strategia SEO</li>
+                        <li>Międzynarodowe SEO</li>
+                        <li>Zaawansowana strategia treści</li>
+                        <li>Priorytetowe budowanie linków</li>
+                        <li>Konkurencyjna analiza</li>
+                        <li>Niestandardowe raporty</li>
+                        <li>24/7 wsparcie</li>
+                        <li>Dedykowany zespół</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">Skontaktuj się</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Często Zadawane Pytania</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <h3>Jak długo trwa osiągnięcie wyników w SEO?</h3>
+                    <p>SEO to długoterminowa strategia. Pierwsze wyniki można zaobserwować po 3-6 miesiącach, ale znaczące zmiany w rankingu i ruchu organicznym zazwyczaj pojawiają się po 6-12 miesiącach systematycznej pracy. Czas zależy od konkurencyjności Twojej branży, stanu początkowego strony i wybranych słów kluczowych.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>SEO czy Google Ads - co jest lepsze?</h3>
+                    <p>Oba kanały mają swoje zalety i najlepiej działają wspólnie. Google Ads daje natychmiastowe wyniki i precyzyjne targetowanie, ale wymaga stałego budżetu. SEO buduje długoterminową widoczność organiczną i generuje "darmowy" ruch, ale wymaga czasu i cierpliwości. Zalecamy kombinację: Google Ads dla natychmiastowych wyników i SEO dla długoterminowego wzrostu.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Czy gwarantujecie pozycje w wynikach wyszukiwania?</h3>
+                    <p>Nikt nie może zagwarantować konkretnych pozycji w Google, gdyż algorytmy są poufne i ciągle się zmieniają. Jednak stosujemy sprawdzone metody white-hat SEO, które konsekwentnie poprawiają widoczność naszych klientów. Koncentrujemy się na mierzalnych wynikach: wzroście ruchu organicznego, poprawie pozycji dla docelowych słów kluczowych i zwiększeniu konwersji.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>Czy potrzebuję ciągłego wsparcia SEO?</h3>
+                    <p>SEO to proces ciągły, nie jednorazowy projekt. Google regularnie aktualizuje swoje algorytmy, Twoi konkurenci także optymalizują swoje strony, a Twoja witryna wymaga stałego tworzenia nowych treści. Dla utrzymania i poprawy pozycji zalecamy stałe wsparcie SEO. Możemy jednak wykonać jednorazowy audyt i optymalizację, jeśli chcesz prowadzić SEO samodzielnie.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Zamów Bezpłatny Audyt SEO</h2>
+            <p class="section-subtitle">Wypełnij formularz, a skontaktujemy się z Tobą w ciągu 24 godzin</p>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Imię i Nazwisko *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="website">Adres strony internetowej *</label>
+                    <input type="url" id="website" name="website" placeholder="https://twoja-strona.pl" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Twoje pytanie lub komentarz</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+
+                <button type="submit" class="cta-button">Wyślij zapytanie</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Usługi</h3>
+                <ul>
+                    <li><a href="/pl/google-ads.html">Google Ads</a></li>
+                    <li><a href="/pl/meta-ads.html">Meta Ads (Facebook & Instagram)</a></li>
+                    <li><a href="/pl/tiktok-ads.html">TikTok Ads</a></li>
+                    <li><a href="/pl/seo.html">SEO Optymalizacja</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Firma</h3>
+                <ul>
+                    <li><a href="/pl/about.html">O nas</a></li>
+                    <li><a href="/pl/portfolio.html">Portfolio</a></li>
+                    <li><a href="/pl/blog.html">Blog</a></li>
+                    <li><a href="/pl/contact.html">Kontakt</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Kontakt</h3>
+                <ul>
+                    <li>📧 info@agency.com</li>
+                    <li>📱 +48 123 456 789</li>
+                    <li>📍 Warszawa, Polska</li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Informacje Prawne</h3>
+                <ul>
+                    <li><a href="/pl/privacy.html">Polityka Prywatności</a></li>
+                    <li><a href="/pl/terms.html">Regulamin</a></li>
+                    <li><a href="/pl/imprint.html">Nota Prawna</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Agencja Marketingu Cyfrowego. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div id="chatbot-container">
+        <button id="chat-button" aria-label="Otwórz czat">💬</button>
+        <div id="chat-window">
+            <div id="chat-header">
+                <div>Asystent SEO 🔍</div>
+            </div>
+            <div id="chat-messages">
+                <div class="message bot">Cześć! 👋 Jak mogę pomóc Ci w optymalizacji SEO?</div>
+            </div>
+            <div id="chat-input-container">
+                <input type="text" id="chat-input" placeholder="Napisz wiadomość...">
+                <button id="chat-send">Wyślij</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot functionality
+        const chatButton = document.getElementById('chat-button');
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+
+        const responses = {
+            'audyt': 'Oferujemy bezpłatny audyt SEO! Po przeanalizowaniu Twojej strony otrzymasz raport z rekomendacjami. Wypełnij formularz kontaktowy powyżej.',
+            'cena': 'Nasze pakiety SEO zaczynają się od €799/mies. dla pakietu Starter. Najbardziej popularny jest pakiet Professional za €1 499/mies. Mogę pomóc Ci wybrać odpowiedni pakiet?',
+            'czas': 'Pierwsze wyniki SEO są widoczne po 3-6 miesiącach. Znaczące zmiany w rankingu zazwyczaj pojawiają się po 6-12 miesiącach systematycznej pracy.',
+            'ranking': 'Nikt nie może zagwarantować konkretnych pozycji w Google. Stosujemy sprawdzone metody white-hat SEO, które konsekwentnie poprawiają widoczność.',
+            'pakiet': 'Mamy 3 pakiety: Starter (€799/mies, 5-10 słów kluczowych), Professional (€1 499/mies, 20-30 słów kluczowych) - BESTSELLER, i Enterprise (€2 500+/mies, 50+ słów kluczowych).',
+            'google ads': 'Oferujemy również Google Ads! Odwiedź naszą stronę Google Ads lub skontaktuj się z nami, aby dowiedzieć się więcej.',
+            'kontakt': 'Możesz się z nami skontaktować przez formularz na tej stronie lub pisać na info@agency.com',
+            'default': 'Dziękuję za Twoje pytanie! Nasz zespół SEO może udzielić Ci szczegółowej odpowiedzi. Proszę wypełnić formularz kontaktowy lub napisać na info@agency.com'
+        };
+
+        chatButton.addEventListener('click', () => {
+            chatWindow.classList.toggle('active');
+        });
+
+        function addMessage(text, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${isUser ? 'user' : 'bot'}`;
+            messageDiv.textContent = text;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function getResponse(message) {
+            const lowerMessage = message.toLowerCase();
+
+            for (const [key, response] of Object.entries(responses)) {
+                if (lowerMessage.includes(key)) {
+                    return response;
+                }
+            }
+
+            return responses.default;
+        }
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+
+                setTimeout(() => {
+                    const response = getResponse(message);
+                    addMessage(response);
+                }, 500);
+            }
+        }
+
+        chatSend.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Dziękujemy za wysłanie formularza! Skontaktujemy się z Tobą wkrótce.');
+            this.reset();
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

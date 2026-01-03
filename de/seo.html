@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="SEO Agentur — Vermarkter. Organischer Traffic durch professionelles SEO. Technical SEO, Content-Strategie, Backlinks. Nachhaltige Rankings in Google.">
+    <meta name="keywords" content="SEO Agentur, SEO Deutschland, Technical SEO, On-Page SEO, Backlinks, Content Marketing, SEO Optimierung">
+    <meta name="author" content="Vermarkter Agency">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vermarkter.eu/de/seo">
+    <meta property="og:title" content="SEO Agentur — Vermarkter">
+    <meta property="og:description" content="Organischer Traffic durch professionelles SEO. Technical SEO, Content-Strategie, Backlinks. Nachhaltige Rankings in Google.">
+    <meta property="og:image" content="https://vermarkter.eu/og-image-seo-de.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vermarkter.eu/de/seo">
+    <meta property="twitter:title" content="SEO Agentur — Vermarkter">
+    <meta property="twitter:description" content="Organischer Traffic durch professionelles SEO">
+    <meta property="twitter:image" content="https://vermarkter.eu/og-image-seo-de.jpg">
+
+    <title>SEO Agentur — Vermarkter</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css?v=20251228c">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- HEADER (STICKY) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <!-- SVG Logo (Lightning Bolt) -->
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Text -->
+    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+</a>
+
+                <div class="nav-desktop">
+                    <a href="index.html#services">Leistungen</a>
+                    <a href="#seo-typen">SEO Typen</a>
+                    <a href="#prozess">Prozess</a>
+                    <a href="#ergebnisse">Ergebnisse</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+                        🌙
+                    </button>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="4" fill="#000"/>
+                                <rect y="4" width="16" height="4" fill="#D00"/>
+                                <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                            </svg>
+                            DE ▼
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../de/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#000"/>
+                                    <rect y="4" width="16" height="4" fill="#D00"/>
+                                    <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                                </svg>
+                                DE
+                            </a></li>
+                            <li><a href="../ua/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#0057B7"/>
+                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
+                                </svg>
+                                UA
+                            </a></li>
+                            <li><a href="../en/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#012169"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
+                                </svg>
+                                EN
+                            </a></li>
+                            <li><a href="../pl/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#fff"/>
+                                    <rect y="6" width="16" height="6" fill="#D4213D"/>
+                                </svg>
+                                PL
+                            </a></li>
+                            <li><a href="../ru/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#fff"/>
+                                    <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                    <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                                </svg>
+                                RU
+                            </a></li>
+                            <li><a href="../tr/seo.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#E30A17"/>
+                                    <circle cx="6" cy="6" r="3" fill="#fff"/>
+                                    <circle cx="7" cy="6" r="2.5" fill="#E30A17"/>
+                                    <path d="M9.5,4.5 L11,6 L9.5,7.5 L10.5,6 Z" fill="#fff"/>
+                                </svg>
+                                TR
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu" style="display:none; background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:8px; cursor:pointer; align-items:center; justify-content:center;">
+                        ☰
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" style="padding: 8rem 0 6rem; position: relative; overflow: hidden;">
+        <div class="container" style="position: relative; z-index: 2;">
+            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
+                <div style="display: inline-block; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 2rem;">
+                    <span style="color: #34A853; font-weight: 600; font-size: 0.95rem;">🔍 SEO Agentur</span>
+                </div>
+
+                <h1 class="hero-title" style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.5rem; letter-spacing: -0.02em;">
+                    Organischer Traffic für <span class="text-gradient">nachhaltiges Wachstum</span>
+                </h1>
+
+                <p class="hero-subtitle" style="font-size: clamp(1.1rem, 2vw, 1.4rem); max-width: 750px; margin: 0 auto 2.5rem; line-height: 1.6; color: var(--text-secondary);">
+                    Technical SEO, On-Page Optimierung, Content-Strategie, Backlinks.<br>
+                    <strong style="color: var(--text-primary);">Erste Ergebnisse in 3-6 Monaten. <span style="color: var(--brand);">Langfristige Rankings</span> in Google.</strong>
+                </p>
+
+                <div class="hero-actions" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
+                    <a href="#contact" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        🚀 Kostenlose SEO-Analyse
+                    </a>
+                    <a href="index.html#calculator-section" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        💰 ROI berechnen
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-top: 4rem;">
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">+250%</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">durchschn. Traffic-Wachstum</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">90+</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">Page Speed Score</div>
+                    </div>
+                    <div class="stat-item" style="text-align: center;">
+                        <div class="stat-value text-gradient" style="font-size: 2.5rem; font-weight: 800; margin-bottom: 0.5rem;">50+</div>
+                        <div class="stat-label" style="color: var(--text-secondary); font-size: 0.95rem;">erfolgreiche Projekte</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO TYPEN -->
+    <section id="seo-typen" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Unsere <span class="text-gradient">SEO Dienstleistungen</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Ganzheitliche SEO-Strategie für maximale Sichtbarkeit
+                </p>
+            </div>
+
+            <div class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Technical SEO -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #4285F4, #34A853); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);">
+                        ⚙️
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Technisches SEO</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Optimierung der technischen Grundlagen: Site Speed, Mobile-First, Core Web Vitals, Indexierung und Crawlability.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Page Speed Optimierung</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Mobile-First Indexing</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Core Web Vitals</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- On-Page SEO -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #34A853, #FBBC04); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(52, 168, 83, 0.3);">
+                        📝
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">On-Page SEO</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Content-Optimierung, Keyword-Integration, Meta-Tags, strukturierte Daten und interne Verlinkung.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Keyword-Optimierung</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Meta-Tags & Schema</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Content-Struktur</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Off-Page SEO -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #FBBC04, #EA4335); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(251, 188, 4, 0.3);">
+                        🔗
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Off-Page SEO</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Aufbau von qualitativ hochwertigen Backlinks, Authority-Building, Local SEO und Online-Reputation.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Backlink-Aufbau</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Local SEO (Google My Business)</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FBBC04; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Authority-Building</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Content Strategy -->
+                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="service-icon" style="width: 70px; height: 70px; background: linear-gradient(135deg, #EA4335, #4285F4); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1.5rem; box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);">
+                        📊
+                    </div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Content-Strategie</h3>
+                    <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        Keyword-Recherche, Content-Planung, Blog-Artikel, Konkurrenzanalyse und SEO-optimierte Texte.
+                    </p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Keyword-Recherche</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">SEO-Content Erstellung</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #EA4335; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Konkurrenzanalyse</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROZESS -->
+    <section id="prozess" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Unser <span class="text-gradient">SEO-Prozess</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Von der Analyse bis zur kontinuierlichen Optimierung
+                </p>
+            </div>
+
+            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <!-- Step 1 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #4285F4, #34A853); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);">
+                        1
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">SEO-Audit</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Technische Analyse Ihrer Website, Keyword-Recherche, Konkurrenzanalyse und Identifikation von Quick Wins.
+                    </p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #34A853, #FBBC04); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(52, 168, 83, 0.3);">
+                        2
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Strategie</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Entwicklung einer maßgeschneiderten SEO-Roadmap mit Prioritäten, Zielen und Quick Wins für schnelle Erfolge.
+                    </p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FBBC04, #EA4335); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(251, 188, 4, 0.3);">
+                        3
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Umsetzung</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        On-Page Optimierungen, technische Verbesserungen, Content-Erstellung und Backlink-Aufbau nach White-Hat Methoden.
+                    </p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step" style="text-align: center; padding: 2rem;">
+                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #EA4335, #4285F4); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(234, 67, 53, 0.3);">
+                        4
+                    </div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Monitoring & Optimierung</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">
+                        Ranking-Tracking, Traffic-Analyse, kontinuierliche Verbesserungen und monatliche Performance-Reports.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ERGEBNISSE / CASE STUDIES -->
+    <section id="ergebnisse" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    📊 Unsere <span class="text-gradient">SEO-Ergebnisse</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Echte Zahlen von unseren SEO-Kunden
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <!-- Case 1 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(66, 133, 244, 0.1); border: 1px solid rgba(66, 133, 244, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #4285F4; font-weight: 600;">
+                        E-Commerce
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Online-Shop für Elektronik</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Technical SEO + Content-Strategie für einen deutschen E-Commerce Shop.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">+280%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Organischer Traffic</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">Top 3</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Rankings (50+ Keywords)</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Traffic hat sich in 8 Monaten verdreifacht. SEO ist jetzt unser Hauptkanal!"
+                    </p>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #34A853; font-weight: 600;">
+                        SaaS
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">SaaS-Plattform Berlin</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        On-Page SEO + Content Marketing für B2B SaaS Unternehmen.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">+150%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Organischer Traffic</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">92</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Page Speed Score</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "SEO-Traffic bringt uns jetzt 40% aller Leads. ROI ist unschlagbar!"
+                    </p>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="case-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div style="display: inline-block; background: rgba(251, 188, 4, 0.1); border: 1px solid rgba(251, 188, 4, 0.3); border-radius: 8px; padding: 0.4rem 1rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: #FBBC04; font-weight: 600;">
+                        Local Business
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Anwaltskanzlei München</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Local SEO + Google My Business Optimierung für Anwaltskanzlei.
+                    </p>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 1.5rem;">
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">Top 1</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Local Pack Rankings</div>
+                        </div>
+                        <div>
+                            <div class="text-gradient" style="font-size: 2rem; font-weight: 800;">+320%</div>
+                            <div style="color: var(--text-secondary); font-size: 0.9rem;">Organische Anfragen</div>
+                        </div>
+                    </div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; font-style: italic;">
+                        "Wir sind jetzt #1 für alle wichtigen lokalen Keywords. Mandanten finden uns sofort!"
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="pricing-section" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Preise <span class="text-gradient">und Pakete</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Transparente SEO-Preise ohne versteckte Kosten
+                </p>
+            </div>
+
+            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
+                <!-- Pricing Card 1: STARTER -->
+                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">STARTER</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Für kleine Unternehmen</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€799</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ Monat</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">5-10 Fokus-Keywords</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Technical SEO Basics</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">On-Page Optimierung</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Google Search Console Setup</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Monatliches Reporting</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Email Support</strong></span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Jetzt starten</a>
+                </div>
+
+                <!-- Pricing Card 2: PROFESSIONAL (FEATURED) -->
+                <div class="pricing-card pricing-card--featured" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid var(--brand); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; transform: scale(1.05); box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);">
+                    <div class="pricing-badge" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--brand), #2563EB); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);">
+                        🔥 BESTSELLER
+                    </div>
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; color: var(--text-primary);">PROFESSIONAL</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Für wachsende Unternehmen</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€1.499</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ Monat</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">20-30 Fokus-Keywords</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Full Technical SEO</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Content-Strategie & Erstellung</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Backlink-Aufbau (10-15/Monat)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Ranking-Tracking (24/7)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Monatliches Strategy Call</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Priorisierter Support</strong></span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Jetzt starten</a>
+                </div>
+
+                <!-- Pricing Card 3: ENTERPRISE -->
+                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
+                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">ENTERPRISE</h3>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Für große Unternehmen</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem;">
+                        <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900;">ab €2.500</span>
+                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ Monat</span>
+                    </div>
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">50+ Fokus-Keywords</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Enterprise Technical SEO</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">International SEO (mehrsprachig)</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Premium Backlink-Aufbau</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Wöchentliche Strategy Calls</span>
+                        </li>
+                        <li style="padding: 0.75rem 0; display: flex; align-items: start;">
+                            <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;">Dedizierter Account Manager</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Kontakt aufnehmen</a>
+                </div>
+            </div>
+
+            <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
+                * Preise exkl. MwSt. Mindestvertrag 6 Monate (SEO braucht Zeit). Danach monatlich kündbar.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Häufig gestellte <span class="text-gradient">Fragen</span>
+                </h2>
+            </div>
+
+            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        ⏱️ Wie lange dauert SEO?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        <strong>3-6 Monate</strong> für erste sichtbare Ergebnisse, <strong>6-12 Monate</strong> für signifikante Rankings und Traffic-Wachstum. SEO ist eine langfristige Investition — die sich aber auszahlt. Nach 12 Monaten haben unsere Kunden durchschnittlich +250% mehr organischen Traffic.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🎯 SEO vs. Google Ads — was ist besser?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                        Beide ergänzen sich perfekt:
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary); line-height: 1.7;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: #34A853; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span><strong>SEO:</strong> Langfristig, nachhaltig, hoher ROI, keine laufenden Klickkosten</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: #4285F4; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span><strong>Google Ads:</strong> Schnelle Ergebnisse, sofortige Leads, Budget-Kontrolle</span>
+                        </li>
+                    </ul>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 1rem;">
+                        <strong>Unsere Empfehlung:</strong> Starten Sie mit Google Ads für sofortige Leads, während SEO aufgebaut wird. Nach 6-12 Monaten können Sie Ads reduzieren und von kostenlosem organischen Traffic profitieren.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🏆 Garantieren Sie Rankings?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        <strong>Niemand kann Rankings garantieren</strong> — Google ändert ständig seine Algorithmen. Wir arbeiten mit bewährten White-Hat Methoden und transparentem Reporting. Unsere Erfolgsbilanz spricht für sich: 90% unserer Kunden erreichen Top-10 Rankings für ihre Haupt-Keywords innerhalb von 6-12 Monaten.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🔄 Brauche ich laufende SEO-Betreuung?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                        <strong>Ja, SEO ist ein kontinuierlicher Prozess:</strong>
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary); line-height: 1.7;">
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Google-Algorithmus ändert sich ständig (500+ Updates/Jahr)</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Wettbewerber optimieren auch ihre Websites</span>
+                        </li>
+                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
+                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span>Neuer Content und Backlinks sind nötig für Wachstum</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        📊 Welche Reports bekomme ich?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Monatliche Reports mit: Ranking-Entwicklung (Top 100 Positionen), organischem Traffic, Backlink-Profil, Core Web Vitals, durchgeführte Optimierungen und nächste Schritte. Plus Strategy Call mit Ihrem SEO-Manager.
+                    </p>
+                </div>
+
+                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+                        🔒 Wie lange ist die Vertragsbindung?
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Mindestvertrag 6 Monate (SEO braucht Zeit für Ergebnisse). Danach monatlich kündbar. Keine versteckten Gebühren.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM -->
+    <section id="contact" style="padding: 6rem 0; background: var(--bg-secondary);">
+        <div class="container">
+            <div class="contact-wrapper" style="max-width: 600px; margin: 0 auto;">
+                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                        Bereit für mehr <span class="text-gradient">organischen Traffic?</span>
+                    </h2>
+                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary);">
+                        Kostenlose SEO-Analyse in 24 Stunden
+                    </p>
+                </div>
+
+                <form class="contact-form" id="contactForm" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem;">
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="name" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Name *</label>
+                        <input type="text" id="name" name="name" placeholder="Ihr Name" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="email" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">E-Mail *</label>
+                        <input type="email" id="email" name="email" placeholder="ihre.email@beispiel.de" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="website" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Website URL *</label>
+                        <input type="url" id="website" name="website" placeholder="https://ihre-website.de" required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="phone" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Telefon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+49 123 456 7890" style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 1.5rem;">
+                        <label for="message" style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-primary);">Ihre SEO-Ziele *</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Beschreiben Sie Ihre SEO-Ziele und Herausforderungen..." required style="width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-family: 'Inter', sans-serif; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #34A853, #4285F4); border: none; border-radius: 12px; color: white; cursor: pointer; box-shadow: 0 8px 24px rgba(52,168,83,0.35); transition: all 0.3s ease;">
+                        🚀 Kostenlose SEO-Analyse anfordern
+                    </button>
+
+                    <p style="text-align: center; margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">
+                        Antwort innerhalb von 24 Stunden garantiert
+                    </p>
+                </form>
+
+                <div id="form-success" style="display: none; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #34A853; font-weight: 600; margin-bottom: 0.5rem;">✓ Nachricht erfolgreich gesendet!</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+                </div>
+
+                <div id="form-error" style="display: none; background: rgba(234, 67, 53, 0.1); border: 1px solid rgba(234, 67, 53, 0.3); border-radius: 12px; padding: 1.5rem; margin-top: 1.5rem; text-align: center;">
+                    <p style="color: #EA4335; font-weight: 600;">✗ Fehler beim Senden</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt per E-Mail.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: var(--bg-secondary); padding: 4rem 0 2rem; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-column">
+                    <div class="brand" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                        </svg>
+                        <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+                    </div>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
+                        SEO Agentur für kleine Unternehmen in Europa. Nachhaltige Rankings, transparente Ergebnisse.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Leistungen</h4>
+                    <a href="google-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Google Ads</a>
+                    <a href="meta-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Meta Ads</a>
+                    <a href="tiktok-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">TikTok Ads</a>
+                    <a href="seo.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">SEO</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Unternehmen</h4>
+                    <a href="index.html#testimonials" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Bewertungen</a>
+                    <a href="#faq" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">FAQ</a>
+                    <a href="#contact" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Kontakt</a>
+                    <a href="https://vermarkter.eu/privacy.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Datenschutz</a>
+                    <a href="https://vermarkter.eu/imprint.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Impressum</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Kontakt</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>Telegram:</strong><br>
+                        <a href="https://t.me/vermarkter_eu" style="color: #4285F4; text-decoration: none;">@vermarkter_eu</a>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <strong>E-Mail:</strong><br>
+                        <a href="mailto:info@vermarkter.eu" style="color: #4285F4; text-decoration: none;">info@vermarkter.eu</a>
+                    </p>
+                </div>
+            </div>
+
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid var(--glass-border);">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    © 2025 Vermarkter. Alle Rechte vorbehalten.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Button -->
+    <button id="chatbot-btn" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, #34A853, #4285F4); border: none; box-shadow: 0 8px 24px rgba(52,168,83,0.4); cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; font-size: 28px; transition: transform 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+        💬
+    </button>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-widget" style="display: none; position: fixed; bottom: 100px; right: 30px; width: 380px; max-width: calc(100vw - 60px); height: 500px; background: var(--bg-primary); border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.3); z-index: 1000; overflow: hidden; flex-direction: column;">
+        <!-- Chatbot Header -->
+        <div style="background: linear-gradient(135deg, #34A853, #4285F4); padding: 1.25rem; display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <div style="font-weight: 700; color: white; font-size: 1.1rem;">Vermarkter Assistent</div>
+                <div style="font-size: 0.85rem; color: rgba(255,255,255,0.9);">Wir antworten in Sekunden</div>
+            </div>
+            <button id="chatbot-close" style="background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 50%; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='none'">
+                ×
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="background: rgba(52,168,83,0.1); border-radius: 12px; padding: 1rem; max-width: 85%; align-self: flex-start;">
+                <p style="color: var(--text-primary); margin: 0; line-height: 1.5;">
+                    Hallo! 👋 Ich bin Ihr Vermarkter Assistent. Wie kann ich Ihnen bei SEO helfen?
+                </p>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div style="padding: 1rem; border-top: 1px solid var(--glass-border); background: var(--bg-secondary);">
+            <div style="display: flex; gap: 0.5rem;">
+                <input type="text" id="chat-input" placeholder="Schreiben Sie Ihre Frage..." style="flex: 1; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 0.95rem; font-family: 'Inter', sans-serif;">
+                <button id="chat-send" style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #34A853, #4285F4); border: none; border-radius: 12px; color: white; font-weight: 600; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+                    Senden
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../script.js?v=20251228c"></script>
+</body>
+</html>
