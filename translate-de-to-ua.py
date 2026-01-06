@@ -152,6 +152,20 @@ translations = {
     'Büros: Berlin, Warschau, Kyiv': 'Офіси: Берлін, Варшава, Київ',
     '© 2025 Vermarkter. Alle Rechte vorbehalten.': '© 2025 Vermarkter. Всі права захищені.',
 
+    # Language switcher - CRITICAL FIX
+    'DE ▼': 'UA ▼',
+
+    # Footer links - CRITICAL FIX
+    'https://vermarkter.eu/privacy.html': 'https://vermarkter.eu/ua/privacy.html',
+    'https://vermarkter.eu/imprint.html': 'https://vermarkter.eu/ua/imprint.html',
+    'Datenschutz': 'Конфіденційність',
+
+    # Chatbot - CRITICAL FIX
+    'Hallo! 👋 Haben Sie Fragen zur CRM-Integration?': 'Привіт! 👋 Є питання щодо CRM-інтеграції?',
+    'Schreiben Sie Ihre Frage...': 'Напишіть ваше питання...',
+    'Vermarkter Bot': 'Vermarkter Бот',
+    'Online': 'Онлайн',
+
     # Success/Error messages
     'Erfolgreich gesendet!': 'Успішно надіслано!',
     'Wir melden uns innerhalb von 24 Stunden.': 'Ми зв\'яжемося протягом 24 годин.',
