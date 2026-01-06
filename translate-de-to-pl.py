@@ -1,287 +1,189 @@
 # -*- coding: utf-8 -*-
-import re
+"""
+Complete Polish translation from German CRM page
+"""
 
-# Read DE version (which is currently in pl/index.html)
-with open('pl/index.html', 'r', encoding='utf-8') as f:
+# Read German version
+with open('de/crm-integration.html', 'r', encoding='utf-8') as f:
     content = f.read()
 
-# Protect HTML tags from translation by replacing them with placeholders
-html_tags = {}
-tag_counter = 0
-
-def protect_tag(match):
-    global tag_counter
-    placeholder = f"___HTML_TAG_{tag_counter}___"
-    html_tags[placeholder] = match.group(0)
-    tag_counter += 1
-    return placeholder
-
-# Replace lang="de" BEFORE protecting HTML tags
-content = content.replace('lang="de"', 'lang="pl"')
-
-# Protect all HTML tags (opening, closing, and self-closing)
-content = re.sub(r'<[^>]+>', protect_tag, content)
-
-# Dictionary of German → Polish translations
+# Translation dictionary with EXACT matches
 translations = {
-    # Navigation
-    'Services': 'Usługi',
-    'Preise': 'Cennik',
-    'Rechner': 'Kalkulator',
-    'Bewertungen': 'Opinie',
-    'Kontakt': 'Kontakt',
+    'lang="de"': 'lang="pl"',
+    '/de/crm-integration': '/pl/crm-integration',
+    'og-image-crm-de.jpg': 'og-image-crm-pl.jpg',
+    'CRM-Integration — Vermarkter': 'Integracja CRM — Vermarkter',
 
-    # Hero Section
-    'Für kleine Unternehmen in der EU': 'Dla małych firm w UE',
-    'Werbestart in der EU': 'Start reklamy w UE',
-    'in 48 Stunden': 'w 48 godzin',
-    'Google Ads & Meta Ads für Ihr Business in Europa': 'Google Ads i Meta Ads dla Twojego biznesu w Europie',
-    'Erste Leads in 7 Tagen': 'Pierwsze leady w 7 dni',
-    'Technischer Manager in Ihrer Sprache': 'Menedżer techniczny w Twoim języku',
-    'Wöchentliche Reports': 'Cotygodniowe raporty',
-    'Gewinn berechnen': 'Oblicz zysk',
-    'Unsere Cases': 'Nasze projekty',
+    # Meta descriptions
+    'CRM-Integration für Marketing & Sales. HubSpot, Pipedrive, Zoho. Lead-Tracking, Offline Conversions, Telegram-Benachrichtigungen. Keine verlorenen Leads mehr.': 'Integracja CRM dla marketingu i sprzedaży. HubSpot, Pipedrive, Zoho. Tracking leadów, offline conversions, powiadomienia Telegram. Koniec z utraconymi leadami.',
+    'Verbinden Sie Ihre Marketing-Kampagnen mit dem Vertrieb. Lead-Tracking, Automatisierung, echtes ROAS.': 'Połącz swoje kampanie marketingowe ze sprzedażą. Tracking leadów, automatyzacja, prawdziwy ROAS.',
+    'Verbinden Sie Marketing und Sales': 'Połącz marketing i sprzedaż',
 
-    # Stats
-    '% durchschn. ROAS': '% średni ROAS',
-    '% Kunden kehren zurück': '% klientów wraca',
-    'Tage bis Launch': 'dni do startu',
+    # Navigation - Change German flag to Polish
+    '''<svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="4" fill="#000"/>
+                                <rect y="4" width="16" height="4" fill="#D00"/>
+                                <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                            </svg>
+                            DE ▼''': '''<svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="6" fill="#fff"/>
+                                <rect y="6" width="16" height="6" fill="#D4213D"/>
+                            </svg>
+                            PL ▼''',
 
-    # Problem Section
-    'Warum verschwenden 80% des Budgets': 'Dlaczego 80% budżetu marnuje się',
-    'Warum verschwinden 80% des Budgets': 'Dlaczego 80% budżetu znika',
-    'im Nichts': 'na nic',
-    '% der Kampagnen scheitern': '% kampanii kończy się niepowodzeniem',
-    'fehlende Transparenz': 'brak przejrzystości',
-    'Budget verbrannt ohne ROI': 'budżet spalony bez zwrotu',
-    'Falsche Keywords': 'Błędne słowa kluczowe',
-    'Sie zahlen für Klicks von Nutzern, die nie kaufen werden. 70% des Traffics sind "informationelle" Suchanfragen ohne Kaufabsicht.': 'Płacisz za kliknięcia użytkowników, którzy nigdy nie kupią. 70% ruchu to zapytania informacyjne bez intencji zakupowej.',
-    'Breiter Match-Type – Sie zahlen für alles Mögliche': 'Szeroki typ dopasowania – płacisz za wszystko',
-    'Keine negativen Keywords – Budget läuft aus': 'Brak negatywnych słów kluczowych – budżet się wypala',
-    'Werbung für Konkurrenten statt Zielgruppe': 'Reklama dla konkurentów zamiast grupy docelowej',
-    'Fehlendes End-to-End Tracking': 'Brak śledzenia end-to-end',
-    'Ohne korrektes Tracking wissen Sie nicht, welche Anzeige/Keywords Verkäufe bringen. Sie steuern blind.': 'Bez poprawnego śledzenia nie wiesz, które reklamy/słowa przynoszą sprzedaż. Sterujesz na ślepo.',
-    'Google Analytics falsch konfiguriert': 'Google Analytics źle skonfigurowany',
-    'Conversions werden nicht an Ads übermittelt': 'Konwersje nie są przekazywane do Ads',
-    'Keine Attribution – Customer Journey unklar': 'Brak atrybucji – ścieżka klienta niejasna',
-    'Schwache Creatives': 'Słabe kreacje',
-    'Niedrige CTR = hoher CPC. Schlechte Texte und Banner senken den Quality Score und Sie zahlen für jeden Klick mehr.': 'Niski CTR = wysoki CPC. Słabe teksty i banery obniżają Quality Score i płacisz więcej za każde kliknięcie.',
-    'Generische Texte ohne USP – niemand klickt': 'Ogólne teksty bez USP – nikt nie klika',
-    'Banner in Paint erstellt – sieht aus wie Spam': 'Banery zrobione w Paint – wyglądają jak spam',
-    'Keine A/B-Tests – Sie bleiben beim ersten Entwurf': 'Brak testów A/B – zostajesz z pierwszym projektem',
+    # Navigation links
+    '<a href="index.html#services">Leistungen</a>': '<a href="index.html#services">Usługi</a>',
+    '<a href="#probleme">Probleme</a>': '<a href="#problemy">Problemy</a>',
+    '<a href="#loesung">Lösung</a>': '<a href="#rozwiazanie">Rozwiązanie</a>',
+    '<a href="#preise">Preise</a>': '<a href="#cennik">Cennik</a>',
+    '<a href="#contact">Kontakt</a>': '<a href="#kontakt">Kontakt</a>',
 
-    # Method Section
-    'Unser Ansatz': 'Nasza metoda',
-    'Unsere Methodik: 3-Stufen-System': 'Nasza metodyka: System 3-stopniowy',
-    'So arbeiten wir': 'Tak pracujemy',
-    'Audit & Strategie': 'Audyt i strategia',
-    'Kampagnen-Setup': 'Konfiguracja kampanii',
-    'Optimierung & Skalierung': 'Optymalizacja i skalowanie',
-    'SCHRITT 1': 'KROK 1',
-    'SCHRITT 2': 'KROK 2',
-    'SCHRITT 3': 'KROK 3',
-    'Tiefgehende Analyse': 'Dogłębna analiza',
-    'Wir finden, wo Ihr Budget verschwindet. Analyse von Wettbewerbern, Semantik und technischen Fehlern.': 'Znajdujemy, gdzie znika Twój budżet. Analiza konkurencji, semantyki i błędów technicznych.',
-    'Nischenanalyse': 'Analiza niszy',
-    'Suche nach "Gold"-Keywords': 'Szukanie "złotych" słów kluczowych',
-    'Technisches Audit': 'Audyt techniczny',
-    'Wettbewerber-Mapping': 'Mapowanie konkurencji',
-    'Kampagnen Launch': 'Uruchomienie kampanii',
-    'Wir erstellen Kampagnen mit +8% CTR und Conversion-Tracking ab Tag 1. Keine Experimente.': 'Tworzymy kampanie z +8% CTR i śledzeniem konwersji od 1 dnia. Żadnych eksperymentów.',
-    'Strukturierung nach Intent': 'Strukturyzacja według intencji',
-    'Conversion-Setup (GA4 + Ads)': 'Konfiguracja konwersji (GA4 + Ads)',
-    'Creatives (Texte + Banner)': 'Kreacje (teksty + banery)',
-    'Erster Traffic in 48h': 'Pierwszy ruch w 48h',
-    'Wöchentliche Optimierung': 'Cotygodniowa optymalizacja',
-    'Wir analysieren jeden €, pausieren teure Keywords und skalieren profitable Kampagnen.': 'Analizujemy każde €, zatrzymujemy drogie słowa kluczowe i skalujemy opłacalne kampanie.',
-    'Wöchentliche Reports': 'Cotygodniowe raporty',
-    'Search Terms Analyse': 'Analiza fraz wyszukiwania',
-    'Bid-Anpassungen': 'Dostosowania stawek',
-    'Creative-Tests (A/B)': 'Testy kreacji (A/B)',
-    'Bereit zu wachsen?': 'Gotowy do wzrostu?',
-    'Lassen Sie uns Ihr Business skalieren': 'Pozwól nam skalować Twój biznes',
-    'Wir bauen Kampagnen nach SKAG-Prinzip. Klares Conversion-Tracking.': 'Budujemy kampanie według zasady SKAG. Przejrzyste śledzenie konwersji.',
-    'Transparente Cennik ohne versteckte Kosten. Wählen Sie das perfekte Paket für Ihr Unternehmen.': 'Przejrzysty cennik bez ukrytych kosztów. Wybierz idealny pakiet dla swojej firmy.',
-    'Berechnen Sie die Rentabilität Ihrer Werbekampagne': 'Oblicz rentowność swojej kampanii reklamowej',
-    'Wählen Sie Ihre Branche:': 'Wybierz swoją branżę:',
-    'Die drei häufigsten Gründe für gescheiterte Werbekampagnen': 'Trzy najczęstsze przyczyny nieudanych kampanii reklamowych',
-    'Struktur und Launch': 'Struktura i uruchomienie',
-    'Von der Strategie bis zur Umsetzung – alles aus einer Hand': 'Od strategii do realizacji – wszystko z jednego źródła',
-    'Heißer Traffic aus der Suche. Performance Max für E-Commerce. Shopping Ads für Produkte. Launch w 48 godzin.': 'Gorący ruch z wyszukiwania. Performance Max dla e-commerce. Shopping Ads dla produktów. Uruchomienie w 48 godzin.',
-    'Shopping Ads (für Online-Shops)': 'Shopping Ads (dla sklepów internetowych)',
-    'Lead-Generierung und Verkäufe über Facebook und Instagram. Lookalike Audiences, Remarketing, Messenger Ads.': 'Generowanie leadów i sprzedaż przez Facebook i Instagram. Lookalike Audiences, Remarketing, Messenger Ads.',
-    'Viraler Content und junge Zielgruppe. In-Feed Ads, Spark Ads, Shopping Ads. Günstiger Traffic für E-Commerce.': 'Wirusowa treść i młoda publiczność. In-Feed Ads, Spark Ads, Shopping Ads. Tani ruch dla e-commerce.',
-    'Organischer Traffic aus Google. Lokales SEO für die EU. Content-Marketing und Linkbuilding. Langfristige Ergebnisse.': 'Organiczny ruch z Google. Lokalne SEO dla UE. Content marketing i budowanie linków. Długoterminowe rezultaty.',
-    'Telegram Bot für Leads (sofortige Benachrichtigungen)': 'Bot Telegram dla leadów (natychmiastowe powiadomienia)',
-    'Cennik <span class="text-gradient">und Pakete</span>': 'Cennik <span class="text-gradient">i pakiety</span>',
-    'Perfekt für den Einstieg': 'Idealny na start',
-    'Erstellung von Anzeigen-Creatives': 'Tworzenie kreacji reklamowych',
-    'Rechtliche Unterstützung für EU': 'Wsparcie prawne dla UE',
-    'Dies ist ein echtes Mediaplanungs-Tool.': 'To prawdziwe narzędzie do planowania mediów.',
-    'Dieselben Formeln, die große Agenturen verwenden. Transparent, ehrlich, ohne versteckte Kosten.': 'Te same formuły, których używają duże agencje. Przejrzyste, uczciwe, bez ukrytych kosztów.',
-    'Das hängt von Ihrer Nische und Ihren Zielen ab. Mindestbudget für effektive Kampagnen: €1.000-1.500/Monat. Nutzen Sie unseren ROI-Kalkulator oben für eine genaue Prognose.': 'Zależy to od Twojej niszy i celów. Minimalny budżet na skuteczne kampanie: €1.000-1.500/mies. Skorzystaj z naszego kalkulatora ROI powyżej dla dokładnej prognozy.',
-    'Kontaktieren Sie uns für ein technisches Audit oder eine Erstberatung': 'Skontaktuj się z nami w sprawie audytu technicznego lub wstępnej konsultacji',
-    'Beschreiben Sie Ihr Projekt...': 'Opisz swój projekt...',
-    'Vielen Dank! Wir melden uns in Kürze bei Ihnen.': 'Dziękujemy! Wkrótce się z Tobą skontaktujemy.',
-    'Oder kontaktieren Sie uns direkt:': 'Lub skontaktuj się z nami bezpośrednio:',
-    'Marketing-Agentur für kleine Unternehmen in der Europäischen Union.': 'Agencja marketingowa dla małych firm w Unii Europejskiej.',
+    # Hero section
+    '🔗 CRM-Integration': '🔗 Integracja CRM',
+    'Marketing <span class="text-gradient">+ Vertrieb</span><br>\n                    in einem System': 'Marketing <span class="text-gradient">+ Sprzedaż</span><br>\n                    w jednym systemie',
+    '<strong style="color: var(--text-primary);">Keine verlorenen Leads mehr.</strong> Verbinden Sie Google Ads, Meta Ads und TikTok mit HubSpot, Pipedrive oder Zoho CRM.<br>\n                    Automatische Benachrichtigungen, Sales-Tracking, echtes ROAS.': '<strong style="color: var(--text-primary);">Koniec z utraconymi leadami.</strong> Połącz Google Ads, Meta Ads i TikTok z HubSpot, Pipedrive lub Zoho CRM.<br>\n                    Automatyczne powiadomienia, tracking sprzedaży, prawdziwy ROAS.',
+    'Setup ab €499': 'Konfiguracja od €499',
+    'Demo buchen': 'Umów demo',
+    'Unterstützte CRM-Systeme:': 'Obsługiwane systemy CRM:',
 
-    # Services Details
-    'CRM Integration': 'Integracja CRM',
-    'Alle Leads automatisch in Telegram/Google Sheets. Email/SMS Auto-Funnels. Volle Kontrolle über Ihren Sales Funnel.': 'Wszystkie leady automatycznie w Telegram/Google Sheets. Email/SMS Auto-Funnels. Pełna kontrola nad Twoim lejkiem sprzedażowym.',
-    'Email Marketing (Mailchimp, SendGrid)': 'Email Marketing (Mailchimp, SendGrid)',
-    'Zapier/Make.com Integrationen': 'Integracje Zapier/Make.com',
-    'Web Analytics': 'Analityka webowa',
-    'GA4, GTM, Hotjar, Microsoft Clarity. Vollständiges Verständnis des Nutzerverhaltens. Dashboards in Looker Studio.': 'GA4, GTM, Hotjar, Microsoft Clarity. Pełne zrozumienie zachowań użytkowników. Dashboardy w Looker Studio.',
-    'GA4 Setup (Enhanced Ecommerce)': 'Konfiguracja GA4 (Enhanced Ecommerce)',
-    'Heatmaps & Session Recordings (Hotjar)': 'Mapy ciepła i nagrania sesji (Hotjar)',
-    'Custom Dashboards (Looker Studio)': 'Niestandardowe dashboardy (Looker Studio)',
-    'Optimierung': 'Optymalizacja',
-    'Tägliche Gebotsanpassungen. Budget-Skalierung nur bei positivem ROAS.': 'Codzienne dostosowania stawek. Skalowanie budżetu tylko przy dodatnim ROAS.',
-    'A/B-Testing': 'Testy A/B',
-    'Reporting': 'Raportowanie',
-    'Analytics-Setup': 'Konfiguracja analityki',
-    'Anzeigenerstellung': 'Tworzenie reklam',
-    'Kampagnen-Launch': 'Uruchomienie kampanii',
+    # SVG labels
+    '<text x="70" y="105" text-anchor="middle" fill="var(--text-secondary)" font-size="12">Website</text>': '<text x="70" y="105" text-anchor="middle" fill="var(--text-secondary)" font-size="12">Strona</text>',
+    '<text x="410" y="105" text-anchor="middle" fill="var(--text-secondary)" font-size="12">Manager</text>': '<text x="410" y="105" text-anchor="middle" fill="var(--text-secondary)" font-size="12">Menedżer</text>',
+    '<text x="580" y="105" text-anchor="middle" fill="var(--text-secondary)" font-size="12">Verkauf</text>': '<text x="580" y="105" text-anchor="middle" fill="var(--text-secondary)" font-size="12">Sprzedaż</text>',
 
-    # Navigation menu
-    'Leistungen': 'Usługi',
-    'Cases': 'Projekty',
-    'Über uns': 'O nas',
-    'Portfolio': 'Portfolio',
-    'Blog': 'Blog',
+    # Pain points section
+    'id="probleme"': 'id="problemy"',
+    '⚠️ <span class="text-gradient">Kennen Sie das?</span>': '⚠️ <span class="text-gradient">Znasz to?</span>',
+    'Die häufigsten Probleme ohne CRM-Integration': 'Najczęstsze problemy bez integracji CRM',
 
-    # Pricing details
-    'Starter': 'Starter',
-    'Wachstum': 'Wzrost',
-    'Business': 'Biznes',
-    'Pro Monat': 'Miesięcznie',
-    'Was ist enthalten': 'Co zawiera',
-    'Was ist enthalten:': 'Co zawiera:',
-    'Strategie-Call': 'Rozmowa strategiczna',
-    'Keyword-Recherche': 'Badanie słów kluczowych',
-    'Campaign Setup': 'Konfiguracja kampanii',
-    'Wöchentliches Reporting': 'Cotygodniowe raportowanie',
-    'Monatliche Optimierung': 'Miesięczna optymalizacja',
-    'Tägliche Optimierung': 'Codzienna optymalizacja',
-    'Dedicated Account Manager': 'Dedykowany opiekun konta',
-    'Zugang zu': 'Dostęp do',
+    'Leads in Excel-Tabellen': 'Leady w arkuszach Excel',
+    'Ihre Leads landen in unübersichtlichen Tabellen. Manager müssen manuell sortieren, priorisieren und nachfassen. <strong style="color: #EF4444;">Zeitverlust + verpasste Chancen.</strong>': 'Twoje leady trafiają do nieczytelnych tabel. Menedżerowie muszą ręcznie sortować, priorytetyzować i śledzić. <strong style="color: #EF4444;">Strata czasu + utracone szanse.</strong>',
+
+    'Manager reagieren zu spät': 'Menedżerowie reagują za późno',
+    'Lead kommt rein → Manager sieht ihn erst Stunden später → Lead kauft bei der Konkurrenz. <strong style="color: #EF4444;">Ohne sofortige Benachrichtigung verlieren Sie 50% der Leads.</strong>': 'Lead przychodzi → Menedżer widzi go dopiero po godzinach → Lead kupuje u konkurencji. <strong style="color: #EF4444;">Bez natychmiastowych powiadomień tracisz 50% leadów.</strong>',
+
+    'Welche Werbung funktioniert?': 'Która reklama działa?',
+    'Google Ads zeigt Klicks, aber keine Verkäufe. Sie wissen nicht, welche Kampagnen echte Kunden bringen. <strong style="color: #EF4444;">Ohne Offline Conversions verbrennen Sie Budget.</strong>': 'Google Ads pokazuje kliknięcia, ale nie sprzedaż. Nie wiesz, które kampanie przynoszą prawdziwych klientów. <strong style="color: #EF4444;">Bez offline conversions marnujesz budżet.</strong>',
+
+    # Solution section
+    'id="loesung"': 'id="rozwiazanie"',
+    '✅ Unsere <span class="text-gradient">Lösung</span>': '✅ Nasze <span class="text-gradient">Rozwiązanie</span>',
+    'Was wir für Sie einrichten': 'Co dla Ciebie skonfigurujemy',
+
+    'Automatisierung': 'Automatyzacja',
+    'Lead kommt von der Website → landet sofort im CRM → Manager bekommt Telegram-Nachricht → Anruf innerhalb 5 Minuten.': 'Lead ze strony → trafia natychmiast do CRM → Menedżer dostaje wiadomość na Telegram → Telefon w ciągu 5 minut.',
+    'Formulare → CRM (Zapier/Make)': 'Formularze → CRM (Zapier/Make)',
+    'Telegram-Benachrichtigungen': 'Powiadomienia Telegram',
+    'Auto-Tagging nach Quelle': 'Auto-tagowanie według źródła',
+
+    'End-to-End Analytics': 'Analityka End-to-End',
+    'Wir senden Verkaufsdaten zurück an Google Ads und Meta. Die Algorithmen lernen, welche Klicks echte Kunden werden. <strong>Besseres ROAS automatisch.</strong>': 'Wysyłamy dane sprzedażowe z powrotem do Google Ads i Meta. Algorytmy uczą się, które kliknięcia stają się prawdziwymi klientami. <strong>Lepszy ROAS automatycznie.</strong>',
+    'Offline Conversions (Google)': 'Offline Conversions (Google)',
+    'CAPI für Meta Ads': 'CAPI dla Meta Ads',
+    'Echtes ROAS pro Kampagne': 'Prawdziwy ROAS na kampanię',
+
+    'Sales-Pipelines': 'Pipeline sprzedażowy',
+    'Strukturierte Verkaufsprozesse: Neuer Lead → Kontaktiert → Angebot → Verhandlung → Gewonnen. Kein Lead geht verloren.': 'Uporządkowane procesy sprzedaży: Nowy lead → Kontakt → Oferta → Negocjacje → Wygrana. Żaden lead się nie zgubi.',
+    'Custom Funnel-Stufen': 'Niestandardowe etapy lejka',
+    'Automatische Follow-ups': 'Automatyczne follow-upy',
+    'Lead-Scoring': 'Scoring leadów',
+
+    # Pricing section
+    'id="preise"': 'id="cennik"',
+    'Preise <span class="text-gradient">CRM-Integration</span>': 'Cennik <span class="text-gradient">Integracji CRM</span>',
+    'Einmalige Setup-Gebühr. Keine monatlichen Kosten für unsere Arbeit.': 'Jednorazowa opłata za konfigurację. Brak miesięcznych kosztów za naszą pracę.',
+
+    'BASIC SETUP': 'BASIC SETUP',
+    'Für Starter': 'Dla startujących',
+    'CRM-Einrichtung (HubSpot/Pipedrive/Zoho)': 'Konfiguracja CRM (HubSpot/Pipedrive/Zoho)',
+    'Website-Formulare → CRM': 'Formularze ze strony → CRM',
+    'Basis-Funnel (3 Stufen)': 'Podstawowy lejek (3 etapy)',
+    '1 Stunde Schulung': '1 godzina szkolenia',
     'Jetzt starten': 'Rozpocznij teraz',
-    'Kontakt aufnehmen': 'Skontaktuj się',
 
-    # Calculator Section
-    'ROI-Rechner': 'Kalkulator ROI',
-    'Berechnen Sie Ihren potenziellen Gewinn': 'Oblicz swój potencjalny zysk',
-    'Wählen Sie Ihre Branche:': 'Wybierz swoją branżę:',
-    'Eigene Eingabe': 'Własne dane',
-    'Dienstleistungen (Handwerk, Beauty)': 'Usługi (Rzemiosło, Uroda)',
-    'Immobilien': 'Nieruchomości',
-    'B2B / Großhandel': 'B2B / Hurt',
-    'Gesundheit & Medizin': 'Zdrowie i Medycyna',
-    'Monatliches Budget': 'Miesięczny budżet',
-    'Kosten pro Klick': 'Koszt za kliknięcie',
-    'Cost per Click': 'Koszt za kliknięcie',
-    'Conversion Rate': 'Wskaźnik konwersji',
-    'Durchschnittlicher Bestellwert': 'Średnia wartość zamówienia',
-    'Gewinnmarge': 'Marża zysku',
-    'Klicks pro Monat': 'Kliknięć miesięcznie',
-    'Leads pro Monat': 'Leadów miesięcznie',
-    'Kosten pro Lead': 'Koszt za lead',
-    'ROAS': 'ROAS',
-    'Profit': 'Zysk',
-    'Gewinn': 'Zysk',
-    'Strategie für diese Zahlen erhalten': 'Otrzymaj strategię dla tych liczb',
+    '🔥 EMPFOHLEN': '🔥 POLECANE',
+    'ADVANCED': 'ADVANCED',
+    'Für wachsende Unternehmen': 'Dla rozwijających się firm',
+    '<strong>Alles aus BASIC +</strong>': '<strong>Wszystko z BASIC +</strong>',
+    'Offline Conversions (Google Ads)': 'Offline Conversions (Google Ads)',
+    'Meta CAPI Integration': 'Integracja Meta CAPI',
+    'Zapier/Make Automatisierungen (5 Flows)': 'Automatyzacje Zapier/Make.com (5 przepływów)',
+    'Custom Sales-Pipeline': 'Niestandardowy pipeline sprzedażowy',
+    'E-Mail-Sequenzen (Follow-ups)': 'Sekwencje emailowe (Follow-upy)',
+    '<strong>2 Stunden Schulung + 30 Tage Support</strong>': '<strong>2 godziny szkolenia + 30 dni wsparcia</strong>',
 
-    # Testimonials
-    'Kundenbewertungen': 'Opinie klientów',
-    'Über 100 erfolgreiche Projekte für kleine Unternehmen in der EU': 'Ponad 100 udanych projektów dla małych firm w UE',
+    'CUSTOM': 'INDYWIDUALNY',
+    'Für Unternehmen': 'Dla firm',
+    'Preis auf Anfrage': 'Cena na zapytanie',
+    '<strong>Alles aus ADVANCED +</strong>': '<strong>Wszystko z ADVANCED +</strong>',
+    'Custom API-Integrationen': 'Niestandardowe integracje API',
+    'Unbegrenzte Automatisierungen': 'Nieograniczone automatyzacje',
+    'Dedizierter Account Manager': 'Dedykowany account manager',
+    'SLA + Priority Support': 'SLA + Wsparcie priorytetowe',
+    '<strong>Individuelle Schulung & Onboarding</strong>': '<strong>Indywidualne szkolenie i wdrożenie</strong>',
+    'Kontaktieren Sie uns': 'Skontaktuj się z nami',
 
-    # FAQ
-    'Häufig gestellte Fragen': 'Często zadawane pytania',
-    'Alles, was Sie über unsere Dienstleistungen wissen müssen': 'Wszystko, co musisz wiedzieć o naszych usługach',
-    'Wie schnell kann ich mit Ergebnissen rechnen': 'Jak szybko mogę spodziewać się wyników',
-    'Erste Ergebnisse sehen Sie in der Regel innerhalb von 48-72 Stunden nach dem Launch. Optimale Performance erreichen Kampagnen nach 2-4 Wochen Optimierung.': 'Pierwsze wyniki zazwyczaj widać w ciągu 48-72 godzin po uruchomieniu. Optymalna wydajność kampanii osiągana jest po 2-4 tygodniach optymalizacji.',
-    'Benötige ich eine eigene Website?': 'Czy potrzebuję własnej strony internetowej?',
-    'Nicht unbedingt. Wir können für Sie eine konversionsstarke Landing Page erstellen oder Sie können unsere vorgefertigten Templates verwenden.': 'Niekoniecznie. Możemy stworzyć dla Ciebie landing page o wysokiej konwersji lub możesz użyć naszych gotowych szablonów.',
-    'Gibt es eine Mindestvertragslaufzeit?': 'Czy jest minimalny okres umowy?',
-    'Ja, die Mindestvertragslaufzeit beträgt 3 Monate. Dies gibt uns genügend Zeit, um Ihre Kampagnen zu optimieren und echte Ergebnisse zu liefern. Danach keine Bindung.': 'Tak, minimalny okres umowy to 3 miesiące. Daje nam to wystarczająco czasu na optymalizację kampanii i dostarczenie prawdziwych wyników. Potem brak zobowiązań.',
-    'In welchen Ländern arbeiten Sie?': 'W jakich krajach pracujecie?',
-    'Wir sind auf den EU-Markt spezialisiert: Deutschland, Polen, Tschechien, Österreich und andere EU-Länder. Wir kennen die lokalen Besonderheiten jedes Marktes.': 'Specjalizujemy się w rynku UE: Niemcy, Polska, Czechy, Austria i inne kraje UE. Znamy lokalne specyfiki każdego rynku.',
-    'Welches Budget sollte ich für Werbung einplanen?': 'Jaki budżet powinienem zaplanować na reklamę?',
-    'Das Mindestbudget für Google Ads liegt bei €500/Monat. Für Meta Ads empfehlen wir mindestens €300/Monat. Kleinere Budgets bringen keine statistisch relevanten Daten.': 'Minimalny budżet na Google Ads to €500/mies. Na Meta Ads zalecamy minimum €300/mies. Mniejsze budżety nie dają statystycznie istotnych danych.',
+    '* Preise zzgl. MwSt. CRM-Lizenzkosten (HubSpot, Pipedrive, etc.) sind NICHT enthalten. Wir helfen Ihnen bei der Auswahl des passenden Plans.': '* Ceny netto (bez VAT). Koszty licencji CRM (HubSpot, Pipedrive, itp.) NIE są wliczone. Pomożemy Ci wybrać odpowiedni plan.',
 
-    # CTA Section
-    'Bereit zu starten': 'Gotowy do startu',
-    'Sprechen Sie mit einem Experten': 'Porozmawiaj z ekspertem',
+    # FAQ section
+    'Häufig gestellte <span class="text-gradient">Fragen</span>': 'Najczęściej zadawane <span class="text-gradient">Pytania</span>',
+
+    '💰 Welches CRM soll ich wählen?': '💰 Które CRM wybrać?',
+    '<strong>HubSpot:</strong> Am besten für Marketing + Sales zusammen. Kostenlose Version verfügbar, später ab €50/Monat.<br><br>\n                        <strong>Pipedrive:</strong> Einfaches Sales-CRM. €14/Monat pro User. Perfekt für kleine Teams.<br><br>\n                        <strong>Zoho CRM:</strong> Günstigste Option. Ab €14/Monat. Gut für Startups.<br><br>\n                        <strong>GoHighLevel:</strong> All-in-One für Agenturen. Ab €97/Monat.<br><br>\n                        Wir beraten Sie kostenlos, welches System zu Ihrem Budget und Prozess passt.': '<strong>HubSpot:</strong> Najlepszy dla marketingu + sprzedaży razem. Wersja darmowa dostępna, płatna od €50/mies.<br><br>\n                        <strong>Pipedrive:</strong> Prosty CRM sprzedażowy. €14/mies na użytkownika. Idealny dla małych zespołów.<br><br>\n                        <strong>Zoho CRM:</strong> Najtańsza opcja. Od €14/mies. Dobry dla startupów.<br><br>\n                        <strong>GoHighLevel:</strong> All-in-one dla agencji. Od €97/mies.<br><br>\n                        Doradzamy bezpłatnie, który system pasuje do Twojego budżetu i procesów.',
+
+    '⏱️ Wie lange dauert die Einrichtung?': '⏱️ Jak długo trwa konfiguracja?',
+    '<strong>Basic Setup:</strong> 3-5 Werktage<br>\n                        <strong>Advanced Setup:</strong> 7-10 Werktage<br><br>\n                        Nach dem Kick-off-Call starten wir sofort. Sie bekommen wöchentliche Updates und können jederzeit Fragen stellen.': '<strong>Basic Setup:</strong> 3-5 dni roboczych<br>\n                        <strong>Advanced Setup:</strong> 7-10 dni roboczych<br><br>\n                        Po rozmowie kick-off startujemy od razu. Dostajesz cotygodniowe aktualizacje i możesz zadawać pytania w każdej chwili.',
+
+    '🔧 Brauche ich technische Kenntnisse?': '🔧 Czy potrzebuję wiedzy technicznej?',
+    '<strong>Nein.</strong> Wir richten alles für Sie ein. Sie bekommen eine Schulung, wie Sie das CRM nutzen, Leads bearbeiten und Reports ansehen. Nach dem Setup arbeitet alles automatisch.': '<strong>Nie.</strong> Wszystko skonfigurujemy dla Ciebie. Dostaniesz szkolenie, jak korzystać z CRM, obsługiwać leady i przeglądać raporty. Po konfiguracji wszystko działa automatycznie.',
+
+    '📊 Was sind Offline Conversions?': '📊 Czym są Offline Conversions?',
+    'Google Ads sieht normalerweise nur Klicks und Formular-Absendungen. Aber der echte Verkauf passiert offline (Anruf, Meeting, Rechnung). <strong>Offline Conversions</strong> senden diese Daten zurück an Google. Resultat: Google weiß, welche Klicks zu echten Kunden führen, und optimiert Ihre Kampagnen automatisch auf Umsatz statt nur Leads. <strong>ROAS steigt um durchschnittlich 30-50%.</strong>': 'Google Ads normalnie widzi tylko kliknięcia i wysłane formularze. Ale prawdziwa sprzedaż dzieje się offline (telefon, spotkanie, faktura). <strong>Offline Conversions</strong> wysyłają te dane z powrotem do Google. Rezultat: Google wie, które kliknięcia prowadzą do prawdziwych klientów i automatycznie optymalizuje Twoje kampanie pod sprzedaż zamiast tylko leadów. <strong>ROAS rośnie średnio o 30-50%.</strong>',
+
+    '💬 Wie funktionieren Telegram-Benachrichtigungen?': '💬 Jak działają powiadomienia Telegram?',
+    'Sobald ein Lead von Ihrer Website kommt, bekommt Ihr Sales-Manager eine Nachricht in Telegram (oder Slack/WhatsApp). Die Nachricht enthält: Name, E-Mail, Telefon, Quelle (Google Ads/Meta/etc.). Manager kann sofort reagieren. <strong>Durchschnittliche Reaktionszeit: unter 5 Minuten.</strong>': 'Gdy tylko lead przychodzi z Twojej strony, Twój menedżer sprzedaży dostaje wiadomość na Telegram (lub Slack/WhatsApp). Wiadomość zawiera: Imię, Email, Telefon, Źródło (Google Ads/Meta/itp.). Menedżer może zareagować natychmiast. <strong>Średni czas reakcji: poniżej 5 minut.</strong>',
+
+    '🔄 Bietet ihr auch laufende Betreuung?': '🔄 Czy oferujecie bieżące wsparcie?',
+    'Das Setup ist einmalig. Danach arbeitet alles automatisch. Falls Sie später weitere Automatisierungen, zusätzliche Integrationen oder Optimierungen brauchen, können Sie uns jederzeit beauftragen. Stundensatz: €99/Stunde.': 'Konfiguracja jest jednorazowa. Potem wszystko działa automatycznie. Jeśli później potrzebujesz dodatkowych automatyzacji, integracji lub optymalizacji, możesz nas zatrudnić w każdej chwili. Stawka godzinowa: €99/godz.',
+
+    # Contact section
+    'id="contact"': 'id="kontakt"',
+    'Bereit, Ihr CRM <span class="text-gradient">zu verbinden?</span>': 'Gotowy połączyć swój <span class="text-gradient">CRM?</span>',
+    'Kostenlose Beratung — wir helfen Ihnen, das richtige CRM zu wählen': 'Bezpłatna konsultacja — pomożemy Ci wybrać właściwy CRM',
+
+    'Name *': 'Imię *',
     'Ihr Name': 'Twoje imię',
-    'Name': 'Imię',
-    'Ihre E-Mail': 'Twój email',
-    'Email': 'Email',
-    'Telefon (optional)': 'Telefon (opcjonalnie)',
-    'Ihre Nachricht': 'Twoja wiadomość',
-    'Nachricht': 'Wiadomość',
-    'Nachricht senden': 'Wyślij wiadomość',
-    'Anfrage senden': 'Wyślij zapytanie',
+    'E-Mail *': 'Email *',
+    'ihre.email@firma.de': 'twoj.email@firma.pl',
+    'Telefon': 'Telefon',
+    '+49 123 456 7890': '+48 123 456 789',
+    'Website': 'Strona internetowa',
+    'https://ihre-website.de': 'https://twoja-strona.pl',
+    'Ihre Nachricht *': 'Twoja wiadomość *',
+    'Welches CRM nutzen Sie aktuell? Wie viele Leads bekommen Sie pro Monat?': 'Którego CRM obecnie używasz? Ile leadów dostajesz miesięcznie?',
+    'Kostenlose Beratung anfragen': 'Zamów bezpłatną konsultację',
+    'Antwort innerhalb von 24 Stunden. Keine Verpflichtungen.': 'Odpowiedź w ciągu 24 godzin. Bez zobowiązań.',
 
     # Footer
-    'Folgen Sie uns': 'Śledź nas',
-    'Rechtliches': 'Informacje prawne',
+    'Ihre Marketing-Agentur für DACH und Osteuropa.': 'Twoja agencja marketingowa dla rynków DACH i Europy Wschodniej.',
+    'Leistungen': 'Usługi',
+    'CRM-Integration': 'Integracja CRM',
+    '&copy; 2025 Vermarkter. Alle Rechte vorbehalten.': '&copy; 2025 Vermarkter. Wszelkie prawa zastrzeżone.',
     'Datenschutz': 'Polityka prywatności',
-    'Impressum': 'Nota prawna',
+    'Impressum': 'Informacje prawne',
 
-    # Testimonials content
-    'Vermarkter hat uns geholfen, unseren Online-Shop in Deutschland in 6 Tagen zu starten. Die ersten Verkäufe kamen schon nach einer Woche! ROAS 380%.': 'Vermarkter pomógł nam uruchomić sklep internetowy w Niemczech w 6 dni. Pierwsze sprzedaże nadeszły już po tygodniu! ROAS 380%.',
-    'Professionelles Team! Google Ads hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden, endlich kompetente Marketer gefunden.': 'Profesjonalny zespół! Google Ads zwrócił się w pierwszym miesiącu. ROAS 420%. Bardzo zadowolony, wreszcie znalazłem kompetentnych marketerów.',
-    'Die Meta Ads-Kampagnen brachten uns +180% Lead-Wachstum in 2 Monaten. Empfehle allen, die Transparenz und Ergebnisse suchen!': 'Kampanie Meta Ads przyniosły nam +180% wzrost leadów w 2 miesiące. Polecam wszystkim szukającym przejrzystości i wyników!',
-    'Die SEO-Strategie funktioniert! In 4 Monaten sind wir in den Top 3 für alle Keywords. Organischer Traffic ist um 300% gestiegen.': 'Strategia SEO działa! W 4 miesiące jesteśmy w TOP 3 dla wszystkich słów kluczowych. Organiczny ruch wzrósł o 300%.',
-    'Google-Werbung in 2 Tagen gestartet. Nach einer Woche bekamen wir die ersten 15 Anfragen. CRM-Integration mit Telegram - einfach Bombe!': 'Reklama Google uruchomiona w 2 dni. Po tygodniu otrzymaliśmy pierwsze 15 zapytań. Integracja CRM z Telegramem - po prostu bomba!',
-    'Das Vermarkter-Team kennt sich aus. Transparente Reports, klare KPIs, immer auf Deutsch erreichbar. Arbeiten seit 8 Monaten zusammen.': 'Zespół Vermarkter zna się na rzeczy. Przejrzyste raporty, jasne KPI, zawsze dostępni po polsku. Współpracujemy od 8 miesięcy.',
-    'München': 'Monachium',
-    'Berlin': 'Berlin',
-    'Warschau': 'Warszawa',
-    'Düsseldorf': 'Düsseldorf',
-    'Bau': 'Budowa',
-    'Kosmetik': 'Kosmetyka',
-
-    # Pricing - missing translations
-    'Werbebudget bis': 'Budżet reklamowy do',
-    'Werbebudget ab': 'Budżet reklamowy od',
-    '/ Monat': '/ miesiąc',
-    'ODER': 'LUB',
-
-    # Cookies - missing translation
-    'Wir verwenden Cookies, um die Website-Leistung zu verbessern und Analysen durchzuführen. Durch die weitere Nutzung der Website stimmen Sie unserer Polityka prywatnościerklärung zu.': 'Używamy plików cookie, aby poprawić wydajność strony i przeprowadzać analizy. Kontynuując korzystanie ze strony, zgadzasz się z naszą polityką prywatności.',
-    'Polityka prywatnościerklärung': 'polityce prywatności',
-    'Akzeptieren': 'Akceptuję',
-    'Ablehnen': 'Odrzucam',
-
-    # Additional missing translations
-    '* Cennik exkl. MwSt. Mindestvertrag 3 Monate, danach keine Bindung.': '* Ceny bez VAT. Minimalna umowa 3 miesiące, potem brak zobowiązań.',
-    'exkl. MwSt': 'bez VAT',
-    'Mindestvertrag': 'Minimalna umowa',
-    'danach keine Bindung': 'potem brak zobowiązań',
-    'keine Bindung': 'brak zobowiązań',
-    '📊 Unsere Cases': '📊 Nasze projekty',
-    'Das Ergebnis ist eine Prognose, kein Versprechen.<br>': 'Wynik to prognoza, a nie obietnica.<br>',
-    'Das Ergebnis ist eine Prognose, kein Versprechen.': 'Wynik to prognoza, a nie obietnica.',
-    'Marketing beginnt mit ehrlichen Zahlen.': 'Marketing zaczyna się od uczciwych liczb.',
-    'Marketing starts with honest numbers.': 'Marketing zaczyna się od uczciwych liczb.',
-    'Launch Ads': 'Uruchom reklamy',
-    'Launch in 48 Stunden': 'Uruchomienie w 48 godzin',
-    'Für alle': 'Dla wszystkich',
-    'Alle Rechte': 'Wszystkie prawa',
+    # Chatbot
+    'Hallo! 👋 Haben Sie Fragen zur CRM-Integration?': 'Cześć! 👋 Masz pytania dotyczące integracji CRM?',
+    'Schreiben Sie Ihre Frage...': 'Napisz swoje pytanie...',
 }
 
-# Apply translations (sorted by length to avoid partial replacements)
-for de, pl in sorted(translations.items(), key=lambda x: len(x[0]), reverse=True):
+# Apply translations
+for de, pl in translations.items():
     content = content.replace(de, pl)
 
-# Restore HTML tags
-for placeholder, tag in html_tags.items():
-    content = content.replace(placeholder, tag)
-
-# Write result
-with open('pl/index.html', 'w', encoding='utf-8') as f:
+# Write Polish version
+with open('pl/crm-integration.html', 'w', encoding='utf-8') as f:
     f.write(content)
 
-print("Translation completed!")
+print("Polish CRM page created successfully!")
+print("Translated phrases:", len(translations))
