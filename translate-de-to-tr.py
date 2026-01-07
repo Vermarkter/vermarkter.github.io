@@ -26,6 +26,9 @@ translations = {
     '<html lang="de">': '<html lang="tr">',
     '<title>CRM-Integration | Keine verlorenen Leads mehr | Vermarkter</title>': '<title>CRM Entegrasyonu | Artık Kayıp Lead Yok | Vermarkter</title>',
     'content="CRM-Integration für Marketing-Agenturen': 'content="Pazarlama ajansları için CRM entegrasyonu',
+    'content="CRM Entegrasyonu für Marketing & Sales. HubSpot, Pipedrive, Zoho. Lead-Tracking, Çevrimdışı Dönüşümler, Telegram Bildirimleri. Keine verlorenen Leads mehr.': 'content="Pazarlama ve satış için CRM entegrasyonu. HubSpot, Pipedrive, Zoho. Lead takibi, çevrimdışı dönüşümler, Telegram bildirimleri. Artık kayıp lead yok.',
+    'content="Verbinden Sie Ihre Marketing-Kampagnen mit dem Vertrieb. Lead-Tracking, Otomasyon, echtes ROAS.': 'content="Pazarlama kampanyalarınızı satışla birleştirin. Lead takibi, otomasyon, gerçek ROAS.',
+    'content="Verbinden Sie Marketing und Sales': 'content="Pazarlama ve satışı birleştirin',
 
     # Navigation
     'Startseite': 'Ana Sayfa',
@@ -53,10 +56,13 @@ translations = {
     'Die häufigsten Probleme ohne CRM-Integration': 'CRM entegrasyonu olmadan yaşanan en yaygın sorunlar',
     'Leads in Excel-Tabellen': 'Excel tablolarında Lead\'ler',
     'Ihre Leads landen in unübersichtlichen Tabellen. Manager müssen manuell sortieren, priorisieren und nachfassen. <strong style="color: #EF4444;">Zeitverlust + verpasste Chancen.</strong>': 'Lead\'leriniz karmaşık tablolara düşer. Yöneticiler manuel olarak sıralamak, önceliklendirmek ve takip etmek zorunda. <strong style="color: #EF4444;">Zaman kaybı + kaçırılan fırsatlar.</strong>',
+    'Ihre Leads landen in unübersichtlichen Tabellen. Yönetici müssen manuell sortieren, priorisieren und nachfassen. <strong style="color: #EF4444;">Zeitverlust + verpasste Chancen.</strong>': 'Lead\'leriniz karmaşık tablolara düşer. Yöneticiler manuel olarak sıralamak, önceliklendirmek ve takip etmek zorunda. <strong style="color: #EF4444;">Zaman kaybı + kaçırılan fırsatlar.</strong>',
     'Manager reagieren zu spät': 'Yöneticiler çok geç tepki veriyor',
     'Lead kommt rein → Manager sieht ihn erst Stunden später → Lead kauft bei der Konkurrenz. <strong style="color: #EF4444;">Ohne sofortige Benachrichtigung verlieren Sie 50% der Leads.</strong>': 'Lead gelir → Yönetici saatler sonra görür → Lead rakipten satın alır. <strong style="color: #EF4444;">Anında bildirim olmadan lead\'lerin %50\'sini kaybedersiniz.</strong>',
+    'Lead kommt rein → Yönetici sieht ihn erst Stunden später → Lead kauft bei der Konkurrenz. <strong style="color: #EF4444;">Ohne sofortige Benachrichtigung verlieren Sie 50% der Leads.</strong>': 'Lead gelir → Yönetici saatler sonra görür → Lead rakipten satın alır. <strong style="color: #EF4444;">Anında bildirim olmadan lead\'lerin %50\'sini kaybedersiniz.</strong>',
     'Welche Werbung funktioniert?': 'Hangi reklam işe yarıyor?',
     'Google Ads zeigt Klicks, aber nicht Verkäufe. Sie wissen nicht, welche Kampagnen echte Kunden bringen. <strong style="color: #EF4444;">Ohne Offline Conversions verbrennen Sie Budget.</strong>': 'Google Ads tıklamaları gösterir, satışları değil. Hangi kampanyaların gerçek müşteri getirdiğini bilemezsiniz. <strong style="color: #EF4444;">Çevrimdışı dönüşümler olmadan bütçe yakarsınız.</strong>',
+    'Google Ads zeigt Klicks, aber keine Verkäufe. Sie wissen nicht, welche Kampagnen echte Kunden bringen. <strong style="color: #EF4444;">Ohne Çevrimdışı Dönüşümler verbrennen Sie Budget.</strong>': 'Google Ads tıklamaları gösterir, satışları değil. Hangi kampanyaların gerçek müşteri getirdiğini bilemezsiniz. <strong style="color: #EF4444;">Çevrimdışı dönüşümler olmadan bütçe yakarsınız.</strong>',
 
     # Solution section
     '✅ Unsere <span class="text-gradient">Lösung</span>': '✅ Bizim <span class="text-gradient">Çözümümüz</span>',
@@ -161,6 +167,30 @@ translations = {
     # Chatbot
     'Hallo! 👋 Haben Sie Fragen zur CRM-Integration?': 'Merhaba! 👋 CRM entegrasyonu hakkında sorularınız mı var?',
     'Schreiben Sie Ihre Frage...': 'Sorunuzu yazın...',
+
+    # Mixed German-Turkish patterns that need fixing
+    'CRM Entegrasyonu für Marketing & Sales. HubSpot, Pipedrive, Zoho. Lead-Tracking, Çevrimdışı Dönüşümler, Telegram Bildirimleri. Keine verlorenen Leads mehr.': 'Pazarlama ve satış için CRM entegrasyonu. HubSpot, Pipedrive, Zoho. Lead takibi, çevrimdışı dönüşümler, Telegram bildirimleri. Artık kayıp lead yok.',
+    'Verbinden Sie Ihre Marketing-Kampagnen mit dem Vertrieb. Lead-Tracking, Otomasyon, echtes ROAS.': 'Pazarlama kampanyalarınızı satışla birleştirin. Lead takibi, otomasyon, gerçek ROAS.',
+    'Hallo! 👋 Haben Sie Fragen zur CRM Entegrasyonu?': 'Merhaba! 👋 CRM entegrasyonu hakkında sorularınız mı var?',
+    'Ihre Marketing-Agentur für DACH und Osteuropa.': 'DACH ve Doğu Avrupa için Pazarlama Ajansınız.',
+    'Das Setup ist tek seferlik. Danach arbeitet alles automatisch. Falls Sie später weitere Otomasyonen, zusätzliche Integrationen oder Optimierungen brauchen, können Sie uns jederzeit beauftragen. Stundensatz: €99/Stunde.': 'Kurulum tek seferliktir. Sonrasında her şey otomatik çalışır. Daha sonra ek otomasyonlar, ekstra entegrasyonlar veya optimizasyonlar gerekirse, bizi istediğiniz zaman görevlendirebilirsiniz. Saatlik ücret: 99€/saat.',
+    'İletişimieren Sie uns': 'İletişime Geçin',
+    'Fiyatlar zzgl. MwSt. CRM-Lizenzkosten (HubSpot, Pipedrive, etc.) sind NICHT enthalten. Wir helfen Ihnen bei der Auswahl des passenden Plans.': 'Fiyatlara KDV dahil değildir. CRM lisans maliyetleri (HubSpot, Pipedrive vb.) DAHİL DEĞİLDİR. Size uygun planı seçmenizde yardımcı oluruz.',
+    '<strong>HubSpot:</strong> Am besten für Marketing + Sales zusammen. Kostenlose Version verfügbar, später ab €50/Monat.<br><br>': '<strong>HubSpot:</strong> Pazarlama + satış birlikte için en iyi. Ücretsiz sürüm mevcut, daha sonra ayda 50€\'dan başlayan.<br><br>',
+    '<strong>Pipedrive:</strong> Einfaches Sales-CRM. €14/Monat pro User. Perfekt für kleine Teams.<br><br>': '<strong>Pipedrive:</strong> Basit Satış CRM\'i. Kullanıcı başına ayda 14€. Küçük ekipler için mükemmel.<br><br>',
+    '<strong>Zoho CRM:</strong> Günstigste Option. Ab €14/Monat. Gut für Startups.<br><br>': '<strong>Zoho CRM:</strong> En uygun fiyatlı seçenek. Ayda 14€\'dan başlayan. Startup\'lar için iyi.<br><br>',
+    '<strong>GoHighLevel:</strong> All-in-One für Agenturen. Ab €97/Monat.<br><br>': '<strong>GoHighLevel:</strong> Ajanslar için hepsi bir arada. Ayda 97€\'dan başlayan.<br><br>',
+    'Wir beraten Sie kostenlos, welches System zu Ihrem Budget und Prozess passt.': 'Hangi sistemin bütçenize ve sürecinize uygun olduğu konusunda ücretsiz danışmanlık veriyoruz.',
+    'Nach dem Kick-off-Call starten wir sofort. Sie bekommen wöchentliche Updates und können jederzeit Fragen stellen.': 'Başlangıç görüşmesinden hemen sonra başlarız. Haftalık güncellemeler alırsınız ve istediğiniz zaman soru sorabilirsiniz.',
+    '<strong>Nein.</strong> Wir richten alles für Sie ein. Sie bekommen eine Schulung, wie Sie das CRM nutzen, Leads bearbeiten und Reports ansehen. Nach dem Setup arbeitet alles automatisch.': '<strong>Hayır.</strong> Her şeyi biz kuruyoruz. CRM\'i nasıl kullanacağınız, lead\'leri nasıl işleyeceğiniz ve raporları nasıl görüntüleyeceğiniz konusunda eğitim alırsınız. Kurulumdan sonra her şey otomatik çalışır.',
+    '📊 Was sind Çevrimdışı Dönüşümler?': '📊 Çevrimdışı Dönüşümler nedir?',
+    'Google Ads sieht normalerweise nur Klicks und Formular-Absendungen. Aber der echte Satış passiert offline (Anruf, Meeting, Rechnung). <strong>Çevrimdışı Dönüşümler</strong> senden diese Daten zurück an Google. Resultat: Google weiß, welche Klicks zu echten Kunden führen, und optimiert Ihre Kampagnen automatisch auf Umsatz statt nur Leads. <strong>ROAS steigt um durchschnittlich 30-50%.</strong>': 'Google Ads normalde sadece tıklamaları ve form gönderimlerini görür. Ancak gerçek satış çevrimdışı gerçekleşir (arama, toplantı, fatura). <strong>Çevrimdışı Dönüşümler</strong> bu verileri Google\'a geri gönderir. Sonuç: Google hangi tıklamaların gerçek müşterilere yol açtığını bilir ve kampanyalarınızı sadece lead\'ler yerine ciro için otomatik olarak optimize eder. <strong>ROAS ortalama %30-50 artar.</strong>',
+    'Sobald ein Lead von Ihrer Web Sitesi kommt, bekommt Ihr Sales-Yönetici eine Nachricht in Telegram (oder Slack/WhatsApp). Die Nachricht enthält: Name, E-Mail, Telefon, Quelle (Google Ads/Meta/etc.). Yönetici kann sofort reagieren. <strong>Durchschnittliche Reaktionszeit: unter 5 Minuten.</strong>': 'Web sitenizden bir lead gelir gelmez, satış yöneticiniz Telegram\'da (veya Slack/WhatsApp) bir mesaj alır. Mesaj şunları içerir: İsim, E-posta, Telefon, Kaynak (Google Ads/Meta/vb.). Yönetici hemen tepki verebilir. <strong>Ortalama yanıt süresi: 5 dakikanın altında.</strong>',
+
+    # Last remaining mixed patterns
+    'Google Ads zeigt Klicks, aber keine Verkäufe. Sie wissen nicht, welche Kampagnen echte Kunden bringen. <strong style="color: #EF4444;">Ohne Çevrimdışı Dönüşümler verbrennen Sie Budget.</strong>': 'Google Ads tıklamaları gösterir, satışları değil. Hangi kampanyaların gerçek müşteri getirdiğini bilemezsiniz. <strong style="color: #EF4444;">Çevrimdışı dönüşümler olmadan bütçe yakarsınız.</strong>',
+    'Lead kommt von der Web Sitesi → landet sofort im CRM → Yönetici bekommt Telegram-Nachricht → Anruf innerhalb 5 Minuten.': 'Web sitesinden lead gelir → anında CRM\'e düşer → Yönetici Telegram bildirimi alır → 5 dakika içinde arama.',
+    'Wir senden Satışsdaten zurück an Google Ads und Meta. Die Algorithmen lernen, welche Klicks echte Kunden werden. <strong>Besseres ROAS automatisch.</strong>': 'Satış verilerini Google Ads ve Meta\'ya geri gönderiyoruz. Algoritmalar hangi tıklamaların gerçek müşteriye dönüştüğünü öğrenir. <strong>Otomatik olarak daha iyi ROAS.</strong>',
 }
 
 # Apply translations
