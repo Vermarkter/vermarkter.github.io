@@ -467,6 +467,29 @@ if (chatbotButtonForAnalytics) {
     });
 }
 
+// ==================== SCROLL TO TOP BUTTON ====================
+const scrollToTopBtn = document.getElementById('scrollToTop');
+
+if (scrollToTopBtn) {
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Scroll to top when clicked
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        trackEvent('Navigation', 'Click', 'Scroll to Top');
+    });
+}
+
 // ==================== EXPORT FOR EXTERNAL USE ====================
 window.Vermarkter = {
     calculate,

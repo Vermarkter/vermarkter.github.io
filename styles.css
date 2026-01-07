@@ -1897,3 +1897,97 @@ input[type="number"], select {
     filter: drop-shadow(0 0 15px rgba(0,0,0,0.5)) !important;
     font-size: 5rem !important;
 }
+
+/* ============================================
+   SCROLL TO TOP BUTTON
+   ============================================ */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--brand), #2563EB);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(59, 130, 246, 0.6);
+}
+
+/* ============================================
+   COMPACT SIZING FIX (ANTI-GIGANTISM)
+   ============================================ */
+
+@media (min-width: 1024px) {
+    /* 1. Зменшуємо шрифти заголовків */
+    h1 { font-size: 3rem !important; }
+    h2 { font-size: 2.2rem !important; }
+    h3 { font-size: 1.5rem !important; }
+
+    /* 2. ТАРИФИ (PRICING CARDS) - Стискаємо */
+    .service-card, .pricing-card {
+        padding: 1.5rem !important;
+    }
+
+    /* Ціна */
+    .price-amount {
+        font-size: 2.5rem !important;
+    }
+
+    /* Список опцій */
+    .service-features li, .pricing-features li {
+        font-size: 0.95rem !important;
+        padding: 0.5rem 0 !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Кнопки */
+    .btn {
+        padding: 0.75rem 1.5rem !important;
+        font-size: 1rem !important;
+    }
+
+    /* 3. КАЛЬКУЛЯТОР */
+    .calculator__result-value {
+        font-size: 1.8rem !important;
+    }
+
+    /* 4. ЗАГАЛЬНІ ВІДСТУПИ */
+    section {
+        padding: 4rem 0 !important;
+    }
+
+    /* 5. PRICING GRID - Рівна ширина */
+    .pricing-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 2rem !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+}
+
+@media (max-width: 1023px) {
+    .pricing-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+    }
+}
