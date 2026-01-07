@@ -1984,6 +1984,26 @@ input[type="number"], select {
         max-width: 1200px !important;
         margin: 0 auto !important;
     }
+
+    /* 6. PRICING CARDS - Перенос довгих слів */
+    .price-amount {
+        word-break: break-word !important;
+        hyphens: auto !important;
+        overflow-wrap: break-word !important;
+    }
+
+    /* 7. PRICING CARD HOVER - Посилання */
+    .pricing-card-link {
+        text-decoration: none !important;
+        color: inherit !important;
+        display: block !important;
+    }
+
+    .pricing-card-link:hover .pricing-card {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 12px 40px rgba(59, 130, 246, 0.3) !important;
+        border-color: var(--brand) !important;
+    }
 }
 
 @media (max-width: 1023px) {
