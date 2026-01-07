@@ -1520,6 +1520,7 @@ header {
     list-style: none !important;
     margin: 0 !important;
     padding: 0 !important;
+    width: 100% !important;
 }
 
 .lang-dropdown a {
@@ -1529,6 +1530,8 @@ header {
     text-decoration: none !important;
     font-size: 0.9rem !important;
     transition: 0.2s !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .lang-dropdown a:hover {
