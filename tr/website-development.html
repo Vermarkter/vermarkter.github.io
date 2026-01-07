@@ -503,19 +503,82 @@
     </main>
 
     <!-- FOOTER -->
-    <footer style="background: rgba(0,0,0,0.3); padding: 3rem 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+    <footer class="footer" style="padding: 4rem 0 2rem; border-top: 1px solid var(--glass-border);">
         <div class="container">
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
-                <a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Anasayfa</a>
-                <a href="index.html#services" style="color: rgba(255,255,255,0.7); text-decoration: none;">Hizmetler</a>
-                <a href="crm-integration.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">CRM Entegrasyonu</a>
-                <a href="https://t.me/vermarkters_bot" target="_blank" style="color: rgba(255,255,255,0.7); text-decoration: none;">İletişim</a>
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-column">
+                    <div class="footer-brand" style="margin-bottom: 1rem;">
+                        <div class="logo" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5"/>
+                            </svg>
+                            <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+                        </div>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">AB pazarları için pazarlama ajansı.</p>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Hizmetler</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="google-ads.html" style="color: var(--text-secondary); text-decoration: none;">Google Ads</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="meta-ads.html" style="color: var(--text-secondary); text-decoration: none;">Meta Ads</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="tiktok-ads.html" style="color: var(--text-secondary); text-decoration: none;">TikTok Ads</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="seo.html" style="color: var(--text-secondary); text-decoration: none;">SEO</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="crm-integration.html" style="color: var(--text-secondary); text-decoration: none;">CRM Entegrasyonu</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="website-development.html" style="color: var(--text-secondary); text-decoration: none;">Website Geliştirme</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Bilgi</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;"><a href="index.html#testimonials" style="color: var(--text-secondary); text-decoration: none;">Yorumlar</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="index.html#faq" style="color: var(--text-secondary); text-decoration: none;">SSS</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="privacy-policy.html" style="color: var(--text-secondary); text-decoration: none;">Gizlilik Politikası</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="impressum.html" style="color: var(--text-secondary); text-decoration: none;">Yasal Bilgiler</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">İletişim</h4>
+                    <ul class="footer-links" style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.75rem;">
+                            <a href="mailto:maps.werbung@gmail.com" style="color: var(--text-secondary); text-decoration: none;">
+                                <span style="opacity: 0.7;">📧</span> maps.werbung@gmail.com
+                            </a>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <a href="https://t.me/vermarkters_bot" target="_blank" style="color: var(--text-secondary); text-decoration: none;">
+                                <span style="opacity: 0.7;">💬</span> @vermarkters_bot
+                            </a>
+                        </li>
+                        <li style="margin-bottom: 0.75rem;">
+                            <p style="color: var(--text-muted); margin: 0;">Ofisler: Berlin, Varşova, Kiev</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <p style="opacity: 0.6; font-size: 0.9rem;">
-                © 2025 Vermarkter. Tüm hakları saklıdır.
-            </p>
+
+            <div class="footer-bottom" style="border-top: 1px solid var(--glass-border); padding-top: 2rem; text-align: center;">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2025 Vermarkter. Tüm hakları saklıdır.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- COOKIE BANNER (Hidden by default) -->
+    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border-top: 1px solid var(--glass-border); padding: 1.5rem; z-index: 10000; box-shadow: 0 -4px 20px rgba(0,0,0,0.2);">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
+            <p style="color: var(--text-secondary); margin: 0; flex: 1; min-width: 250px;">
+                Deneyiminizi iyileştirmek için çerezler kullanıyoruz. Siteyi kullanmaya devam ederek
+                <a href="privacy-policy.html" style="color: var(--brand); text-decoration: underline;">Gizlilik Politikamızı</a> kabul etmiş olursunuz.
+            </p>
+            <div style="display: flex; gap: 1rem;">
+                <button id="accept-cookies" class="btn btn-primary" style="padding: 0.75rem 1.5rem; white-space: nowrap;">Kabul Et</button>
+                <button id="decline-cookies" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; white-space: nowrap;">Reddet</button>
+            </div>
+        </div>
+    </div>
 
     <!-- SCRIPTS -->
     <script src="../script.js?v=20251228c"></script>
