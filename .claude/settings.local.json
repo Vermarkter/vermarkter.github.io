@@ -19,7 +19,8 @@
       "Bash(python translate-de-to-tr.py:*)",
       "Bash(python translate-de-to-ru.py:*)",
       "Bash(python translate-de-to-en.py:*)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(iconv:*)"
     ]
   }
 }
