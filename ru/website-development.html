@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Разработка веб-сайтов и приложений от €199 до сложных проектов электронной коммерции. React, Next.js, Flutter. Запуск за 7-30 дней. Поддержка на русском языке.">
+    <meta name="keywords" content="Разработка веб-сайтов, Разработка приложений, Landing Page, Электронная коммерция, React, Next.js, Flutter, Мобильные приложения, WordPress, Webflow">
+    <meta name="author" content="Vermarkter Agency">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vermarkter.eu/ru/website-development">
+    <meta property="og:title" content="Разработка Сайтов и Приложений — Vermarkter">
+    <meta property="og:description" content="От Landing Pages (€199) до сложных решений для электронной коммерции. React, Next.js, Flutter. Быстрый запуск.">
+    <meta property="og:image" content="https://vermarkter.eu/og-image-dev-ru.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vermarkter.eu/ru/website-development">
+    <meta property="twitter:title" content="Разработка Сайтов и Приложений — Vermarkter">
+    <meta property="twitter:description" content="Профессиональная разработка веб-сайтов и приложений">
+    <meta property="twitter:image" content="https://vermarkter.eu/og-image-dev-ru.jpg">
+
+    <title>Разработка Сайтов и Приложений — Vermarkter</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css?v=20251228c">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- HEADER (STICKY) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <!-- SVG Logo (Lightning Bolt) -->
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <!-- Text -->
+    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+</a>
+
+                <div class="nav-desktop">
+                    <a href="index.html#services">Услуги</a>
+                    <a href="#preise">Цены</a>
+                    <a href="#prozess">Процесс</a>
+                    <a href="#technologien">Технологии</a>
+                    <a href="#faq">Часто Спрашивают</a>
+                    <a href="#contact">Контакт</a>
+                </div>
+
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                    <!-- Theme Toggle -->
+                    <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+                        🌙
+                    </button>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                <rect width="16" height="4" fill="#fff"/>
+                                <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                            </svg>
+                            RU ▼
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../de/website-development.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#000"/>
+                                    <rect y="4" width="16" height="4" fill="#D00"/>
+                                    <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                                </svg>
+                                DE
+                            </a></li>
+                            <li><a href="../en/website-development.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#012169"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
+                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
+                                    <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
+                                </svg>
+                                EN
+                            </a></li>
+                            <li><a href="../ua/website-development.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#0057B7"/>
+                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
+                                </svg>
+                                UA
+                            </a></li>
+                            <li><a href="../pl/website-development.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="6" fill="#fff"/>
+                                    <rect y="6" width="16" height="6" fill="#D4213D"/>
+                                </svg>
+                                PL
+                            </a></li>
+                            <li><a href="../ru/website-development.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="4" fill="#fff"/>
+                                    <rect y="4" width="16" height="4" fill="#0039A6"/>
+                                    <rect y="8" width="16" height="4" fill="#D52B1E"/>
+                                </svg>
+                                RU
+                            </a></li>
+                            <li><a href="../tr/website-development.html" style="display:block; padding:5px 10px;">
+                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
+                                    <rect width="16" height="12" fill="#E30A17"/>
+                                    <circle cx="6" cy="6" r="2.5" fill="#fff"/>
+                                    <circle cx="7" cy="6" r="2" fill="#E30A17"/>
+                                    <path d="M9,4.5 L9.5,6 L11,6 L9.8,6.8 L10.3,8.3 L9,7.3 L7.7,8.3 L8.2,6.8 L7,6 L8.5,6 Z" fill="#fff"/>
+                                </svg>
+                                TR
+                            </a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle mobile menu">☰</button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html#services">Услуги</a>
+        <a href="#preise">Цены</a>
+        <a href="#prozess">Процесс</a>
+        <a href="#technologien">Технологии</a>
+        <a href="#faq">Часто Спрашивают</a>
+        <a href="#contact">Контакт</a>
+    </div>
+
+    <main style="padding-top: 80px;">
+        <!-- ========== HERO SECTION ========== -->
+        <section class="hero" style="min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 4rem 1.5rem;">
+            <div class="container" style="max-width: 900px;">
+                <h1 style="font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;">
+                    Веб-сайты и Приложения<br>
+                    <span class="text-gradient">Под ключ</span>
+                </h1>
+                <p style="font-size: clamp(1.1rem, 2vw, 1.4rem); line-height: 1.6; opacity: 0.9; max-width: 700px; margin: 0 auto 2.5rem;">
+                    <strong>От Landing Pages от €199 до сложных проектов электронной коммерции.</strong><br>
+                    React, Next.js, Flutter. Запуск за 7-30 дней.<br>
+                    <strong style="color: var(--brand);">🇷🇺 Поддержка на русском языке 24/7</strong>
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        Начать проект
+                    </a>
+                    <a href="#preise" class="btn" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 1rem 2.5rem; font-size: 1.1rem;">
+                        Посмотреть цены
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PRICING SECTION ========== -->
+        <section id="preise" class="section" style="padding: 5rem 1.5rem; background: rgba(255,255,255,0.02);">
+            <div class="container" style="max-width: 1200px;">
+                <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 3rem;">
+                    💰 <span class="text-gradient">Прозрачные Цены</span>
+                </h2>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin-bottom: 4rem;">
+                    <!-- TIER 1: LANDING PAGE -->
+                    <a href="https://t.me/vermarkters_bot" target="_blank" class="pricing-card-link" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="pricing-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">LANDING PAGE</h3>
+                            <p style="opacity: 0.8; margin-bottom: 1.5rem;">Идеально для стартапов и промо</p>
+                            <div style="margin-bottom: 2rem;">
+                                <span class="price-amount text-gradient" style="font-size: 3rem; font-weight: 900;">€199</span>
+                                <span style="font-size: 1.5rem; opacity: 0.7;"> - €500</span>
+                            </div>
+                            <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem; flex-grow: 1;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 1 страница с адаптивным дизайном</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Форма обратной связи</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ SEO-оптимизация</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Google PageSpeed 90+</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Запуск за 3-7 дней</li>
+                                <li style="padding: 0.5rem 0;"><strong>Поддержка на русском языке</strong></li>
+                            </ul>
+                            <span class="btn" style="display: inline-block; padding: 1rem 2rem; margin-top: auto;">Заказать сейчас</span>
+                        </div>
+                    </a>
+
+                    <!-- TIER 2: BUSINESS WEBSITE (FEATURED) -->
+                    <a href="https://t.me/vermarkters_bot" target="_blank" class="pricing-card-link" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="pricing-card pricing-card--featured" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 2px solid var(--brand); border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s ease; position: relative; height: 100%; display: flex; flex-direction: column; box-shadow: 0 0 40px rgba(59, 130, 246, 0.3);">
+                            <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--brand), #2563EB); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem;">
+                                ⭐ ПОПУЛЯРНАЯ
+                            </div>
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">БИЗНЕС-САЙТ</h3>
+                            <p style="opacity: 0.8; margin-bottom: 1.5rem;">Для малых и средних предприятий</p>
+                            <div style="margin-bottom: 2rem;">
+                                <span class="price-amount text-gradient" style="font-size: 3rem; font-weight: 900;">€800</span>
+                                <span style="font-size: 1.5rem; opacity: 0.7;"> - €3,000</span>
+                            </div>
+                            <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem; flex-grow: 1;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ 5-15 страниц</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ CMS (WordPress/Webflow)</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Блог + функция новостей</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Google Analytics + Search Console</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Запуск за 14-21 день</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Обучение CMS</li>
+                                <li style="padding: 0.5rem 0;"><strong>Поддержка на русском языке</strong></li>
+                            </ul>
+                            <span class="btn" style="display: inline-block; padding: 1rem 2rem; margin-top: auto;">Заказать сейчас</span>
+                        </div>
+                    </a>
+
+                    <!-- TIER 3: E-COMMERCE -->
+                    <a href="https://t.me/vermarkters_bot" target="_blank" class="pricing-card-link" style="text-decoration: none; color: inherit; display: block;">
+                        <div class="pricing-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column;">
+                            <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">ЭЛЕКТРОННАЯ КОММЕРЦИЯ</h3>
+                            <p style="opacity: 0.8; margin-bottom: 1.5rem;">Интернет-магазин / Сложные проекты</p>
+                            <div style="margin-bottom: 2rem;">
+                                <span class="price-amount text-gradient" style="font-size: 3rem; font-weight: 900;">€3,000+</span>
+                            </div>
+                            <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem; flex-grow: 1;">
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Полная функциональность электронной коммерции</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Интеграция платежных шлюзов</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Панель администратора</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Интеграция CRM</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Мобильное приложение (опционально)</li>
+                                <li style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Запуск за 30-60 дней</li>
+                                <li style="padding: 0.5rem 0;"><strong>Поддержка на русском языке</strong></li>
+                            </ul>
+                            <span class="btn" style="display: inline-block; padding: 1rem 2rem; margin-top: auto;">Заказать сейчас</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- MOBILE APPS SECTION -->
+                <div class="service-card" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 3rem; text-align: center; margin-top: 3rem;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem;">
+                        📱 <span class="text-gradient">Мобильные Приложения</span>
+                    </h2>
+                    <h3 style="font-size: 1.3rem; opacity: 0.9; margin-bottom: 1rem;">Flutter / React Native</h3>
+                    <p style="font-size: 2.5rem; font-weight: 900; margin-bottom: 2rem;">
+                        <span class="text-gradient">€5,000 - €25,000</span>
+                    </p>
+                    <ul style="text-align: left; list-style: none; padding: 0; max-width: 600px; margin: 0 auto 2rem;">
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Нативный внешний вид и ощущение на iOS и Android</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Интеграция с вашим API</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Push-уведомления</li>
+                        <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">✓ Публикация в App Store и Google Play</li>
+                        <li style="padding: 0.75rem 0;"><strong>Поддержка на русском языке после запуска</strong></li>
+                    </ul>
+                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn" style="display: inline-block; padding: 1rem 2.5rem;">
+                        Обсудить проект приложения
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PROCESS SECTION ========== -->
+        <section id="prozess" class="section" style="padding: 5rem 1.5rem;">
+            <div class="container" style="max-width: 1100px;">
+                <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 3rem;">
+                    🚀 <span class="text-gradient">Наш Процесс</span>
+                </h2>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2.5rem;">
+                    <!-- Step 1 -->
+                    <div style="text-align: center;">
+                        <div style="background: linear-gradient(135deg, #3B82F6, #2563EB); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                            1️⃣
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 700;">Консультация</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">Мы понимаем ваши требования, цели и бюджет. Бесплатная консультация через Telegram.</p>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div style="text-align: center;">
+                        <div style="background: linear-gradient(135deg, #3B82F6, #2563EB); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                            2️⃣
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 700;">Дизайн</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">Макеты в Figma. Вы получаете 2-3 варианта дизайна на выбор. Неограниченные правки.</p>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div style="text-align: center;">
+                        <div style="background: linear-gradient(135deg, #3B82F6, #2563EB); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                            3️⃣
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 700;">Разработка</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">Чистый код, современные технологии, регулярные обновления. Доступ к staging-среде.</p>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div style="text-align: center;">
+                        <div style="background: linear-gradient(135deg, #3B82F6, #2563EB); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;">
+                            4️⃣
+                        </div>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.75rem; font-weight: 700;">Запуск</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">Развертывание, конфигурация DNS, SSL. 30 дней поддержки после запуска включены.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== TECHNOLOGIES SECTION ========== -->
+        <section id="technologien" class="section" style="padding: 5rem 1.5rem; background: rgba(255,255,255,0.02);">
+            <div class="container" style="max-width: 1100px;">
+                <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 3rem;">
+                    🛠️ <span class="text-gradient">Технологический Стек</span>
+                </h2>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <!-- Frontend -->
+                    <div class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--brand);">Frontend</h3>
+                        <ul style="list-style: none; padding: 0; opacity: 0.9;">
+                            <li style="padding: 0.4rem 0;">• React & Next.js</li>
+                            <li style="padding: 0.4rem 0;">• Vue.js & Nuxt</li>
+                            <li style="padding: 0.4rem 0;">• Tailwind CSS</li>
+                            <li style="padding: 0.4rem 0;">• TypeScript</li>
+                        </ul>
+                    </div>
+
+                    <!-- Backend -->
+                    <div class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--brand);">Backend</h3>
+                        <ul style="list-style: none; padding: 0; opacity: 0.9;">
+                            <li style="padding: 0.4rem 0;">• Node.js & Express</li>
+                            <li style="padding: 0.4rem 0;">• Python & Django</li>
+                            <li style="padding: 0.4rem 0;">• PHP & Laravel</li>
+                            <li style="padding: 0.4rem 0;">• PostgreSQL / MongoDB</li>
+                        </ul>
+                    </div>
+
+                    <!-- Mobile -->
+                    <div class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--brand);">Мобильные</h3>
+                        <ul style="list-style: none; padding: 0; opacity: 0.9;">
+                            <li style="padding: 0.4rem 0;">• Flutter</li>
+                            <li style="padding: 0.4rem 0;">• React Native</li>
+                            <li style="padding: 0.4rem 0;">• Firebase</li>
+                            <li style="padding: 0.4rem 0;">• Native APIs</li>
+                        </ul>
+                    </div>
+
+                    <!-- CMS & E-commerce -->
+                    <div class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.3rem; margin-bottom: 1rem; color: var(--brand);">CMS и Электронная коммерция</h3>
+                        <ul style="list-style: none; padding: 0; opacity: 0.9;">
+                            <li style="padding: 0.4rem 0;">• WordPress</li>
+                            <li style="padding: 0.4rem 0;">• Webflow</li>
+                            <li style="padding: 0.4rem 0;">• Shopify</li>
+                            <li style="padding: 0.4rem 0;">• WooCommerce</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== WHY US SECTION ========== -->
+        <section class="section" style="padding: 5rem 1.5rem;">
+            <div class="container" style="max-width: 1100px;">
+                <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 3rem;">
+                    ✨ <span class="text-gradient">Почему Vermarkter?</span>
+                </h2>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                    <div class="service-card" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">⚡ Быстрый запуск</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">Landing Page за 3-7 дней, бизнес-сайт за 2-3 недели. Никаких бесконечных ожиданий.</p>
+                    </div>
+
+                    <div class="service-card" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">💎 Современный дизайн</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">Макеты Figma, glassmorphism, современный UI/UX. Ваш веб-сайт выглядит как 2025, а не 2015.</p>
+                    </div>
+
+                    <div class="service-card" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">📱 Mobile First</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">70% пользователей с мобильных устройств. Мы разрабатываем сначала мобильную версию, потом десктоп.</p>
+                    </div>
+
+                    <div class="service-card" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🚀 Производительность</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">Google PageSpeed 90+, оптимизированное время загрузки, Core Web Vitals. Быстро = лучшие рейтинги.</p>
+                    </div>
+
+                    <div class="service-card" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🔧 Поддержка включена</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">30 дней поддержки после запуска. Обновления, исправления ошибок, небольшие изменения — бесплатно.</p>
+                    </div>
+
+                    <div class="service-card" style="background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 2rem;">
+                        <h3 style="font-size: 1.2rem; margin-bottom: 0.75rem;">🇷🇺 На русском языке</h3>
+                        <p style="opacity: 0.8; line-height: 1.6;">Общение на русском языке. Без языковых барьеров, без недоразумений.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FAQ SECTION ========== -->
+        <section id="faq" class="section" style="padding: 5rem 1.5rem; background: rgba(255,255,255,0.02);">
+            <div class="container" style="max-width: 800px;">
+                <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 3rem;">
+                    ❓ <span class="text-gradient">Часто Спрашиваемые Вопросы</span>
+                </h2>
+
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
+                            Сколько времени занимает разработка?
+                        </summary>
+                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
+                            Landing Page: 3-7 дней<br>
+                            Бизнес-сайт: 14-21 день<br>
+                            Электронная коммерция: 30-60 дней<br>
+                            Мобильное приложение: 45-90 дней<br>
+                            Точная длительность зависит от сложности и ваших требований.
+                        </p>
+                    </details>
+
+                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
+                            Могу ли я получить скидку на комплект услуг?
+                        </summary>
+                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
+                            Да! Например: Landing Page (€199) + Google Ads Setup (€399) + CRM Integration (€299) = Отдельно €897 → Вместе €599 (Экономия €298). Напишите нам в Telegram для индивидуальных предложений!
+                        </p>
+                    </details>
+
+                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
+                            Какие методы оплаты вы принимаете?
+                        </summary>
+                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
+                            Банковский перевод (SEPA), PayPal, кредитная карта, криптовалюты. 50% предоплата перед началом проекта, 50% перед запуском.
+                        </p>
+                    </details>
+
+                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
+                            Получу ли я исходный код?
+                        </summary>
+                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
+                            Да, после полной оплаты вы получаете весь исходный код и все ассеты. Вы владеете 100% прав на ваш веб-сайт/приложение.
+                        </p>
+                    </details>
+
+                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
+                            Предоставляете ли вы постоянную поддержку?
+                        </summary>
+                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
+                            Да. После бесплатных 30 дней мы предлагаем пакеты поддержки от €99/месяц: обновления, резервные копии, безопасность, небольшие изменения.
+                        </p>
+                    </details>
+
+                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
+                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
+                            Что если мне не понравится дизайн?
+                        </summary>
+                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
+                            Мы предлагаем 2-3 варианта дизайна на выбор и неограниченные правки, пока вы не будете удовлетворены. Мы начинаем разработку только после вашего одобрения дизайна.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CTA SECTION ========== -->
+        <section id="contact" class="section" style="padding: 5rem 1.5rem;">
+            <div class="container" style="max-width: 700px; text-align: center;">
+                <h2 style="font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 1.5rem;">
+                    Готовы к вашему <span class="text-gradient">проекту?</span>
+                </h2>
+                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2.5rem; line-height: 1.6;">
+                    Бесплатная консультация. Фиксированные цены. Быстрый запуск.<br>
+                    Напишите нам в Telegram и начнем работу.
+                </p>
+                <a href="https://t.me/vermarkters_bot" target="_blank" class="btn" style="padding: 1.2rem 3rem; font-size: 1.2rem; display: inline-block;">
+                    💬 Открыть Telegram
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background: rgba(0,0,0,0.3); padding: 3rem 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.1);">
+        <div class="container">
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
+                <a href="index.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Главная</a>
+                <a href="index.html#services" style="color: rgba(255,255,255,0.7); text-decoration: none;">Услуги</a>
+                <a href="crm-integration.html" style="color: rgba(255,255,255,0.7); text-decoration: none;">Интеграция CRM</a>
+                <a href="https://t.me/vermarkters_bot" target="_blank" style="color: rgba(255,255,255,0.7); text-decoration: none;">Контакт</a>
+            </div>
+            <p style="opacity: 0.6; font-size: 0.9rem;">
+                © 2025 Vermarkter. Все права защищены.
+            </p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="../script.js?v=20251228c"></script>
+</body>
+</html>
