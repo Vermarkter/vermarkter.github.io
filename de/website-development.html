@@ -41,9 +41,21 @@
     <link rel="stylesheet" href="../styles.css?v=final_fix_1">
 
     <style>
+        /* Bundle Grid: 2 columns on desktop, 1 on mobile */
+        @media (min-width: 769px) {
+            .bundle-grid {
+                grid-template-columns: 1fr 1fr !important;
+                align-items: center;
+            }
+        }
+
+        /* Footer Grid Responsive */
         @media (max-width: 768px) {
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .bundle-grid {
+                grid-template-columns: 1fr !important;
             }
         }
         @media (max-width: 576px) {
@@ -389,59 +401,62 @@
                 </div>
 
                 <!-- SMART START BUNDLE -->
-                <div class="service-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15)); backdrop-filter: blur(20px); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 20px; padding: 3rem; text-align: center; margin-top: 3rem; position: relative; overflow: hidden;">
+                <div class="service-card bundle-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15)); backdrop-filter: blur(20px); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 20px; padding: 2.5rem; margin-top: 3rem; position: relative; overflow: hidden;">
                     <!-- Badge -->
                     <div style="position: absolute; top: 20px; right: -35px; background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 8px 50px; transform: rotate(45deg); font-weight: 900; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
                         BESTSELLER
                     </div>
 
-                    <h2 style="font-size: 2.2rem; margin-bottom: 1rem; font-weight: 900;">
-                        🚀 <span class="text-gradient">Smart Start Bundle</span>
-                    </h2>
-                    <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 1.5rem;">Landing Page + Google Ads + CRM-Integration</p>
+                    <!-- Bundle Grid (2 columns on desktop, 1 on mobile) -->
+                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <!-- LEFT COLUMN: Pricing & CTA -->
+                        <div style="text-align: center;">
+                            <h2 style="font-size: 2rem; margin-bottom: 0.75rem; font-weight: 900;">
+                                🚀 <span class="text-gradient">Smart Start Bundle</span>
+                            </h2>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem;">Landing Page + Google Ads + CRM-Integration</p>
 
-                    <div style="margin-bottom: 2rem;">
-                        <p style="font-size: 1.3rem; opacity: 0.7; text-decoration: line-through; margin-bottom: 0.5rem;">€897</p>
-                        <p style="font-size: 3.5rem; font-weight: 900; margin: 0;">
-                            <span class="text-gradient">€599</span>
-                        </p>
-                        <p style="color: #10B981; font-weight: 700; font-size: 1.1rem; margin-top: 0.5rem;">Sie sparen €298 (33%)</p>
-                    </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <p style="font-size: 1.2rem; opacity: 0.6; text-decoration: line-through; margin-bottom: 0.25rem;">€1.097</p>
+                                <p style="font-size: 3rem; font-weight: 900; margin: 0;">
+                                    <span class="text-gradient">€599</span>
+                                </p>
+                                <p style="color: #10B981; font-weight: 700; font-size: 1rem; margin-top: 0.5rem;">Sie sparen €498 (45%)</p>
+                            </div>
 
-                    <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 2rem; margin-bottom: 2rem;">
-                        <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; font-weight: 700;">Das Bundle enthält:</h3>
-                        <div style="display: grid; gap: 1rem; text-align: left;">
-                            <div style="display: flex; align-items: start; gap: 1rem;">
-                                <span style="font-size: 1.5rem;">🎨</span>
-                                <div>
-                                    <strong>Landing Page (Wert: €299)</strong>
-                                    <p style="opacity: 0.8; margin: 0.25rem 0 0; font-size: 0.9rem;">Modernes Design, mobil-optimiert, 3-7 Tage Launch</p>
+                            <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #3B82F6, #2563EB); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);">
+                                🎁 Bundle jetzt sichern
+                            </a>
+                        </div>
+
+                        <!-- RIGHT COLUMN: Bundle Contents -->
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; font-weight: 700; text-align: center;">Das Bundle enthält:</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🎨</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Landing Page (Express)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Wert: €199</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div style="display: flex; align-items: start; gap: 1rem;">
-                                <span style="font-size: 1.5rem;">📊</span>
-                                <div>
-                                    <strong>Google Ads Setup (Wert: €399)</strong>
-                                    <p style="opacity: 0.8; margin: 0.25rem 0 0; font-size: 0.9rem;">Kampagnen-Setup, Keyword-Recherche, Conversion-Tracking</p>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">📊</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Google Ads Setup (Pro)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Wert: €399</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div style="display: flex; align-items: start; gap: 1rem;">
-                                <span style="font-size: 1.5rem;">🔗</span>
-                                <div>
-                                    <strong>CRM-Integration (Wert: €199)</strong>
-                                    <p style="opacity: 0.8; margin: 0.25rem 0 0; font-size: 0.9rem;">Lead-Erfassung, E-Mail-Benachrichtigungen, Dashboard</p>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🔗</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">CRM-Integration (Basic)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Wert: €499</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div style="background: rgba(59, 130, 246, 0.1); border-left: 4px solid #3B82F6; padding: 1rem; border-radius: 8px; margin-bottom: 2rem; text-align: left;">
-                        <p style="margin: 0; font-weight: 600;">💡 <strong>Perfekt für:</strong> Startups und Unternehmen, die sofort online durchstarten und qualifizierte Leads generieren möchten.</p>
-                    </div>
-
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1.25rem 3rem; font-size: 1.2rem; font-weight: 700; background: linear-gradient(135deg, #3B82F6, #2563EB); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);">
-                        🎁 Bundle jetzt sichern
-                    </a>
                 </div>
             </div>
         </section>
