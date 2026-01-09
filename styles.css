@@ -2014,3 +2014,22 @@ input[type="number"], select {
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
     }
 }
+
+/* ============================================
+   BUNDLE GRID - RESPONSIVE
+   ============================================ */
+
+/* Desktop: 2 columns side by side */
+.bundle-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+}
+
+/* Tablet and Mobile: Stack vertically */
+@media (max-width: 768px) {
+    .bundle-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+}
