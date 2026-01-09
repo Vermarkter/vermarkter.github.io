@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Bundle Grid</title>
+    <link rel="stylesheet" href="styles.css?v=bundle_fix_2columns">
+    <style>
+        body {
+            background: #0F172A;
+            color: white;
+            padding: 2rem;
+        }
+        .test-info {
+            background: rgba(59, 130, 246, 0.2);
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h1>Bundle Grid Test Page</h1>
+        <p>This page tests if .bundle-grid CSS works correctly.</p>
+        <p><strong>Expected:</strong> Two columns side by side (Left: RED box, Right: BLUE box)</p>
+        <p><strong>CSS loaded:</strong> styles.css?v=bundle_fix_2columns</p>
+    </div>
+
+    <!-- SMART START BUNDLE -->
+    <div class="service-card bundle-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15)); backdrop-filter: blur(20px); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden;">
+
+        <!-- Bundle Grid -->
+        <div class="bundle-grid">
+            <!-- LEFT COLUMN -->
+            <div style="background: rgba(255, 0, 0, 0.3); padding: 2rem; border-radius: 12px;">
+                <h2 style="font-size: 2rem; margin-bottom: 0.75rem;">LEFT COLUMN</h2>
+                <p>If you see this on the LEFT and blue box on the RIGHT, CSS works!</p>
+                <p style="font-size: 3rem; font-weight: 900;">€599</p>
+            </div>
+
+            <!-- RIGHT COLUMN -->
+            <div style="background: rgba(0, 0, 255, 0.3); padding: 2rem; border-radius: 12px;">
+                <h3 style="font-size: 1.15rem; margin-bottom: 1rem;">RIGHT COLUMN</h3>
+                <p>✓ Landing Page (Express)</p>
+                <p>✓ Google Ads Setup (Pro)</p>
+                <p>✓ CRM-Integration (Basic)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-info" style="margin-top: 2rem;">
+        <h2>Debug Info:</h2>
+        <p>Open DevTools (F12) and check:</p>
+        <ul>
+            <li>Network tab: Does styles.css?v=bundle_fix_2columns load with 200 OK?</li>
+            <li>Elements tab: Inspect .bundle-grid, what grid-template-columns value is applied?</li>
+            <li>Console: Any CSS errors?</li>
+        </ul>
+    </div>
+
+    <script>
+        // Log computed styles
+        const bundleGrid = document.querySelector('.bundle-grid');
+        if (bundleGrid) {
+            const styles = window.getComputedStyle(bundleGrid);
+            console.log('Bundle Grid Computed Styles:');
+            console.log('display:', styles.display);
+            console.log('grid-template-columns:', styles.gridTemplateColumns);
+            console.log('gap:', styles.gap);
+        }
+    </script>
+</body>
+</html>
