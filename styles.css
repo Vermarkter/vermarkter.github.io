@@ -2016,20 +2016,12 @@ input[type="number"], select {
 }
 
 /* ============================================
-   BUNDLE GRID - RESPONSIVE
+   BUNDLE GRID - ALWAYS 2 COLUMNS
    ============================================ */
 
-/* Desktop: 2 columns side by side */
+/* Always 2 columns side by side, like on service pages */
 .bundle-grid {
     display: grid !important;
     grid-template-columns: 1fr 1fr !important;
     gap: 2rem !important;
-}
-
-/* Tablet and Mobile: Stack vertically */
-@media (max-width: 768px) {
-    .bundle-grid {
-        grid-template-columns: 1fr !important;
-        gap: 1.5rem !important;
-    }
 }
