@@ -31,7 +31,12 @@
       "Bash(xargs:*)",
       "Bash(fi)",
       "Bash(ls:*)",
-      "Bash(grep:*)"
+      "Bash(grep:*)",
+      "Bash(for file in de/*.html en/*.html pl/*.html ru/*.html tr/*.html ua/*.html)",
+      "Bash(do if ! grep -q \"impressum\" \"$file\")",
+      "Bash(then echo \"Missing impressum: $file\")",
+      "Bash(do if ! grep -qi \"datenschutz\\\\|privacy\" \"$file\")",
+      "Bash(then echo \"Missing privacy: $file\")"
     ]
   }
 }
