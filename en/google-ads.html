@@ -591,134 +591,63 @@
     </section>
 
     <!-- SMART START BUNDLE -->
-    <section class="calculator-section" style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border-top: 1px solid var(--brand); border-bottom: 1px solid var(--brand); padding: 6rem 0;">
-        <div class="container">
-            <div class="pricing-card pricing-card--featured" style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--accent); position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 20px; right: -35px; transform: rotate(45deg); background: var(--accent); color: #000; padding: 5px 40px; font-weight: 800; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-                    BESTSELLER
-                </div>
+                <div class="service-card bundle-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15)); backdrop-filter: blur(20px); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 20px; padding: 2.5rem; margin-top: 3rem; position: relative; overflow: hidden;">
+                    <!-- Badge -->
+                    <div style="position: absolute; top: 20px; right: -35px; background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 8px 50px; transform: rotate(45deg); font-weight: 900; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
+                        BESTSELLER
+                    </div>
 
-                <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                    <!-- Left: Offer -->
-                    <div>
-                        <h3 style="font-size: 2rem; margin-bottom: 10px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔥 Smart Start Bundle</h3>
-                        <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 20px;">Website + Google Ads + CRM</p>
+                    <!-- Bundle Grid (2 columns on desktop, 1 on mobile) -->
+                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <!-- LEFT COLUMN: Pricing & CTA -->
+                        <div style="text-align: center;">
+                            <h2 style="font-size: 2rem; margin-bottom: 0.75rem; font-weight: 900;">
+                                🚀 <span class="text-gradient">Smart Start Bundle</span>
+                            </h2>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem;">Landing Page + Google Ads + CRM Integration</p>
 
-                        <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px;">
-                            <span style="text-decoration: line-through; color: var(--text-muted); font-size: 1.2rem;">€1,097</span>
-                            <span style="font-size: 3rem; font-weight: 900; color: var(--text-main);">€599</span>
+                            <div style="margin-bottom: 1.5rem;">
+                                <p style="font-size: 1.2rem; opacity: 0.6; text-decoration: line-through; margin-bottom: 0.25rem;">€1,097</p>
+                                <p style="font-size: 3rem; font-weight: 900; margin: 0;">
+                                    <span class="text-gradient">€599</span>
+                                </p>
+                                <p style="color: #10B981; font-weight: 700; font-size: 1rem; margin-top: 0.5rem;">You save €498 (45%)</p>
+                            </div>
+
+                            <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #3B82F6, #2563EB); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);">
+                                🎁 Secure Bundle Now
+                            </a>
                         </div>
-                        <p style="color: var(--success); font-weight: 700; margin-bottom: 25px;">You save €498 (45%)</p>
 
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Secure Bundle</a>
+                        <!-- RIGHT COLUMN: Bundle Contents -->
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; font-weight: 700; text-align: center;">Bundle includes:</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🎨</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Landing Page (Express)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Value: €199</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">📊</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Google Ads Setup (Pro)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Value: €399</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🔗</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">CRM Integration (Basic)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Value: €499</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Right: List -->
-                    <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
-                        <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Bundle includes:</h4>
-                        <ul style="display: flex; flex-direction: column; gap: 12px;">
-                            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                                <span>🎨 Landing Page (Express)</span>
-                                <span style="color: var(--brand); font-weight: 700;">€199</span>
-                            </li>
-                            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                                <span>📊 Google Ads Setup (Pro)</span>
-                                <span style="color: var(--brand); font-weight: 700;">€399</span>
-                            </li>
-                            <li style="display: flex; justify-content: space-between; align-items: center;">
-                                <span>🔗 CRM Integration (Basic)</span>
-                                <span style="color: var(--brand); font-weight: 700;">€499</span>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" style="padding: 6rem 0;">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    Frequently Asked <span class="text-gradient">Questions</span>
-                </h2>
-            </div>
-
-            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        💰 How much does Google Ads management cost?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
-                        <strong style="color: var(--brand);">100% fixed price</strong> — We charge <strong>no commission</strong> on your ad spend. You only pay the fixed monthly fee.
-                    </p>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary); line-height: 1.7;">
-                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
-                            <span>Starter: €399/month (budget up to €2,500)</span>
-                        </li>
-                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
-                            <span>Growth: €699/month (budget up to €10,000, Google + Meta Ads)</span>
-                        </li>
-                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
-                            <span>Business: from €1,000/month (budget from €10,000+)</span>
-                        </li>
-                    </ul>
-                    <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 1rem; font-size: 0.95rem;">
-                        <strong>No hidden costs.</strong> Full budget control — 100% of your ad spend goes directly into your campaigns.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        ⏱️ How quickly will I see results?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Launch in 48 hours, first optimizations after 3 days, first leads in 7 days. Stable performance after 4-6 weeks.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        🎯 Which industries is Google Ads suitable for?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Google Ads works for almost all industries: e-commerce, B2B services, local businesses, SaaS, education, healthcare, and more. We adapt the strategy to your industry.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        📊 What reports will I receive?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Weekly performance reports with all important metrics: clicks, conversions, CPA, ROAS. Plus monthly strategy calls with your Account Manager.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        🔒 What is the contract commitment?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Minimum contract 3 months (setup + optimization phase). Then monthly cancellation. No hidden fees.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        🌍 In which countries do you run ads?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        We work with clients across Europe: Germany, Austria, Switzerland, Poland, Czech Republic, Ukraine, and more. Support in English, German, Polish, Russian, Ukrainian, and Turkish.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- CONTACT FORM -->
     <section id="contact" style="padding: 6rem 0; background: var(--bg-secondary);">

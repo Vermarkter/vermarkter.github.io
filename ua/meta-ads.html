@@ -588,134 +588,63 @@
     </section>
 
     <!-- SMART START BUNDLE -->
-    <section class="calculator-section" style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border-top: 1px solid var(--brand); border-bottom: 1px solid var(--brand); padding: 6rem 0;">
-        <div class="container">
-            <div class="pricing-card pricing-card--featured" style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--accent); position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 20px; right: -35px; transform: rotate(45deg); background: var(--accent); color: #000; padding: 5px 40px; font-weight: 800; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
-                    BESTSELLER
-                </div>
+                <div class="service-card bundle-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15)); backdrop-filter: blur(20px); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 20px; padding: 2.5rem; margin-top: 3rem; position: relative; overflow: hidden;">
+                    <!-- Badge -->
+                    <div style="position: absolute; top: 20px; right: -35px; background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 8px 50px; transform: rotate(45deg); font-weight: 900; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
+                        BESTSELLER
+                    </div>
 
-                <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                    <!-- Left: Offer -->
-                    <div>
-                        <h3 style="font-size: 2rem; margin-bottom: 10px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔥 Smart Start Bundle</h3>
-                        <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 20px;">Сайт + Google Ads + CRM</p>
+                    <!-- Bundle Grid (2 columns on desktop, 1 on mobile) -->
+                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <!-- LEFT COLUMN: Pricing & CTA -->
+                        <div style="text-align: center;">
+                            <h2 style="font-size: 2rem; margin-bottom: 0.75rem; font-weight: 900;">
+                                🚀 <span class="text-gradient">Smart Start Bundle</span>
+                            </h2>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem;">Сайт + Google Ads + CRM</p>
 
-                        <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px;">
-                            <span style="text-decoration: line-through; color: var(--text-muted); font-size: 1.2rem;">€1 097</span>
-                            <span style="font-size: 3rem; font-weight: 900; color: var(--text-main);">€599</span>
+                            <div style="margin-bottom: 1.5rem;">
+                                <p style="font-size: 1.2rem; opacity: 0.6; text-decoration: line-through; margin-bottom: 0.25rem;">€1,097</p>
+                                <p style="font-size: 3rem; font-weight: 900; margin: 0;">
+                                    <span class="text-gradient">€599</span>
+                                </p>
+                                <p style="color: #10B981; font-weight: 700; font-size: 1rem; margin-top: 0.5rem;">Ви економите €498 (45%)</p>
+                            </div>
+
+                            <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #3B82F6, #2563EB); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);">
+                                🎁 Отримати пакет
+                            </a>
                         </div>
-                        <p style="color: var(--success); font-weight: 700; margin-bottom: 25px;">Ви економите €498 (45%)</p>
 
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Отримати пакет</a>
+                        <!-- RIGHT COLUMN: Bundle Contents -->
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; font-weight: 700; text-align: center;">Пакет включає:</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🎨</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Landing Page (Express)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Вартість: €199</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">📊</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Google Ads Setup (Pro)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Вартість: €399</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🔗</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Інтеграція CRM (Basic)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Вартість: €499</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <!-- Right: List -->
-                    <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
-                        <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Пакет включає:</h4>
-                        <ul style="display: flex; flex-direction: column; gap: 12px;">
-                            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                                <span>🎨 Landing Page (Express)</span>
-                                <span style="color: var(--brand); font-weight: 700;">€199</span>
-                            </li>
-                            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                                <span>📊 Google Ads Setup (Pro)</span>
-                                <span style="color: var(--brand); font-weight: 700;">€399</span>
-                            </li>
-                            <li style="display: flex; justify-content: space-between; align-items: center;">
-                                <span>🔗 Інтеграція CRM (Basic)</span>
-                                <span style="color: var(--brand); font-weight: 700;">€499</span>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" style="padding: 6rem 0;">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    Часті <span class="text-gradient">питання</span>
-                </h2>
-            </div>
-
-            <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        💰 Скільки коштує управління Meta Ads?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
-                        <strong style="color: var(--brand);">100% фіксована ціна</strong> — Ми <strong>не беремо комісію</strong> з ваших рекламних витрат. Ви платите тільки фіксовану щомісячну плату.
-                    </p>
-                    <ul style="list-style: none; padding: 0; margin: 0; color: var(--text-secondary); line-height: 1.7;">
-                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
-                            <span>Starter: €399/місяць (бюджет до €2 500)</span>
-                        </li>
-                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
-                            <span>Growth: €699/місяць (бюджет до €10 000, Google + Meta Ads)</span>
-                        </li>
-                        <li style="padding: 0.5rem 0; display: flex; align-items: start;">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700;">✓</span>
-                            <span>Business: від €1 000/місяць (бюджет від €10 000+)</span>
-                        </li>
-                    </ul>
-                    <p style="color: var(--text-secondary); line-height: 1.7; margin-top: 1rem; font-size: 0.95rem;">
-                        <strong>Без прихованих платежів.</strong> Повний контроль бюджету — 100% ваших рекламних витрат ідуть прямо в ваші кампанії.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        ⏱️ Як швидко я побачу результати?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Старт за 48 годин, перша оптимізація через 3 дні, перші ліди за 7 днів. Стабільна продуктивність через 4-6 тижнів.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        🎯 Для яких галузей підходить Meta Ads?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Meta Ads відмінно працює для електронної комерції, локального бізнесу, B2B послуг, додатків, моди, краси, фітнесу та багато іншого. Особливо ефективна для візуальних продуктів та послуг.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        📊 Які звіти я отримаю?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Щотижневі звіти про ефективність з усіма важливими метриками: покази, кліки, конверсії, CPA, ROAS. Плюс щомісячні стратегічні дзвінки з вашим менеджером акаунту.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        🔒 Яка мінімальна тривалість контракту?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Мінімальний контракт 3 місяці (налаштування + фаза оптимізації). Після цього можна розірвати щомісяця. Без прихованих платежів.
-                    </p>
-                </div>
-
-                <div class="faq-item" style="background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
-                        🌍 В яких країнах ви показуєте рекламу?
-                    </h3>
-                    <p style="color: var(--text-secondary); line-height: 1.7;">
-                        Працюємо з клієнтами по всій Європі: Німеччина, Австрія, Швейцарія, Польща, Чехія, Україна та інші. Підтримка німецькою, англійською, польською, російською, українською та турецькою.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- CONTACT FORM -->
     <section id="contact" style="padding: 6rem 0; background: var(--bg-secondary);">

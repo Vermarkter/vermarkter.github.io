@@ -683,304 +683,64 @@
             </div>
         </section>
 
-        <!-- SMART START BUNDLE -->
-        <section class="calculator-section" style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border-top: 1px solid var(--brand); border-bottom: 1px solid var(--brand);">
-            <div class="container">
-                <div class="pricing-card pricing-card--featured" style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--accent); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 20px; right: -35px; transform: rotate(45deg); background: var(--accent); color: #000; padding: 5px 40px; font-weight: 800; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+    <!-- SMART START BUNDLE -->
+                <div class="service-card bundle-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15)); backdrop-filter: blur(20px); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 20px; padding: 2.5rem; margin-top: 3rem; position: relative; overflow: hidden;">
+                    <!-- Badge -->
+                    <div style="position: absolute; top: 20px; right: -35px; background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 8px 50px; transform: rotate(45deg); font-weight: 900; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
                         BESTSELLER
                     </div>
 
-                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                        <!-- Left: Offer -->
-                        <div>
-                            <h3 style="font-size: 2rem; margin-bottom: 10px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔥 Smart Start Bundle</h3>
-                            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 20px;">Strona + Google Ads + CRM</p>
+                    <!-- Bundle Grid (2 columns on desktop, 1 on mobile) -->
+                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <!-- LEFT COLUMN: Pricing & CTA -->
+                        <div style="text-align: center;">
+                            <h2 style="font-size: 2rem; margin-bottom: 0.75rem; font-weight: 900;">
+                                🚀 <span class="text-gradient">Smart Start Bundle</span>
+                            </h2>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem;">Landing Page + Google Ads + Integracja CRM</p>
 
-                            <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px;">
-                                <span style="text-decoration: line-through; color: var(--text-muted); font-size: 1.2rem;">€1 097</span>
-                                <span style="font-size: 3rem; font-weight: 900; color: var(--text-main);">€599</span>
+                            <div style="margin-bottom: 1.5rem;">
+                                <p style="font-size: 1.2rem; opacity: 0.6; text-decoration: line-through; margin-bottom: 0.25rem;">€1,097</p>
+                                <p style="font-size: 3rem; font-weight: 900; margin: 0;">
+                                    <span class="text-gradient">€599</span>
+                                </p>
+                                <p style="color: #10B981; font-weight: 700; font-size: 1rem; margin-top: 0.5rem;">Oszczędzasz €498 (45%)</p>
                             </div>
-                            <p style="color: var(--success); font-weight: 700; margin-bottom: 25px;">Oszczędzasz €498 (45%)</p>
 
-                            <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Zabezpiecz pakiet</a>
+                            <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #3B82F6, #2563EB); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);">
+                                🎁 Zabezpiecz pakiet teraz
+                            </a>
                         </div>
 
-                        <!-- Right: List -->
-                        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
-                            <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Pakiet zawiera:</h4>
-                            <ul style="display: flex; flex-direction: column; gap: 12px;">
-                                <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                                    <span>🎨 Landing Page (Express)</span>
-                                    <span style="color: var(--brand); font-weight: 700;">€199</span>
-                                </li>
-                                <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                                    <span>📊 Google Ads Setup (Pro)</span>
-                                    <span style="color: var(--brand); font-weight: 700;">€399</span>
-                                </li>
-                                <li style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span>🔗 Integracja CRM (Basic)</span>
-                                    <span style="color: var(--brand); font-weight: 700;">€499</span>
-                                </li>
-                            </ul>
+                        <!-- RIGHT COLUMN: Bundle Contents -->
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; font-weight: 700; text-align: center;">Pakiet zawiera:</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🎨</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Landing Page (Express)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Wartość: €199</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">📊</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Google Ads Setup (Pro)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Wartość: €399</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🔗</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Integracja CRM (Basic)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Wartość: €499</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- CALCULATOR SECTION -->
-        <section id="calculator-section" class="calculator-section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                        <span class="text-gradient">ROI Kalkulator</span>
-                    </h2>
-                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 1.5rem;">
-                        Oblicz rentowność swojej kampanii reklamowej
-                    </p>
-                    <p class="calculator-description" style="text-align: center; color: var(--text-secondary); font-size: 1rem; max-width: 700px; margin: 0 auto; line-height: 1.7;">
-                        💡 <strong style="color: var(--brand);">To prawdziwe narzędzie do planowania mediów.</strong> Te same formuły, których używają duże agencje. Przejrzyste, uczciwe, bez ukrytych kosztów.
-                    </p>
-                </div>
-
-                <div class="calculator" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem; max-width: 1200px; margin: 0 auto;">
-                    <!-- Preset Selector -->
-                    <div class="calculator__preset" style="margin-bottom: 3rem; text-align: center;">
-                        <label for="nicheSelector" style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem;">Wybierz swoją branżę:</label>
-                        <select id="nicheSelector" class="calculator__select" style="width: 100%; max-width: 400px; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-weight: 500; cursor: pointer;">
-                            <option value="custom">Własne dane</option>
-                            <option value="ecommerce">E-commerce (Produkte)</option>
-                            <option value="services">Usługi (Rzemiosło, Uroda)</option>
-                            <option value="realestate">Nieruchomości</option>
-                            <option value="b2b">B2B / Hurt</option>
-                            <option value="infobiz">Infobusiness / Kurse</option>
-                        </select>
-                    </div>
-
-                    <!-- Two Column Grid: Left (Inputs) + Right (Results) -->
-                    <div class="calculator__grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-                        <!-- Left Column: All Input Controls -->
-                        <div class="calculator__inputs">
-                            <!-- Budget -->
-                            <div class="calculator__input-group" data-input="budget" style="margin-bottom: 2rem;">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Miesięczny budżet (€)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="budgetSlider" min="100" max="10000" step="100" value="1000" style="flex: 1;">
-                                    <input type="number" id="budgetInput" min="100" max="10000" step="100" value="1000" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
-                                </div>
-                                <div class="calculator__value" id="budgetValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">1000</div>
-                            </div>
-
-                            <!-- CPC -->
-                            <div class="calculator__input-group" data-input="cpc" style="margin-bottom: 2rem;">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Koszt za kliknięcie (€)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="cpcSlider" min="0.1" max="5" step="0.1" value="0.8" style="flex: 1;">
-                                    <input type="number" id="cpcInput" min="0.1" max="5" step="0.1" value="0.8" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
-                                </div>
-                                <div class="calculator__value" id="cpcValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">0.8</div>
-                            </div>
-
-                            <!-- Wskaźnik konwersji -->
-                            <div class="calculator__input-group" data-input="cr" style="margin-bottom: 2rem;">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Wskaźnik konwersji (%)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="crSlider" min="0.5" max="15" step="0.1" value="3" style="flex: 1;">
-                                    <input type="number" id="crInput" min="0.5" max="15" step="0.1" value="3" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
-                                </div>
-                                <div class="calculator__value" id="crValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">3</div>
-                            </div>
-
-                            <!-- AOV -->
-                            <div class="calculator__input-group" data-input="aov" style="margin-bottom: 2rem;">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Średnia wartość zamówienia (€)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="aovSlider" min="10" max="10000" step="10" value="150" style="flex: 1;">
-                                    <input type="number" id="aovInput" min="10" max="10000" step="10" value="150" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
-                                </div>
-                                <div class="calculator__value" id="aovValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">150</div>
-                            </div>
-
-                            <!-- Margin -->
-                            <div class="calculator__input-group" data-input="margin">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Marża zysku (%)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="marginSlider" min="5" max="95" step="5" value="40" style="flex: 1;">
-                                    <input type="number" id="marginInput" min="5" max="95" step="5" value="40" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
-                                </div>
-                                <div class="calculator__value" id="marginValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">40</div>
-                            </div>
-                        </div>
-
-                        <!-- Right Column: Results Display -->
-                        <div class="calculator__results">
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; text-align: center;">
-                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Kliknięcia</div>
-                                <div class="calculator__result-value text-gradient" id="resultClicks" style="font-size: 2rem; font-weight: 800;">0</div>
-                            </div>
-
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; text-align: center;">
-                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Leads</div>
-                                <div class="calculator__result-value text-gradient" id="resultLeads" style="font-size: 2rem; font-weight: 800;">0</div>
-                            </div>
-
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; text-align: center;">
-                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">CPA</div>
-                                <div class="calculator__result-value text-gradient" id="resultCPA" style="font-size: 2rem; font-weight: 800;">€0</div>
-                            </div>
-
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; text-align: center;">
-                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">ROAS</div>
-                                <div class="calculator__result-value text-gradient" id="resultROAS" style="font-size: 2rem; font-weight: 800;">0%</div>
-                            </div>
-
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; text-align: center;">
-                                <div class="calculator__result-label" style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Zysk</div>
-                                <div class="calculator__result-value text-gradient" id="resultProfit" style="font-size: 2rem; font-weight: 800;">€0</div>
-                            </div>
-
-                            <!-- CTA LEAD MAGNET -->
-                            <span class="btn btn-primary" style="display: block; padding: 1.25rem 2rem; font-size: 1.1rem; font-weight: 700; text-align: center; background: linear-gradient(135deg, #4285F4, #34A853); border: none; border-radius: 12px; color: white; text-decoration: none; box-shadow: 0 8px 24px rgba(66,133,244,0.35); transition: all 0.3s ease; margin-top: 1rem;">
-                                🚀 Otrzymaj strategię dla tych liczb
-                            </span>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
-                    Wynik jest prognozą, nie obietnicą.<br>
-                    Marketing zaczyna się od uczciwych liczb.
-                </p>
-            </div>
-        </section>
-
-        <!-- TESTIMONIALS (INFINITE MARQUEE) -->
-        <section id="testimonials" class="testimonials-section" style="padding: 6rem 0;">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
-                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                        Opinie klientów
-                    </h2>
-                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                        Ponad 100 udanych projektów dla małych firm w UE
-                    </p>
-                </div>
-            </div>
-
-            <!-- Два ряди відгуків, що пливуть назустріч -->
-            <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%;">
-                <!-- Перший ряд: пливе вправо -->
-                <div class="marquee marquee-right" style="width: 100%; overflow: hidden;">
-                    <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollRight 40s linear infinite;">
-                        <!-- Testimonial 1 -->
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Vermarkter pomógł nam uruchomić sklep internetowy w Niemczech w 6 dni. Pierwsze sprzedaże nadeszły już po tygodniu! ROAS 380%."
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, Monachium</div>
-                        </div>
-
-                        <!-- Testimonial 2 -->
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Profesjonalny zespół! Google Ads zwrócił się w pierwszym miesiącu. ROAS 420%. Bardzo zadowolony, wreszcie znalazłem kompetentnych marketerów."
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii M.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Usługi, Berlin</div>
-                        </div>
-
-                        <!-- Testimonial 3 -->
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Kampanie Meta Ads przyniosły nam +180% wzrost leadów w 2 miesiące. Polecam wszystkim szukającym przejrzystości i wyników!"
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Maryna L.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">B2B, Warszawa</div>
-                        </div>
-
-                        <!-- Дублюємо для безперервної петлі -->
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Vermarkter pomógł nam uruchomić sklep internetowy w Niemczech w 6 dni. Pierwsze sprzedaże nadeszły już po tygodniu! ROAS 380%."
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, Monachium</div>
-                        </div>
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Profesjonalny zespół! Google Ads zwrócił się w pierwszym miesiącu. ROAS 420%. Bardzo zadowolony, wreszcie znalazłem kompetentnych marketerów."
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii M.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Usługi, Berlin</div>
-                        </div>
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Kampanie Meta Ads przyniosły nam +180% wzrost leadów w 2 miesiące. Polecam wszystkim szukającym przejrzystości i wyników!"
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Maryna L.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">B2B, Warszawa</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Другий ряд: пливе вліво -->
-                <div class="marquee marquee-left" style="width: 100%; overflow: hidden;">
-                    <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollLeft 40s linear infinite;">
-                        <!-- Testimonial 4 -->
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Strategia SEO działa! W 4 miesiące jesteśmy w TOP 3 dla wszystkich słów kluczowych. Organiczny ruch wzrósł o 300%."
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Yurii P.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, Warszawa</div>
-                        </div>
-
-                        <!-- Testimonial 5 -->
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Reklama Google uruchomiona w 2 dni. Po tygodniu otrzymaliśmy pierwsze 15 zapytań. Integracja CRM z Telegramem - po prostu bomba!"
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Serhii T.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Budowa, Düsseldorf</div>
-                        </div>
-
-                        <!-- Testimonial 6 -->
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Zespół Vermarkter zna się na rzeczy. Przejrzyste raporty, jasne KPI, zawsze dostępni po polsku. Współpracujemy od 8 miesięcy."
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Iryna K.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Kosmetyka, Berlin</div>
-                        </div>
-
-                        <!-- Дублюємо для безперервної петлі -->
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Strategia SEO działa! W 4 miesiące jesteśmy w TOP 3 dla wszystkich słów kluczowych. Organiczny ruch wzrósł o 300%."
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Yurii P.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, Warszawa</div>
-                        </div>
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Reklama Google uruchomiona w 2 dni. Po tygodniu otrzymaliśmy pierwsze 15 zapytań. Integracja CRM z Telegramem - po prostu bomba!"
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Serhii T.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Budowa, Düsseldorf</div>
-                        </div>
-                        <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                            <p class="testimonial-text" style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">
-                                "Zespół Vermarkter zna się na rzeczy. Przejrzyste raporty, jasne KPI, zawsze dostępni po polsku. Współpracujemy od 8 miesięcy."
-                            </p>
-                            <div class="testimonial-author" style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Iryna K.</div>
-                            <div class="testimonial-company" style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Kosmetyka, Berlin</div>
-                        </div>
-                    </div>
-                    </a></div>
-            </div>
-        </section>
 
         <!-- FAQ SECTION -->
         <section id="faq" class="services-section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">

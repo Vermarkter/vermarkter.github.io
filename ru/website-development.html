@@ -430,120 +430,64 @@
             </div>
         </section>
 
-        <!-- SMART START BUNDLE -->
-        <section class="calculator-section" style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border-top: 1px solid var(--brand); border-bottom: 1px solid var(--brand); padding: 6rem 0;">
-            <div class="container">
-                <div class="pricing-card pricing-card--featured" style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--accent); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 20px; right: -35px; transform: rotate(45deg); background: var(--accent); color: #000; padding: 5px 40px; font-weight: 800; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+    <!-- SMART START BUNDLE -->
+                <div class="service-card bundle-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15)); backdrop-filter: blur(20px); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 20px; padding: 2.5rem; margin-top: 3rem; position: relative; overflow: hidden;">
+                    <!-- Badge -->
+                    <div style="position: absolute; top: 20px; right: -35px; background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 8px 50px; transform: rotate(45deg); font-weight: 900; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
                         BESTSELLER
                     </div>
 
-                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                        <!-- Left: Offer -->
-                        <div>
-                            <h3 style="font-size: 2rem; margin-bottom: 10px; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔥 Smart Start Bundle</h3>
-                            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 20px;">Сайт + Google Ads + CRM</p>
+                    <!-- Bundle Grid (2 columns on desktop, 1 on mobile) -->
+                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <!-- LEFT COLUMN: Pricing & CTA -->
+                        <div style="text-align: center;">
+                            <h2 style="font-size: 2rem; margin-bottom: 0.75rem; font-weight: 900;">
+                                🚀 <span class="text-gradient">Smart Start Bundle</span>
+                            </h2>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem;">Сайт + Google Ads + CRM</p>
 
-                            <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px;">
-                                <span style="text-decoration: line-through; color: var(--text-muted); font-size: 1.2rem;">€1 097</span>
-                                <span style="font-size: 3rem; font-weight: 900; color: var(--text-main);">€599</span>
+                            <div style="margin-bottom: 1.5rem;">
+                                <p style="font-size: 1.2rem; opacity: 0.6; text-decoration: line-through; margin-bottom: 0.25rem;">€1,097</p>
+                                <p style="font-size: 3rem; font-weight: 900; margin: 0;">
+                                    <span class="text-gradient">€599</span>
+                                </p>
+                                <p style="color: #10B981; font-weight: 700; font-size: 1rem; margin-top: 0.5rem;">Вы экономите €498 (45%)</p>
                             </div>
-                            <p style="color: var(--success); font-weight: 700; margin-bottom: 25px;">Вы экономите €498 (45%)</p>
 
-                            <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center;">Получить пакет</a>
+                            <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #3B82F6, #2563EB); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);">
+                                🎁 Получить пакет
+                            </a>
                         </div>
 
-                        <!-- Right: List -->
-                        <div style="background: rgba(255,255,255,0.03); padding: 20px; border-radius: 12px; border: 1px solid var(--border);">
-                            <h4 style="margin-bottom: 15px; font-size: 1.1rem;">Пакет включает:</h4>
-                            <ul style="display: flex; flex-direction: column; gap: 12px;">
-                                <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                                    <span>🎨 Landing Page (Express)</span>
-                                    <span style="color: var(--brand); font-weight: 700;">€199</span>
-                                </li>
-                                <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                                    <span>📊 Google Ads Setup (Pro)</span>
-                                    <span style="color: var(--brand); font-weight: 700;">€399</span>
-                                </li>
-                                <li style="display: flex; justify-content: space-between; align-items: center;">
-                                    <span>🔗 Интеграция CRM (Basic)</span>
-                                    <span style="color: var(--brand); font-weight: 700;">€499</span>
-                                </li>
-                            </ul>
+                        <!-- RIGHT COLUMN: Bundle Contents -->
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; font-weight: 700; text-align: center;">Пакет включает:</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🎨</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Landing Page (Express)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Стоимость: €199</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">📊</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Google Ads Setup (Pro)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Стоимость: €399</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🔗</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Интеграция CRM (Basic)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Стоимость: €499</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- ========== FAQ SECTION ========== -->
-        <section id="faq" class="section" style="padding: 5rem 1.5rem; background: rgba(255,255,255,0.02);">
-            <div class="container" style="max-width: 800px;">
-                <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: 3rem;">
-                    ❓ <span class="text-gradient">Часто Спрашиваемые Вопросы</span>
-                </h2>
-
-                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
-                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
-                            Сколько времени занимает разработка?
-                        </summary>
-                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
-                            Landing Page: 3-7 дней<br>
-                            Бизнес-сайт: 14-21 день<br>
-                            Электронная коммерция: 30-60 дней<br>
-                            Мобильное приложение: 45-90 дней<br>
-                            Точная длительность зависит от сложности и ваших требований.
-                        </p>
-                    </details>
-
-                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
-                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
-                            Могу ли я получить скидку на комплект услуг?
-                        </summary>
-                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
-                            Да! Например: Landing Page (€199) + Google Ads Setup (€399) + CRM Integration (€299) = Отдельно €897 → Вместе €599 (Экономия €298). Напишите нам в Telegram для индивидуальных предложений!
-                        </p>
-                    </details>
-
-                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
-                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
-                            Какие методы оплаты вы принимаете?
-                        </summary>
-                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
-                            Банковский перевод (SEPA), PayPal, кредитная карта, криптовалюты. 50% предоплата перед началом проекта, 50% перед запуском.
-                        </p>
-                    </details>
-
-                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
-                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
-                            Получу ли я исходный код?
-                        </summary>
-                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
-                            Да, после полной оплаты вы получаете весь исходный код и все ассеты. Вы владеете 100% прав на ваш веб-сайт/приложение.
-                        </p>
-                    </details>
-
-                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
-                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
-                            Предоставляете ли вы постоянную поддержку?
-                        </summary>
-                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
-                            Да. После бесплатных 30 дней мы предлагаем пакеты поддержки от €99/месяц: обновления, резервные копии, безопасность, небольшие изменения.
-                        </p>
-                    </details>
-
-                    <details class="service-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 15px; padding: 1.5rem; cursor: pointer;">
-                        <summary style="font-weight: 600; font-size: 1.1rem; margin-bottom: 0.75rem; cursor: pointer;">
-                            Что если мне не понравится дизайн?
-                        </summary>
-                        <p style="opacity: 0.8; line-height: 1.6; padding-left: 1rem;">
-                            Мы предлагаем 2-3 варианта дизайна на выбор и неограниченные правки, пока вы не будете удовлетворены. Мы начинаем разработку только после вашего одобрения дизайна.
-                        </p>
-                    </details>
-                </div>
-            </div>
-        </section>
 
         <!-- ========== CTA SECTION ========== -->
         <section id="contact" class="section" style="padding: 5rem 1.5rem;">

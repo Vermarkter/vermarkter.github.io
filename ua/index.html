@@ -687,192 +687,64 @@
             </div>
         </section>
 
-        <!-- SMART START BUNDLE -->
-        <section class="calculator-section" style="background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(16,185,129,0.05)); border-top: 1px solid var(--brand); border-bottom: 1px solid var(--brand); padding: 6rem 0;">
-            <div class="container">
-                <div class="pricing-card pricing-card--featured" style="max-width: 900px; margin: 0 auto; background: var(--bg-card); border: 2px solid var(--accent); position: relative; overflow: hidden;">
-                    <div style="position: absolute; top: 20px; right: -35px; transform: rotate(45deg); background: var(--accent); color: #000; padding: 5px 40px; font-weight: 800; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);">
+    <!-- SMART START BUNDLE -->
+                <div class="service-card bundle-card" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15)); backdrop-filter: blur(20px); border: 2px solid rgba(59, 130, 246, 0.3); border-radius: 20px; padding: 2.5rem; margin-top: 3rem; position: relative; overflow: hidden;">
+                    <!-- Badge -->
+                    <div style="position: absolute; top: 20px; right: -35px; background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; padding: 8px 50px; transform: rotate(45deg); font-weight: 900; font-size: 0.75rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);">
                         BESTSELLER
                     </div>
-                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;">
-                        <!-- Left: Offer with €599 price -->
-                        <div style="padding: 2rem 0;">
-                            <h3 style="font-size: 1.8rem; margin-bottom: 1rem; font-weight: 700;">
-                                <span style="color: var(--text-muted); font-size: 1.1rem;">Сумарна вартість: </span>
-                                <span style="color: var(--text-muted); text-decoration: line-through;">€1,097</span>
-                            </h3>
-                            <div style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.5rem;">
-                                <span style="font-size: 3.5rem; font-weight: 800; color: var(--accent);">€599</span>
-                            </div>
-                            <div style="background: rgba(16,185,129,0.1); border-left: 3px solid var(--accent); padding: 1rem; margin-bottom: 1.5rem;">
-                                <p style="color: var(--text-secondary); font-size: 1.05rem;">
-                                    <strong>€498 економії</strong> (45% знижка)
+
+                    <!-- Bundle Grid (2 columns on desktop, 1 on mobile) -->
+                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr; gap: 2rem;">
+                        <!-- LEFT COLUMN: Pricing & CTA -->
+                        <div style="text-align: center;">
+                            <h2 style="font-size: 2rem; margin-bottom: 0.75rem; font-weight: 900;">
+                                🚀 <span class="text-gradient">Smart Start Bundle</span>
+                            </h2>
+                            <p style="font-size: 1rem; opacity: 0.9; margin-bottom: 1.5rem;">Сайт + Google Ads + CRM</p>
+
+                            <div style="margin-bottom: 1.5rem;">
+                                <p style="font-size: 1.2rem; opacity: 0.6; text-decoration: line-through; margin-bottom: 0.25rem;">€1,097</p>
+                                <p style="font-size: 3rem; font-weight: 900; margin: 0;">
+                                    <span class="text-gradient">€599</span>
                                 </p>
+                                <p style="color: #10B981; font-weight: 700; font-size: 1rem; margin-top: 0.5rem;">Ви економите €498 (45%)</p>
                             </div>
-                            <button class="btn btn-primary" style="width: 100%; padding: 1.2rem; font-size: 1.1rem; font-weight: 700;">
-                                Замовити Bundle
-                            </button>
+
+                            <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: inline-block; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; background: linear-gradient(135deg, #3B82F6, #2563EB); box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);">
+                                🎁 Отримати пакет
+                            </a>
                         </div>
 
-                        <!-- Right: List with three services -->
-                        <div style="padding: 2rem 0;">
-                            <h3 style="font-size: 1.8rem; margin-bottom: 2rem; font-weight: 700;">
-                                Що входить у пакет:
-                            </h3>
-                            <ul style="list-style: none; padding: 0; margin: 0;">
-                                <li style="padding: 1rem 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
-                                    <span>
-                                        <strong style="display: block; margin-bottom: 0.25rem;">Landing Page</strong>
-                                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Вебсайт із конверсіями</span>
-                                    </span>
-                                    <span style="color: var(--accent); font-weight: 700; font-size: 1.1rem;">€199</span>
-                                </li>
-                                <li style="padding: 1rem 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center;">
-                                    <span>
-                                        <strong style="display: block; margin-bottom: 0.25rem;">Google Ads Setup</strong>
-                                        <span style="color: var(--text-secondary); font-size: 0.9rem;">SEA кампанія від нуля</span>
-                                    </span>
-                                    <span style="color: var(--accent); font-weight: 700; font-size: 1.1rem;">€399</span>
-                                </li>
-                                <li style="padding: 1rem 0; display: flex; justify-content: space-between; align-items: center;">
-                                    <span>
-                                        <strong style="display: block; margin-bottom: 0.25rem;">CRM Integration</strong>
-                                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Систематизація даних</span>
-                                    </span>
-                                    <span style="color: var(--accent); font-weight: 700; font-size: 1.1rem;">€499</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CALCULATOR SECTION -->
-        <section id="calculator-section" class="calculator-section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
-            <div class="container">
-                <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
-                    <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                        <span class="text-gradient">ROI Калькулятор</span>
-                    </h2>
-                    <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 800px; margin: 0 auto 1.5rem;">
-                        Розрахуйте рентабельність вашої рекламної кампанії
-                    </p>
-                    <p class="calculator-description" style="text-align: center; color: var(--text-secondary); font-size: 1rem; max-width: 700px; margin: 0 auto; line-height: 1.7;">
-                        💡 <strong style="color: var(--brand);">Це реальний інструмент медіапланування.</strong> Ті самі формули, що використовують великі агенції. Прозоро, чесно, без прихованих витрат.
-                    </p>
-                </div>
-
-                <div class="calculator" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem; max-width: 1200px; margin: 0 auto;">
-                    <!-- Preset Selector -->
-                    <div class="calculator__preset" style="margin-bottom: 3rem; text-align: center;">
-                        <label for="nicheSelector" style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem; font-size: 1.1rem;">Оберіть вашу сферу бізнесу:</label>
-                        <select id="nicheSelector" class="calculator__select" style="width: 100%; max-width: 400px; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; font-weight: 500; cursor: pointer;">
-                            <option value="custom">Власні дані</option>
-                            <option value="ecommerce">E-commerce (Товари)</option>
-                            <option value="services">Послуги (Майстри, Beauty)</option>
-                            <option value="realestate">Нерухомість</option>
-                            <option value="b2b">B2B / Оптова торгівля</option>
-                            <option value="infobiz">Інфобізнес / Курси</option>
-                        </select>
-                    </div>
-
-                    <!-- Two Column Grid: Left (Inputs) + Right (Results) -->
-                    <div class="calculator__grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
-                        <!-- Left Column: All Input Controls -->
-                        <div class="calculator__inputs">
-                            <!-- Budget -->
-                            <div class="calculator__input-group" data-input="budget" style="margin-bottom: 2rem;">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Місячний бюджет (€)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="budgetSlider" min="100" max="10000" step="100" value="1000" style="flex: 1;">
-                                    <input type="number" id="budgetInput" min="100" max="10000" step="100" value="1000" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                        <!-- RIGHT COLUMN: Bundle Contents -->
+                        <div style="background: rgba(255,255,255,0.05); border-radius: 15px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.15rem; margin-bottom: 1.25rem; font-weight: 700; text-align: center;">Пакет включає:</h3>
+                            <div style="display: grid; gap: 1rem;">
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🎨</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Landing Page (Express)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Вартість: €199</p>
+                                    </div>
                                 </div>
-                                <div class="calculator__value" id="budgetValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">1000</div>
-                            </div>
-
-                            <!-- CPC -->
-                            <div class="calculator__input-group" data-input="cpc" style="margin-bottom: 2rem;">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Ціна за клік (€)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="cpcSlider" min="0.1" max="5" step="0.1" value="0.8" style="flex: 1;">
-                                    <input type="number" id="cpcInput" min="0.1" max="5" step="0.1" value="0.8" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">📊</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Google Ads Setup (Pro)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Вартість: €399</p>
+                                    </div>
                                 </div>
-                                <div class="calculator__value" id="cpcValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">0.8</div>
-                            </div>
-
-                            <!-- Conversion Rate -->
-                            <div class="calculator__input-group" data-input="cr" style="margin-bottom: 2rem;">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Конверсія (%)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="crSlider" min="0.5" max="15" step="0.1" value="3" style="flex: 1;">
-                                    <input type="number" id="crInput" min="0.5" max="15" step="0.1" value="3" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
+                                <div style="display: flex; align-items: start; gap: 0.75rem;">
+                                    <span style="font-size: 1.3rem; flex-shrink: 0;">🔗</span>
+                                    <div style="text-align: left;">
+                                        <strong style="font-size: 0.95rem;">Інтеграція CRM (Basic)</strong>
+                                        <p style="opacity: 0.75; margin: 0.15rem 0 0; font-size: 0.85rem;">Вартість: €499</p>
+                                    </div>
                                 </div>
-                                <div class="calculator__value" id="crValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">3</div>
                             </div>
-
-                            <!-- AOV -->
-                            <div class="calculator__input-group" data-input="aov" style="margin-bottom: 2rem;">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Середній чек (€)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="aovSlider" min="10" max="10000" step="10" value="150" style="flex: 1;">
-                                    <input type="number" id="aovInput" min="10" max="10000" step="10" value="150" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
-                                </div>
-                                <div class="calculator__value" id="aovValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">150</div>
-                            </div>
-
-                            <!-- Margin -->
-                            <div class="calculator__input-group" data-input="margin">
-                                <label style="display: block; font-weight: 600; color: var(--text-primary); margin-bottom: 0.75rem; font-size: 1.05rem;">Маржа (%)</label>
-                                <div class="calculator__input-row" style="display: flex; gap: 1rem; align-items: center;">
-                                    <input type="range" id="marginSlider" min="5" max="95" step="5" value="40" style="flex: 1;">
-                                    <input type="number" id="marginInput" min="5" max="95" step="5" value="40" style="width: 100px; padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: var(--text-primary); text-align: center;">
-                                </div>
-                                <div class="calculator__value" id="marginValue" style="margin-top: 0.5rem; font-weight: 700; color: var(--brand); font-size: 1.2rem;">40</div>
-                            </div>
-                        </div>
-
-                        <!-- Right Column: Results Display -->
-                        <div class="calculator__results" style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; text-align: center;">
-                                <div class="calculator__result-label" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Кліки</div>
-                                <div class="calculator__result-value" id="resultClicks" style="font-size: 2.5rem; font-weight: 900; color: var(--text-primary);">0</div>
-                            </div>
-
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; text-align: center;">
-                                <div class="calculator__result-label" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Ліди</div>
-                                <div class="calculator__result-value" id="resultLeads" style="font-size: 2.5rem; font-weight: 900; color: var(--text-primary);">0</div>
-                            </div>
-
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; text-align: center;">
-                                <div class="calculator__result-label" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">CPA</div>
-                                <div class="calculator__result-value" id="resultCPA" style="font-size: 2.5rem; font-weight: 900; color: var(--text-primary);">€0</div>
-                            </div>
-
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; text-align: center;">
-                                <div class="calculator__result-label" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">ROAS</div>
-                                <div class="calculator__result-value" id="resultROAS" style="font-size: 2.5rem; font-weight: 900; color: var(--text-primary);">0%</div>
-                            </div>
-
-                            <div class="calculator__result-card" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 1.5rem; text-align: center;">
-                                <div class="calculator__result-label" style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500;">Прибуток</div>
-                                <div class="calculator__result-value" id="resultProfit" style="font-size: 2.5rem; font-weight: 900; color: var(--text-primary);">€0</div>
-                            </div>
-
-                            <!-- CTA LEAD MAGNET -->
-                            <span class="btn btn-primary" style="display: block; padding: 1.25rem 2rem; font-size: 1.1rem; font-weight: 700; text-align: center; background: linear-gradient(135deg, #4285F4, #34A853); border: none; border-radius: 12px; color: white; text-decoration: none; box-shadow: 0 8px 24px rgba(66,133,244,0.35); transition: all 0.3s ease; margin-top: 1rem;">
-                                🚀 Отримати стратегію під ці цифри
-                            </span>
                         </div>
                     </div>
                 </div>
-
-                <p class="text-center text-muted" style="margin-top: 3rem; font-size: 1rem; color: var(--text-secondary); line-height: 1.6;">
-                    ⚠️ Це прогноз, а не обіцянка.<br>
-                    Маркетинг починається з чесних цифр.
-                </p>
-            </div>
-        </section>
 
         <!-- TESTIMONIALS (MARQUEE) -->
         <section id="testimonials" class="testimonials-section" style="padding: 6rem 0; overflow: hidden;">
