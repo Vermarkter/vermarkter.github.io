@@ -168,10 +168,17 @@ def process_file(file_path, lang):
         if 'SMART START BUNDLE' not in original:
             return False
 
-        # Skip if already has max-width: 1100px (already updated)
-        if 'max-width: 1100px' in original and 'SMART START BUNDLE' in original:
-            print(f"Skipped (already updated): {file_path}")
-            return False
+        # Check if Bundle already has the new format (max-width INSIDE Bundle section)
+        # Extract Bundle section and check for max-width there
+        bundle_pattern = r'<!-- SMART START BUNDLE.*?(?=<!-- [A-Z]|<section id=|$)'
+        bundle_match = re.search(bundle_pattern, original, re.DOTALL)
+
+        if bundle_match:
+            bundle_section = bundle_match.group(0)
+            # Check if THIS bundle section already has max-width: 1100px
+            if 'max-width: 1100px' in bundle_section:
+                print(f"Skipped (already updated): {file_path}")
+                return False
 
         new_content = replace_bundle(original, lang)
 
