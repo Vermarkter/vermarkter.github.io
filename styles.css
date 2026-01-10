@@ -219,6 +219,18 @@ nav {
     gap: var(--spacing-sm);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-actions .btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
 /* Language Switcher (Custom Dropdown) */
 .lang-switcher {
     position: relative;
