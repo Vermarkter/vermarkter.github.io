@@ -873,6 +873,131 @@
             </div>
         </section>
 
+    <!-- CALCULATOR SECTION -->
+    <section id="calculator-section" class="calculator-section">
+        <div class="container">
+            <div class="calculator">
+                <div class="calculator__header">
+                    <h2 class="calculator__title">Smart Медіаплан 📊</h2>
+                    <p class="calculator__subtitle" style="margin-bottom: 20px;">
+                        Розрахуйте рентабельність вашої рекламної кампанії
+                    </p>
+
+                    <!-- ВІДНОВЛЕНИЙ БЛОК ДОВІРИ -->
+                    <div style="max-width: 700px; margin: 0 auto; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 15px; border-radius: 12px;">
+                        <p style="margin: 0; color: #F8FAFC; font-size: 15px; line-height: 1.6;">
+                            💡 <strong>Це реальний інструмент медіапланування.</strong><br>
+                            Ми використовуємо ті самі формули, що й великі агенції. Прозоро, чесно, без прихованих витрат.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="calculator__grid">
+                    <!-- Left: Inputs -->
+                    <div class="calculator__inputs">
+
+                        <!-- Niche Selector -->
+                        <div class="niche-select-group">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8;">Ваша ніша:</label>
+                            <select id="nicheSelector" class="niche-select">
+                                <option value="custom">-- Власні значення --</option>
+                                <option value="ecommerce">E-Commerce (Продукти)</option>
+                                <option value="services">Послуги (Краса, Ремонт)</option>
+                                <option value="realestate" selected>Нерухомість</option>
+                                <option value="b2b">B2B / Опт</option>
+                                <option value="infobiz">Інфопродукти</option>
+                            </select>
+                        </div>
+
+                        <!-- Budget -->
+                        <div class="calculator__input-group" data-input="budget">
+                            <div class="calculator__label">
+                                <span>Рекламний бюджет</span>
+                                <span class="calculator__label-value">€<span id="budgetValue">5000</span></span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="budgetSlider" min="500" max="50000" step="100" value="5000">
+                                <input type="number" class="calculator__number-input" id="budgetInput" value="5000">
+                            </div>
+                        </div>
+
+                        <!-- CPC -->
+                        <div class="calculator__input-group" data-input="cpc">
+                            <div class="calculator__label">
+                                <span>Ціна кліка (CPC)</span>
+                                <span class="calculator__label-value">€<span id="cpcValue">2.5</span></span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="cpcSlider" min="0.1" max="10" step="0.1" value="2.5">
+                                <input type="number" class="calculator__number-input" id="cpcInput" value="2.5" step="0.1">
+                            </div>
+                        </div>
+
+                        <!-- Conversion -->
+                        <div class="calculator__input-group" data-input="cr">
+                            <div class="calculator__label">
+                                <span>Conversion Rate (%)</span>
+                                <span class="calculator__label-value"><span id="crValue">1.5</span>%</span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="crSlider" min="0.1" max="15" step="0.1" value="1.5">
+                                <input type="number" class="calculator__number-input" id="crInput" value="1.5" step="0.1">
+                            </div>
+                        </div>
+
+                        <!-- Advanced (AOV + Margin) -->
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                            <div class="calculator__input-group" data-input="aov">
+                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Ø Вартість замовлення (€)</label>
+                                <input type="number" class="calculator__number-input" id="aovInput" value="5000" style="width:100%;">
+                                <input type="range" id="aovSlider" min="10" max="10000" step="10" value="5000" style="display:none;">
+                                <span id="aovValue" style="display:none;"></span>
+                            </div>
+                            <div class="calculator__input-group" data-input="margin">
+                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Маржа (%)</label>
+                                <input type="number" class="calculator__number-input" id="marginInput" value="15" style="width:100%;">
+                                <input type="range" id="marginSlider" min="5" max="100" step="5" value="15" style="display:none;">
+                                <span id="marginValue" style="display:none;"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Results -->
+                    <div class="calculator__results">
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Трафік (Кліки)</div>
+                            <div class="calculator__result-value" id="resultClicks">0</div>
+                        </div>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Ліди (Заявки)</div>
+                            <div class="calculator__result-value calculator__result-value--primary" id="resultLeads">0</div>
+                        </div>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">CPA (Вартість ліда)</div>
+                            <div class="calculator__result-value" id="resultCPA">€0</div>
+                        </div>
+                        <div class="calculator__result-card calculator__result-card--highlight" id="roasCard">
+                            <div class="calculator__result-label">ROAS (Повернення вкладень)</div>
+                            <div class="calculator__result-value calculator__result-value--success" id="resultROAS">0%</div>
+                            <div class="calculator__roas-indicator">
+                                <div class="calculator__roas-bar"><div class="calculator__roas-fill" id="roasFill"></div></div>
+                                <span class="calculator__roas-text" id="roasStatus">-</span>
+                            </div>
+                        </div>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Чистий прибуток</div>
+                            <div class="calculator__result-value" id="resultProfit">€0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-center" style="margin-top: 30px; color: #94A3B8; font-size: 14px;">
+                    ⚠️ Результат є прогнозом, а не обіцянкою. Маркетинг починається з чесних цифр.
+                </p>
+            </div>
+        </div>
+    </section>
+
         <!-- FAQ SECTION (ACCORDION) -->
         <section id="faq" class="faq-section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
             <div class="container">
