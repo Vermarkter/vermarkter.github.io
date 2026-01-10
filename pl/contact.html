@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Skontaktuj się z Vermarkter w sprawie Performance Marketing. Osobista konsultacja bez presji sprzedażowej. Odpowiedź w ciągu 2 godzin.">
+    <meta name="keywords" content="Kontakt Vermarkter, Konsultacja marketingowa, Kontakt agencja Google Ads">
+    <meta name="author" content="Vermarkter Agency">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vermarkter.eu/de/contact">
+    <meta property="og:title" content="Kontakt — Vermarkter">
+    <meta property="og:description" content="Osobista konsultacja bez presji sprzedażowej">
+    <meta property="og:image" content="https://vermarkter.eu/og-image-de.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vermarkter.eu/de/contact">
+    <meta property="twitter:title" content="Kontakt — Vermarkter">
+    <meta property="twitter:description" content="Osobista konsultacja bez presji sprzedażowej">
+    <meta property="twitter:image" content="https://vermarkter.eu/og-image-de.jpg">
+
+    <title>Kontakt — Vermarkter</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.svg?v=1768018062">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../styles.css?v=bundle_fix_2columns">
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- HEADER (STICKY) -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
+    <!-- SVG Logo (Lightning Bolt) -->
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+    </svg>
+    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+</a>
+
+                <!-- Desktop Nav -->
+                <div class="nav-links">
+                    <a href="index.html#services">Usługi</a>
+                    <a href="index.html#testimonials">Opinie</a>
+                    <a href="index.html#faq">FAQ</a>
+                    <a href="contact.html" class="active">Kontakt</a>
+                </div>
+
+                <!-- Language + CTA -->
+                <div class="nav-actions">
+                    <!-- Language Selector -->
+                    <div class="lang-selector">
+                        <button class="lang-btn" onclick="toggleLangDropdown()">
+                            <span class="flag">🇵🇱</span> PL <span class="arrow">▼</span>
+                        </button>
+                        <ul class="lang-dropdown" id="langDropdown">
+                            <li><a href="../en/contact.html"><span class="flag">🇬🇧</span> EN</a></li>
+                            <li><a href="../pl/contact.html"><span class="flag">🇵🇱</span> PL</a></li>
+                            <li><a href="../ru/contact.html"><span class="flag">🇷🇺</span> RU</a></li>
+                            <li><a href="../tr/contact.html"><span class="flag">🇹🇷</span> TR</a></li>
+                            <li><a href="../ua/contact.html"><span class="flag">🇺🇦</span> UA</a></li>
+                        </ul>
+                    </div>
+                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary">Telegram</a>
+                    <a href="https://wa.me/4915510300538" target="_blank" class="btn btn-secondary" style="margin-left: 10px;">WhatsApp</a>
+                </div>
+
+                <!-- Mobile Burger -->
+                <button class="burger" onclick="toggleMobileMenu()" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <a href="index.html#services">Usługi</a>
+                <a href="index.html#testimonials">Opinie</a>
+                <a href="index.html#faq">FAQ</a>
+                <a href="contact.html" class="active">Kontakt</a>
+                <div class="mobile-lang">
+                    <a href="../en/contact.html">🇬🇧 EN</a>
+                    <a href="../pl/contact.html">🇵🇱 PL</a>
+                    <a href="../ru/contact.html">🇷🇺 RU</a>
+                    <a href="../tr/contact.html">🇹🇷 TR</a>
+                    <a href="../ua/contact.html">🇺🇦 UA</a>
+                </div>
+                <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="margin-top: 1rem;">Telegram</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTACT HERO -->
+    <section style="padding: 8rem 0 4rem; background: var(--bg-primary);">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; margin-bottom: 1.5rem; line-height: 1.1;">
+                    Porozmawiajmy o Twoim <span class="text-gradient">wzroście</span>.
+                </h1>
+                <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 3rem;">
+                    Osobista konsultacja bez presji sprzedażowej.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT CONTENT (2 COLUMNS) -->
+    <section style="padding: 4rem 0 8rem; background: var(--bg-secondary);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+
+                <!-- LEFT COLUMN: Contact Info -->
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem;">
+                    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 2rem; color: var(--text-primary);">
+                        Skontaktuj się
+                    </h2>
+
+                    <!-- Email -->
+                    <div style="margin-bottom: 2rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #3B82F6, #2563EB); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                                📧
+                            </div>
+                            <div>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0;">E-mail</p>
+                                <a href="mailto:maps.werbung@gmail.com" style="font-size: 1.1rem; color: var(--brand); font-weight: 600; text-decoration: none;">
+                                    maps.werbung@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Telegram Button -->
+                    <a href="https://t.me/vermarkters_bot" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; width: 100%; padding: 1.25rem; background: linear-gradient(135deg, #0088cc, #006699); border-radius: 12px; color: white; font-weight: 700; font-size: 1.1rem; text-decoration: none; margin-bottom: 1rem; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 20px rgba(0, 136, 204, 0.3);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.03-1.99 1.27-5.61 3.72-.53.37-.99.55-1.38.53-.46-.02-1.34-.26-1.99-.47-.8-.26-1.44-.4-1.38-.85.03-.23.35-.47.96-.72 3.66-1.59 6.1-2.64 7.32-3.14 3.49-1.43 4.21-1.68 4.69-1.69.1 0 .33.02.48.14.12.1.15.24.17.34-.01.06.01.24 0 .38z"/>
+                        </svg>
+                        Wiadomość na Telegram
+                    </a>
+
+                    <!-- WhatsApp Button -->
+                    <a href="https://wa.me/4915510300538" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; width: 100%; padding: 1.25rem; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 12px; color: white; font-weight: 700; font-size: 1.1rem; text-decoration: none; margin-bottom: 2rem; transition: transform 0.3s, box-shadow 0.3s; box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                        </svg>
+                        Czat na WhatsApp
+                    </a>
+
+                    <!-- Response Time -->
+                    <div style="background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 12px; padding: 1.25rem; text-align: center;">
+                        <p style="margin: 0; font-size: 1rem; color: var(--text-secondary);">
+                            ⚡ Ich antworte in der Regel innerhalb von <strong style="color: #10B981;">2 Stunden</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: Manager Photo -->
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem; text-align: center;">
+                    <div style="position: relative; margin-bottom: 2rem;">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=600&fit=crop&crop=faces"
+                             alt="Andrii, Założyciel & Performance Marketer"
+                             style="width: 100%; max-width: 400px; height: auto; aspect-ratio: 1; object-fit: cover; border-radius: 20px; border: 3px solid rgba(59, 130, 246, 0.3); box-shadow: 0 8px 30px rgba(0,0,0,0.3);">
+                    </div>
+
+                    <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">
+                        Andrii
+                    </h3>
+                    <p style="font-size: 1.1rem; color: var(--brand); font-weight: 600; margin-bottom: 1.5rem;">
+                        Założyciel & Performance Marketer
+                    </p>
+
+                    <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary); text-align: left;">
+                        Z ponad 5-letnim doświadczeniem w performance marketingu pomogłem ponad 100 firmom zwiększyć przychody poprzez ukierunkowane kampanie Google Ads, Meta Ads i TikTok.
+                    </p>
+
+                    <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary); text-align: left; margin-top: 1rem;">
+                        Mój priorytet: <strong style="color: var(--text-primary);">Przejrzyste wyniki, brak ukrytych kosztów i partnerstwo na równych zasadach.</strong>
+                    </p>
+
+                    <!-- Social Proof -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;">
+                        <div style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; padding: 1rem;">
+                            <div style="font-size: 2rem; font-weight: 900; color: var(--brand);">100+</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Projektów</div>
+                        </div>
+                        <div style="background: rgba(59, 130, 246, 0.1); border-radius: 12px; padding: 1rem;">
+                            <div style="font-size: 2rem; font-weight: 900; color: var(--brand);">420%</div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">Ø ROAS</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile: Stack vertically on small screens -->
+            <style>
+                @media (max-width: 968px) {
+                    section div[style*="grid-template-columns: 1fr 1fr"] {
+                        grid-template-columns: 1fr !important;
+                    }
+                }
+            </style>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: var(--bg-secondary); padding: 4rem 0 2rem; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem; margin-bottom: 3rem;">
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">O nas</h4>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                        Agencja performance marketingu dla małych i średnich firm w Europie.
+                    </p>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Usługi</h4>
+                    <a href="google-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Google Ads</a>
+                    <a href="meta-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Meta Ads</a>
+                    <a href="tiktok-ads.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">TikTok Ads</a>
+                    <a href="seo.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">SEO</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Prawne</h4>
+                    <a href="../datenschutz.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Prywatność</a>
+                    <a href="../impressum.html" style="display: block; color: var(--text-secondary); margin-bottom: 0.75rem; text-decoration: none;">Nota Prawna</a>
+                </div>
+
+                <div class="footer-column">
+                    <h4 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--text-primary);">Kontakt</h4>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <a href="https://t.me/vermarkters_bot" style="color: var(--brand); text-decoration: none;">Telegram</a>
+                    </p>
+                    <p style="color: var(--text-secondary); margin-bottom: 0.75rem;">
+                        <a href="mailto:maps.werbung@gmail.com" style="color: var(--brand); text-decoration: none;">maps.werbung@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+
+            <div style="border-top: 1px solid var(--glass-border); padding-top: 2rem; text-align: center;">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    © 2025 Vermarkter. Wszelkie prawa zastrzeżone.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Language Dropdown Toggle
+        function toggleLangDropdown() {
+            const dropdown = document.getElementById('langDropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            const langSelector = document.querySelector('.lang-selector');
+            const dropdown = document.getElementById('langDropdown');
+            if (!langSelector.contains(event.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const burger = document.querySelector('.burger');
+            menu.classList.toggle('active');
+            burger.classList.toggle('active');
+        }
+
+        // Hover effects for buttons
+        document.querySelectorAll('a[href*="t.me"], a[href*="wa.me"]').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+                this.style.boxShadow = '0 8px 30px rgba(0,0,0,0.4)';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = this.style.background.includes('#0088cc') ?
+                    '0 4px 20px rgba(0, 136, 204, 0.3)' :
+                    '0 4px 20px rgba(37, 211, 102, 0.3)';
+            });
+        });
+    </script>
+</body>
+</html>
