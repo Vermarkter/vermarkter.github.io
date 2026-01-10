@@ -748,6 +748,136 @@
         </div>
     </section>
 
+            <!-- CALCULATOR SECTION -->
+    <section id="calculator-section" class="calculator-section">
+        <div class="container">
+            <div class="calculator">
+                <div class="calculator__header">
+                    <h2 class="calculator__title">Smart Media Plan 📊</h2>
+                    <p class="calculator__subtitle" style="margin-bottom: 20px;">
+                        Calculate the profitability of your advertising campaign
+                    </p>
+
+                    <!-- TRUST BLOCK -->
+                    <div style="max-width: 700px; margin: 0 auto; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 15px; border-radius: 12px; margin-bottom: 10px;">
+                        <p style="margin: 0; color: #F8FAFC; font-size: 15px; line-height: 1.6;">
+                            💡 <strong>This is a real media planning tool.</strong><br>
+                            We use the same formulas as major agencies. Transparent, honest, no hidden costs.
+                        </p>
+                    </div>
+
+                    <!-- WARNING BLOCK -->
+                    <div style="max-width: 700px; margin: 0 auto; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 12px; border-radius: 12px;">
+                        <p style="margin: 0; color: #F8FAFC; font-size: 14px; line-height: 1.5;">
+                            ⚠️ The result is a forecast, not a promise. Marketing starts with honest numbers.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="calculator__grid">
+                    <!-- Left: Inputs -->
+                    <div class="calculator__inputs">
+
+                        <!-- Niche Selector -->
+                        <div class="niche-select-group">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8;">Your Niche:</label>
+                            <select id="nicheSelector" class="niche-select">
+                                <option value="custom">-- Custom Values --</option>
+                                <option value="ecommerce">E-Commerce (Products)</option>
+                                <option value="services">Services (Beauty, Repair)</option>
+                                <option value="realestate" selected>Real Estate</option>
+                                <option value="b2b">B2B / Wholesale</option>
+                                <option value="infobiz">Info Products</option>
+                            </select>
+                        </div>
+
+                        <!-- Budget -->
+                        <div class="calculator__input-group" data-input="budget">
+                            <div class="calculator__label">
+                                <span>Advertising Budget</span>
+                                <span class="calculator__label-value">€<span id="budgetValue">5000</span></span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="budgetSlider" min="500" max="50000" step="100" value="5000">
+                                <input type="number" class="calculator__number-input" id="budgetInput" value="5000">
+                            </div>
+                        </div>
+
+                        <!-- CPC -->
+                        <div class="calculator__input-group" data-input="cpc">
+                            <div class="calculator__label">
+                                <span>Click Price (CPC)</span>
+                                <span class="calculator__label-value">€<span id="cpcValue">2.5</span></span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="cpcSlider" min="0.1" max="10" step="0.1" value="2.5">
+                                <input type="number" class="calculator__number-input" id="cpcInput" value="2.5" step="0.1">
+                            </div>
+                        </div>
+
+                        <!-- Conversion -->
+                        <div class="calculator__input-group" data-input="cr">
+                            <div class="calculator__label">
+                                <span>Conversion Rate (%)</span>
+                                <span class="calculator__label-value"><span id="crValue">1.5</span>%</span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="crSlider" min="0.1" max="15" step="0.1" value="1.5">
+                                <input type="number" class="calculator__number-input" id="crInput" value="1.5" step="0.1">
+                            </div>
+                        </div>
+
+                        <!-- Advanced (AOV + Margin) -->
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                            <div class="calculator__input-group" data-input="aov">
+                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Avg Order Value (€)</label>
+                                <input type="number" class="calculator__number-input" id="aovInput" value="5000" style="width:100%;">
+                                <input type="range" id="aovSlider" min="10" max="10000" step="10" value="5000" style="display:none;">
+                                <span id="aovValue" style="display:none;"></span>
+                            </div>
+                            <div class="calculator__input-group" data-input="margin">
+                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Margin (%)</label>
+                                <input type="number" class="calculator__number-input" id="marginInput" value="15" style="width:100%;">
+                                <input type="range" id="marginSlider" min="5" max="100" step="5" value="15" style="display:none;">
+                                <span id="marginValue" style="display:none;"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Results -->
+                    <div class="calculator__results">
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Traffic (Clicks)</div>
+                            <div class="calculator__result-value" id="resultClicks">0</div>
+                        </div>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Leads (Inquiries)</div>
+                            <div class="calculator__result-value calculator__result-value--primary" id="resultLeads">0</div>
+                        </div>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">CPA (Cost per Lead)</div>
+                            <div class="calculator__result-value" id="resultCPA">€0</div>
+                        </div>
+                        <div class="calculator__result-card calculator__result-card--highlight" id="roasCard">
+                            <div class="calculator__result-label">ROAS (Return on Ad Spend)</div>
+                            <div class="calculator__result-value calculator__result-value--success" id="resultROAS">0%</div>
+                            <div class="calculator__roas-indicator">
+                                <div class="calculator__roas-bar"><div class="calculator__roas-fill" id="roasFill"></div></div>
+                                <span class="calculator__roas-text" id="roasStatus">-</span>
+                            </div>
+                        </div>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Net Profit</div>
+                            <div class="calculator__result-value" id="resultProfit">€0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
         <!-- CONTACT SECTION -->
         <section id="contact" class="services-section" style="padding: 6rem 0;">
             <div class="container">
