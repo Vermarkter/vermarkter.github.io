@@ -39,7 +39,8 @@
       "Bash(then echo \"Missing privacy: $file\")",
       "Bash(for file in ua/*.html)",
       "Bash(do if ! grep -q \"🇺🇦 Створено для підтримки українців\" \"$file\")",
-      "Bash(then echo \"$file\")"
+      "Bash(then echo \"$file\")",
+      "Bash(curl:*)"
     ]
   }
 }

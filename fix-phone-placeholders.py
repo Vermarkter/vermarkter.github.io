@@ -8,13 +8,14 @@ import re
 from pathlib import Path
 
 # Phone placeholders by language
+# All for Europe (Germany-focused), no country-specific codes
 PHONE_PLACEHOLDERS = {
     'de': '+49 123 456 789',
-    'en': '+49 123 456 789',  # International example
-    'pl': '+48 123 456 789',
-    'ru': '+7 123 456 789',
-    'tr': '+90 123 456 789',
-    'ua': '+380 12 345 6789'
+    'en': '+49 123 456 789',
+    'pl': '+49 123 456 789',
+    'ru': '+49 123 456 789',
+    'tr': '+49 123 456 789',
+    'ua': '+49 123 456 789'
 }
 
 def fix_phone_placeholder(content, lang):
