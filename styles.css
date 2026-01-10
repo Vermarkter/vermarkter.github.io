@@ -2030,7 +2030,7 @@ input[type="number"], select {
    CALCULATOR SECTION
    ============================================ */
 .calculator-section {
-    padding: 80px 0;
+    padding: 40px 0; /* Зменшено з 80px */
     background: rgba(0, 0, 0, 0.2);
 }
 
@@ -2038,21 +2038,21 @@ input[type="number"], select {
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 40px;
+    border-radius: 20px; /* Зменшено з 24px */
+    padding: 25px; /* Зменшено з 40px */
     box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    max-width: 1200px;
+    max-width: 950px; /* Зменшено з 1200px */
     margin: 0 auto;
 }
 
 .calculator__header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 20px; /* Зменшено з 40px */
 }
 
 .calculator__title {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2rem; /* Зменшено з 2.5rem */
+    margin-bottom: 8px; /* Зменшено з 10px */
     background: linear-gradient(135deg, #3B82F6, #8B5CF6);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -2062,14 +2062,14 @@ input[type="number"], select {
 
 .calculator__subtitle {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 0.95rem; /* Зменшено з 1.1rem */
 }
 
 /* Grid Layout: Inputs (Left) vs Results (Right) */
 .calculator__grid {
     display: grid;
     grid-template-columns: 1.2fr 0.8fr;
-    gap: 40px;
+    gap: 30px; /* Зменшено з 40px */
     align-items: start;
 }
 
@@ -2077,27 +2077,27 @@ input[type="number"], select {
 .calculator__inputs {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 18px; /* Зменшено з 25px */
 }
 
 .niche-select {
     width: 100%;
-    padding: 16px;
+    padding: 12px; /* Зменшено з 16px */
     background: var(--bg-secondary);
     border: 1px solid var(--glass-border);
     color: white;
-    border-radius: 12px;
-    font-size: 16px;
+    border-radius: 10px; /* Зменшено з 12px */
+    font-size: 15px; /* Зменшено з 16px */
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Зменшено з 20px */
     font-family: 'Inter', sans-serif;
 }
 
 .calculator__input-group {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 10px; /* Зменшено з 12px */
+    padding: 15px; /* Зменшено з 20px */
     transition: 0.3s;
 }
 
@@ -2109,7 +2109,7 @@ input[type="number"], select {
 .calculator__label {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
+    margin-bottom: 10px; /* Зменшено з 15px */
     font-weight: 600;
     color: var(--text-primary);
 }
@@ -2117,12 +2117,12 @@ input[type="number"], select {
 .calculator__label-value {
     color: var(--brand);
     font-family: monospace;
-    font-size: 18px;
+    font-size: 16px; /* Зменшено з 18px */
 }
 
 .calculator__controls {
     display: flex;
-    gap: 15px;
+    gap: 12px; /* Зменшено з 15px */
     align-items: center;
 }
 
@@ -2158,42 +2158,43 @@ input[type="number"], select {
 }
 
 .calculator__number-input {
-    width: 100px;
-    padding: 10px;
+    width: 90px; /* Зменшено з 100px */
+    padding: 8px; /* Зменшено з 10px */
     background: var(--bg-primary);
     border: 1px solid var(--glass-border);
-    border-radius: 8px;
+    border-radius: 6px; /* Зменшено з 8px */
     color: white;
     text-align: center;
     font-weight: 700;
     font-family: 'Inter', sans-serif;
+    font-size: 14px;
 }
 
 /* Results Column */
 .calculator__results {
     display: grid;
-    gap: 15px;
+    gap: 12px; /* Зменшено з 15px */
 }
 
 .calculator__result-card {
     background: var(--bg-secondary);
     border: 1px solid var(--glass-border);
-    padding: 20px;
-    border-radius: 16px;
+    padding: 15px; /* Зменшено з 20px */
+    border-radius: 12px; /* Зменшено з 16px */
     position: relative;
     overflow: hidden;
 }
 
 .calculator__result-label {
-    font-size: 13px;
+    font-size: 12px; /* Зменшено з 13px */
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
+    letter-spacing: 0.8px; /* Зменшено з 1px */
+    margin-bottom: 4px; /* Зменшено з 5px */
 }
 
 .calculator__result-value {
-    font-size: 32px;
+    font-size: 28px; /* Зменшено з 32px */
     font-weight: 900;
     color: white;
 }
@@ -2218,17 +2219,17 @@ input[type="number"], select {
 
 /* ROAS Bar */
 .calculator__roas-indicator {
-    margin-top: 10px;
+    margin-top: 8px; /* Зменшено з 10px */
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px; /* Зменшено з 10px */
 }
 
 .calculator__roas-bar {
     flex: 1;
-    height: 8px;
+    height: 6px; /* Зменшено з 8px */
     background: rgba(255,255,255,0.1);
-    border-radius: 10px;
+    border-radius: 8px; /* Зменшено з 10px */
     overflow: hidden;
 }
 
