@@ -2292,3 +2292,70 @@ input[type="number"], select {
         font-size: 2rem !important;
     }
 }
+
+/* ============================================
+   FLOATING WHATSAPP BUTTON (STICKY CTA)
+   ============================================ */
+
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    bottom: 35px;
+}
+
+.whatsapp-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #25D366;
+    color: white;
+    padding: 16px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+    background: #20BA5A;
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-button svg {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+}
+
+.whatsapp-button-text {
+    white-space: nowrap;
+}
+
+/* Mobile: Show only icon */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .whatsapp-button {
+        padding: 16px;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        justify-content: center;
+    }
+
+    .whatsapp-button-text {
+        display: none;
+    }
+}
