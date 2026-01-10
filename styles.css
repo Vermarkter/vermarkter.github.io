@@ -2245,6 +2245,19 @@ input[type="number"], select {
     white-space: nowrap;
 }
 
+/* Bundle Flex - Force 2 columns on desktop */
+@media (min-width: 901px) {
+    .bundle-flex-container {
+        flex-wrap: nowrap !important;
+    }
+
+    .bundle-left,
+    .bundle-right {
+        flex: 1 1 45% !important;
+        min-width: 0 !important; /* Reset min-width to allow shrinking */
+    }
+}
+
 @media (max-width: 900px) {
     .calculator__grid {
         grid-template-columns: 1fr;
@@ -2256,5 +2269,13 @@ input[type="number"], select {
 
     .calculator__title {
         font-size: 2rem;
+    }
+
+    .bundle-flex-container {
+        flex-direction: column;
+    }
+
+    .bundle-left h3 {
+        font-size: 2rem !important;
     }
 }
