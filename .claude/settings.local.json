@@ -36,7 +36,10 @@
       "Bash(do if ! grep -q \"impressum\" \"$file\")",
       "Bash(then echo \"Missing impressum: $file\")",
       "Bash(do if ! grep -qi \"datenschutz\\\\|privacy\" \"$file\")",
-      "Bash(then echo \"Missing privacy: $file\")"
+      "Bash(then echo \"Missing privacy: $file\")",
+      "Bash(for file in ua/*.html)",
+      "Bash(do if ! grep -q \"🇺🇦 Створено для підтримки українців\" \"$file\")",
+      "Bash(then echo \"$file\")"
     ]
   }
 }
