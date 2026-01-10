@@ -2299,7 +2299,7 @@ input[type="number"], select {
 
 .whatsapp-float {
     position: fixed;
-    bottom: 30px;
+    bottom: 110px; /* Вище chatbot кнопки (30px + 64px + 16px) */
     right: 30px;
     z-index: 1000;
     transition: all 0.3s ease;
@@ -2307,7 +2307,6 @@ input[type="number"], select {
 
 .whatsapp-float:hover {
     transform: scale(1.1);
-    bottom: 35px;
 }
 
 .whatsapp-button {
@@ -2343,7 +2342,7 @@ input[type="number"], select {
 /* Mobile: Show only icon */
 @media (max-width: 768px) {
     .whatsapp-float {
-        bottom: 20px;
+        bottom: 90px; /* Вище chatbot на мобільних */
         right: 20px;
     }
 
