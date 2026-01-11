@@ -787,16 +787,27 @@
                     <!-- Left: Inputs -->
                     <div class="calculator__inputs">
 
+                        <!-- Platform Selector -->
+                        <div class="niche-select-group" style="margin-bottom: 20px;">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">📢 Рекламна платформа:</label>
+                            <select id="platformSelector" class="niche-select">
+                                <option value="google">Google Ads</option>
+                                <option value="meta">Meta Ads (Facebook/Instagram)</option>
+                                <option value="tiktok">TikTok Ads</option>
+                            </select>
+                        </div>
+
                         <!-- Niche Selector -->
                         <div class="niche-select-group">
-                            <label style="display:block; margin-bottom:10px; color:#94A3B8;">Ваша ніша:</label>
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">🎯 Ваша ніша:</label>
                             <select id="nicheSelector" class="niche-select">
                                 <option value="custom">-- Власні значення --</option>
-                                <option value="ecommerce">E-Commerce (Продукти)</option>
-                                <option value="services">Послуги (Краса, Ремонт)</option>
-                                <option value="realestate" selected>Нерухомість</option>
-                                <option value="b2b">B2B / Опт</option>
-                                <option value="infobiz">Інфопродукти</option>
+                                <option value="ecommerce">E-Commerce / Товарка</option>
+                                <option value="beauty">Beauty: Салони краси, Косметологія</option>
+                                <option value="construction">Ремонт та Будівництво</option>
+                                <option value="auto" selected>Автобізнес / СТО / Детейлінг</option>
+                                <option value="realestate">Нерухомість</option>
+                                <option value="expert">Послуги експертів / B2B</option>
                             </select>
                         </div>
 

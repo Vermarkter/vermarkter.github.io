@@ -1,12 +1,15 @@
 /**
- * VERMARKTER - Media Planning Calculator
- * Real formulas with margin support
- * Follows masterplan.md specifications exactly
+ * VERMARKTER - Media Planning Calculator V2
+ * Platform × Niche Matrix with Real EU Market Coefficients
+ * For Ukrainian Business Owners in Europe
  */
 
 class MediaCalculator {
   constructor() {
-    // Preset/Niche selector
+    // Platform selector
+    this.platformSelector = document.getElementById('platformSelector');
+
+    // Niche selector
     this.nicheSelector = document.getElementById('nicheSelector');
 
     // Input sliders and number inputs
@@ -41,13 +44,79 @@ class MediaCalculator {
       profit: document.getElementById('resultProfit')
     };
 
-    // Niche presets
-    this.presets = {
-      ecommerce: { cpc: 0.8, cr: 3, aov: 150, margin: 40 },
-      services: { cpc: 1.2, cr: 5, aov: 250, margin: 60 },
-      realestate: { cpc: 2.5, cr: 1.5, aov: 5000, margin: 15 },
-      b2b: { cpc: 3.0, cr: 2, aov: 1200, margin: 50 },
-      infobiz: { cpc: 0.5, cr: 8, aov: 97, margin: 85 }
+    // Platform base multipliers (affect CPC)
+    this.platformMultipliers = {
+      google: { cpc: 1.0, name: 'Google Ads' },   // Baseline
+      meta: { cpc: 0.7, name: 'Meta Ads' },       // 30% cheaper CPC
+      tiktok: { cpc: 0.5, name: 'TikTok Ads' }    // 50% cheaper CPC
+    };
+
+    // Niche presets: BASE values + coefficients
+    // Coefficients multiply the base CPC from platform
+    this.niches = {
+      custom: {
+        name: 'Власні значення',
+        cpcMultiplier: 1.0,
+        crMultiplier: 1.0,
+        baseCPC: 2.5,
+        baseCR: 2.0,
+        aov: 500,
+        margin: 30
+      },
+      ecommerce: {
+        name: 'E-Commerce / Товарка',
+        cpcMultiplier: 0.8,   // Low CPC
+        crMultiplier: 1.2,    // Good conversion
+        baseCPC: 0.8,
+        baseCR: 3.0,
+        aov: 70,
+        margin: 40
+      },
+      beauty: {
+        name: 'Beauty: Салони краси, Косметологія',
+        cpcMultiplier: 0.7,   // Very low CPC
+        crMultiplier: 1.5,    // High conversion
+        baseCPC: 0.6,
+        baseCR: 5.0,
+        aov: 60,
+        margin: 70
+      },
+      construction: {
+        name: 'Ремонт та Будівництво',
+        cpcMultiplier: 1.8,   // High CPC
+        crMultiplier: 0.6,    // Low conversion
+        baseCPC: 2.5,
+        baseCR: 1.2,
+        aov: 2000,
+        margin: 35
+      },
+      auto: {
+        name: 'Автобізнес / СТО / Детейлінг',
+        cpcMultiplier: 1.0,   // Medium CPC
+        crMultiplier: 1.0,    // Medium conversion
+        baseCPC: 1.5,
+        baseCR: 2.5,
+        aov: 300,
+        margin: 50
+      },
+      realestate: {
+        name: 'Нерухомість',
+        cpcMultiplier: 3.0,   // Very high CPC
+        crMultiplier: 0.3,    // Very low conversion
+        baseCPC: 4.0,
+        baseCR: 0.8,
+        aov: 10000,
+        margin: 15
+      },
+      expert: {
+        name: 'Послуги експертів / B2B',
+        cpcMultiplier: 2.0,   // High CPC
+        crMultiplier: 0.8,    // Below average conversion
+        baseCPC: 3.0,
+        baseCR: 2.0,
+        aov: 1200,
+        margin: 60
+      }
     };
 
     this.init();
@@ -60,9 +129,14 @@ class MediaCalculator {
       return;
     }
 
+    // Platform selector
+    if (this.platformSelector) {
+      this.platformSelector.addEventListener('change', () => this.applyPreset());
+    }
+
     // Niche selector
     if (this.nicheSelector) {
-      this.nicheSelector.addEventListener('change', (e) => this.applyPreset(e.target.value));
+      this.nicheSelector.addEventListener('change', () => this.applyPreset());
     }
 
     // Sync sliders with number inputs
@@ -72,7 +146,7 @@ class MediaCalculator {
     this.syncInput('aov', this.inputs.aovSlider, this.inputs.aovInput, this.valueDisplays.aov);
     this.syncInput('margin', this.inputs.marginSlider, this.inputs.marginInput, this.valueDisplays.margin);
 
-    // Initial calculation after a small delay to ensure all elements are ready
+    // Initial calculation
     setTimeout(() => {
       console.log('Running initial calculation...');
       this.calculate();
@@ -101,45 +175,65 @@ class MediaCalculator {
     });
   }
 
-  applyPreset(niche) {
-    console.log('Applying preset for niche:', niche);
+  applyPreset() {
+    const platform = this.platformSelector?.value || 'google';
+    const niche = this.nicheSelector?.value || 'custom';
+
+    console.log('Applying preset:', { platform, niche });
 
     if (niche === 'custom') {
       console.log('Custom selected - no preset applied');
       return;
     }
 
-    const preset = this.presets[niche];
-    if (!preset) {
-      console.warn('No preset found for:', niche);
+    const nicheData = this.niches[niche];
+    const platformData = this.platformMultipliers[platform];
+
+    if (!nicheData || !platformData) {
+      console.warn('No preset found for:', { platform, niche });
       return;
     }
 
-    console.log('Preset values:', preset);
+    // Calculate final CPC: base CPC × platform multiplier × niche multiplier
+    const finalCPC = (nicheData.baseCPC * platformData.cpc * nicheData.cpcMultiplier).toFixed(2);
 
-    // Apply preset values with proper formatting
+    // Calculate final CR: base CR × niche multiplier
+    const finalCR = (nicheData.baseCR * nicheData.crMultiplier).toFixed(1);
+
+    console.log('Calculated values:', {
+      baseCPC: nicheData.baseCPC,
+      platformMult: platformData.cpc,
+      nicheMult: nicheData.cpcMultiplier,
+      finalCPC,
+      finalCR
+    });
+
+    // Apply CPC
     if (this.inputs.cpcSlider && this.inputs.cpcInput) {
-      this.inputs.cpcSlider.value = preset.cpc;
-      this.inputs.cpcInput.value = preset.cpc;
-      if (this.valueDisplays.cpc) this.valueDisplays.cpc.textContent = preset.cpc;
+      this.inputs.cpcSlider.value = finalCPC;
+      this.inputs.cpcInput.value = finalCPC;
+      if (this.valueDisplays.cpc) this.valueDisplays.cpc.textContent = finalCPC;
     }
 
+    // Apply CR
     if (this.inputs.crSlider && this.inputs.crInput) {
-      this.inputs.crSlider.value = preset.cr;
-      this.inputs.crInput.value = preset.cr;
-      if (this.valueDisplays.cr) this.valueDisplays.cr.textContent = preset.cr;
+      this.inputs.crSlider.value = finalCR;
+      this.inputs.crInput.value = finalCR;
+      if (this.valueDisplays.cr) this.valueDisplays.cr.textContent = finalCR;
     }
 
+    // Apply AOV
     if (this.inputs.aovSlider && this.inputs.aovInput) {
-      this.inputs.aovSlider.value = preset.aov;
-      this.inputs.aovInput.value = preset.aov;
-      if (this.valueDisplays.aov) this.valueDisplays.aov.textContent = preset.aov;
+      this.inputs.aovSlider.value = nicheData.aov;
+      this.inputs.aovInput.value = nicheData.aov;
+      if (this.valueDisplays.aov) this.valueDisplays.aov.textContent = nicheData.aov;
     }
 
+    // Apply Margin
     if (this.inputs.marginSlider && this.inputs.marginInput) {
-      this.inputs.marginSlider.value = preset.margin;
-      this.inputs.marginInput.value = preset.margin;
-      if (this.valueDisplays.margin) this.valueDisplays.margin.textContent = preset.margin;
+      this.inputs.marginSlider.value = nicheData.margin;
+      this.inputs.marginInput.value = nicheData.margin;
+      if (this.valueDisplays.margin) this.valueDisplays.margin.textContent = nicheData.margin;
     }
 
     console.log('Preset applied, recalculating...');
@@ -209,11 +303,11 @@ class MediaCalculator {
     console.log('Displaying results:', results);
 
     // Update values with proper formatting
-    this.outputs.clicks.textContent = Math.round(results.clicks).toLocaleString('de-DE');
-    this.outputs.leads.textContent = Math.round(results.leads).toLocaleString('de-DE');
-    this.outputs.cpa.textContent = '€' + Math.round(results.cpa).toLocaleString('de-DE');
+    this.outputs.clicks.textContent = Math.round(results.clicks).toLocaleString('uk-UA');
+    this.outputs.leads.textContent = Math.round(results.leads).toLocaleString('uk-UA');
+    this.outputs.cpa.textContent = '€' + Math.round(results.cpa).toLocaleString('uk-UA');
     this.outputs.roas.textContent = Math.round(results.roas) + '%';
-    this.outputs.profit.textContent = '€' + Math.round(results.profit).toLocaleString('de-DE');
+    this.outputs.profit.textContent = '€' + Math.round(results.profit).toLocaleString('uk-UA');
 
     // Color profit based on value
     if (results.profit < 0) {
@@ -232,39 +326,6 @@ class MediaCalculator {
     } else {
       this.outputs.roas.style.color = 'var(--text-primary)';
     }
-  }
-
-  animateValue(element, targetValue, suffix = '') {
-    const duration = 400;
-    const startValue = parseFloat(element.textContent.replace(/[^0-9.-]/g, '')) || 0;
-    const startTime = performance.now();
-
-    const animate = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-
-      // Easing function
-      const easeProgress = progress * (2 - progress);
-      const currentValue = startValue + (targetValue - startValue) * easeProgress;
-
-      // Format number
-      let formatted;
-      if (suffix === '%') {
-        formatted = Math.round(currentValue);
-      } else if (suffix === '€') {
-        formatted = Math.round(currentValue).toLocaleString('de-DE');
-      } else {
-        formatted = Math.round(currentValue).toLocaleString('de-DE');
-      }
-
-      element.textContent = formatted + suffix;
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
   }
 
   showError() {
