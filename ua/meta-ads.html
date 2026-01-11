@@ -457,7 +457,7 @@
             </div>
         </div>
     </section>
-    <!-- CALCULATOR SECTION -->
+        <!-- CALCULATOR SECTION -->
     <section id="calculator-section" class="calculator-section">
         <div class="container">
             <div class="calculator">
@@ -487,16 +487,27 @@
                     <!-- Left: Inputs -->
                     <div class="calculator__inputs">
 
+                        <!-- Platform Selector -->
+                        <div class="niche-select-group" style="margin-bottom: 20px;">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">📢 Werbeplattform:</label>
+                            <select id="platformSelector" class="niche-select">
+                                <option value="google">Google Ads</option>
+                                <option value="meta">Meta Ads (Facebook/Instagram)</option>
+                                <option value="tiktok">TikTok Ads</option>
+                            </select>
+                        </div>
+
                         <!-- Niche Selector -->
                         <div class="niche-select-group">
-                            <label style="display:block; margin-bottom:10px; color:#94A3B8;">Ihre Nische:</label>
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">🎯 Ihre Nische:</label>
                             <select id="nicheSelector" class="niche-select">
                                 <option value="custom">-- Eigene Werte --</option>
-                                <option value="ecommerce">E-Commerce (Produkte)</option>
-                                <option value="services">Dienstleistungen (Beauty, Reparatur)</option>
-                                <option value="realestate" selected>Immobilien</option>
-                                <option value="b2b">B2B / Großhandel</option>
-                                <option value="infobiz">Infoprodukte</option>
+                                <option value="ecommerce">E-Commerce / Waren</option>
+                                <option value="beauty">Beauty: Schönheitssalons, Kosmetologie</option>
+                                <option value="construction">Reparatur und Bau</option>
+                                <option value="auto" selected>Autogeschäft / Werkstatt / Detailing</option>
+                                <option value="realestate">Immobilien</option>
+                                <option value="expert">Expertenleistungen / B2B</option>
                             </select>
                         </div>
 
@@ -588,7 +599,6 @@
             </div>
         </div>
     </section>
-
 
 
 
