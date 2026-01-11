@@ -40,7 +40,8 @@
       "Bash(for file in ua/*.html)",
       "Bash(do if ! grep -q \"🇺🇦 Створено для підтримки українців\" \"$file\")",
       "Bash(then echo \"$file\")",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(git revert:*)"
     ]
   }
 }
