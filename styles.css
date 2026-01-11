@@ -2028,17 +2028,6 @@ input[type="number"], select {
 }
 
 /* ============================================
-   BUNDLE GRID - ALWAYS 2 COLUMNS
-   ============================================ */
-
-/* Always 2 columns side by side, like on service pages */
-.bundle-grid {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 2rem !important;
-}
-
-/* ============================================
    CALCULATOR SECTION
    ============================================ */
 .calculator-section {
