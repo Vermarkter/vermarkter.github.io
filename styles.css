@@ -1734,10 +1734,11 @@ input[type="number"], select {
 /* Якщо є 3 тарифи - третій по центру */
 .pricing-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, 1fr) !important;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 380px)) !important; /* Фіксована ширина карток */
     gap: 2.5rem !important;
-    max-width: 1200px !important;
+    max-width: 1400px !important;
     margin: 0 auto !important;
+    justify-content: center !important; /* Центруємо картки */
 }
 
 /* На планшетах - 2 колонки, третя картка по центру */
@@ -1991,14 +1992,8 @@ input[type="number"], select {
         padding: 4rem 0 !important;
     }
 
-    /* 5. PRICING GRID - Рівна ширина */
-    .pricing-grid {
-        display: grid !important;
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 2rem !important;
-        max-width: 1200px !important;
-        margin: 0 auto !important;
-    }
+    /* 5. PRICING GRID - Рівна ширина (вже налаштовано вище) */
+    /* Pricing grid styles inherited from line 1735 */
 
     /* 6. PRICING CARDS - Перенос довгих слів */
     .price-amount {
