@@ -2028,6 +2028,17 @@ input[type="number"], select {
 }
 
 /* ============================================
+   BUNDLE GRID - ALWAYS 2 COLUMNS
+   ============================================ */
+
+/* Always 2 columns side by side, like on service pages */
+.bundle-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 2rem !important;
+}
+
+/* ============================================
    CALCULATOR SECTION
    ============================================ */
 .calculator-section {
@@ -2288,7 +2299,7 @@ input[type="number"], select {
 
 .whatsapp-float {
     position: fixed;
-    bottom: 110px; /* Вище chatbot кнопки (30px + 64px + 16px) */
+    bottom: 30px;
     right: 30px;
     z-index: 1000;
     transition: all 0.3s ease;
@@ -2296,6 +2307,7 @@ input[type="number"], select {
 
 .whatsapp-float:hover {
     transform: scale(1.1);
+    bottom: 35px;
 }
 
 .whatsapp-button {
@@ -2331,7 +2343,7 @@ input[type="number"], select {
 /* Mobile: Show only icon */
 @media (max-width: 768px) {
     .whatsapp-float {
-        bottom: 90px; /* Вище chatbot на мобільних */
+        bottom: 20px;
         right: 20px;
     }
 
