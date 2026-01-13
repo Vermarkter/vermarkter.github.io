@@ -41,7 +41,8 @@
       "Bash(do if ! grep -q \"🇺🇦 Створено для підтримки українців\" \"$file\")",
       "Bash(then echo \"$file\")",
       "Bash(curl:*)",
-      "Bash(git revert:*)"
+      "Bash(git revert:*)",
+      "Bash(git mv:*)"
     ]
   }
 }
