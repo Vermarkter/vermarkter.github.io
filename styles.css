@@ -2354,3 +2354,19 @@ input[type="number"], select {
         display: none;
     }
 }
+/* --- ВИПРАВЛЕННЯ ЦЕНТРУВАННЯ ЦІН --- */
+.pricing-grid {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto !important;
+}
+
+.pricing-card {
+    flex: 0 1 350px !important;
+    width: 100%;
+    max-width: 380px !important;
+    margin: 0 auto;
+}
