@@ -457,28 +457,28 @@
             </div>
         </div>
     </section>
-        <!-- CALCULATOR SECTION -->
+            <!-- CALCULATOR SECTION -->
     <section id="calculator-section" class="calculator-section">
         <div class="container">
             <div class="calculator">
                 <div class="calculator__header">
-                    <h2 class="calculator__title">Smart Mediaplan 📊</h2>
+                    <h2 class="calculator__title">Smart Медіаплан 📊</h2>
                     <p class="calculator__subtitle" style="margin-bottom: 20px;">
-                        Berechnen Sie die Rentabilität Ihrer Werbekampagne
+                        Розрахуйте рентабельність вашої рекламної кампанії
                     </p>
 
-                    <!-- БЛОК ДОВІРИ / TRUST BLOCK -->
+                    <!-- БЛОК ДОВІРИ -->
                     <div style="max-width: 700px; margin: 0 auto; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 15px; border-radius: 12px; margin-bottom: 10px;">
                         <p style="margin: 0; color: #F8FAFC; font-size: 15px; line-height: 1.6;">
-                            💡 <strong>Dies ist ein echtes Mediaplanungs-Tool.</strong><br>
-                            Wir verwenden dieselben Formeln wie große Agenturen. Transparent, ehrlich, ohne versteckte Kosten.
+                            💡 <strong>Це реальний інструмент медіапланування.</strong><br>
+                            Ми використовуємо ті самі формули, що й великі агенції. Прозоро, чесно, без прихованих витрат.
                         </p>
                     </div>
 
-                    <!-- WARNING BLOCK -->
+                    <!-- БЛОК ПОПЕРЕДЖЕННЯ -->
                     <div style="max-width: 700px; margin: 0 auto; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); padding: 12px; border-radius: 12px;">
                         <p style="margin: 0; color: #F8FAFC; font-size: 14px; line-height: 1.5;">
-                            ⚠️ Das Ergebnis ist eine Prognose, kein Versprechen. Marketing beginnt mit ehrlichen Zahlen.
+                            ⚠️ Результат є прогнозом, а не обіцянкою. Маркетинг починається з чесних цифр.
                         </p>
                     </div>
                 </div>
@@ -489,7 +489,7 @@
 
                         <!-- Platform Selector -->
                         <div class="niche-select-group" style="margin-bottom: 20px;">
-                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">📢 Werbeplattform:</label>
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">📢 Рекламна платформа:</label>
                             <select id="platformSelector" class="niche-select">
                                 <option value="google">Google Ads</option>
                                 <option value="meta">Meta Ads (Facebook/Instagram)</option>
@@ -499,22 +499,22 @@
 
                         <!-- Niche Selector -->
                         <div class="niche-select-group">
-                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">🎯 Ihre Nische:</label>
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">🎯 Ваша ніша:</label>
                             <select id="nicheSelector" class="niche-select">
-                                <option value="custom">-- Eigene Werte --</option>
-                                <option value="ecommerce">E-Commerce / Waren</option>
-                                <option value="beauty">Beauty: Schönheitssalons, Kosmetologie</option>
-                                <option value="construction">Reparatur und Bau</option>
-                                <option value="auto" selected>Autogeschäft / Werkstatt / Detailing</option>
-                                <option value="realestate">Immobilien</option>
-                                <option value="expert">Expertenleistungen / B2B</option>
+                                <option value="custom">-- Власні значення --</option>
+                                <option value="ecommerce">E-Commerce / Товарка</option>
+                                <option value="beauty">Beauty: Салони краси, Косметологія</option>
+                                <option value="construction">Ремонт та Будівництво</option>
+                                <option value="auto" selected>Автобізнес / СТО / Детейлінг</option>
+                                <option value="realestate">Нерухомість</option>
+                                <option value="expert">Послуги експертів / B2B</option>
                             </select>
                         </div>
 
                         <!-- Budget -->
                         <div class="calculator__input-group" data-input="budget">
                             <div class="calculator__label">
-                                <span>Werbebudget</span>
+                                <span>Рекламний бюджет</span>
                                 <span class="calculator__label-value">€<span id="budgetValue">5000</span></span>
                             </div>
                             <div class="calculator__controls">
@@ -526,7 +526,7 @@
                         <!-- CPC -->
                         <div class="calculator__input-group" data-input="cpc">
                             <div class="calculator__label">
-                                <span>Klickpreis (CPC)</span>
+                                <span>Ціна кліка (CPC)</span>
                                 <span class="calculator__label-value">€<span id="cpcValue">2.5</span></span>
                             </div>
                             <div class="calculator__controls">
@@ -538,7 +538,7 @@
                         <!-- Conversion -->
                         <div class="calculator__input-group" data-input="cr">
                             <div class="calculator__label">
-                                <span>Conversion Rate (%)</span>
+                                <span>Конверсія сайту (%)</span>
                                 <span class="calculator__label-value"><span id="crValue">1.5</span>%</span>
                             </div>
                             <div class="calculator__controls">
@@ -550,13 +550,13 @@
                         <!-- Advanced (AOV + Margin) -->
                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
                             <div class="calculator__input-group" data-input="aov">
-                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Ø Bestellwert (€)</label>
+                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Сер. вартість замовлення (€)</label>
                                 <input type="number" class="calculator__number-input" id="aovInput" value="5000" style="width:100%;">
                                 <input type="range" id="aovSlider" min="10" max="10000" step="10" value="5000" style="display:none;">
                                 <span id="aovValue" style="display:none;"></span>
                             </div>
                             <div class="calculator__input-group" data-input="margin">
-                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Marge (%)</label>
+                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Маржа (%)</label>
                                 <input type="number" class="calculator__number-input" id="marginInput" value="15" style="width:100%;">
                                 <input type="range" id="marginSlider" min="5" max="100" step="5" value="15" style="display:none;">
                                 <span id="marginValue" style="display:none;"></span>
@@ -567,19 +567,19 @@
                     <!-- Right: Results -->
                     <div class="calculator__results">
                         <div class="calculator__result-card">
-                            <div class="calculator__result-label">Traffic (Klicks)</div>
+                            <div class="calculator__result-label">Трафік (Кліки)</div>
                             <div class="calculator__result-value" id="resultClicks">0</div>
                         </div>
                         <div class="calculator__result-card">
-                            <div class="calculator__result-label">Leads (Anfragen)</div>
+                            <div class="calculator__result-label">Ліди (Заявки)</div>
                             <div class="calculator__result-value calculator__result-value--primary" id="resultLeads">0</div>
                         </div>
                         <div class="calculator__result-card">
-                            <div class="calculator__result-label">CPA (Kosten pro Lead)</div>
+                            <div class="calculator__result-label">CPA (Вартість ліда)</div>
                             <div class="calculator__result-value" id="resultCPA">€0</div>
                         </div>
                         <div class="calculator__result-card calculator__result-card--highlight" id="roasCard">
-                            <div class="calculator__result-label">ROAS (Return on Ad Spend)</div>
+                            <div class="calculator__result-label">ROAS (Повернення вкладень)</div>
                             <div class="calculator__result-value calculator__result-value--success" id="resultROAS">0%</div>
                             <div class="calculator__roas-indicator">
                                 <div class="calculator__roas-bar"><div class="calculator__roas-fill" id="roasFill"></div></div>
@@ -587,21 +587,18 @@
                             </div>
                         </div>
                         <div class="calculator__result-card">
-                            <div class="calculator__result-label">Nettogewinn</div>
+                            <div class="calculator__result-label">Чистий прибуток</div>
                             <div class="calculator__result-value" id="resultProfit">€0</div>
                         </div>
                     </div>
                 </div>
 
                 <p class="text-center" style="margin-top: 30px; color: #94A3B8; font-size: 14px;">
-                    ⚠️ Das Ergebnis ist eine Prognose, kein Versprechen. Marketing beginnt mit ehrlichen Zahlen.
+                    ⚠️ Результат є прогнозом, а не обіцянкою. Маркетинг починається з чесних цифр.
                 </p>
             </div>
         </div>
     </section>
-
-
-
     <!-- PRICING SECTION -->
     <section id="pricing" class="pricing-section" style="padding: 6rem 0; background: var(--bg-secondary);">
         <div class="container">
