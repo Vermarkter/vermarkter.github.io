@@ -42,7 +42,8 @@
       "Bash(then echo \"$file\")",
       "Bash(curl:*)",
       "Bash(git revert:*)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "Bash(echo \"Checking root folders...\" ls ua/*.html de/*.html en/*.html)"
     ]
   }
 }
