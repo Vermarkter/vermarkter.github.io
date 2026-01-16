@@ -783,16 +783,27 @@
                     <!-- Left: Inputs -->
                     <div class="calculator__inputs">
 
+                        <!-- Platform Selector -->
+                        <div class="niche-select-group" style="margin-bottom: 15px;">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">📢 Reklam Platformu:</label>
+                            <select id="platformSelector" class="niche-select">
+                                <option value="google" selected>Google Ads</option>
+                                <option value="meta">Meta Ads (Facebook/Instagram)</option>
+                                <option value="tiktok">TikTok Ads</option>
+                            </select>
+                        </div>
+
                         <!-- Niche Selector -->
                         <div class="niche-select-group">
-                            <label style="display:block; margin-bottom:10px; color:#94A3B8;">Nişiniz:</label>
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">🎯 Nişiniz:</label>
                             <select id="nicheSelector" class="niche-select">
                                 <option value="custom">-- Özel Değerler --</option>
-                                <option value="ecommerce">E-Ticaret (Ürünler)</option>
-                                <option value="services">Hizmetler (Güzellik, Tamir)</option>
-                                <option value="realestate" selected>Gayrimenkul</option>
-                                <option value="b2b">B2B / Toptan</option>
-                                <option value="infobiz">Bilgi Ürünleri</option>
+                                <option value="ecommerce">E-Ticaret / Ürünler</option>
+                                <option value="beauty">Güzellik: Salonlar, Kozmetik</option>
+                                <option value="construction">Tadilat ve İnşaat</option>
+                                <option value="auto" selected>Oto / Servis / Detailing</option>
+                                <option value="realestate">Gayrimenkul</option>
+                                <option value="expert">Uzman Hizmetleri / B2B</option>
                             </select>
                         </div>
 
