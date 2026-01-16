@@ -113,7 +113,7 @@
                     <a href="#contact" class="btn btn-primary" style="padding: 1rem 2.5rem; font-size: 1.1rem; background: linear-gradient(135deg, #FF0050, #00F2EA);">
                         🚀 Безкоштовна консультація
                     </a>
-                    <a href="#calculator" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
+                    <a href="#calculator-section" class="btn btn-secondary" style="padding: 1rem 2.5rem; font-size: 1.1rem;">
                         💰 Розрахувати ROI
                     </a>
                 </div>
@@ -199,67 +199,119 @@
         </div>
     </section>
 
-    <!-- CALCULATOR SECTION (FIXED IDS) -->
-    <section id="calculator" class="calculator-section">
+    <!-- CALCULATOR SECTION -->
+    <section id="calculator-section" class="calculator-section">
         <div class="container">
-            <div class="text-center mb-3">
-                <h2 class="text-gradient">ROI Калькулятор</h2>
-                <p style="color: white; opacity: 0.9;">Це реальний інструмент медіапланування.</p>
-            </div>
-
             <div class="calculator">
+                <div class="calculator__header">
+                    <h2 class="calculator__title">Smart Медіаплан 📊</h2>
+                    <p class="calculator__subtitle" style="margin-bottom: 20px;">
+                        Розрахуйте рентабельність вашої рекламної кампанії
+                    </p>
+                </div>
+
                 <div class="calculator__grid">
-                    <!-- INPUTS -->
+                    <!-- Left: Inputs -->
                     <div class="calculator__inputs">
-                        <div class="calculator__input-group">
-                            <label>Бюджет (€)</label>
-                            <div class="calculator-input-row">
-                                <input type="range" id="budget" min="500" max="50000" step="500" value="1000">
-                                <input type="number" id="budget-val" value="1000">
+                        <!-- Platform Selector -->
+                        <div class="niche-select-group" style="margin-bottom: 20px;">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">📢 Рекламна платформа:</label>
+                            <select id="platformSelector" class="niche-select">
+                                <option value="google">Google Ads</option>
+                                <option value="meta">Meta Ads (Facebook/Instagram)</option>
+                                <option value="tiktok" selected>TikTok Ads</option>
+                            </select>
+                        </div>
+
+                        <!-- Niche Selector -->
+                        <div class="niche-select-group">
+                            <label style="display:block; margin-bottom:10px; color:#94A3B8; font-weight: 600;">🎯 Ваша ніша:</label>
+                            <select id="nicheSelector" class="niche-select">
+                                <option value="custom">-- Власні значення --</option>
+                                <option value="ecommerce" selected>E-Commerce / Товарка</option>
+                                <option value="beauty">Beauty: Салони краси</option>
+                                <option value="construction">Ремонт та Будівництво</option>
+                                <option value="auto">Автобізнес / СТО / Детейлінг</option>
+                                <option value="realestate">Нерухомість</option>
+                                <option value="expert">Послуги експертів / B2B</option>
+                            </select>
+                        </div>
+
+                        <!-- Budget -->
+                        <div class="calculator__input-group" data-input="budget">
+                            <div class="calculator__label">
+                                <span>Рекламний бюджет</span>
+                                <span class="calculator__label-value">€<span id="budgetValue">5000</span></span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="budgetSlider" min="500" max="50000" step="100" value="5000">
+                                <input type="number" class="calculator__number-input" id="budgetInput" value="5000">
                             </div>
                         </div>
-                        <div class="calculator__input-group">
-                            <label>CPC (€)</label>
-                            <div class="calculator-input-row">
-                                <input type="range" id="cpc" min="0.1" max="10" step="0.1" value="0.8">
-                                <input type="number" id="cpc-val" value="0.8">
+
+                        <!-- CPC -->
+                        <div class="calculator__input-group" data-input="cpc">
+                            <div class="calculator__label">
+                                <span>Ціна кліка (CPC)</span>
+                                <span class="calculator__label-value">€<span id="cpcValue">2.5</span></span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="cpcSlider" min="0.1" max="10" step="0.1" value="2.5">
+                                <input type="number" class="calculator__number-input" id="cpcInput" value="2.5" step="0.1">
                             </div>
                         </div>
-                        <div class="calculator__input-group">
-                            <label>Конверсія (%)</label>
-                            <div class="calculator-input-row">
-                                <input type="range" id="cr" min="0.1" max="20" step="0.1" value="3.0">
-                                <input type="number" id="cr-val" value="3.0">
+
+                        <!-- Conversion -->
+                        <div class="calculator__input-group" data-input="cr">
+                            <div class="calculator__label">
+                                <span>Конверсія сайту (%)</span>
+                                <span class="calculator__label-value"><span id="crValue">1.5</span>%</span>
+                            </div>
+                            <div class="calculator__controls">
+                                <input type="range" class="calculator__range" id="crSlider" min="0.1" max="15" step="0.1" value="1.5">
+                                <input type="number" class="calculator__number-input" id="crInput" value="1.5" step="0.1">
                             </div>
                         </div>
-                        <div class="calculator__input-group">
-                            <label>Чек (€)</label>
-                            <div class="calculator-input-row">
-                                <input type="range" id="aov" min="10" max="2000" step="10" value="150">
-                                <input type="number" id="aov-val" value="150">
+
+                        <!-- Advanced (AOV + Margin) -->
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                            <div class="calculator__input-group" data-input="aov">
+                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Сер. чек (€)</label>
+                                <input type="number" class="calculator__number-input" id="aovInput" value="5000" style="width:100%;">
+                                <input type="range" id="aovSlider" min="10" max="10000" step="10" value="5000" style="display:none;">
+                                <span id="aovValue" style="display:none;"></span>
+                            </div>
+                            <div class="calculator__input-group" data-input="margin">
+                                <label style="font-size:12px; color:#94A3B8; display:block; margin-bottom:5px;">Маржа (%)</label>
+                                <input type="number" class="calculator__number-input" id="marginInput" value="15" style="width:100%;">
+                                <input type="range" id="marginSlider" min="5" max="100" step="5" value="15" style="display:none;">
+                                <span id="marginValue" style="display:none;"></span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- RESULTS -->
+                    <!-- Right: Results -->
                     <div class="calculator__results">
                         <div class="calculator__result-card">
-                            <span>Кліки</span>
-                            <span class="calculator__result-value" id="result-clicks">0</span>
+                            <div class="calculator__result-label">Трафік (Кліки)</div>
+                            <div class="calculator__result-value" id="resultClicks">0</div>
                         </div>
                         <div class="calculator__result-card">
-                            <span>Ліди</span>
-                            <span class="calculator__result-value" id="result-conversions">0</span>
-                        </div>
-                        <div class="calculator__result-card" style="border-color: var(--success);">
-                            <span>Прибуток</span>
-                            <span class="calculator__result-value profit" id="result-profit">€0</span>
+                            <div class="calculator__result-label">Ліди (Заявки)</div>
+                            <div class="calculator__result-value calculator__result-value--primary" id="resultLeads">0</div>
                         </div>
                         <div class="calculator__result-card">
-                            <span>ROAS</span>
-                            <span class="calculator__result-value" id="result-roas">0x</span>
+                            <div class="calculator__result-label">CPA (Вартість ліда)</div>
+                            <div class="calculator__result-value" id="resultCPA">€0</div>
                         </div>
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; margin-top: 1rem; justify-content: center;">Отримати план</a>
+                        <div class="calculator__result-card calculator__result-card--highlight">
+                            <div class="calculator__result-label">ROAS</div>
+                            <div class="calculator__result-value calculator__result-value--success" id="resultROAS">0%</div>
+                        </div>
+                        <div class="calculator__result-card">
+                            <div class="calculator__result-label">Чистий прибуток</div>
+                            <div class="calculator__result-value" id="resultProfit">€0</div>
+                        </div>
                     </div>
                 </div>
             </div>
