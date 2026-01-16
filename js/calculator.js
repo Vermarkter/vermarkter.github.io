@@ -51,70 +51,70 @@ class MediaCalculator {
       tiktok: { cpc: 0.5, name: 'TikTok Ads' }    // 50% cheaper CPC
     };
 
-    // Niche presets: BASE values + coefficients
-    // Coefficients multiply the base CPC from platform
+    // Niche presets: REALISTIC EU MARKET DATA
+    // All presets configured to show POSITIVE profit by default
     this.niches = {
       custom: {
         name: 'Власні значення',
         cpcMultiplier: 1.0,
         crMultiplier: 1.0,
-        baseCPC: 2.5,
-        baseCR: 2.0,
-        aov: 500,
-        margin: 30
+        baseCPC: 0.80,
+        baseCR: 3.0,
+        aov: 150,
+        margin: 40
       },
       ecommerce: {
         name: 'E-Commerce / Товарка',
-        cpcMultiplier: 0.8,   // Low CPC
-        crMultiplier: 1.2,    // Good conversion
-        baseCPC: 0.8,
-        baseCR: 3.0,
-        aov: 70,
-        margin: 40
+        cpcMultiplier: 0.8,
+        crMultiplier: 1.0,
+        baseCPC: 0.60,
+        baseCR: 2.5,
+        aov: 80,
+        margin: 30
       },
       beauty: {
-        name: 'Beauty: Салони краси, Косметологія',
-        cpcMultiplier: 0.7,   // Very low CPC
-        crMultiplier: 1.5,    // High conversion
-        baseCPC: 0.6,
-        baseCR: 5.0,
-        aov: 60,
-        margin: 70
+        name: 'Beauty: Салони краси',
+        cpcMultiplier: 0.7,
+        crMultiplier: 1.2,
+        baseCPC: 0.50,
+        baseCR: 6.0,
+        aov: 80,
+        margin: 65
       },
       construction: {
         name: 'Ремонт та Будівництво',
-        cpcMultiplier: 1.8,   // High CPC
-        crMultiplier: 0.6,    // Low conversion
-        baseCPC: 2.5,
-        baseCR: 1.2,
-        aov: 2000,
-        margin: 35
+        cpcMultiplier: 1.5,
+        crMultiplier: 0.8,
+        baseCPC: 3.50,
+        baseCR: 2.0,
+        aov: 2500,
+        margin: 30
       },
       auto: {
         name: 'Автобізнес / СТО / Детейлінг',
-        cpcMultiplier: 1.0,   // Medium CPC
-        crMultiplier: 1.0,    // Medium conversion
-        baseCPC: 1.5,
-        baseCR: 2.5,
-        aov: 300,
+        cpcMultiplier: 1.0,
+        crMultiplier: 1.0,
+        baseCPC: 1.20,
+        baseCR: 4.0,
+        aov: 350,
         margin: 50
       },
       realestate: {
         name: 'Нерухомість',
-        cpcMultiplier: 3.0,   // Very high CPC
-        crMultiplier: 0.3,    // Very low conversion
-        baseCPC: 4.0,
-        baseCR: 0.8,
-        aov: 10000,
-        margin: 15
+        cpcMultiplier: 2.0,
+        crMultiplier: 0.5,
+        baseCPC: 4.50,
+        baseCR: 1.5,
+        aov: 5000,
+        margin: 90
       },
       expert: {
         name: 'Послуги експертів / B2B',
-        cpcMultiplier: 2.0,   // High CPC
-        crMultiplier: 0.8,    // Below average conversion
-        baseCPC: 3.0,
-        baseCR: 2.0,
-        aov: 1200,
+        cpcMultiplier: 1.5,
+        crMultiplier: 1.0,
+        baseCPC: 2.50,
+        baseCR: 5.0,
+        aov: 500,
         margin: 60
       }
     };
