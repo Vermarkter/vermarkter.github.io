@@ -1665,6 +1665,20 @@ header .lang-switcher:hover .lang-dropdown,
     font-weight: 500;
 }
 
+/* Fix pricing text overlap in service cards */
+.service-card .text-gradient {
+    display: block !important;
+    font-size: 2.5rem !important;
+    line-height: 1.2 !important;
+    margin: 1rem 0 !important;
+    width: 100% !important;
+}
+
+.service-card p.text-muted {
+    display: block !important;
+    margin-top: 0 !important;
+}
+
 /* Pricing Cards - більше повітря та читабельності */
 .pricing-card,
 .service-card,

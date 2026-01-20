@@ -197,72 +197,6 @@
             </div>
         </section>
 
-    <!-- SMART START BUNDLE (FIXED LAYOUT) -->
-    <section class="bundle-section" style="padding: 80px 0; width: 100%; display: block;">
-        <div class="container">
-            <a href="#contact" style="display: block; text-decoration: none; color: inherit; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
-<div style="background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)); border: 2px solid #3B82F6; border-radius: 24px; padding: 40px; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); max-width: 1100px; margin: 0 auto;">
-
-                <!-- Badge -->
-                <div style="position: absolute; top: 30px; right: -35px; transform: rotate(45deg); background: #F59E0B; color: #000; padding: 5px 40px; font-weight: 800; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 10;">
-                    BESTSELLER
-                </div>
-
-                <!-- Flex Container: Forces Side-by-Side -->
-                <div style="display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: space-between;">
-
-                    <!-- LEFT COLUMN (Price & CTA) -->
-                    <div style="flex: 1 1 400px; min-width: 300px;">
-                        <h3 style="font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(135deg, #3B82F6, #2563EB); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900;">
-                            🚀 Smart Start Bundle
-                        </h3>
-                        <p style="color: #94A3B8; font-size: 1.2rem; margin-bottom: 25px;">
-                            Landing Page + Google Ads + CRM інтеграція
-                        </p>
-
-                        <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px;">
-                            <span style="text-decoration: line-through; color: #64748B; font-size: 1.4rem;">€1.097</span>
-                            <span style="font-size: 3.5rem; font-weight: 900; color: #F8FAFC; line-height: 1;">€599</span>
-                        </div>
-                        <p style="color: #10B981; font-weight: 700; margin-bottom: 30px; font-size: 1.1rem;">
-                            Ви економите €498 (45%)
-                        </p>
-
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; padding: 18px; font-size: 1.2rem; display: block; background: #3B82F6; color: white; border-radius: 12px; text-decoration: none;">
-                            Отримати Bundle
-                        </a>
-                    </div>
-
-                    <!-- RIGHT COLUMN (List) -->
-                    <div style="flex: 1 1 400px; min-width: 300px; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                        <h4 style="margin-bottom: 20px; font-size: 1.2rem; color: white; font-weight: 700;">Пакет включає:</h4>
-                        <ul style="display: flex; flex-direction: column; gap: 15px; list-style: none; padding: 0; margin: 0;">
-                            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
-                                <span style="display: flex; align-items: center; gap: 10px; color: #F8FAFC;">
-                                    🎨 <span>Landing Page (Express)</span>
-                                </span>
-                                <span style="color: #94A3B8; font-size: 0.9rem;">Вартість: €199</span>
-                            </li>
-                            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
-                                <span style="display: flex; align-items: center; gap: 10px; color: #F8FAFC;">
-                                    📊 <span>Google Ads Setup (Pro)</span>
-                                </span>
-                                <span style="color: #94A3B8; font-size: 0.9rem;">Вартість: €399</span>
-                            </li>
-                            <li style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="display: flex; align-items: center; gap: 10px; color: #F8FAFC;">
-                                    🔗 <span>CRM інтеграція (Basic)</span>
-                                </span>
-                                <span style="color: #94A3B8; font-size: 0.9rem;">Вартість: €499</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-</a>
-</div>
-</section>
         <!-- PROBLEM / AGITATION SECTION -->
         <section class="problem-section" style="padding: 6rem 0; background: rgba(0,0,0,0.3);">
             <div class="container">
@@ -896,6 +830,57 @@
                 <p class="text-center" style="margin-top: 30px; color: #94A3B8; font-size: 14px;">
                     ⚠️ Результат є прогнозом, а не обіцянкою. Маркетинг починається з чесних цифр.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS (INFINITE MARQUEE) -->
+    <section id="testimonials" class="testimonials-section" style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Відгуки клієнтів
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    Понад 100 успішних проєктів для малого бізнесу в ЄС
+                </p>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%;">
+            <div class="marquee marquee-right" style="width: 100%; overflow: hidden;">
+                <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollRight 40s linear infinite;">
+                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Vermarkter hat uns geholfen, unseren Online-Shop in Deutschland in 6 Tagen zu starten. Die ersten Verkäufe kamen schon nach einer Woche! ROAS 380%."</p>
+                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
+                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, München</div>
+                    </div>
+                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Professionelles Team! Google Ads hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden."</p>
+                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii M.</div>
+                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Services, Berlin</div>
+                    </div>
+                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Die Meta Ads-Kampagnen brachten uns +180% Lead-Wachstum in 2 Monaten. Empfehle allen!"</p>
+                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Maryna L.</div>
+                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">B2B, Warschau</div>
+                    </div>
+                    <!-- Duplicates for infinite scroll -->
+                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Vermarkter hat uns geholfen, unseren Online-Shop in Deutschland in 6 Tagen zu starten. Die ersten Verkäufe kamen schon nach einer Woche! ROAS 380%."</p>
+                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
+                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-commerce, München</div>
+                    </div>
+                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Professionelles Team! Google Ads hat sich im ersten Monat amortisiert. ROAS 420%. Sehr zufrieden."</p>
+                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii M.</div>
+                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Services, Berlin</div>
+                    </div>
+                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
+                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Die Meta Ads-Kampagnen brachten uns +180% Lead-Wachstum in 2 Monaten. Empfehle allen!"</p>
+                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Maryna L.</div>
+                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">B2B, Warschau</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
