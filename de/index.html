@@ -888,90 +888,153 @@
         </div>
     </section>
 
-    <!-- PORTFOLIO SECTION (CSS ART) -->
+    <!-- PORTFOLIO SECTION (REAL IMAGES) -->
     <section class="container" style="padding: 4rem 0;">
         <h2 class="text-center mb-5">Unsere Arbeiten</h2>
-        <div class="services-grid">
-            <!-- APP MOCKUP -->
-            <div class="visual-box" style="height: 300px; background: rgba(30,41,59,0.5); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 120px; height: 240px; background: #0F172A; border: 4px solid #334155; border-radius: 15px;">
-                    <div style="width: 100%; height: 100%; background: linear-gradient(180deg, rgba(59,130,246,0.2), transparent);"></div>
-                    <div style="position: absolute; bottom: 10px; left: 10px; right: 10px; height: 30px; background: #3B82F6; border-radius: 5px;"></div>
+        <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+
+            <!-- PROJECT 1: SALON -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%); height: 280px;">
+                <img src="img/portfolio-salon.png" alt="Beauty Salon Website" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Glamour Studio</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Web Development + Booking System</p>
                 </div>
-                <p style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: #94A3B8;">Mobile Apps</p>
             </div>
 
-            <!-- DASHBOARD MOCKUP -->
-            <div class="visual-box" style="height: 300px; background: rgba(30,41,59,0.5); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 30px; left: 20px; right: 20px; height: 180px; background: #1E293B; border-radius: 8px; border: 1px solid #334155; padding: 10px;">
-                    <div style="display: flex; gap: 5px; margin-bottom: 10px;">
-                        <div style="width: 30px; height: 30px; background: #10B981; border-radius: 50%;"></div>
-                        <div style="width: 60%; height: 10px; background: #334155; border-radius: 4px; margin-top: 10px;"></div>
-                    </div>
-                    <div style="width: 100%; height: 80px; background: linear-gradient(90deg, #3B82F6 0%, transparent); opacity: 0.3;"></div>
+            <!-- PROJECT 2: SAAS DASHBOARD -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); height: 280px;">
+                <img src="img/portfolio-dashboard.png" alt="SaaS Dashboard" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">YourBusinessApp</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">CRM Dashboard & Analytics</p>
                 </div>
-                <p style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: #94A3B8;">CRM & Dashboards</p>
             </div>
 
-            <!-- WEBSITE MOCKUP -->
-            <div class="visual-box" style="height: 300px; background: rgba(30,41,59,0.5); border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 30px; left: 20px; right: 20px; height: 180px; background: #0F172A; border-radius: 8px; border-top: 10px solid #334155;">
-                    <div style="width: 100%; height: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; padding: 10px;">
-                        <div style="background: #1E293B; border-radius: 4px;"></div>
-                        <div style="background: #1E293B; border-radius: 4px;"></div>
-                        <div style="background: #3B82F6; border-radius: 4px; grid-column: span 2;"></div>
-                    </div>
+            <!-- PROJECT 3: E-COMMERCE -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); height: 280px;">
+                <img src="img/portfolio-ecommerce.png" alt="E-Commerce Shop" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">TechGear Shop</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Shopify + Google Shopping Ads</p>
                 </div>
-                <p style="position: absolute; bottom: 10px; width: 100%; text-align: center; color: #94A3B8;">Websites</p>
             </div>
+
+            <!-- PROJECT 4: AUTO SERVICE -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); height: 280px;">
+                <img src="img/portfolio-auto.png" alt="Auto Service Landing" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">AutoPro Detailing</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Landing Page + Google Ads</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- TESTIMONIALS (INFINITE MARQUEE) -->
-    <section id="testimonials" class="testimonials-section" style="padding: 6rem 0;">
+    <!-- TESTIMONIALS (DOUBLE MARQUEE) -->
+    <section id="testimonials" class="testimonials-section" style="padding: 4rem 0; overflow: hidden;">
         <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
                 <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    Kundenbewertungen
+                    Vertrauen von Kunden
                 </h2>
                 <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
                     Über 100 erfolgreiche Projekte für kleine Unternehmen in der EU
                 </p>
             </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%;">
-            <div class="marquee marquee-right" style="width: 100%; overflow: hidden;">
-                <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollRight 40s linear infinite;">
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Instagram-Werbung gestartet. Maniküre-Termine sind 2 Wochen im Voraus ausgebucht."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Oksana K.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Beauty Salon "Glow", Berlin</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"ROAS 520% bei Google Shopping. Sehr professioneller Ansatz."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Markus W.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-Commerce "TechGear", München</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Endlich verständliche Berichte. Kosten pro Lead von €50 auf €15 gesunken."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Andrii P.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Baufirma "BudMaster", Warschau</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Targeting auf Ukrainer in Österreich hat perfekt funktioniert."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Olena S.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Online-Sprachschule, Wien</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Google Ads in 2 Tagen gestartet. 15 Anfragen in der ersten Woche erhalten."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Serhii T.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Auto Detailing, Düsseldorf</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Das Team kennt sich aus. Transparente Berichte, klare KPIs."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Iryna K.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Kosmetik, Berlin</div>
-                    </div>
+
+        <!-- ROW 1: Left to Right -->
+        <div class="marquee-wrapper" style="margin-bottom: 1.5rem;">
+            <div class="marquee-content scroll-left">
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Instagram-Werbung gestartet. Termine 2 Wochen ausgebucht!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Oksana K.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Beauty Salon, Berlin</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"ROAS 520% bei Google Shopping. Top Service!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Markus W.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, München</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Kosten pro Lead von €50 auf €15 gesunken!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Andrii P.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Baufirma, Warschau</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Endlich profitabel! Beste Entscheidung."</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Müller GmbH</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, Hamburg</div>
+                </div>
+                <!-- Duplicates for infinite scroll -->
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Instagram-Werbung gestartet. Termine 2 Wochen ausgebucht!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Oksana K.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Beauty Salon, Berlin</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"ROAS 520% bei Google Shopping. Top Service!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Markus W.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, München</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Kosten pro Lead von €50 auf €15 gesunken!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Andrii P.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Baufirma, Warschau</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Endlich profitabel! Beste Entscheidung."</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Müller GmbH</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, Hamburg</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2: Right to Left -->
+        <div class="marquee-wrapper">
+            <div class="marquee-content scroll-right">
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"15 Anfragen in der ersten Woche. Wahnsinn!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Serhii T.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Auto Detailing, Düsseldorf</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Transparente Berichte, klare KPIs. Super Team!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Iryna K.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Kosmetik, Berlin</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Targeting auf Ukrainer in Österreich perfekt!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Olena S.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Sprachschule, Wien</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Umsatz verdoppelt in 3 Monaten!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Schmidt KG</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Handwerk, Frankfurt</div>
+                </div>
+                <!-- Duplicates for infinite scroll -->
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"15 Anfragen in der ersten Woche. Wahnsinn!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Serhii T.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Auto Detailing, Düsseldorf</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Transparente Berichte, klare KPIs. Super Team!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Iryna K.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Kosmetik, Berlin</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Targeting auf Ukrainer in Österreich perfekt!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Olena S.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Sprachschule, Wien</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Umsatz verdoppelt in 3 Monaten!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Schmidt KG</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Handwerk, Frankfurt</div>
                 </div>
             </div>
         </div>

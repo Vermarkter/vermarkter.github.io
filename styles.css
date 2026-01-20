@@ -1053,15 +1053,37 @@ input[type="number"] {
     to { transform: translateX(-100%); }
 }
 
-/* Два ряди відгуків: перший вправо, другий вліво */
+/* Double Marquee Animations */
 @keyframes scrollRight {
-    from { transform: translateX(-100%); }
+    from { transform: translateX(-50%); }
     to { transform: translateX(0); }
 }
 
 @keyframes scrollLeft {
     from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
+    to { transform: translateX(-50%); }
+}
+
+.marquee-wrapper {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-content {
+    display: flex;
+    gap: 1.5rem;
+    min-width: max-content;
+}
+
+.marquee-content.scroll-left {
+    animation: scrollLeft 35s linear infinite;
+}
+
+.marquee-content.scroll-right {
+    animation: scrollRight 35s linear infinite;
 }
 
 .testimonial-card {
@@ -1070,9 +1092,42 @@ input[type="number"] {
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
     padding: var(--spacing-md);
-    min-width: 350px;
-    max-width: 350px;
+    min-width: 320px;
+    max-width: 320px;
     flex-shrink: 0;
+}
+
+/* Portfolio Cards */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.portfolio-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.portfolio-card:hover img {
+    transform: scale(1.05);
+}
+
+.portfolio-card img {
+    transition: transform 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .testimonial-text {
