@@ -870,51 +870,109 @@
         </div>
     </section>
 
-    <!-- TESTIMONIALS (INFINITE MARQUEE) -->
-    <section id="testimonials" class="testimonials-section" style="padding: 6rem 0;">
+    <!-- TESTIMONIALS (DOUBLE MARQUEE) -->
+    <section id="testimonials" class="testimonials-section" style="padding: 4rem 0; overflow: hidden;">
         <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
                 <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    Відгуки клієнтів
+                    Довіра клієнтів
                 </h2>
                 <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
                     Понад 100 успішних проєктів для малого бізнесу в ЄС
                 </p>
             </div>
         </div>
-        <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%;">
-            <div class="marquee marquee-right" style="width: 100%; overflow: hidden;">
-                <div class="marquee-content" style="display: flex; gap: 2rem; animation: scrollRight 40s linear infinite;">
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Запустили рекламу в Instagram. Записів на манікюр повний на 2 тижні вперед."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Оксана К.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Салон краси "Glow", Берлін</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"ROAS 520% на Google Shopping. Дуже професійний підхід."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Маркус В.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">E-Commerce "TechGear", Мюнхен</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Нарешті зрозумілі звіти. Ціна ліда впала з €50 до €15."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Андрій П.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Будівельна фірма "BudMaster", Варшава</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Таргетинг на українців в Австрії спрацював ідеально."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Олена С.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Онлайн-школа мов, Відень</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Google Ads запустили за 2 дні. Отримали 15 заявок за перший тиждень."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Сергій Т.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Auto Detailing, Дюссельдорф</div>
-                    </div>
-                    <div class="testimonial-card" style="min-width: 400px; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                        <p style="font-size: 1.05rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1.5rem; font-style: italic;">"Команда знає свою справу. Прозорі звіти, чіткі KPI."</p>
-                        <div style="font-weight: 700; color: var(--text-primary); font-size: 1.1rem;">Ірина К.</div>
-                        <div style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">Косметика, Берлін</div>
-                    </div>
+
+        <!-- ROW 1: Left to Right -->
+        <div class="marquee-wrapper" style="margin-bottom: 1.5rem;">
+            <div class="marquee-content scroll-left">
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Запустили рекламу в Instagram. Записів на манікюр повний на 2 тижні вперед!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Оксана К.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Салон краси, Берлін</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"ROAS 520% на Google Shopping. Топовий сервіс!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Маркус В.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, Мюнхен</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Ціна ліда впала з €50 до €15!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Андрій П.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Будівельна фірма, Варшава</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Нарешті прибуткові кампанії! Найкраще рішення."</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Müller GmbH</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, Гамбург</div>
+                </div>
+                <!-- Duplicates for infinite scroll -->
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Запустили рекламу в Instagram. Записів на манікюр повний на 2 тижні вперед!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Оксана К.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Салон краси, Берлін</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"ROAS 520% на Google Shopping. Топовий сервіс!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Маркус В.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, Мюнхен</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Ціна ліда впала з €50 до €15!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Андрій П.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Будівельна фірма, Варшава</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Нарешті прибуткові кампанії! Найкраще рішення."</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Müller GmbH</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, Гамбург</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ROW 2: Right to Left -->
+        <div class="marquee-wrapper">
+            <div class="marquee-content scroll-right">
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"15 заявок за перший тиждень. Це неймовірно!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Сергій Т.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Auto Detailing, Дюссельдорф</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Прозорі звіти, зрозумілі KPI. Супер команда!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Ірина К.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Косметика, Берлін</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Таргетинг на українців в Австрії спрацював ідеально!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Олена С.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Мовна школа, Відень</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Оборот подвоївся за 3 місяці!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Schmidt KG</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Ремонт, Франкфурт</div>
+                </div>
+                <!-- Duplicates for infinite scroll -->
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"15 заявок за перший тиждень. Це неймовірно!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Сергій Т.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Auto Detailing, Дюссельдорф</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Прозорі звіти, зрозумілі KPI. Супер команда!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Ірина К.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Косметика, Берлін</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Таргетинг на українців в Австрії спрацював ідеально!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Олена С.</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Мовна школа, Відень</div>
+                </div>
+                <div class="testimonial-card" style="min-width: 320px; flex-shrink: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">"Оборот подвоївся за 3 місяці!"</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Schmidt KG</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Ремонт, Франкфурт</div>
                 </div>
             </div>
         </div>
