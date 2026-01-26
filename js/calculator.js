@@ -77,7 +77,7 @@ class MediaCalculator {
         cpcMultiplier: 0.7,
         crMultiplier: 1.2,
         baseCPC: 0.50,
-        baseCR: 6.0,
+        baseCR: 5.0,
         aov: 80,
         margin: 65
       },
@@ -113,7 +113,7 @@ class MediaCalculator {
         cpcMultiplier: 1.5,
         crMultiplier: 1.0,
         baseCPC: 2.50,
-        baseCR: 5.0,
+        baseCR: 4.0,
         aov: 500,
         margin: 60
       }
