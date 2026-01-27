@@ -491,23 +491,40 @@ if (scrollToTopBtn) {
 }
 
 // ==================== SCROLL TO TOP BUTTON (AUTO-INJECT) ====================
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Create button
-    const scrollBtn = document.createElement('div');
-    scrollBtn.className = 'scroll-top-btn';
-    scrollBtn.innerHTML = '↑';
-    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.body.appendChild(scrollBtn);
+(function() {
+    // Wait for DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollBtn);
+    } else {
+        initScrollBtn();
+    }
 
-    // 2. Show on scroll
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
+    function initScrollBtn() {
+        // 1. Create button
+        const scrollBtn = document.createElement('div');
+        scrollBtn.className = 'scroll-top-btn';
+        scrollBtn.innerHTML = '↑';
+        scrollBtn.setAttribute('title', 'Scroll to top');
+        scrollBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        document.body.appendChild(scrollBtn);
+
+        // 2. Show on scroll (300px threshold)
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+
+        // 3. Initial check
+        if (window.scrollY > 300) {
             scrollBtn.classList.add('visible');
-        } else {
-            scrollBtn.classList.remove('visible');
         }
-    });
-});
+    }
+})();
 
 // ==================== EXPORT FOR EXTERNAL USE ====================
 window.Vermarkter = {
