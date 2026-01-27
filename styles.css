@@ -2576,3 +2576,19 @@ input[type="number"], select {
     transform: translateY(-5px);
     background: var(--brand-secondary);
 }
+
+/* ============================================
+   PRICING CARD FIX
+   ============================================ */
+.service-card h3.text-gradient {
+    font-size: 2.2rem !important;
+    white-space: nowrap !important;
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: center !important;
+    gap: 5px !important;
+}
+
+.service-card .price-period {
+    font-size: 0.9rem !important;
+}
