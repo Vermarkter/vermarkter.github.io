@@ -2524,3 +2524,21 @@ input[type="number"], select {
         font-size: 15px;
     }
 }
+
+/* ============================================
+   FORCE PRICE ON ONE LINE (Pricing Cards Fix)
+   ============================================ */
+.pricing-price,
+.price-block {
+    display: flex !important;
+    align-items: baseline !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+    gap: 5px !important;
+}
+
+.pricing-price .price-amount,
+.pricing-price .price-period {
+    white-space: nowrap !important;
+}
