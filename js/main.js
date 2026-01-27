@@ -490,6 +490,25 @@ if (scrollToTopBtn) {
     });
 }
 
+// ==================== SCROLL TO TOP BUTTON (AUTO-INJECT) ====================
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Create button
+    const scrollBtn = document.createElement('div');
+    scrollBtn.className = 'scroll-top-btn';
+    scrollBtn.innerHTML = '↑';
+    scrollBtn.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.body.appendChild(scrollBtn);
+
+    // 2. Show on scroll
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            scrollBtn.classList.add('visible');
+        } else {
+            scrollBtn.classList.remove('visible');
+        }
+    });
+});
+
 // ==================== EXPORT FOR EXTERNAL USE ====================
 window.Vermarkter = {
     calculate,
