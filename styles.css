@@ -2549,7 +2549,7 @@ input[type="number"], select {
 .scroll-top-btn {
     position: fixed;
     bottom: 30px;
-    right: 100px;
+    right: 180px; /* Left of WhatsApp button */
     width: 50px;
     height: 50px;
     background: var(--brand);
@@ -2562,8 +2562,8 @@ input[type="number"], select {
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transition: 0.3s;
-    z-index: 999;
+    transition: all 0.3s ease;
+    z-index: 9999;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
