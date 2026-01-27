@@ -2580,15 +2580,19 @@ input[type="number"], select {
 /* ============================================
    PRICING CARD FIX
    ============================================ */
-.service-card h3.text-gradient {
-    font-size: 2.2rem !important;
-    white-space: nowrap !important;
+.pricing-card .pricing-price {
     display: flex !important;
+    flex-wrap: wrap !important;
     align-items: baseline !important;
-    justify-content: center !important;
+    justify-content: flex-start !important;
     gap: 5px !important;
 }
 
-.service-card .price-period {
-    font-size: 0.9rem !important;
+.pricing-card .price-amount {
+    font-size: 2.5rem !important;
+}
+
+.pricing-card .price-period {
+    font-size: 0.95rem !important;
+    white-space: nowrap !important;
 }
