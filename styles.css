@@ -2642,3 +2642,55 @@ input[type="number"], select {
     margin: 0 !important;
     transform: translateY(-2px); /* Трохи підняти візуально */
 }
+
+/* ============================================
+   FINAL LAYOUT FIXES (STRICT MODE)
+   ============================================ */
+
+/* 1. КРОС-НАВІГАЦІЯ (3 кнопки на всю ширину) */
+/* Знаходимо контейнер з кнопками під калькулятором */
+.calculator-section + section .cta-group {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important; /* Три рівні колонки */
+    gap: 15px !important;
+    width: 100% !important;
+    max-width: 1100px !important;
+    margin: 0 auto !important;
+}
+
+.calculator-section + section .btn {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+/* На мобільному - в стовпчик */
+@media (max-width: 768px) {
+    .calculator-section + section .cta-group {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* 2. ПРАЙС (Жорстко в один рядок) */
+.service-card h3.text-gradient, 
+.price-block {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: baseline !important;
+    justify-content: center !important;
+    flex-wrap: nowrap !important; /* ЗАБОРОНА ПЕРЕНОСУ */
+    white-space: nowrap !important; /* ЗАБОРОНА ПЕРЕНОСУ */
+    width: 100% !important;
+}
+
+/* Зменшуємо шрифт, щоб точно влізло */
+.service-card .text-gradient {
+    font-size: 2.2rem !important; 
+}
+
+.service-card p.text-muted, 
+.price-period {
+    margin-left: 5px !important;
+    font-size: 1rem !important;
+    white-space: nowrap !important;
+}
