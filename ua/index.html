@@ -1146,25 +1146,23 @@
                 <div class="contact-form-wrapper" style="max-width: 600px; margin: 0 auto;">
                     <form id="contactForm" class="contact-form" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem;">
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label for="contactName" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">Ім'я</label>
-                            <input type="text" id="contactName" name="name" placeholder="Ваше ім'я" style="width: 100%; padding: 1rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; transition: border 0.3s;">
+                            <label for="contactName" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">Ім'я *</label>
+                            <input type="text" id="contactName" name="name" required placeholder="Ваше ім'я" style="width: 100%; padding: 1rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; transition: border 0.3s;">
                         </div>
 
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label for="contactEmail" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">
-                                Email <span style="color: var(--error, #EF4444);">*</span>
-                            </label>
+                            <label for="contactEmail" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">Email *</label>
                             <input type="email" id="contactEmail" name="email" required placeholder="vash.email@gmail.com" style="width: 100%; padding: 1rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; transition: border 0.3s;">
                         </div>
 
                         <div class="form-group" style="margin-bottom: 1.5rem;">
-                            <label for="contactPhone" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">Телефон (опціонально)</label>
+                            <label for="contactPhone" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">Телефон</label>
                             <input type="tel" id="contactPhone" name="phone" placeholder="WhatsApp / Telegram (за бажанням)" style="width: 100%; padding: 1rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; transition: border 0.3s;">
                         </div>
 
                         <div class="form-group" style="margin-bottom: 2rem;">
-                            <label for="contactMessage" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">Повідомлення</label>
-                            <textarea id="contactMessage" name="message" rows="5" placeholder="Опишіть ваш проєкт або питання..." style="width: 100%; padding: 1rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; resize: vertical; min-height: 140px; transition: border 0.3s; font-family: inherit;"></textarea>
+                            <label for="contactMessage" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">Повідомлення *</label>
+                            <textarea id="contactMessage" name="message" required rows="4" placeholder="Опишіть ваш проєкт..." style="width: 100%; padding: 1rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; resize: vertical; min-height: 140px; transition: border 0.3s; font-family: inherit;"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1.25rem; font-size: 1.1rem; font-weight: 700;">
