@@ -44,7 +44,14 @@
       "Bash(git revert:*)",
       "Bash(git mv:*)",
       "Bash(echo \"Checking root folders...\" ls ua/*.html de/*.html en/*.html)",
-      "Bash(powershell -Command:*)"
+      "Bash(powershell -Command:*)",
+      "Bash(for lang in de en ua pl tr ru)",
+      "Bash(do)",
+      "Bash(for file in google-ads.html meta-ads.html tiktok-ads.html)",
+      "Bash(if grep -q \"max-width: 1100px\" $lang/$file)",
+      "Bash(then)",
+      "Bash(echo:*)",
+      "Bash(else)"
     ]
   }
 }
