@@ -2596,3 +2596,49 @@ input[type="number"], select {
     font-size: 0.95rem !important;
     white-space: nowrap !important;
 }
+
+/* ============================================
+   SAFE UI OPTIMIZATION (COMPACT & FIT)
+   ============================================ */
+
+/* 1. КАЛЬКУЛЯТОР: ЗМЕНШЕННЯ ВІДСТУПІВ (SQUEEZE) */
+/* Робимо менше пустих проміжків між інпутами */
+.calculator__inputs {
+    gap: 10px !important; /* Було 20px */
+}
+
+/* Робимо самі картки інпутів тоншими */
+.calculator__input-group {
+    padding: 10px 15px !important; /* Менше внутрішнього відступу */
+    margin-bottom: 0 !important;
+}
+
+/* Підтягуємо заголовок інпуту ближче до повзунка */
+.calculator__input-group label {
+    margin-bottom: 5px !important;
+    font-size: 0.9rem !important;
+}
+
+/* 2. ПРАЙС: БЕЗПЕЧНИЙ РЯДОК (SMART ROW) */
+.service-card h3.text-gradient, 
+.price-block {
+    display: flex !important;
+    flex-wrap: wrap !important; /* Дозволяємо перенос, якщо екран дуже вузький */
+    align-items: baseline !important; /* Вирівнювання по низу */
+    justify-content: center !important;
+    gap: 6px !important;
+    line-height: 1 !important;
+}
+
+/* Трохи зменшуємо шрифт ціни, щоб вона точно влізла в один рядок */
+.service-card .text-gradient {
+    font-size: 2.2rem !important; /* Було 2.5 або 3rem */
+}
+
+/* Стиль для "/ місяць" */
+.service-card p.text-muted, 
+.price-period {
+    font-size: 1rem !important;
+    margin: 0 !important;
+    transform: translateY(-2px); /* Трохи підняти візуально */
+}
