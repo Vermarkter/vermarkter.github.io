@@ -318,49 +318,125 @@
                 </p>
             </div>
 
-            <div class="process-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <!-- Step 1 -->
-                <div class="process-step" style="text-align: center; padding: 2rem;">
-                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF0050, #00F2EA); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(255, 0, 80, 0.3);">
-                        1
-                    </div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Creative Analyse</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;">
-                        Wir analysieren Ihre Nische, Trends und Wettbewerber. Was funktioniert viral? Welche Hooks ziehen?
-                    </p>
+            <!-- SCHRITT 1: CREATIVE ANALYSE -->
+            <div class="calculator-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                <div class="calculator-inputs">
+                    <div class="badge" style="display: inline-block; background: rgba(255, 0, 80, 0.1); border: 1px solid rgba(255, 0, 80, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 1rem; font-weight: 600; color: #FF0050;">SCHRITT 1</div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Creative Analyse</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Wir analysieren Ihre Nische, Trends und Wettbewerber. Was funktioniert viral? Welche Hooks ziehen?</p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FF0050; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Nischenanalyse</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FF0050; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Trend-Recherche</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FF0050; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Wettbewerber-Audit</span>
+                        </li>
+                    </ul>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="process-step" style="text-align: center; padding: 2rem;">
-                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #00F2EA, #7B2FFF); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(0, 242, 234, 0.3);">
-                        2
-                    </div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Video-Produktion</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;">
-                        TikTok-native Creatives, Hooks, UGC-Stil. Pixel & Conversion-Tracking. Account-Setup.
-                    </p>
+                <!-- VISUALIZATION: CSS ART - SEARCH/ANALYSE -->
+                <div class="visual-box audit-visual">
+                    <div class="glass-search-bar"></div>
+                    <div class="glass-line" style="width: 80%"></div>
+                    <div class="glass-line" style="width: 60%"></div>
+                    <div class="glass-line" style="width: 90%"></div>
+                    <div class="search-icon-overlay">🔍</div>
                 </div>
+            </div>
 
-                <!-- Step 3 -->
-                <div class="process-step" style="text-align: center; padding: 2rem;">
-                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #7B2FFF, #FF0050); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(123, 47, 255, 0.3);">
-                        3
-                    </div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Testing & Launch</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;">
-                        A/B-Tests verschiedener Creatives. Launch in 48 Stunden. Erste Ergebnisse in 3-5 Tagen.
-                    </p>
+            <!-- SCHRITT 2: VIDEO-PRODUKTION -->
+            <div class="calculator-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                <!-- VISUALIZATION: CSS ART - SETUP -->
+                <div class="visual-box setup-visual">
+                    <div class="toggle-row"><div class="toggle active"></div><div class="line"></div></div>
+                    <div class="toggle-row"><div class="toggle"></div><div class="line"></div></div>
+                    <div class="toggle-row"><div class="toggle active"></div><div class="line"></div></div>
+                    <div class="gear-icon-overlay">⚙️</div>
                 </div>
+                <div class="calculator-inputs">
+                    <div class="badge" style="display: inline-block; background: rgba(0, 242, 234, 0.1); border: 1px solid rgba(0, 242, 234, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 1rem; font-weight: 600; color: #00F2EA;">SCHRITT 2</div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Video-Produktion & Setup</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">TikTok-native Creatives, Hooks, UGC-Stil. Pixel & Conversion-Tracking. Account-Setup.</p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #00F2EA; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Video-Konzeption</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #00F2EA; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">TikTok Pixel Setup</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #00F2EA; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Kampagnenstruktur</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-                <!-- Step 4 -->
-                <div class="process-step" style="text-align: center; padding: 2rem;">
-                    <div class="step-number" style="width: 60px; height: 60px; background: linear-gradient(135deg, #FF0050, #00F2EA); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-weight: 800; color: white; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(255, 0, 80, 0.3);">
-                        4
-                    </div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Skalierung</h3>
-                    <p style="color: var(--text-secondary); line-height: 1.6;">
-                        Gewinner skalieren, Verlierer stoppen. Neue Creatives testen. Budget erhöhen bei positiver Performance.
-                    </p>
+            <!-- SCHRITT 3: TESTING & LAUNCH -->
+            <div class="calculator-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 4rem;">
+                <div class="calculator-inputs">
+                    <div class="badge" style="display: inline-block; background: rgba(123, 47, 255, 0.1); border: 1px solid rgba(123, 47, 255, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 1rem; font-weight: 600; color: #7B2FFF;">SCHRITT 3</div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Testing & Launch</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">A/B-Tests verschiedener Creatives. Launch in 48 Stunden. Erste Ergebnisse in 3-5 Tagen.</p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #7B2FFF; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Creative A/B-Tests</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #7B2FFF; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Kampagnen-Launch</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #7B2FFF; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Performance-Tracking</span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- VISUALIZATION: CSS ART - CHART -->
+                <div class="visual-box chart-visual">
+                    <div class="bar" style="height: 30%"></div>
+                    <div class="bar" style="height: 50%"></div>
+                    <div class="bar" style="height: 40%"></div>
+                    <div class="bar success" style="height: 80%"></div>
+                    <div class="chart-icon-overlay">📈</div>
+                </div>
+            </div>
+
+            <!-- SCHRITT 4: SKALIERUNG -->
+            <div class="calculator-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
+                <!-- VISUALIZATION: CSS ART - SCALING -->
+                <div class="visual-box setup-visual">
+                    <div class="toggle-row"><div class="toggle active"></div><div class="line"></div></div>
+                    <div class="toggle-row"><div class="toggle active"></div><div class="line"></div></div>
+                    <div class="toggle-row"><div class="toggle active"></div><div class="line"></div></div>
+                    <div class="gear-icon-overlay">🚀</div>
+                </div>
+                <div class="calculator-inputs">
+                    <div class="badge" style="display: inline-block; background: rgba(255, 0, 80, 0.1); border: 1px solid rgba(255, 0, 80, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 1rem; font-weight: 600; color: #FF0050;">SCHRITT 4</div>
+                    <h3 style="font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Skalierung</h3>
+                    <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 1.5rem;">Gewinner skalieren, Verlierer stoppen. Neue Creatives testen. Budget erhöhen bei positiver Performance.</p>
+                    <ul class="service-features" style="list-style: none; padding: 0; margin: 0;">
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FF0050; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Budget-Skalierung</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FF0050; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">Neue Creatives</span>
+                        </li>
+                        <li style="padding: 0.6rem 0; display: flex; align-items: start;">
+                            <span style="color: #FF0050; margin-right: 0.75rem; font-weight: 700;">✓</span>
+                            <span style="color: var(--text-secondary);">ROI-Optimierung</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
