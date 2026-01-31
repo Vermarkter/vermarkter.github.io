@@ -77,14 +77,16 @@
                     <div class="lang-switcher">
                         <button class="lang-button">
                             <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
-                                <rect width="16" height="4" fill="#000"/>
-                                <rect y="4" width="16" height="4" fill="#D00"/>
-                                <rect y="8" width="16" height="4" fill="#FFCE00"/>
+                                <rect width="16" height="12" fill="#012169"/>
+                                <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
+                                <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
+                                <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
+                                <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
                             </svg>
-                            DE ▼
+                            EN ▼
                         </button>
                         <ul class="lang-dropdown">
-                            <li><a href="../en/tiktok-ads.html" style="display:block; padding:5px 10px;">
+                            <li><a href="../de/tiktok-ads.html" style="display:block; padding:5px 10px;">
                                 <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
                                     <rect width="16" height="4" fill="#000"/>
                                     <rect y="4" width="16" height="4" fill="#D00"/>
@@ -826,50 +828,52 @@
 
 <!-- SMART START BUNDLE (FIXED LAYOUT) -->
 <section class="container" style="padding: 4rem 0;">
-    <div class="bundle-card" style="max-width: 1100px; margin: 0 auto; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1)); border: 1px solid var(--brand); border-radius: 24px; padding: 3rem; position: relative; overflow: hidden;">
+    <a href="#contact" style="display: block; text-decoration: none; color: inherit; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
+        <div class="bundle-card" style="max-width: 1100px; margin: 0 auto; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1)); border: 1px solid var(--brand); border-radius: 24px; padding: 3rem; position: relative; overflow: hidden;">
 
-        <!-- Background Glow -->
-        <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); pointer-events: none;"></div>
+            <!-- Background Glow -->
+            <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); pointer-events: none;"></div>
 
-        <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1;">
+            <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1;">
 
-            <!-- LEFT: OFFER -->
-            <div class="bundle-offer">
-                <div class="badge badge-popular" style="background: var(--accent); color: white; display: inline-block; margin-bottom: 1rem;">BESTSELLER</div>
-                <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚀 Smart Start Bundle</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 2rem;">Landing Page + TikTok Ads + CRM Integration</p>
+                <!-- LEFT: OFFER -->
+                <div class="bundle-offer">
+                    <div class="badge badge-popular" style="background: var(--accent); color: white; display: inline-block; margin-bottom: 1rem;">BESTSELLER</div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚀 Smart Start Bundle</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Landing Page + TikTok Ads + CRM Integration</p>
 
-                <div class="price-block" style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem;">
-                    <span style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(to right, #fff, #a5f3fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">€599</span>
-                    <span style="font-size: 1.5rem; text-decoration: line-through; color: var(--text-muted);">€1.097</span>
+                    <div class="price-block" style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem;">
+                        <span style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(to right, #fff, #a5f3fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">€599</span>
+                        <span style="font-size: 1.5rem; text-decoration: line-through; color: var(--text-muted);">€1.097</span>
+                    </div>
+                    <p style="color: var(--success); font-weight: bold; font-size: 1.1rem;">You save €498 (45%)</p>
                 </div>
-                <p style="color: var(--success); font-weight: bold; font-size: 1.1rem;">Sie sparen €498 (45%)</p>
-            </div>
 
-            <!-- RIGHT: CONTENT & CTA -->
-            <div class="bundle-content" style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                <h3 style="margin-bottom: 1.5rem;">Das Bundle enthält:</h3>
-                <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
-                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--brand);">🎨</span>
-                        <span><strong>Landing Page (Express)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Wert: €199)</span></span>
-                    </li>
-                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--brand);">📊</span>
-                        <span><strong>TikTok Ads Setup (Pro)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Wert: €399)</span></span>
-                    </li>
-                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
-                        <span style="color: var(--brand);">🔗</span>
-                        <span><strong>CRM-Integration (Basic)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Wert: €499)</span></span>
-                    </li>
-                </ul>
+                <!-- RIGHT: CONTENT & CTA -->
+                <div class="bundle-content" style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                    <h3 style="margin-bottom: 1.5rem;">The bundle includes:</h3>
+                    <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--brand);">🎨</span>
+                            <span><strong>Landing Page (Express)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Value: €199)</span></span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--brand);">📊</span>
+                            <span><strong>TikTok Ads Setup (Pro)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Value: €399)</span></span>
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                            <span style="color: var(--brand);">🔗</span>
+                            <span><strong>CRM Integration (Basic)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Value: €499)</span></span>
+                        </li>
+                    </ul>
 
-                <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);">
-                    🎁 Secure Bundle Now
-                </a>
+                    <div class="btn btn-primary" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); pointer-events: none;">
+                        🎁 Get Bundle Now
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </a>
 </section>
 
     <!-- FAQ SECTION -->
