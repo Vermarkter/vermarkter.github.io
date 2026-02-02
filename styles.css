@@ -2766,3 +2766,40 @@ input[type="number"], select {
     margin-left: 0 !important;
     padding-left: 0 !important;
 }
+
+/* ============================================
+   NUCLEAR ALIGNMENT FIX (PRICING)
+   ============================================ */
+
+/* 1. Контейнер ціни: Робимо його гнучким і центрованим */
+.service-card .price-row,
+.service-card .price-block,
+.price-block {
+    display: flex !important;
+    justify-content: center !important; /* Горизонтальний центр */
+    align-items: center !important;     /* Вертикальний центр */
+    text-align: center !important;
+    width: 100% !important;
+    margin: 1rem 0 !important;
+    padding: 0 !important;
+}
+
+/* 2. Сам текст ціни (H3): Прибираємо всі відступи, які його штовхають */
+.service-card h3.text-gradient {
+    margin: 0 !important;   /* Вбиваємо відступи з усіх боків */
+    padding: 0 !important;
+    text-align: center !important;
+    width: auto !important; /* Хай займає стільки місця, скільки треба тексту */
+    flex: 0 1 auto !important; /* Не розтягуватися на всю ширину */
+}
+
+/* 3. Текст періоду (/місяць): Тільки він має відступ зліва */
+.service-card p.text-muted,
+.price-period {
+    margin: 0 0 0 5px !important; /* Тільки 5px зліва */
+    padding: 0 !important;
+    align-self: center !important;
+}
+
+/* 4. Фікс для тексту "Price on Request" (коли немає періоду) */
+/* Якщо це єдиний елемент, він стане чітко по центру завдяки justify-content батька */
