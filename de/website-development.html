@@ -1376,7 +1376,7 @@
         </section>
 
         <!-- ========== CTA SECTION ========== -->
-        <section style="padding: 5rem 1.5rem;">
+        <section id="contact" style="padding: 5rem 1.5rem;">
             <div class="container" style="max-width: 800px; text-align: center;">
                 <h2 style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 1.5rem;">
                     Bereit fur Ihr <span class="text-gradient">Projekt?</span>
@@ -1474,33 +1474,32 @@
     <!-- Pricing Toggle Script -->
     <script>
         function switchPricing(type) {
-            // Отримуємо елементи
             const webGrid = document.getElementById('pricing-web');
             const appGrid = document.getElementById('pricing-app');
             const btnWeb = document.getElementById('btn-web');
             const btnApp = document.getElementById('btn-app');
 
-            // Перемикаємо видимість
             if (type === 'web') {
-                webGrid.style.display = 'grid';
-                appGrid.style.display = 'none';
-                // Стилі кнопок
+                if(webGrid) webGrid.style.display = 'grid';
+                if(appGrid) appGrid.style.display = 'none';
                 btnWeb.style.background = 'var(--brand)';
                 btnWeb.style.color = 'white';
-                btnApp.style.background = 'rgba(255,255,255,0.1)';
+                btnApp.style.background = 'transparent';
                 btnApp.style.color = 'var(--text-secondary)';
             } else {
-                webGrid.style.display = 'none';
-                appGrid.style.display = 'grid';
-                // Стилі кнопок
+                if(webGrid) webGrid.style.display = 'none';
+                if(appGrid) appGrid.style.display = 'grid';
                 btnApp.style.background = 'var(--brand)';
                 btnApp.style.color = 'white';
-                btnWeb.style.background = 'rgba(255,255,255,0.1)';
+                btnWeb.style.background = 'transparent';
                 btnWeb.style.color = 'var(--text-secondary)';
             }
         }
-        // Ініціалізація при завантаженні
-        document.addEventListener('DOMContentLoaded', () => switchPricing('web'));
+
+        // Запуск при старті, щоб сховати зайве
+        document.addEventListener('DOMContentLoaded', () => {
+            switchPricing('web');
+        });
 
         // FAQ Accordion
         document.querySelectorAll('.faq-question').forEach(button => {
