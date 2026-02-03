@@ -337,11 +337,78 @@ class MediaCalculator {
   }
 }
 
+// ============================================================
+// DYNAMIC NICHE DISCLAIMER - Multi-language support
+// ============================================================
+
+const nicheNames = {
+  ua: { custom: "Власна ніша", ecommerce: "Інтернет-магазин", expert: "Експертні послуги / B2B", realestate: "Нерухомість", auto: "Автобізнес / СТО", construction: "Ремонт та Будівництво", beauty: "Краса / Салони", infobusiness: "Інфобізнес / Курси" },
+  de: { custom: "Eigene Nische", ecommerce: "E-Commerce", expert: "Experten / B2B", realestate: "Immobilien", auto: "Auto / Werkstatt", construction: "Renovierung / Bau", beauty: "Beauty / Salons", infobusiness: "Infobusiness / Kurse" },
+  en: { custom: "Custom Niche", ecommerce: "E-Commerce", expert: "Experts / B2B", realestate: "Real Estate", auto: "Auto / Workshop", construction: "Renovation / Construction", beauty: "Beauty / Salons", infobusiness: "Infobusiness / Courses" },
+  pl: { custom: "Własna nisza", ecommerce: "E-Commerce", expert: "Eksperci / B2B", realestate: "Nieruchomości", auto: "Auto / Warsztat", construction: "Remonty / Budownictwo", beauty: "Uroda / Salony", infobusiness: "Infobiznes / Kursy" },
+  ru: { custom: "Своя ниша", ecommerce: "Интернет-магазин", expert: "Экспертные услуги / B2B", realestate: "Недвижимость", auto: "Автобизнес / СТО", construction: "Ремонт и Строительство", beauty: "Красота / Салоны", infobusiness: "Инфобизнес / Курсы" },
+  tr: { custom: "Özel Niş", ecommerce: "E-ticaret", expert: "Uzman Hizmetleri / B2B", realestate: "Emlak", auto: "Otomotiv / Servis", construction: "Tadilat / İnşaat", beauty: "Güzellik / Salonlar", infobusiness: "Info-İş / Kurslar" }
+};
+
+const disclaimerTemplates = {
+  ua: "Результати базуються на середніх показниках наших клієнтів у ніші '{niche}'. Індивідуальні результати залежать від оптимізації конверсії вашої цільової сторінки.",
+  de: "Ergebnisse basieren auf Durchschnittswerten unserer Kunden in der Nische '{niche}'. Individuelle Ergebnisse variieren je nach Conversion-Optimierung Ihrer Landingpage.",
+  en: "Results are based on average values of our clients in the '{niche}' niche. Individual results vary depending on the conversion optimization of your landing page.",
+  pl: "Wyniki opierają się na średnich wartościach naszych klientów w niszy '{niche}'. Indywidualne wyniki zależą od optymalizacji konwersji Twojej strony docelowej.",
+  ru: "Результаты основаны на средних показателях наших клиентов в нише '{niche}'. Индивидуальные результаты зависят от оптимизации конверсии вашей целевой страницы.",
+  tr: "Sonuçlar, '{niche}' nişindeki müşterilerimizin ortalama değerlerine dayanmaktadır. Bireysel sonuçlar, açılış sayfanızın dönüşüm optimizasyonuna bağlı olarak değişir."
+};
+
+function detectLanguage() {
+  // Try to detect from HTML lang attribute
+  const htmlLang = document.documentElement.lang?.toLowerCase()?.substring(0, 2);
+  if (htmlLang && nicheNames[htmlLang]) return htmlLang;
+
+  // Try to detect from URL path
+  const path = window.location.pathname;
+  const langMatch = path.match(/\/(de|en|pl|ru|tr|ua)\//);
+  if (langMatch && nicheNames[langMatch[1]]) return langMatch[1];
+
+  // Default to German (main market)
+  return 'de';
+}
+
+function updateNicheDisclaimer() {
+  const disclaimerEl = document.getElementById('niche-disclaimer');
+  const nicheSelector = document.getElementById('nicheSelector');
+
+  if (!disclaimerEl || !nicheSelector) return;
+
+  const lang = detectLanguage();
+  const nicheKey = nicheSelector.value || 'custom';
+
+  // Get niche name in current language
+  const nicheName = nicheNames[lang]?.[nicheKey] || nicheNames['en']?.[nicheKey] || nicheKey;
+
+  // Get template and replace placeholder
+  const template = disclaimerTemplates[lang] || disclaimerTemplates['en'];
+  disclaimerEl.textContent = template.replace('{niche}', nicheName);
+}
+
 // Initialize calculator when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
     new MediaCalculator();
+    // Add listener for niche changes
+    const nicheSelector = document.getElementById('nicheSelector');
+    if (nicheSelector) {
+      nicheSelector.addEventListener('change', updateNicheDisclaimer);
+      // Initial update
+      updateNicheDisclaimer();
+    }
   });
 } else {
   new MediaCalculator();
+  // Add listener for niche changes
+  const nicheSelector = document.getElementById('nicheSelector');
+  if (nicheSelector) {
+    nicheSelector.addEventListener('change', updateNicheDisclaimer);
+    // Initial update
+    updateNicheDisclaimer();
+  }
 }
