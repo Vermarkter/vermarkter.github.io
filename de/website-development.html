@@ -478,137 +478,102 @@
                         <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Landing Page + Google Ads</p>
                     </div>
                 </div>
+
+                <!-- PROJECT 5: MEDICAL CENTER -->
+                <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%); height: 280px;">
+                    <img src="../img/portfolio-salon.png" alt="Medical Center Website" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                    <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Medical Center Website</h4>
+                        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Clean UI + Appointment Booking</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 6: LOGISTICS PLATFORM -->
+                <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); height: 280px;">
+                    <img src="../img/portfolio-dashboard.png" alt="Logistics Platform" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                    <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Logistics Platform Dashboard</h4>
+                        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Tracking + Fleet Management</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- ========== PRICING SECTION WITH TOGGLE ========== -->
-        <section id="pricing" class="container" style="padding: 5rem 1.5rem;">
-            <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 1rem;">
+        <section id="pricing" class="container" style="padding: 4rem 0;">
+            <h2 class="text-center" style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 1rem;">
                 Preise und <span class="text-gradient">Pakete</span>
             </h2>
             <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Transparente Preise ohne versteckte Kosten. Wahlen Sie das passende Paket fur Ihr Projekt.
+                Transparente Preise ohne versteckte Kosten.
             </p>
 
-            <!-- TOGGLE SWITCH -->
-            <div class="pricing-toggle-wrapper">
-                <div class="toggle-container">
-                    <button class="toggle-btn active" onclick="switchPricing('web')" id="btn-web">Websites</button>
-                    <button class="toggle-btn" onclick="switchPricing('app')" id="btn-app">Mobile Apps</button>
+            <!-- TOGGLE -->
+            <div style="display: flex; justify-content: center; margin-bottom: 3rem;">
+                <div style="background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; display: flex; gap: 5px;">
+                    <button id="btn-web" style="padding: 10px 30px; border-radius: 40px; border: none; cursor: pointer; font-weight: 600; background: var(--brand); color: white;">Websites</button>
+                    <button id="btn-app" style="padding: 10px 30px; border-radius: 40px; border: none; cursor: pointer; font-weight: 600; background: transparent; color: var(--text-secondary);">Mobile Apps</button>
                 </div>
             </div>
 
-            <!-- WEB PRICING -->
-            <div id="pricing-web" class="pricing-grid">
-                <!-- TIER 1: LANDING PAGE -->
-                <div class="pricing-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: center; transition: all 0.3s ease;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Landing Page</h3>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.95rem;">Express auf Template-Basis</p>
-                    <div style="margin-bottom: 2rem;">
-                        <span class="text-gradient" style="font-size: 3rem; font-weight: 900;">199</span>
-                        <span style="font-size: 1.3rem; opacity: 0.6;"> - 500</span>
-                    </div>
-                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Auswahl aus Premium-Templates</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Logo, Farben & Text anpassen</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Mobile-Responsive</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Hosting-Einrichtung</li>
-                        <li style="padding: 0.6rem 0;">&#9889; Launch in 48-72h</li>
+            <!-- WEBSITES GRID -->
+            <div id="pricing-web" class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Landing Page</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">€1.200</div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ Design + Code</li>
+                        <li style="padding: 0.5rem 0;">✓ Mobile Optimized</li>
+                        <li style="padding: 0.5rem 0;">✓ Hosting Setup</li>
                     </ul>
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn" style="display: block; padding: 1rem;">Angebot anfordern</a>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Wählen</a>
                 </div>
-
-                <!-- TIER 2: BUSINESS (FEATURED) -->
-                <div class="pricing-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 2px solid var(--brand); border-radius: 20px; padding: 2.5rem; text-align: center; position: relative; box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: white; padding: 6px 20px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">BELIEBT</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Business Website</h3>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.95rem;">Fur KMU & Startups</p>
-                    <div style="margin-bottom: 2rem;">
-                        <span class="text-gradient" style="font-size: 3rem; font-weight: 900;">800</span>
-                        <span style="font-size: 1.3rem; opacity: 0.6;"> - 3.000</span>
-                    </div>
-                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; 5-15 Seiten</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; CMS (WordPress/Webflow)</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Blog & News-Funktion</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; SEO-Grundoptimierung</li>
-                        <li style="padding: 0.6rem 0;">&#9889; Launch in 14-21 Tagen</li>
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 2px solid var(--brand); border-radius: 20px; padding: 2rem; text-align: center; position: relative;">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: white; padding: 4px 16px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;">BELIEBT</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Business Website</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">€2.500</div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ CMS (WordPress/Webflow)</li>
+                        <li style="padding: 0.5rem 0;">✓ SEO Basis</li>
+                        <li style="padding: 0.5rem 0;">✓ 5-15 Seiten</li>
                     </ul>
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: block; padding: 1rem;">Angebot anfordern</a>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; display: block; padding: 0.8rem;">Wählen</a>
                 </div>
-
-                <!-- TIER 3: E-COMMERCE -->
-                <div class="pricing-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: center;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">E-Commerce</h3>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.95rem;">Online-Shop & komplexe Projekte</p>
-                    <div style="margin-bottom: 2rem;">
-                        <span class="text-gradient" style="font-size: 3rem; font-weight: 900;">3.000+</span>
-                    </div>
-                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Vollstandiger Online-Shop</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Payment-Integration</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Admin-Dashboard</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; CRM-Integration</li>
-                        <li style="padding: 0.6rem 0;">&#9889; Launch in 30-60 Tagen</li>
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">E-Commerce</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">ab €5.000</div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ Shop-System</li>
+                        <li style="padding: 0.5rem 0;">✓ Payment Setup</li>
+                        <li style="padding: 0.5rem 0;">✓ Admin Dashboard</li>
                     </ul>
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn" style="display: block; padding: 1rem;">Angebot anfordern</a>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Anfragen</a>
                 </div>
             </div>
 
-            <!-- APP PRICING (Hidden by default) -->
-            <div id="pricing-app" class="pricing-grid hidden">
-                <!-- TIER 1: MVP APP -->
-                <div class="pricing-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: center;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">MVP App</h3>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.95rem;">Ideal für Salons & Dienstleister (My-Salon.eu Lösung)</p>
-                    <div style="margin-bottom: 2rem;">
-                        <span class="text-gradient" style="font-size: 3rem; font-weight: 900;">1.000</span>
-                        <span style="font-size: 1.3rem; opacity: 0.6;"></span>
-                    </div>
-                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; iOS oder Android</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; 5-10 Screens</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Basis-Backend</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; User Authentication</li>
-                        <li style="padding: 0.6rem 0;">&#9889; Launch in 6-8 Wochen</li>
+            <!-- APPS GRID (HIDDEN BY DEFAULT) -->
+            <div id="pricing-app" style="display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">MVP App</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">ab €1.000</div>
+                    <p style="font-size: 0.85rem; color: var(--brand); margin-bottom: 1rem;">Spezialangebot für Beauty-Salons & Barber</p>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ iOS & Android Start</li>
+                        <li style="padding: 0.5rem 0;">✓ Buchungssystem</li>
+                        <li style="padding: 0.5rem 0;">✓ Push Notifications</li>
                     </ul>
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn" style="display: block; padding: 1rem;">Angebot anfordern</a>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Starten</a>
                 </div>
-
-                <!-- TIER 2: FULL APP (FEATURED) -->
-                <div class="pricing-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 2px solid var(--brand); border-radius: 20px; padding: 2.5rem; text-align: center; position: relative; box-shadow: 0 0 40px rgba(59, 130, 246, 0.2);">
-                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: white; padding: 6px 20px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">BELIEBT</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Full App</h3>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.95rem;">iOS + Android (Flutter)</p>
-                    <div style="margin-bottom: 2rem;">
-                        <span class="text-gradient" style="font-size: 3rem; font-weight: 900;">10.000</span>
-                        <span style="font-size: 1.3rem; opacity: 0.6;"> - 25.000</span>
-                    </div>
-                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; iOS + Android</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Push-Notifications</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; API-Integration</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Admin-Panel</li>
-                        <li style="padding: 0.6rem 0;">&#9889; Launch in 10-14 Wochen</li>
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 2px solid var(--brand); border-radius: 20px; padding: 2rem; text-align: center; position: relative;">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: white; padding: 4px 16px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;">BELIEBT</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Custom App</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">Individuell</div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ Komplexes Backend</li>
+                        <li style="padding: 0.5rem 0;">✓ API Integration</li>
+                        <li style="padding: 0.5rem 0;">✓ Admin Panel</li>
                     </ul>
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="display: block; padding: 1rem;">Angebot anfordern</a>
-                </div>
-
-                <!-- TIER 3: ENTERPRISE -->
-                <div class="pricing-card" style="background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: center;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Enterprise</h3>
-                    <p style="opacity: 0.7; margin-bottom: 1.5rem; font-size: 0.95rem;">Komplexe Losungen</p>
-                    <div style="margin-bottom: 2rem;">
-                        <span class="text-gradient" style="font-size: 3rem; font-weight: 900;">25.000+</span>
-                    </div>
-                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 2rem;">
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Custom Features</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Third-Party Integrations</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Skalierbare Architektur</li>
-                        <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">&#10003; Dedicated Support</li>
-                        <li style="padding: 0.6rem 0;">&#9889; Timeline nach Absprache</li>
-                    </ul>
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn" style="display: block; padding: 1rem;">Angebot anfordern</a>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; display: block; padding: 0.8rem;">Besprechen</a>
                 </div>
             </div>
         </section>
@@ -1473,47 +1438,49 @@
 
     <!-- Pricing Toggle Script -->
     <script>
-        function switchPricing(type) {
-            const webGrid = document.getElementById('pricing-web');
-            const appGrid = document.getElementById('pricing-app');
+        document.addEventListener('DOMContentLoaded', () => {
             const btnWeb = document.getElementById('btn-web');
             const btnApp = document.getElementById('btn-app');
+            const gridWeb = document.getElementById('pricing-web');
+            const gridApp = document.getElementById('pricing-app');
 
-            if (type === 'web') {
-                if(webGrid) webGrid.style.display = 'grid';
-                if(appGrid) appGrid.style.display = 'none';
-                btnWeb.style.background = 'var(--brand)';
-                btnWeb.style.color = 'white';
-                btnApp.style.background = 'transparent';
-                btnApp.style.color = 'var(--text-secondary)';
-            } else {
-                if(webGrid) webGrid.style.display = 'none';
-                if(appGrid) appGrid.style.display = 'grid';
-                btnApp.style.background = 'var(--brand)';
-                btnApp.style.color = 'white';
-                btnWeb.style.background = 'transparent';
-                btnWeb.style.color = 'var(--text-secondary)';
+            if (btnWeb && btnApp && gridWeb && gridApp) {
+                btnWeb.addEventListener('click', () => {
+                    gridWeb.style.display = 'grid';
+                    gridApp.style.display = 'none';
+                    btnWeb.style.background = 'var(--brand)';
+                    btnApp.style.background = 'transparent';
+                    btnWeb.style.color = 'white';
+                    btnApp.style.color = 'var(--text-secondary)';
+                });
+
+                btnApp.addEventListener('click', () => {
+                    gridWeb.style.display = 'none';
+                    gridApp.style.display = 'grid';
+                    btnApp.style.background = 'var(--brand)';
+                    btnWeb.style.background = 'transparent';
+                    btnApp.style.color = 'white';
+                    btnWeb.style.color = 'var(--text-secondary)';
+                });
+
+                // Initialize: show websites, hide apps
+                gridApp.style.display = 'none';
             }
-        }
 
-        // Запуск при старті, щоб сховати зайве
-        document.addEventListener('DOMContentLoaded', () => {
-            switchPricing('web');
-        });
+            // FAQ Accordion
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.parentElement;
+                    const isActive = item.classList.contains('active');
 
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const item = button.parentElement;
-                const isActive = item.classList.contains('active');
+                    // Close all other items
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
 
-                // Close all other items
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-
-                // Toggle current item
-                if (!isActive) {
-                    item.classList.add('active');
-                }
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
             });
         });
     </script>
