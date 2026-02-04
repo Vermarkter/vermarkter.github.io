@@ -2803,3 +2803,23 @@ input[type="number"], select {
 
 /* 4. Фікс для тексту "Price on Request" (коли немає періоду) */
 /* Якщо це єдиний елемент, він стане чітко по центру завдяки justify-content батька */
+
+/* ============================================
+   FEATURED HERO IMAGE STYLE
+   Global class for service page hero images
+   ============================================ */
+.hero-dashboard-img {
+    width: 100% !important;
+    max-width: 650px !important;
+    height: auto !important;
+    border-radius: 20px !important;
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.35) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    display: block !important;
+    margin: 0 auto !important;
+    transition: transform 0.5s ease !important;
+}
+
+.hero-dashboard-img:hover {
+    transform: scale(1.02) !important;
+}
