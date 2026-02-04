@@ -5,52 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Створення сайтів і мобільних додатків від €199. Landing pages, бізнес-сайти, e-commerce, Flutter apps. React, Next.js. Запуск за 7-30 днів. 🇺🇦 Підтримка українською.">
+    <meta name="description" content="Розробка сайтів та мобільних додатків від €199. Landing pages, бізнес-сайти, e-commerce, Flutter apps. React, Next.js. Запуск за 7-30 днів. Підтримка українською.">
     <meta name="keywords" content="створення сайтів, розробка додатків, landing page, React, Next.js, Flutter, WordPress, e-commerce, мобільні додатки">
     <meta name="author" content="Vermarkter Agency">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vermarkter.eu/ua/website-development">
-    <meta property="og:title" content="Створення Сайтів і Додатків — Vermarkter">
-    <meta property="og:description" content="Від landing page за €199 до складних проєктів. React, Next.js, Flutter. Запуск за 7-30 днів.">
+    <meta property="og:title" content="Розробка Сайтів та Додатків - Vermarkter">
+    <meta property="og:description" content="Від Landing Page (€199) до складних E-Commerce проєктів. React, Next.js, Flutter. Швидкий запуск.">
     <meta property="og:image" content="https://vermarkter.eu/og-image-dev-ua.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://vermarkter.eu/ua/website-development">
-    <meta property="twitter:title" content="Створення Сайтів і Додатків — Vermarkter">
-    <meta property="twitter:description" content="Від €199 до складних проєктів">
+    <meta property="twitter:title" content="Розробка Сайтів та Додатків - Vermarkter">
+    <meta property="twitter:description" content="Професійна веб та мобільна розробка">
     <meta property="twitter:image" content="https://vermarkter.eu/og-image-dev-ua.jpg">
 
-    <title>Створення Сайтів і Додатків — Vermarkter</title>
+    <title>Розробка Сайтів та Додатків - Vermarkter</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=1768015759">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon.svg?v=1768015759">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=1768018062">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%233B82F6' stroke='white' stroke-width='1.5' d='M13 2L3 14H12L11 22L21 10H12L13 2Z'/%3E%3C/svg%3E">
-
     <!-- Styles -->
-    <link rel="stylesheet" href="../styles.css?v=bundle_fix_2columns">
+    <link rel="stylesheet" href="../styles.css?v=webdev_redesign_ua">
+
     <style>
-        @media (max-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
+        /* Hero 2-Column Layout */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-grid .hero-image {
+                order: -1;
             }
         }
-        @media (max-width: 576px) {
-            .footer-grid {
-                grid-template-columns: 1fr !important;
+
+        /* Tech Badge Styles */
+        .tech-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 18px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+        .tech-badge:hover {
+            background: rgba(59, 130, 246, 0.15);
+            border-color: var(--brand);
+            transform: translateY(-2px);
+        }
+        .tech-badge svg, .tech-badge img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
             }
+        }
+
+        /* FAQ Styles */
+        .faq-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .faq-question:hover {
+            background: rgba(255,255,255,0.02);
+        }
+        .faq-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+        .faq-answer p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin: 0;
         }
     </style>
+
+    <!-- Supabase CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <!-- HEADER (STICKY) -->
@@ -58,28 +148,26 @@
         <div class="container">
             <nav class="nav">
                 <a href="index.html" class="brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-    <!-- SVG Logo (Lightning Bolt) -->
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
-    </svg>
-    <!-- Text -->
-    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
-</a>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#3B82F6" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                    </svg>
+                    <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
+                </a>
 
                 <div class="nav-desktop">
                     <a href="index.html#services">Послуги</a>
                     <a href="#pricing">Ціни</a>
-                    <a href="#process">Процес</a>
-                    <a href="#tech-stack">Технології</a>
-                    <a href="#faq">Питання</a>
+                    <a href="#portfolio">Портфоліо</a>
+                    <a href="#tech">Технології</a>
+                    <a href="#faq">FAQ</a>
                     <a href="contact.html">Контакти</a>
                 </div>
 
-                                    <!-- Contact Buttons -->
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="padding: 8px 16px;">Telegram</a>
-                    <a href="https://wa.me/4915510300538" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; margin-left: 5px;">WhatsApp</a>
+                <!-- Contact Buttons -->
+                <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary" style="padding: 8px 16px;">Telegram</a>
+                <a href="https://wa.me/4915510300538" target="_blank" class="btn btn-secondary" style="padding: 8px 16px; margin-left: 5px;">WhatsApp</a>
 
-                    <div class="controls" style="display:flex; gap:15px; align-items:center;">
+                <div class="controls" style="display:flex; gap:15px; align-items:center;">
                     <!-- Theme Toggle -->
                     <button class="theme-toggle" id="theme-btn" aria-label="Toggle theme" style="background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;">
                         🌙
@@ -92,582 +180,502 @@
                                 <rect width="16" height="6" fill="#0057B7"/>
                                 <rect y="6" width="16" height="6" fill="#FFD700"/>
                             </svg>
-                            UA ▼
+                            UA
                         </button>
                         <ul class="lang-dropdown">
-                            <li><a href="../de/website-development.html" style="display:block; padding:5px 10px;">
-                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
-                                    <rect width="16" height="4" fill="#000"/>
-                                    <rect y="4" width="16" height="4" fill="#D00"/>
-                                    <rect y="8" width="16" height="4" fill="#FFCE00"/>
-                                </svg>
-                                DE
-                            </a></li>
-                            <li><a href="../en/website-development.html" style="display:block; padding:5px 10px;">
-                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
-                                    <rect width="16" height="12" fill="#012169"/>
-                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
-                                    <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
-                                    <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
-                                    <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
-                                </svg>
-                                EN
-                            </a></li>
-                            <li><a href="../pl/website-development.html" style="display:block; padding:5px 10px;">
-                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
-                                    <rect width="16" height="6" fill="#fff"/>
-                                    <rect y="6" width="16" height="6" fill="#D4213D"/>
-                                </svg>
-                                PL
-                            </a></li>
-                            <li><a href="../ru/website-development.html" style="display:block; padding:5px 10px;">
-                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
-                                    <rect width="16" height="4" fill="#fff"/>
-                                    <rect y="4" width="16" height="4" fill="#0039A6"/>
-                                    <rect y="8" width="16" height="4" fill="#D52B1E"/>
-                                </svg>
-                                RU
-                            </a></li>
-                            <li><a href="../tr/website-development.html" style="display:block; padding:5px 10px;">
-                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
-                                    <rect width="16" height="12" fill="#E30A17"/>
-                                    <circle cx="6" cy="6" r="2.5" fill="#fff"/>
-                                    <circle cx="7" cy="6" r="2" fill="#E30A17"/>
-                                    <path d="M9,4.5 L9.5,6 L11,6 L9.8,6.8 L10.3,8.3 L9,7.3 L7.7,8.3 L8.2,6.8 L7,6 L8.5,6 Z" fill="#fff"/>
-                                </svg>
-                                TR
-                            </a></li>
-                            <li><a href="../ua/website-development.html" style="display:block; padding:5px 10px;">
-                                <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
-                                    <rect width="16" height="6" fill="#0057B7"/>
-                                    <rect y="6" width="16" height="6" fill="#FFD700"/>
-                                </svg>
-                                UA
-                            </a></li>
+                            <li><a href="../de/website-development.html">DE</a></li>
+                            <li><a href="../en/website-development.html">EN</a></li>
+                            <li><a href="../pl/website-development.html">PL</a></li>
+                            <li><a href="../ru/website-development.html">RU</a></li>
+                            <li><a href="../tr/website-development.html">TR</a></li>
+                            <li><a href="../ua/website-development.html">UA</a></li>
                         </ul>
                     </div>
 
-                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle menu" style="display:none; background:none; border:1px solid rgba(255,255,255,0.2); color:white; width:36px; height:36px; border-radius:8px; cursor:pointer; align-items:center; justify-content:center;">
-                        ☰
-                    </button>
+                    <!-- Mobile Menu Toggle -->
+                    <button class="mobile-menu-toggle" id="mobile-menu-btn" aria-label="Toggle mobile menu">☰</button>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- UKRAINIAN SUPPORT BANNER -->
-    <div style="background: linear-gradient(90deg, #0057B7 0%, #FFD700 100%); color: #000; text-align: center; padding: 8px; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">
-        🇺🇦 Створено для підтримки українців, які будують бізнес у Європі
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html#services">Послуги</a>
+        <a href="#pricing">Ціни</a>
+        <a href="#portfolio">Портфоліо</a>
+        <a href="#tech">Технології</a>
+        <a href="#faq">FAQ</a>
+        <a href="contact.html">Контакти</a>
     </div>
 
-    <!-- HERO SECTION -->
-    <section class="hero" style="padding: 8rem 0 6rem; position: relative; overflow: hidden;">
-        <div class="container" style="position: relative; z-index: 2;">
-            <div style="text-align: center; max-width: 900px; margin: 0 auto;">
-                <div style="display: inline-block; background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 50px; padding: 0.5rem 1.5rem; margin-bottom: 2rem;">
-                    <span style="color: #3B82F6; font-weight: 600; font-size: 0.95rem;">⚡ Для підприємців із України в ЄС</span>
-                </div>
+    <main style="padding-top: 80px;">
 
-                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;">
-                    Сайти та Додатки<br>
-                    <span class="text-gradient">Під Ключ</span>
-                </h1>
+        <!-- ========== HERO SECTION (2 COLUMNS) ========== -->
+        <section class="hero" style="min-height: 80vh; display: flex; align-items: center; padding: 4rem 1.5rem;">
+            <div class="container">
+                <div class="hero-grid">
+                    <!-- LEFT: Text Content -->
+                    <div class="hero-text">
+                        <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;">
+                            Розробка Сайтів та Додатків<br>
+                            <span class="text-gradient">під ключ.</span>
+                        </h1>
+                        <p style="font-size: 1.25rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px;">
+                            Від Landing Page до складних E-commerce проєктів. React, Next.js, Flutter. Сучасні технології, швидка доставка.
+                        </p>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <a href="#pricing" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                                Переглянути ціни
+                            </a>
+                            <a href="#contact" class="btn btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                                Обговорити проєкт
+                            </a>
+                        </div>
+                        <!-- Trust Indicators -->
+                        <div style="display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; font-weight: 900; color: var(--brand);">100+</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">Проєктів</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; font-weight: 900; color: var(--brand);">7 днів</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">Експрес-запуск</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; font-weight: 900; color: var(--brand);">24/7</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">UA Підтримка</div>
+                            </div>
+                        </div>
+                    </div>
 
-                <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 3rem; line-height: 1.6;">
-                    <strong style="color: var(--text-primary);">Від landing page за €199 до складних e-commerce проєктів.</strong><br>
-                    React, Next.js, Flutter. Запуск за 7-30 днів. Фіксована ціна без прихованих платежів.<br>
-                    <strong style="color: #FFD700;">🇺🇦 Підтримка українською 24/7 — розуміємо ваш бізнес у Європі</strong>
-                </p>
-
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 4rem;">
-                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary btn-lg" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Замовити консультацію</a>
-                        <a href="https://wa.me/4915510300538" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; font-size: 1.15rem; color: #25D366; text-decoration: none; font-weight: 600; margin-top: 1rem;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            WhatsApp
-                        </a>
-                    <a href="#pricing" class="btn btn-secondary btn-lg" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Переглянути ціни</a>
-                </div>
-
-                <!-- Technology Icons -->
-                <div style="margin-top: 3rem;">
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem;">Технології, з якими ми працюємо:</p>
-                    <div style="display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap; opacity: 0.8;">
-                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);">React</span>
-                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);">Next.js</span>
-                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);">Flutter</span>
-                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);">WordPress</span>
-                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-secondary);">Shopify</span>
+                    <!-- RIGHT: Portfolio Image -->
+                    <div class="hero-image" style="position: relative;">
+                        <div style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(147,51,234,0.2)); border-radius: 24px; padding: 20px; border: 1px solid rgba(255,255,255,0.1);">
+                            <img src="../img/portfolio-dashboard.png" alt="Web Development Portfolio" style="width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 50px rgba(59, 130, 246, 0.3);" onerror="this.parentElement.innerHTML='<div style=\'height: 400px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1E293B, #0F172A); border-radius: 16px;\'><span style=\'font-size: 4rem;\'>💻</span></div>'">
+                        </div>
+                        <!-- Floating Badge -->
+                        <div style="position: absolute; bottom: -20px; right: 20px; background: var(--brand); color: white; padding: 12px 24px; border-radius: 50px; font-weight: 700; box-shadow: 0 10px 30px rgba(59,130,246,0.4);">
+                            Від €199
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- PRICING SECTION -->
-    <section id="pricing" style="padding: 6rem 0; background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    💰 <span class="text-gradient">Прозорі Ціни</span>
+        <!-- ========== TECH STACK SECTION ========== -->
+        <section id="tech" style="padding: 5rem 1.5rem; background: rgba(255,255,255,0.02);">
+            <div class="container" style="max-width: 1100px;">
+                <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 1rem;">
+                    Наш <span class="text-gradient">Tech Stack</span>
                 </h2>
-                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                    Від простого landing page до складних систем. Фіксована вартість, без прихованих платежів.
+                <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                    Працюємо з найсучаснішими технологіями для швидких, масштабованих та безпечних рішень.
                 </p>
-            </div>
 
-            <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
-                <!-- Tier 1: Landing Page -->
-                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
-                        <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">LANDING PAGE</h3>
-                        <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Ідеально для стартапів і промо</p>
-                        <div style="margin-bottom: 2rem;">
-                            <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€199</span>
-                            <span style="font-size: 1.2rem; color: var(--text-secondary);"> - €500</span>
-                        </div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">1 сторінка з адаптивним дизайном</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Форма зворотного зв'язку</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">SEO-оптимізація</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Google PageSpeed 90+</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Запуск за 3-7 днів</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start;">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Підтримка українською мовою</strong></span>
-                            </li>
-                        </ul>
-                        <span class="btn btn-secondary" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem; display: block;">Замовити</span>
-                    </div>
-
-                <!-- Tier 2: Business Website (Featured) -->
-                <a href="#contact" target="_blank" class="pricing-card-link">
-                    <div class="pricing-card pricing-card--featured" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 2px solid var(--brand); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative; box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);">
-                        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, var(--brand), #2563EB); color: white; padding: 0.5rem 1.5rem; border-radius: 20px; font-weight: 700; font-size: 0.9rem; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);">
-                            ⭐ ПОПУЛЯРНИЙ
-                        </div>
-                        <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; color: var(--text-primary);">БІЗНЕС-САЙТ</h3>
-                        <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Для малого та середнього бізнесу</p>
-                        <div style="margin-bottom: 2rem;">
-                            <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€800</span>
-                            <span style="font-size: 1.2rem; color: var(--text-secondary);"> - €3,000</span>
-                        </div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">5-15 сторінок</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">CMS (WordPress/Webflow)</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Блог + можливість додавання новин</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Google Analytics + Search Console</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Запуск за 14-21 день</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Навчання роботі з CMS</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start;">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Підтримка українською мовою</strong></span>
-                            </li>
-                        </ul>
-                        <span class="btn btn-primary" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem; display: block;">Замовити</span>
-                    </div>
-                </a>
-
-                <!-- Tier 3: E-commerce / Complex -->
-                <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
-                        <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">E-COMMERCE</h3>
-                        <p style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Інтернет-магазин / Складні проєкти</p>
-                        <div style="margin-bottom: 2rem;">
-                            <span class="price-amount text-gradient" style="font-size: 3.5rem; font-weight: 900;">€3,000+</span>
-                        </div>
-                        <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Повний функціонал e-commerce</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Інтеграція платіжних систем</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Панель адміністратора</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">CRM-інтеграція</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Мобільний додаток (опція)</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;">Запуск за 30-60 днів</span>
-                            </li>
-                            <li style="padding: 0.75rem 0; display: flex; align-items: start;">
-                                <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                                <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Підтримка українською мовою</strong></span>
-                            </li>
-                        </ul>
-                        <span class="btn btn-secondary" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem; display: block;">Замовити</span>
-                    </div>
-                        <a href="https://wa.me/4915510300538" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; font-size: 1.15rem; color: #25D366; text-decoration: none; font-weight: 600; margin-top: 1rem;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            WhatsApp
-                        </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- MOBILE APPS SECTION -->
-    <section style="padding: 6rem 0;">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    📱 <span class="text-gradient">Мобільні Додатки</span>
-                </h2>
-                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                    iOS + Android з однієї кодової бази. Flutter або React Native.
-                </p>
-            </div>
-
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 3rem;">
-                    <div style="text-align: center; margin-bottom: 2rem;">
-                        <h3 style="font-size: 2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1rem;">Flutter / React Native</h3>
-                        <div>
-                            <span class="text-gradient" style="font-size: 3rem; font-weight: 900;">€5,000 - €25,000</span>
-                        </div>
-                    </div>
-
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 1rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                            <span style="color: var(--text-secondary); font-size: 1.1rem;">Нативний вигляд на iOS та Android</span>
-                        </li>
-                        <li style="padding: 1rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                            <span style="color: var(--text-secondary); font-size: 1.1rem;">Інтеграція з вашим backend API</span>
-                        </li>
-                        <li style="padding: 1rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                            <span style="color: var(--text-secondary); font-size: 1.1rem;">Push-сповіщення</span>
-                        </li>
-                        <li style="padding: 1rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                            <span style="color: var(--text-secondary); font-size: 1.1rem;">Публікація в App Store & Google Play</span>
-                        </li>
-                        <li style="padding: 1rem 0; display: flex; align-items: start;">
-                            <span style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                            <span style="color: var(--text-secondary); font-size: 1.1rem;"><strong>Підтримка українською після запуску</strong></span>
-                        </li>
-                    </ul>
-
-                    <div style="margin-top: 2rem; text-align: center;">
-                        <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary btn-lg" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Обговорити проєкт</a>
-                        <a href="https://wa.me/4915510300538" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; font-size: 1.15rem; color: #25D366; text-decoration: none; font-weight: 600; margin-top: 1rem;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            WhatsApp
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- PROCESS SECTION -->
-    <section id="process" style="padding: 6rem 0; background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    🚀 <span class="text-gradient">Процес Роботи</span>
-                </h2>
-                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                    Від консультації до запуску за 4 простих кроки
-                </p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
-                <!-- Step 1 -->
-                <div style="text-align: center;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #3B82F6, #2563EB); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);">
-                        1️⃣
-                    </div>
-                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Консультація</h3>
-                    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6;">
-                        Розуміємо ваші потреби, цілі та бюджет. Безкоштовна консультація у Telegram.
-                    </p>
-                </div>
-
-                <!-- Step 2 -->
-                <div style="text-align: center;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #8B5CF6, #6366F1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);">
-                        2️⃣
-                    </div>
-                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Дизайн</h3>
-                    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6;">
-                        Створюємо прототип у Figma. Узгоджуємо кожну деталь з вами. Зміни безкоштовні (2-5 днів).
-                    </p>
-                </div>
-
-                <!-- Step 3 -->
-                <div style="text-align: center;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #10B981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);">
-                        3️⃣
-                    </div>
-                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Розробка</h3>
-                    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6;">
-                        Програмуємо сайт/додаток на сучасних технологіях. Показуємо прогрес щотижня (7-30 днів).
-                    </p>
-                </div>
-
-                <!-- Step 4 -->
-                <div style="text-align: center;">
-                    <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #F59E0B, #D97706); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem; box-shadow: 0 8px 20px rgba(245, 158, 11, 0.4);">
-                        4️⃣
-                    </div>
-                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Запуск</h3>
-                    <p style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6;">
-                        Тестування → Деплой → Навчання. Безкоштовна підтримка перші 30 днів.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TECH STACK SECTION -->
-    <section id="tech-stack" style="padding: 6rem 0;">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    ⚡ <span class="text-gradient">Технології</span>
-                </h2>
-                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                    Сучасний стек для швидких і надійних проєктів
-                </p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 <!-- Frontend -->
-                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--brand);">Frontend</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• React & Next.js</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Vue.js & Nuxt</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Tailwind CSS</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• TypeScript</li>
-                    </ul>
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Фронтенд</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#61DAFB"><path d="M12 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/><path fill="none" stroke="#61DAFB" stroke-width="1" d="M12 21c5.523 0 10-4.03 10-9S17.523 3 12 3 2 7.03 2 12s4.477 9 10 9z M2 12h20 M12 3c2.21 0 4 4.03 4 9s-1.79 9-4 9-4-4.03-4-9 1.79-9 4-9z"/></svg>
+                            React
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#000"><path d="M11.572 0c-.176 0-.31.001-.358.007a19.76 19.76 0 01-.364.033C7.443.346 4.25 2.185 2.228 5.012a11.875 11.875 0 00-2.119 5.243c-.096.659-.108.854-.108 1.747s.012 1.089.108 1.748c.652 4.506 3.86 8.292 8.209 9.695.779.25 1.6.422 2.534.525.363.04 1.935.04 2.299 0 1.611-.178 2.977-.577 4.323-1.264.207-.106.247-.134.219-.158-.02-.013-.9-1.193-1.955-2.62l-1.919-2.592-2.404-3.558a338.739 338.739 0 00-2.422-3.556c-.009-.002-.018 1.579-.023 3.51-.007 3.38-.01 3.515-.052 3.595a.426.426 0 01-.206.214c-.075.037-.14.044-.495.044H7.81l-.108-.068a.438.438 0 01-.157-.171l-.05-.106.006-4.703.007-4.705.072-.092a.645.645 0 01.174-.143c.096-.047.134-.051.54-.051.478 0 .558.018.682.154.035.038 1.337 1.999 2.895 4.361l4.706 7.141 1.918 2.909.096-.063a12.317 12.317 0 002.465-2.163 11.944 11.944 0 002.824-6.134c.096-.66.108-.854.108-1.748 0-.893-.012-1.088-.108-1.747-.652-4.506-3.859-8.292-8.208-9.695a12.597 12.597 0 00-2.499-.523A33.119 33.119 0 0011.572 0zm4.069 7.217c.347 0 .408.005.486.047a.473.473 0 01.237.277c.018.06.023 1.365.018 4.304l-.006 4.218-.744-1.14-.746-1.14v-3.066c0-1.982.01-3.097.023-3.15a.478.478 0 01.233-.296c.096-.05.13-.054.5-.054z"/></svg>
+                            Next.js
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#4FC08D"><path d="M24 1.61h-9.94L12 5.16 9.94 1.61H0l12 20.78L24 1.61zM12 14.08L5.16 2.23h4.43L12 6.41l2.41-4.18h4.43L12 14.08z"/></svg>
+                            Vue.js
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#06B6D4"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
+                            Tailwind CSS
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#3178C6"><path d="M1.125 0C.502 0 0 .502 0 1.125v21.75C0 23.498.502 24 1.125 24h21.75c.623 0 1.125-.502 1.125-1.125V1.125C24 .502 23.498 0 22.875 0zm17.363 9.75c.612 0 1.154.037 1.627.111a6.38 6.38 0 011.306.34v2.458a3.95 3.95 0 00-.643-.361 5.093 5.093 0 00-.717-.26 5.453 5.453 0 00-1.426-.2c-.3 0-.573.028-.819.086a2.1 2.1 0 00-.623.242c-.17.104-.3.229-.393.374a.888.888 0 00-.14.49c0 .196.053.373.156.529.104.156.252.304.443.444s.423.276.696.41c.273.135.582.274.926.416.47.197.892.407 1.266.628.374.222.695.473.963.753.268.279.472.598.614.957.142.359.214.776.214 1.253 0 .657-.125 1.21-.373 1.656a3.033 3.033 0 01-1.012 1.085 4.38 4.38 0 01-1.487.596c-.566.12-1.163.18-1.79.18a9.916 9.916 0 01-1.84-.164 5.544 5.544 0 01-1.512-.493v-2.63a5.033 5.033 0 003.237 1.2c.333 0 .624-.03.872-.09.249-.06.456-.144.623-.25.166-.108.29-.234.373-.38a1.023 1.023 0 00-.074-1.089 2.12 2.12 0 00-.537-.5 5.597 5.597 0 00-.807-.444 27.72 27.72 0 00-1.007-.436c-.918-.383-1.602-.852-2.053-1.405-.45-.553-.676-1.222-.676-2.005 0-.614.123-1.141.369-1.582.246-.441.58-.804 1.004-1.089a4.494 4.494 0 011.47-.629 7.536 7.536 0 011.77-.201zm-15.113.188h9.563v2.166H9.506v9.646H6.789v-9.646H3.375z"/></svg>
+                            TypeScript
+                        </span>
+                    </div>
                 </div>
 
                 <!-- Backend -->
-                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--brand);">Backend</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Node.js & Express</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Python & Django</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• PHP & Laravel</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• PostgreSQL & MongoDB</li>
-                    </ul>
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Бекенд</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#339933"><path d="M11.998 24c-.321 0-.641-.084-.922-.247l-2.936-1.737c-.438-.245-.224-.332-.08-.383.585-.203.703-.25 1.328-.604.065-.037.151-.023.218.017l2.256 1.339a.29.29 0 00.272 0l8.795-5.076a.277.277 0 00.134-.238V6.921a.283.283 0 00-.137-.242L12.135 1.6a.271.271 0 00-.27 0L3.078 6.68a.282.282 0 00-.14.243v10.15c0 .099.053.19.138.236l2.409 1.392c1.307.654 2.108-.116 2.108-.89V7.787c0-.142.114-.253.256-.253h1.115c.139 0 .255.112.255.253v10.021c0 1.745-.95 2.745-2.604 2.745-.508 0-.909 0-2.026-.551L2.28 18.675a1.857 1.857 0 01-.922-1.604V6.921c0-.659.353-1.275.922-1.603L11.075.242a1.92 1.92 0 011.846 0l8.794 5.076c.57.329.924.944.924 1.603v10.15c0 .659-.354 1.273-.924 1.604l-8.794 5.078c-.28.163-.601.247-.923.247z"/></svg>
+                            Node.js
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#3776AB"><path d="M14.25.18l.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05z"/></svg>
+                            Python
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#FF2D20"><path d="M23.644 5.43c.018.192.023.384.023.577V18c0 .203-.006.408-.023.615l-11.63-6.604zm-23.284 0l11.648 6.592L.357 18.62A8.183 8.183 0 01.332 18V6.007c0-.192.006-.385.024-.575z"/></svg>
+                            Laravel
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#336791"><path d="M23.556 15.957c-.437-1.302-1.303-2.062-2.497-2.19-.336-.035-.672-.018-1.007.035-.085.013-.17.035-.34.07.068-.305.12-.567.186-.823.168-.654.35-1.305.513-1.96.064-.256.056-.507-.067-.751z"/></svg>
+                            PostgreSQL
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#47A248"><path d="M17.193 9.555c-1.264-5.58-4.252-7.414-4.573-8.115-.28-.394-.53-.954-.735-1.44-.036.495-.055.685-.523 1.184-.723.566-4.438 3.682-4.74 10.02-.282 5.912 4.27 9.435 4.888 9.884l.07.05A73.49 73.49 0 0111.91 24h.481c.114-1.032.284-2.056.51-3.07.417-.296.604-.463.85-.693a11.342 11.342 0 003.639-8.464c.01-.814-.103-1.662-.197-2.218z"/></svg>
+                            MongoDB
+                        </span>
+                    </div>
                 </div>
 
                 <!-- Mobile -->
-                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--brand);">Mobile</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Flutter (Dart)</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• React Native</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Firebase</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Push Notifications</li>
-                    </ul>
+                <div style="margin-bottom: 2.5rem;">
+                    <h3 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Мобільна розробка</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#02569B"><path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46z"/></svg>
+                            Flutter
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#61DAFB"><path d="M12 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/></svg>
+                            React Native
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#FFCA28"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10z"/></svg>
+                            Android
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#000"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09z"/></svg>
+                            iOS
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#FFCA28"><path d="M3.89 15.673L6.255.461A.542.542 0 017.27.289L9.813 5.06 3.89 15.673z"/></svg>
+                            Firebase
+                        </span>
+                    </div>
                 </div>
 
                 <!-- CMS & E-commerce -->
-                <div class="service-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem;">
-                    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--brand);">CMS & E-commerce</h3>
-                    <ul style="list-style: none; padding: 0; margin: 0;">
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• WordPress</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Webflow</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• Shopify</li>
-                        <li style="padding: 0.5rem 0; color: var(--text-secondary);">• WooCommerce</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- WHY US SECTION -->
-    <section style="padding: 6rem 0; background: var(--bg-secondary);">
-        <div class="container">
-            <div class="section-header" style="text-align: center; margin-bottom: 5rem;">
-                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    ✨ <span class="text-gradient">Чому Ми?</span>
-                </h2>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; max-width: 1000px; margin: 0 auto;">
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">💰</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">Фіксована ціна</h3>
-                    <p style="color: var(--text-secondary);">Без прихованих платежів. Ціна озвучена на старті — ціна після запуску.</p>
-                </div>
-
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">Ваш код</h3>
-                    <p style="color: var(--text-secondary);">Кодова база належить вам на 100%. Немає залежності від нас.</p>
-                </div>
-
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">⚡</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">Швидкий запуск</h3>
-                    <p style="color: var(--text-secondary);">7-30 днів від старту до запуску. Експрес опція +50% (48-72 години).</p>
-                </div>
-
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">SEO з коробки</h3>
-                    <p style="color: var(--text-secondary);">Google PageSpeed 90+ балів. Готовий до індексації з першого дня.</p>
-                </div>
-
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🛡️</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">30 днів підтримки</h3>
-                    <p style="color: var(--text-secondary);">Безкоштовна підтримка перший місяць після запуску. Виправлення багів.</p>
-                </div>
-
-                <div style="text-align: center; padding: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">🇺🇦</div>
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">Підтримка українською</h3>
-                    <p style="color: var(--text-secondary);">Розуміємо специфіку українського бізнесу в Європі. Спілкуємось українською 24/7.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <!-- SMART START BUNDLE (FIXED LAYOUT) -->
-    <section class="bundle-section" style="padding: 80px 0; width: 100%; display: block;">
-        <div class="container">
-            <a href="#contact" style="display: block; text-decoration: none; color: inherit; cursor: pointer; transition: transform 0.2s ease;" onmouseover="this.style.transform='scale(1.01)'" onmouseout="this.style.transform='scale(1)'">
-<div style="background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)); border: 2px solid #3B82F6; border-radius: 24px; padding: 40px; position: relative; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); max-width: 1100px; margin: 0 auto;">
-
-                <!-- Badge -->
-                <div style="position: absolute; top: 30px; right: -35px; transform: rotate(45deg); background: #F59E0B; color: #000; padding: 5px 40px; font-weight: 800; font-size: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 10;">
-                    BESTSELLER
-                </div>
-
-                <!-- Flex Container: Forces Side-by-Side -->
-                <div class="bundle-flex-container" style="display: flex; flex-wrap: wrap; gap: 50px; align-items: flex-start; justify-content: space-between;">
-
-                    <!-- LEFT COLUMN (Price & CTA) -->
-                    <div class="bundle-left" style="flex: 1 1 400px; min-width: 300px;">
-                        <h3 style="font-size: 2.5rem; margin-bottom: 10px; background: linear-gradient(135deg, #3B82F6, #2563EB); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900;">
-                            🚀 Smart Start Bundle
-                        </h3>
-                        <p style="color: #94A3B8; font-size: 1.2rem; margin-bottom: 25px;">
-                            Landing Page + Google Ads + CRM інтеграція
-                        </p>
-
-                        <div style="display: flex; align-items: baseline; gap: 15px; margin-bottom: 10px;">
-                            <span style="text-decoration: line-through; color: #64748B; font-size: 1.4rem;">€1.097</span>
-                            <span style="font-size: 3.5rem; font-weight: 900; color: #F8FAFC; line-height: 1;">€599</span>
-                        </div>
-                        <p style="color: #10B981; font-weight: 700; margin-bottom: 30px; font-size: 1.1rem;">
-                            Ви економите €498 (45%)
-                        </p>
-
-                        <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; padding: 18px; font-size: 1.2rem; display: block; background: #3B82F6; color: white; border-radius: 12px; text-decoration: none;">
-                            Замовити Пакет
-                        </a>
+                <div>
+                    <h3 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">CMS & E-Commerce</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#21759B"><path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11z"/></svg>
+                            WordPress
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#4353FF"><path d="M9.57 12.15l4.71-4.71c.29-.29.77-.29 1.06 0 .29.29.29.77 0 1.06L10.63 13.21l4.71 4.71c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22s-.38-.07-.53-.22l-4.71-4.71a.754.754 0 010-1.06V12.15z"/></svg>
+                            Webflow
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#96BF48"><path d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.756c-.021-.143-.158-.247-.32-.227-.161.021-3.438.492-3.438.492s-1.689-1.639-2.315-1.82c-.066-.019-.129-.029-.188-.036l-.01 20.908z"/></svg>
+                            Shopify
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#96588A"><path d="M4.101 5.463c-.142.161-.333.435-.573.821A8.318 8.318 0 002.38 8.38c-.12.466-.18.927-.18 1.38 0 .313.034.628.1.943z"/></svg>
+                            WooCommerce
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#000"><path d="M11.958.001c-.128 0-.256.047-.363.141L.083 9.478a.546.546 0 00-.083.762l6.402 7.98c.185.23.52.27.756.094l2.722-2.031 2.113 2.633c.186.231.522.271.758.095z"/></svg>
+                            Stripe
+                        </span>
                     </div>
-
-                    <!-- RIGHT COLUMN (List) -->
-                    <div class="bundle-right" style="flex: 1 1 400px; min-width: 300px; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                        <h4 style="margin-bottom: 20px; font-size: 1.2rem; color: white; font-weight: 700;">Пакет включає:</h4>
-                        <ul style="display: flex; flex-direction: column; gap: 15px; list-style: none; padding: 0; margin: 0;">
-                            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
-                                <span style="display: flex; align-items: center; gap: 10px; color: #F8FAFC;">
-                                    🎨 <span>Landing Page (Express)</span>
-                                </span>
-                                <span style="color: #94A3B8; font-size: 0.9rem;">Wert: €199</span>
-                            </li>
-                            <li style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px;">
-                                <span style="display: flex; align-items: center; gap: 10px; color: #F8FAFC;">
-                                    📊 <span>Google Ads Setup (Pro)</span>
-                                </span>
-                                <span style="color: #94A3B8; font-size: 0.9rem;">Wert: €399</span>
-                            </li>
-                            <li style="display: flex; justify-content: space-between; align-items: center;">
-                                <span style="display: flex; align-items: center; gap: 10px; color: #F8FAFC;">
-                                    🔗 <span>CRM інтеграція (Basic)</span>
-                                </span>
-                                <span style="color: #94A3B8; font-size: 0.9rem;">Wert: €499</span>
-                            </li>
-                        </ul>
-                    </div>
-
                 </div>
             </div>
-</a>
-</div>
-</section>
+        </section>
 
-    <section id="contact" style="padding: 8rem 0; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(99, 102, 241, 0.1));">
-        <div class="container" style="text-align: center;">
-            <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; margin-bottom: 1.5rem; line-height: 1.2;">
-                Готові <span class="text-gradient">Запустити</span><br>Ваш Проєкт?
+        <!-- ========== PORTFOLIO SECTION ========== -->
+        <section id="portfolio" class="container" style="padding: 5rem 1.5rem;">
+            <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 3rem;">
+                Наші <span class="text-gradient">Роботи</span>
             </h2>
-            <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Безкоштовна консультація. Відповідаємо протягом години. 🇺🇦 Спілкуємось українською.
+
+            <div class="portfolio-grid">
+                <!-- PROJECT 1: SALON -->
+                <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%); height: 280px;">
+                    <img src="../img/portfolio-salon.webp" alt="Beauty Salon Website" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                    <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Glamour Studio</h4>
+                        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Веб-розробка + Система бронювання</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2: SAAS DASHBOARD -->
+                <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%); height: 280px;">
+                    <img src="../img/portfolio-dashboard.webp" alt="SaaS Dashboard" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                    <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">YourBusinessApp</h4>
+                        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">CRM Dashboard & Аналітика</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3: E-COMMERCE -->
+                <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%); height: 280px;">
+                    <img src="../img/portfolio-ecommerce.webp" alt="E-Commerce Shop" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                    <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">TechGear Shop</h4>
+                        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Shopify + Google Shopping Ads</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 4: AUTO SERVICE -->
+                <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%); height: 280px;">
+                    <img src="../img/portfolio-auto.webp" alt="Auto Service Landing" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                    <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">AutoPro Detailing</h4>
+                        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Landing Page + Google Ads</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 5: MEDICAL CENTER -->
+                <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%); height: 280px;">
+                    <img src="../img/portfolio-medical.png" alt="Medical Center Website" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                    <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Медичний центр</h4>
+                        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Чистий UI + Онлайн-запис</p>
+                    </div>
+                </div>
+
+                <!-- PROJECT 6: LOGISTICS PLATFORM -->
+                <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); height: 280px;">
+                    <img src="../img/portfolio-logistics.png" alt="Logistics Platform" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                    <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                        <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Логістична платформа</h4>
+                        <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">Трекінг + Управління автопарком</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PRICING SECTION WITH TOGGLE ========== -->
+        <section id="pricing" class="container" style="padding: 4rem 0;">
+            <h2 class="text-center" style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 1rem;">
+                Ціни та <span class="text-gradient">Пакети</span>
+            </h2>
+            <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Прозорі ціни без прихованих витрат.
             </p>
-            <a href="https://t.me/vermarkters_bot" target="_blank" class="btn btn-primary btn-lg" style="padding: 1.25rem 3rem; font-size: 1.2rem; box-shadow: 0 8px 30px rgba(59, 130, 246, 0.4);">
-                💬 Написати в Telegram
-            </a>
-                        <a href="https://wa.me/4915510300538" target="_blank" style="display: flex; align-items: center; gap: 0.75rem; font-size: 1.15rem; color: #25D366; text-decoration: none; font-weight: 600; margin-top: 1rem;">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                            </svg>
-                            WhatsApp
-                        </a>
-        </div>
-    </section>
+
+            <!-- TOGGLE -->
+            <div style="display: flex; justify-content: center; margin-bottom: 3rem;">
+                <div style="background: rgba(255,255,255,0.1); padding: 5px; border-radius: 50px; display: flex; gap: 5px;">
+                    <button id="btn-web" style="padding: 10px 30px; border-radius: 40px; border: none; cursor: pointer; font-weight: 600; background: var(--brand); color: white;">Сайти</button>
+                    <button id="btn-app" style="padding: 10px 30px; border-radius: 40px; border: none; cursor: pointer; font-weight: 600; background: transparent; color: var(--text-secondary);">Мобільні додатки</button>
+                </div>
+            </div>
+
+            <!-- WEBSITES GRID -->
+            <div id="pricing-web" class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Landing Page</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">від €199</div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ Дизайн + Код</li>
+                        <li style="padding: 0.5rem 0;">✓ Мобільна оптимізація</li>
+                        <li style="padding: 0.5rem 0;">✓ Налаштування хостингу</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Обрати</a>
+                </div>
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 2px solid var(--brand); border-radius: 20px; padding: 2rem; text-align: center; position: relative;">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: white; padding: 4px 16px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;">ПОПУЛЯРНИЙ</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Бізнес-сайт</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">від €499</div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ CMS (WordPress/Webflow)</li>
+                        <li style="padding: 0.5rem 0;">✓ SEO база</li>
+                        <li style="padding: 0.5rem 0;">✓ 5-15 сторінок</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; display: block; padding: 0.8rem;">Обрати</a>
+                </div>
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">E-Commerce</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">від €1.499</div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ Система магазину</li>
+                        <li style="padding: 0.5rem 0;">✓ Налаштування оплати</li>
+                        <li style="padding: 0.5rem 0;">✓ Адмін-панель</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Запитати</a>
+                </div>
+            </div>
+
+            <!-- APPS GRID (HIDDEN BY DEFAULT) -->
+            <div id="pricing-app" style="display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); justify-content: center; gap: 2rem;">
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center;">
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">MVP App</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Базовий додаток для салонів та студій</p>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">від €1.000</div>
+                    <p style="font-size: 0.85rem; color: var(--brand); margin-bottom: 1rem;">Спеціальна пропозиція для салонів краси та барбершопів</p>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ iOS & Android старт</li>
+                        <li style="padding: 0.5rem 0;">✓ Система бронювання</li>
+                        <li style="padding: 0.5rem 0;">✓ Push-сповіщення</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Почати</a>
+                </div>
+                <div class="service-card" style="background: rgba(255,255,255,0.05); border: 2px solid var(--brand); border-radius: 20px; padding: 2rem; text-align: center; position: relative;">
+                    <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: white; padding: 4px 16px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;">ПОПУЛЯРНИЙ</div>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Custom App</h3>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">Індивідуально</div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
+                        <li style="padding: 0.5rem 0;">✓ Складний бекенд</li>
+                        <li style="padding: 0.5rem 0;">✓ API інтеграція</li>
+                        <li style="padding: 0.5rem 0;">✓ Адмін-панель</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; display: block; padding: 0.8rem;">Обговорити</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SMART START BUNDLE ========== -->
+        <section class="bundle-section" style="padding: 5rem 1.5rem; background: rgba(0,0,0,0.1);">
+            <div class="container">
+                <div class="bundle-card" style="max-width: 1100px; margin: 0 auto; background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1)); border: 1px solid var(--brand); border-radius: 24px; padding: 3rem; position: relative; overflow: hidden;">
+
+                    <!-- Background Glow -->
+                    <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(59,130,246,0.1) 0%, transparent 70%); pointer-events: none;"></div>
+
+                    <div class="bundle-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1;">
+
+                        <!-- LEFT: OFFER -->
+                        <div class="bundle-offer">
+                            <div class="badge badge-popular" style="background: var(--accent); color: white; display: inline-block; margin-bottom: 1rem;">БЕСТСЕЛЕР</div>
+                            <h2 style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚀 Smart Start Bundle</h2>
+                            <p style="color: var(--text-secondary); margin-bottom: 2rem;">Landing Page + Google Ads + CRM-інтеграція</p>
+
+                            <div class="price-block" style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem;">
+                                <span style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(to right, #fff, #a5f3fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">€599</span>
+                                <span style="font-size: 1.5rem; text-decoration: line-through; color: var(--text-muted);">€1.097</span>
+                            </div>
+                            <p style="color: var(--success); font-weight: bold; font-size: 1.1rem;">Економія €498 (45%)</p>
+                        </div>
+
+                        <!-- RIGHT: CONTENT & CTA -->
+                        <div class="bundle-content" style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
+                            <h3 style="margin-bottom: 1.5rem;">Бандл включає:</h3>
+                            <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                                <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: var(--brand);">🎨</span>
+                                    <span><strong>Landing Page (Express)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Вартість: €199)</span></span>
+                                </li>
+                                <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: var(--brand);">📊</span>
+                                    <span><strong>Google Ads Setup (Pro)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Вартість: €399)</span></span>
+                                </li>
+                                <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
+                                    <span style="color: var(--brand);">🔗</span>
+                                    <span><strong>CRM-інтеграція (Basic)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Вартість: €499)</span></span>
+                                </li>
+                            </ul>
+
+                            <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);">
+                                🎁 Отримати бандл
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FAQ SECTION ========== -->
+        <section id="faq" style="padding: 5rem 1.5rem; background: rgba(255,255,255,0.02);">
+            <div class="container" style="max-width: 800px;">
+                <h2 style="text-align: center; font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 3rem;">
+                    Часті <span class="text-gradient">Запитання</span>
+                </h2>
+
+                <div class="faq-list">
+                    <div class="faq-item active">
+                        <button class="faq-question">
+                            Скільки часу займає розробка сайту?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Час розробки залежить від обсягу проєкту. Простий Landing Page може бути готовий за 48-72 години. Бізнес-сайти потребують 14-21 день, тоді як E-Commerce проєкти можуть займати 30-60 днів. Для мобільних додатків розраховуйте на 6-14 тижнів залежно від складності.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Що входить у вартість?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Наші ціни включають дизайн, розробку, адаптивну оптимізацію, базове SEO-налаштування, конфігурацію хостингу та 30 днів підтримки після запуску. Для CMS-проєктів також включено навчання роботі з контентом.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Які технології ви використовуєте?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ми працюємо з сучасними фреймворками: React, Next.js, Vue.js для фронтенду та Node.js, Python, Laravel для бекенду. Для мобільних додатків використовуємо Flutter та React Native. У CMS-рішеннях працюємо з WordPress та Webflow.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Чи надаєте ви підтримку після запуску?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Так, після запуску ви отримуєте 30 днів безкоштовної підтримки. Потім ми пропонуємо гнучкі договори на обслуговування, що включають регулярні оновлення, перевірки безпеки, резервне копіювання та технічну підтримку. Зв'яжіться з нами для індивідуальної пропозиції.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Як проходить співпраця?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Після першої розмови ми готуємо детальну пропозицію. Після погодження починаємо з дизайну (макети у Figma). Після вашого затвердження починається розробка з регулярними оновленнями. Ви завжди маєте доступ до staging-середовища для відстеження прогресу.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Чи можете ви перенести мій існуючий сайт?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Так, ми пропонуємо міграцію сайтів. Ми аналізуємо ваш поточний сайт, переносимо весь контент та оптимізуємо його для нової платформи. SEO-рейтинги зберігаються завдяки правильному URL-mapping.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CTA SECTION ========== -->
+        <section id="contact" style="padding: 5rem 1.5rem;">
+            <div class="container" style="max-width: 800px; text-align: center;">
+                <h2 style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 1.5rem;">
+                    Готові до вашого <span class="text-gradient">проєкту?</span>
+                </h2>
+                <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7;">
+                    Безкоштовна консультація. Фіксовані ціни. Швидкий запуск.<br>
+                    Напишіть нам і почнемо роботу.
+                </p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/4915510300538" target="_blank" class="btn" style="padding: 1.2rem 2.5rem; font-size: 1.1rem; background: linear-gradient(135deg, #25D366, #128C7E); display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        WhatsApp
+                    </a>
+                    <a href="https://t.me/vermarkters_bot" target="_blank" class="btn" style="padding: 1.2rem 2.5rem; font-size: 1.1rem; background: linear-gradient(135deg, #0088cc, #006699); display: inline-flex; align-items: center; gap: 0.5rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                        Telegram
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer" style="padding: 4rem 0 2rem; border-top: 1px solid var(--glass-border);">
         <div class="container">
-            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3rem;">
+            <div class="footer-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 3rem;">
                 <div class="footer-column">
                     <div class="footer-brand" style="margin-bottom: 1rem;">
                         <div class="logo" style="display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;">
@@ -688,7 +696,6 @@
                         <li style="margin-bottom: 0.75rem;"><a href="tiktok-ads.html" style="color: var(--text-secondary); text-decoration: none;">TikTok Ads</a></li>
                         <li style="margin-bottom: 0.75rem;"><a href="seo.html" style="color: var(--text-secondary); text-decoration: none;">SEO</a></li>
                         <li style="margin-bottom: 0.75rem;"><a href="crm-integration.html" style="color: var(--text-secondary); text-decoration: none;">CRM-інтеграція</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="website-development.html" style="color: var(--text-secondary); text-decoration: none;">Створення Сайтів</a></li>
                     </ul>
                 </div>
 
@@ -697,8 +704,8 @@
                     <ul class="footer-links" style="list-style: none; padding: 0;">
                         <li style="margin-bottom: 0.75rem;"><a href="index.html#testimonials" style="color: var(--text-secondary); text-decoration: none;">Відгуки</a></li>
                         <li style="margin-bottom: 0.75rem;"><a href="index.html#faq" style="color: var(--text-secondary); text-decoration: none;">FAQ</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="../privacy-policy-ua.html" style="color: var(--text-secondary); text-decoration: none;">Політика конфіденційності</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="../impressum-ua.html" style="color: var(--text-secondary); text-decoration: none;">Юридична інформація</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="privacy.html" style="color: var(--text-secondary); text-decoration: none;">Політика конфіденційності</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="imprint.html" style="color: var(--text-secondary); text-decoration: none;">Імпресум</a></li>
                     </ul>
                 </div>
 
@@ -706,17 +713,13 @@
                     <h4 style="font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">Контакти</h4>
                     <ul class="footer-links" style="list-style: none; padding: 0;">
                         <li style="margin-bottom: 0.75rem;">
-                            <a href="mailto:maps.werbung@gmail.com" style="color: var(--text-secondary); text-decoration: none;">
-                                <span style="opacity: 0.7;">📧</span> maps.werbung@gmail.com
-                            </a>
+                            <a href="mailto:maps.werbung@gmail.com" style="color: var(--text-secondary); text-decoration: none;">maps.werbung@gmail.com</a>
                         </li>
                         <li style="margin-bottom: 0.75rem;">
-                            <a href="https://t.me/vermarkters_bot" target="_blank" style="color: var(--text-secondary); text-decoration: none;">
-                                <span style="opacity: 0.7;">💬</span> @vermarkters_bot
-                            </a>
+                            <a href="https://t.me/vermarkters_bot" target="_blank" style="color: var(--text-secondary); text-decoration: none;">@vermarkters_bot</a>
                         </li>
                         <li style="margin-bottom: 0.75rem;">
-                            <p style="color: var(--text-muted); margin: 0;">Офіси: Берлін, Варшава, Київ</p>
+                            <p style="color: var(--text-muted); margin: 0;">Берлін, Варшава, Київ</p>
                         </li>
                     </ul>
                 </div>
@@ -729,47 +732,64 @@
     </footer>
 
     <!-- SCROLL TO TOP BUTTON -->
-    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
-        ↑
-    </button>
+    <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">&#8593;</button>
 
-    <!-- CHATBOT BUTTON -->
-    <button class="chatbot-button" id="chatbotButton" aria-label="Open chatbot" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; border-radius: 50%; background: linear-gradient(135deg, var(--brand), #2563EB); border: none; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4); cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; z-index: 9998; transition: transform 0.3s, box-shadow 0.3s;">
-        💬
-    </button>
-
-    <!-- COOKIE BANNER (Hidden by default) -->
-    <div id="cookie-banner" style="display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border-top: 1px solid var(--glass-border); padding: 1.5rem; z-index: 10000; box-shadow: 0 -4px 20px rgba(0,0,0,0.2);">
-        <div class="container" style="display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap;">
-            <p style="color: var(--text-secondary); margin: 0; flex: 1; min-width: 250px;">
-                Ми використовуємо cookies для покращення вашого досвіду. Продовжуючи використовувати сайт, ви погоджуєтесь з нашою
-                <a href="../privacy-policy-ua.html" style="color: var(--brand); text-decoration: underline;">Політикою конфіденційності</a>
-                    <a href="https://wa.me/4915510300538" target="_blank" class="pricing-card-link" style="margin-top: 10px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
-                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                        </svg>
-                        WhatsApp
-                    </a>.
-            </p>
-            <div style="display: flex; gap: 1rem;">
-                <button id="accept-cookies" class="btn btn-primary" style="padding: 0.75rem 1.5rem; white-space: nowrap;">Прийняти</button>
-                <button id="decline-cookies" class="btn btn-secondary" style="padding: 0.75rem 1.5rem; white-space: nowrap;">Відхилити</button>
-            </div>
-        </div>
+    <!-- CHATBOT TRIGGER -->
+    <div class="chatbot-trigger" onclick="toggleChat()">
+        <span class="icon">💬</span>
+        <span class="text">Чат</span>
     </div>
 
     <!-- SCRIPTS -->
     <script src="../js/main.js"></script>
-    <script src="../js/chatbot.js"></script>    <!-- FLOATING WHATSAPP BUTTON -->
-    <div class="whatsapp-float">
-        <a href="https://wa.me/4915510300538" target="_blank" class="whatsapp-button" aria-label="WhatsApp">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            <span class="whatsapp-button-text">Почати чат</span>
-        </a>
-    </div>
 
+    <!-- Pricing Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btnWeb = document.getElementById('btn-web');
+            const btnApp = document.getElementById('btn-app');
+            const gridWeb = document.getElementById('pricing-web');
+            const gridApp = document.getElementById('pricing-app');
 
+            if (btnWeb && btnApp && gridWeb && gridApp) {
+                btnWeb.addEventListener('click', () => {
+                    gridWeb.style.display = 'grid';
+                    gridApp.style.display = 'none';
+                    btnWeb.style.background = 'var(--brand)';
+                    btnApp.style.background = 'transparent';
+                    btnWeb.style.color = 'white';
+                    btnApp.style.color = 'var(--text-secondary)';
+                });
+
+                btnApp.addEventListener('click', () => {
+                    gridWeb.style.display = 'none';
+                    gridApp.style.display = 'grid';
+                    btnApp.style.background = 'var(--brand)';
+                    btnWeb.style.background = 'transparent';
+                    btnApp.style.color = 'white';
+                    btnWeb.style.color = 'var(--text-secondary)';
+                });
+
+                // Initialize: show websites, hide apps
+                gridApp.style.display = 'none';
+            }
+
+            // FAQ Accordion
+            document.querySelectorAll('.faq-question').forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.parentElement;
+                    const isActive = item.classList.contains('active');
+
+                    // Close all other items
+                    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+
+                    // Toggle current item
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
