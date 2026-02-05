@@ -1309,29 +1309,170 @@ footer, .footer {
 
 @media (max-width: 768px) {
     body {
-        padding-top: 70px; /* Виправлено */
+        padding-top: 70px;
     }
 
+    /* === MOBILE HEADER === */
     header {
         height: 70px;
+        z-index: 1000 !important;
+    }
+
+    header nav {
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 1rem;
+    }
+
+    /* Hide desktop nav */
+    .nav-desktop {
+        display: none !important;
     }
 
     .nav-menu {
+        display: none !important;
+    }
+
+    /* Hide desktop buttons except lang switcher */
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .nav-actions > .btn {
+        display: none !important;
+    }
+
+    .nav-actions .controls {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .nav-actions .controls .theme-toggle {
         display: none;
     }
 
-    .mobile-toggle {
+    /* Compact language switcher on mobile */
+    .nav-actions .lang-switcher {
         display: block;
     }
 
-    .mobile-menu {
-        top: 70px;
+    .nav-actions .lang-switcher .lang-button {
+        padding: 6px 10px;
+        font-size: 0.8rem;
     }
 
+    .nav-actions .lang-switcher .lang-button svg {
+        width: 14px;
+        height: 10px;
+    }
+
+    /* === BURGER BUTTON === */
+    .mobile-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 1002;
+        flex-shrink: 0;
+    }
+
+    /* === MOBILE MENU OVERLAY === */
+    .mobile-menu {
+        display: none;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(20px);
+        z-index: 1001;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2rem;
+        overflow-y: auto;
+    }
+
+    .mobile-menu.active {
+        display: flex !important;
+    }
+
+    .mobile-menu a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 1.25rem;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .mobile-menu a:hover {
+        background: rgba(59, 130, 246, 0.2);
+        color: var(--brand);
+    }
+
+    /* Mobile menu language switcher */
+    .mobile-menu .mobile-lang-switcher {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .mobile-menu .mobile-lang-switcher a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        width: auto;
+        padding: 10px 16px;
+        font-size: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* === HERO SECTION FIX === */
     .hero {
         padding: var(--spacing-lg) 0 var(--spacing-md);
+        padding-top: 2rem !important;
+        min-height: auto !important;
     }
 
+    .hero h1 {
+        font-size: 1.8rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .hero .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+
+    .hero .hero-image {
+        transform: scale(1) !important;
+    }
+
+    /* === OTHER MOBILE FIXES === */
     section, .services-section {
         padding: var(--spacing-md) 0;
     }
