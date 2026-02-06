@@ -1343,6 +1343,10 @@
                 <!-- Contact Form -->
                 <div class="contact-form-wrapper" style="max-width: 600px; margin: 0 auto;">
                     <form id="contactForm" class="contact-form" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 3rem;">
+                        <!-- Honeypot field for bot protection -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="honeypot" id="honeypot" tabindex="-1" autocomplete="off" />
+                        </div>
                         <div class="form-group" style="margin-bottom: 1.5rem;">
                             <label for="contactName" style="display: block; margin-bottom: 0.75rem; color: var(--text-primary); font-weight: 600; font-size: 1rem;">Ім'я *</label>
                             <input type="text" id="contactName" name="name" required placeholder="Ваше ім'я" style="width: 100%; padding: 1rem 1.25rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-primary); font-size: 1rem; transition: border 0.3s;">

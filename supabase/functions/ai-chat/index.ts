@@ -1,7 +1,57 @@
-// Supabase Edge Function: AI Chat with Gemini
+// Supabase Edge Function: AI Chat with Gemini (Security Hardened)
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 
 const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY')
+
+// Security Configuration
+const ALLOWED_ORIGINS = [
+  'https://vermarkter.eu',
+  'https://www.vermarkter.eu',
+  'http://localhost:3000',
+  'http://localhost:5500',
+  'http://127.0.0.1:5500',
+  'http://127.0.0.1:3000'
+]
+
+// Rate limiting storage
+const rateLimitStore = new Map<string, { count: number; resetTime: number }>()
+const RATE_LIMIT_MAX = 3
+const RATE_LIMIT_WINDOW = 60000
+
+// Security Helper Functions
+function sanitizeInput(text: string): string {
+  if (!text) return ''
+  let cleaned = text.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+  cleaned = cleaned.replace(/<[^>]+>/g, '')
+  cleaned = cleaned.replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+  cleaned = cleaned.replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+  return cleaned.substring(0, 1000).trim()
+}
+
+function checkRateLimit(ip: string): boolean {
+  const now = Date.now()
+  const record = rateLimitStore.get(ip)
+  if (!record || now > record.resetTime) {
+    rateLimitStore.set(ip, { count: 1, resetTime: now + RATE_LIMIT_WINDOW })
+    return true
+  }
+  if (record.count >= RATE_LIMIT_MAX) return false
+  record.count++
+  rateLimitStore.set(ip, record)
+  return true
+}
+
+function validateOrigin(req: Request): boolean {
+  const origin = req.headers.get('origin')
+  const referer = req.headers.get('referer')
+  if (origin && ALLOWED_ORIGINS.includes(origin)) return true
+  if (referer) {
+    for (const allowedOrigin of ALLOWED_ORIGINS) {
+      if (referer.startsWith(allowedOrigin)) return true
+    }
+  }
+  return false
+}
 
 // System instructions for different languages
 const SYSTEM_INSTRUCTIONS = {
@@ -35,15 +85,40 @@ Odpowiadaj po polsku. Maksymalnie 2-3 zdania.`,
 }
 
 serve(async (req) => {
-  // Handle CORS
+  // Handle CORS preflight
   if (req.method === 'OPTIONS') {
+    const origin = req.headers.get('origin')
+    const allowedOrigin = ALLOWED_ORIGINS.includes(origin || '') ? origin : ALLOWED_ORIGINS[0]
+
     return new Response('ok', {
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': allowedOrigin || '',
         'Access-Control-Allow-Methods': 'POST, OPTIONS',
         'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Access-Control-Max-Age': '86400',
       },
     })
+  }
+
+  // Security checks
+  const clientIP = req.headers.get('x-forwarded-for') || req.headers.get('x-real-ip') || 'unknown'
+
+  // 1. Validate origin/referer
+  if (!validateOrigin(req)) {
+    console.warn(`Blocked request from unauthorized origin. IP: ${clientIP}`)
+    return new Response(
+      JSON.stringify({ error: 'Unauthorized origin' }),
+      { status: 403, headers: { 'Content-Type': 'application/json' } }
+    )
+  }
+
+  // 2. Rate limiting
+  if (!checkRateLimit(clientIP)) {
+    console.warn(`Rate limit exceeded for IP: ${clientIP}`)
+    return new Response(
+      JSON.stringify({ error: 'Too many requests. Please try again later.' }),
+      { status: 429, headers: { 'Content-Type': 'application/json' } }
+    )
   }
 
   try {
@@ -56,11 +131,14 @@ serve(async (req) => {
           status: 400,
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
+            'Access-Control-Allow-Origin': req.headers.get('origin') || ALLOWED_ORIGINS[0]
           }
         }
       )
     }
+
+    // 3. Input sanitation
+    const cleanMessage = sanitizeInput(message)
 
     if (!GEMINI_API_KEY) {
       throw new Error('GEMINI_API_KEY not configured')
@@ -69,7 +147,7 @@ serve(async (req) => {
     // Get system instruction for language
     const systemInstruction = SYSTEM_INSTRUCTIONS[language as keyof typeof SYSTEM_INSTRUCTIONS] || SYSTEM_INSTRUCTIONS.ua
 
-    // Call Gemini API
+    // Call Gemini API with sanitized message
     const geminiResponse = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
       {
@@ -80,7 +158,7 @@ serve(async (req) => {
         body: JSON.stringify({
           contents: [{
             parts: [{
-              text: `${systemInstruction}\n\nКлієнт запитує: ${message}`
+              text: `${systemInstruction}\n\nКлієнт запитує: ${cleanMessage}`
             }]
           }],
           generationConfig: {
@@ -112,7 +190,7 @@ serve(async (req) => {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': req.headers.get('origin') || ALLOWED_ORIGINS[0]
         }
       }
     )
@@ -130,7 +208,7 @@ serve(async (req) => {
         status: 200, // Return 200 to avoid breaking frontend
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'
+          'Access-Control-Allow-Origin': req.headers.get('origin') || ALLOWED_ORIGINS[0]
         }
       }
     )
