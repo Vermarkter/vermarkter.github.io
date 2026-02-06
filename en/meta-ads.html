@@ -715,7 +715,7 @@
                 <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
                     <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">BUSINESS</h3>
                     <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Maximum scaling</p>
-                    <h3 class="text-gradient" style="font-size: 2.5rem; margin: 1rem 0;">from €1,000 <span style="font-size: 1rem; color: #94A3B8;">/ month</span></h3>
+                    <h3 class="text-gradient" style="font-size: 2.5rem; margin: 1rem 0;">Custom Pricing</h3>
                     <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
                         <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
                             <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
@@ -817,6 +817,68 @@
 </a>
 
 </section>
+
+    <!-- PORTFOLIO SECTION -->
+    <section id="portfolio" class="container" style="padding: 4rem 0;">
+        <h2 class="text-center mb-5" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 3rem;">Our Work</h2>
+        <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+            <style>
+                @media (min-width: 1200px) {
+                    #portfolio .portfolio-grid {
+                        grid-template-columns: repeat(3, 1fr) !important;
+                    }
+                }
+            </style>
+            <!-- Beauty Salon -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 100%); height: 280px;">
+                <img src="../img/portfolio-salon.webp" alt="Beauty Salon Website" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Glamour Studio</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">63 new clients in the first month. Booking calendar filled for 4 weeks ahead.</p>
+                </div>
+            </div>
+            <!-- SaaS Dashboard -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%); height: 280px;">
+                <img src="../img/portfolio-dashboard.webp" alt="SaaS Dashboard" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Analytics Pro</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">CRM + Google Ads integration. ROAS growth to 420% through precise tracking.</p>
+                </div>
+            </div>
+            <!-- E-Commerce -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%); height: 280px;">
+                <img src="../img/portfolio-ecommerce.webp" alt="E-Commerce Website" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Fashion Store</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">+520% ROAS on Google Shopping. Revenue €12,000/month from zero.</p>
+                </div>
+            </div>
+            <!-- Auto Service -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #E0E7FF 0%, #C7D2FE 100%); height: 280px;">
+                <img src="../img/portfolio-auto.webp" alt="Auto Service Website" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">AutoFix Pro</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">15+ inquiries in the first week. Workshop calendar booked for 14 days.</p>
+                </div>
+            </div>
+            <!-- Medical Center -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%); height: 280px;">
+                <img src="../img/portfolio-medical.webp" alt="Medical Center Website" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Dental Clinic</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">120+ appointments per month. Top-1 in local Google Maps search.</p>
+                </div>
+            </div>
+            <!-- Logistics App -->
+            <div class="portfolio-card" style="border-radius: 20px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1); position: relative; background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%); height: 280px;">
+                <img src="../img/portfolio-logistics.webp" alt="Logistics App" style="width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s;" onerror="this.style.display='none'">
+                <div class="portfolio-overlay" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(15,23,42,0.95), transparent); padding: 2rem 1.5rem 1.5rem; color: white;">
+                    <h4 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Swift Logistics</h4>
+                    <p style="font-size: 0.9rem; color: #94A3B8; margin: 0;">30% CAC reduction. Full lead automation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- FAQ SECTION -->
     <section id="faq" class="services-section" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
