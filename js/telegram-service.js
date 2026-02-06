@@ -3,110 +3,88 @@
  * Secure Telegram integration via Supabase Edge Functions
  */
 
-// 👇 ТВОЇ ДАНІ SUPABASE
-const MY_SUPABASE_URL = 'https://cinufkskitdiuonfibtt.supabase.co'; 
-const MY_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpbnVma3NraXRkaXVvbmZpYnR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYxODQ1MzksImV4cCI6MjA4MTc2MDUzOX0.V_IySnKEy-xdBcMkgmNKPAjCeV7nLe8OoLJ_rbe-rRw'; 
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+// Supabase Configuration
+const SUPABASE_URL = 'https://cinufkskitdiuonfibtt.supabase.co';
+const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c';
 
 class TelegramService {
   constructor() {
-    this.SUPABASE_URL = MY_SUPABASE_URL;
-    this.SUPABASE_ANON_KEY = MY_ANON_KEY;
-
-    this.initialized = false;
-    this.supabaseClient = null;
+    this.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   }
 
   /**
-   * Ініціалізація Supabase
-   */
-  init() {
-    if (this.initialized) return;
-
-    // Перевірка, чи підключена бібліотека Supabase в HTML
-    if (typeof window.supabase === 'undefined') {
-      console.error('❌ Supabase library not loaded. Add <script> tag to HTML.');
-      return;
-    }
-
-    try {
-      this.supabaseClient = window.supabase.createClient(
-        this.SUPABASE_URL,
-        this.SUPABASE_ANON_KEY
-      );
-      this.initialized = true;
-      console.log('✅ Telegram service initialized');
-    } catch (error) {
-      console.error('❌ Failed to initialize Supabase:', error);
-    }
-  }
-
-  /**
-   * Головна функція відправки
+   * Main message sending function
    */
   async sendMessage(message, contact = null, type = 'chat', metadata = {}) {
-    if (!this.initialized) this.init();
-
-    if (!this.initialized) {
-        console.error('Supabase не ініціалізовано');
-        return { success: false };
-    }
-
     try {
-      // Виклик Edge Function 'telegram-proxy'
-      const { data, error } = await this.supabaseClient.functions.invoke('telegram-proxy', {
-        body: {
-          message: message,
-          contact: contact,
-          type: type,
-          metadata: metadata
-        }
+      const { data, error } = await this.supabase.functions.invoke('telegram-proxy', {
+        body: { message, contact, type, metadata }
       });
-
       if (error) throw error;
-      console.log('✅ Message sent successfully:', data);
+      console.log('✅ Повідомлення надіслано');
       return { success: true, data };
-
-    } catch (error) {
-      console.error('❌ Network error:', error);
-      return { success: false, error: error.message };
+    } catch (err) {
+      console.error('❌ Помилка відправки:', err);
+      return { success: false, error: err.message };
     }
   }
 
   /**
-   * Відправка повідомлення з ЧАТУ
+   * Send form submission to Telegram
+   */
+  async sendFormSubmission(formData) {
+    const text = `📬 Нова заявка з форми
+
+👤 Ім'я: ${formData.name}
+📧 Email: ${formData.email}
+📱 Тел: ${formData.phone || 'Не вказано'}
+💬 Повідомлення: ${formData.message}
+
+🌐 Мова: ${this.detectLanguage().toUpperCase()}
+🕒 ${new Date().toISOString()}`;
+
+    return await this.sendMessage(text, formData.email, 'form', {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone
+    });
+  }
+
+  /**
+   * Send calculator results to Telegram
+   */
+  async sendCalculatorResults(results, contact) {
+    const text = `📊 Результат калькулятора
+
+💰 Бюджет: €${results.budget}
+📈 Прибуток: €${results.profit}
+🎯 ROAS: ${results.roas}%
+📧 Контакт: ${contact || 'Не вказано'}
+
+🕒 ${new Date().toISOString()}`;
+
+    return await this.sendMessage(text, contact, 'calculator', results);
+  }
+
+  /**
+   * Send chat message to Telegram
    */
   async sendChatMessage(userMessage, userContact = null) {
     const lang = this.detectLanguage();
-    const message = `
-💬 Chatbot (${lang.toUpperCase()})
----------------------------
+    const text = `💬 Chatbot (${lang.toUpperCase()})
+
 ${userMessage}
----------------------------
-${userContact ? `Kontakt: ${userContact}` : ''}
-    `.trim();
 
-    return await this.sendMessage(message, userContact, 'chat', { language: lang });
+${userContact ? `📧 Контакт: ${userContact}` : ''}
+🕒 ${new Date().toISOString()}`;
+
+    return await this.sendMessage(text, userContact, 'chat', { language: lang });
   }
 
   /**
-   * Відправка результатів КАЛЬКУЛЯТОРА
-   */
-  async sendCalculatorResults(budget, results, userContact = null) {
-    const message = `
-📊 ROI Calculator
----------------------------
-Budget: €${budget}
-Clicks: ${results.clicks}
-Leads: ${results.conversions}
-Profit: €${results.profit}
-ROAS: ${results.roas}x
-    `.trim();
-
-    return await this.sendMessage(message, userContact, 'calculator', results);
-  }
-
-  /**
-   * Визначення мови сторінки
+   * Detect page language
    */
   detectLanguage() {
     const path = window.location.pathname;
@@ -114,18 +92,12 @@ ROAS: ${results.roas}x
     if (path.includes('/de/')) return 'de';
     if (path.includes('/en/')) return 'en';
     if (path.includes('/pl/')) return 'pl';
-    return 'de'; // За замовчуванням
+    if (path.includes('/ru/')) return 'ru';
+    if (path.includes('/tr/')) return 'tr';
+    return 'de'; // Default
   }
 }
 
-// Створюємо глобальний об'єкт
+// Create global instance
 window.telegramService = new TelegramService();
-
-// Автозапуск
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    window.telegramService.init();
-  });
-} else {
-  window.telegramService.init();
-}
+console.log('✅ Telegram service loaded');

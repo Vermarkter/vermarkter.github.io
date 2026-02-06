@@ -11,6 +11,7 @@ This document describes the comprehensive security measures implemented across a
 **Allowed Origins:**
 - `https://vermarkter.eu` (Production)
 - `https://www.vermarkter.eu` (Production with www)
+- `https://vermarkter.github.io` (GitHub Pages)
 - `http://localhost:3000` (Development)
 - `http://localhost:5500` (Development - Live Server)
 - `http://127.0.0.1:5500` (Development)

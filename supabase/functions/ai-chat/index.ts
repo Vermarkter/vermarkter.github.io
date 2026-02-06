@@ -7,6 +7,7 @@ const GEMINI_API_KEY = Deno.env.get('GEMINI_API_KEY')
 const ALLOWED_ORIGINS = [
   'https://vermarkter.eu',
   'https://www.vermarkter.eu',
+  'https://vermarkter.github.io',
   'http://localhost:3000',
   'http://localhost:5500',
   'http://127.0.0.1:5500',
