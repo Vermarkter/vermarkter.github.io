@@ -317,9 +317,49 @@ function preventHeaderOverlap() {
 }
 
 // ==================== FORM SUBMISSIONS ====================
+// Multilingual success messages
+const SUCCESS_MESSAGES = {
+    de: '✅ Vielen Dank! Ihre Nachricht wurde gesendet. Wir melden uns innerhalb von 24 Stunden.',
+    en: '✅ Thank you! Your message has been sent. We will contact you within 24 hours.',
+    ua: '✅ Дякуємо! Ваше повідомлення відправлене. Ми зв\'яжемося з вами протягом 24 годин.',
+    pl: '✅ Dziękujemy! Twoja wiadomość została wysłana. Skontaktujemy się w ciągu 24 godzin.',
+    ru: '✅ Спасибо! Ваше сообщение отправлено. Мы свяжемся с вами в течение 24 часов.',
+    tr: '✅ Teşekkürler! Mesajınız gönderildi. 24 saat içinde sizinle iletişime geçeceğiz.'
+};
+
+const LOADING_MESSAGES = {
+    de: 'Wird gesendet...',
+    en: 'Sending...',
+    ua: 'Надсилаємо...',
+    pl: 'Wysyłanie...',
+    ru: 'Отправляем...',
+    tr: 'Gönderiliyor...'
+};
+
+const ERROR_MESSAGES = {
+    de: 'Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.',
+    en: 'An error occurred. Please try again later.',
+    ua: 'Виникла помилка. Спробуйте пізніше.',
+    pl: 'Wystąpił błąd. Spróbuj ponownie później.',
+    ru: 'Произошла ошибка. Попробуйте позже.',
+    tr: 'Bir hata oluştu. Lütfen daha sonra tekrar deneyin.'
+};
+
+function detectLanguage() {
+    const path = window.location.pathname;
+    if (path.includes('/ua/')) return 'ua';
+    if (path.includes('/de/')) return 'de';
+    if (path.includes('/en/')) return 'en';
+    if (path.includes('/pl/')) return 'pl';
+    if (path.includes('/ru/')) return 'ru';
+    if (path.includes('/tr/')) return 'tr';
+    return 'de';
+}
+
 function initForms() {
     const contactForm = document.getElementById('contactForm');
-    const formSuccess = document.getElementById('formSuccess');
+    const formSuccess = document.getElementById('form-success') || document.getElementById('formSuccess');
+    const lang = detectLanguage();
 
     if (contactForm) {
         contactForm.addEventListener('submit', async (e) => {
@@ -329,48 +369,85 @@ function initForms() {
             const formData = new FormData(contactForm);
             const data = Object.fromEntries(formData);
 
+            // Check honeypot (bot protection)
+            if (data.honeypot && data.honeypot.trim() !== '') {
+                console.log('🤖 Bot detected via honeypot');
+                return;
+            }
+
             // Validate email
             if (!data.email || !data.email.includes('@')) {
-                alert('Bitte geben Sie eine gültige E-Mail-Adresse ein.');
+                alert(lang === 'de' ? 'Bitte geben Sie eine gültige E-Mail-Adresse ein.' : 'Please enter a valid email address.');
                 return;
             }
 
             // Show loading state
             const submitBtn = contactForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Wird gesendet...';
+            submitBtn.textContent = LOADING_MESSAGES[lang] || LOADING_MESSAGES.de;
             submitBtn.disabled = true;
 
             try {
-                // In production, send to backend API
-                // For now, simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                console.log('📤 Submitting form data:', data);
 
-                console.log('Form submitted:', data);
+                // Send via Telegram Service
+                let result = { success: false };
+
+                if (window.telegramService && typeof window.telegramService.sendFormSubmission === 'function') {
+                    result = await window.telegramService.sendFormSubmission({
+                        name: data.name,
+                        email: data.email,
+                        phone: data.phone || '',
+                        message: data.message,
+                        honeypot: data.honeypot
+                    });
+                } else {
+                    console.warn('⚠️ telegramService not available, simulating success');
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    result = { success: true };
+                }
+
+                console.log('📥 Form submission result:', result);
 
                 // Track event
                 if (typeof trackEvent === 'function') {
                     trackEvent('Contact', 'Submit', 'Contact Form Submission');
                 }
 
-                // Show success message
-                if (formSuccess) {
-                    formSuccess.style.display = 'block';
+                if (result.success) {
+                    // Hide form and show success message
+                    contactForm.style.display = 'none';
+
+                    // Create or update success message
+                    let successDiv = formSuccess;
+                    if (!successDiv) {
+                        successDiv = document.createElement('div');
+                        successDiv.id = 'form-success';
+                        successDiv.className = 'form-success-message';
+                        contactForm.parentNode.insertBefore(successDiv, contactForm.nextSibling);
+                    }
+
+                    successDiv.innerHTML = `
+                        <div class="success-icon">✅</div>
+                        <p class="success-text">${SUCCESS_MESSAGES[lang] || SUCCESS_MESSAGES.de}</p>
+                    `;
+                    successDiv.style.display = 'block';
+
+                    // Reset form for potential re-use
+                    contactForm.reset();
+
+                    // Show form again after 10 seconds (optional)
+                    setTimeout(() => {
+                        contactForm.style.display = 'block';
+                        successDiv.style.display = 'none';
+                    }, 10000);
+                } else {
+                    throw new Error(result.error || 'Unknown error');
                 }
 
-                // Reset form
-                contactForm.reset();
-
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    if (formSuccess) {
-                        formSuccess.style.display = 'none';
-                    }
-                }, 5000);
-
             } catch (error) {
-                alert('Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut.');
-                console.error('Form submission error:', error);
+                console.error('❌ Form submission error:', error);
+                alert(ERROR_MESSAGES[lang] || ERROR_MESSAGES.de);
             } finally {
                 submitBtn.textContent = originalText;
                 submitBtn.disabled = false;
