@@ -3017,3 +3017,159 @@ input[type="number"], select {
         transform: scale(1);
     }
 }
+
+/* ============================================
+   MOBILE UX FIXES (max-width: 768px)
+   Critical fixes for modern smartphones
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* === 1. FLOATING BUTTONS POSITIONING (CRITICAL) === */
+
+    /* Hide floating WhatsApp button on mobile - it's already in header */
+    .whatsapp-float {
+        display: none !important;
+    }
+
+    /* AI Chatbot button - clear positioning */
+    .chatbot-button,
+    #chatbotButton {
+        bottom: 20px !important;
+        right: 20px !important;
+        width: 56px !important;
+        height: 56px !important;
+        z-index: 9998 !important;
+    }
+
+    /* Chat widget positioning on mobile */
+    .chat-widget,
+    #chatWidget {
+        width: calc(100vw - 20px) !important;
+        max-width: 380px !important;
+        right: 10px !important;
+        bottom: 85px !important;
+        max-height: calc(100vh - 150px) !important;
+    }
+
+    /* Scroll to top button - move left to not overlap chatbot */
+    .scroll-to-top,
+    .scroll-top-btn,
+    #scrollToTop {
+        bottom: 20px !important;
+        right: 90px !important;
+        width: 44px !important;
+        height: 44px !important;
+        z-index: 9997 !important;
+    }
+
+    /* === 2. METHODOLOGY ZIG-ZAG SECTIONS (VERTICAL STACK) === */
+
+    #process .calculator-wrapper,
+    .process-section .calculator-wrapper,
+    .methodology-step {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    /* Text comes first, then image */
+    #process .calculator-wrapper > div:first-child,
+    .process-section .calculator-wrapper > div:first-child,
+    .calculator-inputs {
+        order: 1 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Image comes second */
+    #process .calculator-wrapper > div:last-child,
+    .process-section .calculator-wrapper > div:last-child,
+    .calculator-results,
+    .visual-box {
+        order: 2 !important;
+        width: 100% !important;
+        margin: 0 !important;
+        transform: none !important;
+        margin-left: 0 !important;
+    }
+
+    /* Visual boxes - fixed height on mobile */
+    .visual-box,
+    .visual-box img,
+    #process img,
+    .process-image {
+        height: 240px !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        border-radius: 16px !important;
+    }
+
+    /* Remove any transforms that shift images */
+    .calculator-wrapper img,
+    .visual-box img {
+        transform: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* === 3. SECTIONS SPACING & PADDING === */
+
+    section {
+        padding-bottom: 40px !important;
+    }
+
+    /* Pain points cards spacing */
+    .problem-card,
+    .pain-point-card,
+    .issue-card {
+        margin-bottom: 20px !important;
+    }
+
+    /* === 4. HEADINGS CENTERING === */
+
+    h2, h3,
+    .section-title,
+    .section-header h2,
+    .section-header h3 {
+        text-align: center !important;
+    }
+
+    /* === 5. CALCULATOR GRID - VERTICAL ON MOBILE === */
+
+    .calculator__grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    .calculator__inputs,
+    .calculator__results {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* === 6. HERO GRID - VERTICAL ON MOBILE === */
+
+    .hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+
+    .hero-text {
+        text-align: center !important;
+        order: 1 !important;
+    }
+
+    .hero-image {
+        order: 2 !important;
+        transform: none !important;
+    }
+
+    /* === 7. FOOTER GRID - STACK VERTICALLY === */
+
+    .footer-grid,
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 30px !important;
+    }
+}
