@@ -28,9 +28,20 @@ class TelegramService {
 
   /**
    * Main message sending function with detailed debugging
+   * Sends directly to telegram-proxy with proper field names
    */
-  async sendMessage(message, contact = null, type = 'chat', metadata = {}) {
-    const requestBody = { message, contact, type, metadata };
+  async sendMessage(formData) {
+    // Ensure we send the fields that telegram-proxy expects
+    const requestBody = {
+      name: formData.name || 'Website Visitor',
+      email: formData.email || formData.contact || '',
+      phone: formData.phone || '',
+      message: formData.message || '',
+      type: formData.type || 'chat',
+      language: formData.language || this.detectLanguage(),
+      metadata: formData.metadata || {},
+      honeypot: formData.honeypot || ''
+    };
 
     if (DEBUG) {
       console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
@@ -77,20 +88,14 @@ class TelegramService {
    * Send form submission to Telegram
    */
   async sendFormSubmission(formData) {
-    const text = `📬 Нова заявка з форми
-
-👤 Ім'я: ${formData.name}
-📧 Email: ${formData.email}
-📱 Тел: ${formData.phone || 'Не вказано'}
-💬 Повідомлення: ${formData.message}
-
-🌐 Мова: ${this.detectLanguage().toUpperCase()}
-🕒 ${new Date().toISOString()}`;
-
-    return await this.sendMessage(text, formData.email, 'form', {
+    return await this.sendMessage({
       name: formData.name,
       email: formData.email,
-      phone: formData.phone
+      phone: formData.phone || '',
+      message: formData.message,
+      type: 'form',
+      language: this.detectLanguage(),
+      honeypot: formData.honeypot || ''
     });
   }
 
@@ -98,31 +103,32 @@ class TelegramService {
    * Send calculator results to Telegram
    */
   async sendCalculatorResults(results, contact) {
-    const text = `📊 Результат калькулятора
+    const message = `Calculator Results:
+Budget: €${results.budget}
+Profit: €${results.profit}
+ROAS: ${results.roas}%`;
 
-💰 Бюджет: €${results.budget}
-📈 Прибуток: €${results.profit}
-🎯 ROAS: ${results.roas}%
-📧 Контакт: ${contact || 'Не вказано'}
-
-🕒 ${new Date().toISOString()}`;
-
-    return await this.sendMessage(text, contact, 'calculator', results);
+    return await this.sendMessage({
+      name: 'Calculator User',
+      email: contact || '',
+      message: message,
+      type: 'calculator',
+      language: this.detectLanguage(),
+      metadata: results
+    });
   }
 
   /**
    * Send chat message to Telegram
    */
   async sendChatMessage(userMessage, userContact = null) {
-    const lang = this.detectLanguage();
-    const text = `💬 Chatbot (${lang.toUpperCase()})
-
-${userMessage}
-
-${userContact ? `📧 Контакт: ${userContact}` : ''}
-🕒 ${new Date().toISOString()}`;
-
-    return await this.sendMessage(text, userContact, 'chat', { language: lang });
+    return await this.sendMessage({
+      name: 'Chat User',
+      email: userContact || '',
+      message: userMessage,
+      type: 'chat',
+      language: this.detectLanguage()
+    });
   }
 
   /**

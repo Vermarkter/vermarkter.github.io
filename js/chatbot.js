@@ -243,21 +243,64 @@ class VermarkterChatbot {
   }
 
   init() {
-    if (!this.chatbotButton) return;
+    // Create chatbot button if it doesn't exist
+    if (!this.chatbotButton) {
+      this.createChatbotButton();
+    }
 
     // Create chat widget
     this.createChatWidget();
 
     // Button click handler
-    this.chatbotButton.addEventListener('click', () => {
-      this.toggleChat();
-    });
+    if (this.chatbotButton) {
+      this.chatbotButton.addEventListener('click', () => {
+        this.toggleChat();
+      });
 
-    // Show tooltip on hover
-    this.addTooltip();
+      // Show tooltip on hover
+      this.addTooltip();
 
-    // Auto-open hint after 10 seconds
-    this.autoOpenHint();
+      // Auto-open hint after 10 seconds
+      this.autoOpenHint();
+    }
+  }
+
+  createChatbotButton() {
+    // Create floating chatbot button
+    const button = document.createElement('button');
+    button.id = 'chatbotButton';
+    button.className = 'chatbot-button';
+    button.setAttribute('aria-label', 'Open chatbot');
+    button.style.cssText = `
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand, #3B82F6), #2563EB);
+      border: none;
+      box-shadow: 0 8px 24px rgba(59, 130, 246, 0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      z-index: 9998;
+      transition: transform 0.3s, box-shadow 0.3s;
+    `;
+    button.textContent = '💬';
+    button.onmouseenter = () => {
+      button.style.transform = 'scale(1.1)';
+      button.style.boxShadow = '0 12px 32px rgba(59, 130, 246, 0.5)';
+    };
+    button.onmouseleave = () => {
+      button.style.transform = 'scale(1)';
+      button.style.boxShadow = '0 8px 24px rgba(59, 130, 246, 0.4)';
+    };
+
+    document.body.appendChild(button);
+    this.chatbotButton = button;
   }
 
   createChatWidget() {
@@ -687,10 +730,24 @@ class VermarkterChatbot {
 }
 
 // Initialize chatbot when DOM is ready
+let chatbotInstance = null;
+
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    new VermarkterChatbot();
+    chatbotInstance = new VermarkterChatbot();
   });
 } else {
-  new VermarkterChatbot();
+  chatbotInstance = new VermarkterChatbot();
 }
+
+// Global toggleChat function for onclick handlers
+function toggleChat() {
+  if (chatbotInstance) {
+    chatbotInstance.toggleChat();
+  } else {
+    console.warn('Chatbot not initialized yet');
+  }
+}
+
+// Expose globally
+window.toggleChat = toggleChat;
