@@ -3065,7 +3065,7 @@ input[type="number"], select {
     .scroll-top-btn,
     #scrollToTop {
         bottom: 20px !important;
-        right: 90px !important;
+        right: 85px !important;
         width: 44px !important;
         height: 44px !important;
         z-index: 9997 !important;
@@ -3156,8 +3156,8 @@ input[type="number"], select {
 
     /* Individual pain point cards */
     .pain-card {
-        min-width: 280px !important;
-        max-width: 280px !important;
+        min-width: 85vw !important;
+        max-width: 85vw !important;
         flex-shrink: 0 !important;
         scroll-snap-align: center !important;
     }
