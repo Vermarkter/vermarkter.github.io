@@ -316,6 +316,13 @@ nav {
     transform: rotate(15deg);
 }
 
+/* Mobile Controls Group (lang-switcher + burger) */
+.nav-controls-mobile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
 /* Mobile Toggle */
 .mobile-toggle {
     display: none;
@@ -1335,38 +1342,32 @@ footer, .footer {
         display: none !important;
     }
 
-    /* Hide desktop buttons except lang switcher */
+    /* Hide desktop-only elements */
     .nav-actions {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    .nav-actions > .btn {
         display: none !important;
     }
 
-    .nav-actions .controls {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+    .theme-toggle {
+        display: none !important;
     }
 
-    .nav-actions .controls .theme-toggle {
-        display: none;
+    /* Mobile controls group: lang-switcher + burger */
+    .nav-controls-mobile {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
     }
 
-    /* Compact language switcher on mobile */
-    .nav-actions .lang-switcher {
+    .nav-controls-mobile .lang-switcher {
         display: block;
     }
 
-    .nav-actions .lang-switcher .lang-button {
+    .nav-controls-mobile .lang-button {
         padding: 6px 10px;
         font-size: 0.8rem;
     }
 
-    .nav-actions .lang-switcher .lang-button svg {
+    .nav-controls-mobile .lang-button svg {
         width: 14px;
         height: 10px;
     }
