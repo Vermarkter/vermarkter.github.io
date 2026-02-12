@@ -1409,6 +1409,9 @@ footer, .footer {
 
     .mobile-menu.active {
         display: flex !important;
+        max-height: none !important;
+        opacity: 1 !important;
+        overflow-y: auto !important;
     }
 
     .mobile-menu a {
