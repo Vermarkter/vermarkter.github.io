@@ -338,34 +338,6 @@ nav {
 /* Mobile Menu */
 .mobile-menu {
     display: none;
-    position: fixed;
-    top: 80px;
-    left: 0;
-    right: 0;
-    background: var(--glass-bg);
-    backdrop-filter: var(--glass-blur);
-    border-bottom: 1px solid var(--glass-border);
-    padding: var(--spacing-md);
-    z-index: var(--z-dropdown);
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all var(--transition-base);
-}
-
-.mobile-menu.show {
-    display: block;
-    max-height: 500px;
-    opacity: 1;
-}
-
-.mobile-menu .nav-menu {
-    flex-direction: column;
-    align-items: stretch;
-}
-
-.mobile-menu .nav-menu a {
-    padding: var(--spacing-sm);
 }
 
 /* === BREADCRUMBS === */
@@ -1390,6 +1362,8 @@ footer, .footer {
     }
 
     /* === MOBILE MENU OVERLAY === */
+    /* JS moves .mobile-menu outside <header> to avoid
+       backdrop-filter containing block issue */
     .mobile-menu {
         display: none;
         position: fixed;
@@ -1399,7 +1373,7 @@ footer, .footer {
         bottom: 0;
         background: rgba(15, 23, 42, 0.98);
         backdrop-filter: blur(20px);
-        z-index: 1001;
+        z-index: 10000;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
@@ -1409,9 +1383,6 @@ footer, .footer {
 
     .mobile-menu.active {
         display: flex !important;
-        max-height: none !important;
-        opacity: 1 !important;
-        overflow-y: auto !important;
     }
 
     .mobile-menu a {

@@ -14,8 +14,15 @@ const CALCULATOR_COEFFICIENTS = {
 const mobileToggle = document.getElementById('mobileToggle');
 const mobileMenu = document.getElementById('mobileMenu');
 
+// Move mobile menu outside <header> to avoid backdrop-filter
+// creating a containing block that breaks position:fixed sizing
+if (mobileMenu && mobileMenu.closest('header')) {
+    document.body.appendChild(mobileMenu);
+}
+
 if (mobileToggle && mobileMenu) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         mobileMenu.classList.toggle('active');
         const isActive = mobileMenu.classList.contains('active');
         mobileToggle.textContent = isActive ? '✕' : '☰';
@@ -33,8 +40,8 @@ if (mobileToggle && mobileMenu) {
 
     // Close on outside click
     document.addEventListener('click', (e) => {
-        if (mobileMenu.classList.contains('active') && 
-            !mobileMenu.contains(e.target) && 
+        if (mobileMenu.classList.contains('active') &&
+            !mobileMenu.contains(e.target) &&
             !mobileToggle.contains(e.target)) {
             mobileMenu.classList.remove('active');
             mobileToggle.textContent = '☰';
