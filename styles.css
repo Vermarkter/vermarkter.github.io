@@ -1323,25 +1323,31 @@ footer, .footer {
         display: none !important;
     }
 
-    /* Mobile controls group: lang-switcher + burger */
+    /* === MOBILE BRAND: icon only, no text === */
+    .brand span {
+        display: none !important;
+    }
+
+    .brand svg {
+        width: 28px !important;
+        height: 28px !important;
+    }
+
+    .brand {
+        gap: 0 !important;
+        margin-left: 0 !important;
+        display: flex !important;
+    }
+
+    /* === MOBILE HEADER: only [icon] ... [☰] === */
+    /* Lang-switcher moves into mobile menu via JS */
+    .nav-controls-mobile .lang-switcher {
+        display: none !important;
+    }
+
     .nav-controls-mobile {
         display: flex !important;
         align-items: center !important;
-        gap: 10px !important;
-    }
-
-    .nav-controls-mobile .lang-switcher {
-        display: block;
-    }
-
-    .nav-controls-mobile .lang-button {
-        padding: 6px 10px;
-        font-size: 0.8rem;
-    }
-
-    .nav-controls-mobile .lang-button svg {
-        width: 14px;
-        height: 10px;
     }
 
     /* === BURGER BUTTON === */

@@ -20,6 +20,20 @@ if (mobileMenu && mobileMenu.closest('header')) {
     document.body.appendChild(mobileMenu);
 }
 
+// Clone language links from header dropdown into mobile menu
+if (mobileMenu) {
+    const langDropdown = document.querySelector('.lang-dropdown');
+    if (langDropdown) {
+        const langSection = document.createElement('div');
+        langSection.className = 'mobile-lang-switcher';
+        langDropdown.querySelectorAll('a').forEach(link => {
+            const clone = link.cloneNode(true);
+            langSection.appendChild(clone);
+        });
+        mobileMenu.appendChild(langSection);
+    }
+}
+
 if (mobileToggle && mobileMenu) {
     mobileToggle.addEventListener('click', (e) => {
         e.stopPropagation();
