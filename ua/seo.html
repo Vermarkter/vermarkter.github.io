@@ -309,6 +309,12 @@
                 </div>
             </div>
         </div>
+
+        <div style="text-align: center; margin-top: 3rem; padding: 1.5rem 2rem; background: rgba(52, 168, 83, 0.08); border: 1px solid rgba(52, 168, 83, 0.2); border-radius: 16px; max-width: 700px; margin-left: auto; margin-right: auto;">
+            <p style="font-size: 1.1rem; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+                💡 <strong style="color: var(--text-primary);">92% наших клієнтів</strong> довгостроково економлять <strong style="color: #34A853;">60-70% маркетингового бюджету</strong>, переходячи на SEO.
+            </p>
+        </div>
     </section>
 
     <!-- SEO TYPES -->
@@ -618,6 +624,68 @@
         </div>
     </section>
 
+    <!-- SEO CALCULATOR -->
+    <section id="seo-calculator" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-title" style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; margin-bottom: 1rem;">
+                    🧮 Smart SEO <span class="text-gradient">ROI Калькулятор</span>
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                    Розрахуйте потенційний дохід від SEO для вашого бізнесу
+                </p>
+            </div>
+            <div style="max-width: 700px; margin: 0 auto; background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem;">
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600;">Поточний місячний трафік</label>
+                        <input id="seo-traffic" type="number" value="1000" min="0" style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: var(--text-primary); font-size: 1rem; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600;">Конверсія (%)</label>
+                        <input id="seo-cr" type="number" value="2" min="0" max="100" step="0.1" style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: var(--text-primary); font-size: 1rem; box-sizing: border-box;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600;">Середня сума замовлення (€)</label>
+                        <input id="seo-aov" type="number" value="100" min="0" style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: var(--text-primary); font-size: 1rem; box-sizing: border-box;">
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                    <div style="text-align: center; padding: 1.5rem; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Поточна SEO-цінність</div>
+                        <div id="seo-current" style="font-size: 2rem; font-weight: 800; color: var(--brand);">€2.000</div>
+                    </div>
+                    <div style="text-align: center; padding: 1.5rem; background: rgba(52, 168, 83, 0.08); border: 1px solid rgba(52, 168, 83, 0.2); border-radius: 16px;">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Потенціал (+100% зростання)</div>
+                        <div id="seo-potential" style="font-size: 2rem; font-weight: 800; color: #34A853;">€4.000</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+    (function() {
+        var trafficInput = document.getElementById('seo-traffic');
+        var crInput = document.getElementById('seo-cr');
+        var aovInput = document.getElementById('seo-aov');
+        var currentEl = document.getElementById('seo-current');
+        var potentialEl = document.getElementById('seo-potential');
+        function calcSeo() {
+            var traffic = parseFloat(trafficInput.value) || 0;
+            var cr = parseFloat(crInput.value) || 0;
+            var aov = parseFloat(aovInput.value) || 0;
+            var revenue = traffic * (cr / 100) * aov;
+            var fmt = function(v) { return '€' + Math.round(v).toLocaleString('uk-UA'); };
+            currentEl.textContent = fmt(revenue);
+            potentialEl.textContent = fmt(revenue * 2);
+        }
+        if (trafficInput && crInput && aovInput) {
+            [trafficInput, crInput, aovInput].forEach(function(el) { el.addEventListener('input', calcSeo); });
+            calcSeo();
+        }
+    })();
+    </script>
+
     <!-- PRICING SECTION -->
     <section id="pricing" class="pricing-section" style="padding: 6rem 0; background: var(--bg-secondary);">
         <div class="container">
@@ -628,6 +696,9 @@
                 <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
                     Прозорі ціни без прихованих платежів. Виберіть ідеальний пакет для вашого бізнесу.
                 </p>
+                <div style="display: inline-block; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 12px; padding: 0.75rem 1.5rem; margin-top: 1.5rem;">
+                    <span style="color: #34A853; font-weight: 700; font-size: 1rem;">🛡️ Жодної комісії з рекламних витрат — лише фіксована SEO-оплата</span>
+                </div>
             </div>
 
             <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
@@ -714,11 +785,12 @@
 
                 <!-- Pricing Card 3: ENTERPRISE -->
                 <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
-                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">ENTERPRISE</h3>
-                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Для великого бізнесу</p>
-                    <div class="pricing-price" style="margin-bottom: 2rem;">
-                        <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900;">від €2.500</span>
-                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ місяць</span>
+                    <h3 class="pricing-title" style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary); text-align: center;">ENTERPRISE</h3>
+                    <div style="font-size: 1rem; color: #94a3b8; margin-bottom: 0.5rem; text-align: center;">Індивідуальне рішення</div>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; text-align: center;">Для великого бізнесу</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem; display: flex; align-items: baseline; justify-content: center; gap: 0.4rem;">
+                        <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900; line-height: 1;">від €2.500</span>
+                        <span class="price-period" style="font-size: 1rem; color: #94a3b8; line-height: 1;">/ місяць</span>
                     </div>
                     <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
                         <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
@@ -751,7 +823,7 @@
             </div>
 
             <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
-                * Ціни без ПДВ. Мінімальний контракт 6 місяців.
+                * Ціни без ПДВ. Мінімальний контракт 12 місяців (SEO потребує часу для повного ефекту). Потім щомісячне розірвання.
             </p>
         </div>
     </section>

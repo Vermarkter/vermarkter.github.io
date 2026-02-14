@@ -263,6 +263,12 @@
                     </ul>
                 </div>
             </div>
+
+            <div style="text-align: center; margin-top: 3rem; padding: 1.5rem 2rem; background: rgba(52, 168, 83, 0.08); border: 1px solid rgba(52, 168, 83, 0.2); border-radius: 16px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <p style="font-size: 1.1rem; color: var(--text-secondary); margin: 0; line-height: 1.6;">
+                    💡 <strong style="color: var(--text-primary);">92% of our clients</strong> save long-term <strong style="color: #34A853;">60-70% of their marketing budget</strong> by switching to SEO.
+                </p>
+            </div>
         </div>
     </section>
 
@@ -576,6 +582,74 @@
         </div>
     </section>
 
+    <!-- SMART SEO ROI CALCULATOR -->
+    <section id="seo-calculator" style="padding: 6rem 0; background: rgba(0,0,0,0.2);">
+        <div class="container" style="max-width: 800px;">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Smart SEO Plan 📊 — <span class="text-gradient">Calculate the Value</span> of Your Organic Traffic
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.1rem; color: var(--text-secondary); max-width: 650px; margin: 0 auto;">
+                    See how much revenue your current traffic generates — and what happens when SEO doubles it.
+                </p>
+            </div>
+            <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+                    <div>
+                        <label style="display: block; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.95rem;">Current monthly traffic</label>
+                        <input type="number" id="seo-traffic" value="1000" min="0" style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; color: var(--text-primary); font-size: 1.1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.95rem;">Conversion Rate (%)</label>
+                        <input type="number" id="seo-cr" value="2.0" min="0" step="0.1" style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; color: var(--text-primary); font-size: 1.1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.95rem;">Avg. Order Value (€)</label>
+                        <input type="number" id="seo-aov" value="50" min="0" style="width: 100%; padding: 0.75rem 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 12px; color: var(--text-primary); font-size: 1.1rem; font-family: 'Inter', sans-serif;">
+                    </div>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div style="background: rgba(52, 168, 83, 0.08); border: 1px solid rgba(52, 168, 83, 0.2); border-radius: 16px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600;">Current SEO Value</div>
+                        <div id="seo-current" class="text-gradient" style="font-size: 2.5rem; font-weight: 900;">€1.000</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">per month</div>
+                    </div>
+                    <div style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.2); border-radius: 16px; padding: 2rem; text-align: center;">
+                        <div style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 600;">Potential (+100% growth)</div>
+                        <div id="seo-potential" class="text-gradient" style="font-size: 2.5rem; font-weight: 900;">€2.000</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem;">per month with SEO</div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 1.5rem; color: var(--text-muted); font-size: 0.85rem; font-style: italic;">
+                    This is an estimate, not a guarantee. Marketing starts with honest numbers.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    (function() {
+        const trafficInput = document.getElementById('seo-traffic');
+        const crInput = document.getElementById('seo-cr');
+        const aovInput = document.getElementById('seo-aov');
+        const currentEl = document.getElementById('seo-current');
+        const potentialEl = document.getElementById('seo-potential');
+        function calcSeo() {
+            const traffic = parseFloat(trafficInput.value) || 0;
+            const cr = parseFloat(crInput.value) || 0;
+            const aov = parseFloat(aovInput.value) || 0;
+            const revenue = traffic * (cr / 100) * aov;
+            const fmt = (v) => '€' + Math.round(v).toLocaleString('de-DE');
+            currentEl.textContent = fmt(revenue);
+            potentialEl.textContent = fmt(revenue * 2);
+        }
+        if (trafficInput && crInput && aovInput) {
+            [trafficInput, crInput, aovInput].forEach(el => el.addEventListener('input', calcSeo));
+            calcSeo();
+        }
+    })();
+    </script>
+
     <!-- PRICING SECTION -->
     <section id="pricing" class="pricing-section" style="padding: 6rem 0; background: var(--bg-secondary);">
         <div class="container">
@@ -586,6 +660,9 @@
                 <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
                     Transparent SEO pricing with no hidden costs
                 </p>
+                <div style="display: inline-block; background: rgba(52, 168, 83, 0.1); border: 1px solid rgba(52, 168, 83, 0.3); border-radius: 12px; padding: 0.75rem 1.5rem; margin-top: 1.5rem;">
+                    <span style="color: #34A853; font-weight: 700; font-size: 1rem;">🛡️ No commission on ad spend — only a fixed SEO retainer</span>
+                </div>
             </div>
 
             <div class="pricing-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; max-width: 1200px; margin: 0 auto;">
@@ -672,11 +749,12 @@
 
                 <!-- Pricing Card 3: ENTERPRISE -->
                 <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
-                    <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">ENTERPRISE</h3>
-                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">For large businesses</p>
-                    <div class="pricing-price" style="margin-bottom: 2rem;">
-                        <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900;">from €2,500</span>
-                        <span class="price-period" style="font-size: 1.2rem; color: var(--text-secondary); margin-left: 0.5rem;">/ month</span>
+                    <h3 class="pricing-title" style="font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary); text-align: center;">ENTERPRISE</h3>
+                    <div style="font-size: 1rem; color: #94a3b8; margin-bottom: 0.5rem; text-align: center;">Individual Solution</div>
+                    <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 1.5rem; text-align: center;">For large businesses</p>
+                    <div class="pricing-price" style="margin-bottom: 2rem; display: flex; align-items: baseline; justify-content: center; gap: 0.4rem;">
+                        <span class="price-amount text-gradient" style="font-size: 2.5rem; font-weight: 900; line-height: 1;">from €2,500</span>
+                        <span class="price-period" style="font-size: 1rem; color: #94a3b8; line-height: 1;">/ month</span>
                     </div>
                     <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
                         <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
@@ -709,7 +787,7 @@
             </div>
 
             <p class="text-center" style="margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted);">
-                * Prices excl. VAT. 6-month minimum contract (SEO takes time). Then monthly cancellation.
+                * Prices excl. VAT. 12-month minimum contract (SEO takes full effect). Then monthly cancellation.
             </p>
         </div>
     </section>
