@@ -668,6 +668,7 @@
         </section>
 
     <!-- TESTIMONIALS (DOUBLE MARQUEE) -->
+        <!-- TESTIMONIALS -->
     <section id="testimonials" style="padding: 5rem 0;">
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
@@ -675,11 +676,14 @@
                     Vertrauen von Kunden
                 </h2>
                 <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                    Über 100 erfolgreiche Projekte für kleine Unternehmen in der EU
+                    Über 100 erfolgreiche Projekte für Unternehmen in der EU
                 </p>
             </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+            <style>
+                .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+                @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+            </style>
+            <div class="testimonials-grid">
                 <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
                     <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
                         <div style="width: 48px; height: 48px; border-radius: 50%; background: #667eea; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">SW</div>
@@ -688,7 +692,7 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Geschäftsführer</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neue Website läuft perfekt. ROAS von 300% auf 850% gestiegen — endlich ein Shop, der konvertiert.&quot;</p>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neuer Online-Shop läuft perfekt. ROAS von 300% auf 850% gestiegen — endlich ein Shop, der konvertiert.&quot;</p>
                     <div style="font-weight: 700; color: var(--text-primary);">Kinderparadies München</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">Spielwaren, München</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Oktober 2023</div>
@@ -701,7 +705,7 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Inhaber</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Endlich Anrufe von echten Kunden, nicht nur Klicks. Die neue Website hat alles verändert.&quot;</p>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neue Website hat alles verändert. Endlich echte Kundenanfragen — Kalender ist voll.&quot;</p>
                     <div style="font-weight: 700; color: var(--text-primary);">Sanitär Schmidt</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">Sanitär-Handwerk, Hamburg</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Dezember 2024</div>
@@ -727,23 +731,10 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Geschäftsführer</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Kosten pro Lead von 85€ auf 22€ gesenkt dank der neuen Landingpages. 15+ qualifizierte Anfragen pro Woche.&quot;</p>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neue Landingpages senkten die Lead-Kosten von 85 auf 22 Euro. 15+ qualifizierte Anfragen pro Woche.&quot;</p>
                     <div style="font-weight: 700; color: var(--text-primary);">ImmoBest Berlin</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">Immobilienmakler, Berlin</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juni 2023</div>
-                </div>
-                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
-                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
-                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #FA709A; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">LB</div>
-                        <div>
-                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Laura Becker</div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Inhaberin</div>
-                        </div>
-                    </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Online-Reservierungen explodiert. 200+ Buchungen in 3 Wochen nach Website-Launch!&quot;</p>
-                    <div style="font-weight: 700; color: var(--text-primary);">Bella Vista Restaurant</div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted);">Restaurant, Frankfurt</div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Januar 2026</div>
                 </div>
                 <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
                     <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
@@ -753,8 +744,8 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Rechtsanwältin</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Professioneller Online-Auftritt brachte 12 neue Mandanten im ersten Monat, alle qualifiziert.&quot;</p>
-                    <div style="font-weight: 700; color: var(--text-primary);">Kanzlei Klein & Partner</div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Professioneller Website-Auftritt brachte 12 neue Mandanten im ersten Monat — alle qualifiziert.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Kanzlei Klein &amp; Partner</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">Rechtsberatung, Leipzig</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit November 2025</div>
                 </div>
@@ -766,7 +757,7 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Geschäftsführerin</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neuer E-Commerce-Shop + SEO = perfekte Kombo. Verkäufe um 180% gestiegen.&quot;</p>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neuer E-Commerce-Shop und SEO — perfekte Kombination. Verkäufe um 180% gestiegen.&quot;</p>
                     <div style="font-weight: 700; color: var(--text-primary);">EcoHome Möbel</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, Dresden</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit August 2025</div>
@@ -779,23 +770,10 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Zahnarzt</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Endlich volle Terminkalender. Nur noch Privatpatienten dank der neuen Website und präziser Zielgruppe.&quot;</p>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Terminkalender endlich voll. Dank der neuen Website kommen jetzt fast nur noch Privatpatienten.&quot;</p>
                     <div style="font-weight: 700; color: var(--text-primary);">Zahnklinik Hoffmann</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">Zahnmedizin, Hannover</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juli 2025</div>
-                </div>
-                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
-                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
-                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #F97794; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">MR</div>
-                        <div>
-                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Martin Richter</div>
-                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Geschäftsführer</div>
-                        </div>
-                    </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Lead-Kosten von 95€ auf 18€ gesenkt. Der neue Website-Funnel funktioniert perfekt.&quot;</p>
-                    <div style="font-weight: 700; color: var(--text-primary);">Versicherung Richter</div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted);">Versicherungen, Mannheim</div>
-                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juli 2024</div>
                 </div>
                 <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
                     <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
@@ -805,10 +783,36 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Meister</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Endlich ausgebucht! Die neue Website bringt täglich 5–8 Anfragen automatisch rein.&quot;</p>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neue Website bringt täglich 5–8 Anfragen automatisch. Jetzt endlich dauerhaft ausgebucht!&quot;</p>
                     <div style="font-weight: 700; color: var(--text-primary);">Elektro Schulz</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">Elektrik, Duisburg</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Oktober 2024</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #FD99C1; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">AK</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Andreas Koch</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Inhaber</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Website-Relaunch für unsere Werkstatt — jeden Tag 3–5 Online-Termine, genau die richtige Zielgruppe.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">KFZ Koch &amp; Sohn</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Autowerkstatt, Wuppertal</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit August 2024</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #F97794; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">MR</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Martin Richter</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Geschäftsführer</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neuer Website-Funnel hat Lead-Kosten von 95 auf 18 Euro gesenkt. Endlich profitable Neukundengewinnung.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Versicherung Richter</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Versicherungen, Mannheim</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juli 2024</div>
                 </div>
                 <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
                     <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
@@ -818,7 +822,7 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Inhaberin</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Website-Relaunch = Volltreffer. 25 Hochzeitsbuchungen in 2 Monaten nach dem Launch!&quot;</p>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Website-Relaunch war ein Volltreffer. 25 Hochzeitsbuchungen in nur 2 Monaten nach dem Launch!&quot;</p>
                     <div style="font-weight: 700; color: var(--text-primary);">JW Photography</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">Fotografie, Karlsruhe</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit März 2024</div>
@@ -831,12 +835,13 @@
                             <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Inhaberin</div>
                         </div>
                     </div>
-                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neuer Online-Shop für Bio-Produkte läuft perfekt. Umsatz +410% in 4 Monaten.&quot;</p>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Neuer Online-Shop für Bio-Produkte läuft perfekt. Umsatz um 410% in 4 Monaten gestiegen.&quot;</p>
                     <div style="font-weight: 700; color: var(--text-primary);">BioMarkt Hermann</div>
                     <div style="font-size: 0.85rem; color: var(--text-muted);">Bio-Lebensmittel, Münster</div>
                     <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juli 2023</div>
                 </div>
             </div>
+        </div>
     </section>
 
 
