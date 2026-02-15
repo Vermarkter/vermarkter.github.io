@@ -5,25 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Website & App Development from €199 to complex e-commerce projects. React, Next.js, Flutter. Launch in 7-30 days. Expert support.">
-    <meta name="keywords" content="Website Development, App Development, Landing Page, E-Commerce, React, Next.js, Flutter, Mobile Apps, WordPress, Webflow">
+    <meta name="description" content="Website & App Entwicklung von 199 bis zu komplexen E-Commerce-Projekten. React, Next.js, Flutter. Launch in 7-30 Tagen. Deutschsprachiger Support.">
+    <meta name="keywords" content="Website Entwicklung, App Entwicklung, Landing Page, E-Commerce, React, Next.js, Flutter, Mobile Apps, WordPress, Webflow">
     <meta name="author" content="Vermarkter Agency">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vermarkter.eu/en/website-development">
-    <meta property="og:title" content="Website & App Development - Vermarkter">
-    <meta property="og:description" content="From Landing Pages (€199) to complex E-Commerce solutions. React, Next.js, Flutter. Fast launch.">
+    <meta property="og:title" content="Website & App Entwicklung - Vermarkter">
+    <meta property="og:description" content="Von Landing Pages (199) bis zu komplexen E-Commerce-Losungen. React, Next.js, Flutter. Schneller Launch.">
     <meta property="og:image" content="https://vermarkter.eu/og-image-dev-en.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://vermarkter.eu/en/website-development">
-    <meta property="twitter:title" content="Website & App Development - Vermarkter">
-    <meta property="twitter:description" content="Professional web & app development">
+    <meta property="twitter:title" content="Website & App Entwicklung - Vermarkter">
+    <meta property="twitter:description" content="Professionelle Web- und App-Entwicklung">
     <meta property="twitter:image" content="https://vermarkter.eu/og-image-dev-en.jpg">
 
-    <title>Website & App Development - Vermarkter</title>
+    <title>Website & App Entwicklung - Vermarkter</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=1768018062">
@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="../styles.css?v=webdev_en">
+    <link rel="stylesheet" href="../styles.css?v=webdev_redesign">
 
     <style>
         /* Hero 2-Column Layout */
@@ -89,6 +89,50 @@
             .portfolio-grid {
                 grid-template-columns: 1fr;
             }
+        }
+
+        /* Pricing Toggle */
+        .pricing-toggle-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        .toggle-container {
+            background: rgba(255,255,255,0.1);
+            padding: 5px;
+            border-radius: 50px;
+            display: flex;
+            gap: 5px;
+        }
+        .toggle-btn {
+            padding: 12px 32px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .toggle-btn.active {
+            background: var(--brand);
+            color: white;
+        }
+        .toggle-btn:not(.active) {
+            background: transparent;
+            color: var(--text-secondary);
+        }
+        .toggle-btn:hover:not(.active) {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Pricing Grid */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        .pricing-grid.hidden {
+            display: none;
         }
 
         /* FAQ Styles */
@@ -175,11 +219,9 @@
                     <div class="lang-switcher">
                         <button class="lang-button">
                             <svg width="16" height="12" style="vertical-align:middle; margin-right:4px;">
-                                <rect width="16" height="12" fill="#012169"/>
-                                <path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/>
-                                <path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/>
-                                <path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/>
-                                <path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/>
+                                <rect width="16" height="4" fill="#000"/>
+                                <rect y="4" width="16" height="4" fill="#D00"/>
+                                <rect y="8" width="16" height="4" fill="#FFCE00"/>
                             </svg>
                             EN ▼
                         </button>
@@ -242,14 +284,13 @@
         <!-- Mobile Menu -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="index.html#services">Services</a>
-            <a href="index.html#cases">Cases</a>
-            <a href="#calculator-section">Calculator</a>
+            <a href="index.html#portfolio">Cases</a>
+            <a href="#pricing">Pricing</a>
             <a href="index.html#testimonials">Reviews</a>
             <a href="index.html#faq">FAQ</a>
             <a href="contact.html">Contact</a>
         </div>
     </header>
-
 
     <main style="padding-top: 80px;">
 
@@ -260,18 +301,18 @@
                     <!-- LEFT: Text Content -->
                     <div class="hero-text">
                         <h1 style="font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem;">
-                            Websites & Apps<br>
-                            <span class="text-gradient">Built for Growth.</span>
+                            Websites & Apps,<br>
+                            <span class="text-gradient">die wachsen.</span>
                         </h1>
                         <p style="font-size: 1.25rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 2rem; max-width: 500px;">
-                            From high-converting landing pages to complex e-commerce solutions. Expert development with React, Next.js, and Flutter.
+                            From your first landing page to enterprise apps. Modern technologies, fast delivery, transparent pricing.
                         </p>
                         <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                            <a href="#contact" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
-                                Discuss Project
+                            <a href="#pricing" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                                Preise ansehen
                             </a>
-                            <a href="#portfolio" class="btn btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem;">
-                                View Our Work
+                            <a href="#contact" class="btn btn-secondary" style="padding: 1rem 2rem; font-size: 1.1rem;">
+                                Projekt besprechen
                             </a>
                         </div>
                         <!-- Trust Indicators -->
@@ -286,7 +327,7 @@
                             </div>
                             <div style="text-align: center;">
                                 <div style="font-size: 2rem; font-weight: 900; color: var(--brand);">24/7</div>
-                                <div style="font-size: 0.9rem; color: var(--text-muted);">Support</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">EN Support</div>
                             </div>
                         </div>
                     </div>
@@ -298,7 +339,7 @@
                         </div>
                         <!-- Floating Badge -->
                         <div style="position: absolute; bottom: -20px; right: 20px; background: var(--brand); color: white; padding: 12px 24px; border-radius: 50px; font-weight: 700; box-shadow: 0 10px 30px rgba(59,130,246,0.4);">
-                            From €199
+                            Ab 199
                         </div>
                     </div>
                 </div>
@@ -312,7 +353,7 @@
                     Our <span class="text-gradient">Tech Stack</span>
                 </h2>
                 <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
-                    We work with the most modern technologies to deliver fast, scalable, and secure solutions.
+                    We work with the latest technologies to deliver fast, scalable, and secure solutions.
                 </p>
 
                 <!-- Frontend -->
@@ -330,6 +371,10 @@
                         <span class="tech-badge">
                             <svg viewBox="0 0 24 24" fill="#4FC08D"><path d="M24 1.61h-9.94L12 5.16 9.94 1.61H0l12 20.78L24 1.61zM12 14.08L5.16 2.23h4.43L12 6.41l2.41-4.18h4.43L12 14.08z"/></svg>
                             Vue.js
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#DD0031"><path d="M9.931 12.645h4.138l-2.07-4.908m0-7.737L.68 3.982l1.726 14.771L12 24l9.596-5.242L23.32 3.984 11.999.001zm7.064 18.31h-2.638l-1.422-3.503H8.996l-1.422 3.504h-2.64L12 2.65z"/></svg>
+                            Angular
                         </span>
                         <span class="tech-badge">
                             <svg viewBox="0 0 24 24" fill="#06B6D4"><path d="M12.001 4.8c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12c3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8zm-6 7.2c-3.2 0-5.2 1.6-6 4.8 1.2-1.6 2.6-2.2 4.2-1.8.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576 3.2 0 5.2-1.6 6-4.8-1.2 1.6-2.6 2.2-4.2 1.8-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12z"/></svg>
@@ -359,6 +404,10 @@
                             Laravel
                         </span>
                         <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#092E20"><path d="M11.146 0h3.924v18.166c-2.013.382-3.491.535-5.096.535-4.791 0-7.288-2.166-7.288-6.32 0-4.002 2.65-6.6 6.753-6.6.637 0 1.121.05 1.707.203zm0 9.143a3.894 3.894 0 00-1.325-.204c-1.988 0-3.134 1.223-3.134 3.365 0 2.09 1.096 3.236 3.109 3.236.433 0 .79-.025 1.35-.102V9.142zM21.314 6.06v9.098c0 3.134-.229 4.638-.917 5.937-.637 1.249-1.478 2.039-3.211 2.905l-3.644-1.733c1.733-.815 2.574-1.53 3.109-2.625.56-1.121.739-2.421.739-5.835V6.059h3.924zM17.39.021h3.924v4.026H17.39z"/></svg>
+                            Django
+                        </span>
+                        <span class="tech-badge">
                             <svg viewBox="0 0 24 24" fill="#336791"><path d="M23.556 15.957c-.437-1.302-1.303-2.062-2.497-2.19-.336-.035-.672-.018-1.007.035-.085.013-.17.035-.34.07.068-.305.12-.567.186-.823.168-.654.35-1.305.513-1.96.064-.256.056-.507-.067-.751-.392-.78-.874-1.498-1.501-2.112a6.952 6.952 0 00-1.478-1.116c-.01-.006-.02-.012-.035-.023.035-.023.069-.045.104-.067.61-.385 1.096-.889 1.42-1.542.395-.795.612-1.64.654-2.52.038-.788-.034-1.566-.233-2.33-.138-.528-.333-1.036-.6-1.512A3.93 3.93 0 0017.32.413a3.702 3.702 0 00-1.28-.38C15.528-.02 15.016.002 14.5.08c-.515.078-1.02.2-1.519.36-.35.112-.697.232-1.041.363.01-.133.015-.223.026-.312.033-.276.073-.552.1-.829.012-.12-.006-.238-.04-.354-.046-.155-.17-.24-.328-.246-.194-.007-.338.082-.453.228-.164.21-.238.457-.257.721-.024.333-.026.668-.03 1.002-.002.178.017.356.026.552a53.63 53.63 0 00-1.106.704c-.587.395-1.15.822-1.68 1.293-.55.49-1.06 1.02-1.497 1.614-.3.409-.558.842-.757 1.305-.162.375-.285.762-.326 1.17-.032.316.01.625.12.923.1.27.282.474.53.615.33.187.685.246 1.055.236.37-.01.733-.081 1.093-.163.113-.026.224-.062.353-.098-.08.328-.154.639-.232.948-.218.87-.444 1.737-.652 2.61-.054.228-.054.465.012.691.139.475.35.92.615 1.338.355.56.775 1.07 1.27 1.515.313.282.656.527 1.02.742.028.016.054.038.1.07-.054.03-.095.06-.14.08-.635.275-1.214.65-1.714 1.136-.576.56-.98 1.228-1.18 2.01-.117.458-.166.923-.132 1.394.043.602.188 1.18.449 1.72.41.849.998 1.552 1.736 2.126.636.495 1.34.873 2.103 1.135.556.19 1.126.333 1.716.4.516.059 1.032.062 1.542-.037.495-.096.927-.295 1.29-.623.327-.294.553-.647.698-1.054.2-.561.27-1.142.267-1.732-.002-.426-.023-.852-.044-1.278-.012-.24-.04-.48-.062-.72-.01-.11-.018-.22-.03-.367l.158.07c.434.19.885.324 1.358.377.622.07 1.225-.002 1.8-.241.595-.248 1.083-.628 1.469-1.135.318-.417.55-.878.698-1.377.075-.25.117-.51.13-.77.037-.71-.153-1.36-.504-1.967-.22-.381-.486-.73-.785-1.053a9.152 9.152 0 00-.875-.796c-.213-.173-.437-.333-.69-.524.17-.08.317-.155.47-.216.578-.232 1.176-.383 1.8-.423.434-.028.867-.01 1.293.086.326.074.633.198.9.399.287.217.47.498.545.845.058.263.07.53.052.8a4.57 4.57 0 01-.116.75c-.043.182-.097.362-.158.577l.252-.042c.38-.07.758-.074 1.135.014.444.104.826.316 1.122.65.322.363.505.787.576 1.26.066.44.05.878-.048 1.31-.193.855-.545 1.637-1.016 2.365-.16.248-.34.482-.536.753.133-.034.228-.054.32-.083.427-.135.845-.292 1.234-.51.666-.37 1.194-.88 1.547-1.548.24-.454.39-.938.446-1.445.063-.56.02-1.114-.131-1.66l-.001-.002z"/></svg>
                             PostgreSQL
                         </span>
@@ -371,7 +420,7 @@
 
                 <!-- Mobile -->
                 <div style="margin-bottom: 2.5rem;">
-                    <h3 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Mobile</h3>
+                    <h3 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">Mobile Apps</h3>
                     <div style="display: flex; flex-wrap: wrap; gap: 12px;">
                         <span class="tech-badge">
                             <svg viewBox="0 0 24 24" fill="#02569B"><path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46z"/></svg>
@@ -380,6 +429,14 @@
                         <span class="tech-badge">
                             <svg viewBox="0 0 24 24" fill="#61DAFB"><path d="M12 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"/><path fill="none" stroke="#61DAFB" stroke-width="1" d="M12 21c5.523 0 10-4.03 10-9S17.523 3 12 3 2 7.03 2 12s4.477 9 10 9z M2 12h20 M12 3c2.21 0 4 4.03 4 9s-1.79 9-4 9-4-4.03-4-9 1.79-9 4-9z"/></svg>
                             React Native
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#FFCA28"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V8H6v10zM3.5 8C2.67 8 2 8.67 2 9.5v7c0 .83.67 1.5 1.5 1.5S5 17.33 5 16.5v-7C5 8.67 4.33 8 3.5 8zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48C13.85 1.23 12.95 1 12 1c-.96 0-1.86.23-2.66.63L7.85.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C6.97 3.26 6 5.01 6 7h12c0-1.99-.97-3.75-2.47-4.84zM10 5H9V4h1v1zm5 0h-1V4h1v1z"/></svg>
+                            Android
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#000"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+                            iOS
                         </span>
                         <span class="tech-badge">
                             <svg viewBox="0 0 24 24" fill="#FFCA28"><path d="M3.89 15.673L6.255.461A.542.542 0 017.27.289L9.813 5.06 3.89 15.673zm16.795 3.691L18.433 5.365a.543.543 0 00-.918-.295l-14.2 14.294 7.857 4.428a1.62 1.62 0 001.587 0l7.926-4.428zM14.3 7.148l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984 14.3 7.148z"/></svg>
@@ -395,6 +452,10 @@
                         <span class="tech-badge">
                             <svg viewBox="0 0 24 24" fill="#21759B"><path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.034 1.231-.105 1.231-.105.582-.07.514-.925-.068-.892 0 0-1.749.138-2.878.138-.961 0-2.57-.138-2.57-.138-.582-.034-.644.857-.062.892 0 0 .536.058 1.128.092l1.675 4.577-2.353 7.053-3.915-11.63c.646-.034 1.23-.105 1.23-.105.582-.07.514-.925-.068-.892 0 0-1.749.138-2.878.138-.202 0-.44-.006-.692-.015C4.625 2.857 8.049 0 12.001 0c2.946 0 5.63 1.117 7.65 2.956-.049-.003-.097-.01-.148-.01-.961 0-1.64.831-1.64 1.723 0 .801.462 1.478.96 2.279.373.651.79 1.49.79 2.702 0 .839-.326 1.814-.756 3.172l-.99 3.303zm-3.487 7.362l-2.812 8.169a10.025 10.025 0 006.623-.178l-.071-.14zm9.311-3.026c.512 1.927.195 4.085-.77 5.89l-4.033-11.662c.825.255 1.584.667 2.312 1.194.576.414 1.114.917 1.594 1.478.375.44.697.923.946 1.437.246.51.431 1.044.551 1.59l-.6.073z"/></svg>
                             WordPress
+                        </span>
+                        <span class="tech-badge">
+                            <svg viewBox="0 0 24 24" fill="#4353FF"><path d="M9.57 12.15l4.71-4.71c.29-.29.77-.29 1.06 0 .29.29.29.77 0 1.06L10.63 13.21l4.71 4.71c.29.29.29.77 0 1.06-.15.15-.34.22-.53.22s-.38-.07-.53-.22l-4.71-4.71a.754.754 0 010-1.06V12.15z"/></svg>
+                            Webflow
                         </span>
                         <span class="tech-badge">
                             <svg viewBox="0 0 24 24" fill="#96BF48"><path d="M15.337 23.979l7.216-1.561s-2.604-17.613-2.625-17.756c-.021-.143-.158-.247-.32-.227-.161.021-3.438.492-3.438.492s-1.689-1.639-2.315-1.82c-.066-.019-.129-.029-.188-.036l-.01 20.908zm1.66-18.239c0-.051-.021-.092-.053-.132-.03-.039-.442-.581-.442-.581s-.885-.599-1.09-.701c-.208-.103-.484-.028-.484-.028-.001.001-1.986.592-3.21.958.178-.614.614-1.54 1.073-2.305.357-.595.806-1.142 1.306-1.642.535-.535.855-.855 1.449-.855.429 0 .787.243 1.097.552l.092.095.09.098c.242.251.456.518.644.8zm-2.789 1.161c-.652.187-1.416.41-2.251.654a18.08 18.08 0 01.902-2.442c.223-.441.531-.887.902-1.342.372-.457.838-.854 1.367-1.168-.38.984-.69 2.051-.92 3.298zm-3.127-4.2c-.021.011-.041.022-.062.034a1.63 1.63 0 00-.106.065l-.057.037-.08.055-.032.023-.07.053-.04.031-.072.058-.037.031-.101.088-.041.038-.08.075-.038.038-.054.054-.032.034-.093.104-.039.046-.065.078-.025.032-.088.114-.033.045-.08.111-.029.043-.076.116-.026.042-.065.107-.021.037-.087.152-.025.046-.073.135-.018.035-.086.17-.025.053-.077.159-.018.04-.092.2-.027.063-.086.195-.02.048-.09.215-.024.062-.088.223-.021.058-.106.29-.03.087-.105.301-.026.081-.098.298-.022.072-.122.399-.027.093-.13.451a.698.698 0 01-.054.183l-.005.021-.098.357c-.021.08-.043.162-.065.245l-.11.43c-.02.08-.04.162-.06.246l-.04.163-.028.117-.055.235-.023.1-.044.191-.017.076-.04.182-.014.063-.035.164-.011.053-.052.252-.019.095-.062.32-.019.097-.058.305-.016.089-.05.27-.013.074-.074.42-.013.076-.054.316-.01.063-.054.326-.012.07-.043.27-.008.053-.069.452-.015.098-.048.325-.009.063-.042.295-.008.056-.046.335-.01.076-.043.316-.01.074-.036.27-.007.053-.054.426-.011.089-.038.31-.007.062-.033.281-.005.049-.045.39-.01.089-.031.283-.005.05-.031.291-.005.052-.028.268-.004.044-.035.345-.008.083-.023.233-.003.038-.027.286-.005.061-.024.264-.003.045-.022.25-.002.033-.034.399-.007.095-.021.257-.003.045-.019.243-.002.036-.037.487-.006.098-.017.24-.002.039-.016.239-.001.03-.03.476-.005.093-.013.229-.001.033-.014.257-.001.031-.017.32-.002.056-.011.229-.001.026-.018.397-.003.086-.01.24v.036l-.01.283v.048l-.009.302v.06l-.009.316-.001.065-.008.326-.001.07-.006.33v.072l-.005.329v.076l-.005.357v.081l-.005.377v.087l-.005.4v.096l-.005.432v.107l-.004.483v.127l-.004.56v.163l-.004.762c0 .004 0 .013-.001.021l-.004.837s4.406-1.31 4.583-1.379c.178-.069.198-.178.198-.287s-.02-17.574-.02-17.574c-.144-.062-.287-.116-.429-.167z"/></svg>
@@ -479,7 +540,7 @@
         <!-- ========== PRICING SECTION WITH TOGGLE ========== -->
         <section id="pricing" class="container" style="padding: 4rem 0;">
             <h2 class="text-center" style="font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 800; margin-bottom: 1rem;">
-                Pricing & <span class="text-gradient">Packages</span>
+                Pricing &amp; <span class="text-gradient">Packages</span>
             </h2>
             <p style="text-align: center; color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
                 Transparent pricing with no hidden costs.
@@ -496,7 +557,7 @@
             <!-- WEBSITES GRID -->
             <div id="pricing-web" class="services-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                 <div class="service-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center;">
-                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Starter (Landing Page)</h3>
+                    <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Landing Page</h3>
                     <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">from €199</div>
                     <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
                         <li style="padding: 0.5rem 0;">✓ Design + Code</li>
@@ -510,9 +571,9 @@
                     <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Business Website</h3>
                     <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">from €499</div>
                     <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
-                        <li style="padding: 0.5rem 0;">✓ CMS Integration</li>
-                        <li style="padding: 0.5rem 0;">✓ Basic SEO</li>
-                        <li style="padding: 0.5rem 0;">✓ 5-15 Pages</li>
+                        <li style="padding: 0.5rem 0;">✓ CMS (WordPress/Webflow)</li>
+                        <li style="padding: 0.5rem 0;">✓ SEO Basis</li>
+                        <li style="padding: 0.5rem 0;">✓ 5-15 Seiten</li>
                     </ul>
                     <a href="#contact" class="btn btn-primary" style="width: 100%; display: block; padding: 0.8rem;">Choose</a>
                 </div>
@@ -520,11 +581,11 @@
                     <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">E-Commerce</h3>
                     <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">from €1,499</div>
                     <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
-                        <li style="padding: 0.5rem 0;">✓ Shopify/WooCommerce</li>
+                        <li style="padding: 0.5rem 0;">✓ Shop-System</li>
                         <li style="padding: 0.5rem 0;">✓ Payment Setup</li>
                         <li style="padding: 0.5rem 0;">✓ Admin Dashboard</li>
                     </ul>
-                    <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Get Quote</a>
+                    <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Request</a>
                 </div>
             </div>
 
@@ -532,12 +593,12 @@
             <div id="pricing-app" style="display: none; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); justify-content: center; gap: 2rem;">
                 <div class="service-card" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2rem; text-align: center;">
                     <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">MVP App</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Starter app for Salons & Studios</p>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Basis-App für Salons & Studios</p>
                     <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">from €1,000</div>
-                    <p style="font-size: 0.85rem; color: var(--brand); margin-bottom: 1rem;">Special offer for Beauty Salons & Barbers</p>
+                    <p style="font-size: 0.85rem; color: var(--brand); margin-bottom: 1rem;">Spezialangebot für Beauty-Salons & Barber</p>
                     <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
-                        <li style="padding: 0.5rem 0;">✓ iOS & Android Launch</li>
-                        <li style="padding: 0.5rem 0;">✓ Booking System</li>
+                        <li style="padding: 0.5rem 0;">✓ iOS & Android Start</li>
+                        <li style="padding: 0.5rem 0;">✓ Buchungssystem</li>
                         <li style="padding: 0.5rem 0;">✓ Push Notifications</li>
                     </ul>
                     <a href="#contact" class="btn btn-secondary" style="width: 100%; display: block; padding: 0.8rem;">Get Started</a>
@@ -545,7 +606,7 @@
                 <div class="service-card" style="background: rgba(255,255,255,0.05); border: 2px solid var(--brand); border-radius: 20px; padding: 2rem; text-align: center; position: relative;">
                     <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--brand); color: white; padding: 4px 16px; border-radius: 20px; font-weight: 700; font-size: 0.8rem;">POPULAR</div>
                     <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Custom App</h3>
-                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">Individual</div>
+                    <div class="text-gradient" style="font-size: 2.2rem; font-weight: 900; margin: 1rem 0;">Custom</div>
                     <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 1.5rem;">
                         <li style="padding: 0.5rem 0;">✓ Complex Backend</li>
                         <li style="padding: 0.5rem 0;">✓ API Integration</li>
@@ -574,37 +635,216 @@
 
                             <div class="price-block" style="display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem;">
                                 <span style="font-size: 3.5rem; font-weight: 900; background: linear-gradient(to right, #fff, #a5f3fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">€599</span>
-                                <span style="font-size: 1.5rem; text-decoration: line-through; color: var(--text-muted);">€1,097</span>
+                                <span style="font-size: 1.5rem; text-decoration: line-through; color: var(--text-muted);">€1.097</span>
                             </div>
                             <p style="color: var(--success); font-weight: bold; font-size: 1.1rem;">You save €498 (45%)</p>
                         </div>
 
                         <!-- RIGHT: CONTENT & CTA -->
                         <div class="bundle-content" style="background: rgba(0,0,0,0.3); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1);">
-                            <h3 style="margin-bottom: 1.5rem;">Bundle Includes:</h3>
+                            <h3 style="margin-bottom: 1.5rem;">Bundle includes:</h3>
                             <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
                                 <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
                                     <span style="color: var(--brand);">🎨</span>
-                                    <span><strong>Landing Page (Express)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Value: €199)</span></span>
+                                    <span><strong>Landing Page (Express)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(value: €199)</span></span>
                                 </li>
                                 <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
                                     <span style="color: var(--brand);">📊</span>
-                                    <span><strong>Google Ads Setup (Pro)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Value: €399)</span></span>
+                                    <span><strong>Google Ads Setup (Pro)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(value: €399)</span></span>
                                 </li>
                                 <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;">
                                     <span style="color: var(--brand);">🔗</span>
-                                    <span><strong>CRM Integration (Basic)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(Value: €499)</span></span>
+                                    <span><strong>CRM Integration (Basic)</strong> <span style="color: var(--text-muted); font-size: 0.9rem;">(value: €499)</span></span>
                                 </li>
                             </ul>
 
                             <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);">
-                                🎁 Get This Bundle
+                                🎁 Secure Bundle Now
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
+    <!-- TESTIMONIALS (DOUBLE MARQUEE) -->
+        <!-- TESTIMONIALS -->
+    <section id="testimonials" style="padding: 5rem 0;">
+        <div class="container">
+            <div class="section-header" style="text-align: center; margin-bottom: 3rem;">
+                <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
+                    Trusted by Clients
+                </h2>
+                <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                    100+ successful projects for businesses across the EU
+                </p>
+            </div>
+            <style>
+                .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+                @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+            </style>
+            <div class="testimonials-grid">
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #667eea; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">SW</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Stefan Weber</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">CEO</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;New online shop works perfectly. ROAS jumped from 300% to 850% — finally a shop that converts.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Kinderparadies München</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Spielwaren, München</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Oktober 2023</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #764ba2; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">TS</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Thomas Schmidt</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Owner</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;New website changed everything. Finally real customer inquiries — calendar is fully booked.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Sanitär Schmidt</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Sanitär-Handwerk, Hamburg</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Dezember 2024</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #f093fb; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">EH</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Elena Hoffmann</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Owner</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Website relaunch brought 47 new clients in the first month. Bookings 3 weeks in advance!&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Beauty Lounge Düsseldorf</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Kosmetiksalon, Düsseldorf</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Februar 2025</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #4facfe; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">MK</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Michael König</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">CEO</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;New landing pages cut lead costs from €85 to €22. 15+ qualified inquiries per week.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">ImmoBest Berlin</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Immobilienmakler, Berlin</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juni 2023</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #30E3CA; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">SK</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Sandra Klein</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Attorney</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Professional website presence brought 12 new clients in the first month — all qualified.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Kanzlei Klein &amp; Partner</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Rechtsberatung, Leipzig</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit November 2025</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #FEB692; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">JS</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Julia Schneider</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">CEO</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;New e-commerce shop plus SEO — perfect combination. Sales up 180%.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">EcoHome Möbel</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">E-Commerce, Dresden</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit August 2025</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #EA8D8D; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">DH</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Daniel Hoffmann</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Dentist</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Appointment calendar finally full. Thanks to the new website, almost only private patients now.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Zahnklinik Hoffmann</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Zahnmedizin, Hannover</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juli 2025</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #89F7FE; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">FS</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Frank Schulz</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Master Craftsman</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;New website brings 5–8 inquiries automatically every day. Finally fully booked all the time!&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Elektro Schulz</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Elektrik, Duisburg</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Oktober 2024</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #FD99C1; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">AK</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Andreas Koch</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Owner</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Website relaunch for our garage — 3–5 online appointments every day, exactly the right target audience.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">KFZ Koch &amp; Sohn</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Autowerkstatt, Wuppertal</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit August 2024</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #F97794; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">MR</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Martin Richter</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">CEO</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;New website funnel cut lead costs from €95 to €18. Finally profitable new customer acquisition.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">Versicherung Richter</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Versicherungen, Mannheim</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juli 2024</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #FFA69E; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">JW</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Jessica Werner</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Owner</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;Website relaunch was a bullseye. 25 wedding bookings in just 2 months after launch!&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">JW Photography</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Fotografie, Karlsruhe</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit März 2024</div>
+                </div>
+                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 16px; padding: 1.5rem;">
+                    <div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 0.75rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 50%; background: #D299C2; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.1rem; flex-shrink: 0;">LH</div>
+                        <div>
+                            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem; line-height: 1.3;">Lisa Hermann</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.3;">Owner</div>
+                        </div>
+                    </div>
+                    <p style="font-size: 1rem; line-height: 1.6; color: var(--text-secondary); margin-bottom: 1rem; font-style: italic;">&quot;New online shop for organic products works perfectly. Revenue up 410% in 4 months.&quot;</p>
+                    <div style="font-weight: 700; color: var(--text-primary);">BioMarkt Hermann</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">Bio-Lebensmittel, Münster</div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.75rem; font-style: italic;">seit Juli 2023</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
         <!-- ========== FAQ SECTION ========== -->
         <section id="faq" style="padding: 5rem 1.5rem; background: rgba(255,255,255,0.02);">
@@ -616,21 +856,67 @@
                 <div class="faq-list">
                     <div class="faq-item active">
                         <button class="faq-question">
-                            How long does development take?
+                            How long does website development take?
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>A simple landing page takes 48-72 hours. Business websites require 14-21 days, while complex E-commerce or Apps take 6-12 weeks depending on features.</p>
+                            <p>Development time depends on project scope. A simple landing page can be ready in 48–72 hours. Business websites take 14–21 days, e-commerce projects 30–60 days. For mobile apps, we estimate 6–14 weeks depending on complexity.</p>
                         </div>
                     </div>
 
                     <div class="faq-item">
                         <button class="faq-question">
-                            Can you modernize my existing website?
+                            What is included in the price?
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Yes! We analyze your current site, optimize the structure, and migrate the content to a modern, faster platform while preserving your Google rankings.</p>
+                            <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+                                <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><span style="color: #34d399; font-weight: 700; flex-shrink: 0;">✓</span> Custom UI/UX Design (no standard templates)</li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><span style="color: #34d399; font-weight: 700; flex-shrink: 0;">✓</span> Fully Responsive Development (Mobile &amp; Desktop)</li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><span style="color: #34d399; font-weight: 700; flex-shrink: 0;">✓</span> Basic SEO optimisation &amp; fast loading speeds</li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><span style="color: #34d399; font-weight: 700; flex-shrink: 0;">✓</span> Hosting &amp; Domain setup (1 year included)</li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.5rem;"><span style="color: #34d399; font-weight: 700; flex-shrink: 0;">✓</span> 30 days technical support after launch</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Which technologies do you use?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We work with React, Next.js, Vue.js for the frontend and Node.js, Python, Laravel for the backend. For mobile apps — Flutter and React Native. For CMS — WordPress and Webflow.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Do you offer maintenance and support?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, after launch you receive 30 days of free support. Afterwards we offer flexible maintenance contracts covering regular updates, security checks, backups, and technical support. Contact us for a custom offer.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            How does the collaboration work?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>After the first call we prepare a detailed proposal. Once confirmed, we start with design (interactive mockups). After your approval, development begins with regular progress updates. You always have access to the staging environment.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            Can you modernise my existing website?
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, we analyse your existing site, optimise the structure, and migrate content to a new, faster platform — without losing your Google rankings.</p>
                         </div>
                     </div>
 
@@ -640,37 +926,7 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Yes, 100%. After final payment, you receive all credentials and full ownership of the code and content. No hidden monthly "rental" fees.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            Is support included?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>Every project includes 30 days of free technical support after launch. We also offer maintenance plans for regular updates and backups.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            What technologies do you use?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>We work with modern frameworks: React, Next.js, Vue.js for frontend and Node.js, Python, Laravel for backend. For mobile apps, we use Flutter and React Native. For CMS solutions, we work with WordPress and Webflow.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question">
-                            How does the collaboration process work?
-                            <span class="faq-icon">+</span>
-                        </button>
-                        <div class="faq-answer">
-                            <p>After an initial call, we prepare a detailed proposal. Once approved, we begin with design (mockups in Figma). After your approval, development starts with regular progress updates. You always have access to a staging environment to track progress.</p>
+                            <p>Yes, 100%. After full payment you receive all access credentials and full ownership of the code and content. No hidden monthly rental fees.</p>
                         </div>
                     </div>
                 </div>
@@ -685,7 +941,7 @@
                 </h2>
                 <p style="font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; line-height: 1.7;">
                     Free consultation. Fixed prices. Fast launch.<br>
-                    Contact us and let's get started.
+                    Write to us and let's get started.
                 </p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://wa.me/4915510300538" target="_blank" class="btn" style="padding: 1.2rem 2.5rem; font-size: 1.1rem; background: linear-gradient(135deg, #25D366, #128C7E); display: inline-flex; align-items: center; gap: 0.5rem;">
@@ -725,7 +981,7 @@
                         <li style="margin-bottom: 0.75rem;"><a href="meta-ads.html" style="color: var(--text-secondary); text-decoration: none;">Meta Ads</a></li>
                         <li style="margin-bottom: 0.75rem;"><a href="tiktok-ads.html" style="color: var(--text-secondary); text-decoration: none;">TikTok Ads</a></li>
                         <li style="margin-bottom: 0.75rem;"><a href="seo.html" style="color: var(--text-secondary); text-decoration: none;">SEO</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="crm-integration.html" style="color: var(--text-secondary); text-decoration: none;">CRM Integration</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="crm-integration.html" style="color: var(--text-secondary); text-decoration: none;">CRM-Integration</a></li>
                     </ul>
                 </div>
 
@@ -734,8 +990,8 @@
                     <ul class="footer-links" style="list-style: none; padding: 0;">
                         <li style="margin-bottom: 0.75rem;"><a href="index.html#testimonials" style="color: var(--text-secondary); text-decoration: none;">Reviews</a></li>
                         <li style="margin-bottom: 0.75rem;"><a href="index.html#faq" style="color: var(--text-secondary); text-decoration: none;">FAQ</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="../privacy.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a></li>
-                        <li style="margin-bottom: 0.75rem;"><a href="../imprint.html" style="color: var(--text-secondary); text-decoration: none;">Imprint</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="../datenschutz.html" style="color: var(--text-secondary); text-decoration: none;">Privacy Policy</a></li>
+                        <li style="margin-bottom: 0.75rem;"><a href="../impressum.html" style="color: var(--text-secondary); text-decoration: none;">Legal Notice</a></li>
                     </ul>
                 </div>
 
@@ -749,7 +1005,7 @@
                             <a href="https://t.me/vermarkters_bot" target="_blank" style="color: var(--text-secondary); text-decoration: none;">@vermarkters_bot</a>
                         </li>
                         <li style="margin-bottom: 0.75rem;">
-                            <p style="color: var(--text-muted); margin: 0;">Berlin, Warsaw, Kyiv</p>
+                            <p style="color: var(--text-muted); margin: 0;">Berlin, Warschau, Kyjiw</p>
                         </li>
                     </ul>
                 </div>
