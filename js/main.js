@@ -595,3 +595,65 @@ window.Vermarkter = {
     initTheme,
     animateNumber
 };
+
+// ============================================
+// KINETIC UI v3.1 — Electric Neon Glass (60FPS)
+// Bold + saturated + GPU-optimized.
+// ============================================
+
+// === MATRIX RAIN — delegated to matrix.js (high-density engine) ===
+// Capture base path at parse time so loading works from any subdirectory
+var _kineticBase = (function () {
+    var s = document.currentScript;
+    return s ? s.src.replace(/[^/]*$/, '') : '../js/';
+}());
+
+function loadMatrixScript() {
+    var tag = document.createElement('script');
+    tag.src = _kineticBase + 'matrix.js';
+    document.head.appendChild(tag);
+}
+
+// === CRISP SCROLL REVEAL (GPU-composited) ===
+function initKineticReveal() {
+    const sections = document.querySelectorAll(
+        'section, .services-section, .calculator-section, .testimonials-section'
+    );
+
+    sections.forEach(section => {
+        const isHero = section.classList.contains('hero') ||
+                       section.querySelector('.hero') ||
+                       section.closest('.hero');
+        const isHeader = section.tagName === 'HEADER';
+        if (isHero || isHeader) return;
+
+        section.classList.add('kinetic-hidden');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                requestAnimationFrame(() => {
+                    entry.target.classList.add('is-visible');
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.06,
+        rootMargin: '0px 0px -60px 0px'
+    });
+
+    sections.forEach(section => {
+        if (section.classList.contains('kinetic-hidden')) {
+            observer.observe(section);
+        }
+    });
+}
+
+// === INIT ===
+document.addEventListener('DOMContentLoaded', function () {
+    loadMatrixScript();
+    initKineticReveal();
+    console.log('⚡ Kinetic UI v3.1 + Digital Rain v2.0');
+});

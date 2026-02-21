@@ -294,6 +294,44 @@ class MediaCalculator {
     });
   }
 
+  /**
+   * Get locale based on HTML lang attribute
+   */
+  getLocale() {
+    const lang = document.documentElement.lang || 'de';
+    const localeMap = {
+      'de': 'de-DE',
+      'en': 'en-US',
+      'pl': 'pl-PL',
+      'ru': 'ru-RU',
+      'tr': 'tr-TR',
+      'uk': 'uk-UA'
+    };
+    return localeMap[lang] || 'de-DE';
+  }
+
+  /**
+   * Format currency based on locale
+   * German/Polish: "1.234 €" (euro after, space, dot separator)
+   * English: "€1,234" (euro before, comma separator)
+   * Others follow their locale rules
+   */
+  formatCurrency(amount) {
+    const locale = this.getLocale();
+    const lang = document.documentElement.lang || 'de';
+    const rounded = Math.round(amount);
+    const formatted = rounded.toLocaleString(locale);
+
+    // German, Polish, Turkish, Russian: euro after with space
+    if (['de', 'pl', 'tr', 'ru'].includes(lang)) {
+      return formatted + ' €';
+    }
+    // English, Ukrainian: euro before
+    else {
+      return '€' + formatted;
+    }
+  }
+
   displayResults(results) {
     if (!this.outputs.clicks) {
       console.error('Output elements not found');
@@ -302,12 +340,14 @@ class MediaCalculator {
 
     console.log('Displaying results:', results);
 
+    const locale = this.getLocale();
+
     // Update values with proper formatting
-    this.outputs.clicks.textContent = Math.round(results.clicks).toLocaleString('uk-UA');
-    this.outputs.leads.textContent = Math.round(results.leads).toLocaleString('uk-UA');
-    this.outputs.cpa.textContent = '€' + Math.round(results.cpa).toLocaleString('uk-UA');
+    this.outputs.clicks.textContent = Math.round(results.clicks).toLocaleString(locale);
+    this.outputs.leads.textContent = Math.round(results.leads).toLocaleString(locale);
+    this.outputs.cpa.textContent = this.formatCurrency(results.cpa);
     this.outputs.roas.textContent = Math.round(results.roas) + '%';
-    this.outputs.profit.textContent = '€' + Math.round(results.profit).toLocaleString('uk-UA');
+    this.outputs.profit.textContent = this.formatCurrency(results.profit);
 
     // Color profit based on value
     if (results.profit < 0) {

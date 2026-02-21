@@ -3213,3 +3213,544 @@ input[type="number"], select {
         gap: 30px !important;
     }
 }
+
+/* ============================================
+   KINETIC UI v3.1 — "ELECTRIC NEON GLASS" (60FPS)
+   Bold + saturated + GPU-optimized.
+   ============================================ */
+
+/* === 0. PERFORMANCE: containment + GPU layers === */
+section, .services-section, .calculator-section,
+.testimonials-section, .pricing-section {
+    contain: layout style !important;
+}
+
+/* === 1. DEEP CANVAS + ELECTRIC AURAS (GPU-composited) === */
+body {
+    background: #020617 !important;
+}
+
+body::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+        radial-gradient(ellipse 60% 50% at 15% 50%, rgba(0, 242, 254, 0.40) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 60% at 85% 30%, rgba(139, 92, 246, 0.55) 0%, transparent 55%) !important;
+    pointer-events: none !important;
+    z-index: -3 !important;
+    will-change: opacity !important;
+    transform: translateZ(0) !important;
+    animation: aura-breathe 20s ease-in-out infinite !important;
+}
+
+body::after {
+    content: '' !important;
+    position: fixed !important;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px) !important;
+    background-size: 40px 40px !important;
+    pointer-events: none !important;
+    z-index: -2 !important;
+    transform: translateZ(0) !important;
+}
+
+@keyframes aura-breathe {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.7; }
+}
+
+/* === 2. MATRIX RAIN CANVAS (GPU layer) === */
+#matrix-canvas {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    transform: translateZ(0);
+    will-change: contents;
+    opacity: 0.18;               /* фонова текстура 0.15–0.20 — не відволікає від контенту */
+    filter: blur(1px);           /* м'яке світіння — символи як цифровий пил, не різкий текст */
+    -webkit-filter: blur(1px);
+}
+
+/* === 3. VIBRANT GLASS CARDS (optimized backdrop) === */
+.service-card, .card, .pricing-card, .hero-card,
+.stat, .stat-card, .testimonial-card, .faq-item,
+.bundle-card, .portfolio-card {
+    background: rgba(10, 10, 10, 0.65) !important;
+    backdrop-filter: blur(12px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(12px) saturate(180%) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.15) !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.25) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 8px 40px rgba(0, 0, 0, 0.5) !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+}
+
+.service-card:hover, .card:hover, .pricing-card:hover,
+.stat:hover, .stat-card:hover, .testimonial-card:hover,
+.portfolio-card:hover {
+    border-color: rgba(0, 242, 254, 0.45) !important;
+    backdrop-filter: blur(20px) saturate(250%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(250%) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 30px rgba(0, 242, 254, 0.25),
+        0 0 60px rgba(139, 92, 246, 0.12),
+        0 16px 48px rgba(0, 0, 0, 0.6) !important;
+    transform: translateY(-8px) translateZ(0) !important;
+}
+
+.pricing-card--featured,
+.pricing-card:nth-child(2) {
+    border: 1.5px solid rgba(0, 242, 254, 0.38) !important;
+    border-top: 1.5px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 50px rgba(0, 242, 254, 0.15),
+        0 0 80px rgba(139, 92, 246, 0.08),
+        0 20px 60px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Header: dark glass (fixed, GPU layer) */
+header {
+    background: rgba(2, 6, 23, 0.80) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    transform: translateZ(0) !important;
+    will-change: transform !important;
+}
+
+/* === 4. ICON GLOW CIRCLES === */
+.service-card i,
+.card i,
+.service-icon i {
+    background: rgba(16, 185, 129, 0.15) !important;
+    border-radius: 50% !important;
+    padding: 14px !important;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3), 0 0 40px rgba(16, 185, 129, 0.1) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* === 5. BADGE TAGS on cards === */
+.service-card::before,
+.pricing-card::before {
+    content: attr(data-badge) !important;
+    position: absolute !important;
+    top: 16px !important;
+    left: 16px !important;
+    padding: 4px 12px !important;
+    font-size: 0.65rem !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    border-radius: 6px !important;
+    z-index: 5 !important;
+    pointer-events: none !important;
+    background: #10b981 !important;
+    color: #000 !important;
+    display: none !important;
+}
+
+.service-card[data-badge]::before,
+.pricing-card[data-badge]::before {
+    display: block !important;
+}
+
+/* === 6. ELECTRIC TYPOGRAPHY (text-shadow, not filter) === */
+h1 {
+    background: linear-gradient(180deg, #ffffff 0%, #c7d2fe 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: none !important;
+}
+
+h2 {
+    background: linear-gradient(180deg, #f1f5f9 0%, #a5b4fc 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    text-shadow: none !important;
+}
+
+/* Preserve brand gradient for .text-gradient spans */
+h1 .text-gradient, h2 .text-gradient,
+.hero h1 .text-gradient,
+.section-title .text-gradient {
+    background: linear-gradient(135deg, #00f2fe, #8b5cf6) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* Stat numbers — neon glow */
+.stat-number, .stat strong {
+    text-shadow: 0 0 14px rgba(59, 130, 246, 0.5) !important;
+}
+
+/* === 7. NEON BUTTONS — Pulse + Shimmer (GPU) === */
+.btn-primary, .cta {
+    position: relative !important;
+    overflow: hidden !important;
+    animation: btn-pulse 3s ease-in-out infinite !important;
+    will-change: box-shadow !important;
+    transform: translateZ(0) !important;
+}
+
+@keyframes btn-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(0, 242, 254, 0.30), 0 0 40px rgba(139, 92, 246, 0.10); }
+    50%      { box-shadow: 0 0 40px rgba(0, 242, 254, 0.50), 0 0 80px rgba(139, 92, 246, 0.20); }
+}
+
+.btn-primary::after, .cta::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 100% !important; height: 100% !important;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0) 30%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 70%,
+        transparent 100%
+    ) !important;
+    pointer-events: none !important;
+    transform: translateX(-100%) translateZ(0) !important;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-primary:hover::after, .cta:hover::after {
+    transform: translateX(100%) translateZ(0) !important;
+}
+
+.btn-primary:hover, .cta:hover {
+    animation: none !important;
+    box-shadow: 0 0 50px rgba(0, 242, 254, 0.50), 0 0 100px rgba(139, 92, 246, 0.20) !important;
+}
+
+.btn-secondary {
+    position: relative !important;
+    overflow: hidden !important;
+    transform: translateZ(0) !important;
+}
+
+.btn-secondary::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    width: 100% !important; height: 100% !important;
+    background: linear-gradient(120deg, transparent 30%, rgba(139, 92, 246, 0.18) 50%, transparent 70%) !important;
+    transform: translateX(-100%) translateZ(0) !important;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-secondary:hover::after {
+    transform: translateX(100%) translateZ(0) !important;
+}
+
+/* === 8. CRISP SCROLL REVEAL (GPU-composited) === */
+.kinetic-hidden {
+    opacity: 0 !important;
+    transform: translateY(50px) scale(0.92) translateZ(0) !important;
+    will-change: transform, opacity !important;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.kinetic-hidden.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) translateZ(0) !important;
+}
+
+/* Staggered children — snappy */
+.is-visible .service-card,
+.is-visible .pricing-card,
+.is-visible .stat,
+.is-visible .stat-card,
+.is-visible .faq-item,
+.is-visible .portfolio-card {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95) translateZ(0);
+    animation: kinetic-child 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.is-visible :nth-child(1) { animation-delay: 0.06s; }
+.is-visible :nth-child(2) { animation-delay: 0.12s; }
+.is-visible :nth-child(3) { animation-delay: 0.18s; }
+.is-visible :nth-child(4) { animation-delay: 0.24s; }
+.is-visible :nth-child(5) { animation-delay: 0.30s; }
+.is-visible :nth-child(6) { animation-delay: 0.36s; }
+
+@keyframes kinetic-child {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) translateZ(0);
+    }
+}
+
+/* === 9a. CALCULATOR GLASS — Strong blur to block rain behind inputs === */
+.calculator, .calculator__grid, .calculator__inputs,
+.calculator__results, .calculator__result-card,
+.calculator__input-group, .niche-select-group {
+    position: relative;
+    backdrop-filter: blur(28px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(28px) saturate(200%) !important;
+    background: rgba(2, 6, 23, 0.75) !important;
+}
+
+/* === 9. CALCULATOR — Neon Scan Lines (transform, not top/bottom) === */
+.calculator-section {
+    position: relative !important;
+    overflow: hidden !important;
+    contain: layout style !important;
+}
+
+.calculator-section::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(0, 242, 254, 0.6) 25%,
+        rgba(0, 242, 254, 1) 50%,
+        rgba(0, 242, 254, 0.6) 75%,
+        transparent 100%) !important;
+    animation: scan-down 5s ease-in-out infinite !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.5), 0 0 30px rgba(0, 242, 254, 0.2) !important;
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+}
+
+.calculator-section::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(139, 92, 246, 0.6) 25%,
+        rgba(139, 92, 246, 1) 50%,
+        rgba(139, 92, 246, 0.6) 75%,
+        transparent 100%) !important;
+    animation: scan-up 6s ease-in-out infinite !important;
+    z-index: 10 !important;
+    pointer-events: none !important;
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.5), 0 0 30px rgba(139, 92, 246, 0.2) !important;
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+}
+
+@keyframes scan-down {
+    0%   { transform: translateY(0) translateZ(0); opacity: 1; }
+    50%  { transform: translateY(calc(100vh)) translateZ(0); opacity: 0.6; }
+    100% { transform: translateY(0) translateZ(0); opacity: 1; }
+}
+
+@keyframes scan-up {
+    0%   { transform: translateY(100vh) translateZ(0); opacity: 0.6; }
+    50%  { transform: translateY(0) translateZ(0); opacity: 1; }
+    100% { transform: translateY(100vh) translateZ(0); opacity: 0.6; }
+}
+
+/* === 10. MICRO-INTERACTIONS (no filter on scroll) === */
+.logo, .brand {
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.35) !important;
+    transition: text-shadow 0.3s ease !important;
+}
+
+.logo:hover, .brand:hover {
+    text-shadow: 0 0 20px rgba(59, 130, 246, 0.6) !important;
+}
+
+.nav-menu a:hover {
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.35) !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.28), 0 0 40px rgba(139, 92, 246, 0.10) !important;
+    border-color: rgba(0, 242, 254, 0.45) !important;
+}
+
+.bundle-card:hover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        0 0 40px rgba(0, 242, 254, 0.22),
+        0 0 80px rgba(139, 92, 246, 0.10),
+        0 16px 48px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* === 11. CUSTOM SCROLLBAR (Neon) === */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #020617; }
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #00f2fe, #8b5cf6);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #67e8f9, #a78bfa);
+}
+
+/* === 12. MOBILE (lighter effects) === */
+@media (max-width: 768px) {
+    body::before {
+        animation-duration: 25s !important;
+    }
+
+    .service-card, .card, .pricing-card,
+    .stat, .stat-card, .testimonial-card {
+        backdrop-filter: blur(8px) saturate(150%) !important;
+        -webkit-backdrop-filter: blur(8px) saturate(150%) !important;
+    }
+
+    .kinetic-hidden {
+        transform: translateY(30px) scale(0.95) translateZ(0) !important;
+    }
+
+    #matrix-canvas {
+        opacity: 0.14 !important;
+        filter: blur(1px) !important;
+        -webkit-filter: blur(1px) !important;
+    }
+}
+
+/* === 13. PREFERS-REDUCED-MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    body::before, body::after { animation: none !important; }
+    .btn-primary, .cta { animation: none !important; }
+    .calculator-section::before, .calculator-section::after { animation: none !important; }
+    .kinetic-hidden { opacity: 1 !important; transform: none !important; transition: none !important; }
+    #matrix-canvas { display: none !important; }
+    * { will-change: auto !important; }
+}
+
+/* ============================================
+   14. FLOATING BUTTONS STACK + HEADER WHATSAPP
+   Fix: Chatbot (bottom) → WhatsApp (middle) → Telegram (top)
+   ============================================ */
+
+/* --- Header WhatsApp: official green --- */
+.nav-actions a[href*="wa.me"],
+.nav-actions .btn-secondary[href*="wa.me"] {
+    background: #25D366 !important;
+    border-color: #25D366 !important;
+    color: #fff !important;
+}
+
+.nav-actions a[href*="wa.me"]:hover,
+.nav-actions .btn-secondary[href*="wa.me"]:hover {
+    background: #20BA5A !important;
+    border-color: #20BA5A !important;
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.4) !important;
+}
+
+/* --- Social float container: stack above chatbot --- */
+.social-float {
+    bottom: 85px !important;
+    right: 20px !important;
+    z-index: 10000 !important;
+    gap: 13px !important;
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+}
+
+/* --- Individual floating buttons: premium glass + brand colors --- */
+.social-float a {
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10000 !important;
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Telegram button: #0088cc brand */
+.social-float a[aria-label="Telegram"],
+.social-float a[href*="t.me"] {
+    background: linear-gradient(135deg, #2AABEE, #0088cc) !important;
+    box-shadow: 0 4px 16px rgba(0, 136, 204, 0.45) !important;
+}
+
+.social-float a[aria-label="Telegram"]:hover,
+.social-float a[href*="t.me"]:hover {
+    transform: scale(1.1) translateZ(0) !important;
+    box-shadow: 0 6px 24px rgba(0, 136, 204, 0.6),
+                0 0 30px rgba(0, 136, 204, 0.2) !important;
+}
+
+/* WhatsApp button: #25D366 brand */
+.social-float a[aria-label="WhatsApp"],
+.social-float a[href*="wa.me"] {
+    background: #25D366 !important;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45) !important;
+}
+
+.social-float a[aria-label="WhatsApp"]:hover,
+.social-float a[href*="wa.me"]:hover {
+    transform: scale(1.1) translateZ(0) !important;
+    box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6),
+                0 0 30px rgba(37, 211, 102, 0.2) !important;
+}
+
+/* --- Chatbot button: very bottom, blue gradient --- */
+.chatbot-button,
+#chatbotButton {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    z-index: 10000 !important;
+    will-change: transform !important;
+    transform: translateZ(0) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+}
+
+/* --- Mobile: hide social-float (WhatsApp already in header) --- */
+@media (max-width: 768px) {
+    .social-float {
+        bottom: 85px !important;
+        right: 15px !important;
+    }
+
+    .social-float a {
+        width: 48px !important;
+        height: 48px !important;
+    }
+
+    .chatbot-button,
+    #chatbotButton {
+        bottom: 20px !important;
+        right: 15px !important;
+        width: 52px !important;
+        height: 52px !important;
+        z-index: 10000 !important;
+    }
+}
