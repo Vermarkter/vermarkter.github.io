@@ -3754,3 +3754,260 @@ input:focus, select:focus, textarea:focus {
         z-index: 10000 !important;
     }
 }
+
+/* ============================================================
+   MOBILE LAYOUT FIX — vermarkter.eu (max-width: 768px)
+   Symmetric, readable layout on iPhone & Android.
+   Design unchanged: Matrix, Glassmorphism untouched.
+   ============================================================ */
+@media (max-width: 768px) {
+
+    /* ── 1. GLOBAL PADDING — no text touching screen edges ── */
+    .container,
+    section > .container,
+    .hero .container,
+    .services-section .container,
+    .calculator-section .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    /* ── 2. SERVICE CARDS & PROBLEM CARDS — 1 column ── */
+    .services-grid,
+    .problem-cards,
+    .pricing-grid,
+    div[style*="grid-template-columns"][class*="service"],
+    div[style*="repeat(auto-fit"] {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        width: 100% !important;
+    }
+
+    /* Force all service cards to full width */
+    .service-card,
+    .problem-card,
+    .pain-point-card,
+    .pain-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        flex: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Pricing cards: full width on mobile */
+    .pricing-card {
+        flex: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* ── 3. HERO STATS COUNTER — no overflow ── */
+    .stat-number,
+    .stat .text-gradient,
+    .stat-card .text-gradient,
+    [data-target] {
+        font-size: 2rem !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;   /* % and + stay on same line */
+    }
+
+    /* Stats grid: 2 columns on mobile (не в одну колонку) */
+    .stats {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 16px !important;
+    }
+
+    /* Stat card: compact padding */
+    .stat-card {
+        padding: 1.2rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+    }
+
+    /* ── 4. HEADINGS — adaptive clamp, never overflow ── */
+    h1,
+    .hero h1,
+    .hero-title {
+        font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+        line-height: 1.15 !important;
+        word-break: break-word !important;
+    }
+
+    h2,
+    .section-title,
+    .calculator__title {
+        font-size: clamp(1.5rem, 7vw, 2.2rem) !important;
+        line-height: 1.2 !important;
+        word-break: break-word !important;
+    }
+
+    h3 {
+        font-size: clamp(1.2rem, 6vw, 1.8rem) !important;
+        line-height: 1.25 !important;
+    }
+
+    /* ── 5. FLOATING BUTTONS — 15% smaller, no overlap ── */
+
+    /* social-float (Telegram + WhatsApp stack) */
+    .social-float a {
+        width: 44px !important;   /* 52px × 0.85 ≈ 44px */
+        height: 44px !important;
+    }
+
+    .social-float a svg,
+    .social-float a img {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    /* AI Chatbot button */
+    .chatbot-button,
+    #chatbotButton {
+        width: 48px !important;   /* 56px × 0.85 ≈ 48px */
+        height: 48px !important;
+        bottom: 20px !important;
+        right: 15px !important;
+    }
+
+    /* Chatbot button icon */
+    .chatbot-button svg,
+    #chatbotButton svg {
+        width: 22px !important;
+        height: 22px !important;
+    }
+
+    /* Social float stack: above chatbot, no overlap with CTA */
+    .social-float {
+        bottom: 80px !important;
+        right: 15px !important;
+        gap: 10px !important;
+    }
+
+    /* Scroll to top — move further left */
+    .scroll-to-top,
+    .scroll-top-btn,
+    #scrollToTop {
+        right: 75px !important;
+        width: 40px !important;
+        height: 40px !important;
+        bottom: 20px !important;
+    }
+
+    /* ── 6. HERO SECTION PADDING ── */
+    .hero,
+    .hero-section {
+        padding-top: 100px !important;
+        padding-bottom: 40px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .hero-actions {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+    }
+
+    .hero-actions .btn {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    /* ── 7. BUNDLE SECTION ── */
+    .bundle-flex-container,
+    .bundle-grid,
+    div[class*="bundle"][style*="flex"] {
+        flex-direction: column !important;
+        gap: 24px !important;
+    }
+
+    .bundle-left,
+    .bundle-right,
+    .bundle-offer,
+    .bundle-content {
+        flex: none !important;
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    /* ── 8. TESTIMONIALS SCROLL ── */
+    .testimonials-track,
+    [class*="testimonial"][style*="display: flex"] {
+        gap: 16px !important;
+    }
+
+    .testimonial-card {
+        min-width: 280px !important;
+        padding: 1.2rem !important;
+    }
+
+    /* ── 9. PROCESS / ZIG-ZAG ── */
+    .calculator-wrapper[style*="grid"] {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    /* ── 10. CALCULATOR SECTION ── */
+    .calculator {
+        padding: 20px 16px !important;
+    }
+
+    .calculator__grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+
+    /* ── 11. PORTFOLIO GRID ── */
+    .portfolio-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .portfolio-card {
+        height: 220px !important;
+    }
+
+    /* ── 12. FOOTER ── */
+    .footer-grid,
+    .footer-content {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+    }
+}
+
+/* ── Extra small: 375px (iPhone SE) ── */
+@media (max-width: 400px) {
+    .stat-number,
+    .stat .text-gradient,
+    [data-target] {
+        font-size: 1.75rem !important;
+    }
+
+    h1, .hero-title {
+        font-size: clamp(1.6rem, 9vw, 2rem) !important;
+    }
+
+    .stats {
+        grid-template-columns: 1fr !important;  /* iPhone SE: 1 col */
+    }
+
+    .chatbot-button,
+    #chatbotButton {
+        width: 44px !important;
+        height: 44px !important;
+    }
+
+    .social-float a {
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
