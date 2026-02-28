@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Google Ads Agentur für kleine Unternehmen in Europa. Search Ads, Shopping Ads, Performance Max. Start in 48 Stunden. Transparente Ergebnisse.">
+    <meta name="description" content="Google Ads Agentur für internationale Gründer in Europa. Search Ads, Shopping Ads, Performance Max. Start in 48 Stunden. Transparente Ergebnisse.">
     <meta name="keywords" content="Google Ads Agentur, Google Ads Deutschland, Search Ads, Shopping Ads, Performance Max, PPC Marketing">
     <meta name="author" content="Vermarkter Agency">
 
@@ -13,14 +13,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://vermarkter.eu/de/google-ads">
     <meta property="og:title" content="Google Ads Agentur — Vermarkter">
-    <meta property="og:description" content="Google Ads für kleine Unternehmen in Europa. Search, Shopping, Performance Max. Start in 48 Stunden.">
+    <meta property="og:description" content="Google Ads für internationale Gründer in Europa. Search, Shopping, Performance Max. Start in 48 Stunden.">
     <meta property="og:image" content="https://vermarkter.eu/og-image-google-ads-de.jpg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://vermarkter.eu/de/google-ads">
     <meta property="twitter:title" content="Google Ads Agentur — Vermarkter">
-    <meta property="twitter:description" content="Google Ads für kleine Unternehmen in Europa">
+    <meta property="twitter:description" content="Google Ads für internationale Gründer in Europa">
     <meta property="twitter:image" content="https://vermarkter.eu/og-image-google-ads-de.jpg">
 
     <title>Google Ads Agentur — Vermarkter</title>
@@ -193,15 +193,16 @@
         </div>
     </section>
 
-    <!-- PAIN POINTS: Warum verschwindet Ihr Budget? -->
+    <style>@media(max-width:768px){.pain-card{min-width:0!important}.pain-cards-grid{grid-template-columns:1fr!important}}</style>
+    <!-- PAIN POINTS: Ineffiziente Budgetnutzung -->
     <section style="padding: 6rem 0; background: var(--bg-secondary);">
         <div class="container">
             <div class="section-header" style="text-align: center; margin-bottom: 4rem;">
                 <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; margin-bottom: 1rem;">
-                    Warum verschwindet Ihr <span class="text-gradient">Budget?</span>
+                    Warum wird Ihr Budget <span class="text-gradient">ineffizient genutzt?</span>
                 </h2>
                 <p class="section-subtitle" style="font-size: 1.2rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                    92% der kleinen Unternehmen in der EU verschwenden 40-60% ihres Budgets durch diese Fehler. Wir beheben das in 48 Stunden.
+                    92% der internationalen Gründer in der EU nutzen 40–60% ihres Budgets ineffizient — durch diese Fehler. Wir beheben das in 48 Stunden.
                 </p>
             </div>
 
@@ -646,6 +647,11 @@
 <p class="text-center" style="margin-top: 30px; color: #94A3B8; font-size: 14px;">
                     ⚠️ Das Ergebnis ist eine Prognose, kein Versprechen. Marketing beginnt mit ehrlichen Zahlen.
                 </p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="calcAuditBtn" onclick="openCalcAuditPopup()" style="background: linear-gradient(135deg, #3B82F6, #8b5cf6); color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 1.1rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(59,130,246,0.4); transition: all 0.3s;">
+                        📊 Kostenlose Strategie-Analyse anfordern
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -690,7 +696,7 @@
                 <div class="pricing-card" style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; transition: transform 0.3s, box-shadow 0.3s; position: relative;">
                     <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; color: var(--text-primary);">STARTER</h3>
                     <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Perfekt für den Einstieg</p>
-                    <h3 class="text-gradient" style="font-size: 2.5rem; margin: 1rem 0;">€399 <span style="font-size: 1rem; color: #94A3B8;">/ Monat</span></h3>
+                    <h3 class="text-gradient" style="font-size: 2.5rem; margin: 1rem 0;">399 € <span style="font-size: 1rem; color: #94A3B8;">/ Monat</span></h3>
                     <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
                         <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
                             <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
@@ -714,7 +720,7 @@
                         </li>
                         <li style="padding: 0.75rem 0; display: flex; align-items: start;">
                             <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Deutschsprachiger Support</strong></span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>24/7 Support auf Deutsch</strong></span>
                         </li>
                     </ul>
                     <a href="#contact" class="btn btn-secondary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Meine Kampagne starten</a>
@@ -727,7 +733,7 @@
                     </div>
                     <h3 class="pricing-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem; margin-top: 1rem; color: var(--text-primary);">GROWTH</h3>
                     <p class="pricing-subtitle" style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 2rem;">Für schnell wachsende Unternehmen</p>
-                    <h3 class="text-gradient" style="font-size: 2.5rem; margin: 1rem 0;">€699 <span style="font-size: 1rem; color: #94A3B8;">/ Monat</span></h3>
+                    <h3 class="text-gradient" style="font-size: 2.5rem; margin: 1rem 0;">699 € <span style="font-size: 1rem; color: #94A3B8;">/ Monat</span></h3>
                     <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 2rem;">
                         <li style="padding: 0.75rem 0; display: flex; align-items: start; border-bottom: 1px solid rgba(255,255,255,0.05);">
                             <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
@@ -755,7 +761,7 @@
                         </li>
                         <li style="padding: 0.75rem 0; display: flex; align-items: start;">
                             <span class="check-icon" style="color: var(--brand); margin-right: 0.75rem; font-weight: 700; font-size: 1.2rem;">✓</span>
-                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>Deutschsprachiger Support</strong></span>
+                            <span style="color: var(--text-secondary); font-size: 1.05rem;"><strong>24/7 Support auf Deutsch</strong></span>
                         </li>
                     </ul>
                     <a href="#contact" class="btn btn-primary pricing-btn" style="width: 100%; text-align: center; padding: 1rem; font-size: 1.1rem;">Kostenloses Setup sichern</a>
@@ -1031,7 +1037,7 @@
                         <span style="font-weight: 900; font-size: 22px; color: white;">Vermarkter</span>
                     </div>
                     <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.5rem;">
-                        Google Ads Agentur für kleine Unternehmen in Europa. Transparente Ergebnisse, professioneller Support.
+                        Google Ads Agentur für internationale Gründer in Europa. Transparente Ergebnisse, professioneller Support.
                     </p>
                 </div>
 
@@ -1123,6 +1129,53 @@
     <script src="../js/lightbox.js"></script>
     <script src="../js/chatbot.js"></script>
     <script src="../js/main.js"></script>
+
+<!-- Calculator Audit Modal (DE) -->
+<div id="calcAuditModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); z-index:9999; align-items:center; justify-content:center; padding:1rem;">
+    <div style="background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.98)); border:1px solid rgba(59,130,246,0.4); border-radius:24px; padding:2.5rem; max-width:480px; width:100%; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.6);">
+        <button onclick="closeCalcAuditPopup()" style="position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,0.1); border:none; color:white; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:1.1rem;">✕</button>
+        <h3 style="font-size:1.5rem; font-weight:800; color:white; margin-bottom:0.5rem;">Ihr prognostizierter Gewinn: <span id="popupProfit" style="background:linear-gradient(135deg,#3B82F6,#10B981); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">—</span> ✅</h3>
+        <p style="color:#94A3B8; margin-bottom:1.5rem; font-size:0.95rem;">Möchten Sie einen kostenlosen Media-Plan für Ihre Nische? Hinterlassen Sie Ihren WhatsApp-Kontakt — wir melden uns in 24 Stunden.</p>
+        <div id="calcAuditForm">
+            <div style="margin-bottom:1rem;">
+                <input type="text" id="auditWhatsApp" placeholder="WhatsApp oder Telegram (@benutzername)" style="width:100%; padding:0.9rem 1rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:white; font-size:0.95rem; box-sizing:border-box;">
+            </div>
+            <div style="margin-bottom:1.5rem;">
+                <input type="email" id="auditEmail" placeholder="E-Mail (optional)" style="width:100%; padding:0.9rem 1rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:white; font-size:0.95rem; box-sizing:border-box;">
+            </div>
+            <button onclick="submitCalcAudit()" style="width:100%; padding:1rem; background:linear-gradient(135deg,#3B82F6,#8b5cf6); color:white; border:none; border-radius:12px; font-size:1.05rem; font-weight:700; cursor:pointer;">🚀 Kostenlosen Media-Plan anfordern</button>
+        </div>
+        <div id="calcAuditThanks" style="display:none; text-align:center; padding:1rem 0;">
+            <div style="font-size:2.5rem; margin-bottom:0.75rem;">🎉</div>
+            <p style="color:#10B981; font-weight:700; font-size:1.1rem;">Anfrage erhalten!</p>
+            <p style="color:#94A3B8; font-size:0.9rem;">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+        </div>
+    </div>
+</div>
+<script>
+function openCalcAuditPopup() {
+    var profit = document.getElementById('resultProfit');
+    if (profit) document.getElementById('popupProfit').textContent = profit.textContent;
+    var modal = document.getElementById('calcAuditModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closeCalcAuditPopup() {
+    document.getElementById('calcAuditModal').style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('calcAuditForm').style.display = 'block';
+    document.getElementById('calcAuditThanks').style.display = 'none';
+}
+function submitCalcAudit() {
+    var wa = document.getElementById('auditWhatsApp').value.trim();
+    if (!wa) { alert('Bitte geben Sie WhatsApp oder Telegram an'); return; }
+    document.getElementById('calcAuditForm').style.display = 'none';
+    document.getElementById('calcAuditThanks').style.display = 'block';
+    setTimeout(closeCalcAuditPopup, 3500);
+}
+document.getElementById('calcAuditModal').addEventListener('click', function(e) { if (e.target === this) closeCalcAuditPopup(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCalcAuditPopup(); });
+</script>
 
 <!-- Scroll to Top Button -->
 <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
