@@ -149,7 +149,7 @@
             <div class="container">
                 <div class="hero-badge">
                     <span>⚡</span>
-                    <span>Für kleine Unternehmen in der EU</span>
+                    <span>Für internationale Gründer in der EU</span>
                 </div>
 
                 <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin: 2rem 0 1.5rem; font-weight: 900;">
@@ -267,7 +267,7 @@
                             </li>
                             <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
                                 <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
-                                Banner aus einfachen Grafiktools – wirken unseriös
+                                Unprofessionelle Kreativmaterialien senken das Markenvertrauen und erhöhen den CPC
                             </li>
                             <li style="padding: 0.5rem 0; color: var(--text-secondary); display: flex; align-items: start;">
                                 <span style="color: #EF4444; margin-right: 0.5rem;">•</span>
@@ -817,6 +817,11 @@
 <p class="text-center" style="margin-top: 30px; color: #94A3B8; font-size: 14px;">
                     ⚠️ Das Ergebnis ist eine Prognose, kein Versprechen. Marketing beginnt mit ehrlichen Zahlen.
                 </p>
+                <div style="text-align: center; margin-top: 2rem;">
+                    <button id="calcAuditBtn" onclick="openCalcAuditPopup()" style="background: linear-gradient(135deg, #3B82F6, #8b5cf6); color: white; border: none; border-radius: 12px; padding: 16px 32px; font-size: 1.1rem; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(59,130,246,0.4); transition: all 0.3s;">
+                        📊 Kostenlose Strategie-Analyse anfordern
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -853,8 +858,9 @@
                             </p>
 
                             <a href="#contact" class="btn btn-primary" style="width: 100%; text-align: center; padding: 18px; font-size: 1.2rem; display: block; background: #3B82F6; color: white; border-radius: 12px; text-decoration: none;">
-                                Bundle jetzt sichern
+                                🎁 Bundle jetzt sichern
                             </a>
+                            <p style="margin-top: 1rem; font-size: 0.95rem; color: #10B981; font-weight: 600;">🛡️ Performance Commitment: Kostenlose Optimierung bis zur Zielerreichung.</p>
                         </div>
 
                         <!-- RIGHT COLUMN (List) -->
@@ -1842,6 +1848,53 @@
     <script src="../js/consent.js"></script>
     <script src="../js/main.js"></script>
     <script type="module" src="../js/telegram-service.js"></script>
+
+<!-- Calculator Audit Modal (DE) -->
+<div id="calcAuditModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.75); backdrop-filter:blur(8px); z-index:9999; align-items:center; justify-content:center; padding:1rem;">
+    <div style="background:linear-gradient(135deg,rgba(15,23,42,0.98),rgba(30,41,59,0.98)); border:1px solid rgba(59,130,246,0.4); border-radius:24px; padding:2.5rem; max-width:480px; width:100%; position:relative; box-shadow:0 25px 60px rgba(0,0,0,0.6);">
+        <button onclick="closeCalcAuditPopup()" style="position:absolute; top:1rem; right:1rem; background:rgba(255,255,255,0.1); border:none; color:white; width:32px; height:32px; border-radius:50%; cursor:pointer; font-size:1.1rem;">✕</button>
+        <h3 style="font-size:1.5rem; font-weight:800; color:white; margin-bottom:0.5rem;">Ihr prognostizierter Gewinn: <span id="popupProfit" style="background:linear-gradient(135deg,#3B82F6,#10B981); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">—</span> ✅</h3>
+        <p style="color:#94A3B8; margin-bottom:1.5rem; font-size:0.95rem;">Möchten Sie eine persönliche Analyse Ihrer Nische im EU-Markt? Hinterlassen Sie Ihren Kontakt — wir melden uns innerhalb von 24 Stunden.</p>
+        <div id="calcAuditForm">
+            <div style="margin-bottom:1rem;">
+                <input type="text" id="auditWhatsApp" placeholder="WhatsApp oder Telegram (@benutzername)" style="width:100%; padding:0.9rem 1rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:white; font-size:0.95rem; box-sizing:border-box;">
+            </div>
+            <div style="margin-bottom:1.5rem;">
+                <input type="email" id="auditEmail" placeholder="E-Mail (optional)" style="width:100%; padding:0.9rem 1rem; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:10px; color:white; font-size:0.95rem; box-sizing:border-box;">
+            </div>
+            <button onclick="submitCalcAudit()" style="width:100%; padding:1rem; background:linear-gradient(135deg,#3B82F6,#8b5cf6); color:white; border:none; border-radius:12px; font-size:1.05rem; font-weight:700; cursor:pointer;">🚀 Kostenlosen Audit anfordern</button>
+        </div>
+        <div id="calcAuditThanks" style="display:none; text-align:center; padding:1rem 0;">
+            <div style="font-size:2.5rem; margin-bottom:0.75rem;">🎉</div>
+            <p style="color:#10B981; font-weight:700; font-size:1.1rem;">Anfrage erhalten!</p>
+            <p style="color:#94A3B8; font-size:0.9rem;">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+        </div>
+    </div>
+</div>
+<script>
+function openCalcAuditPopup() {
+    var profit = document.getElementById('resultProfit');
+    if (profit) document.getElementById('popupProfit').textContent = profit.textContent;
+    var modal = document.getElementById('calcAuditModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closeCalcAuditPopup() {
+    document.getElementById('calcAuditModal').style.display = 'none';
+    document.body.style.overflow = '';
+    document.getElementById('calcAuditForm').style.display = 'block';
+    document.getElementById('calcAuditThanks').style.display = 'none';
+}
+function submitCalcAudit() {
+    var wa = document.getElementById('auditWhatsApp').value.trim();
+    if (!wa) { alert('Bitte geben Sie WhatsApp oder Telegram an'); return; }
+    document.getElementById('calcAuditForm').style.display = 'none';
+    document.getElementById('calcAuditThanks').style.display = 'block';
+    setTimeout(closeCalcAuditPopup, 3500);
+}
+document.getElementById('calcAuditModal').addEventListener('click', function(e) { if (e.target === this) closeCalcAuditPopup(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeCalcAuditPopup(); });
+</script>
 
     <!-- AI Chat Trigger -->
 
