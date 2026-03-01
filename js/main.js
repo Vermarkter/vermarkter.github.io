@@ -651,9 +651,43 @@ function initKineticReveal() {
     });
 }
 
+// ==================== PAIN CARDS PEEK EFFECT (MOBILE) ====================
+// On mobile: horizontal scroll so ~40px of next card peeks from the right
+function initPainPeek() {
+    if (window.innerWidth >= 768) return;
+
+    var firstCard = document.querySelector('.pain-card');
+    if (!firstCard) return;
+
+    var wrap = firstCard.parentElement;
+    if (!wrap) return;
+
+    // Convert grid container to horizontal scroll row
+    wrap.style.display        = 'flex';
+    wrap.style.flexDirection  = 'row';
+    wrap.style.overflowX      = 'scroll';
+    wrap.style.overflowY      = 'visible';
+    wrap.style.scrollSnapType = 'x mandatory';
+    wrap.style.gap            = '1rem';
+    wrap.style.paddingRight   = '50px';  // peek space
+    wrap.style.WebkitOverflowScrolling = 'touch';
+    // Remove conflicting inline grid styles
+    wrap.style.gridTemplateColumns = '';
+
+    var cards = wrap.querySelectorAll('.pain-card');
+    cards.forEach(function (card) {
+        card.style.minWidth       = 'calc(100vw - 90px)';
+        card.style.maxWidth       = 'calc(100vw - 90px)';
+        card.style.flex           = '0 0 auto';
+        card.style.scrollSnapAlign = 'start';
+        card.style.boxSizing      = 'border-box';
+    });
+}
+
 // === INIT ===
 document.addEventListener('DOMContentLoaded', function () {
     loadMatrixScript();
     initKineticReveal();
+    initPainPeek();
     console.log('⚡ Kinetic UI v3.1 + Digital Rain v2.0');
 });

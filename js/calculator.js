@@ -284,13 +284,13 @@ class MediaCalculator {
 
     console.log('Calculated results:', { clicks, leads, cpa, revenue, grossProfit, netProfit, roas });
 
-    // Display results
+    // Display results — profit never below 0
     this.displayResults({
       clicks,
       leads,
       cpa,
       roas,
-      profit: netProfit
+      profit: Math.max(0, netProfit)
     });
   }
 
@@ -349,10 +349,8 @@ class MediaCalculator {
     this.outputs.roas.textContent = Math.round(results.roas) + '%';
     this.outputs.profit.textContent = this.formatCurrency(results.profit);
 
-    // Color profit based on value
-    if (results.profit < 0) {
-      this.outputs.profit.style.color = 'var(--error, #EF4444)';
-    } else if (results.profit > 0) {
+    // Color profit: green if positive, neutral if zero
+    if (results.profit > 0) {
       this.outputs.profit.style.color = 'var(--success, #10B981)';
     } else {
       this.outputs.profit.style.color = 'var(--text-primary)';

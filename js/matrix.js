@@ -9,16 +9,18 @@
     /* ═══════════════════════════════════════════
        CONFIG — tweak here, no DOM changes needed
     ═══════════════════════════════════════════ */
+    var isMobile = window.innerWidth < 768;
+
     var C = {
-        FONT_SIZE    : 11,      // px — small, delicate
-        COL_WIDTH    : 12,      // px — dense column pitch
-        TRAIL_MIN    : 28,      // chars
-        TRAIL_MAX    : 60,      // chars
-        SPEED_MIN    : 0.20,    // cells/frame  (slower = calmer)
-        SPEED_MAX    : 0.78,    // cells/frame
-        SCROLL_BOOST : 2.2,     // max multiplier on scroll
-        SCROLL_DECAY : 0.032,   // boost decay per frame
-        MUTATE_PROB  : 0.014,   // probability of char mutation per frame
+        FONT_SIZE    : 11,
+        COL_WIDTH    : isMobile ? 36 : 12,  // 3x wider on mobile = 3x fewer columns
+        TRAIL_MIN    : 28,
+        TRAIL_MAX    : 60,
+        SPEED_MIN    : 0.20,
+        SPEED_MAX    : 0.78,
+        SCROLL_BOOST : 2.2,
+        SCROLL_DECAY : 0.032,
+        MUTATE_PROB  : 0.014,
         CHARS: '0123456789ABCDEFabcdef€$%₿↗▲∞πΩβαΔ|!?'
     };
 

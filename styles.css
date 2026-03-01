@@ -3064,12 +3064,12 @@ input[type="number"], select {
         max-height: calc(100vh - 150px) !important;
     }
 
-    /* Scroll to top button - move left to not overlap chatbot */
+    /* Scroll to top button - above social-float (messengers) stack */
     .scroll-to-top,
     .scroll-top-btn,
     #scrollToTop {
-        bottom: 20px !important;
-        right: 85px !important;
+        bottom: 190px !important;
+        right: 15px !important;
         width: 44px !important;
         height: 44px !important;
         z-index: 9997 !important;
@@ -3891,14 +3891,14 @@ input:focus, select:focus, textarea:focus {
         gap: 10px !important;
     }
 
-    /* Scroll to top — move further left */
+    /* Scroll to top — above messenger stack */
     .scroll-to-top,
     .scroll-top-btn,
     #scrollToTop {
-        right: 75px !important;
+        right: 15px !important;
         width: 40px !important;
         height: 40px !important;
-        bottom: 20px !important;
+        bottom: 190px !important;
     }
 
     /* ── 6. HERO SECTION PADDING ── */
@@ -4009,5 +4009,42 @@ input:focus, select:focus, textarea:focus {
     .social-float a {
         width: 40px !important;
         height: 40px !important;
+    }
+}
+
+/* ============================================================
+   MOBILE AUDIT FIXES (March 2026)
+   ============================================================ */
+
+/* ── FIX 2: STATS NUMBERS — full width, never clipped ── */
+@media (max-width: 768px) {
+    /* Service page stats (420%, 48h, 100+) */
+    .stats-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.5rem !important;
+    }
+
+    .stat-item {
+        width: 100% !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Adaptive font-size so 420% never clips on narrow screens */
+    .stat-value {
+        font-size: clamp(1.3rem, 5.5vw, 2.5rem) !important;
+        line-height: 1.1 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+    }
+}
+
+/* ── FIX 4: MATRIX RAIN — more visible on mobile ── */
+@media (max-width: 768px) {
+    #matrix-canvas {
+        opacity: 0.4 !important;
+        filter: saturate(2) brightness(1.6) !important;
+        -webkit-filter: saturate(2) brightness(1.6) !important;
     }
 }
