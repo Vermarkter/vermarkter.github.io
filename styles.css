@@ -4016,27 +4016,45 @@ input:focus, select:focus, textarea:focus {
    MOBILE AUDIT FIXES (March 2026)
    ============================================================ */
 
-/* ── FIX 2: STATS NUMBERS — full width, never clipped ── */
+/* ── FIX 2: STATS NUMBERS — розтягнути горизонтально, цифри не обрізати ── */
 @media (max-width: 768px) {
-    /* Service page stats (420%, 48h, 100+) */
+    /* Контейнер статистики: на всю ширину, мінімум бокових відступів */
     .stats-grid {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 5px !important;
+        box-sizing: border-box !important;
+        display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 0.5rem !important;
+        gap: 4px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
+    /* Картка статистики: рівномірно заповнює простір */
     .stat-item {
-        width: 100% !important;
+        flex: 1 !important;
+        width: 32% !important;
         max-width: none !important;
         min-width: 0 !important;
+        padding: 10px 5px !important;
         box-sizing: border-box !important;
+        text-align: center !important;
     }
 
-    /* Adaptive font-size so 420% never clips on narrow screens */
+    /* Адаптивний розмір шрифту — 420% ніколи не обрізається */
     .stat-value {
-        font-size: clamp(1.3rem, 5.5vw, 2.5rem) !important;
+        font-size: clamp(1.2rem, 5vw, 2.5rem) !important;
         line-height: 1.1 !important;
         white-space: nowrap !important;
         overflow: visible !important;
+    }
+
+    .stat-label {
+        font-size: clamp(0.65rem, 2.5vw, 0.95rem) !important;
+        line-height: 1.3 !important;
+        display: block !important;
+        margin-top: 4px !important;
     }
 }
 
