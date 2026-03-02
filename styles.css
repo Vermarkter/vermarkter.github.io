@@ -4016,35 +4016,31 @@ input:focus, select:focus, textarea:focus {
    MOBILE AUDIT FIXES (March 2026)
    ============================================================ */
 
-/* ── FIX 2: STATS NUMBERS — розтягнути горизонтально, цифри не обрізати ── */
+/* ── FIX 2: STATS NUMBERS — Nuclear breakout, ігнорує відступи батька ── */
 @media (max-width: 768px) {
-    /* Контейнер статистики: на всю ширину, мінімум бокових відступів */
     .stats-grid {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 0 5px !important;
+        width: 100vw !important;
+        position: relative !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -50vw !important;
+        margin-right: -50vw !important;
+        padding: 0 10px !important;
         box-sizing: border-box !important;
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 4px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        gap: 5px !important;
     }
 
-    /* Картка статистики: рівномірно заповнює простір */
     .stat-item {
-        flex: 1 !important;
-        width: 32% !important;
-        max-width: none !important;
-        min-width: 0 !important;
-        padding: 10px 5px !important;
+        padding: 12px 2px !important;
         box-sizing: border-box !important;
         text-align: center !important;
+        min-width: 0 !important;
     }
 
-    /* Адаптивний розмір шрифту — 420% ніколи не обрізається */
     .stat-value {
-        font-size: clamp(1.2rem, 5vw, 2.5rem) !important;
+        font-size: clamp(1.4rem, 6vw, 2.2rem) !important;
         line-height: 1.1 !important;
         white-space: nowrap !important;
         overflow: visible !important;
