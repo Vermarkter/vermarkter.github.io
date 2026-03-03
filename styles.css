@@ -4054,6 +4054,143 @@ input:focus, select:focus, textarea:focus {
     }
 }
 
+/* ══════════════════════════════════════════════════════
+   COOKIE CONSENT BANNER v2  (3-button: Accept All / Analytics / Settings)
+   ══════════════════════════════════════════════════════ */
+
+/* Banner base */
+.cookie-banner {
+    display: none;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(10, 15, 28, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 1.25rem 0;
+    z-index: 9998;
+    box-shadow: 0 -4px 32px rgba(0,0,0,0.5);
+}
+.cookie-banner.show { display: block; }
+
+.cookie-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cookie-text {
+    flex: 1;
+    min-width: 200px;
+    color: var(--text-secondary, #94a3b8);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cookie-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+/* ── Кнопка А: Прийняти все (яскрава, фірмовий градієнт) ── */
+.cookie-btn--primary {
+    padding: 0.65rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.45);
+}
+.cookie-btn--primary:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+/* ── Кнопка Б: Тільки аналітика (обводка, менш помітна) ── */
+.cookie-btn--secondary {
+    padding: 0.65rem 1.2rem;
+    border: 1px solid rgba(100, 116, 139, 0.55);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    background: transparent;
+    color: var(--text-secondary, #94a3b8);
+}
+.cookie-btn--secondary:hover {
+    border-color: rgba(59, 130, 246, 0.6);
+    color: #e2e8f0;
+}
+
+/* ── Посилання В: Налаштування (маленький сірий текст) ── */
+.cookie-btn--link {
+    padding: 0.4rem 0.5rem;
+    border: none;
+    background: transparent;
+    font-size: 0.8rem;
+    color: #64748b;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color 0.2s;
+}
+.cookie-btn--link:hover { color: #94a3b8; }
+
+/* ── Settings panel ── */
+.cookie-settings {
+    border-top: 1px solid rgba(59, 130, 246, 0.15);
+    padding-top: 1rem;
+    margin-top: 0.75rem;
+}
+
+.cookie-settings__grid {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cookie-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--text-secondary, #94a3b8);
+}
+.cookie-toggle input[type="checkbox"] {
+    width: 16px; height: 16px;
+    accent-color: #3b82f6;
+    cursor: pointer;
+}
+.cookie-toggle input[disabled] { cursor: not-allowed; opacity: 0.5; }
+.cookie-toggle__label { display: flex; align-items: center; gap: 0.4rem; }
+.cookie-toggle__badge {
+    font-size: 0.7rem;
+    background: rgba(16,185,129,0.15);
+    color: #10b981;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* ── Mobile ── */
+@media (max-width: 600px) {
+    .cookie-content { flex-direction: column; align-items: flex-start; }
+    .cookie-actions { width: 100%; }
+    .cookie-btn--primary, .cookie-btn--secondary { flex: 1; text-align: center; }
+}
+
 /* ── FIX 4: MATRIX RAIN — more visible on mobile ── */
 @media (max-width: 768px) {
     #matrix-canvas {
