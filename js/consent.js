@@ -71,15 +71,9 @@ class ConsentManager {
   }
 
   enableTracking() {
-    // Only enable tracking if user accepted
-    // Example: Load Google Analytics
-    // if (typeof gtag !== 'undefined') {
-    //   gtag('consent', 'update', {
-    //     'analytics_storage': 'granted'
-    //   });
-    // }
-
-    console.log('Cookie consent accepted - tracking enabled');
+    if (window.vermarkterAnalytics && typeof window.vermarkterAnalytics.enable === 'function') {
+      window.vermarkterAnalytics.enable();
+    }
   }
 }
 

@@ -292,6 +292,17 @@ class MediaCalculator {
       roas,
       profit: Math.max(0, netProfit)
     });
+
+    // GA4: відправляємо подію calculator_use
+    if (window.vermarkterAnalytics) {
+      window.vermarkterAnalytics.track('calculator_use', {
+        platform:  this.platformSelector?.value || 'google',
+        niche:     this.nicheSelector?.value    || 'custom',
+        budget:    v.budget,
+        roas:      Math.round(roas),
+        profit:    Math.max(0, Math.round(netProfit))
+      });
+    }
   }
 
   /**
