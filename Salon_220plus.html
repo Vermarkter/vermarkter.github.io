@@ -116,8 +116,8 @@
 </div>
 </div>
 <script>
-const WT="Hallo! \uD83D\uDC4B Ich habe Ihren Salon auf Google Maps entdeckt. Tolle Arbeit, aber Ihnen fehlt eine moderne Website. Wir haben eine fertige L\xF6sung: Website + App + KI-Rezeptionistin f\xFCr 1.000 \u20AC. Die KI ist ein echter Administrator: Sie kennt Ihre Preise und beantwortet Kundenfragen 24/7. Hier ist unser Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/ -- Interesse? Schreiben Sie mir hier im Chat! \uD83D\uDE0A";
-const wl=p=>{if(!p||p==='\u2014'||p==='-'||p==='')return '';const n=p.replace(/[\s\-\(\)]/g,'').replace(/^0/,'49').replace(/^\+/,'');if(!/^\d{8,}$/.test(n))return '';return 'https://wa.me/'+n+'?text='+encodeURIComponent(WT);};
+const wt=nm=>`Hallo ${nm}! \uD83D\uDC4B Ich habe Ihren Salon auf Google Maps entdeckt. Tolle Arbeit \u2014 aber Ihnen fehlt noch eine moderne Website mit Online-Buchung.\n\nWir haben eine fertige L\xF6sung: Website + App + KI-Rezeptionistin f\xFCr 1.000 \u20AC.\n\nUnsere KI ist ein echter Administrator: Sie kennt Ihre Preise, beantwortet alle Kundenfragen und nimmt Termine an \u2014 24/7, ohne Pause.\n\nHier ist unser Demo f\xFCr Ihre Branche:\nhttps://vermarkter.vercel.app/SERVICES/beauty-industry/de/\n\nInteresse? Schreiben Sie mir einfach hier im Chat! \uD83D\uDE0A`;
+const wl=(p,nm)=>{if(!p||p==='\u2014'||p==='-'||p==='')return '';const n=p.replace(/[\s\-\(\)]/g,'').replace(/^0/,'49').replace(/^\+/,'');if(!/^\d{8,}$/.test(n))return '';return 'https://wa.me/'+n+'?text='+encodeURIComponent(wt(nm||''));};
 const isMobile=p=>{const n=p.replace(/[\s\-\(\)]/g,'').replace(/^\+/,'');return /^49(15|16|17)/.test(n);};
 const ml=(pid,nm,ad)=>pid?'https://www.google.com/maps/place/?q=place_id:'+pid:'https://www.google.com/maps/search/'+encodeURIComponent(nm+' '+ad+' Deutschland');
 const td=()=>{const d=new Date();return String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear();};
@@ -335,7 +335,7 @@ function render(){
     const rows=f.filter(r=>r.city===city);
     return `<div class="sh">${city} — ${rows.length}</div><div class="cs">${rows.map(r=>{
       const i=data.indexOf(r);
-      const link=wl(r.phone);
+      const link=wl(r.phone,r.name);
       const mlink=ml(r.pid,r.name,r.addr);
       const mobile=r.phone&&r.phone!=='—'&&isMobile(r.phone);
       return `<div class="c" style="${mobile?'border-color:rgba(37,211,102,0.4);background:rgba(37,211,102,0.04)':''}">
@@ -352,7 +352,7 @@ function render(){
         </div>`:`<div class="cm">${r.addr}${r.phone!=='—'?' · '+r.phone:''}${r.site?' · '+r.site:''}</div>`}
         <div class="ca">
           <a class="mb" href="${mlink}" target="_blank">Maps</a>
-          ${link?`<a class="wb" href="${link}" target="_blank">WhatsApp</a>`:''}
+          ${link?`<a class="wb" href="${link}" target="_blank" style="${mobile?'background:#25D366;color:#fff;border-color:#25D366;font-weight:700':'opacity:0.45;filter:grayscale(60%)'}">${mobile?'✅ WhatsApp':'📞 WhatsApp'}</a>`:''}
           <select class="ss" onchange="chS(${i},this.value)">
             ${['Не сконтактовано','Написав','Думає','Купив'].map(s=>`<option${s===r.status?' selected':''}>${s}</option>`).join('')}
           </select>
