@@ -116,7 +116,7 @@
 </div>
 </div>
 <script>
-const wt=(nm)=>`Hallo ${nm}! \uD83D\uDC4B Ich habe Ihren Salon auf Google Maps entdeckt. Tolle Arbeit! Mir ist aufgefallen, dass Sie noch keine moderne Website/App f\xFCr Online-Buchungen haben. Wir haben eine L\xF6sung mit KI-Administrator f\xFCr 1.000 \u20AC. Hier ist unser Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/ -- Interesse?`;
+const wt=(nm)=>`Hi ${nm}! 👋 Deine Colorations auf Instagram sind der Hammer! 🔥 \n\nKurze Frage: Wenn jemand in Charlottenburg "Friseur" googelt — warum findet er dich nicht? 😕\n\nIch helfe Salons wie deinem mit:\n✅ Eigene Website + Booking-App\n✅ 24/7 Auto-Termine via WhatsApp\n✅ Alles für 1.000€ einmalig\n\n👉 2-Min-Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/\n\nInteresse an 10 Min. Call?\n\nVG, [ВАШЕ ІМ'Я]`;
 const isMobile=p=>!!p&&p!=='\u2014'&&/^\+49\s?(15|16|17)/.test(p.trim());
 const wl=(p,nm)=>{if(!isMobile(p))return '';const n=p.replace(/\D/g,'');return 'https://wa.me/'+n+'?text='+encodeURIComponent(wt(nm||''));};
 const ml=(pid,nm,ad)=>pid?'https://www.google.com/maps/place/?q=place_id:'+pid:'https://www.google.com/maps/search/'+encodeURIComponent(nm+' '+ad+' Deutschland');
