@@ -116,9 +116,9 @@
 </div>
 </div>
 <script>
-const wt=nm=>`Hallo ${nm}! \uD83D\uDC4B Ich habe Ihren Salon auf Google Maps entdeckt. Tolle Arbeit \u2014 aber Ihnen fehlt noch eine moderne Website mit Online-Buchung.\n\nWir haben eine fertige L\xF6sung: Website + App + KI-Rezeptionistin f\xFCr 1.000 \u20AC.\n\nUnsere KI ist ein echter Administrator: Sie kennt Ihre Preise, beantwortet alle Kundenfragen und nimmt Termine an \u2014 24/7, ohne Pause.\n\nHier ist unser Demo f\xFCr Ihre Branche:\nhttps://vermarkter.vercel.app/SERVICES/beauty-industry/de/\n\nInteresse? Schreiben Sie mir einfach hier im Chat! \uD83D\uDE0A`;
-const wl=(p,nm)=>{if(!p||p==='\u2014'||p==='-'||p==='')return '';const n=p.replace(/[\s\-\(\)]/g,'').replace(/^0/,'49').replace(/^\+/,'');if(!/^\d{8,}$/.test(n))return '';return 'https://wa.me/'+n+'?text='+encodeURIComponent(wt(nm||''));};
-const isMobile=p=>{const n=p.replace(/[\s\-\(\)]/g,'').replace(/^\+/,'');return /^49(15|16|17)/.test(n);};
+const wt=(nm)=>`Hallo ${nm}! \uD83D\uDC4B Ich habe Ihren Salon auf Google Maps entdeckt. Tolle Arbeit! Mir ist aufgefallen, dass Sie noch keine moderne Website/App f\xFCr Online-Buchungen haben. Wir haben eine L\xF6sung mit KI-Administrator f\xFCr 1.000 \u20AC. Hier ist unser Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/ -- Interesse?`;
+const isMobile=p=>!!p&&p!=='\u2014'&&/^\+49\s?(15|16|17)/.test(p.trim());
+const wl=(p,nm)=>{if(!isMobile(p))return '';const n=p.replace(/\D/g,'');return 'https://wa.me/'+n+'?text='+encodeURIComponent(wt(nm||''));};
 const ml=(pid,nm,ad)=>pid?'https://www.google.com/maps/place/?q=place_id:'+pid:'https://www.google.com/maps/search/'+encodeURIComponent(nm+' '+ad+' Deutschland');
 const td=()=>{const d=new Date();return String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear();};
 
@@ -352,7 +352,10 @@ function render(){
         </div>`:`<div class="cm">${r.addr}${r.phone!=='—'?' · '+r.phone:''}${r.site?' · '+r.site:''}</div>`}
         <div class="ca">
           <a class="mb" href="${mlink}" target="_blank">Maps</a>
-          ${link?`<a class="wb" href="${link}" target="_blank" style="${mobile?'background:#25D366;color:#fff;border-color:#25D366;font-weight:700':'opacity:0.45;filter:grayscale(60%)'}">${mobile?'✅ WhatsApp':'📞 WhatsApp'}</a>`:''}
+          ${link
+            ?`<a class="wb" href="${link}" target="_blank" style="background:#25D366;color:#fff;border-color:#25D366;font-weight:700">✅ WhatsApp</a>`
+            :(r.phone&&r.phone!=='\u2014'?`<span class="wb" style="opacity:0.3;cursor:not-allowed;filter:grayscale(100%)" title="Стаціонарний — WhatsApp малоймовірний">📞 Стаціонарний</span>`:'')
+          }
           <select class="ss" onchange="chS(${i},this.value)">
             ${['Не сконтактовано','Написав','Думає','Купив'].map(s=>`<option${s===r.status?' selected':''}>${s}</option>`).join('')}
           </select>
