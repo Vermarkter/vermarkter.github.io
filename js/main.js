@@ -108,7 +108,7 @@ if (langSelector) {
         };
         
         if (routes[lang]) {
-            window.location.href = 'https://vermarkter.github.io' + routes[lang];
+            window.location.href = 'https://vermarkter.vercel.app' + routes[lang];
         }
     });
 }

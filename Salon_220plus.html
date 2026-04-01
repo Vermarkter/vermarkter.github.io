@@ -1,0 +1,380 @@
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.w{padding:.5rem 0;font-family:var(--font-sans)}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.stat{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:9px 11px}
+.sl{font-size:11px;color:var(--color-text-secondary);margin-bottom:2px}
+.sv{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+.tb{display:flex;gap:7px;margin-bottom:10px;flex-wrap:wrap}
+.tb input,.tb select{font-size:12px;padding:5px 9px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary)}
+.tb input{flex:1;min-width:130px}
+.cb{font-size:12px;padding:5px 12px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer}
+.cb:hover{background:var(--color-background-secondary)}
+.sh{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.06em;padding:8px 0 4px;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:5px}
+.cs{display:flex;flex-direction:column;gap:5px;margin-bottom:7px}
+.c{background:var(--color-background-primary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:9px 12px}
+.c:hover{border-color:var(--color-border-secondary)}
+.ct{display:flex;align-items:flex-start;gap:7px;margin-bottom:5px}
+.cn{font-size:13px;font-weight:500;color:var(--color-text-primary);flex:1;line-height:1.3}
+.br{background:var(--color-background-secondary);color:var(--color-text-secondary);font-size:11px;padding:2px 6px;border-radius:999px;flex-shrink:0}
+.db{background:none;border:none;cursor:pointer;color:var(--color-text-secondary);font-size:13px;padding:1px 3px;flex-shrink:0}
+.db:hover{color:var(--color-text-primary)}
+.cm{font-size:11px;color:var(--color-text-secondary);margin-bottom:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ca{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.mb{display:inline-flex;padding:4px 9px;font-size:11px;border-radius:var(--border-radius-md);text-decoration:none;background:#EEEDFE;color:#3C3489;border:.5px solid #AFA9EC}
+.mb:hover{background:#CECBF6}
+.wb{display:inline-flex;padding:4px 9px;font-size:11px;font-weight:500;border-radius:var(--border-radius-md);text-decoration:none;background:#E1F5EE;color:#085041;border:.5px solid #5DCAA5}
+.wb:hover{background:#9FE1CB}
+.ss{font-size:11px;padding:3px 6px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer;margin-left:auto}
+.pi{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.pi input{font-size:11px;padding:3px 7px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);flex:1;min-width:100px}
+.si{font-size:11px;padding:3px 7px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer}
+.si:hover{background:var(--color-background-secondary)}
+.ac{background:var(--color-background-secondary);border:.5px dashed var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:10px 12px;margin-top:8px}
+.ag{display:grid;grid-template-columns:2fr 1fr 1fr;gap:7px;margin-bottom:7px}
+.ag input,.ag select{font-size:12px;padding:5px 7px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);width:100%}
+.ar2{display:flex;gap:7px}
+.ar2 input{flex:1;font-size:12px;padding:5px 7px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary)}
+.ab{font-size:12px;padding:5px 13px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
+.em{text-align:center;padding:2rem;color:var(--color-text-secondary);font-size:13px}
+@media(prefers-color-scheme:dark){
+.wb{background:#085041;color:#9FE1CB;border-color:#0F6E56}.wb:hover{background:#0F6E56}
+.mb{background:#3C3489;color:#CECBF6;border-color:#534AB7}.mb:hover{background:#534AB7}
+}
+</style>
+<div class="w">
+<div class="stats">
+  <div class="stat"><div class="sl">Всього</div><div class="sv" id="sa">0</div></div>
+  <div class="stat"><div class="sl">Написав</div><div class="sv" id="sw">0</div></div>
+  <div class="stat"><div class="sl">Думає</div><div class="sv" id="st">0</div></div>
+  <div class="stat"><div class="sl">Купив</div><div class="sv" id="sb">0</div></div>
+</div>
+<div class="tb">
+  <input id="q" placeholder="Пошук..." oninput="render()">
+  <select id="fc" onchange="render()">
+    <option value="">Всі райони</option>
+    <option>München — Zentrum</option>
+    <option>München — Schwabing</option>
+    <option>München — Maxvorstadt/Neuhausen</option>
+    <option>München — Bogenhausen/Haidhausen</option>
+    <option>München — Giesing/Au</option>
+    <option>München — Sendling/Solln</option>
+    <option>München — Moosach/Allach</option>
+    <option>München — Pasing/Aubing</option>
+    <option>München — Neuperlach</option>
+    <option>Ottobrunn/Unterhaching/Neubiberg</option>
+    <option>Grünwald/Pullach/Oberhaching</option>
+    <option>Garching</option>
+    <option>Unterschleißheim</option>
+    <option>Oberschleißheim</option>
+    <option>Ismaning</option>
+    <option>Dachau</option>
+    <option>Karlsfeld</option>
+    <option>Erding</option>
+    <option>Freising/Moosburg</option>
+    <option>Gauting</option>
+    <option>Germering</option>
+    <option>Gräfelfing/Planegg</option>
+    <option>Starnberg/Gilching</option>
+    <option>Berlin — Charlottenburg</option>
+    <option>Berlin — Mitte</option>
+    <option>Berlin — Prenzlauer Berg/Friedrichshain</option>
+    <option>Berlin — Schöneberg/Kreuzberg</option>
+  </select>
+  <select id="fs" onchange="render()">
+    <option value="">Всі статуси</option>
+    <option>Не сконтактовано</option><option>Написав</option><option>Думає</option><option>Купив</option>
+  </select>
+  <button class="cb" onclick="copyMd()">Копіювати MD</button>
+</div>
+<div id="root"></div>
+<div class="ac">
+  <div class="ag">
+    <input id="an" placeholder="Назва салону">
+    <select id="acf">
+      <option>München — Zentrum</option><option>München — Schwabing</option>
+      <option>München — Maxvorstadt/Neuhausen</option>
+      <option>München — Bogenhausen/Haidhausen</option>
+      <option>München — Giesing/Au</option><option>München — Sendling/Solln</option>
+      <option>München — Moosach/Allach</option><option>München — Pasing/Aubing</option>
+      <option>Dachau</option><option>Erding</option><option>Freising/Moosburg</option>
+      <option>Garching</option><option>Gauting</option><option>Germering</option>
+      <option>Starnberg/Gilching</option>
+      <option>Berlin — Charlottenburg</option><option>Berlin — Mitte</option>
+      <option>Berlin — Prenzlauer Berg/Friedrichshain</option>
+      <option>Berlin — Schöneberg/Kreuzberg</option>
+    </select>
+    <input id="aph" placeholder="Телефон +49...">
+  </div>
+  <div class="ar2">
+    <input id="aad" placeholder="Адреса">
+    <input id="awe" placeholder="Сайт">
+    <input id="arat" placeholder="★" type="number" min="1" max="5" step="0.1">
+    <input id="apid" placeholder="Place ID">
+    <button class="ab" onclick="addRow()">+ Додати</button>
+  </div>
+</div>
+</div>
+<script>
+const WT="Hallo! \uD83D\uDC4B Ich bin auf Ihren Salon gestoßen und wollte kurz Bescheid geben: Wir erstellen moderne Websites & Buchungs-Apps für Salons — fertig in 2 Wochen, ab 1.000 €. Schauen Sie gerne mal rein und hinterlassen Sie eine Anfrage direkt auf unserer Seite: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/";
+const wl=p=>{if(!p||p==='—')return '';const n=p.replace(/[\s\-\(\)]/g,'').replace(/^0/,'49').replace(/^\+/,'');return 'https://wa.me/'+n+'?text='+encodeURIComponent(WT);};
+const ml=(pid,nm,ad)=>pid?'https://www.google.com/maps/place/?q=place_id:'+pid:'https://www.google.com/maps/search/'+encodeURIComponent(nm+' '+ad+' Deutschland');
+const td=()=>{const d=new Date();return String(d.getDate()).padStart(2,'0')+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear();};
+
+const R=[
+['München — Zentrum','MUC Barbershop','Corneliusstraße 2','+49 89 99999000','4.9','ChIJfbJ119zfnUcReEp6M9vXLIo'],
+['München — Zentrum','Soul Barbers','Kreuzstraße 3B','+49 170 2164047','4.9','ChIJXe5IXnF1nkcRBlH5tKrPiHk'],
+['München — Zentrum','BULLFROG Barbershop','Rosental 6','+49 89 27795326','4.9','ChIJge6zxFh1nkcROIHa4uX9B1M'],
+['München — Zentrum','Barber House Glockenbachviertel','Fraunhoferstraße 20','+49 89 125032700','4.9','ChIJn8DskqDfnUcRDgogjv6hGa0'],
+['München — Zentrum','BABACUT Hair Salon','Hanauer Str. 68','+49 89 92289992','4.9','ChIJ7-hWZmd3nkcRZFfOKolR7Mc'],
+['München — Zentrum','The Goat Barbershop','Blumenstraße 3','+49 89 97864465','4.9','ChIJ6W-PBQklL6MRlnsk4S_QwwQ'],
+['München — Zentrum','MUNICH HAIR STYLE','Lindwurmstraße 67','+49 173 7568384','4.9','ChIJmVy-ElrfnUcRdCYat3xSYOM'],
+['München — Zentrum','Black Betty The Barbershop','Lindwurmstraße 151','+49 89 30706174','4.9','ChIJh3XjsvTfnUcRShxhC-pSc5w'],
+['München — Zentrum','s&bHairlounge','Buttermelcherstraße 1','+49 89 90188886','5.0','ChIJW7oO54DfnUcRQm7G4cbHKAk'],
+['München — Zentrum','Barber Sascha Siemon','Rumfordstraße 3','+49 1573 4967225','5.0','ChIJnz--xlffnUcRexHM_aea1rs'],
+['München — Zentrum','HOUSE OF FADE','Rumfordstraße 11a','+49 89 89557560','4.8','ChIJ50LoU4AXJUwREQNvpy2dIrU'],
+['München — Zentrum','Munich Barbershop','Holzstraße 21','+49 89 46229924','4.7','ChIJC1aqMVzfnUcR_DaX92la1io'],
+['München — Zentrum','Beauty Mega Salon','Rosenheimer Str. 113','+49 89 41342014','4.6','ChIJN-I9HqXfnUcRA2UkCHqax-0'],
+['München — Zentrum','Almas Barbershop','Zweibrückenstraße 15','+49 1577 8149620','5.0','ChIJhbfqkkLfnUcR1MmXsSdIRQc'],
+['München — Zentrum','Next Level Barber Shop','Barer Str. 68','+49 89 32730030','5.0','ChIJi7C8F8F1nkcRbo0_fx-y638'],
+['München — Zentrum','Barbershop by ben','Zielstattstraße 8c','+49 176 21809426','4.7','ChIJkcI2aADZnUcRS-s097jz8nw'],
+['München — Zentrum','Vits. Barbery','Rosenheimer Str. 191','+49 89 401270','4.9','ChIJqbzC8EHfnUcRBlerCGft4uM'],
+['München — Zentrum','Barber Handwerk','Emil-Riedel-Straße 21','+49 89 26480866','5.0','ChIJD0uYfwB1nkcRK_faqBFMLmo'],
+['München — Zentrum','Gentleman Premium Barbershop','Herzog-Wilhelm-Straße 25','+49 89 57957539','4.9','ChIJp68JiL7fnUcR3CQgMtZ6Y3s'],
+['München — Schwabing','KIDA RAMADAN Barbershop','Leopoldstraße 69','+49 15511 280419','4.8','ChIJnbk8pkd1nkcRrR7guiGpGeY'],
+['München — Schwabing','Gentleman\'s Cut München','Kurfürstenstraße 47','+49 89 32785908','5.0','ChIJ6btaBPh1nkcRQ5jeHR8g4s0'],
+['München — Schwabing','Room 25 Friseur','Hohenzollernstraße 25','+49 89 90159594','4.8','ChIJda66C991nkcRlCV_zHRsIwE'],
+['München — Schwabing','Schabbach & Weber','Hohenzollernstraße 27','+49 89 55274036','4.7','ChIJo6GYycZ1nkcRXz8KrF_b1ik'],
+['München — Schwabing','GK Haircut','Leopoldstraße 19','+49 89 37916165','4.9','ChIJ6aBCgM91nkcREeTecSSVlQQ'],
+['München — Schwabing','CUT MUNICH Friseur','Karl-Theodor-Straße 97','+49 89 99949554','5.0','ChIJj91vM-J1nkcRJy8Jh0nYqKA'],
+['München — Schwabing','Hobby Friseur','Schleißheimer Str. 189','+49 89 12626360','4.9','ChIJF5iENkp1nkcRH_lR2vOK6GU'],
+['München — Schwabing','Beverly Hills Hair Style','Ungererstraße 19','+49 89 38898966','5.0','ChIJt_RY7Md1nkcRZrTByxA75Io'],
+['München — Schwabing','Hair Lounge Schwabing','Belgradstraße 4','+49 89 95447561','4.8','ChIJNYXDAfd1nkcR2MuxaHSDbF4'],
+['München — Schwabing','Pony Club','Hohenzollernstraße 82','+49 89 33019991','4.8','ChIJCUVxcMR1nkcRzj-rr7f34YA'],
+['München — Schwabing','Sanaz Beauty Lounge','Hohenzollernpl. 3','+49 89 97861488','4.8','ChIJAdxWP6F1nkcRBTALqpmvMPU'],
+['München — Schwabing','Friseursalon Hairworld','Amalienstraße 45','+49 89 28674373','4.7','ChIJ66GEh-x1nkcRZJbYNIpv6u0'],
+['München — Schwabing','NEW CUT HAIRSTYLING','Schellingstraße 111','+49 89 52388536','4.9','ChIJGc5QSeZ1nkcR-dzaxQiZUCo'],
+['München — Schwabing','Royal Friseur','Amalienstraße 32','+49 89 39292052','5.0','ChIJ-29T5yl1nkcR-1gFYGq3HaQ'],
+['München — Schwabing','Paris Friseur','Kurfürstenpl. 4','+49 89 74048737','4.8','ChIJGWuXicN1nkcRzIpenjYOolc'],
+['München — Schwabing','Georgis Friseure','Belgradstraße 9','+49 89 32357764','4.7','ChIJ_ao7IJZ1nkcRdpdxrNit2rg'],
+['München — Maxvorstadt/Neuhausen','Cut Zero Neuhausen','Mettinghstraße 1','+49 89 54805602','4.8','ChIJo4WWPk13nkcRPcYT4Tr3HUE'],
+['München — Maxvorstadt/Neuhausen','HairGott Friseure München','Nymphenburger Str. 145','+49 89 13937310','4.9','ChIJ-fPUvhZ2nkcRdlVqCCTZS0A'],
+['München — Maxvorstadt/Neuhausen','Scissors Hairstyling & Barbershop','Raglovichstraße 2','+49 1577 5104447','4.8','ChIJV_E0_oN3nkcRjJQeF5n5G9U'],
+['München — Maxvorstadt/Neuhausen','SALOONS Neuhausen','Dom-Pedro-Straße 2','+49 89 156528','4.8','ChIJ4cRJjXJ2nkcRoPVWiA6Muus'],
+['München — Maxvorstadt/Neuhausen','Mr. & Mrs. Friseure','Dachauer Str. 149','+49 89 12021096','4.8','ChIJP08KJtF3nkcRwh5psb98joE'],
+['München — Maxvorstadt/Neuhausen','Dilon & Sam — Die Barbiere','Augustenstraße 26','+49 89 594779','4.9','ChIJHWJFzeR1nkcRNSJ-doGVlUE'],
+['München — Maxvorstadt/Neuhausen','Barberella Maxvorstadt','Augustenstraße 33','+49 89 97349598','4.7','ChIJXxD67OR1nkcRrr8CiXO5kbY'],
+['München — Maxvorstadt/Neuhausen','KEN NYN — Art of Hair','Nymphenburger Str. 134','+49 89 13927589','4.9','ChIJaUt3idJ3nkcRv-dkjw88GzU'],
+['München — Maxvorstadt/Neuhausen','HDHaircut','Seidlstraße 2A','+49 89 555839','4.9','ChIJ-ZMQJ3B1nkcRb2VUV9qAwd8'],
+['München — Maxvorstadt/Neuhausen','Azad Friseur','Schleißheimer Str. 65','+49 89 12629962','4.9','ChIJ7ycMcMF1nkcRzebFkYtyJVU'],
+['München — Maxvorstadt/Neuhausen','Gülşen Tasch AVEDA SALON','Nymphenburger Str. 78','+49 176 66892625','5.0','ChIJkzqz4Gx3nkcRYhkoOd9hlLc'],
+['München — Bogenhausen/Haidhausen','Friseur Dream Hair Salon','Richard-Strauss-Straße 21','+49 89 41189486','4.9','ChIJhSOCPdp1nkcR6fHlZSjWJeo'],
+['München — Bogenhausen/Haidhausen','Barberella Haidhausen','Ismaninger Str. 6','+49 89 4702221','4.8','ChIJ19ihvxd1nkcRaXyZ6eedLmU'],
+['München — Bogenhausen/Haidhausen','BEAUTYARTS','Mühlbaurstraße 36','+49 176 20981010','5.0','ChIJQx2vNX_fnUcRFsjWIUNuaXw'],
+['München — Bogenhausen/Haidhausen','Friseur Omer\'s Hair Bogenhausen','Richard-Strauss-Straße 80','+49 89 99919014','4.8','ChIJE2u1mBl1nkcRJmPLJxTywK4'],
+['München — Bogenhausen/Haidhausen','Hair & Beauty Studio Bogenhausen','Holbeinstraße 16','+49 89 76759848','5.0','ChIJXUaeFqV1nkcRm7BEY3y3nRA'],
+['München — Bogenhausen/Haidhausen','BIO HAIR SPA Bogenhausen','Ismaninger Str. 42','+49 89 24210400','4.8','ChIJ2Ww7eVx1nkcROB2RyzDqhYU'],
+['München — Bogenhausen/Haidhausen','Hair is Art by Zidani','Ismaninger Str. 27','+49 89 35745677','4.9','ChIJZy4ZC5p1nkcRsB1B7A3ArjI'],
+['München — Bogenhausen/Haidhausen','Open Hair Friseur','Schneckenburgerstraße 30','+49 89 48998181','5.0','ChIJ3eG9p4HfnUcR0jp7HnvKet4'],
+['München — Bogenhausen/Haidhausen','SALOONS Bogenhausen','Friedrich-Eckart-Straße 52','+49 89 9302205','4.8','ChIJJ1bXi0R1nkcRpmf4qUxrxzA'],
+['München — Bogenhausen/Haidhausen','Friseur Denya Bogenhausen','Freischützstraße 17','+49 89 37558355','5.0','ChIJi8wepy21nkcRkFq9A9NJNiQ'],
+['München — Giesing/Au','MOS barbershop','Halbigstraße 2','+49 89 99857822','5.0','ChIJ0_MfYADfnUcR7Oxj6dPyc48'],
+['München — Giesing/Au','NEVEN Friseur und Barbier','St.-Bonifatius-Straße 3','+49 89 69797370','4.9','ChIJY1GHrHLfnUcRS_OHlXz28aE'],
+['München — Giesing/Au','Goldene Schere','Tegernseer Landstraße 148','+49 89 6917497','4.9','ChIJ9QdjOTvfnUcRDW7iSH9NWJ4'],
+['München — Giesing/Au','Friseur CHANGEyou','Grünwalder Str. 33','+49 89 6927973','4.9','ChIJdyZoUxDfnUcR2-xqSJPLdPQ'],
+['München — Giesing/Au','CutClub Hair & Make up','Gietlstraße 21','+49 89 12471855','5.0','ChIJw41nOHLfnUcR29c6ic72JtA'],
+['München — Giesing/Au','Bavaria Friseursalon','Oefelestraße 10','+49 89 653646','4.9','ChIJDzF6UmnfnUcRjNPmQMnDxBI'],
+['München — Giesing/Au','Lani Hair Beauty Salon','Schwanseestraße 67A','+49 176 61496913','4.9','ChIJwbET0pDfnUcR4XMBiwfbNqQ'],
+['München — Giesing/Au','Friseur New York Giesing','Schwanseestraße 4','+49 89 69302994','4.8','ChIJFXUkx-jfnUcRyXH54xLFfWs'],
+['München — Giesing/Au','HaarWelt Giesing','Tegernseer Landstraße 81','+49 89 23053929','4.8','ChIJpdUWrHLfnUcRzOCGz815TRs'],
+['München — Giesing/Au','Shortcuts Friseur','Grünwalder Str. 7','+49 89 37022211','4.9','ChIJ1YUWriTfnUcR56IGLMbq6VY'],
+['München — Giesing/Au','Cut In The City','Tegernseer Pl. 7','+49 89 69396894','4.8','ChIJ67a_Xn_fnUcRZpJ6vTUIffQ'],
+['München — Sendling/Solln','Friseur Chic Beautysalon Sendling','Kistlerhofstraße 168','+49 178 4470690','5.0','ChIJF506s_3ZnUcRm_-NN2zvMY4'],
+['München — Sendling/Solln','Element\'s Haircut','Boschetsrieder Str. 59A','+49 89 12284959','4.9','ChIJTbKy04LZnUcRNF9w-8o6Z_M'],
+['München — Sendling/Solln','BB HAIR & COSMETICS','Kistlerhofstraße 82','+49 89 78019977','4.9','ChIJY7jG5DXZnUcRxIpMsB86ZpM'],
+['München — Sendling/Solln','Goldener Friseur','Hofmannstraße 26','+49 89 38046180','4.9','ChIJ1Q8gUeHZnUcR8l3cBuWawKs'],
+['München — Sendling/Solln','Barbershop Ayman','Hofmannstraße 15','+49 89 71049494','4.7','ChIJjzOfotXYnUcRH5f5RsxhaNk'],
+['München — Sendling/Solln','Barbershop Munich Sendling','Boschetsrieder Str. 140','+49 89 78582630','4.8','ChIJr2h3BiHZnUcRmiCXfpptEyw'],
+['München — Sendling/Solln','Haarwerk Thalkirchen','Pognerstraße 4','+49 89 7231303','4.8','ChIJsY1fQkH-CEERERHlKNxXon8'],
+['München — Sendling/Solln','RS Hair & Beautylounge','Waldfriedhofstraße 36','+49 89 15988177','4.9','ChIJYXV_a0TfnUcRxVhioiHa56Q'],
+['München — Sendling/Solln','Alvar\'s Barbershop','Bichler Str. 22','+49 172 8780982','5.0','ChIJV-_uKwDfnUcRrLDEdOo_lIg'],
+['München — Sendling/Solln','Adam Cut Barbershop','Plinganserstraße 42','+49 89 52075229','5.0','ChIJXTwm8mKxQ2oR4C9UEGF8baU'],
+['München — Moosach/Allach','Friseur & Barbershop Moosach','Baubergerstraße 9','+49 89 14337878','4.9','ChIJnTSxNU53nkcRd8tSi5ULMsc'],
+['München — Moosach/Allach','Josef Barber Moosach','Dachauer Str. 264','+49 89 46225588','4.9','ChIJ9XXnGQB3nkcRaRjz2a38rvY'],
+['München — Moosach/Allach','Barber & Beauty Maximilian','Pelkovenstraße 48','+49 89 1410455','4.9','ChIJj6zkAAB3nkcRQ_4YfOjNsfU'],
+['München — Moosach/Allach','Bio Beauty Hair by Christiane Betz','Gleißmüllerstraße 11b','+49 89 90179714','4.9','ChIJ8QStq651nkcRvGkwGdw6Ejg'],
+['München — Moosach/Allach','Atelier La Coupe by Hanak Mohseni','Bautzener Str. 1','+49 89 1414205','4.9','ChIJp0PWPaF3nkcRbPA6E1XRFtU'],
+['München — Moosach/Allach','Hairconnect by Peter Beier','Dachauer Str. 282','+49 89 14959930','4.8','ChIJhbuar-R1nkcRPPNL3cARYvM'],
+['München — Moosach/Allach','Kosmetikstudio Four Seasons','Allacher Str. 187H','+49 89 1414365','4.8','ChIJ1bhoJJ93nkcRe1-Ye3eOG5s'],
+['München — Moosach/Allach','Black & Gold Beauty Center','Dachauer Str. 471','+49 89 80065558','5.0','ChIJ3QOqUgB3nkcRrlFvk_rSnTQ'],
+['München — Moosach/Allach','Josef Barber Olympiazentrum','Helene-Mayer-Ring 10','+49 89 51073105','4.9','ChIJqZdeXf13nkcR9S9g6t3MIUc'],
+['München — Pasing/Aubing','ELDI Barbershop','Bodenseestr. 23','+49 1590 1943907','5.0','ChIJhXWqvFbZnUcRrwzUV4V7xzs'],
+['München — Pasing/Aubing','Das Schanzerwerk','Eichenauer Str. 2','+49 89 89137126','4.8','ChIJIWKpynp4nkcRoExuMlID-3A'],
+['München — Pasing/Aubing','Sami\'s Cut Friseur','Landsberger Str. 483','+49 89 24597188','4.9','ChIJI0Nbnqt3nkcRPpG32MiF6pk'],
+['München — Pasing/Aubing','Barbershop Freiham','Aubinger Allee 15','—','4.6','ChIJdTY1BADXnUcR0Dmg8NHFS-s'],
+['München — Pasing/Aubing','AyLo Friseur Barbershop','Westendstraße 233','+49 89 35816969','5.0','ChIJhSdB1efZnUcR9x0-3q_Z7qY'],
+['München — Pasing/Aubing','Ato\'s Barber Shop','Fürstenrieder Str. 32','+49 89 21528674','4.9','ChIJw5cwkzvZnUcRajGY5PPwNyE'],
+['München — Pasing/Aubing','Friseur & Barber Shop Gröbenzell','Schubertstraße 2, Gröbenzell','+49 8142 4379872','5.0','ChIJFwF2WQB5nkcRIHy58So-KMc'],
+['München — Pasing/Aubing','Barbershop Legacy','Waisenhausstraße 19','+49 1590 6621055','5.0','ChIJrYNg59V3nkcRFYe0dpa2e1E'],
+['München — Neuperlach','BABACUT HAIR SALON PEP','Ollenhauerstraße 6','+49 89 55917118','4.9','ChIJU1-Vmu_fnUcRfc5L7YRKh-M'],
+['München — Neuperlach','Leo & Ruben\'s Barbershop','Ottobrunner Str. 13','+49 89 24606838','4.8','ChIJPypz2QvfnUcRcM2sC_DPq2I'],
+['München — Neuperlach','NP Haarstylisten','Oskar-Maria-Graf-Ring 18','+49 89 6351822','4.8','ChIJK-cfLBjhnUcRpFhJprPGZng'],
+['München — Neuperlach','Beauty Bar Pep','Thomas-Dehler-Straße 10','+49 89 87769636','4.8','ChIJM7am3snhnUcRzN4ZQM9LxZc'],
+['München — Neuperlach','Beauty X Factory','Thomas-Dehler-Straße 15','+49 89 12472377','4.9','ChIJkU0hgIrhnUcRw-rnsS-OwoY'],
+['München — Neuperlach','Hairstyling Rekani','Albert-Schweitzer-Straße 64','+49 89 676097','4.9','ChIJDzQ4cZLhnUcRpneaYa4V0-o'],
+['München — Neuperlach','Valessa Munich','Franz-Heubl-Str. 41','+49 176 84397800','4.9','ChIJ91ZaTKnGaKARoJKbOdesMA0'],
+['München — Neuperlach','L\'Amour Beauty Perlach Plaza','Thomas-Dehler-Straße 15','+49 89 37023561','4.9','ChIJS9OMp7zhnUcRGwZfkyIFJus'],
+['Ottobrunn/Unterhaching/Neubiberg','Friseur Haarem Ottobrunn','Am Brunneck 4, Ottobrunn','+49 89 6010860','4.9','ChIJbS42GOLgnUcRNa--BBE8sv0'],
+['Ottobrunn/Unterhaching/Neubiberg','Otto Barbershop','Roseggerstraße 55, Ottobrunn','+49 89 68092333','5.0','ChIJUw6SyPzhnUcRdpAf3X7ImhI'],
+['Ottobrunn/Unterhaching/Neubiberg','Phillipe Le Guern — Art of Beauty','Hohenbrunner Str. 4, Ottobrunn','+49 89 6097861','4.8','ChIJo_yKTyDhnUcRLVis1xEDijE'],
+['Ottobrunn/Unterhaching/Neubiberg','SALOONS Putzbrunn','Parkstraße 3c, Putzbrunn','+49 89 51555678','4.9','ChIJX25x5WjhnUcRS2AvjsvPS-A'],
+['Ottobrunn/Unterhaching/Neubiberg','Maximilian Meyer Hair & Beauty','Ottobrunner Str. 37, Unterhaching','+49 89 61534337','5.0','ChIJ7Tqy3aXgnUcRvKdRG89prTs'],
+['Ottobrunn/Unterhaching/Neubiberg','Il Capello','Hauptstraße 81, Unterhaching','+49 89 6116260','4.9','ChIJdwYCeQLenUcRiQ7fYhDL40k'],
+['Ottobrunn/Unterhaching/Neubiberg','Coiffeur Agnes','Hauptstraße 30, Neubiberg','+49 174 9078219','4.9','ChIJKSaReKThnUcR6_jJyQteHnI'],
+['Grünwald/Pullach/Oberhaching','Nazar Friseur Oberhaching','Stefanienstraße 7, Oberhaching','+49 89 24291564','4.9','ChIJLwJ1P-zdnUcRt3ThQQtoEvU'],
+['Grünwald/Pullach/Oberhaching','Friseursalon Charme & Schere','Hubertusstraße 3, Oberhaching','+49 89 6131734','4.9','ChIJMXRWhpvdnUcRbiudM_5Ys84'],
+['Grünwald/Pullach/Oberhaching','La Biosthetique Bellissima','Kirchpl. 9, Oberhaching','+49 89 6132244','4.8','ChIJC8eCbY7dnUcRJ8GouFe-36M'],
+['Grünwald/Pullach/Oberhaching','Friseursalon ABP Beauty','Forststraße 21, Baierbrunn','+49 89 94528831','5.0','ChIJVyc2PSHbnUcRs6S8NMfby8g'],
+['Garching','Pablo Barbers Garching','Rathauspl. 13, Garching','+49 89 32754357','4.9','ChIJw5DnewBznkcRnwMtUr9sbvg'],
+['Garching','Salon Lachermeier','Schleißheimer Str. 22, Garching','+49 89 32929226','4.8','ChIJwVrzjv9ynkcRaF4x2m5cwJo'],
+['Garching','K.Kosmetik München','Schleißheimer Str. 12, Garching','+49 174 8234053','5.0','ChIJL9kUovJznkcRLkXGW2OaN6c'],
+['Unterschleißheim','Guapa Barber Salon','Max-Planck-Straße 17','+49 1522 4510015','4.8','ChIJe8WUnjBxnkcRpKg0D3ZQRsk'],
+['Unterschleißheim','~GD hairdress~','Nelkenstraße 4','+49 89 37488014','4.9','ChIJNdwGFXRxnkcRZwU7K6aYic8'],
+['Oberschleißheim','Monaco Barbershop Friseur','Hofkurat-Diehl-Straße 2','+49 89 32758456','4.9','ChIJOe3KuMxxnkcRA3gIEC-EnKk'],
+['Ismaning','Pablo Barbers Ismaning','Korbinianstraße 14','+49 89 32755387','4.9','ChIJS9gqagBznkcRa9t9FKZv0AY'],
+['Ismaning','Monaco Cut Ismaning','Bahnhofstraße 8','+49 89 28857415','4.8','ChIJDY2RZUdznkcRjFkRNvVpb3g'],
+['Dachau','Barber House Dachau','Von-Herterich-Straße 2A','+49 8131 82353','5.0','ChIJdXS8tgB7nkcRWbUqhNU6fjk'],
+['Dachau','The Gentleman\'s Cut Dachau','Sudetenlandstraße 54','+49 8131 3793172','5.0','ChIJRfUqiM97nkcRXsTnV4tCCfA'],
+['Dachau','Hulis Barbier','Fünfkirchener Str. 27','+49 8131 12192','5.0','ChIJabCoW-J7nkcRWL7jUnaf7Vk'],
+['Dachau','Hair Beat','Würmstraße 32','+49 8131 273291','4.9','ChIJOT87Elx7nkcRh7qMA8zddYQ'],
+['Dachau','Milano Barbershop Dachau','Konrad-Adenauer-Straße 23','+49 172 5407385','4.4','ChIJd-2FTgB7nkcRKXIBQmXM6Rk'],
+['Karlsfeld','MZ Oriental Barber & Beauty','Gartenstraße 10','+49 8131 3561557','4.7','ChIJE9UjFbV7nkcRsoPAGdNerRM'],
+['Erding','DA BODA MENS HAIRDRESSER','Maurermeistergasse 3','+49 8122 959313','4.9','ChIJb0zodvMQnkcRxvQZoLixjC0'],
+['Erding','Kolmikov\'s Barber Shop','Kleiner Platz 3','+49 8122 5406800','4.9','ChIJ9xOg4PwQnkcR_uA2KJ7s6Zw'],
+['Erding','Friseur CHiCSAAL by Gerber','Am Bahnhof 7','+49 8122 956821','4.8','ChIJURBI4ooQnkcRx35ZPa-yK_4'],
+['Erding','Barber House Flughafen','Nordallee 1, Oberding','+49 89 125032704','4.9','ChIJBZZ_3kcVnkcRphBYG5e8K0Y'],
+['Erding','Paris Barbershop Erding','Münchener Str. 10','+49 8122 7018828','4.6','ChIJebRdrfARnkcRladFzcWqyC0'],
+['Freising/Moosburg','Gebrüder Rec&Hill','Biberstraße 2, Freising','+49 8161 8853000','4.9','ChIJF5euNgRrnkcROfD8B2o3VI4'],
+['Freising/Moosburg','Classic\'s Barbershop Freising','Weizengasse 1, Freising','+49 8161 5193350','4.6','ChIJqYSr-NhqnkcRitYtQkZjfdU'],
+['Freising/Moosburg','354 Barbershop Freising','Martin-Luther-Straße 2, Freising','+49 8161 8866640','4.8','ChIJ7QUqJ8JrnkcRb2DY9GAxeQA'],
+['Freising/Moosburg','El Capo Barbéro','Martin-Luther-Straße 2, Freising','+49 1573 0231033','4.9','ChIJCekU7EQVnkcRZ2yylqOMRNo'],
+['Freising/Moosburg','Barbershop MS Moosburg','Herrnstraße 19, Moosburg','+49 8761 7272888','4.9','ChIJQYG0ff49nkcRzrpZP7zCtIo'],
+['Freising/Moosburg','Neustädterbarbershop Moosburg','Neue Industriestraße 13, Moosburg','+49 160 4971744','4.9','ChIJe4WgMQA9nkcRYHF-qJVhcms'],
+['Freising/Moosburg','JK Beautybar Moosburg','Herrnstraße 11, Moosburg','+49 176 84813881','5.0','ChIJ4zo72kw9nkcRJLg5PgGcTTc'],
+['Freising/Moosburg','Barber House Flughafen','Nordallee 1, Oberding','+49 89 125032704','4.9','ChIJBZZ_3kcVnkcRphBYG5e8K0Y'],
+['Gauting','SD Lifestyle Friseur & Beauty','Starnberger Str., Gauting','+49 171 8131152','5.0','ChIJJeTyz9TRnUcRPmgc9NoIOfE'],
+['Gauting','Friseur Katrin Uhlmann','Bahnhofstraße 33, Gauting','+49 89 8505355','4.9','ChIJMwFy7OzRnUcRtaJIUgXfbKQ'],
+['Gauting','Maskulin Herrenfriseur','Hubert-Deschler-Straße 1, Gauting','+49 89 24604700','5.0','ChIJR6ohs0nRnUcRtJCmbzvsV4Y'],
+['Gauting','Mila hairstyle','Bahnhofpl. 9, Gauting','+49 89 99733444','4.8','ChIJuz7EO4LRnUcRTybhUh4dsQA'],
+['Gauting','Royal Hair Lounge','Starnberger Str. 11, Gauting','+49 89 23756431','4.7','ChIJ58TN0ybRnUcRl_NwjgVL-0M'],
+['Germering','Donatos Barbershop','Otto-Wagner-Straße 5','+49 89 92776824','4.9','ChIJA7gbVFvWnUcRv1lc608gTD0'],
+['Germering','Landy Barbershop','Streiflacher Str. 3','+49 1575 2153874','4.8','ChIJbW9vsczXnUcRndQ0qtEBz-s'],
+['Germering','Salon Gaby Germering','Theodor-Heuss-Straße 1','+49 89 8401184','4.8','ChIJWXE3XvXWnUcR3yoVNQ84TxA'],
+['Gräfelfing/Planegg','Barbershop Nº13','Bahnhofstraße 13, Gräfelfing','+49 89 31812007','4.7','ChIJ0cvlwGPXnUcRkKF0GPI5i9A'],
+['Gräfelfing/Planegg','2Pac Barbershop','Bahnhofstraße 23, Planegg','+49 89 12711916','4.5','ChIJAdHox4LXnUcRL0iXnmw-QKg'],
+['Starnberg/Gilching','Gentlemans BarberShop Starnberg','Hauptstraße 14, Starnberg','+49 8151 7504355','4.9','ChIJRTGUzqHRnUcR99IgFcJK_nc'],
+['Starnberg/Gilching','Salon Caesar Starnberg','Hanfelder Str. 2, Starnberg','+49 8151 5567778','4.8','ChIJYe58PADRnUcRvciFEfbWPEk'],
+['Starnberg/Gilching','Herrenfriseur 28S Starnberg','Weilheimer Str. 15G, Starnberg','+49 8151 5566951','4.9','ChIJ4RwhfpXPnUcR8AinjtgydA4'],
+['Starnberg/Gilching','NICI Barber & Hair Gilching','Sonnenstraße 53, Gilching','+49 8105 7989270','5.0','ChIJ7yaJysHVnUcRCZ8IYRUrVME'],
+['Starnberg/Gilching','HAIRsociety Gilching','Brucker Str. 21, Gilching','+49 8105 7778600','4.9','ChIJM4XhT_IBCUER9fL0A4XoFNY'],
+['Starnberg/Gilching','Nellys Hair Studio Gilching','Pollinger Str. 19, Gilching','+49 8105 9741','4.8','ChIJj-gTUkfUnUcRDCwrCy2oqYs'],
+['Starnberg/Gilching','Salon Birgit Gilching','Sonnenstraße 53A, Gilching','+49 8105 22908','4.9','ChIJg6jXRF7VnUcRtBoUMeXtjh4'],
+['Starnberg/Gilching','Salon Scherenschnitt Weßling','Hauptstraße 54, Weßling','+49 8153 2426','4.9','ChIJtxe-0XHTnUcR4eGOjHfxfDE'],
+['Berlin — Charlottenburg','House of Beauty by Konni','Seelingstraße 34','+49 173 2866907','4.6','ChIJJcZtoQ1RqEcR5jYlC37kvI8'],
+['Berlin — Charlottenburg','Classy Beauty','Christstraße 1','+49 163 9506297','4.7','ChIJjSRQCh9RqEcRbu1AMzGQpLI'],
+['Berlin — Charlottenburg','Luxury Nails & Spa','Kantstraße 95','+49 174 7126141','4.6','ChIJWfukpIxRqEcRp_Kw2hdjFUs'],
+['Berlin — Charlottenburg','Barry Beauty','Schillerstraße 48','+49 30 55215159','4.6','ChIJQ2Xtat9QqEcRg0MdBauSTzA'],
+['Berlin — Charlottenburg','Cutman Friseur Charlottenburg','Wilmersdorfer Str. 36','+49 30 509319788','4.8','ChIJW6ym7-lRqEcRgd_zWswoBV0'],
+['Berlin — Charlottenburg','Sengül Akyüz (Leyissa)','Goethestraße 68','+49 163 5492798','4.7','ChIJrVOSOEhQqEcRhTkWuKrc1Qk'],
+['Berlin — Mitte','BABOR Berlin — Mitte','Französische Str. 48','+49 30 20622222','4.5','ChIJCfjuINtRqEcRiCSv0iuqe5c'],
+['Berlin — Mitte','Ohlala Beauty','Oranienburger Str. 91','+49 30 45028008','4.6','ChIJ_6TGx4xRqEcR0S7wK5a8tDY'],
+['Berlin — Mitte','K & K Beauty','Sophienstraße 17','+49 30 28387890','4.7','ChIJN5WbNeBRqEcRgRytUHADDv0'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Own Barber','Prenzlauer Allee 200','+49 30 49932712','5.0','ChIJA3n_CotPqEcRwaUPLig_XdQ'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Throne Friseur','Danziger Str. 68','+49 30 98315152','4.9','ChIJwcg1zABOqEcR23B_4vGcJuM'],
+['Berlin — Prenzlauer Berg/Friedrichshain','ROWDY Barber Shop','Kollwitzstraße 71','+49 1520 9866085','4.8','ChIJ63S2ngFOqEcRHW14FpYouL8'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Friseur shibaar','Grünberger Str. 28','+49 176 15747205','4.9','ChIJa_2mF3NPqEcRYToreE0hEMY'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Josh Flagg Barbershop','Oderberger Str. 55','+49 179 6758398','5.0','ChIJFZIPuj9RqEcRGW80i6bdTL0'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Barberremz','Max-Beer-Str. 35','+49 30 90302077','4.9','ChIJl0x7PchRqEcRMOc73vev2RM'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Tommy Shelby Barber','Proskauer Str. 10','+49 1525 7351642','5.0','ChIJT9ZxHABPqEcRJrrnj1A1xYQ'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Barber Brothers 2','Pettenkoferstraße 48','+49 30 21236400','4.9','ChIJIZgaVfRPqEcREZaIuqCd90g'],
+['Berlin — Prenzlauer Berg/Friedrichshain','MBC Barbershop Berlin','Seumestraße 19','+49 30 34629684','4.8','ChIJ0UVC5RNPqEcRlHmpq6eSe1w'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Mado Barbershop','Petersburger Str. 96','+49 30 84518280','4.8','ChIJ3Q9MrHVPqEcRk7aP8nhqoK8'],
+['Berlin — Prenzlauer Berg/Friedrichshain','Al-Kabir Barber Berlin','Gubener Str. 27','+49 176 20842677','4.8','ChIJv55aAWtPqEcR5IuN9g9-lQw'],
+['Berlin — Schöneberg/Kreuzberg','Sabri Berber Coiffeur','Martin-Luther-Str. 37','+49 1573 0844402','4.9','ChIJzeiK1n1RqEcRYsBKAXV_Ohs'],
+['Berlin — Schöneberg/Kreuzberg','RIDVAN\'s BARBERSHOP','Goltzstraße 52','+49 30 89633700','5.0','ChIJg_7CWFZRqEcROdhsJroZ2hI'],
+['Berlin — Schöneberg/Kreuzberg','Çetin\'s GENTLEMEN\'S BARBER','Grunewaldstraße 88','+49 30 47057007','4.9','ChIJhcDJ3UNRqEcRYCvIetqo_0g'],
+['Berlin — Schöneberg/Kreuzberg','Haircut Barbershop Berlin','Bülowstraße 27','+49 176 72739870','5.0','ChIJv6s0TZhRqEcRmR8y-66ZPX0'],
+['Berlin — Schöneberg/Kreuzberg','BERBERIUM','Richard-von-Weizsäcker-Platz 1-2','+49 30 78897081','4.9','ChIJry1UXkBQqEcRcRtIn4bHhlQ'],
+['Berlin — Schöneberg/Kreuzberg','Berberlin','Rudi-Dutschke-Straße 13','+49 30 25934602','4.9','ChIJIUVHxZRRqEcRjXamsVUq1Ck'],
+['Berlin — Schöneberg/Kreuzberg','BEJTA Beauty Coiffeur','Alvenslebenstraße 26','+49 30 34715753','5.0','ChIJ3_L-NkhQqEcRqeboB3whlP8'],
+['Berlin — Schöneberg/Kreuzberg','Shapes Barbershop','Boppstraße 7','+49 177 9416161','5.0','ChIJwbjbuIFPqEcRRE7WVGHHXMQ'],
+['Berlin — Schöneberg/Kreuzberg','Anton Friseur und Kosmetik','Kolonnenstraße 53','+49 30 83544234','5.0','ChIJ-X-ZuyNRqEcR4x_iZTNrUzU'],
+['Berlin — Schöneberg/Kreuzberg','Boulevard Herrenfriseur','Yorckstraße 77','+49 30 25208716','4.8','ChIJo_LLEy9QqEcRhgAqUHZuMOw'],
+['Berlin — Schöneberg/Kreuzberg','BERLIN BARBER LOUNGE','Manteuffelstraße 52','+49 1523 4676369','5.0','ChIJFTb_zqxRqEcR6oIJR5PtR8c'],
+];
+
+const data=R.map(r=>({city:r[0],name:r[1],addr:r[2],phone:r[3],rating:r[4],pid:r[5],site:'',status:'Не сконтактовано',date:'16.03.2026'}));
+
+function render(){
+  const q=document.getElementById('q').value.toLowerCase();
+  const fc=document.getElementById('fc').value;
+  const fs=document.getElementById('fs').value;
+  const f=data.filter(r=>
+    (!q||(r.name+r.city+r.addr+r.phone+r.site).toLowerCase().includes(q))&&
+    (!fc||r.city===fc)&&(!fs||r.status===fs)
+  );
+  document.getElementById('sa').textContent=data.length;
+  document.getElementById('sw').textContent=data.filter(r=>r.status==='Написав').length;
+  document.getElementById('st').textContent=data.filter(r=>r.status==='Думає').length;
+  document.getElementById('sb').textContent=data.filter(r=>r.status==='Купив').length;
+  const cities=[...new Set(f.map(r=>r.city))];
+  const root=document.getElementById('root');
+  if(!f.length){root.innerHTML='<div class="em">Нічого не знайдено</div>';return;}
+  root.innerHTML=cities.map(city=>{
+    const rows=f.filter(r=>r.city===city);
+    return `<div class="sh">${city} — ${rows.length}</div><div class="cs">${rows.map(r=>{
+      const i=data.indexOf(r);
+      const link=wl(r.phone);
+      const mlink=ml(r.pid,r.name,r.addr);
+      return `<div class="c">
+        <div class="ct">
+          <div class="cn">${r.name}</div>
+          <span class="br">★ ${r.rating}</span>
+          <button class="db" onclick="toggleEdit(${i})">${r._edit?'✓':'✎'}</button>
+          <button class="db" onclick="del(${i})">✕</button>
+        </div>
+        ${r._edit?`<div class="pi">
+          <input value="${r.phone}" onchange="upd(${i},'phone',this.value)" placeholder="Телефон">
+          <input value="${r.site}" onchange="upd(${i},'site',this.value)" placeholder="Сайт">
+          <button class="si" onclick="toggleEdit(${i})">✓ Зберегти</button>
+        </div>`:`<div class="cm">${r.addr}${r.phone!=='—'?' · '+r.phone:''}${r.site?' · '+r.site:''}</div>`}
+        <div class="ca">
+          <a class="mb" href="${mlink}" target="_blank">Maps</a>
+          ${link?`<a class="wb" href="${link}" target="_blank">WhatsApp</a>`:''}
+          <select class="ss" onchange="chS(${i},this.value)">
+            ${['Не сконтактовано','Написав','Думає','Купив'].map(s=>`<option${s===r.status?' selected':''}>${s}</option>`).join('')}
+          </select>
+        </div>
+      </div>`;
+    }).join('')}</div>`;
+  }).join('');
+}
+
+function toggleEdit(i){data[i]._edit=!data[i]._edit;render();}
+function upd(i,k,v){data[i][k]=v;}
+function chS(i,v){data[i].status=v;render();}
+function del(i){data.splice(i,1);render();}
+function addRow(){
+  const n=document.getElementById('an').value.trim();
+  if(!n)return;
+  data.unshift({name:n,city:document.getElementById('acf').value,addr:document.getElementById('aad').value||'',phone:document.getElementById('aph').value||'—',site:document.getElementById('awe').value||'',rating:document.getElementById('arat').value||'—',pid:document.getElementById('apid').value||'',status:'Не сконтактовано',date:td()});
+  ['an','aph','aad','awe','arat','apid'].forEach(id=>document.getElementById(id).value='');
+  render();
+}
+function copyMd(){
+  const h='| Назва | Місто | Адреса | Телефон | Сайт | Рейтинг | Статус |\n|---|---|---|---|---|---|---|';
+  const r=data.map(r=>`| ${r.name} | ${r.city} | ${r.addr} | ${r.phone} | ${r.site||'—'} | ★ ${r.rating} | ${r.status} |`).join('\n');
+  navigator.clipboard.writeText(h+'\n'+r).then(()=>{const b=document.querySelector('.cb');b.textContent='Скопійовано!';setTimeout(()=>b.textContent='Копіювати MD',1800);});
+}
+render();
+</script>
