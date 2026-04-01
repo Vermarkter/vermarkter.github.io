@@ -3044,15 +3044,7 @@ input[type="number"], select {
         display: none !important;
     }
 
-    /* AI Chatbot button - clear positioning */
-    .chatbot-button,
-    #chatbotButton {
-        bottom: 20px !important;
-        right: 20px !important;
-        width: 56px !important;
-        height: 56px !important;
-        z-index: 9998 !important;
-    }
+    /* AI Chatbot button - positioning handled in section 14 */
 
     /* Chat widget positioning on mobile */
     .chat-widget,
@@ -3663,17 +3655,24 @@ input:focus, select:focus, textarea:focus {
     box-shadow: 0 0 20px rgba(37, 211, 102, 0.4) !important;
 }
 
-/* --- Social float container: stack above chatbot --- */
+/* ── Social float container: iron stack above chatbot ──
+   Stack order (bottom → top): Chatbot 20px → WhatsApp 85px → Telegram 150px
+   social-float is flex-column: first child = Telegram (top), second = WhatsApp (bottom)
+   So container bottom = WhatsApp bottom = 85px, Telegram sits above via flex gap
+*/
 .social-float {
+    position: fixed !important;
     bottom: 85px !important;
     right: 20px !important;
     z-index: 10000 !important;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 13px !important;
     will-change: transform !important;
     transform: translateZ(0) !important;
 }
 
-/* --- Individual floating buttons: premium glass + brand colors --- */
+/* ── Individual floating buttons: Luxury Tech glass ── */
 .social-float a {
     width: 52px !important;
     height: 52px !important;
@@ -3684,42 +3683,46 @@ input:focus, select:focus, textarea:focus {
     z-index: 10000 !important;
     will-change: transform !important;
     transform: translateZ(0) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-/* Telegram button: #0088cc brand */
+/* Telegram button: #0088cc brand + white glow */
 .social-float a[aria-label="Telegram"],
 .social-float a[href*="t.me"] {
     background: linear-gradient(135deg, #2AABEE, #0088cc) !important;
-    box-shadow: 0 4px 16px rgba(0, 136, 204, 0.45) !important;
+    box-shadow: 0 4px 16px rgba(0, 136, 204, 0.45),
+                0 0 20px rgba(255, 255, 255, 0.08) !important;
 }
 
 .social-float a[aria-label="Telegram"]:hover,
 .social-float a[href*="t.me"]:hover {
-    transform: scale(1.1) translateZ(0) !important;
+    transform: scale(1.12) translateZ(0) !important;
     box-shadow: 0 6px 24px rgba(0, 136, 204, 0.6),
-                0 0 30px rgba(0, 136, 204, 0.2) !important;
+                0 0 35px rgba(0, 136, 204, 0.25),
+                0 0 12px rgba(255, 255, 255, 0.1) !important;
 }
 
-/* WhatsApp button: #25D366 brand */
+/* WhatsApp button: #25D366 brand + white glow */
 .social-float a[aria-label="WhatsApp"],
 .social-float a[href*="wa.me"] {
     background: #25D366 !important;
-    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45) !important;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.45),
+                0 0 20px rgba(255, 255, 255, 0.08) !important;
 }
 
 .social-float a[aria-label="WhatsApp"]:hover,
 .social-float a[href*="wa.me"]:hover {
-    transform: scale(1.1) translateZ(0) !important;
+    transform: scale(1.12) translateZ(0) !important;
     box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6),
-                0 0 30px rgba(37, 211, 102, 0.2) !important;
+                0 0 35px rgba(37, 211, 102, 0.25),
+                0 0 12px rgba(255, 255, 255, 0.1) !important;
 }
 
-/* --- Chatbot button: very bottom, blue gradient --- */
+/* ── Chatbot button: very bottom (20px), blue gradient + white glow ── */
 .chatbot-button,
 #chatbotButton {
     position: fixed !important;
@@ -3728,30 +3731,45 @@ input:focus, select:focus, textarea:focus {
     z-index: 10000 !important;
     will-change: transform !important;
     transform: translateZ(0) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 16px rgba(99, 102, 241, 0.4),
+                0 0 20px rgba(255, 255, 255, 0.08) !important;
 }
 
-/* --- Mobile: hide social-float (WhatsApp already in header) --- */
+/* ── Mobile: 15% smaller, tighter stack ── */
 @media (max-width: 768px) {
     .social-float {
-        bottom: 85px !important;
+        bottom: 78px !important;
         right: 15px !important;
+        gap: 10px !important;
     }
 
     .social-float a {
-        width: 48px !important;
-        height: 48px !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
+
+    .social-float a svg,
+    .social-float a img {
+        width: 20px !important;
+        height: 20px !important;
     }
 
     .chatbot-button,
     #chatbotButton {
         bottom: 20px !important;
         right: 15px !important;
-        width: 52px !important;
-        height: 52px !important;
+        width: 48px !important;
+        height: 48px !important;
         z-index: 10000 !important;
+    }
+
+    .chatbot-button svg,
+    #chatbotButton svg {
+        width: 22px !important;
+        height: 22px !important;
     }
 }
 
@@ -3854,42 +3872,7 @@ input:focus, select:focus, textarea:focus {
         line-height: 1.25 !important;
     }
 
-    /* ── 5. FLOATING BUTTONS — 15% smaller, no overlap ── */
-
-    /* social-float (Telegram + WhatsApp stack) */
-    .social-float a {
-        width: 44px !important;   /* 52px × 0.85 ≈ 44px */
-        height: 44px !important;
-    }
-
-    .social-float a svg,
-    .social-float a img {
-        width: 20px !important;
-        height: 20px !important;
-    }
-
-    /* AI Chatbot button */
-    .chatbot-button,
-    #chatbotButton {
-        width: 48px !important;   /* 56px × 0.85 ≈ 48px */
-        height: 48px !important;
-        bottom: 20px !important;
-        right: 15px !important;
-    }
-
-    /* Chatbot button icon */
-    .chatbot-button svg,
-    #chatbotButton svg {
-        width: 22px !important;
-        height: 22px !important;
-    }
-
-    /* Social float stack: above chatbot, no overlap with CTA */
-    .social-float {
-        bottom: 80px !important;
-        right: 15px !important;
-        gap: 10px !important;
-    }
+    /* ── 5. FLOATING BUTTONS — handled in section 14 above ── */
 
     /* Scroll to top — above messenger stack */
     .scroll-to-top,
