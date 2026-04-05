@@ -2162,8 +2162,8 @@ input[type="number"], select {
    ============================================ */
 .scroll-to-top {
     position: fixed;
-    bottom: 7rem; /* Вище chatbot кнопки (2rem + 60px + 1rem = 7rem) */
-    right: 2rem;
+    bottom: 215px; /* Stack: chatbot 20 → WA 85 → TG 150 → scroll-top 215 */
+    right: 20px;
     width: 50px;
     height: 50px;
     background: linear-gradient(135deg, var(--brand), #2563EB);
@@ -3056,12 +3056,12 @@ input[type="number"], select {
         max-height: calc(100vh - 150px) !important;
     }
 
-    /* Scroll to top button - above social-float (messengers) stack */
+    /* Scroll to top button - above messenger stack (chatbot 20→WA 85→TG 150→here 215) */
     .scroll-to-top,
     .scroll-top-btn,
     #scrollToTop {
-        bottom: 190px !important;
-        right: 15px !important;
+        bottom: 215px !important;
+        right: 20px !important;
         width: 44px !important;
         height: 44px !important;
         z-index: 9997 !important;
@@ -3874,14 +3874,14 @@ input:focus, select:focus, textarea:focus {
 
     /* ── 5. FLOATING BUTTONS — handled in section 14 above ── */
 
-    /* Scroll to top — above messenger stack */
+    /* Scroll to top — above messenger stack (chatbot 20→WA 85→TG 150→here 215) */
     .scroll-to-top,
     .scroll-top-btn,
     #scrollToTop {
-        right: 15px !important;
+        right: 20px !important;
         width: 40px !important;
         height: 40px !important;
-        bottom: 190px !important;
+        bottom: 215px !important;
     }
 
     /* ── 6. HERO SECTION PADDING ── */
