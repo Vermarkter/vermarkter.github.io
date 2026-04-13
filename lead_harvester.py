@@ -261,10 +261,14 @@ def harvest(plz_list):
         "20":"Hamburg","40":"Düsseldorf","50":"Köln","60":"Frankfurt",
         "70":"Stuttgart","80":"München",
     }
+    plz_prefix3_city = {
+        "441":"Dortmund","447":"Bochum",
+        "451":"Essen","470":"Duisburg","471":"Duisburg",
+    }
     for plz in plz_list:
         print("\n" + "="*60)
         print("PLZ %s — Suche..." % plz)
-        city_hint = plz_prefix_city.get(plz[:2], "Deutschland")
+        city_hint = plz_prefix3_city.get(plz[:3]) or plz_prefix_city.get(plz[:2], "Deutschland")
         for kw in KEYWORDS:
             query = "%s %s %s" % (kw, plz, city_hint)
             print("  > %s" % query, end=" ", flush=True)
