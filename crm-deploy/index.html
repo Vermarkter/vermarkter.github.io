@@ -219,7 +219,7 @@ function sbGetPage(from, to) {
   var h = {}; for (var k in SB_HEADERS) h[k] = SB_HEADERS[k];
   h['Range-Unit'] = 'items';
   h['Range'] = from + '-' + to;
-  h['Prefer'] = 'count=planned';
+  h['Prefer'] = 'count=exact';
   return fetch(url, { headers: h }).then(function(r) {
     if (!r.ok && r.status !== 206 && r.status !== 200) {
       return r.text().then(function(t) { throw new Error('HTTP ' + r.status + ': ' + t); });
