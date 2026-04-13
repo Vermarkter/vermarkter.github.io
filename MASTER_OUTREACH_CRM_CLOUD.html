@@ -214,14 +214,29 @@ var SB_HEADERS = {
   'Prefer':        'return=minimal'
 };
 
-function sbGet() {
-  var url = SB_URL + '/rest/v1/' + TABLE + '?select=*&order=id.asc&limit=5000';
+// Supabase cap = 1000 rows/Request. Рекурсивна пагінація через offset.
+function sbGetPage(offset, pageSize) {
+  var url = SB_URL + '/rest/v1/' + TABLE +
+            '?select=*&order=id.asc&limit=' + pageSize + '&offset=' + offset;
   return fetch(url, { headers: SB_HEADERS }).then(function(r) {
     if (!r.ok) {
       return r.text().then(function(t) { throw new Error('HTTP ' + r.status + ': ' + t); });
     }
     return r.json();
   });
+}
+
+function sbGet() {
+  var PAGE = 1000;
+  var all  = [];
+  function loop(offset) {
+    return sbGetPage(offset, PAGE).then(function(rows) {
+      all = all.concat(rows);
+      if (rows.length < PAGE) return all;      // останній шматок — вихід
+      return loop(offset + PAGE);              // наступна сторінка
+    });
+  }
+  return loop(0);
 }
 
 function sbPatch(id, patch) {
@@ -406,7 +421,7 @@ function loadData() {
       var em   = SALONS.filter(function(s){ return !!s.email; }).length;
       var sent = SALONS.filter(function(s){ return s.status === 'sent' || s.status === 'replied'; }).length;
 
-      document.getElementById('subtitleLine').textContent = SALONS.length + ' \u0441\u0430\u043b\u043e\u043d\u0456\u0432 \u00b7 M\u00fcnchen + Berlin';
+      document.getElementById('subtitleLine').textContent = SALONS.length + ' \u0441\u0430\u043b\u043e\u043d\u0456\u0432 \u00b7 \u0423\u0441\u0456 \u043c\u0456\u0441\u0442\u0430';
       document.getElementById('statTotal').textContent = SALONS.length;
       document.getElementById('statWa').textContent    = wa;
       document.getElementById('statEmail').textContent = em;
