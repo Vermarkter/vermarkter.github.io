@@ -214,28 +214,13 @@ var SB_HEADERS = {
   'Prefer':        'return=minimal'
 };
 
-function sbGetPage(from, to) {
-  var url = SB_URL + '/rest/v1/' + TABLE + '?select=*&order=id.asc';
-  var h = {}; for (var k in SB_HEADERS) h[k] = SB_HEADERS[k];
-  h['Range-Unit'] = 'items';
-  h['Range'] = from + '-' + to;
-  h['Prefer'] = 'count=exact';
-  return fetch(url, { headers: h }).then(function(r) {
-    if (!r.ok && r.status !== 206 && r.status !== 200) {
+function sbGet() {
+  var url = SB_URL + '/rest/v1/' + TABLE + '?select=*&order=id.asc&limit=5000';
+  return fetch(url, { headers: SB_HEADERS }).then(function(r) {
+    if (!r.ok) {
       return r.text().then(function(t) { throw new Error('HTTP ' + r.status + ': ' + t); });
     }
     return r.json();
-  });
-}
-
-function sbGet() {
-  // PostgREST hard-caps at 1000 rows → paginate via Range headers and merge.
-  return sbGetPage(0, 999).then(function(p1) {
-    return sbGetPage(1000, 1999).then(function(p2) {
-      return sbGetPage(2000, 2999).then(function(p3) {
-        return p1.concat(p2 || []).concat(p3 || []);
-      });
-    });
   });
 }
 
@@ -427,7 +412,7 @@ function loadData() {
       document.getElementById('statEmail').textContent = em;
       document.getElementById('statSent').textContent  = sent;
 
-      setSync('ok', '\u0421\u0438\u043d\u0445\u0440\u043e\u043d\u0456\u0437\u043e\u0432\u0430\u043d\u043e \u00b7 ' + SALONS.length + ' \u0437\u0430\u043f\u0438\u0441\u0456\u0432');
+      setSync('ok', '\u0413\u043e\u0442\u043e\u0432\u043e \u00b7 ' + SALONS.length + ' \u0437\u0430\u043f\u0438\u0441\u0456\u0432');
       updateCounter();
       renderTable();
     })
