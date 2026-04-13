@@ -89,7 +89,17 @@ def subject_for(lead, lang):
     return name + " — 24/7 KI-Buchung, null Provision"
 
 # ── HTML template ───────────────────────────────────────────────────────────
-HTML_TPL = """<!doctype html>
+# Zuerst versuchen, luxury_template.html von der Platte zu laden (dark-navy
+# glassmorphism). Fallback: eingebettetes Minimal-Template.
+def _load_luxury():
+    try:
+        here = os.path.dirname(os.path.abspath(__file__))
+        with open(os.path.join(here, "luxury_template.html"), "r", encoding="utf-8") as f:
+            return f.read()
+    except Exception:
+        return None
+
+HTML_TPL = _load_luxury() or """<!doctype html>
 <html lang="{lang}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{subject}</title></head>

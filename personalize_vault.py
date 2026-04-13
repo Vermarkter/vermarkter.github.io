@@ -139,6 +139,37 @@ CTAS = [
 
 PLATFORM_RX = re.compile(r"(treatwell|planity|booksy|fresha|salonkee)", re.I)
 
+# ── Konkurrenz-Hook (Deep-Personalization) ──────────────────────────────────
+AUDIT_SCORE_RX = re.compile(r"score=(\d+)")
+def parse_score(notes):
+    if not notes: return None
+    m = AUDIT_SCORE_RX.search(notes)
+    return int(m.group(1)) if m else None
+
+def has_booking_in_notes(notes):
+    return "booking=y" in (notes or "")
+
+COMPETITOR_LINES = [
+    "Ich habe gesehen: eure Nachbarn von {comp} haben bereits Online-Booking — das ist ein klarer Vorsprung im Kampf um Kundschaft in {dist}. Wir helfen euch nicht nur aufzuholen, sondern technologisch die Nase vorn zu haben.",
+    "{comp} in {dist} hat die Buchung schon digitalisiert. Während Kunden dort um 22 Uhr spontan einen Termin machen, müssen eure anrufen — oder buchen dort. Zeit, den Spieß umzudrehen.",
+    "Kurz verglichen: {comp} in {dist} nutzt bereits modernes Online-Booking. Wir bauen euch ein System, das deren Setup nicht nur einholt, sondern überholt — eigene KI-Rezeption inklusive.",
+    "Eure direkten Nachbarn in {dist} ({comp}) sind bereits online buchbar. Jeder Kunde, der um 19 Uhr sucht, landet dort statt bei euch. Das ändern wir.",
+]
+
+def build_competitor_index(rows):
+    """district → [(name, score) мають booking=y або score<=4]."""
+    idx = {}
+    for r in rows:
+        notes = r.get("notes") or ""
+        score = parse_score(notes)
+        if score is None: continue
+        if score > 4 and not has_booking_in_notes(notes):
+            continue
+        d = (r.get("district") or "").strip()
+        if not d: continue
+        idx.setdefault(d, []).append((r.get("name") or "", score, r["id"]))
+    return idx
+
 # ── HTTP ────────────────────────────────────────────────────────────────────
 def sb_get(path):
     req = urllib.request.Request(SB_URL + path, headers=SB_HEAD)
@@ -152,6 +183,20 @@ def sb_patch(lead_id, payload):
     req = urllib.request.Request(url, data=body, headers=h, method="PATCH")
     with urllib.request.urlopen(req, timeout=20) as r:
         return r.status
+
+def fetch_all_for_competitors():
+    """Повна вибірка з audit-даними для побудови сусідського індексу."""
+    PAGE = 1000
+    all_rows = []
+    offset = 0
+    while True:
+        q = ("/rest/v1/beauty_leads?select=id,name,district,notes,website"
+             "&order=id.asc&limit=" + str(PAGE) + "&offset=" + str(offset))
+        rows = sb_get(q)
+        all_rows.extend(rows)
+        if len(rows) < PAGE: break
+        offset += PAGE
+    return all_rows
 
 def fetch_targets(limit):
     # Пагінація через offset — Supabase кепує на 1000/запит
@@ -170,7 +215,7 @@ def fetch_targets(limit):
     return all_rows
 
 # ── Generator ──────────────────────────────────────────────────────────────-
-def craft_message(lead):
+def craft_message(lead, comp_index=None):
     rid    = lead["id"]
     name   = (lead.get("name") or "euer Salon").strip()
     city   = (lead.get("city") or "").strip()
@@ -214,8 +259,25 @@ def craft_message(lead):
     price = rng.choice(PRICES)
     cta   = rng.choice(CTAS)
 
+    # ── Deep-Personalization: Konkurrenz-Hook wenn score>7 ──
+    comp_hook = None
+    my_score  = parse_score(lead.get("notes"))
+    if comp_index and my_score is not None and my_score > 7:
+        pool = [c for c in (comp_index.get(distr) or []) if c[2] != rid]
+        if pool:
+            # Сортуємо за якістю (менший score = якісніший), беремо топ-3, seed-pick
+            pool.sort(key=lambda x: x[1])
+            candidates = pool[:3]
+            comp_name, _, _ = rng.choice(candidates)
+            comp_name = comp_name.strip()[:60]
+            if comp_name:
+                line = rng.choice(COMPETITOR_LINES)
+                comp_hook = line.replace("{comp}", comp_name).replace("{dist}", distr or (city or "eurer Gegend"))
+
     # Finale Verflechtung
-    parts = [opener, leadin, "Was mir auffällt: " + pain, offer, price, cta]
+    parts = [opener, leadin, "Was mir auffällt: " + pain]
+    if comp_hook: parts.append(comp_hook)
+    parts.extend([offer, price, cta])
     msg   = " ".join(parts)
     # Double-space cleanup
     msg   = re.sub(r"\s+", " ", msg).strip()
@@ -228,14 +290,23 @@ def main():
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
 
-    print("Vermarkter Personalize Vault")
+    print("Vermarkter Personalize Vault (Deep-Mode)")
+    print("Building competitor index…")
+    all_rows = fetch_all_for_competitors()
+    comp_index = build_competitor_index(all_rows)
+    print("  Audited leads:", sum(1 for r in all_rows if parse_score(r.get("notes")) is not None))
+    print("  Districts with qualified neighbors:", len(comp_index))
+
     targets = fetch_targets(args.limit or 0)
     print("Targets:", len(targets))
 
-    ok = fail = 0
+    ok = fail = comp_hits = 0
     for i, lead in enumerate(targets, 1):
         try:
-            msg = craft_message(lead)
+            msg = craft_message(lead, comp_index=comp_index)
+            my_score = parse_score(lead.get("notes"))
+            if my_score and my_score > 7 and comp_index.get((lead.get("district") or "").strip()):
+                comp_hits += 1
         except Exception as e:
             fail += 1
             print("[%d/%d] CRAFT FAIL id=%s: %s" % (i, len(targets), lead.get("id"), e))
@@ -263,7 +334,7 @@ def main():
             fail += 1
             print("[%d/%d] FAIL id=%s: %s" % (i, len(targets), lead["id"], e))
 
-    print("\nDONE — updated: %d | failed: %d" % (ok, fail))
+    print("\nDONE — updated: %d | failed: %d | competitor-hooks: %d" % (ok, fail, comp_hits))
 
 if __name__ == "__main__":
     main()

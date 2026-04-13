@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="{lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{subject}</title>
+</head>
+<body style="margin:0;padding:0;background:#05060a;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:#e8eef9;-webkit-font-smoothing:antialiased;">
+
+<!-- Deep navy + starfield via layered gradients -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#05060a;background-image:radial-gradient(1200px 600px at 15% -10%,rgba(99,102,241,.18),transparent 60%),radial-gradient(900px 500px at 90% 10%,rgba(236,72,153,.12),transparent 55%),radial-gradient(700px 400px at 50% 100%,rgba(59,130,246,.14),transparent 60%);padding:40px 16px;">
+  <tr><td align="center">
+
+    <!-- Ultra-subtle ribbon -->
+    <table role="presentation" width="620" cellpadding="0" cellspacing="0" style="max-width:620px;margin:0 auto 14px auto;">
+      <tr><td align="center" style="font-size:11px;letter-spacing:4px;text-transform:uppercase;color:#7c8db0;">
+        Vermarkter · Members-Only Announcement
+      </td></tr>
+    </table>
+
+    <!-- Main glass card -->
+    <table role="presentation" width="620" cellpadding="0" cellspacing="0" style="max-width:620px;background:linear-gradient(180deg,rgba(17,22,38,.96) 0%,rgba(10,14,26,.96) 100%);border:1px solid rgba(148,163,220,.12);border-radius:24px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.04);">
+
+      <!-- Header with monogram -->
+      <tr><td style="padding:36px 40px 8px 40px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+          <tr>
+            <td style="vertical-align:middle;">
+              <div style="display:inline-block;width:52px;height:52px;line-height:52px;text-align:center;border-radius:14px;background:linear-gradient(135deg,#6366f1 0%,#ec4899 55%,#f59e0b 100%);font-weight:900;font-size:26px;color:#fff;letter-spacing:-1px;box-shadow:0 10px 30px rgba(99,102,241,.35),inset 0 1px 0 rgba(255,255,255,.25);">V</div>
+              <span style="display:inline-block;vertical-align:middle;margin-left:14px;font-weight:700;letter-spacing:.5px;font-size:20px;color:#f1f5f9;">Vermarkter</span>
+            </td>
+            <td align="right" style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#6b7a9c;">
+              Private Invitation
+            </td>
+          </tr>
+        </table>
+      </td></tr>
+
+      <!-- Hairline divider -->
+      <tr><td style="padding:20px 40px 0 40px;">
+        <div style="height:1px;background:linear-gradient(90deg,transparent 0%,rgba(148,163,220,.28) 50%,transparent 100%);"></div>
+      </td></tr>
+
+      <!-- Salutation + body -->
+      <tr><td style="padding:28px 40px 4px 40px;">
+        <p style="margin:0 0 18px 0;font-size:17px;line-height:1.55;color:#e2e8f0;font-weight:500;">{salut}</p>
+        <div style="font-size:15.5px;line-height:1.75;color:#c9d2e3;white-space:pre-wrap;letter-spacing:.1px;">{body}</div>
+      </td></tr>
+
+      <!-- Offer highlight -->
+      <tr><td style="padding:26px 40px 8px 40px;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:linear-gradient(135deg,rgba(99,102,241,.12) 0%,rgba(236,72,153,.10) 100%);border:1px solid rgba(148,163,220,.15);border-radius:16px;">
+          <tr><td style="padding:22px 24px;">
+            <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#8b9bc5;margin-bottom:8px;">Das Komplettpaket</div>
+            <div style="font-size:22px;font-weight:800;color:#f5f7ff;letter-spacing:-.3px;">Einmalig 1.000 €</div>
+            <div style="font-size:13px;line-height:1.6;color:#a6b3d2;margin-top:6px;">Website · App · CRM · KI-Rezeption · 14 Tage Go-Live · DSGVO</div>
+          </td></tr>
+        </table>
+      </td></tr>
+
+      <!-- CTA -->
+      <tr><td align="center" style="padding:28px 40px 10px 40px;">
+        <a href="{demo}" style="display:inline-block;padding:16px 36px;border-radius:14px;background:linear-gradient(135deg,#6366f1 0%,#ec4899 60%,#f59e0b 100%);color:#fff;text-decoration:none;font-weight:800;font-size:15px;letter-spacing:.5px;box-shadow:0 18px 40px rgba(236,72,153,.30),inset 0 1px 0 rgba(255,255,255,.25);">
+          {cta} →
+        </a>
+      </td></tr>
+
+      <!-- Secondary link -->
+      <tr><td align="center" style="padding:4px 40px 32px 40px;">
+        <a href="{site}" style="color:#8b9bc5;font-size:12.5px;text-decoration:none;letter-spacing:.6px;">{site_label}</a>
+      </td></tr>
+
+      <!-- Footer divider -->
+      <tr><td style="padding:0 40px;">
+        <div style="height:1px;background:linear-gradient(90deg,transparent 0%,rgba(148,163,220,.18) 50%,transparent 100%);"></div>
+      </td></tr>
+
+      <!-- Signature + meta -->
+      <tr><td style="padding:22px 40px 30px 40px;">
+        <p style="margin:0;font-size:12.5px;line-height:1.65;color:#7c8db0;">{signoff}<br><span style="color:#a6b3d2;font-weight:600;">{brand}</span> · {reply_name}</p>
+        <p style="margin:12px 0 0 0;font-size:10.5px;line-height:1.55;color:#576282;">{unsub}</p>
+      </td></tr>
+    </table>
+
+    <!-- Ultra-fine footer -->
+    <table role="presentation" width="620" cellpadding="0" cellspacing="0" style="max-width:620px;margin-top:18px;">
+      <tr><td align="center" style="font-size:10.5px;letter-spacing:1.5px;color:#4a5470;">
+        © Vermarkter · hello@vermarkter.eu
+      </td></tr>
+    </table>
+
+  </td></tr>
+</table>
+
+</body>
+</html>
