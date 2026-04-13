@@ -215,9 +215,13 @@ var SB_HEADERS = {
 };
 
 function sbGet() {
-  var url = SB_URL + '/rest/v1/' + TABLE + '?select=*&order=id.asc';
-  return fetch(url, { headers: SB_HEADERS }).then(function(r) {
-    if (!r.ok) return r.text().then(function(t) { throw new Error('HTTP ' + r.status + ': ' + t); });
+  // PostgREST default cap is 1000 rows — bump with explicit limit so all leads load
+  var url = SB_URL + '/rest/v1/' + TABLE + '?select=*&order=id.desc&limit=20000';
+  var h = {}; for (var k in SB_HEADERS) h[k] = SB_HEADERS[k];
+  h['Range-Unit'] = 'items';
+  h['Range'] = '0-19999';
+  return fetch(url, { headers: h }).then(function(r) {
+    if (!r.ok && r.status !== 206) return r.text().then(function(t) { throw new Error('HTTP ' + r.status + ': ' + t); });
     return r.json();
   });
 }
