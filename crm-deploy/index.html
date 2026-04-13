@@ -214,15 +214,28 @@ var SB_HEADERS = {
   'Prefer':        'return=minimal'
 };
 
-function sbGet() {
-  // PostgREST default cap is 1000 rows — bump with explicit limit so all leads load
-  var url = SB_URL + '/rest/v1/' + TABLE + '?select=*&order=id.desc&limit=20000';
+function sbGetPage(from, to) {
+  var url = SB_URL + '/rest/v1/' + TABLE + '?select=*&order=id.asc';
   var h = {}; for (var k in SB_HEADERS) h[k] = SB_HEADERS[k];
   h['Range-Unit'] = 'items';
-  h['Range'] = '0-19999';
+  h['Range'] = from + '-' + to;
+  h['Prefer'] = 'count=planned';
   return fetch(url, { headers: h }).then(function(r) {
-    if (!r.ok && r.status !== 206) return r.text().then(function(t) { throw new Error('HTTP ' + r.status + ': ' + t); });
+    if (!r.ok && r.status !== 206 && r.status !== 200) {
+      return r.text().then(function(t) { throw new Error('HTTP ' + r.status + ': ' + t); });
+    }
     return r.json();
+  });
+}
+
+function sbGet() {
+  // PostgREST hard-caps at 1000 rows → paginate via Range headers and merge.
+  return sbGetPage(0, 999).then(function(p1) {
+    return sbGetPage(1000, 1999).then(function(p2) {
+      return sbGetPage(2000, 2999).then(function(p3) {
+        return p1.concat(p2 || []).concat(p3 || []);
+      });
+    });
   });
 }
 
