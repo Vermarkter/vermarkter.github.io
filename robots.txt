@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Disallow internal CRM and distribution tools
+Disallow: /MASTER_OUTREACH_CRM.html
+Disallow: /MASTER_OUTREACH_CRM_CLOUD.html
+Disallow: /FINAL_EMAIL_DISTRIBUTION.html
+Disallow: /FINAL_WA_DISTRIBUTION.html
+Disallow: /Salon_220plus.html
+Disallow: /crm-deploy/
+Disallow: /test-bundle.html
+Disallow: /test-images.html
+Disallow: /proposals/
+Disallow: /*.log$
+Disallow: /*.csv$
+
+Sitemap: https://vermarkter.eu/sitemap.xml
