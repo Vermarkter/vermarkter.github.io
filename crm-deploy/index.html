@@ -149,8 +149,8 @@ tbody tr.is-new:hover{background:rgba(245,158,11,.08)}
 
 <div class="toggle-row">
   <button class="toggle-new" id="toggleNewBtn" onclick="toggleOnlyNew()">
-    <span id="toggleNewIcon">&#9728;&#65039;</span>
-    <span id="toggleNewLabel">&#1055;&#1086;&#1082;&#1072;&#1079;&#1072;&#1090;&#1080; &#1090;&#1110;&#1083;&#1100;&#1082;&#1080; &#1053;&#1054;&#1042;&#1048;&#1061;</span>
+    <span id="toggleNewIcon">&#128293;</span>
+    <span id="toggleNewLabel">&#1055;&#1054;&#1050;&#1040;&#1047;&#1040;&#1058;&#1048; &#1053;&#1054;&#1042;&#1048;&#1061; (READY TO SEND)</span>
     <span class="cnt" id="toggleNewCnt">0</span>
   </button>
 </div>
@@ -245,6 +245,13 @@ function isFresh(s) {
 function isNewStatus(s) {
   return !s.status || s.status === 'new';
 }
+function isBerlin(s) {
+  var hay = ((s.city||'') + ' ' + (s.district||'')).toLowerCase();
+  return hay.indexOf('berlin') !== -1;
+}
+function isReadyToSend(s) {
+  return isNewStatus(s) && isBerlin(s);
+}
 
 function toggleOnlyNew() {
   onlyNew = !onlyNew;
@@ -260,11 +267,11 @@ function syncToggleUI() {
   if (!btn) return;
   btn.classList.toggle('on', onlyNew);
   if (onlyNew) {
-    lbl.textContent = '\u041f\u043e\u043a\u0430\u0437\u0430\u043d\u043e \u0442\u0456\u043b\u044c\u043a\u0438 \u041d\u041e\u0412\u0418\u0425 \u00b7 \u043a\u043b\u0456\u043a \u0449\u043e\u0431 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438';
+    lbl.textContent = '\u0410\u041a\u0422\u0418\u0412\u041d\u0418\u0419 \u0424\u0406\u041b\u042c\u0422\u0420: Berlin + NEW \u00b7 \u043a\u043b\u0456\u043a \u0449\u043e\u0431 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438';
     ico.textContent = '\u2728';
   } else {
-    lbl.textContent = '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u0442\u0456\u043b\u044c\u043a\u0438 \u041d\u041e\u0412\u0418\u0425';
-    ico.textContent = '\u2600\ufe0f';
+    lbl.textContent = '\u041f\u041e\u041a\u0410\u0417\u0410\u0422\u0418 \u041d\u041e\u0412\u0418\u0425 (READY TO SEND)';
+    ico.textContent = '\ud83d\udd25';
   }
 }
 
@@ -458,13 +465,13 @@ function renderTable() {
   var ft = document.getElementById('fType').value;
   var fs = document.getElementById('fStatus').value;
 
-  // Update toggle counter (count of fresh + status=new across whole DB)
-  var newCnt = SALONS.filter(function(s){ return isNewStatus(s); }).length;
+  // Update toggle counter (Berlin + status=new = ready-to-send working list)
+  var newCnt = SALONS.filter(function(s){ return isReadyToSend(s); }).length;
   var tcEl = document.getElementById('toggleNewCnt');
   if (tcEl) tcEl.textContent = newCnt;
 
   var rows = SALONS.filter(function(s) {
-    if (onlyNew && !isNewStatus(s)) return false;
+    if (onlyNew && !isReadyToSend(s)) return false;
     if (q  && !(s.name + ' ' + (s.district||'')).toLowerCase().includes(q)) return false;
     if (fc && !(s.district||'').includes(fc)) return false;
     if (ft === 'wa'    && !(s.phone && s.custom_message)) return false;
