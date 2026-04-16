@@ -161,6 +161,15 @@ tbody tr.is-new:hover{background:rgba(245,158,11,.08)}
     <option value="">&#1042;&#1089;&#1110; &#1084;&#1110;&#1089;&#1090;&#1072;</option>
     <option value="nchen">M&#252;nchen</option>
     <option value="Berlin">Berlin</option>
+    <option value="Hamburg">Hamburg</option>
+    <option value="Hannover">Hannover</option>
+    <option value="Köln">Köln</option>
+    <option value="Frankfurt">Frankfurt</option>
+    <option value="Stuttgart">Stuttgart</option>
+    <option value="Düsseldorf">Düsseldorf</option>
+    <option value="Leipzig">Leipzig</option>
+    <option value="Dresden">Dresden</option>
+    <option value="Nürnberg">Nürnberg</option>
   </select>
   <select id="fType" onchange="renderTable()">
     <option value="">&#1042;&#1089;&#1110; &#1090;&#1080;&#1087;&#1080;</option>
@@ -198,7 +207,7 @@ tbody tr.is-new:hover{background:rgba(245,158,11,.08)}
   <div id="emptyMsg" style="display:none;text-align:center;padding:3rem;color:var(--muted)">&#1053;&#1110;&#1095;&#1086;&#1075;&#1086; &#1085;&#1077; &#1079;&#1085;&#1072;&#1081;&#1076;&#1077;&#1085;&#1086;</div>
 </div>
 
-<div class="footer">Vermarkter &middot; Master Outreach CRM &middot; Cloud Edition &middot; auto-sync 60s</div>
+<div class="footer">Vermarkter &middot; Master Outreach CRM &middot; Supabase Live &middot; 4 676+ лідів &middot; auto-sync 60s</div>
 
 <script>
 // ── CONFIG ────────────────────────────────────────────────────────────────────
@@ -497,7 +506,7 @@ function renderTable() {
   var rows = SALONS.filter(function(s) {
     if (onlyNew && !isReadyToSend(s)) return false;
     if (q  && !(s.name + ' ' + (s.district||'')).toLowerCase().includes(q)) return false;
-    if (fc && !(s.district||'').includes(fc)) return false;
+    if (fc && !((s.city||'')+' '+(s.district||'')).includes(fc)) return false;
     if (ft === 'wa'    && !(isMobile(s.phone) && s.custom_message)) return false;
     if (ft === 'email' && !s.email) return false;
     if (ft === 'none'  && (s.email || (isMobile(s.phone) && s.custom_message))) return false;
