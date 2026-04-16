@@ -1,0 +1,92 @@
+Vermarkter — Server Setup & Run Guide
+======================================
+Мінімум: Windows Server / Windows 10+, Python 3.8+
+Без pip-залежностей. Всі скрипти — чистий stdlib.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. ПІДГОТОВКА (один раз)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+a) Скопіюй папку проєкту на сервер, наприклад:
+   C:\vermarkter\
+
+b) Переконайся, що Python доступний:
+   python --version
+   (очікується 3.8 або вище)
+
+c) Встанови змінні середовища для SMTP (один раз у CMD від адміністратора):
+
+   setx SMTP_HOST  "smtp.zoho.eu"          /M
+   setx SMTP_PORT  "465"                   /M
+   setx SMTP_USER  "hello@vermarkter.eu"   /M
+   setx SMTP_PASS  "ВАШ_APP_PASSWORD"      /M
+   setx SMTP_FROM  "Vermarkter <hello@vermarkter.eu>"  /M
+
+   Після setx — перезапустити CMD або Перезавантажити систему.
+
+d) Переконайся, що поруч з mass_email_sender.py лежить luxury_template.html
+   (скрипт шукає його відносно себе — __file__ → os.path.dirname).
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. ЗАПУСК РОЗСИЛКИ (mass_email_sender.py)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Тестовий прогін (без відправки, без зміни БД):
+   python mass_email_sender.py --dry-run --limit 5
+
+Реальна розсилка — 50 листів:
+   python mass_email_sender.py --limit 50 >> logs\email_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log 2>&1
+
+Повна розсилка всіх 'new' лідів:
+   python mass_email_sender.py >> logs\email_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log 2>&1
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. ЗБІР ЛІДІВ (lead_harvester.py)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Запуск по поштових індексах:
+   python lead_harvester.py 10115 10117 20095 20097 >> logs\harvest_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log 2>&1
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. АУДИТ САЙТІВ (site_auditor.py)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+   python site_auditor.py --limit 200 >> logs\audit_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log 2>&1
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. ЛОГУВАННЯ ПОМИЛОК У ФАЙЛ
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Всі скрипти пишуть stdout + stderr у консоль.
+Щоб зберегти лог — перенаправляй потоки при запуску:
+
+   >> logs\назва.log        — додає до файлу (не перезаписує)
+   2>&1                     — stderr іде туди ж
+
+Перед першим запуском створи папку для логів:
+   mkdir logs
+
+Для щоденної автоматичної розсилки через Task Scheduler:
+   Програма:  python
+   Аргументи: mass_email_sender.py --limit 50
+   Папка:     C:\vermarkter\
+   Лог (окрема дія "Start a program"):
+              cmd /c "python mass_email_sender.py --limit 50 >> logs\email_daily.log 2>&1"
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. КЛЮЧІ (вже вбудовані в скрипти)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Supabase URL + anon key — захардкожені в кожному скрипті.
+Google Maps API key — захардкожений у lead_harvester.py.
+SMTP credentials — лише через змінні середовища (п.1c).
+
+Якщо треба змінити ключі — шукай у кожному файлі рядки:
+   SB_URL  = "https://..."
+   SB_KEY  = "eyJ..."
+   GMAPS_KEY = "AIza..."

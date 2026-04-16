@@ -1,0 +1,20 @@
+# Vermarkter — Python dependencies
+# =================================
+# All three scripts (lead_harvester.py, mass_email_sender.py, site_auditor.py)
+# use ONLY Python standard library. No third-party packages required.
+#
+# Minimum Python version: 3.8+
+# Tested on: Python 3.11 / 3.13
+#
+# stdlib modules used:
+#   sys, io, os, re, json, time, ssl, hashlib, random, argparse
+#   urllib.request, urllib.parse, urllib.error
+#   smtplib, email.mime.multipart, email.mime.text, email.utils
+#
+# To verify your Python version:
+#   python --version
+#
+# No pip install needed. Just run:
+#   python lead_harvester.py [PLZ ...]
+#   python mass_email_sender.py [--dry-run] [--limit N]
+#   python site_auditor.py [--limit N]
