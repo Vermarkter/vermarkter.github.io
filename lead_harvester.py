@@ -25,9 +25,10 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="repla
 # ── Credentials (config.ini) ─────────────────────────────────────────────────
 _cfg = configparser.ConfigParser()
 _cfg.read(os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.ini"), encoding="utf-8")
-GMAPS_KEY = _cfg["CREDENTIALS"]["gmaps_key"]
-SB_URL    = _cfg["CREDENTIALS"]["supabase_url"]
-SB_KEY    = _cfg["CREDENTIALS"]["supabase_key"]
+GMAPS_KEY = _cfg["GOOGLE"]["maps_api_key"]
+SB_URL    = _cfg["SUPABASE"]["url"]
+# SERVICE_ROLE_KEY — обходить RLS, тільки для серверних скриптів
+SB_KEY    = _cfg["SUPABASE"]["service_role_key"]
 
 SB_HEAD   = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY,
              "Content-Type": "application/json"}

@@ -211,8 +211,11 @@ tbody tr.is-new:hover{background:rgba(245,158,11,.08)}
 
 <script>
 // ── CONFIG ────────────────────────────────────────────────────────────────────
+// УВАГА: тут використовується ANON KEY (публічний, role: anon).
+// Він поважає RLS-політики Supabase і безпечний для браузера.
+// SERVICE_ROLE KEY тут ЗАБОРОНЕНО — він обходить RLS і належить лише серверу.
 var SB_URL = 'https://wrvdbvekiteopkdwxuzz.supabase.co';
-var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c';
+var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c'; // ANON KEY — змінювати лише тут
 var TABLE  = 'beauty_leads';
 var DAILY_MAX = 50;
 

@@ -8,6 +8,7 @@ Vermarkter — Server Setup & Run Guide
    НЕ відкривай і НЕ редагуй .py файли для зміни ключів.
    Єдиний файл для налаштування: config.ini
 
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 0. КОНФІГУРАЦІЯ КЛЮЧІВ — config.ini
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -15,18 +16,35 @@ Vermarkter — Server Setup & Run Guide
 Файл config.ini лежить у тій самій папці, що і скрипти.
 Відкрий його будь-яким текстовим редактором (Notepad, VS Code):
 
-   [CREDENTIALS]
-   supabase_url = https://wrvdbvekiteopkdwxuzz.supabase.co
-   supabase_key = eyJ...
-   gmaps_key    = AIza...
+   [SUPABASE]
+   url              = https://wrvdbvekiteopkdwxuzz.supabase.co
+   anon_key         = eyJ...         ← публічний ключ (для браузера)
+   service_role_key = eyJ...         ← !! СЕКРЕТНИЙ !! (для скриптів)
 
-Що можна змінювати:
-   supabase_url — URL проєкту Supabase (якщо переїздите на новий проєкт)
-   supabase_key — anon-ключ Supabase (Settings → API → anon public)
-   gmaps_key    — Google Maps API key (console.cloud.google.com → Credentials)
+   [GOOGLE]
+   maps_api_key     = AIza...
+
+─────────────────────────────────────
+  ⚠️  РІЗНИЦЯ МІЖ ДВОМА КЛЮЧАМИ SUPABASE
+─────────────────────────────────────
+
+  ANON KEY (anon_key)
+  • Публічний ключ із role: anon
+  • Поважає RLS-політики Supabase → доступ контролюється правилами таблиць
+  • Безпечний для браузерного коду (MASTER_OUTREACH_CRM.html)
+  • Знайти: Supabase Dashboard → Settings → API → anon public
+
+  SERVICE ROLE KEY (service_role_key)
+  • СЕКРЕТНИЙ серверний ключ із role: service_role
+  • ПОВНІСТЮ ОБХОДИТЬ RLS — повний доступ до БД без обмежень
+  • Використовується ТІЛЬКИ у серверних Python-скриптах
+  • НІКОЛИ не передавай у браузер, не публікуй у GitHub,
+    не вставляй у HTML-файли — це повна компрометація БД!
+  • Знайти: Supabase Dashboard → Settings → API → service_role (secret)
 
 Після зміни ключів — перезапуск скриптів не потрібен,
 вони зчитують config.ini при кожному старті.
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1. ПІДГОТОВКА (один раз)
@@ -34,13 +52,23 @@ Vermarkter — Server Setup & Run Guide
 
 a) Скопіюй папку проєкту на сервер, наприклад:
    C:\vermarkter\
-   Переконайся, що config.ini лежить поруч зі скриптами.
 
-b) Переконайся, що Python доступний:
+b) Створи config.ini на основі шаблону (файл НЕ входить до репозиторію — зберігається
+   ТІЛЬКИ локально на сервері, ніколи не завантажується на GitHub):
+   copy config.ini.template config.ini
+
+   Заповни config.ini своїми ключами:
+   — Відкрий Supabase Dashboard → Settings → API
+   — Скопіюй "Project URL" → поле url
+   — Скопіюй "anon public" → поле anon_key
+   — Скопіюй "service_role (secret)" → поле service_role_key
+   — Відкрий Google Cloud Console → Credentials → скопіюй Maps API Key → maps_api_key
+
+c) Переконайся, що Python доступний:
    python --version
    (очікується 3.8 або вище)
 
-c) Встанови змінні середовища для SMTP (один раз у CMD від адміністратора):
+d) Встанови змінні середовища для SMTP (один раз у CMD від адміністратора):
 
    setx SMTP_HOST  "smtp.zoho.eu"          /M
    setx SMTP_PORT  "465"                   /M
@@ -50,7 +78,7 @@ c) Встанови змінні середовища для SMTP (один ра
 
    Після setx — перезапустити CMD або Перезавантажити систему.
 
-d) Переконайся, що поруч з mass_email_sender.py лежить luxury_template.html
+e) Переконайся, що поруч з mass_email_sender.py лежить luxury_template.html
    (скрипт шукає його відносно себе — __file__ → os.path.dirname).
 
 
@@ -67,6 +95,8 @@ d) Переконайся, що поруч з mass_email_sender.py лежить 
 Повна розсилка всіх 'new' лідів:
    python mass_email_sender.py >> logs\email_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log 2>&1
 
+Примітка: скрипт використовує SERVICE_ROLE_KEY → RLS не блокує запити.
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 3. ЗБІР ЛІДІВ (lead_harvester.py)
@@ -75,6 +105,8 @@ d) Переконайся, що поруч з mass_email_sender.py лежить 
 Запуск по поштових індексах:
    python lead_harvester.py 10115 10117 20095 20097 >> logs\harvest_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log 2>&1
 
+Примітка: скрипт використовує SERVICE_ROLE_KEY → записує в БД навіть якщо RLS увімкнено.
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 4. АУДИТ САЙТІВ (site_auditor.py)
@@ -82,9 +114,24 @@ d) Переконайся, що поруч з mass_email_sender.py лежить 
 
    python site_auditor.py --limit 200 >> logs\audit_%date:~-4,4%%date:~-10,2%%date:~-7,2%.log 2>&1
 
+Примітка: скрипт використовує SERVICE_ROLE_KEY → оновлює notes у БД без обмежень RLS.
+
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-5. ЛОГУВАННЯ ПОМИЛОК У ФАЙЛ
+5. БРАУЗЕРНИЙ CRM (MASTER_OUTREACH_CRM.html)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Файл MASTER_OUTREACH_CRM.html відкривається напряму у браузері (без сервера).
+Він використовує ANON KEY — публічний ключ, який поважає RLS.
+Доступ до даних контролюється RLS-політиками таблиці beauty_leads.
+
+Якщо потрібно оновити ANON KEY у HTML:
+   Відкрий MASTER_OUTREACH_CRM.html → знайди рядок var SB_KEY → замін значення.
+   SERVICE_ROLE KEY у цей файл вставляти ЗАБОРОНЕНО.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. ЛОГУВАННЯ ПОМИЛОК У ФАЙЛ
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Всі скрипти пишуть stdout + stderr у консоль.
@@ -105,13 +152,15 @@ d) Переконайся, що поруч з mass_email_sender.py лежить 
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-6. КЛЮЧІ — де зберігаються
+7. КЛЮЧІ — де зберігаються
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Supabase URL + anon key → config.ini, розділ [CREDENTIALS]
-Google Maps API key    → config.ini, розділ [CREDENTIALS]
-SMTP credentials       → змінні середовища (п.1c), НЕ в config.ini
+  Supabase URL          → config.ini, [SUPABASE] → url
+  Supabase ANON KEY     → config.ini, [SUPABASE] → anon_key        (браузер)
+  Supabase SERVICE KEY  → config.ini, [SUPABASE] → service_role_key (сервер!)
+  Google Maps API key   → config.ini, [GOOGLE]   → maps_api_key
+  SMTP credentials      → змінні середовища (п.1d), НЕ в config.ini
 
-Щоб змінити Supabase або Google Maps ключ:
+Щоб змінити будь-який Supabase або Google Maps ключ:
    Відкрий config.ini → відредагуй потрібний рядок → зберіж.
    .py файли НЕ чіпай.

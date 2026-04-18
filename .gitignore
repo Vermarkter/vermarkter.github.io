@@ -1,0 +1,15 @@
+# Секрети — НІКОЛИ не публікувати у GitHub
+config.ini
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
