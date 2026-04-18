@@ -3,12 +3,38 @@ Vermarkter — Server Setup & Run Guide
 Мінімум: Windows Server / Windows 10+, Python 3.8+
 Без pip-залежностей. Всі скрипти — чистий stdlib.
 
+!! ВАЖЛИВО ДЛЯ АДМІНІСТРАТОРА !!
+   Всі API-ключі зберігаються ВИКЛЮЧНО у файлі config.ini.
+   НЕ відкривай і НЕ редагуй .py файли для зміни ключів.
+   Єдиний файл для налаштування: config.ini
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+0. КОНФІГУРАЦІЯ КЛЮЧІВ — config.ini
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Файл config.ini лежить у тій самій папці, що і скрипти.
+Відкрий його будь-яким текстовим редактором (Notepad, VS Code):
+
+   [CREDENTIALS]
+   supabase_url = https://wrvdbvekiteopkdwxuzz.supabase.co
+   supabase_key = eyJ...
+   gmaps_key    = AIza...
+
+Що можна змінювати:
+   supabase_url — URL проєкту Supabase (якщо переїздите на новий проєкт)
+   supabase_key — anon-ключ Supabase (Settings → API → anon public)
+   gmaps_key    — Google Maps API key (console.cloud.google.com → Credentials)
+
+Після зміни ключів — перезапуск скриптів не потрібен,
+вони зчитують config.ini при кожному старті.
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1. ПІДГОТОВКА (один раз)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 a) Скопіюй папку проєкту на сервер, наприклад:
    C:\vermarkter\
+   Переконайся, що config.ini лежить поруч зі скриптами.
 
 b) Переконайся, що Python доступний:
    python --version
@@ -79,14 +105,13 @@ d) Переконайся, що поруч з mass_email_sender.py лежить 
 
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-6. КЛЮЧІ (вже вбудовані в скрипти)
+6. КЛЮЧІ — де зберігаються
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-Supabase URL + anon key — захардкожені в кожному скрипті.
-Google Maps API key — захардкожений у lead_harvester.py.
-SMTP credentials — лише через змінні середовища (п.1c).
+Supabase URL + anon key → config.ini, розділ [CREDENTIALS]
+Google Maps API key    → config.ini, розділ [CREDENTIALS]
+SMTP credentials       → змінні середовища (п.1c), НЕ в config.ini
 
-Якщо треба змінити ключі — шукай у кожному файлі рядки:
-   SB_URL  = "https://..."
-   SB_KEY  = "eyJ..."
-   GMAPS_KEY = "AIza..."
+Щоб змінити Supabase або Google Maps ключ:
+   Відкрий config.ini → відредагуй потрібний рядок → зберіж.
+   .py файли НЕ чіпай.

@@ -15,17 +15,19 @@ lead_harvester.py — Total Germany Beauty Database
     python lead_harvester.py 10115 10117 10178 10179
 """
 
-import sys, io, time, re, json, hashlib, random
+import sys, io, time, re, json, hashlib, random, configparser, os
 import urllib.request, urllib.parse, urllib.error
 import ssl
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
-# ── Credentials ──────────────────────────────────────────────────────────────
-GMAPS_KEY = "AIzaSyCjYqc9QPGTdLVwTZZB5KNlY10Z2p6zZJc"
-SB_URL    = "https://wrvdbvekiteopkdwxuzz.supabase.co"
-SB_KEY    = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c"
+# ── Credentials (config.ini) ─────────────────────────────────────────────────
+_cfg = configparser.ConfigParser()
+_cfg.read(os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.ini"), encoding="utf-8")
+GMAPS_KEY = _cfg["CREDENTIALS"]["gmaps_key"]
+SB_URL    = _cfg["CREDENTIALS"]["supabase_url"]
+SB_KEY    = _cfg["CREDENTIALS"]["supabase_key"]
 
 SB_HEAD   = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY,
              "Content-Type": "application/json"}
@@ -258,7 +260,8 @@ def harvest(plz_list):
     # Prefix-based city hint (щоб запит до Google Maps не містив "Berlin" для інших міст)
     plz_prefix_city = {
         "04":"Leipzig","10":"Berlin","12":"Berlin","14":"Berlin",
-        "20":"Hamburg","40":"Düsseldorf","50":"Köln","60":"Frankfurt",
+        "20":"Hamburg","22":"Hamburg","28":"Bremen","30":"Hannover",
+        "40":"Düsseldorf","50":"Köln","60":"Frankfurt",
         "70":"Stuttgart","80":"München",
     }
     plz_prefix3_city = {

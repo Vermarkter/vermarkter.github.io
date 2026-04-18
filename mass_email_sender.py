@@ -23,7 +23,7 @@ Echter Versand:
   python mass_email_sender.py --limit 50
 """
 
-import os, sys, io, time, json, argparse, smtplib, ssl, re
+import os, sys, io, time, json, argparse, smtplib, ssl, re, configparser
 import urllib.request, urllib.parse, urllib.error
 from email.mime.multipart import MIMEMultipart
 from email.mime.text     import MIMEText
@@ -32,9 +32,11 @@ from email.utils         import formataddr, make_msgid
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
-# ── Supabase ────────────────────────────────────────────────────────────────
-SB_URL = "https://wrvdbvekiteopkdwxuzz.supabase.co"
-SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c"
+# ── Credentials (config.ini) ─────────────────────────────────────────────────
+_cfg = configparser.ConfigParser()
+_cfg.read(os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.ini"), encoding="utf-8")
+SB_URL  = _cfg["CREDENTIALS"]["supabase_url"]
+SB_KEY  = _cfg["CREDENTIALS"]["supabase_key"]
 SB_HEAD = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY,
            "Content-Type": "application/json"}
 

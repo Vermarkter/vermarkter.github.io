@@ -26,14 +26,17 @@ Run:
     python site_auditor.py --dry-run --limit 10
 """
 
-import sys, io, re, ssl, json, time, argparse
+import sys, io, re, ssl, json, time, argparse, configparser, os
 import urllib.request, urllib.parse, urllib.error
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
-SB_URL = "https://wrvdbvekiteopkdwxuzz.supabase.co"
-SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c"
+# ── Credentials (config.ini) ─────────────────────────────────────────────────
+_cfg = configparser.ConfigParser()
+_cfg.read(os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.ini"), encoding="utf-8")
+SB_URL  = _cfg["CREDENTIALS"]["supabase_url"]
+SB_KEY  = _cfg["CREDENTIALS"]["supabase_key"]
 SB_HEAD = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY,
            "Content-Type": "application/json"}
 
