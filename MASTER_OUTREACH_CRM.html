@@ -55,8 +55,8 @@ tbody td{padding:.65rem .85rem;vertical-align:top}
 .bwa:hover{box-shadow:0 0 20px rgba(37,211,102,.5);transform:translateY(-1px)}
 .bem{background:var(--grad2);color:#fff;box-shadow:0 0 12px rgba(6,182,212,.2)}
 .bem:hover{box-shadow:0 0 20px rgba(6,182,212,.45);transform:translateY(-1px)}
-.bmap{background:rgba(255,255,255,.07);color:var(--muted);border:1px solid var(--border)}
-.bmap:hover{border-color:var(--cyan);color:var(--cyan)}
+.bmap{background:rgba(59,130,246,.12);color:#60a5fa;border:1px solid rgba(59,130,246,.3)}
+.bmap:hover{background:rgba(59,130,246,.25);color:#93c5fd;border-color:rgba(59,130,246,.6);transform:translateY(-1px)}
 .awrap{display:flex;gap:.4rem;flex-wrap:wrap}
 .tag{display:inline-block;font-size:.65rem;padding:.2rem .5rem;border-radius:4px;font-weight:600}
 .twa{background:rgba(37,211,102,.15);color:var(--green)}
@@ -197,9 +197,9 @@ tbody tr.is-new:hover{background:rgba(245,158,11,.08)}
       <th class="hide-mob">&#1056;&#1072;&#1081;&#1086;&#1085;</th>
       <th class="hide-mob">&#1058;&#1077;&#1083;&#1077;&#1092;&#1086;&#1085;</th>
       <th class="hide-mob">Email</th>
-      <th>&#1055;&#1086;&#1074;&#1110;&#1076;&#1086;&#1084;&#1083;&#1077;&#1085;&#1085;&#1103; WA</th>
+      <th>Maps</th>
+      <th>WhatsApp</th>
       <th>&#1053;&#1086;&#1090;&#1072;&#1090;&#1082;&#1080;</th>
-      <th>&#1044;&#1110;&#1111;</th>
       <th>&#1057;&#1090;&#1072;&#1090;&#1091;&#1089;</th>
     </tr></thead>
     <tbody id="tbody"></tbody>
@@ -552,6 +552,11 @@ function renderTable() {
                :                         '\u041d\u043e\u0432\u0438\u0439';
     var scls = 'sbadge ' + (s.status === 'sent' ? 'ssent' : s.status === 'replied' ? 'sreplied' : 'snew');
 
+    // Email action — small mailto button (defined early, used in emailCell)
+    var emailBtn = s.email
+      ? ' <a class="btn bem" href="' + emailLink(s) + '" onclick="markSent(' + s.id + ')" title="\u041d\u0430\u043f\u0438\u0441\u0430\u0442\u0438 Email" style="margin-top:.25rem;display:inline-flex">' + EM_SVG + '</a>'
+      : '';
+
     // Name cell — editable
     var sd = s.website ? s.website.replace(/^https?:\/\/(www\.)?/,'').split('/')[0] : '';
     var nameCell = '<td class="tname">'
@@ -568,11 +573,13 @@ function renderTable() {
       + (s.phone ? esc(s.phone) : '<span style="color:rgba(255,255,255,.2)">\u2014</span>')
       + '</span></td>';
 
-    // Email cell — editable
-    var emailCell = '<td class="tem hide-mob" title="' + esc(s.email||'') + '">'
+    // Email cell — editable text + small mailto button
+    var emailCell = '<td class="tem hide-mob">'
       + '<span id="cell-' + s.id + '-email" class="editable" onclick="startEdit(' + s.id + ',\'email\',\'' + escAttr(s.email||'') + '\',false)" title="\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438">'
       + (s.email ? esc(s.email) : '<span style="color:rgba(255,255,255,.2)">\u2014</span>')
-      + '</span></td>';
+      + '</span>'
+      + emailBtn
+      + '</td>';
 
     // District cell — editable (hidden on mobile)
     var distCell = '<td class="tdist hide-mob">'
@@ -580,27 +587,25 @@ function renderTable() {
       + (s.district ? esc(s.district) : '<span style="color:rgba(255,255,255,.2)">\u2014</span>')
       + '</span></td>';
 
-    // WA Message cell — editable (click pencil icon or text)
-    var msgPreview = s.custom_message
-      ? esc(s.custom_message.length > 80 ? s.custom_message.slice(0,80) + '...' : s.custom_message)
-      : '<span style="color:rgba(255,255,255,.2);font-style:italic;font-size:.72rem">\u0448\u0430\u0431\u043b\u043e\u043d</span>';
-    var msgCell = '<td style="min-width:160px;max-width:230px">'
-      + '<span id="cell-' + s.id + '-custom_message" class="editable msg-preview" onclick="startEdit(' + s.id + ',\'custom_message\',\'' + escAttr(s.custom_message||'') + '\',true)" title="\u041a\u043b\u0456\u043a\u043d\u0456\u0442\u044c \u0449\u043e\u0431 \u0440\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u0442\u0435\u043a\u0441\u0442 WA">'
-      + msgPreview
-      + '</span></td>';
+    // Maps cell — blue button
+    var mapsCell = '<td>'
+      + '<a class="btn bmap" href="' + esc(s.maps_url||'#') + '" target="_blank">' + MAP_SVG + ' Maps</a>'
+      + '</td>';
+
+    // WhatsApp cell — green button only for mobile numbers
+    var waCell = '<td>';
+    if (isMobile(s.phone)) {
+      waCell += '<a class="btn bwa" href="' + waLink(s) + '" target="_blank" onclick="markSent(' + s.id + ')">' + WA_SVG + ' WA</a>';
+    } else {
+      waCell += '<span style="color:rgba(255,255,255,.15);font-size:.7rem">\u2014</span>';
+    }
+    waCell += '</td>';
 
     // Notes cell — editable
     var notesContent = s.notes
       ? '<span class="notes-text editable" onclick="startNoteEdit(' + s.id + ',\'' + escAttr(s.notes||'') + '\')" title="\u0420\u0435\u0434\u0430\u0433\u0443\u0432\u0430\u0442\u0438 \u043d\u043e\u0442\u0430\u0442\u043a\u0443">' + esc(s.notes) + '</span>'
       : '<span class="notes-empty" onclick="startNoteEdit(' + s.id + ',\'\')">\u2295 \u0434\u043e\u0434\u0430\u0442\u0438 \u043d\u043e\u0442\u0430\u0442\u043a\u0443</span>';
     var notesCell = '<td class="notes-cell"><span id="cell-' + s.id + '-notes">' + notesContent + '</span></td>';
-
-    // Action buttons (WA link reads live from s.custom_message)
-    var btns = '<div class="awrap">';
-    if (hasWa) btns += '<a class="btn bwa" href="' + waLink(s) + '" target="_blank" onclick="markSent(' + s.id + ')">' + WA_SVG + ' WA</a>';
-    if (hasEm) btns += '<a class="btn bem" href="' + emailLink(s) + '" onclick="markSent(' + s.id + ')">' + EM_SVG + ' Email</a>';
-    btns += '<a class="btn bmap" href="' + esc(s.maps_url||'#') + '" target="_blank">' + MAP_SVG + ' Maps</a>';
-    btns += '</div>';
 
     // Status cell
     var statusCell = '<span class="' + scls + '">' + slabel + '</span>'
@@ -618,9 +623,9 @@ function renderTable() {
       + distCell
       + phoneCell
       + emailCell
-      + msgCell
+      + mapsCell
+      + waCell
       + notesCell
-      + '<td>' + btns + '</td>'
       + '<td>' + statusCell + '</td>'
       + '</tr>';
   }).join('');
