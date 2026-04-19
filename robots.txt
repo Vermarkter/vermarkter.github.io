@@ -4,10 +4,10 @@ Allow: /
 # Disallow internal CRM and distribution tools
 Disallow: /vrm_console_x92z1.html
 Disallow: /MASTER_OUTREACH_CRM.html
-Disallow: /MASTER_OUTREACH_CRM_CLOUD.html
-Disallow: /FINAL_EMAIL_DISTRIBUTION.html
-Disallow: /FINAL_WA_DISTRIBUTION.html
-Disallow: /Salon_220plus.html
+Disallow: /master_outreach_crm_cloud.html
+Disallow: /final_email_distribution.html
+Disallow: /final_wa_distribution.html
+Disallow: /salon_220plus.html
 Disallow: /crm-deploy/
 Disallow: /test-bundle.html
 Disallow: /test-images.html
