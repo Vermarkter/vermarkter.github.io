@@ -39,7 +39,7 @@ HTTP_CTX  = ssl.create_default_context()
 HTTP_CTX.check_hostname = False
 HTTP_CTX.verify_mode    = ssl.CERT_NONE
 
-DEMO_URL  = "https://vermarkter.vercel.app/SERVICES/beauty-industry/de/"
+DEMO_URL  = "https://vermarkter.vercel.app/services/beauty-industry/de/"
 
 # ── Helpers: HTTP ─────────────────────────────────────────────────────────────
 def safe(s, n=60):

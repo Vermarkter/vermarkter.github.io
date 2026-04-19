@@ -24,7 +24,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="repla
 SB_URL = "https://wrvdbvekiteopkdwxuzz.supabase.co"
 SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c"
 SB_HEAD = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY}
-DEMO_URL = "https://vermarkter.vercel.app/SERVICES/beauty-industry/de/"
+DEMO_URL = "https://vermarkter.vercel.app/services/beauty-industry/de/"
 
 SLUG = re.compile(r"[^a-z0-9]+")
 def slugify(s):
@@ -203,16 +203,39 @@ def render_file(lead, rng):
     lines.append("")
     return "\n".join(lines)
 
+def fetch_all(limit=0):
+    """Усі ліди зі статусом new, пагінація по 1000."""
+    PAGE = 1000
+    all_rows, offset = [], 0
+    while True:
+        q = ("/rest/v1/beauty_leads?select=id,name,city,district,phone,email,website,custom_message"
+             "&order=id.asc&limit=" + str(PAGE) + "&offset=" + str(offset))
+        req = urllib.request.Request(SB_URL + q, headers=SB_HEAD)
+        with urllib.request.urlopen(req, timeout=30) as r:
+            page = json.loads(r.read().decode("utf-8"))
+        if not page: break
+        all_rows.extend(page)
+        if len(page) < PAGE or (limit and len(all_rows) >= limit): break
+        offset += PAGE
+    if limit: all_rows = all_rows[:limit]
+    return all_rows
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=188)
     ap.add_argument("--out",   default="sales_book")
+    ap.add_argument("--all",   action="store_true",
+                    help="Всі ліди, не тільки мобільні (consolidated mode)")
     args = ap.parse_args()
 
     os.makedirs(args.out, exist_ok=True)
     print("Vermarkter Sales-Book Generator")
-    leads = fetch_mobile(args.limit)
-    print("Mobile-Leads:", len(leads))
+    if args.all:
+        leads = fetch_all(args.limit if args.limit != 188 else 0)
+        print("All leads:", len(leads))
+    else:
+        leads = fetch_mobile(args.limit)
+        print("Mobile-Leads:", len(leads))
 
     ok = fail = 0
     for i, lead in enumerate(leads, 1):

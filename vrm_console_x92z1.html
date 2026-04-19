@@ -300,7 +300,7 @@ function mapsLink(s) {
 }
 function waText(s) {
   return s.custom_message ||
-    ('Hallo ' + (s.name || '') + '! Wir helfen Salons mehr Buchungen digital zu gewinnen \u2014 Website + App + KI-Rezeption. Einmalig 1.000 EUR. Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/ Viele Gr\u00fc\u00dfe, Vermarkter-Team');
+    ('Hallo ' + (s.name || '') + '! Wir helfen Salons mehr Buchungen digital zu gewinnen \u2014 Website + App + KI-Rezeption. Einmalig 1.000 EUR. Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Viele Gr\u00fc\u00dfe, Vermarkter-Team');
 }
 function waLink(s) {
   return 'https://wa.me/' + (s.phone || '').replace(/\D/g, '') + '?text=' + encodeURIComponent(waText(s));
@@ -312,7 +312,7 @@ function emailLink(s) {
         'Sehr geehrtes Team von ' + (s.name || '') + ',\n\n'
       + 'wir bauen Ihre eigene digitale Heimat: Website + App + KI-Rezeption 24/7.\n'
       + 'Einmalig 1.000 EUR, keine monatlichen Kosten.\n\n'
-      + 'Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/\n\n'
+      + 'Demo: https://vermarkter.vercel.app/services/beauty-industry/de/\n\n'
       + 'Mit freundlichen Gr\u00fc\u00dfen,\nVermarkter-Team'
     );
 }

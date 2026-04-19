@@ -33,7 +33,7 @@ SB_URL = "https://wrvdbvekiteopkdwxuzz.supabase.co"
 SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c"
 SB_HEAD = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY}
 
-DEMO_URL = "https://vermarkter.vercel.app/SERVICES/beauty-industry/de/"
+DEMO_URL = "https://vermarkter.vercel.app/services/beauty-industry/de/"
 SITE_URL = "https://vermarkter.vercel.app/de/"
 OUT_DIR  = "proposals"
 

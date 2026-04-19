@@ -42,7 +42,7 @@ SB_HEAD = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY,
            "Content-Type": "application/json"}
 
 # ── Branding ────────────────────────────────────────────────────────────────
-DEMO_URL   = "https://vermarkter.vercel.app/SERVICES/beauty-industry/de/"
+DEMO_URL   = "https://vermarkter.vercel.app/services/beauty-industry/de/"
 SITE_URL   = "https://vermarkter.vercel.app/de/"
 BRAND      = "Vermarkter"
 REPLY_NAME = "Vermarkter Team"
