@@ -5,6 +5,11 @@
       "source": "/SERVICES/:path*",
       "destination": "/services/:path*",
       "permanent": true
+    },
+    {
+      "source": "/vrm_:slug",
+      "destination": "/vrm_:slug.html",
+      "permanent": false
     }
   ]
 }
