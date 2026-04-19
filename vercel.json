@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/SERVICES/:path*",
+      "destination": "/services/:path*",
+      "permanent": true
+    }
+  ]
+}
