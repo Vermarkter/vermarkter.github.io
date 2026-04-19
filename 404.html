@@ -7,13 +7,17 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1768018062">
     <script>
         (function () {
-            var LANGS = ['de', 'en', 'pl', 'ru', 'tr', 'ua'];
-            var path  = window.location.pathname;          // e.g. "/de/de/unknown"
+            var path = window.location.pathname;
 
-            // Find the FIRST lang segment in the path
+            // Exception: admin/CRM files (vrm_*) and root-level .html files
+            // must NOT be lang-redirected — they are direct assets, not lang pages
+            if (/^\/vrm_/i.test(path) || /^\/[^\/]+\.html$/i.test(path)) {
+                return;
+            }
+
+            var LANGS = ['de', 'en', 'pl', 'ru', 'tr', 'ua'];
             var detectedLang = 'de';
             for (var i = 0; i < LANGS.length; i++) {
-                // Match /lang/ or /lang at end-of-string
                 if (path === '/' + LANGS[i] + '/' ||
                     path === '/' + LANGS[i] ||
                     path.indexOf('/' + LANGS[i] + '/') === 0) {
@@ -22,7 +26,6 @@
                 }
             }
 
-            // Always redirect to absolute /<lang>/ — never relative
             window.location.replace('/' + detectedLang + '/');
         })();
     </script>
