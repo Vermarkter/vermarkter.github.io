@@ -47,12 +47,13 @@ SITE_URL   = "https://vermarkter.vercel.app/de/"
 BRAND      = "Vermarkter"
 REPLY_NAME = "Vermarkter Team"
 
-# ── SMTP aus ENV ────────────────────────────────────────────────────────────
-SMTP_HOST = os.environ.get("SMTP_HOST", "")
-SMTP_PORT = int(os.environ.get("SMTP_PORT", "465"))
-SMTP_USER = os.environ.get("SMTP_USER", "")
-SMTP_PASS = os.environ.get("SMTP_PASS", "")
-SMTP_FROM = os.environ.get("SMTP_FROM", "Vermarkter <hello@vermarkter.eu>")
+# ── SMTP aus config.ini (Fallback: ENV) ─────────────────────────────────────
+_smtp = _cfg["SMTP"] if "SMTP" in _cfg else {}
+SMTP_HOST = _smtp.get("host") or os.environ.get("SMTP_HOST", "")
+SMTP_PORT = int(_smtp.get("port") or os.environ.get("SMTP_PORT", "465"))
+SMTP_USER = _smtp.get("user") or os.environ.get("SMTP_USER", "")
+SMTP_PASS = _smtp.get("password") or os.environ.get("SMTP_PASS", "")
+SMTP_FROM = _smtp.get("from") or os.environ.get("SMTP_FROM", "Vermarkter <hello@vermarkter.eu>")
 
 # ── HTTP helpers ────────────────────────────────────────────────────────────
 def sb_get(path):
