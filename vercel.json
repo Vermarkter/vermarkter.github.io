@@ -7,6 +7,16 @@
       "permanent": true
     },
     {
+      "source": "/services/beauty-industry",
+      "destination": "/services/beauty-industry/de/",
+      "permanent": false
+    },
+    {
+      "source": "/services/beauty-industry/",
+      "destination": "/services/beauty-industry/de/",
+      "permanent": false
+    },
+    {
       "source": "/vrm_:slug",
       "destination": "/vrm_:slug.html",
       "permanent": false
