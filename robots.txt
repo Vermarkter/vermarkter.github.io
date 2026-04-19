@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 # Disallow internal CRM and distribution tools
+Disallow: /internal_vrm_pnl_91.html
 Disallow: /MASTER_OUTREACH_CRM.html
 Disallow: /MASTER_OUTREACH_CRM_CLOUD.html
 Disallow: /FINAL_EMAIL_DISTRIBUTION.html
