@@ -1,0 +1,16 @@
+{
+  "buildMarker": "🛡️ My Salon - Premium Secure V31",
+  "legal": {
+    "privacy": {
+      "title": "Datenschutzerklärung",
+      "lastUpdated": "20. April 2026",
+      "dataSecurity": {
+        "heading": "7. Datensicherheit",
+        "ssl": "Wir verwenden innerhalb des Website-Besuchs das verbreitete SSL-Verfahren (Secure Socket Layer) in Verbindung mit der jeweils höchsten Verschlüsselungsstufe, die von Ihrem Browser unterstützt wird. Ob eine einzelne Seite unseres Internetauftrittes verschlüsselt übertragen wird, erkennen Sie an der geschlossenen Darstellung des Schließsymbols in der Statusleiste Ihres Browsers.",
+        "supabase": "Alle personenbezogenen Daten (insbesondere Namen und Telefonnummern unserer Interessenten und Kunden) werden ausschließlich auf Servern von Supabase Inc. gespeichert. Der gewählte Serverstandort befindet sich in Frankfurt am Main, Deutschland (AWS-Region eu-central-1) und unterliegt damit dem vollständigen Schutz der Datenschutz-Grundverordnung (DSGVO) sowie dem deutschen Bundesdatenschutzgesetz (BDSG). Ein Transfer personenbezogener Daten in Drittländer außerhalb der EU findet nicht statt.",
+        "securityByDesign": "Wir setzen das Prinzip \"Security by Design\" konsequent um: Personenbezogene Daten unserer Kunden – insbesondere Namen und Telefonnummern – werden in der Datenbank gespeichert und grundsätzlich nicht ohne sachliche Notwendigkeit an Drittanbieter-KI-Systeme (z. B. Alibaba Qwen oder vergleichbare Large Language Models) zur Verarbeitung, Analyse oder zum Training weitergegeben.",
+        "avv": "Mit unserem Datenbankdienstleister Supabase besteht ein Auftragsverarbeitungsvertrag (AVV) gemäß Art. 28 DSGVO. Dieser Vertrag stellt sicher, dass die Datenverarbeitung ausschließlich auf unsere Weisung hin erfolgt und alle technischen und organisatorischen Sicherheitsmaßnahmen eingehalten werden. Auf Anfrage kann der Auftragsverarbeitungsvertrag zur Einsichtnahme bereitgestellt werden."
+      }
+    }
+  }
+}
