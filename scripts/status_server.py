@@ -32,6 +32,9 @@ import sys, io, os, json, time, glob, shutil, configparser, urllib.request, urll
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from datetime import datetime, timezone
 from threading import Lock
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+from holiday_guard import HolidayGuard as _HolidayGuard
+_hguard = _HolidayGuard()
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
@@ -258,6 +261,12 @@ def collect_disk():
     return results
 
 
+def collect_holiday():
+    info = _hguard.today_info()
+    info['next'] = _hguard.next_holiday()
+    return info
+
+
 def collect_logs():
     entries = {}
     for name in ['sniper_engine.log', 'mass_email.log', 'batch_watcher.log',
@@ -293,6 +302,7 @@ def get_metrics():
                 'brevo':    collect_brevo(),
                 'disk':     collect_disk(),
                 'logs':     collect_logs(),
+                'holiday':  collect_holiday(),
                 'uptime_s': int(now - _START),
                 'server_time': datetime.now(timezone.utc).isoformat(timespec='seconds'),
             }
@@ -468,6 +478,15 @@ h1{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;line-height:1.08;margin-bo
     <div style="font-size:.7rem;color:var(--muted);margin-top:.5rem" id="brevoNote"></div>
   </div>
 
+  <!-- Holiday Guard -->
+  <div class="card" id="holidayCard">
+    <div class="card-title"><div class="dot-s dot-ok" id="hgDot"></div>Holiday Guard</div>
+    <div class="srv-row" id="hgRow">
+      <div class="srv-item"><span id="hgStatus">перевірка…</span></div>
+    </div>
+    <div style="font-size:.7rem;color:var(--muted);margin-top:.5rem" id="hgNext"></div>
+  </div>
+
   <!-- Supabase -->
   <div class="card">
     <div class="card-title"><div class="dot-s dot-off" id="sbDot"></div>Supabase Database</div>
@@ -554,6 +573,24 @@ function render(d) {
 
   if (bt.in_progress > 0)
     set('sBatchSub', bt.in_progress + ' у процесі');
+
+  // Holiday Guard
+  var hg = d.holiday || {};
+  var hgBlocked = hg.blocked;
+  dotClass('hgDot', hgBlocked ? 'dot-err' : 'dot-ok');
+  document.getElementById('hgRow').innerHTML =
+    '<div class="srv-item" style="background:' +
+    (hgBlocked ? 'rgba(239,68,68,.08);border-color:rgba(239,68,68,.25)' : 'var(--surf)') + '">' +
+    '<span style="color:' + (hgBlocked ? 'var(--red)' : 'var(--green)') + ';font-weight:700">' +
+    (hgBlocked ? '🔴 ACTIVE — DISPATCH BLOCKED' : '🟢 CLEAR — Dispatch allowed') + '</span>' +
+    (hgBlocked ? '&nbsp;&nbsp;<span style="color:var(--muted)">' + esc(hg.name_en||'') + '</span>' : '') +
+    '</div>';
+  var nxt = hg.next;
+  if (nxt) {
+    document.getElementById('hgNext').textContent =
+      'Наступне свято: ' + (nxt.name_de||nxt.name_en) + ' — ' + nxt.date +
+      ' (через ' + nxt.days_away + ' дн.)';
+  }
 
   // Supabase dot
   dotClass('sbDot', sb.online ? 'dot-ok' : 'dot-err');

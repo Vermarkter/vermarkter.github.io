@@ -24,6 +24,8 @@ Brevo Free plan: 300 emails/day, 9000/month. No credit card needed.
 import sys, io, os, json, time, argparse, urllib.request, urllib.parse, configparser, smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from holiday_guard import guard_dispatch
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
@@ -269,6 +271,8 @@ def parse_args():
 
 def main():
     args = parse_args()
+    if not args.dry_run:
+        guard_dispatch('mass_email_sender')
     dry  = args.dry_run
     limit = min(args.limit, DAILY_CAP)
     ids  = [int(x.strip()) for x in args.ids.split(',') if x.strip()] if args.ids else None
