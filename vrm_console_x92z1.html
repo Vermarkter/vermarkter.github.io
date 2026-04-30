@@ -52,13 +52,20 @@ h1{font-size:clamp(1.55rem,3.2vw,2.5rem);font-weight:900;line-height:1.1;margin-
 .rbtn{background:transparent;border:1px solid var(--border);border-radius:7px;padding:.38rem .85rem;font-size:.78rem;color:var(--muted);cursor:pointer;transition:all .2s;font-family:inherit}
 .rbtn:hover{border-color:var(--pink);color:var(--pink)}
 
-/* TOGGLE */
-.trow{max-width:1700px;margin:0 auto 1.05rem;display:flex;justify-content:center}
+/* TOOL ROW (toggle + demo + campaign) */
+.tool-row{max-width:1700px;margin:0 auto 1.05rem;display:flex;justify-content:center;gap:.7rem;flex-wrap:wrap}
 .tnew{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,158,11,.07);border:2px solid rgba(245,158,11,.28);color:#fbbf24;font-weight:800;font-size:.88rem;padding:.7rem 1.5rem;border-radius:11px;cursor:pointer;transition:all .22s;letter-spacing:.3px;font-family:inherit}
 .tnew:hover{background:rgba(245,158,11,.15);border-color:#f59e0b}
 .tnew.on{background:linear-gradient(135deg,#f59e0b,#ef4444);border-color:transparent;color:#fff;box-shadow:0 5px 16px rgba(245,158,11,.38)}
 .tnew .cnt{background:rgba(0,0,0,.2);padding:.13rem .45rem;border-radius:999px;font-size:.73rem;font-weight:900}
 .tnew.on .cnt{background:rgba(255,255,255,.22)}
+/* Demo Switch button */
+.tbtn-demo{display:inline-flex;align-items:center;gap:.5rem;background:rgba(139,92,246,.09);border:2px solid rgba(139,92,246,.32);color:#c4b5fd;font-weight:800;font-size:.88rem;padding:.7rem 1.5rem;border-radius:11px;cursor:pointer;transition:all .22s;letter-spacing:.3px;font-family:inherit}
+.tbtn-demo:hover{background:rgba(139,92,246,.2);border-color:#8b5cf6;box-shadow:0 4px 14px rgba(139,92,246,.28)}
+/* Campaign button */
+.tbtn-camp{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,211,102,.07);border:2px solid rgba(37,211,102,.28);color:#4ade80;font-weight:800;font-size:.88rem;padding:.7rem 1.5rem;border-radius:11px;cursor:pointer;transition:all .22s;letter-spacing:.3px;font-family:inherit}
+.tbtn-camp:hover{background:rgba(37,211,102,.18);border-color:#25D366;box-shadow:0 4px 14px rgba(37,211,102,.25)}
+.tbtn-camp .cnt{background:rgba(0,0,0,.2);padding:.13rem .45rem;border-radius:999px;font-size:.73rem;font-weight:900}
 
 /* FILTERS */
 .filters{max-width:1700px;margin:0 auto 1rem;display:flex;gap:.55rem;flex-wrap:wrap}
@@ -67,6 +74,17 @@ h1{font-size:clamp(1.55rem,3.2vw,2.5rem);font-weight:900;line-height:1.1;margin-
 .filters input:focus,.filters select:focus{border-color:rgba(236,72,153,.48)}
 .filters select option{background:#0f0f18}
 
+/* CAMPAIGN BAR */
+.camp-bar{max-width:1700px;margin:0 auto .75rem;background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.22);border-radius:11px;padding:.7rem 1.2rem;display:none;align-items:center;gap:.9rem;flex-wrap:wrap}
+.camp-bar.active{display:flex}
+.camp-info{font-size:.84rem;color:#4ade80;font-weight:700;flex:1}
+.camp-sub{font-size:.72rem;color:var(--muted);margin-left:.3rem;font-weight:400}
+.btn-launch{background:linear-gradient(135deg,#25D366,#16a34a);color:#fff;border:none;border-radius:9px;padding:.55rem 1.3rem;font-size:.84rem;font-weight:800;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:.4rem;transition:opacity .2s}
+.btn-launch:hover{opacity:.88}
+.btn-launch:disabled{opacity:.45;cursor:not-allowed}
+.btn-clear-sel{background:transparent;border:1px solid rgba(255,255,255,.15);color:var(--muted);border-radius:7px;padding:.38rem .85rem;font-size:.76rem;cursor:pointer;font-family:inherit;transition:all .2s}
+.btn-clear-sel:hover{border-color:var(--pink);color:var(--pink)}
+
 /* TABLE WRAP */
 .twrap{max-width:1700px;margin:0 auto;overflow-x:auto;border-radius:13px;border:1px solid var(--border);background:#06060f}
 
@@ -74,13 +92,17 @@ h1{font-size:clamp(1.55rem,3.2vw,2.5rem);font-weight:900;line-height:1.1;margin-
 table{width:100%;border-collapse:collapse;font-size:.81rem}
 thead{position:sticky;top:0;z-index:20}
 thead th{text-align:left;padding:.58rem .75rem;background:#0b0b18;border-bottom:1px solid rgba(236,72,153,.22);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--pink);white-space:nowrap}
+thead th.chk-col{text-align:center;width:36px}
 tbody tr{border-bottom:1px solid rgba(255,255,255,.035);transition:background .15s}
 tbody tr:hover{background:rgba(236,72,153,.055)}
 tbody tr.done{opacity:.35}
 tbody tr.isnew{background:rgba(245,158,11,.035)}
 tbody tr.isnew:hover{background:rgba(245,158,11,.08)}
+tbody tr.selected{background:rgba(37,211,102,.07)!important}
 tbody td{padding:.52rem .75rem;vertical-align:top}
 .tnum{color:var(--muted);font-size:.7rem;text-align:center;vertical-align:middle;width:38px}
+.chk-cell{text-align:center;vertical-align:middle;width:36px}
+input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#25D366}
 
 /* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:.28rem;font-size:.71rem;font-weight:700;padding:.3rem .65rem;border-radius:6px;text-decoration:none;cursor:pointer;border:none;transition:all .17s;white-space:nowrap;font-family:inherit}
@@ -113,6 +135,37 @@ tbody td{padding:.52rem .75rem;vertical-align:top}
 .ebox{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.28);border-radius:11px;padding:1.1rem 1.5rem;color:#fca5a5;font-size:.86rem;max-width:540px;margin:0 auto;text-align:left;line-height:1.55}
 .ebox b{color:#ef4444}
 
+/* ═══════════════════════════════════════
+   DEMO MODAL
+════════════════════════════════════════ */
+.demo-modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:1000;display:none;align-items:center;justify-content:center;padding:1rem}
+.demo-modal-bg.open{display:flex}
+.demo-modal{background:#0d0d1a;border:1px solid rgba(139,92,246,.35);border-radius:18px;max-width:680px;width:100%;max-height:90vh;overflow-y:auto;padding:1.8rem 2rem}
+.demo-modal h2{font-size:1.25rem;font-weight:900;margin-bottom:.3rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.demo-modal .dm-sub{font-size:.8rem;color:var(--muted);margin-bottom:1.2rem}
+/* Lang tabs */
+.lang-tabs{display:flex;gap:.5rem;margin-bottom:1.3rem;flex-wrap:wrap}
+.lang-tab{padding:.45rem 1.1rem;border-radius:9px;border:1.5px solid rgba(255,255,255,.1);background:rgba(255,255,255,.03);color:var(--muted);font-size:.82rem;font-weight:700;cursor:pointer;transition:all .18s;font-family:inherit}
+.lang-tab:hover{border-color:rgba(139,92,246,.5);color:#c4b5fd}
+.lang-tab.active{background:rgba(139,92,246,.18);border-color:#8b5cf6;color:#c4b5fd;box-shadow:0 0 12px rgba(139,92,246,.25)}
+/* Booking widget preview */
+.bw-preview{background:#0a0a15;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.4rem;min-height:220px}
+.bw-salon-name{font-size:1.05rem;font-weight:800;margin-bottom:.2rem}
+.bw-tagline{font-size:.75rem;color:var(--muted);margin-bottom:1.1rem}
+.bw-steps{display:flex;gap:.5rem;margin-bottom:1.1rem;flex-wrap:wrap}
+.bw-step{flex:1;min-width:80px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.22);border-radius:9px;padding:.55rem .7rem;text-align:center;font-size:.72rem;color:#c4b5fd}
+.bw-step-num{font-size:1rem;font-weight:900;display:block;margin-bottom:.18rem}
+.bw-cta{display:block;width:100%;padding:.72rem;background:linear-gradient(135deg,#ec4899,#8b5cf6);color:#fff;font-weight:800;font-size:.9rem;border-radius:10px;text-align:center;border:none;cursor:pointer;font-family:inherit;margin-top:.5rem}
+.bw-lang-badge{display:inline-block;font-size:.62rem;padding:.15rem .5rem;border-radius:4px;background:rgba(139,92,246,.2);border:1px solid rgba(139,92,246,.35);color:#c4b5fd;margin-bottom:.85rem}
+.bw-dir{direction:rtl;text-align:right}
+/* Lang count badge */
+.demo-langs-row{display:flex;align-items:center;gap:.7rem;margin-bottom:1rem;flex-wrap:wrap}
+.demo-lang-pill{font-size:.7rem;padding:.18rem .55rem;border-radius:4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--muted)}
+.demo-lang-pill.hi{background:rgba(139,92,246,.14);border-color:rgba(139,92,246,.35);color:#c4b5fd}
+/* Close btn */
+.demo-close{float:right;background:transparent;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;line-height:1;margin-top:-.3rem}
+.demo-close:hover{color:var(--pink)}
+
 .footer{max-width:1700px;margin:1.5rem auto 0;text-align:center;color:var(--muted);font-size:.72rem;padding-bottom:.5rem}
 
 @media(max-width:900px){
@@ -123,103 +176,163 @@ tbody td{padding:.52rem .75rem;vertical-align:top}
 </head>
 <body>
 
+<!-- ═══════════════ DEMO MODAL ═══════════════ -->
+<div class="demo-modal-bg" id="demoModalBg" onclick="closeDemoIfBg(event)">
+  <div class="demo-modal">
+    <button class="demo-close" onclick="closeDemo()">&#10005;</button>
+    <h2>🌍 Demo — 10-Sprachen-Interface</h2>
+    <p class="dm-sub">So sieht die Buchungsseite für Ihre Kunden aus — in deren Muttersprache</p>
+
+    <div class="demo-langs-row">
+      <span style="font-size:.75rem;color:var(--muted)">10 Sprachen aktiv:</span>
+      <span class="demo-lang-pill hi">🇩🇪 DE</span>
+      <span class="demo-lang-pill hi">🇬🇧 EN</span>
+      <span class="demo-lang-pill hi">🇹🇷 TR</span>
+      <span class="demo-lang-pill hi">🇸🇦 AR</span>
+      <span class="demo-lang-pill">🇫🇷 FR</span>
+      <span class="demo-lang-pill">🇪🇸 ES</span>
+      <span class="demo-lang-pill">🇵🇱 PL</span>
+      <span class="demo-lang-pill">🇷🇺 RU</span>
+      <span class="demo-lang-pill">🇺🇦 UA</span>
+      <span class="demo-lang-pill">🇨🇳 ZH</span>
+    </div>
+
+    <div class="lang-tabs">
+      <button class="lang-tab active" onclick="setDemoLang('de',this)">🇩🇪 Deutsch</button>
+      <button class="lang-tab" onclick="setDemoLang('tr',this)">🇹🇷 Türkçe</button>
+      <button class="lang-tab" onclick="setDemoLang('ar',this)">🇸🇦 عربي</button>
+      <button class="lang-tab" onclick="setDemoLang('en',this)">🇬🇧 English</button>
+    </div>
+
+    <div class="bw-preview" id="demoWidget"></div>
+  </div>
+</div>
+
+<!-- ═══════════════ PAGE ═══════════════ -->
 <div class="hdr">
   <div class="badges">
-    <span class="badge b-crm">&#127919; Master Outreach CRM</span>
-    <span class="badge b-live">&#9729; Supabase Live</span>
+    <span class="badge b-crm">🎯 Master Outreach CRM</span>
+    <span class="badge b-live">☁ Supabase Live</span>
   </div>
-  <h1><span class="gt">&#1055;&#1086;&#1074;&#1085;&#1072; &#1073;&#1072;&#1079;&#1072; &#1082;&#1083;&#1110;&#1108;&#1085;&#1090;&#1110;&#1074;</span></h1>
-  <p class="sub" id="subtitleLine">&#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1077;&#1085;&#1085;&#1103;...</p>
+  <h1><span class="gt">Повна база клієнтів</span></h1>
+  <p class="sub" id="subtitleLine">Завантаження...</p>
   <div class="sync-row">
     <div class="dot loading" id="syncDot"></div>
-    <span id="syncText">&#1055;&#1110;&#1076;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1085;&#1103; &#1076;&#1086; Supabase...</span>
+    <span id="syncText">Підключення до Supabase...</span>
   </div>
 </div>
 
 <div class="sbar">
-  <div class="sc"><div class="sn"   id="statTotal">&#8212;</div><div class="sl">&#1042;&#1089;&#1100;&#1086;&#1075;&#1086;</div></div>
-  <div class="sc"><div class="sn g" id="statWa">&#8212;</div><div class="sl">WhatsApp</div></div>
-  <div class="sc"><div class="sn c" id="statEmail">&#8212;</div><div class="sl">Email</div></div>
-  <div class="sc"><div class="sn a" id="statSent">&#8212;</div><div class="sl">&#1053;&#1072;&#1076;&#1110;&#1089;&#1083;&#1072;&#1085;&#1086;</div></div>
+  <div class="sc"><div class="sn"   id="statTotal">—</div><div class="sl">Всього</div></div>
+  <div class="sc"><div class="sn g" id="statWa">—</div><div class="sl">WhatsApp</div></div>
+  <div class="sc"><div class="sn c" id="statEmail">—</div><div class="sl">Email</div></div>
+  <div class="sc"><div class="sn a" id="statSent">—</div><div class="sl">Надіслано</div></div>
 </div>
 
 <div class="cbar">
   <div>
-    <div class="clbl">&#1054;&#1073;&#1088;&#1086;&#1073;&#1083;&#1077;&#1085;&#1086; &#1089;&#1100;&#1086;&#1075;&#1086;&#1076;&#1085;&#1110;</div>
+    <div class="clbl">Оброблено сьогодні</div>
     <div><span class="cval" id="sentToday">0</span><span style="color:var(--muted);font-size:.92rem"> / 50</span></div>
   </div>
   <div class="prog"><div class="pf" id="progressFill" style="width:0%"></div></div>
   <div class="cstats">
-    <div class="ci"><div class="cv" id="cTotal" style="color:var(--text)">&#8212;</div><div class="ck">&#1042;&#1089;&#1100;&#1086;&#1075;&#1086;</div></div>
-    <div class="ci"><div class="cv" id="cDone" style="color:#4ade80">&#8212;</div><div class="ck">&#1043;&#1086;&#1090;&#1086;&#1074;&#1086;</div></div>
-    <div class="ci"><div class="cv" id="cLeft" style="color:var(--pink)">&#8212;</div><div class="ck">&#1047;&#1072;&#1083;&#1080;&#1096;&#1080;&#1083;&#1086;&#1089;&#1100;</div></div>
-    <div class="ci"><button class="rbtn" onclick="resetFilters()">&#8634; &#1060;&#1110;&#1083;&#1100;&#1090;&#1088;&#1080;</button></div>
+    <div class="ci"><div class="cv" id="cTotal" style="color:var(--text)">—</div><div class="ck">Всього</div></div>
+    <div class="ci"><div class="cv" id="cDone" style="color:#4ade80">—</div><div class="ck">Готово</div></div>
+    <div class="ci"><div class="cv" id="cLeft" style="color:var(--pink)">—</div><div class="ck">Залишилось</div></div>
+    <div class="ci"><button class="rbtn" onclick="resetFilters()">⟳ Фільтри</button></div>
   </div>
 </div>
 
-<div class="trow">
+<div class="tool-row">
+  <!-- Toggle READY TO SEND -->
   <button class="tnew" id="toggleNewBtn" onclick="toggleOnlyNew()">
-    <span id="toggleNewIcon">&#128293;</span>
-    <span id="toggleNewLabel">&#1055;&#1054;&#1050;&#1040;&#1047;&#1040;&#1058;&#1048; &#1053;&#1054;&#1042;&#1048;&#1061; (READY TO SEND)</span>
+    <span id="toggleNewIcon">🔥</span>
+    <span id="toggleNewLabel">ПОКАЗАТИ НОВИХ (READY TO SEND)</span>
     <span class="cnt" id="toggleNewCnt">0</span>
+  </button>
+
+  <!-- Demo Switch -->
+  <button class="tbtn-demo" onclick="openDemo()">
+    🌍 Demo-Switch — 10 Мов
+  </button>
+
+  <!-- Campaign Manager -->
+  <button class="tbtn-camp" id="campToggleBtn" onclick="toggleCampMode()">
+    📋 WA Campaign
+    <span class="cnt" id="campSelCnt">0</span>
+  </button>
+</div>
+
+<!-- CAMPAIGN BAR (shown when ≥1 selected) -->
+<div class="camp-bar" id="campBar">
+  <div class="camp-info">
+    📋 WhatsApp Campaign Manager
+    <span class="camp-sub" id="campBarInfo">Виділено: 0 лідів</span>
+  </div>
+  <button class="btn-clear-sel" onclick="clearSelection()">✕ Скинути</button>
+  <button class="btn-launch" id="btnLaunch" onclick="launchCampaign()" disabled>
+    🚀 Відкрити <span id="launchCnt">0</span> вкладок WhatsApp
   </button>
 </div>
 
 <div class="filters">
-  <input type="text" id="search" placeholder="&#128269; &#1055;&#1086;&#1096;&#1091;&#1082; &#1079;&#1072; &#1085;&#1072;&#1079;&#1074;&#1086;&#1102; &#1072;&#1073;&#1086; &#1088;&#1072;&#1081;&#1086;&#1085;&#1086;&#1084;..." oninput="renderTable()">
+  <input type="text" id="search" placeholder="🔍 Пошук за назвою або районом..." oninput="renderTable()">
   <select id="fCity" onchange="renderTable()">
-    <option value="">&#1042;&#1089;&#1110; &#1084;&#1110;&#1089;&#1090;&#1072;</option>
-    <option value="nchen">M&#252;nchen</option>
+    <option value="">Всі міста</option>
+    <option value="nchen">München</option>
     <option value="Berlin">Berlin</option>
     <option value="Hamburg">Hamburg</option>
     <option value="Hannover">Hannover</option>
-    <option value="K&#246;ln">K&#246;ln</option>
+    <option value="Köln">Köln</option>
     <option value="Frankfurt">Frankfurt</option>
     <option value="Stuttgart">Stuttgart</option>
-    <option value="D&#252;sseldorf">D&#252;sseldorf</option>
+    <option value="Düsseldorf">Düsseldorf</option>
     <option value="Leipzig">Leipzig</option>
     <option value="Dresden">Dresden</option>
-    <option value="N&#252;rnberg">N&#252;rnberg</option>
+    <option value="Nürnberg">Nürnberg</option>
   </select>
   <select id="fType" onchange="renderTable()">
-    <option value="">&#1042;&#1089;&#1110; &#1090;&#1080;&#1087;&#1080;</option>
+    <option value="">Всі типи</option>
     <option value="wa">WhatsApp</option>
     <option value="email">Email</option>
-    <option value="none">&#1041;&#1077;&#1079; &#1082;&#1086;&#1085;&#1090;&#1072;&#1082;&#1090;&#1110;&#1074;</option>
+    <option value="none">Без контактів</option>
   </select>
   <select id="fStatus" onchange="renderTable()">
-    <option value="">&#1042;&#1089;&#1110; &#1089;&#1090;&#1072;&#1090;&#1091;&#1089;&#1080;</option>
-    <option value="new">&#1053;&#1086;&#1074;&#1110;</option>
-    <option value="sent">&#1053;&#1072;&#1076;&#1110;&#1089;&#1083;&#1072;&#1085;&#1086;</option>
-    <option value="replied">&#1042;&#1110;&#1076;&#1087;&#1086;&#1074;&#1110;&#1083;&#1080;</option>
+    <option value="">Всі статуси</option>
+    <option value="new">Нові</option>
+    <option value="sent">Надіслано</option>
+    <option value="replied">Відповіли</option>
   </select>
 </div>
 
 <div class="twrap">
   <div class="overlay" id="overlay">
     <div class="spinner"></div>
-    <div>&#1047;&#1072;&#1074;&#1072;&#1085;&#1090;&#1072;&#1078;&#1077;&#1085;&#1085;&#1103; &#1079; Supabase...</div>
+    <div>Завантаження з Supabase...</div>
   </div>
   <table id="mainTable" style="display:none">
     <thead>
       <tr>
-        <th style="width:38px">&#8470;</th>
-        <th style="min-width:175px">&#1053;&#1072;&#1079;&#1074;&#1072; / &#1057;&#1072;&#1081;&#1090;</th>
-        <th style="width:130px" class="hide-mob">&#1056;&#1072;&#1081;&#1086;&#1085;</th>
-        <th style="width:145px" class="hide-mob">&#1058;&#1077;&#1083;&#1077;&#1092;&#1086;&#1085;</th>
+        <th class="chk-col" id="chkColHdr" style="display:none">
+          <input type="checkbox" id="selAll" onclick="toggleSelectAll()" title="Виділити всі">
+        </th>
+        <th style="width:38px">№</th>
+        <th style="min-width:175px">Назва / Сайт</th>
+        <th style="width:130px" class="hide-mob">Район</th>
+        <th style="width:145px" class="hide-mob">Телефон</th>
         <th style="width:185px" class="hide-mob">Email</th>
         <th style="width:100px">Maps</th>
         <th style="width:110px">WhatsApp</th>
-        <th style="width:215px">&#1053;&#1086;&#1090;&#1072;&#1090;&#1082;&#1080;</th>
-        <th style="width:130px">&#1057;&#1090;&#1072;&#1090;&#1091;&#1089;</th>
+        <th style="width:215px">Нотатки</th>
+        <th style="width:130px">Статус</th>
       </tr>
     </thead>
     <tbody id="tbody"></tbody>
   </table>
-  <div id="emptyMsg" style="display:none;text-align:center;padding:3rem;color:var(--muted)">&#1053;&#1110;&#1095;&#1086;&#1075;&#1086; &#1085;&#1077; &#1079;&#1085;&#1072;&#1081;&#1076;&#1077;&#1085;&#1086;</div>
+  <div id="emptyMsg" style="display:none;text-align:center;padding:3rem;color:var(--muted)">Нічого не знайдено</div>
 </div>
 
-<div class="footer">Vermarkter &middot; Master Outreach CRM &middot; Supabase Live &middot; 4 676+ &#1083;&#1110;&#1076;&#1110;&#1074; &middot; auto-sync 60s</div>
+<div class="footer">Vermarkter &middot; Master Outreach CRM &middot; Supabase Live &middot; 4 676+ лідів &middot; auto-sync 60s</div>
 
 <script>
 // ═══════════════════════════════════════════════════════
@@ -237,7 +350,7 @@ var SB_HDR = {
   'Prefer':        'return=minimal'
 };
 
-// ── Supabase fetch (recursive pagination, 1000 rows/page) ──
+// ── Supabase fetch ──────────────────────────────────────
 function sbPage(offset) {
   return fetch(
     SB_URL + '/rest/v1/' + TABLE + '?select=*&order=id.asc&limit=1000&offset=' + offset,
@@ -269,10 +382,12 @@ function sbPatch(id, patch) {
   });
 }
 
-// ── State ──────────────────────────────────────────────
+// ── State ───────────────────────────────────────────────
 var SALONS = [];
 var ONLY_NEW_KEY = 'vk_crm_only_new';
-var onlyNew = localStorage.getItem(ONLY_NEW_KEY) === '1';
+var onlyNew  = localStorage.getItem(ONLY_NEW_KEY) === '1';
+var campMode = false;
+var SELECTED = {};  // id → salon object
 
 function isFresh(s) {
   if (!s.created_at) return false;
@@ -292,32 +407,32 @@ function isMobile(phone) {
   return false;
 }
 
-// ── Links ──────────────────────────────────────────────
+// ── Links ───────────────────────────────────────────────
 function mapsLink(s) {
-  if (s.place_id)  return 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id=' + encodeURIComponent(s.place_id);
-  if (s.maps_url)  return s.maps_url;
+  if (s.place_id) return 'https://www.google.com/maps/search/?api=1&query=Google&query_place_id=' + encodeURIComponent(s.place_id);
+  if (s.maps_url) return s.maps_url;
   return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent((s.name || '') + ' ' + (s.district || s.city || ''));
 }
 function waText(s) {
   return s.custom_message ||
-    ('Hallo ' + (s.name || '') + '! Wir helfen Salons mehr Buchungen digital zu gewinnen \u2014 Website + App + KI-Rezeption. Einmalig 1.000 EUR. Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Viele Gr\u00fc\u00dfe, Vermarkter-Team');
+    ('Hallo ' + (s.name || '') + '! Wir helfen Salons mehr Buchungen digital zu gewinnen — Website + App + KI-Rezeption. Einmalig 1.000 EUR. Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Viele Grüße, Vermarkter-Team');
 }
 function waLink(s) {
   return 'https://wa.me/' + (s.phone || '').replace(/\D/g, '') + '?text=' + encodeURIComponent(waText(s));
 }
 function emailLink(s) {
   return 'mailto:' + s.email
-    + '?subject=' + encodeURIComponent('Digitale Buchungsl\u00f6sung f\u00fcr Ihren Salon \u2014 1.000 EUR einmalig')
-    + '&body='    + encodeURIComponent(
+    + '?subject=' + encodeURIComponent('Digitale Buchungslösung für Ihren Salon — 1.000 EUR einmalig')
+    + '&body=' + encodeURIComponent(
         'Sehr geehrtes Team von ' + (s.name || '') + ',\n\n'
       + 'wir bauen Ihre eigene digitale Heimat: Website + App + KI-Rezeption 24/7.\n'
       + 'Einmalig 1.000 EUR, keine monatlichen Kosten.\n\n'
       + 'Demo: https://vermarkter.vercel.app/services/beauty-industry/de/\n\n'
-      + 'Mit freundlichen Gr\u00fc\u00dfen,\nVermarkter-Team'
+      + 'Mit freundlichen Grüßen,\nVermarkter-Team'
     );
 }
 
-// ── Sync dot ───────────────────────────────────────────
+// ── Sync dot ────────────────────────────────────────────
 function setSync(state, text) {
   var d = document.getElementById('syncDot');
   var t = document.getElementById('syncText');
@@ -325,15 +440,15 @@ function setSync(state, text) {
   if (t) t.textContent = text;
 }
 
-// ── Actions ────────────────────────────────────────────
+// ── Actions ─────────────────────────────────────────────
 function markSent(id) {
   var now = new Date().toISOString();
   sbPatch(id, { status: 'sent', last_contacted: now }).then(function() {
     var s = SALONS.find(function(x) { return x.id === id; });
     if (s) { s.status = 'sent'; s.last_contacted = now; }
-    setSync('ok', '\u0417\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043e \u2713');
+    setSync('ok', 'Збережено ✓');
     updateCounter(); renderTable();
-  }).catch(function(e) { setSync('error', '\u041f\u043e\u043c\u0438\u043b\u043a\u0430: ' + e.message); });
+  }).catch(function(e) { setSync('error', 'Помилка: ' + e.message); });
 }
 function markStatus(id, val) {
   if (!val) return;
@@ -347,27 +462,27 @@ function saveNote(id) {
   var ta = document.getElementById('note-' + id);
   if (!ta) return;
   var val = ta.value.trim();
-  setSync('loading', '\u0417\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043d\u044f...');
+  setSync('loading', 'Збереження...');
   sbPatch(id, { notes: val || null }).then(function() {
     var s = SALONS.find(function(x) { return x.id === id; });
     if (s) s.notes = val || null;
-    setSync('ok', '\u041d\u043e\u0442\u0430\u0442\u043a\u0443 \u0437\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u043e \u2714');
-  }).catch(function(e) { setSync('error', '\u041f\u043e\u043c\u0438\u043b\u043a\u0430: ' + e.message); });
+    setSync('ok', 'Нотатку збережено ✔');
+  }).catch(function(e) { setSync('error', 'Помилка: ' + e.message); });
 }
 
-// ── Counter ────────────────────────────────────────────
+// ── Counter ─────────────────────────────────────────────
 function updateCounter() {
   var today = new Date().toISOString().slice(0, 10);
   var st   = SALONS.filter(function(s) { return s.last_contacted && s.last_contacted.slice(0,10) === today; }).length;
   var done = SALONS.filter(function(s) { return s.status === 'sent' || s.status === 'replied'; }).length;
-  document.getElementById('sentToday').textContent     = st;
-  document.getElementById('progressFill').style.width  = Math.min(100, (st / DAILY_MAX) * 100) + '%';
+  document.getElementById('sentToday').textContent    = st;
+  document.getElementById('progressFill').style.width = Math.min(100, (st / DAILY_MAX) * 100) + '%';
   document.getElementById('cTotal').textContent = SALONS.length;
   document.getElementById('cDone').textContent  = done;
   document.getElementById('cLeft').textContent  = SALONS.length - done;
 }
 
-// ── Toggle ─────────────────────────────────────────────
+// ── Toggle READY TO SEND ─────────────────────────────────
 function toggleOnlyNew() {
   onlyNew = !onlyNew;
   onlyNew ? localStorage.setItem(ONLY_NEW_KEY, '1') : localStorage.removeItem(ONLY_NEW_KEY);
@@ -380,9 +495,9 @@ function syncToggleUI() {
   if (!btn) return;
   btn.classList.toggle('on', onlyNew);
   lbl.textContent = onlyNew
-    ? '\u0410\u041a\u0422\u0418\u0412\u041d\u0418\u0419 \u0424\u0406\u041b\u042c\u0422\u0420: Berlin + NEW \u00b7 \u043a\u043b\u0456\u043a \u0449\u043e\u0431 \u0432\u0438\u043c\u043a\u043d\u0443\u0442\u0438'
-    : '\u041f\u041e\u041a\u0410\u0417\u0410\u0422\u0418 \u041d\u041e\u0412\u0418\u0425 (READY TO SEND)';
-  ico.textContent = onlyNew ? '\u2728' : '\ud83d\udd25';
+    ? 'АКТИВНИЙ ФІЛЬТР: Berlin + NEW · клік щоб вимкнути'
+    : 'ПОКАЗАТИ НОВИХ (READY TO SEND)';
+  ico.textContent = onlyNew ? '✨' : '🔥';
 }
 function resetFilters() {
   document.getElementById('search').value  = '';
@@ -393,16 +508,127 @@ function resetFilters() {
   syncToggleUI(); renderTable();
 }
 
-// ── Escape ─────────────────────────────────────────────
+// ── Campaign Manager ─────────────────────────────────────
+function toggleCampMode() {
+  campMode = !campMode;
+  var btn = document.getElementById('campToggleBtn');
+  var hdr = document.getElementById('chkColHdr');
+  if (campMode) {
+    btn.style.background    = 'rgba(37,211,102,.18)';
+    btn.style.borderColor   = '#25D366';
+    btn.style.boxShadow     = '0 4px 14px rgba(37,211,102,.3)';
+    if (hdr) hdr.style.display = 'table-cell';
+  } else {
+    btn.style.background  = '';
+    btn.style.borderColor = '';
+    btn.style.boxShadow   = '';
+    if (hdr) hdr.style.display = 'none';
+    clearSelection();
+  }
+  renderTable();
+}
+
+function toggleSelectRow(id, salon) {
+  if (SELECTED[id]) {
+    delete SELECTED[id];
+  } else {
+    if (Object.keys(SELECTED).length >= 10) {
+      alert('Максимум 10 лідів за один раз (ліміт вкладок браузера).');
+      var cb = document.getElementById('chk-' + id);
+      if (cb) cb.checked = false;
+      return;
+    }
+    SELECTED[id] = salon;
+  }
+  updateCampBar();
+}
+
+function toggleSelectAll() {
+  var allChk = document.getElementById('selAll');
+  var checkboxes = document.querySelectorAll('.wa-chk');
+  if (allChk.checked) {
+    var count = 0;
+    checkboxes.forEach(function(cb) {
+      if (count < 10) { cb.checked = true; count++; }
+      else cb.checked = false;
+    });
+    SELECTED = {};
+    checkboxes.forEach(function(cb) {
+      if (cb.checked) {
+        var sid = parseInt(cb.dataset.id, 10);
+        var salon = SALONS.find(function(x) { return x.id === sid; });
+        if (salon) SELECTED[sid] = salon;
+      }
+    });
+  } else {
+    SELECTED = {};
+    checkboxes.forEach(function(cb) { cb.checked = false; });
+  }
+  updateCampBar();
+}
+
+function clearSelection() {
+  SELECTED = {};
+  document.querySelectorAll('.wa-chk').forEach(function(cb) { cb.checked = false; });
+  var sa = document.getElementById('selAll');
+  if (sa) sa.checked = false;
+  updateCampBar();
+  renderTable();
+}
+
+function updateCampBar() {
+  var cnt = Object.keys(SELECTED).length;
+  var bar     = document.getElementById('campBar');
+  var info    = document.getElementById('campBarInfo');
+  var launch  = document.getElementById('btnLaunch');
+  var launchC = document.getElementById('launchCnt');
+  var selCnt  = document.getElementById('campSelCnt');
+
+  if (selCnt) selCnt.textContent = cnt;
+  if (cnt > 0) {
+    bar.classList.add('active');
+    info.textContent = 'Виділено: ' + cnt + ' лід' + (cnt === 1 ? '' : cnt < 5 ? 'и' : 'ів') + ' (макс. 10)';
+    launch.disabled = false;
+    launchC.textContent = cnt;
+  } else {
+    bar.classList.remove('active');
+    launch.disabled = true;
+    launchC.textContent = 0;
+  }
+  // Highlight rows
+  document.querySelectorAll('tbody tr').forEach(function(tr) {
+    var cb = tr.querySelector('.wa-chk');
+    if (cb) tr.classList.toggle('selected', !!SELECTED[parseInt(cb.dataset.id, 10)]);
+  });
+}
+
+function launchCampaign() {
+  var ids = Object.keys(SELECTED);
+  if (!ids.length) return;
+  var missing = [];
+  ids.forEach(function(id) {
+    var s = SELECTED[id];
+    if (!isMobile(s.phone)) { missing.push(s.name); return; }
+    window.open(waLink(s), '_blank');
+    // Mark sent
+    markSent(parseInt(id, 10));
+  });
+  if (missing.length) {
+    alert('⚠️ Без мобільного номера (WA не відкрито):\n' + missing.join('\n'));
+  }
+  clearSelection();
+}
+
+// ── Escape ──────────────────────────────────────────────
 function esc(s) {
   return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ── SVGs ───────────────────────────────────────────────
+// ── SVGs ────────────────────────────────────────────────
 var MAP_SVG = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>';
 var WA_SVG  = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>';
 
-// ── Render table ───────────────────────────────────────
+// ── Render table ────────────────────────────────────────
 function renderTable() {
   if (!SALONS.length) return;
   var q  = (document.getElementById('search').value  || '').toLowerCase();
@@ -443,6 +669,15 @@ function renderTable() {
   tbody.innerHTML = rows.map(function(s, vi) {
     var isDone = s.status === 'sent' || s.status === 'replied';
     var fresh  = isFresh(s) && isNewStatus(s);
+    var isChecked = !!SELECTED[s.id];
+
+    // COL 0 — Checkbox (campaign mode)
+    var c0 = campMode
+      ? '<td class="chk-cell"><input type="checkbox" class="wa-chk" id="chk-' + s.id + '" data-id="' + s.id + '"'
+        + (isChecked ? ' checked' : '')
+        + ' onclick="toggleSelectRow(' + s.id + ', SALONS.find(function(x){return x.id===' + s.id + ';}))">'
+        + '</td>'
+      : '';
 
     // COL 1 — №
     var c1 = '<td class="tnum">' + (vi + 1) + '</td>';
@@ -457,61 +692,60 @@ function renderTable() {
       + '</td>';
 
     // COL 3 — Район
-    var c3 = '<td class="hide-mob" style="font-size:.77rem;color:var(--muted)">' + esc(s.district || s.city || '\u2014') + '</td>';
+    var c3 = '<td class="hide-mob" style="font-size:.77rem;color:var(--muted)">' + esc(s.district || s.city || '—') + '</td>';
 
     // COL 4 — Телефон
-    var c4 = '<td class="hide-mob" style="font-size:.77rem;white-space:nowrap">' + esc(s.phone || '\u2014') + '</td>';
+    var c4 = '<td class="hide-mob" style="font-size:.77rem;white-space:nowrap">' + esc(s.phone || '—') + '</td>';
 
     // COL 5 — Email
     var c5 = '<td class="hide-mob">'
       + (s.email
           ? '<a href="' + esc(emailLink(s)) + '" style="color:var(--cyan);font-size:.74rem;text-decoration:none;word-break:break-all">' + esc(s.email) + '</a>'
-          : '<span style="color:rgba(255,255,255,.18);font-size:.74rem">\u2014</span>')
+          : '<span style="color:rgba(255,255,255,.18);font-size:.74rem">—</span>')
       + '</td>';
 
-    // COL 6 — Maps (ALWAYS, blue)
+    // COL 6 — Maps
     var c6 = '<td><a class="btn bmap" href="' + esc(mapsLink(s)) + '" target="_blank">' + MAP_SVG + ' Maps</a></td>';
 
-    // COL 7 — WhatsApp (green, mobile numbers only)
+    // COL 7 — WhatsApp
     var c7 = '<td>'
       + (isMobile(s.phone)
           ? '<a class="btn bwa" href="' + esc(waLink(s)) + '" target="_blank" onclick="markSent(' + s.id + ')">' + WA_SVG + ' WA</a>'
-          : '<span style="color:rgba(255,255,255,.15);font-size:.7rem">\u2014</span>')
+          : '<span style="color:rgba(255,255,255,.15);font-size:.7rem">—</span>')
       + '</td>';
 
-    // COL 8 — Нотатки (textarea + Save button → PATCH notes)
+    // COL 8 — Нотатки
     var noteVal = esc(s.notes || '');
     var c8 = '<td style="min-width:190px">'
       + '<div class="nwrap">'
-      + '<textarea class="nta" id="note-' + s.id + '" rows="2" placeholder="\u0414\u043e\u0434\u0430\u0442\u0438 \u043d\u043e\u0442\u0430\u0442\u043a\u0443...">' + noteVal + '</textarea>'
-      + '<button class="btn bsave" onclick="saveNote(' + s.id + ')">\ud83d\udcbe \u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438</button>'
+      + '<textarea class="nta" id="note-' + s.id + '" rows="2" placeholder="Додати нотатку...">' + noteVal + '</textarea>'
+      + '<button class="btn bsave" onclick="saveNote(' + s.id + ')">💾 Зберегти</button>'
       + '</div>'
       + '</td>';
 
     // COL 9 — Статус
-    var slabel = s.status === 'sent' ? '\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e'
-               : s.status === 'replied' ? '\u0412\u0456\u0434\u043f\u043e\u0432\u0456\u043b\u0438'
-               : '\u041d\u043e\u0432\u0438\u0439';
+    var slabel = s.status === 'sent' ? 'Надіслано'
+               : s.status === 'replied' ? 'Відповіли'
+               : 'Новий';
     var scls = 'sbadge ' + (s.status === 'sent' ? 'ssent' : s.status === 'replied' ? 'sreplied' : 'snew');
     var c9 = '<td>'
       + '<span class="' + scls + '">' + slabel + '</span>'
       + '<select class="ssel" onchange="markStatus(' + s.id + ',this.value)">'
-      + '<option value="">\u2014 \u0441\u0442\u0430\u0442\u0443\u0441 \u2014</option>'
-      + '<option value="new">\u041d\u043e\u0432\u0438\u0439</option>'
-      + '<option value="sent">\u041d\u0430\u0434\u0456\u0441\u043b\u0430\u043d\u043e</option>'
-      + '<option value="replied">\u0412\u0456\u0434\u043f\u043e\u0432\u0456\u043b\u0438</option>'
+      + '<option value="">— статус —</option>'
+      + '<option value="new">Новий</option>'
+      + '<option value="sent">Надіслано</option>'
+      + '<option value="replied">Відповіли</option>'
       + '</select>'
       + '</td>';
 
-    var trCls = (isDone ? 'done' : '') + (fresh ? ' isnew' : '');
-    // 9 columns: c1 c2 c3 c4 c5 c6 c7 c8 c9
-    return '<tr class="' + trCls.trim() + '">' + c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 + c9 + '</tr>';
+    var trCls = (isDone ? 'done' : '') + (fresh ? ' isnew' : '') + (isChecked ? ' selected' : '');
+    return '<tr class="' + trCls.trim() + '">' + c0 + c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 + c9 + '</tr>';
   }).join('');
 }
 
-// ── Load data ──────────────────────────────────────────
+// ── Load data ───────────────────────────────────────────
 function loadData() {
-  setSync('loading', '\u0417\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f \u0434\u0430\u043d\u0438\u0445...');
+  setSync('loading', 'Завантаження даних...');
   sbGetAll().then(function(data) {
     SALONS = data;
     document.getElementById('overlay').style.display   = 'none';
@@ -521,29 +755,120 @@ function loadData() {
     var em   = SALONS.filter(function(s) { return !!s.email; }).length;
     var sent = SALONS.filter(function(s) { return s.status === 'sent' || s.status === 'replied'; }).length;
 
-    document.getElementById('subtitleLine').textContent = SALONS.length + ' \u0441\u0430\u043b\u043e\u043d\u0456\u0432 \u00b7 \u0423\u0441\u0456 \u043c\u0456\u0441\u0442\u0430';
+    document.getElementById('subtitleLine').textContent = SALONS.length + ' салонів · Усі міста';
     document.getElementById('statTotal').textContent = SALONS.length;
     document.getElementById('statWa').textContent    = wa;
     document.getElementById('statEmail').textContent = em;
     document.getElementById('statSent').textContent  = sent;
 
-    setSync('ok', '\u0413\u043e\u0442\u043e\u0432\u043e \u00b7 ' + SALONS.length + ' \u0437\u0430\u043f\u0438\u0441\u0456\u0432');
+    setSync('ok', 'Готово · ' + SALONS.length + ' записів');
     updateCounter();
     renderTable();
   }).catch(function(e) {
     console.error('[CRM]', e);
-    setSync('error', '\u041f\u043e\u043c\u0438\u043b\u043a\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f');
+    setSync('error', 'Помилка завантаження');
     document.getElementById('overlay').innerHTML =
       '<div class="ebox">'
-      + '<b>\u274c \u041f\u043e\u043c\u0438\u043b\u043a\u0430 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0435\u043d\u043d\u044f</b><br><br>'
+      + '<b>❌ Помилка завантаження</b><br><br>'
       + esc(e.message)
-      + '<br><br><small style="color:rgba(255,165,0,.8)">\u042f\u043a\u0449\u043e Supabase \u043f\u043e\u0432\u0435\u0440\u043d\u0443\u0432 0 \u0440\u044f\u0434\u043a\u0456\u0432 \u2014 \u043c\u043e\u0436\u043b\u0438\u0432\u043e \u0443\u0432\u0456\u043c\u043a\u043d\u0435\u043d\u043e RLS \u0431\u0435\u0437 SELECT-\u043f\u043e\u043b\u0456\u0442\u0438\u043a\u0438 \u0434\u043b\u044f anon role.</small>'
-      + '<br><br><button onclick="loadData()" style="margin-top:.75rem;padding:.42rem 1rem;background:var(--pink);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-family:inherit">\u21ba \u0421\u043f\u0440\u043e\u0431\u0443\u0432\u0430\u0442\u0438 \u0437\u043d\u043e\u0432\u0443</button>'
+      + '<br><br><small style="color:rgba(255,165,0,.8)">Якщо Supabase повернув 0 рядків — можливо увімкнено RLS без SELECT-політики для anon role.</small>'
+      + '<br><br><button onclick="loadData()" style="margin-top:.75rem;padding:.42rem 1rem;background:var(--pink);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-family:inherit">↺ Спробувати знову</button>'
       + '</div>';
   });
 }
 
-// ── Boot ───────────────────────────────────────────────
+// ═══════════════════════════════════════════════════════
+// DEMO SWITCH — 10 Languages
+// ═══════════════════════════════════════════════════════
+var DEMO_LANGS = {
+  de: {
+    flag: '🇩🇪', lang: 'Deutsch',
+    badge: 'Interface-Sprache: Deutsch',
+    salonName: 'Salon Mustermann',
+    tagline: 'Online-Termin in 60 Sekunden',
+    steps: [
+      { n: '1', t: 'Service wählen' },
+      { n: '2', t: 'Datum & Zeit' },
+      { n: '3', t: 'Bestätigen' }
+    ],
+    cta: 'Termin buchen',
+    dir: ''
+  },
+  tr: {
+    flag: '🇹🇷', lang: 'Türkçe',
+    badge: 'Arayüz dili: Türkçe',
+    salonName: 'Salon Mustermann',
+    tagline: '60 saniyede çevrimiçi randevu',
+    steps: [
+      { n: '1', t: 'Hizmet seç' },
+      { n: '2', t: 'Tarih & Saat' },
+      { n: '3', t: 'Onayla' }
+    ],
+    cta: 'Randevu Al',
+    dir: ''
+  },
+  ar: {
+    flag: '🇸🇦', lang: 'العربية',
+    badge: 'لغة الواجهة: العربية',
+    salonName: 'صالون موستيرمان',
+    tagline: 'احجز موعدك في 60 ثانية',
+    steps: [
+      { n: '١', t: 'اختر الخدمة' },
+      { n: '٢', t: 'التاريخ والوقت' },
+      { n: '٣', t: 'تأكيد' }
+    ],
+    cta: 'احجز موعداً',
+    dir: 'bw-dir'
+  },
+  en: {
+    flag: '🇬🇧', lang: 'English',
+    badge: 'Interface language: English',
+    salonName: 'Salon Mustermann',
+    tagline: 'Book an appointment in 60 seconds',
+    steps: [
+      { n: '1', t: 'Choose service' },
+      { n: '2', t: 'Date & Time' },
+      { n: '3', t: 'Confirm' }
+    ],
+    cta: 'Book appointment',
+    dir: ''
+  }
+};
+
+var currentDemoLang = 'de';
+
+function openDemo() {
+  renderDemoWidget(currentDemoLang);
+  document.getElementById('demoModalBg').classList.add('open');
+}
+function closeDemo() {
+  document.getElementById('demoModalBg').classList.remove('open');
+}
+function closeDemoIfBg(e) {
+  if (e.target === document.getElementById('demoModalBg')) closeDemo();
+}
+function setDemoLang(lang, btn) {
+  currentDemoLang = lang;
+  document.querySelectorAll('.lang-tab').forEach(function(b) { b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  renderDemoWidget(lang);
+}
+function renderDemoWidget(lang) {
+  var d = DEMO_LANGS[lang];
+  var stepsHtml = d.steps.map(function(s) {
+    return '<div class="bw-step"><span class="bw-step-num">' + s.n + '</span>' + s.t + '</div>';
+  }).join('');
+  document.getElementById('demoWidget').innerHTML =
+    '<div class="' + d.dir + '">'
+    + '<div class="bw-lang-badge">' + d.flag + ' ' + d.badge + '</div>'
+    + '<div class="bw-salon-name">' + d.salonName + '</div>'
+    + '<div class="bw-tagline">' + d.tagline + '</div>'
+    + '<div class="bw-steps">' + stepsHtml + '</div>'
+    + '<button class="bw-cta">' + d.cta + '</button>'
+    + '</div>';
+}
+
+// ── Boot ────────────────────────────────────────────────
 syncToggleUI();
 loadData();
 setInterval(loadData, 60000);
