@@ -9,9 +9,8 @@
         (function () {
             var path = window.location.pathname;
 
-            // Exception: admin/CRM files (vrm_*) and root-level .html files
-            // must NOT be lang-redirected — they are direct assets, not lang pages
-            if (/^\/vrm_/i.test(path) || /^\/[^\/]+\.html$/i.test(path)) {
+            // Never redirect: files with extensions, vrm_* panel, root assets
+            if (/\.\w+$/.test(path) || /^\/vrm_/i.test(path)) {
                 return;
             }
 

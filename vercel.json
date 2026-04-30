@@ -1,5 +1,6 @@
 {
   "cleanUrls": false,
+  "trailingSlash": false,
   "redirects": [
     {
       "source": "/SERVICES/:path*",
@@ -14,11 +15,6 @@
     {
       "source": "/services/beauty-industry/",
       "destination": "/services/beauty-industry/de/",
-      "permanent": false
-    },
-    {
-      "source": "/vrm_:slug",
-      "destination": "/vrm_:slug.html",
       "permanent": false
     }
   ]
