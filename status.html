@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Vermarkter — Live Status</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#030303;
+  --glass:rgba(255,255,255,.045);
+  --glass-border:rgba(255,255,255,.09);
+  --pink:#ec4899;--purple:#8b5cf6;--cyan:#06b6d4;
+  --green:#22c55e;--amber:#f59e0b;--red:#ef4444;
+  --text:#f1f5f9;--muted:rgba(241,245,249,.45);
+  --grad:linear-gradient(135deg,#ec4899,#8b5cf6);
+  --grad-g:linear-gradient(135deg,#22c55e,#16a34a);
+  --grad-c:linear-gradient(135deg,#06b6d4,#6366f1);
+  --grad-a:linear-gradient(135deg,#f59e0b,#ef4444);
+}
+html,body{min-height:100vh;background:var(--bg);color:var(--text);
+  font-family:'Inter',system-ui,sans-serif;overflow-x:hidden}
+
+/* Ambient glow background */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 20%, rgba(139,92,246,.12) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 35% at 80% 75%, rgba(236,72,153,.10) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 60% 10%, rgba(6,182,212,.08) 0%, transparent 55%);
+  z-index:0
+}
+
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;
+  padding:2.5rem 1.2rem 4rem}
+
+/* Header */
+.hdr{text-align:center;margin-bottom:2.4rem}
+.logo-row{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:.6rem}
+.logo-dot{width:10px;height:10px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 8px var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.6;transform:scale(.85)}}
+.logo-text{font-size:.8rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted)}
+h1{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;line-height:1.08;margin-bottom:.4rem}
+.gt{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{color:var(--muted);font-size:.9rem}
+.ts{margin-top:.5rem;font-size:.75rem;color:rgba(241,245,249,.3);letter-spacing:.3px}
+
+/* Glass card */
+.card{
+  background:var(--glass);
+  border:1px solid var(--glass-border);
+  border-radius:20px;
+  backdrop-filter:blur(18px) saturate(160%);
+  -webkit-backdrop-filter:blur(18px) saturate(160%);
+  padding:1.5rem 1.8rem;
+  margin-bottom:1rem;
+  position:relative;overflow:hidden;
+  transition:border-color .25s
+}
+.card:hover{border-color:rgba(255,255,255,.14)}
+.card::before{
+  content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.035) 0%,transparent 60%);
+}
+
+/* Big stat cards */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1rem}
+.stat-card{
+  background:var(--glass);border:1px solid var(--glass-border);
+  border-radius:18px;padding:1.4rem 1.5rem;text-align:center;
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  position:relative;overflow:hidden;transition:transform .2s,border-color .2s
+}
+.stat-card:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.14)}
+.stat-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  border-radius:0 0 18px 18px;opacity:.7
+}
+.stat-card.pink::after{background:var(--grad)}
+.stat-card.cyan::after{background:var(--grad-c)}
+.stat-card.green::after{background:var(--grad-g)}
+.stat-card.amber::after{background:var(--grad-a)}
+
+.stat-num{
+  font-size:clamp(2.4rem,6vw,3.8rem);font-weight:900;
+  line-height:1;margin-bottom:.3rem;
+  background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text
+}
+.stat-card.cyan .stat-num{background:var(--grad-c);-webkit-background-clip:text;background-clip:text}
+.stat-card.green .stat-num{background:var(--grad-g);-webkit-background-clip:text;background-clip:text}
+.stat-card.amber .stat-num{background:var(--grad-a);-webkit-background-clip:text;background-clip:text}
+.stat-lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:600}
+.stat-sub{font-size:.7rem;color:rgba(241,245,249,.3);margin-top:.25rem}
+
+/* Progress bar */
+.prog-wrap{margin-top:.8rem}
+.prog-label{display:flex;justify-content:space-between;font-size:.72rem;color:var(--muted);margin-bottom:.35rem}
+.prog{background:rgba(255,255,255,.07);border-radius:999px;height:7px;overflow:hidden}
+.pf{height:100%;border-radius:999px;background:var(--grad);transition:width .8s ease}
+
+/* Pipeline table */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:.83rem}
+th{text-align:left;padding:.55rem .75rem;font-size:.68rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:.6px;color:var(--muted);
+  border-bottom:1px solid var(--glass-border)}
+td{padding:.55rem .75rem;border-bottom:1px solid rgba(255,255,255,.04)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.025)}
+.badge{display:inline-flex;align-items:center;gap:.3rem;padding:.18rem .6rem;
+  border-radius:50px;font-size:.67rem;font-weight:700;letter-spacing:.3px}
+.b-ok{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.28);color:var(--green)}
+.b-warn{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.28);color:var(--amber)}
+.b-err{background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.28);color:var(--red)}
+.b-info{background:rgba(6,182,212,.12);border:1px solid rgba(6,182,212,.28);color:var(--cyan)}
+
+/* Error / loading states */
+.loading{text-align:center;padding:2rem;color:var(--muted);font-size:.85rem}
+.spinner{display:inline-block;width:18px;height:18px;border:2px solid rgba(255,255,255,.12);
+  border-top-color:var(--purple);border-radius:50%;animation:spin .9s linear infinite;
+  vertical-align:middle;margin-right:.5rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.err-box{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);
+  border-radius:12px;padding:.9rem 1.2rem;font-size:.8rem;color:#fca5a5;margin-top:.5rem}
+
+/* Refresh button */
+.refresh-row{text-align:center;margin-top:1.5rem}
+.btn-refresh{
+  display:inline-flex;align-items:center;gap:.45rem;
+  padding:.55rem 1.4rem;border-radius:50px;font-size:.8rem;font-weight:700;
+  background:var(--glass);border:1px solid var(--glass-border);color:var(--text);
+  cursor:pointer;transition:all .2s;letter-spacing:.3px
+}
+.btn-refresh:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14)}
+.btn-refresh:active{transform:scale(.97)}
+
+.card-title{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;
+  color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.dot-live{width:7px;height:7px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 6px var(--green);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- Header -->
+  <div class="hdr">
+    <div class="logo-row">
+      <div class="logo-dot"></div>
+      <span class="logo-text">Vermarkter · Live Dashboard</span>
+    </div>
+    <h1><span class="gt">Outreach Status</span></h1>
+    <div class="sub">Статистика розсилок в реальному часі</div>
+    <div class="ts" id="tsLine">Оновлення...</div>
+  </div>
+
+  <!-- Big stat cards -->
+  <div class="stat-grid" id="statGrid">
+    <div class="stat-card pink">
+      <div class="stat-num" id="numSentToday">—</div>
+      <div class="stat-lbl">Надіслано сьогодні</div>
+      <div class="stat-sub" id="subSentToday">Email + WhatsApp</div>
+    </div>
+    <div class="stat-card cyan">
+      <div class="stat-num" id="numReady">—</div>
+      <div class="stat-lbl">Залишилось у Берліні</div>
+      <div class="stat-sub">READY TO SEND</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-num" id="numTotal">—</div>
+      <div class="stat-lbl">Всього надіслано</div>
+      <div class="stat-sub">За весь час</div>
+    </div>
+    <div class="stat-card amber">
+      <div class="stat-num" id="numLeads">—</div>
+      <div class="stat-lbl">Leads у базі</div>
+      <div class="stat-sub">beauty_leads</div>
+    </div>
+  </div>
+
+  <!-- Progress card -->
+  <div class="card" id="progressCard">
+    <div class="card-title"><div class="dot-live"></div> Денний прогрес (Email)</div>
+    <div class="prog-wrap">
+      <div class="prog-label">
+        <span id="progText">0 / 300</span>
+        <span id="progPct">0%</span>
+      </div>
+      <div class="prog"><div class="pf" id="progBar" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <!-- Pipeline table -->
+  <div class="card">
+    <div class="card-title"><div class="dot-live"></div> Pipeline по містах</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Місто</th>
+            <th>Ready to Send</th>
+            <th>Статус</th>
+          </tr>
+        </thead>
+        <tbody id="pipelineBody">
+          <tr><td colspan="3" class="loading"><span class="spinner"></span>Завантаження...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Health card -->
+  <div class="card">
+    <div class="card-title"><div class="dot-live"></div> Підключення</div>
+    <div id="healthRow" style="font-size:.82rem;color:var(--muted)">
+      <span class="spinner"></span>Перевірка Supabase...
+    </div>
+  </div>
+
+  <div class="refresh-row">
+    <button class="btn-refresh" onclick="loadAll()">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+           stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="23 4 23 10 17 10"></polyline>
+        <polyline points="1 20 1 14 7 14"></polyline>
+        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+      </svg>
+      Оновити
+    </button>
+  </div>
+
+</div>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────────────────────────────────
+// Inject from your Supabase project settings → API → anon/public key.
+// These are SAFE to expose in browser — protected by RLS.
+var SB_URL  = 'SUPABASE_URL_PLACEHOLDER';
+var SB_ANON = 'SUPABASE_ANON_KEY_PLACEHOLDER';
+
+// ─── Supabase helpers ─────────────────────────────────────────────────────────
+function sbFetch(table, params) {
+  var url = SB_URL + '/rest/v1/' + table + '?' + (params || 'select=id&limit=1');
+  return fetch(url, {
+    headers: {
+      'apikey': SB_ANON,
+      'Authorization': 'Bearer ' + SB_ANON,
+      'Prefer': 'count=exact',
+      'Range-Unit': 'items',
+      'Range': '0-0'
+    }
+  }).then(function(r) {
+    var cr = r.headers.get('Content-Range') || '*/0';
+    var total = parseInt(cr.split('/')[1], 10);
+    return r.ok ? { ok: true, count: isNaN(total) ? 0 : total } : { ok: false, count: 0 };
+  }).catch(function() { return { ok: false, count: 0 }; });
+}
+
+function sbJson(table, params) {
+  var url = SB_URL + '/rest/v1/' + table + '?' + params;
+  return fetch(url, {
+    headers: {
+      'apikey': SB_ANON,
+      'Authorization': 'Bearer ' + SB_ANON,
+      'Range': '0-199'
+    }
+  }).then(function(r) { return r.ok ? r.json() : []; })
+    .catch(function() { return []; });
+}
+
+// ─── Load data ────────────────────────────────────────────────────────────────
+function loadAll() {
+  document.getElementById('tsLine').textContent = 'Оновлення...';
+
+  var today = new Date().toISOString().slice(0, 10);
+  var todayStart = today + 'T00:00:00+00:00';
+
+  var DAILY_CAP = 300;
+
+  Promise.all([
+    sbFetch('beauty_leads', 'select=id'),                                          // total leads
+    sbFetch('beauty_leads', 'select=id&status=in.(sent,EMAIL SENT)'),              // total sent ever
+    sbFetch('beauty_leads', 'select=id&status=eq.READY TO SEND&city=eq.Berlin'),   // Berlin ready
+    sbFetch('beauty_leads', 'select=id&status=eq.EMAIL SENT'),                     // email sent total
+    sbFetch('whatsapp_logs',
+            'select=id&sent_at=gte.' + encodeURIComponent(todayStart)),            // WA today
+    sbJson('beauty_leads',
+           'select=city&status=eq.READY TO SEND&order=city.asc&limit=500')         // pipeline by city
+  ]).then(function(res) {
+    var totalLeads   = res[0].count;
+    var totalSent    = res[1].count;
+    var berlinReady  = res[2].count;
+    var emailSent    = res[3].count;
+    var waToday      = res[4].count;
+    var pipelineRows = res[5];
+
+    // Sent today = EMAIL SENT (approximate, no timestamp) + WA today
+    var sentToday = waToday + (emailSent || 0);
+    // Use WA today as more accurate "today" proxy; show both
+    var sentTodayDisplay = emailSent;
+
+    // Stats
+    setText('numSentToday', sentTodayDisplay);
+    setText('numReady',     berlinReady);
+    setText('numTotal',     totalSent);
+    setText('numLeads',     totalLeads);
+    setText('subSentToday', 'Email надіслано, WA сьогодні: ' + waToday);
+
+    // Progress bar
+    var pct = Math.min(100, Math.round(sentTodayDisplay / DAILY_CAP * 100));
+    document.getElementById('progText').textContent = sentTodayDisplay + ' / ' + DAILY_CAP;
+    document.getElementById('progPct').textContent  = pct + '%';
+    document.getElementById('progBar').style.width  = pct + '%';
+
+    // Pipeline by city
+    var cityMap = {};
+    pipelineRows.forEach(function(r) {
+      var c = r.city || 'Unknown';
+      cityMap[c] = (cityMap[c] || 0) + 1;
+    });
+    var cities = Object.keys(cityMap).sort(function(a, b) {
+      return cityMap[b] - cityMap[a];
+    });
+    var tbody = document.getElementById('pipelineBody');
+    if (cities.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;color:var(--muted);padding:1.2rem">Немає лідів у статусі READY TO SEND</td></tr>';
+    } else {
+      tbody.innerHTML = cities.map(function(city) {
+        var cnt   = cityMap[city];
+        var badge = cnt > 50 ? 'b-err' : cnt > 10 ? 'b-warn' : 'b-ok';
+        var lbl   = cnt > 50 ? 'Велика черга' : cnt > 10 ? 'Активна черга' : 'Мало';
+        return '<tr><td>' + esc(city) + '</td>' +
+               '<td><strong>' + cnt + '</strong></td>' +
+               '<td><span class="badge ' + badge + '">' + lbl + '</span></td></tr>';
+      }).join('');
+    }
+
+    // Health
+    var sbOk = res[0].ok;
+    document.getElementById('healthRow').innerHTML =
+      '<span style="color:' + (sbOk ? 'var(--green)' : 'var(--red)') + '">' +
+      (sbOk ? '● Supabase: Online' : '● Supabase: Offline') + '</span>' +
+      '&nbsp;&nbsp;<span style="color:var(--muted);font-size:.75rem">beauty_leads: ' +
+      totalLeads + ' rows</span>';
+
+    // Timestamp
+    var now = new Date();
+    document.getElementById('tsLine').textContent =
+      'Оновлено: ' + now.toLocaleTimeString('uk-UA') + '  ·  ' +
+      now.toLocaleDateString('uk-UA');
+  });
+}
+
+function setText(id, val) {
+  var el = document.getElementById(id);
+  if (el) el.textContent = (val === undefined || val === null || val < 0) ? '—' : val;
+}
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ─── Init ─────────────────────────────────────────────────────────────────────
+if (SB_URL === 'SUPABASE_URL_PLACEHOLDER' || SB_ANON === 'SUPABASE_ANON_KEY_PLACEHOLDER') {
+  document.getElementById('healthRow').innerHTML =
+    '<span style="color:var(--amber)">⚠ Вставте SB_URL та SB_ANON у файл status.html</span>';
+  document.getElementById('tsLine').textContent = 'Не підключено';
+} else {
+  loadAll();
+  setInterval(loadAll, 60000);  // auto-refresh every 60s
+}
+</script>
+</body>
+</html>
