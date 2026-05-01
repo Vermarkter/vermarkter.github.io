@@ -120,32 +120,72 @@ LOGO_HTML = """
 """
 
 
-def build_street_view_block(sv_url: str, addr: str) -> str:
-    """Generates the facade photo first-screen block."""
-    street = addr.split(',')[0].strip() if addr else 'Ihrem Salon'
+def build_street_view_block(sv_url: str, addr: str, demo_url: str = '') -> str:
+    """
+    Facade photo with a centered Play-button overlay — looks like a video thumbnail.
+    The entire block is a clickable link to demo_url (if provided).
+    Works in Gmail, Apple Mail, Outlook Web, iOS/Android mail apps.
+    """
+    street      = addr.split(',')[0].strip() if addr else 'Ihrem Salon'
     safe_street = html.escape(street)
-    safe_url    = html.escape(sv_url)
+    safe_photo  = html.escape(sv_url)
+    safe_demo   = html.escape(demo_url) if demo_url else '#'
+
+    # SVG Play button: white circle + red filled triangle, semi-transparent bg
+    play_svg = (
+        "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' "
+        "width='88' height='88' viewBox='0 0 88 88'%3E"
+        "%3Ccircle cx='44' cy='44' r='44' fill='rgba(0,0,0,0.55)'/%3E"
+        "%3Ccircle cx='44' cy='44' r='42' fill='none' "
+        "stroke='rgba(255,255,255,0.9)' stroke-width='2'/%3E"
+        "%3Cpolygon points='35,28 35,60 64,44' fill='%23ff0000'/%3E"
+        "%3C/svg%3E"
+    )
+
     return f"""
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr>
-    <td align="center" style="padding:0 0 8px;">
-      <img src="{safe_url}"
-           width="600" height="400"
-           alt="Ihr Salon — {safe_street}"
-           style="display:block;width:100%;max-width:600px;height:auto;border:0;
-                  border-radius:4px 4px 0 0;" />
+    <td align="center" style="padding:0 0 0;">
+      <!--[if !mso]><!-->
+      <a href="{safe_demo}" target="_blank"
+         style="display:block;position:relative;font-size:0;line-height:0;
+                text-decoration:none;border-radius:4px 4px 0 0;overflow:hidden;">
+        <img src="{safe_photo}"
+             width="600" height="400"
+             alt="Ihr Salon — {safe_street}"
+             style="display:block;width:100%;max-width:600px;height:auto;
+                    border:0;border-radius:4px 4px 0 0;" />
+        <!-- Play overlay: centered absolutely over the photo -->
+        <img src="{play_svg}"
+             width="88" height="88"
+             alt=""
+             style="display:block;position:absolute;
+                    top:50%;left:50%;
+                    margin-top:-44px;margin-left:-44px;
+                    border:0;pointer-events:none;" />
+      </a>
+      <!--<![endif]-->
+      <!--[if mso]>
+      <a href="{safe_demo}" target="_blank">
+        <img src="{safe_photo}" width="600" height="400"
+             alt="Ihr Salon" style="display:block;border:0;" />
+      </a>
+      <![endif]-->
     </td>
   </tr>
   <tr>
     <td align="center"
         style="background:#111;padding:12px 24px 20px;
                border-radius:0 0 4px 4px;border:1px solid #222;">
-      <span style="font-family:'Courier New',monospace;font-size:12px;
-                   color:#888;letter-spacing:1px;">
-        Ich war heute digital vor Ihrem Salon in
-        <strong style="color:#d4a847;">{safe_street}</strong> —
-        und habe etwas Wichtiges entdeckt.
-      </span>
+      <a href="{safe_demo}" target="_blank" style="text-decoration:none;">
+        <span style="font-family:'Courier New',monospace;font-size:12px;
+                     color:#888;letter-spacing:1px;">
+          Ich war heute digital vor Ihrem Salon in
+          <strong style="color:#d4a847;">{safe_street}</strong> —
+          und habe etwas Wichtiges entdeckt.
+          <span style="color:#ff4444;font-weight:bold;">▶ Video ansehen</span>
+        </span>
+      </a>
     </td>
   </tr>
 </table>
@@ -156,12 +196,16 @@ def build_logo_fallback_block() -> str:
     return LOGO_HTML
 
 
+def build_demo_url(salon_name: str = '') -> str:
+    base = 'https://vermarkter.vercel.app/services/beauty-industry/de/'
+    if salon_name:
+        return base + '?s=' + urllib.parse.quote(salon_name, safe='')
+    return base
+
+
 def body_to_html(body_text: str, salon_name: str = '') -> str:
     """Convert plain-text email body to styled HTML paragraphs."""
-    # Build personalized demo URL: ?s=SalonName so the landing page headline adapts
-    demo_url = 'https://vermarkter.vercel.app/services/beauty-industry/de/'
-    if salon_name:
-        demo_url += '?s=' + urllib.parse.quote(salon_name, safe='')
+    demo_url = build_demo_url(salon_name)
 
     lines = body_text.strip().split('\n')
     parts = []
@@ -240,14 +284,17 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
     # Tracking pixel URL
     pixel_url = f"{TRACK_BASE_URL}?id={lead_id}"
 
-    # First screen: Street View or logo
+    # Personalized demo URL (shared by hero thumbnail link + demo button in body)
+    demo_url = build_demo_url(name)
+
+    # First screen: Street View thumbnail (with Play overlay) or logo fallback
     sv_url = lead.get('street_view_url')
     if sv_url:
-        hero_block = build_street_view_block(sv_url, addr)
+        hero_block = build_street_view_block(sv_url, addr, demo_url=demo_url)
     else:
         hero_block = build_logo_fallback_block()
 
-    # Body text → HTML rows (with personalized demo URL)
+    # Body text → HTML rows (demo button also uses same personalized URL)
     body_text = letter.get('body', '')
     body_rows = body_to_html(body_text, salon_name=name)
 
