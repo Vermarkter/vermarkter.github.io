@@ -429,18 +429,31 @@
     <!-- Personalized headline: ?s=SalonName → "Exklusive IT-Lösung für SalonName" -->
     <script>
     (function () {
-      var s = new URLSearchParams(window.location.search).get('s');
-      if (!s) return;
-      var name = decodeURIComponent(s).trim().slice(0, 60);
-      if (!name) return;
-      var h1 = document.querySelector('.hero h1');
-      if (!h1) return;
-      h1.innerHTML =
-        'Exklusive IT-Lösung für<br>' +
-        '<span class="beauty-text">' +
-        name.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
-        '</span>';
-      document.title = 'Exklusive IT-Lösung für ' + name + ' — Vermarkter';
+      try {
+        // URLSearchParams.get() already returns decoded string — no decodeURIComponent needed
+        var raw = new URLSearchParams(window.location.search).get('s');
+        if (!raw) return;
+        var name = raw.trim().slice(0, 60);
+        if (!name) return;
+
+        // Try multiple selectors — section.hero h1, then first h1 on page
+        var h1 = document.querySelector('section.hero h1')
+              || document.querySelector('.hero h1')
+              || document.querySelector('h1');
+        if (!h1) return;
+
+        var safeName = name
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+
+        h1.innerHTML =
+          'Exklusive IT-Lösung für<br>' +
+          '<span class="beauty-text">' + safeName + '</span>';
+
+        document.title = 'Exklusive IT-Lösung für ' + name + ' — Vermarkter';
+      } catch (e) { /* silent — never break page load */ }
     })();
     </script>
 </body>
