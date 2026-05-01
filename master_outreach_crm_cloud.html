@@ -203,7 +203,7 @@ tbody tr.is-new:hover{background:rgba(245,158,11,.08)}
 <script>
 // ── CONFIG ────────────────────────────────────────────────────────────────────
 var SB_URL = 'https://wrvdbvekiteopkdwxuzz.supabase.co';
-var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c';
+var SB_KEY = 'YOUR_SUPABASE_ANON_KEY';
 var TABLE  = 'beauty_leads';
 var DAILY_MAX = 50;
 
@@ -309,7 +309,7 @@ function setSync(state, text) {
 // ── WA TEXT (reads live from SALONS array — updated by inline edit) ──────────
 function waText(s) {
   if (s.custom_message) return s.custom_message;
-  return 'Hallo ' + s.name + '! Wir helfen Salons mehr Buchungen digital zu gewinnen - Website + App + KI-Rezeption. Einmalig 1.000 EUR. Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/ Viele Gruesse, Vermarkter-Team';
+  return 'Hallo ' + s.name + '! Wir helfen Salons mehr Buchungen digital zu gewinnen - Website + App + KI-Rezeption. Einmalig 1.000 EUR. Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Viele Gruesse, Vermarkter-Team';
 }
 function waLink(s) {
   return 'https://wa.me/' + (s.phone||'').replace(/\D/g,'') + '?text=' + encodeURIComponent(waText(s));
@@ -322,7 +322,7 @@ function emailLink(s) {
     'Viele Salons verlieren taeglich Buchungsanfragen, weil Kunden abends keinen direkten Weg finden, einen Termin zu buchen.\n\n' +
     'Wir bieten:\n- Eigene Website\n- Online-Buchungs-App\n- KI-Rezeption 24/7 per Chat\n\n' +
     'Einmalig 1.000 EUR, keine monatlichen Kosten.\n\n' +
-    'Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/\n\n' +
+    'Demo: https://vermarkter.vercel.app/services/beauty-industry/de/\n\n' +
     'Mit freundlichen Gruessen,\nIhr Vermarkter-Team'
   );
   return 'mailto:' + s.email + '?subject=' + sub + '&body=' + body;

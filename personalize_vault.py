@@ -21,11 +21,17 @@ import urllib.request, urllib.parse, urllib.error
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
-SB_URL = "https://wrvdbvekiteopkdwxuzz.supabase.co"
-SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c"
+import configparser
+from pathlib import Path
+_cfg = configparser.ConfigParser()
+_cfg.read(Path(__file__).parent / 'config.ini', encoding='utf-8')
+SB_URL = _cfg.get('SUPABASE', 'url', fallback='').strip()
+SB_KEY = _cfg.get('SUPABASE', 'service_role_key', fallback='').strip()
+if not SB_KEY or 'ВСТАВИТИ' in SB_KEY or 'PASTE' in SB_KEY:
+    SB_KEY = _cfg.get('SUPABASE', 'anon_key', fallback='').strip()
 SB_HEAD = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY,
            "Content-Type": "application/json"}
-DEMO_URL = "https://vermarkter.vercel.app/SERVICES/beauty-industry/de/"
+DEMO_URL = "https://vermarkter.vercel.app/services/beauty-industry/de/"
 
 # ── Salon-Typ erkennen ──────────────────────────────────────────────────────
 TYPE_RX = [

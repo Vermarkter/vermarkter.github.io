@@ -1,5 +1,44 @@
 # Секрети — НІКОЛИ не публікувати у GitHub
 config.ini
+.env
+*.env
+.env.*
+
+# Дані — можуть містити PII клієнтів
+data/*.json
+data/*.csv
+*.csv
+emails_found.csv
+vermarkter_leads_final.csv
+final_outreach_list.csv
+
+# Одноразові скрипти з можливими захардкодженими ключами
+deep_fix.py
+enrich_data.py
+fix_maps_urls.py
+gen_cloud_crm.py
+gen_email_distribution.py
+gen_leads_csv.py
+gen_outreach_csv.py
+gen_master_crm.py
+gen_beauty_4langs.py
+inject_custom_messages.py
+migrate_to_supabase.py
+sync_messages*.py
+update_*.py
+find_emails.py
+outreach_assistant.py
+personalize_priority.py
+replace-portfolio-icons.py
+
+# Збірки та архіви
+payload.zip
+*.zip
+
+# Папки з результатами
+proposals/
+sales_book/
+batch/
 
 # Python
 __pycache__/

@@ -7,9 +7,10 @@
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
 
-// Supabase Configuration
-const SUPABASE_URL = 'https://cinufkskitdiuonfibtt.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpbnVma3NraXRkaXVvbmZpYnR0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjYxODQ1MzksImV4cCI6MjA4MTc2MDUzOX0.V_IySnKEy-xdBcMkgmNKPAjCeV7nLe8OoLJ_rbe-rRw';
+// Supabase Configuration — injected via <meta name="sb-url"> and <meta name="sb-key">
+// Never hardcode keys here. Set meta tags server-side or via Vercel Edge Config.
+const SUPABASE_URL = document.querySelector('meta[name="sb-url"]')?.content || '';
+const SUPABASE_ANON_KEY = document.querySelector('meta[name="sb-key"]')?.content || '';
 
 // Debug flag
 const DEBUG = true;
