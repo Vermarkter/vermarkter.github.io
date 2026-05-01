@@ -188,6 +188,59 @@
             </div>
         </section>
 
+        <!-- ROI COMPARISON -->
+        <section id="roi-compare" style="padding:5rem 1.5rem;background:rgba(0,0,0,.25);">
+          <div class="container" style="max-width:960px;">
+            <div style="text-align:center;margin-bottom:2.5rem;">
+              <span style="background:linear-gradient(135deg,#f59e0b,#ec4899);color:#fff;padding:.4rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:800;letter-spacing:1.5px;">📊 3-JAHRES-BILANZ</span>
+              <h2 style="font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;margin:1.25rem 0 .6rem;">Treatwell vs. Vermarkter:<br><span style="background:linear-gradient(135deg,#f59e0b,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Ihre 3-Jahres-Bilanz</span></h2>
+              <p style="color:var(--text-secondary);font-size:1rem;max-width:560px;margin:0 auto;">Verschieben Sie die Regler — sehen Sie live, wie viel Treatwell Ihnen kostet.</p>
+            </div>
+
+            <!-- Sliders -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
+              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(245,158,11,.2);border-radius:16px;padding:1.4rem 1.6rem;">
+                <label style="font-size:.78rem;font-weight:700;color:rgba(245,158,11,.85);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:.5rem;">Buchungen / Monat</label>
+                <div style="font-size:2rem;font-weight:900;color:#f1f5f9;margin-bottom:.6rem;" id="roiBookingsVal">80</div>
+                <input type="range" id="roiBookings" min="20" max="300" value="80" step="10"
+                  style="width:100%;accent-color:#f59e0b;cursor:pointer;" oninput="updateROI()">
+                <div style="display:flex;justify-content:space-between;font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.3rem;"><span>20</span><span>300</span></div>
+              </div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(245,158,11,.2);border-radius:16px;padding:1.4rem 1.6rem;">
+                <label style="font-size:.78rem;font-weight:700;color:rgba(245,158,11,.85);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:.5rem;">Durchschnittlicher Bon (€)</label>
+                <div style="font-size:2rem;font-weight:900;color:#f1f5f9;margin-bottom:.6rem;" id="roiTicketVal">55 €</div>
+                <input type="range" id="roiTicket" min="20" max="150" value="55" step="5"
+                  style="width:100%;accent-color:#f59e0b;cursor:pointer;" oninput="updateROI()">
+                <div style="display:flex;justify-content:space-between;font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.3rem;"><span>20 €</span><span>150 €</span></div>
+              </div>
+            </div>
+
+            <!-- Summary stats -->
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.8rem;" id="roiStats">
+              <div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.22);border-radius:14px;padding:1.1rem;text-align:center;">
+                <div style="font-size:.68rem;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:.6px;margin-bottom:.3rem;">Treatwell 3 Jahre</div>
+                <div style="font-size:1.7rem;font-weight:900;color:#ef4444;" id="roiTW3">—</div>
+              </div>
+              <div style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.22);border-radius:14px;padding:1.1rem;text-align:center;">
+                <div style="font-size:.68rem;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:.6px;margin-bottom:.3rem;">Vermarkter 3 Jahre</div>
+                <div style="font-size:1.7rem;font-weight:900;color:#f59e0b;" id="roiVM3">—</div>
+              </div>
+              <div style="background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.22);border-radius:14px;padding:1.1rem;text-align:center;">
+                <div style="font-size:.68rem;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:.6px;margin-bottom:.3rem;">Ihre Ersparnis</div>
+                <div style="font-size:1.7rem;font-weight:900;color:#22c55e;" id="roiSave">—</div>
+              </div>
+            </div>
+
+            <!-- Chart -->
+            <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:1.5rem;">
+              <canvas id="roiCanvas" height="280"></canvas>
+            </div>
+            <div style="text-align:center;margin-top:1.2rem;">
+              <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty">Jetzt für 1.000 € starten — spare <span id="roiSaveCta">bis zu 20.000 €</span></a>
+            </div>
+          </div>
+        </section>
+
         <!-- TECH ADVANTAGE -->
         <section id="tech" style="padding:5rem 1.5rem;background:rgba(139,92,246,.02);">
             <div class="container" style="max-width:1100px;">
@@ -488,6 +541,119 @@
         } catch (e) { clearInterval(_t); console.warn('[vermarkter] Attempt 4 error', e); }
       }, 100);
     })();
+    </script>
+
+    <!-- SCARCITY TICKER -->
+    <div id="scarcityTicker" style="display:none;position:fixed;bottom:1.5rem;left:1.5rem;z-index:9999;max-width:340px;background:rgba(10,10,20,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(245,158,11,.35);border-radius:16px;padding:1rem 1.2rem 1rem 1rem;box-shadow:0 8px 32px rgba(0,0,0,.45);animation:scarcityIn .45s cubic-bezier(.22,1,.36,1);">
+      <button onclick="this.parentElement.style.display='none'" style="position:absolute;top:.5rem;right:.6rem;background:transparent;border:none;color:rgba(255,255,255,.35);font-size:1rem;cursor:pointer;line-height:1;">&#10005;</button>
+      <div style="display:flex;align-items:flex-start;gap:.7rem;">
+        <div style="font-size:1.4rem;flex-shrink:0;margin-top:.05rem;">&#128293;</div>
+        <div>
+          <div style="font-size:.72rem;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.3rem;">Aktueller Status</div>
+          <div style="font-size:.85rem;color:#f1f5f9;line-height:1.5;">Nur noch <strong style="color:#f59e0b;">2 Onboarding-Plätze</strong> für Berlin-Mitte im Mai verfügbar.</div>
+          <a href="https://t.me/my_salon_eu" target="_blank" style="display:inline-block;margin-top:.6rem;font-size:.75rem;font-weight:700;color:#f59e0b;text-decoration:none;border:1px solid rgba(245,158,11,.4);border-radius:6px;padding:.22rem .65rem;transition:all .2s;" onmouseover="this.style.background='rgba(245,158,11,.12)'" onmouseout="this.style.background='transparent'">Jetzt sichern →</a>
+        </div>
+      </div>
+    </div>
+    <style>
+    @keyframes scarcityIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    </style>
+
+    <!-- ROI CHART + SCARCITY INIT -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+    <script>
+    // ── Scarcity ticker: show after 5s ──────────────────
+    setTimeout(function() {
+      var t = document.getElementById('scarcityTicker');
+      if (t) t.style.display = 'block';
+    }, 5000);
+
+    // ── ROI Simulator ──────────────────────────────────
+    var roiChart = null;
+
+    function calcROI(bookings, ticket) {
+      var months = 36;
+      var twCommission = 0.26;
+      var twShare = 0.35;
+      var twMonthlyFee = 39;
+      var vmSetup = 1000;
+      var monthlyRevenue = bookings * ticket;
+      var twMonthly = twMonthlyFee + (monthlyRevenue * twShare * twCommission);
+
+      var labels = [], tw = [], vm = [];
+      var twCum = 0, vmCum = vmSetup;
+      for (var m = 1; m <= months; m++) {
+        twCum += twMonthly;
+        labels.push('M' + m);
+        tw.push(Math.round(twCum));
+        vm.push(Math.round(vmCum));
+      }
+      return { labels: labels, tw: tw, vm: vm,
+        twTotal: Math.round(twCum), vmTotal: Math.round(vmCum),
+        saving: Math.round(twCum - vmCum) };
+    }
+
+    function updateROI() {
+      var bookings = parseInt(document.getElementById('roiBookings').value);
+      var ticket   = parseInt(document.getElementById('roiTicket').value);
+      document.getElementById('roiBookingsVal').textContent = bookings;
+      document.getElementById('roiTicketVal').textContent = ticket + ' €';
+      var d = calcROI(bookings, ticket);
+      document.getElementById('roiTW3').textContent = '€' + d.twTotal.toLocaleString('de-DE');
+      document.getElementById('roiVM3').textContent = '€' + d.vmTotal.toLocaleString('de-DE');
+      document.getElementById('roiSave').textContent = '€' + d.saving.toLocaleString('de-DE');
+      document.getElementById('roiSaveCta').textContent = '€' + d.saving.toLocaleString('de-DE');
+
+      if (roiChart) {
+        roiChart.data.labels = d.labels;
+        roiChart.data.datasets[0].data = d.tw;
+        roiChart.data.datasets[1].data = d.vm;
+        roiChart.update('none');
+      } else {
+        var ctx = document.getElementById('roiCanvas').getContext('2d');
+        roiChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: d.labels,
+            datasets: [
+              { label: 'Treatwell (kumulativ)',
+                data: d.tw,
+                borderColor: '#6b7280',
+                backgroundColor: 'rgba(107,114,128,.12)',
+                borderWidth: 2.5, pointRadius: 0, tension: 0.35, fill: true },
+              { label: 'Vermarkter (kumulativ)',
+                data: d.vm,
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245,158,11,.1)',
+                borderWidth: 2.5, pointRadius: 0, tension: 0.35, fill: true }
+            ]
+          },
+          options: {
+            responsive: true,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { labels: { color: '#f1f5f9', font: { size: 12 }, boxWidth: 14 } },
+              tooltip: { callbacks: { label: function(c) {
+                return c.dataset.label + ': €' + c.parsed.y.toLocaleString('de-DE');
+              }}}
+            },
+            scales: {
+              x: { ticks: { color: 'rgba(255,255,255,.3)', maxTicksLimit: 12, font: { size: 10 } },
+                   grid: { color: 'rgba(255,255,255,.04)' } },
+              y: { ticks: { color: 'rgba(255,255,255,.3)',
+                             callback: function(v){ return '€' + v.toLocaleString('de-DE'); },
+                             font: { size: 10 } },
+                   grid: { color: 'rgba(255,255,255,.04)' } }
+            }
+          }
+        });
+      }
+    }
+
+    // Init on load — Chart.js must be ready
+    document.addEventListener('DOMContentLoaded', function() {
+      updateROI();
+    });
     </script>
 </body>
 </html>
