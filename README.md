@@ -2,6 +2,8 @@
 
 Новий проект маркетингового агентства з чистого аркуша.
 
+> Last deploy: 2026-05-01 — Telegram tracking + personalization hardening
+
 ## Структура проекту
 
 ```

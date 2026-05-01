@@ -441,34 +441,41 @@
         .replace(/"/g, '&quot;');
 
       function applyName() {
+        // Exact selector matching the DOM: <h1 data-depth="0.25"> inside section.hero
         var h1 = document.querySelector('section.hero h1')
               || document.querySelector('.hero h1')
+              || document.querySelector('main h1')
               || document.querySelector('h1');
         if (!h1) return false;
-        // Guard: skip if already personalized (avoids double-apply on re-runs)
         if (h1.getAttribute('data-personalized') === '1') return true;
         h1.innerHTML =
           'Exklusive IT-Lösung für<br>' +
           '<span class="beauty-text">' + safeName + '</span>';
         h1.setAttribute('data-personalized', '1');
         document.title = 'Exklusive IT-Lösung für ' + name + ' — Vermarkter';
+        console.log('[vermarkter] personalized h1 for:', name);
         return true;
       }
 
-      // Attempt 1: inline — works when script is at bottom of <body>
-      try { applyName(); } catch (e) {}
+      // Attempt 1: inline (script is at bottom of body — DOM already parsed)
+      try { if (applyName()) return; } catch (e) {}
 
-      // Attempt 2: DOMContentLoaded — catches deferred rendering
+      // Attempt 2: DOMContentLoaded
       document.addEventListener('DOMContentLoaded', function () {
         try { applyName(); } catch (e) {}
       });
 
-      // Attempt 3: polling — survives slow JS frameworks / late DOM hydration
-      var _attempts = 0;
-      var _poll = setInterval(function () {
+      // Attempt 3: window.onload (after all resources + scripts)
+      window.addEventListener('load', function () {
+        try { applyName(); } catch (e) {}
+      });
+
+      // Attempt 4: polling 100ms × 30 = 3 seconds (survives any lazy rendering)
+      var _n = 0;
+      var _t = setInterval(function () {
         try {
-          if (applyName() || ++_attempts >= 20) clearInterval(_poll);
-        } catch (e) { clearInterval(_poll); }
+          if (applyName() || ++_n >= 30) clearInterval(_t);
+        } catch (e) { clearInterval(_t); }
       }, 100);
     })();
     </script>
