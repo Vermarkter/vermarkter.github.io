@@ -429,31 +429,47 @@
     <!-- Personalized headline: ?s=SalonName → "Exklusive IT-Lösung für SalonName" -->
     <script>
     (function () {
-      try {
-        // URLSearchParams.get() already returns decoded string — no decodeURIComponent needed
-        var raw = new URLSearchParams(window.location.search).get('s');
-        if (!raw) return;
-        var name = raw.trim().slice(0, 60);
-        if (!name) return;
+      var raw = new URLSearchParams(window.location.search).get('s');
+      if (!raw) return;
+      var name = raw.trim().slice(0, 60);
+      if (!name) return;
 
-        // Try multiple selectors — section.hero h1, then first h1 on page
+      var safeName = name
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      function applyName() {
         var h1 = document.querySelector('section.hero h1')
               || document.querySelector('.hero h1')
               || document.querySelector('h1');
-        if (!h1) return;
-
-        var safeName = name
-          .replace(/&/g, '&amp;')
-          .replace(/</g, '&lt;')
-          .replace(/>/g, '&gt;')
-          .replace(/"/g, '&quot;');
-
+        if (!h1) return false;
+        // Guard: skip if already personalized (avoids double-apply on re-runs)
+        if (h1.getAttribute('data-personalized') === '1') return true;
         h1.innerHTML =
           'Exklusive IT-Lösung für<br>' +
           '<span class="beauty-text">' + safeName + '</span>';
-
+        h1.setAttribute('data-personalized', '1');
         document.title = 'Exklusive IT-Lösung für ' + name + ' — Vermarkter';
-      } catch (e) { /* silent — never break page load */ }
+        return true;
+      }
+
+      // Attempt 1: inline — works when script is at bottom of <body>
+      try { applyName(); } catch (e) {}
+
+      // Attempt 2: DOMContentLoaded — catches deferred rendering
+      document.addEventListener('DOMContentLoaded', function () {
+        try { applyName(); } catch (e) {}
+      });
+
+      // Attempt 3: polling — survives slow JS frameworks / late DOM hydration
+      var _attempts = 0;
+      var _poll = setInterval(function () {
+        try {
+          if (applyName() || ++_attempts >= 20) clearInterval(_poll);
+        } catch (e) { clearInterval(_poll); }
+      }, 100);
     })();
     </script>
 </body>
