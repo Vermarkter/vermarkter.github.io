@@ -1,8 +1,12 @@
 # Секрети — НІКОЛИ не публікувати у GitHub
 config.ini
 .env
-*.env
-.env.*
+.env.local
+.env.production
+.env.staging
+# Allow example/template files (no real secrets)
+!.env.example
+!config.ini.example
 
 # Дані — можуть містити PII клієнтів
 data/*.json
