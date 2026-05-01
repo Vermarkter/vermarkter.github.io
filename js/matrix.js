@@ -142,43 +142,43 @@
     }
 
     /* ═══════════════════════════════════════════
-       COLOR FUNCTION  —  Luxury Tech palette
-       Canvas element has CSS opacity:0.22 + filter:blur(0.8px)
-       so individual alpha values can be generous for visible gradient.
+       COLOR FUNCTION  —  Deep Void palette
+       Background: #0a0a20 (deep navy) → #1a0033 (dark violet)
+       Gradient direction: HEAD = electric violet-blue, TAIL = deep purple void
 
-       j = 0      HEAD      bright cyan   #00d4f0
-       j = 1..3   SHOULDER  mid cyan      #00b8d4
-       j = 4..14  MID TRAIL cyan → steel  #64748b range
-       j = 15+    DEEP TAIL steel → purple-slate, fast fade
+       j = 0      HEAD      electric blue-violet  #7b6cff
+       j = 1..3   SHOULDER  indigo                #5b4de0
+       j = 4..14  MID TRAIL indigo → violet       #3b1a8c range
+       j = 15+    DEEP TAIL violet → #1a0033 void fade
     ═══════════════════════════════════════════ */
     function color(j, t, trail) {
         var r, g, b, a;
 
         if (j === 0) {
-            /* HEAD — bright cyan, canvas opacity brings it down to ~0.20 */
-            r = 0; g = 212; b = 240;
-            a = 0.92;
+            /* HEAD — electric blue-violet #7b6cff */
+            r = 123; g = 108; b = 255;
+            a = 0.95;
 
         } else if (j <= 3) {
-            /* SHOULDER — mid cyan */
-            r = 0; g = 185; b = 220;
-            a = 0.78 - (j - 1) * 0.13;
+            /* SHOULDER — indigo #5b4de0 */
+            r = 91;  g = 77;  b = 224;
+            a = 0.80 - (j - 1) * 0.12;
 
         } else if (j <= 14) {
-            /* MID TRAIL — cyan → steel blue (#64748b) */
+            /* MID TRAIL — indigo → deep violet #3b1a8c */
             var p1 = (j - 3) / 11;
-            r = (0   + p1 * 100) | 0;  /* 0   → 100 */
-            g = (185 - p1 * 69)  | 0;  /* 185 → 116 */
-            b = (220 - p1 * 81)  | 0;  /* 220 → 139 */
-            a = t * 0.70;
+            r = (91  - p1 * 32) | 0;   /* 91  → 59  */
+            g = (77  - p1 * 51) | 0;   /* 77  → 26  */
+            b = (224 - p1 * 84) | 0;   /* 224 → 140 */
+            a = t * 0.65;
 
         } else {
-            /* DEEP TAIL — steel blue → purple-slate fade */
+            /* DEEP TAIL — deep violet → #1a0033 void */
             var p2 = Math.min((j - 14) / Math.max(trail - 14, 1), 1);
-            r = (100 + p2 * 39)  | 0;  /* 100 → 139 */
-            g = (116 - p2 * 24)  | 0;  /* 116 → 92  */
-            b = (139 + p2 * 107) | 0;  /* 139 → 246 */
-            a = t * 0.32;
+            r = (59  - p2 * 33) | 0;   /* 59  → 26  */
+            g = (26  - p2 * 26) | 0;   /* 26  → 0   */
+            b = (140 - p2 * 89) | 0;   /* 140 → 51  */
+            a = t * 0.28;
         }
 
         return 'rgba(' + r + ',' + g + ',' + b + ',' + Math.min(a, 1).toFixed(2) + ')';

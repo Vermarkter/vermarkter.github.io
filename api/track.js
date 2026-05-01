@@ -8,7 +8,7 @@
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY; // service role key — set in Vercel env vars
-const TG_TOKEN    = process.env.TELEGRAM_BOT_TOKEN;
+const TG_TOKEN    = process.env.TELEGRAM_TOKEN || process.env.TELEGRAM_BOT_TOKEN;
 const TG_CHAT_ID  = process.env.TELEGRAM_CHAT_ID;
 
 // 1x1 transparent GIF (43 bytes)
@@ -25,10 +25,11 @@ function buildWaLink(phone) {
   return 'https://wa.me/' + normalized.replace('+', '');
 }
 
-async function sendTelegram(name, waLink) {
+async function sendTelegram(name, city, waLink) {
   if (!TG_TOKEN || !TG_CHAT_ID) return;
-  const waText = waLink ? waLink : '(kein Telefon)';
-  const text = `🚀 ГАРЯЧИЙ КЛІЄНТ!\n*${name}* щойно відкрив імейл.\n\nНапиши йому в WhatsApp:\n${waText}`;
+  const waText = waLink ? waLink : '_(kein Telefon)_';
+  const cityLine = city ? `Місто: ${city}\n` : '';
+  const text = `🚀 ВІДКРИТТЯ ЛИСТА\\!\nСалон: *${name}*\n${cityLine}Написати в WhatsApp: ${waText}`;
   await fetch(
     `https://api.telegram.org/bot${TG_TOKEN}/sendMessage`,
     {
@@ -37,7 +38,7 @@ async function sendTelegram(name, waLink) {
       body: JSON.stringify({
         chat_id: TG_CHAT_ID,
         text,
-        parse_mode: 'Markdown',
+        parse_mode: 'MarkdownV2',
         disable_web_page_preview: true,
       }),
     }
@@ -64,9 +65,9 @@ export default async function handler(req, res) {
         }
       );
 
-      // 2. Fetch lead name + phone for Telegram alert
+      // 2. Fetch lead name + phone + city for Telegram alert
       const leadRes = await fetch(
-        `${SUPABASE_URL}/rest/v1/beauty_leads?id=eq.${leadId}&select=name,phone`,
+        `${SUPABASE_URL}/rest/v1/beauty_leads?id=eq.${leadId}&select=name,phone,city`,
         {
           headers: {
             apikey: SUPABASE_KEY,
@@ -79,7 +80,7 @@ export default async function handler(req, res) {
         const lead = leads[0];
         const waLink = buildWaLink(lead.phone);
         // Fire-and-forget — never block the pixel response
-        sendTelegram(lead.name || `Lead #${leadId}`, waLink).catch(() => {});
+        sendTelegram(lead.name || `Lead #${leadId}`, lead.city || '', waLink).catch(() => {});
       }
     } catch (_) {
       // Silently ignore — never break email rendering due to tracking failure
