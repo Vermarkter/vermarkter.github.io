@@ -614,6 +614,12 @@ function loadMatrixScript() {
     document.head.appendChild(tag);
 }
 
+function loadFxScript() {
+    var tag = document.createElement('script');
+    tag.src = _kineticBase + 'fx.js';
+    document.head.appendChild(tag);
+}
+
 // === CRISP SCROLL REVEAL (GPU-composited) ===
 function initKineticReveal() {
     const sections = document.querySelectorAll(
@@ -687,7 +693,8 @@ function initPainPeek() {
 // === INIT ===
 document.addEventListener('DOMContentLoaded', function () {
     loadMatrixScript();
-    initKineticReveal();
+    loadFxScript();      // parallax + blur-reveal
+    initKineticReveal(); // existing section-level reveal (kept for compat)
     initPainPeek();
-    console.log('⚡ Kinetic UI v3.1 + Digital Rain v2.0');
+    console.log('⚡ Kinetic UI v3.2 + Digital Rain v2.0 + fx.js');
 });

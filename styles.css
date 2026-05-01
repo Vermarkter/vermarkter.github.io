@@ -3461,14 +3461,52 @@ h1 .text-gradient, h2 .text-gradient,
 .kinetic-hidden {
     opacity: 0 !important;
     transform: translateY(50px) scale(0.92) translateZ(0) !important;
-    will-change: transform, opacity !important;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    filter: blur(6px) !important;
+    will-change: transform, opacity, filter !important;
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.85s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 .kinetic-hidden.is-visible {
     opacity: 1 !important;
     transform: translateY(0) scale(1) translateZ(0) !important;
+    filter: blur(0) !important;
+}
+
+/* ── BLUR-REVEAL (fx.js) ───────────────────────────────────────────── */
+.blur-hidden {
+    opacity: 0;
+    transform: translateY(28px) translateZ(0);
+    filter: blur(10px);
+    will-change: transform, opacity, filter;
+    transition:
+        opacity  0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+        filter   0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blur-visible {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+    filter: blur(0);
+}
+
+/* Parallax layers — prevent layout shift during mouse move */
+[data-depth] {
+    will-change: transform;
+    backface-visibility: hidden;
+}
+
+/* Reduced-motion: disable all decorative transitions */
+@media (prefers-reduced-motion: reduce) {
+    .blur-hidden,
+    .kinetic-hidden {
+        filter: none !important;
+        transform: none !important;
+        transition: opacity 0.2s ease !important;
+    }
+    [data-depth] { transform: none !important; }
 }
 
 /* Staggered children — snappy */
