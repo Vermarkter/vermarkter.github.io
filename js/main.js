@@ -698,3 +698,18 @@ document.addEventListener('DOMContentLoaded', function () {
     initPainPeek();
     console.log('⚡ Kinetic UI v3.2 + Digital Rain v2.0 + fx.js');
 });
+
+// ==================== FORCE PERSONALIZATION ====================
+// Runs AFTER all init (matrix, fx.js, parallax) — overwrites any h1 mutation
+(function () {
+    const urlParams = new URLSearchParams(window.location.search);
+    const salonName = urlParams.get('s');
+    if (!salonName) return;
+    const forceTitle = () => {
+        const h1 = document.querySelector('h1');
+        if (h1 && h1.innerText !== 'Exklusive IT-Lösung für ' + salonName) {
+            h1.innerHTML = 'Exklusive IT-Lösung für<br><span class="beauty-text">' + salonName + '</span>';
+        }
+    };
+    setInterval(forceTitle, 500);
+})();
