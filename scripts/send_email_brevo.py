@@ -156,8 +156,13 @@ def build_logo_fallback_block() -> str:
     return LOGO_HTML
 
 
-def body_to_html(body_text: str) -> str:
+def body_to_html(body_text: str, salon_name: str = '') -> str:
     """Convert plain-text email body to styled HTML paragraphs."""
+    # Build personalized demo URL: ?s=SalonName so the landing page headline adapts
+    demo_url = 'https://vermarkter.vercel.app/services/beauty-industry/de/'
+    if salon_name:
+        demo_url += '?s=' + urllib.parse.quote(salon_name, safe='')
+
     lines = body_text.strip().split('\n')
     parts = []
     for line in lines:
@@ -200,7 +205,7 @@ def body_to_html(body_text: str) -> str:
         if 'Demo:' in stripped or 'vermarkter.vercel.app' in stripped:
             parts.append(
                 f'<tr><td style="padding:16px 0 8px;text-align:center;">'
-                f'<a href="https://vermarkter.vercel.app/services/beauty-industry/de/" '
+                f'<a href="{html.escape(demo_url)}" '
                 f'style="display:inline-block;background:#d4a847;color:#000;'
                 f'font-family:\'Courier New\',monospace;font-size:13px;font-weight:bold;'
                 f'letter-spacing:2px;padding:14px 32px;text-decoration:none;'
@@ -242,9 +247,9 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
     else:
         hero_block = build_logo_fallback_block()
 
-    # Body text → HTML rows
+    # Body text → HTML rows (with personalized demo URL)
     body_text = letter.get('body', '')
-    body_rows = body_to_html(body_text)
+    body_rows = body_to_html(body_text, salon_name=name)
 
     html_body = f"""<!DOCTYPE html>
 <html lang="de">

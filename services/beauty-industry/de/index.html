@@ -425,5 +425,23 @@
     <script src="../../../js/calculator.js"></script>
     <script src="../../../js/consent.js"></script>
     <script src="../../../js/lightbox.js"></script>
+
+    <!-- Personalized headline: ?s=SalonName → "Exklusive IT-Lösung für SalonName" -->
+    <script>
+    (function () {
+      var s = new URLSearchParams(window.location.search).get('s');
+      if (!s) return;
+      var name = decodeURIComponent(s).trim().slice(0, 60);
+      if (!name) return;
+      var h1 = document.querySelector('.hero h1');
+      if (!h1) return;
+      h1.innerHTML =
+        'Exklusive IT-Lösung für<br>' +
+        '<span class="beauty-text">' +
+        name.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') +
+        '</span>';
+      document.title = 'Exklusive IT-Lösung für ' + name + ' — Vermarkter';
+    })();
+    </script>
 </body>
 </html>
