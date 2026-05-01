@@ -107,16 +107,22 @@ def _sb_count(params):
 
 
 def collect_supabase():
-    today_start = datetime.now(timezone.utc).strftime('%Y-%m-%dT00:00:00+00:00')
     ok = _sb_count('') >= 0
 
     return {
-        'online':        ok,
-        'total_leads':   _sb_count(''),
-        'berlin_ready':  _sb_count('&city=eq.Berlin&status=eq.READY TO SEND'),
+        'online':           ok,
+        'total_leads':      _sb_count(''),
+        'berlin_ready':     _sb_count('&city=eq.Berlin&status=eq.READY TO SEND'),
         'email_sent_total': _sb_count('&status=eq.EMAIL SENT'),
-        'wa_sent_total': _sb_count('&status=eq.sent'),
-        'total_done':    _sb_count('&status=in.(sent,EMAIL SENT,replied,booked,CALLED)'),
+        'wa_sent_total':    _sb_count('&status=eq.sent'),
+        'total_done':       _sb_count('&status=in.(sent,EMAIL SENT,replied,booked,CALLED)'),
+        # Reply classifier stats (from analyze_replies.py)
+        'reply_hot':        _sb_count('&status=eq.reply_hot'),
+        'reply_info':       _sb_count('&status=eq.reply_info'),
+        'reply_refused':    _sb_count('&status=eq.reply_refused'),
+        'followup_sent':    _sb_count('&status=eq.followup_sent'),
+        # Street View enrichment
+        'leads_with_photo': _sb_count('&street_view_url=not.is.null'),
     }
 
 
@@ -429,6 +435,13 @@ h1{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;line-height:1.08;margin-bo
 .srv-item{display:flex;align-items:center;gap:.35rem;padding:.3rem .75rem;
   border-radius:50px;background:var(--surf);border:1px solid var(--border);font-size:.72rem}
 
+/* Pie legend */
+.pie-legend{display:flex;flex-direction:column;gap:.55rem}
+.pie-row{display:flex;align-items:center;gap:.6rem;font-size:.8rem}
+.pie-dot{width:11px;height:11px;border-radius:3px;flex-shrink:0}
+.pie-label{color:var(--text);font-weight:600}
+.pie-val{color:var(--muted);font-size:.72rem;margin-left:auto}
+
 /* Refresh */
 .ref-row{text-align:center;margin-top:1.4rem}
 .btn-ref{display:inline-flex;align-items:center;gap:.4rem;padding:.5rem 1.3rem;
@@ -493,6 +506,27 @@ h1{font-size:clamp(1.7rem,4vw,2.8rem);font-weight:900;line-height:1.08;margin-bo
     <div class="srv-row" id="sbRow">
       <div class="srv-item"><span id="sbStatus">перевірка…</span></div>
     </div>
+  </div>
+
+  <!-- Reply stats: Pie Chart + counters -->
+  <div class="card">
+    <div class="card-title"><div class="dot-s dot-ok"></div>Відповіді клієнтів — Pie Chart</div>
+    <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap">
+      <canvas id="replyPie" width="160" height="160"
+              style="flex-shrink:0;border-radius:50%;"></canvas>
+      <div style="flex:1;min-width:160px">
+        <div class="pie-legend" id="pieLegend"></div>
+      </div>
+    </div>
+    <div style="margin-top:1rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:.6rem" id="replyStats"></div>
+  </div>
+
+  <!-- Photos + followup row -->
+  <div class="sg" id="photoStatsRow" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+    <div class="sc green"><div class="sn" id="sPhotos">—</div>
+      <div class="sl">Leads з фото</div><div class="ss">street_view_url set</div></div>
+    <div class="sc pink"><div class="sn" id="sFollowup">—</div>
+      <div class="sl">Follow-up надіслано</div><div class="ss">після відкриття листа</div></div>
   </div>
 
   <!-- OpenAI Batches table -->
@@ -671,6 +705,88 @@ function render(d) {
       '<div class="log-line">' + esc(info.last || '—') + '</div>' +
       '</div>';
   }).join('') : '<div style="color:var(--muted);font-size:.78rem">Логи не знайдено</div>';
+
+  // Photos + followup
+  set('sPhotos',   sb.leads_with_photo);
+  set('sFollowup', sb.followup_sent);
+
+  // Reply Pie Chart
+  var hot    = sb.reply_hot     || 0;
+  var info   = sb.reply_info    || 0;
+  var refuse = sb.reply_refused || 0;
+  var total  = hot + info + refuse;
+
+  var PIE = [
+    { label: '🔥 HOT — хочуть демо',   val: hot,    color: '#ef4444' },
+    { label: 'ℹ️  INFO — питають ціну', val: info,   color: '#f59e0b' },
+    { label: '🚫 REFUSE — відмова',     val: refuse, color: '#6b7280' },
+  ];
+
+  // Draw canvas pie
+  var canvas = document.getElementById('replyPie');
+  var ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 160, 160);
+  if (total > 0) {
+    var start = -Math.PI / 2;
+    PIE.forEach(function(seg) {
+      var slice = (seg.val / total) * 2 * Math.PI;
+      ctx.beginPath();
+      ctx.moveTo(80, 80);
+      ctx.arc(80, 80, 72, start, start + slice);
+      ctx.closePath();
+      ctx.fillStyle = seg.color;
+      ctx.fill();
+      start += slice;
+    });
+    // Center hole
+    ctx.beginPath();
+    ctx.arc(80, 80, 38, 0, 2 * Math.PI);
+    ctx.fillStyle = '#111';
+    ctx.fill();
+    // Total in center
+    ctx.fillStyle = '#f1f5f9';
+    ctx.font = 'bold 22px Inter,system-ui,sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(total, 80, 78);
+    ctx.fillStyle = 'rgba(241,245,249,.45)';
+    ctx.font = '10px Inter,system-ui,sans-serif';
+    ctx.fillText('replies', 80, 96);
+  } else {
+    ctx.beginPath();
+    ctx.arc(80, 80, 72, 0, 2 * Math.PI);
+    ctx.fillStyle = 'rgba(255,255,255,.06)';
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(80, 80, 38, 0, 2 * Math.PI);
+    ctx.fillStyle = '#111';
+    ctx.fill();
+    ctx.fillStyle = 'rgba(241,245,249,.3)';
+    ctx.font = '11px Inter,system-ui,sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('no data', 80, 80);
+  }
+
+  // Legend
+  document.getElementById('pieLegend').innerHTML = PIE.map(function(seg) {
+    var pct = total > 0 ? Math.round(seg.val / total * 100) : 0;
+    return '<div class="pie-row">' +
+      '<div class="pie-dot" style="background:' + seg.color + '"></div>' +
+      '<span class="pie-label">' + esc(seg.label) + '</span>' +
+      '<span class="pie-val">' + seg.val + ' (' + pct + '%)</span>' +
+      '</div>';
+  }).join('');
+
+  // Mini stat tiles under pie
+  document.getElementById('replyStats').innerHTML = PIE.map(function(seg) {
+    return '<div style="background:var(--surf);border:1px solid var(--border);border-radius:12px;' +
+      'padding:.8rem;text-align:center;border-bottom:3px solid ' + seg.color + '">' +
+      '<div style="font-size:1.6rem;font-weight:900;color:' + seg.color + '">' + seg.val + '</div>' +
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.6px;' +
+      'color:var(--muted);margin-top:.15rem">' + esc(seg.label.split('—')[0].trim()) + '</div>' +
+      '</div>';
+  }).join('');
 
   // Uptime
   set('uptimeLine', 'Сервер працює: ' + fmtUptime(d.uptime_s || 0));
