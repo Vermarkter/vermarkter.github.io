@@ -181,6 +181,48 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 .demo-close{float:right;background:transparent;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;line-height:1;margin-top:-.3rem}
 .demo-close:hover{color:var(--pink)}
 
+/* SALES BOOK BUTTON */
+.tbtn-sb{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,158,11,.07);border:2px solid rgba(245,158,11,.32);color:#fbbf24;font-weight:800;font-size:.88rem;padding:.7rem 1.5rem;border-radius:11px;cursor:pointer;transition:all .22s;letter-spacing:.3px;font-family:inherit}
+.tbtn-sb:hover{background:rgba(245,158,11,.18);border-color:#f59e0b;box-shadow:0 4px 14px rgba(245,158,11,.25)}
+.tbtn-sb.active{background:linear-gradient(135deg,#f59e0b,#ec4899);border-color:transparent;color:#fff;box-shadow:0 5px 16px rgba(245,158,11,.38)}
+
+/* SALES BOOK PANEL */
+#salesBookPanel{max-width:1700px;margin:0 auto 1.5rem;display:none}
+#salesBookPanel.open{display:block}
+.sb-header{background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.22);border-radius:13px 13px 0 0;padding:1rem 1.4rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.sb-header h2{font-size:1.1rem;font-weight:900;background:linear-gradient(135deg,#f59e0b,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0}
+.sb-header p{font-size:.78rem;color:var(--muted);margin:0}
+.sb-search{flex:1;min-width:180px;background:rgba(255,255,255,.045);border:1px solid rgba(245,158,11,.28);border-radius:8px;padding:.42rem .78rem;font-size:.84rem;color:var(--text);outline:none;font-family:inherit}
+.sb-search:focus{border-color:rgba(245,158,11,.6)}
+.sb-search::placeholder{color:rgba(255,255,255,.3)}
+.sb-cats{display:flex;gap:.45rem;flex-wrap:wrap;padding:.75rem 1.4rem;background:rgba(0,0,0,.2);border-left:1px solid rgba(245,158,11,.12);border-right:1px solid rgba(245,158,11,.12)}
+.sb-cat-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:.28rem .85rem;font-size:.74rem;color:var(--muted);cursor:pointer;transition:all .18s;font-family:inherit}
+.sb-cat-btn:hover{border-color:rgba(245,158,11,.4);color:#fbbf24}
+.sb-cat-btn.active{background:rgba(245,158,11,.14);border-color:rgba(245,158,11,.45);color:#fbbf24;font-weight:700}
+.sb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:0;border-left:1px solid rgba(245,158,11,.12);border-right:1px solid rgba(245,158,11,.12)}
+.sb-card{background:#06060f;border-bottom:1px solid rgba(255,255,255,.05);padding:1rem 1.2rem;cursor:pointer;transition:background .15s;position:relative}
+.sb-card:hover{background:rgba(245,158,11,.04)}
+.sb-card.expanded{background:rgba(245,158,11,.06)}
+.sb-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}
+.sb-objection{font-size:.84rem;font-weight:700;color:var(--text);line-height:1.35;flex:1}
+.sb-cat-tag{font-size:.62rem;font-weight:700;padding:.15rem .5rem;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.cat-price{background:rgba(239,68,68,.15);color:#fca5a5}
+.cat-time{background:rgba(6,182,212,.13);color:#67e8f9}
+.cat-trust{background:rgba(139,92,246,.15);color:#c4b5fd}
+.cat-tech{background:rgba(16,185,129,.13);color:#6ee7b7}
+.cat-comp{background:rgba(245,158,11,.13);color:#fde68a}
+.sb-preview{font-size:.74rem;color:var(--muted);margin-top:.35rem;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sb-answer{display:none;margin-top:.9rem;background:rgba(245,158,11,.06);border-left:3px solid rgba(245,158,11,.5);padding:.75rem .9rem;border-radius:0 8px 8px 0;font-size:.8rem;line-height:1.6;color:#f1f5f9}
+.sb-answer.open{display:block}
+.sb-tactic{margin-top:.55rem;font-size:.72rem;color:rgba(245,158,11,.75);font-style:italic}
+.sb-copy-btn{margin-top:.6rem;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.3);color:#fbbf24;border-radius:6px;padding:.28rem .7rem;font-size:.72rem;cursor:pointer;font-family:inherit;transition:all .18s}
+.sb-copy-btn:hover{background:rgba(245,158,11,.22)}
+.sb-copy-btn.copied{background:rgba(16,185,129,.15);border-color:rgba(16,185,129,.4);color:#34d399}
+.sb-footer-panel{background:rgba(0,0,0,.3);border:1px solid rgba(245,158,11,.12);border-top:none;border-radius:0 0 13px 13px;padding:.65rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.sb-count{font-size:.73rem;color:var(--muted)}
+.sb-hotkey{font-size:.7rem;color:rgba(255,255,255,.2)}
+@media(max-width:600px){.sb-grid{grid-template-columns:1fr}}
+
 .footer{max-width:1700px;margin:1.5rem auto 0;text-align:center;color:var(--muted);font-size:.72rem;padding-bottom:.5rem}
 
 @media(max-width:900px){
@@ -280,6 +322,11 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
     📋 WA Campaign
     <span class="cnt" id="campSelCnt">0</span>
   </button>
+
+  <!-- Sales Book -->
+  <button class="tbtn-sb" id="sbToggleBtn" onclick="toggleSalesBook()">
+    🎯 Sales Book
+  </button>
 </div>
 
 <!-- CAMPAIGN BAR (shown when ≥1 selected) -->
@@ -326,6 +373,30 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
     <option value="CALLED">Зателефонували</option>
     <option value="booked">Заброньовано</option>
   </select>
+</div>
+
+<!-- ═══════════════ SALES BOOK PANEL ═══════════════ -->
+<div id="salesBookPanel">
+  <div class="sb-header">
+    <div>
+      <h2>🎯 Sniper Sales Book</h2>
+      <p>Готові відповіді на будь-яке заперечення — tap щоб розкрити</p>
+    </div>
+    <input class="sb-search" id="sbSearch" type="text" placeholder="🔍 Пошук заперечення..." oninput="sbFilter()">
+  </div>
+  <div class="sb-cats">
+    <button class="sb-cat-btn active" onclick="sbSetCat('all',this)">Всі</button>
+    <button class="sb-cat-btn" onclick="sbSetCat('price',this)">💰 Ціна</button>
+    <button class="sb-cat-btn" onclick="sbSetCat('time',this)">⏱ Час</button>
+    <button class="sb-cat-btn" onclick="sbSetCat('trust',this)">🤝 Довіра</button>
+    <button class="sb-cat-btn" onclick="sbSetCat('tech',this)">🤖 Технологія</button>
+    <button class="sb-cat-btn" onclick="sbSetCat('comp',this)">⚔️ Конкуренти</button>
+  </div>
+  <div class="sb-grid" id="sbGrid"></div>
+  <div class="sb-footer-panel">
+    <span class="sb-count" id="sbCount">— заперечень</span>
+    <span class="sb-hotkey">Tap → відповідь · Довге натискання → копіювати</span>
+  </div>
 </div>
 
 <div class="twrap">
@@ -938,6 +1009,131 @@ function renderDemoWidget(lang) {
 syncToggleUI();
 loadData();
 setInterval(loadData, 60000);
+
+// ═══════════════════════════════════════════════════════
+// SALES BOOK — Sniper Objections Matrix
+// ═══════════════════════════════════════════════════════
+var SB_DATA = [
+  // ЦІНА
+  { cat:'price', obj:'«Zu teuer» / «Це занадто дорого»',
+    answer:'Einmalig 1.000 € entspricht ca. 3–4 Haarschnitten pro Woche im ersten Monat. Nach Monat 1 läuft alles profitabel — ohne Abo, ohne versteckte Gebühren. Die KI-Rezeption fängt verpasste Anrufe nachts auf — realistisch 5–10 verlorene Termine pro Woche.',
+    tactic:'Конвертуй суму в конкретні послуги. Апелюй до втраченого доходу.' },
+  { cat:'price', obj:'«Können wir uns das leisten?» / «Чи потягнемо?»',
+    answer:'Rechnen wir kurz: Ticket ≈ 45–60 €. Ein einziger zusätzlicher Termin pro Woche = ca. 2.400 € extra/Jahr. Investment amortisiert sich in 5–6 Monaten — danach ist jeder KI-Termin reiner Gewinn.',
+    tactic:'Мікро-підрахунок прямо в чаті. Цифри переконують.' },
+  { cat:'price', obj:'«Warum so günstig?» / «Чому так дешево?»',
+    answer:'Wir sind kein Konzern mit 200 Mitarbeitern. Wir bauen in 14 Tagen direkt für euch, ohne Zwischenhändler. Günstig heißt nicht billig — heißt effizient.',
+    tactic:'Розкрий бізнес-модель. Прозорість = довіра.' },
+  { cat:'price', obj:'«Es gibt billigere Anbieter» / «Є дешевші»',
+    answer:'Zeig mir einen, der dir in 14 Tagen eine mehrsprachige App + KI-Rezeption + CRM + DSGVO-Vertrag liefert. Preis ist was du zahlst, Wert ist was du bekommst.',
+    tactic:'Challenge — атакуй конкурента через конкретику.' },
+  // ЧАС
+  { cat:'time', obj:'«Keine Zeit» / «Немає часу»',
+    answer:'Genau deshalb die KI-Rezeption. Ihr macht eure Kunst am Stuhl, wir kümmern uns um Telefon, Buchung, Erinnerungen. Setup: 1× 45-Min-Kickoff + 2× 15-Min-Review. Fertig.',
+    tactic:'Перефрамуй — брак часу є причиною КУПИТИ, а не відмовитись.' },
+  { cat:'time', obj:'«Wir machen das später» / «Пізніше»',
+    answer:'Jede Woche ohne 24/7-Buchung = 3–8 verlorene Termine. Bei 45 € Ticket = 135–360 € verpasster Umsatz. Das sind ca. 13.000 €/Jahr. Wann ist "später" genau?',
+    tactic:'«Пізніше» = конкретна сума щотижня. Конкретизуй вартість затримки.' },
+  { cat:'time', obj:'«Wir sind gerade in der Hochsaison» / «Висока сезонність»',
+    answer:'Perfektes Timing — genau jetzt habt ihr den Traffic, um die neue App sofort zu testen. Setup läuft im Hintergrund. Go-Live nach der Saison, wenn es ruhiger wird.',
+    tactic:'Використай сезон як аргумент ЗА, а не ПРОТИ.' },
+  // ДОВІРА
+  { cat:'trust', obj:'«Ist das seriös?» / «Чи це серйозно?»',
+    answer:'Wir zeigen live, wie\'s bei anderen Salons läuft — Demo unter vermarkter.vercel.app. Zahlung erst nach Go-Live, DSGVO-Vertrag inkl., Hosting auf deutschen Servern. Keine Vorauszahlung.',
+    tactic:'Три гарантії одразу: демо + оплата після + DSGVO.' },
+  { cat:'trust', obj:'«Wir kennen euch nicht» / «Ми вас не знаємо»',
+    answer:'Verstehe. Genau deshalb: 30-Min-Videocall, ich zeige die Demo live an eurem Beispiel, ihr stellt Fragen. Erst wenn\'s passt, reden wir über Vertrag. Kein Druck.',
+    tactic:'Знижуй ризик до мінімуму. Конкретний наступний крок, не угода.' },
+  { cat:'trust', obj:'«Was wenn ihr aufhört?» / «А якщо ви закриєтесь?»',
+    answer:'Der Code gehört euch. Hosting läuft auf eurer Domain, Daten in eurer Supabase-Instanz. Selbst wenn Vermarkter morgen verschwindet — eure App läuft weiter. Eigentum, kein Abo.',
+    tactic:'Власність > підписка. Клієнт отримує актив, не залежність.' },
+  // ТЕХНОЛОГІЯ
+  { cat:'tech', obj:'«Kein Interesse an Technik» / «Ми не технарі»',
+    answer:'Deshalb macht ALLES die KI — ihr müsst nur an der Tür öffnen. Wir kümmern uns um Hosting, Updates, Sprach-Tuning. Einmal im Monat: 1-seitige Zusammenfassung — Termine, Anrufe, Umsatz.',
+    tactic:'Продай простоту, не функціонал.' },
+  { cat:'tech', obj:'«Was wenn die KI Fehler macht?» / «А якщо ШІ помилиться?»',
+    answer:'Jeder Termin wird als Benachrichtigung zugeschickt, ihr bestätigt per Klick. Bei unklaren Fällen leitet die KI an eure Nummer weiter. Ihr habt immer das letzte Wort.',
+    tactic:'Підкресли контроль клієнта. ШІ = помічник, не автопілот.' },
+  { cat:'tech', obj:'«KI auf Türkisch funktioniert nicht» / «ШІ не розуміє нашу мову»',
+    answer:'Wir haben die Sprach-Engine explizit auf Türkisch + Deutsch + Arabisch + 7 weitere Sprachen trainiert. Demo-Anruf gern — ihr hört es selbst.',
+    tactic:'Запропонуй live-тест. Демо-дзвінок розвіє сумніви краще за будь-який аргумент.' },
+  { cat:'tech', obj:'«Wir haben schon Google/Instagram» / «У нас є Google і Instagram»',
+    answer:'Google zeigt euch — aber Google bucht nicht. Instagram liked — aber erinnert nicht. Wenn besetzt ist: weiter zum Nächsten. Mit eigener App kommt der Kunde direkt in euren Kalender.',
+    tactic:'Google/Instagram = трафік. App = конверсія. Вони доповнюють, не замінюють.' },
+  // КОНКУРЕНТИ
+  { cat:'comp', obj:'«Competitor macht das für 300€» / «Конкурент дешевший»',
+    answer:'Für 300 € bekommst du ein Template. Wir bauen individuell: eigene Domain, KI auf deine Leistungen trainiert, Mehrsprachigkeit, DSGVO-Vertrag, 14-Tage-Support. Zeig mir das Angebot — ich erkläre den Unterschied in 5 Minuten.',
+    tactic:'Деталізуй. Шаблон vs кастом — поясни чому це інше.' },
+  { cat:'comp', obj:'«Wir wollen erstmal recherchieren» / «Хочемо спочатку подумати»',
+    answer:'Super. Recherchiere gerne. Darf ich dir in 3 Tagen kurz schreiben, ob es Fragen gibt?',
+    tactic:'Не тисни. Постав конкретну дату follow-up. Хто контролює наступний крок — той виграє.' }
+];
+
+var sbCurrentCat = 'all';
+
+function toggleSalesBook() {
+  var panel = document.getElementById('salesBookPanel');
+  var btn = document.getElementById('sbToggleBtn');
+  var isOpen = panel.classList.contains('open');
+  panel.classList.toggle('open', !isOpen);
+  btn.classList.toggle('active', !isOpen);
+  if (!isOpen) { sbRender(); document.getElementById('sbSearch').focus(); }
+}
+
+function sbSetCat(cat, el) {
+  sbCurrentCat = cat;
+  document.querySelectorAll('.sb-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+  el.classList.add('active');
+  sbRender();
+}
+
+function sbFilter() { sbRender(); }
+
+function sbRender() {
+  var q = (document.getElementById('sbSearch').value || '').toLowerCase();
+  var items = SB_DATA.filter(function(d) {
+    if (sbCurrentCat !== 'all' && d.cat !== sbCurrentCat) return false;
+    if (q && d.obj.toLowerCase().indexOf(q) < 0 && d.answer.toLowerCase().indexOf(q) < 0) return false;
+    return true;
+  });
+  var catClass = { price:'cat-price', time:'cat-time', trust:'cat-trust', tech:'cat-tech', comp:'cat-comp' };
+  var catLabel = { price:'💰 Ціна', time:'⏱ Час', trust:'🤝 Довіра', tech:'🤖 Технологія', comp:'⚔️ Конкуренти' };
+  document.getElementById('sbCount').textContent = items.length + ' заперечень';
+  document.getElementById('sbGrid').innerHTML = items.map(function(d, i) {
+    return '<div class="sb-card" id="sbc'+i+'" onclick="sbToggle('+i+')">'
+      + '<div class="sb-card-top">'
+      + '<div class="sb-objection">'+d.obj+'</div>'
+      + '<span class="sb-cat-tag '+catClass[d.cat]+'">'+catLabel[d.cat]+'</span>'
+      + '</div>'
+      + '<div class="sb-preview">'+d.answer+'</div>'
+      + '<div class="sb-answer" id="sba'+i+'">'
+      + d.answer
+      + '<div class="sb-tactic">Тактика: '+d.tactic+'</div>'
+      + '<button class="sb-copy-btn" id="sbcopy'+i+'" onclick="sbCopy(event,'+i+','+JSON.stringify(d.answer)+')">📋 Копіювати відповідь</button>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function sbToggle(i) {
+  var ans = document.getElementById('sba'+i);
+  var card = document.getElementById('sbc'+i);
+  var isOpen = ans.classList.contains('open');
+  ans.classList.toggle('open', !isOpen);
+  card.classList.toggle('expanded', !isOpen);
+}
+
+function sbCopy(e, i, text) {
+  e.stopPropagation();
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(function() {
+      var btn = document.getElementById('sbcopy'+i);
+      btn.textContent = '✓ Скопійовано!';
+      btn.classList.add('copied');
+      setTimeout(function(){ btn.textContent = '📋 Копіювати відповідь'; btn.classList.remove('copied'); }, 2000);
+    });
+  }
+}
 </script>
 </body>
 </html>

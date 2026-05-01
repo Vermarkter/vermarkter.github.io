@@ -1,0 +1,108 @@
+{
+  "meta": {
+    "market": "München",
+    "language": "de",
+    "target": "Beauty & Barbershops",
+    "format": "Short-form video (60–90 sec) / Reels / TikTok",
+    "generated": "2026-05",
+    "tone": "Direkt, authentisch, kein Corporate-Speak"
+  },
+  "scripts": [
+    {
+      "id": "MUC_001",
+      "title": "Der verpasste Anruf",
+      "type": "Pain-Hook",
+      "duration_sec": 60,
+      "hook": "Jedes Mal wenn dein Telefon klingelt und du am Stuhl stehst — verlierst du Geld.",
+      "body": "Dein Kunde ruft an. Du bist beschäftigt. Er wartet 10 Sekunden, legt auf. Geht zum Nächsten. Das passiert dir 5–10 Mal pro Woche. Bei 45 € Ticket — das sind bis zu 450 € verlorener Umsatz. Jede Woche. Nur weil niemand abgehoben hat.",
+      "solution": "Mit einer eigenen Buchungs-App bucht der Kunde direkt, ohne anzurufen. 24/7. Auch um 23 Uhr. Auch wenn du gerade einen Fade schneidest.",
+      "cta": "Link in Bio — kostenlose Demo in 30 Minuten.",
+      "visuals": ["Split-screen: Friseur beim Schneiden + klingendes Telefon", "Kalender füllt sich automatisch", "Notification auf iPhone"],
+      "hashtags": ["#Friseur", "#München", "#Barbershop", "#Beauty", "#KI"]
+    },
+    {
+      "id": "MUC_002",
+      "title": "10 Sprachen, ein Salon",
+      "type": "Feature-Demo",
+      "duration_sec": 75,
+      "hook": "Deine Kunden sprechen Türkisch, Arabisch, Russisch — deine Buchungsseite nur Deutsch?",
+      "body": "München ist bunt. Schwabing, Maxvorstadt, Neuhausen — überall internationale Kunden. Die meisten Salons haben eine deutsche Website. Das war's. Wir bauen dir eine App, die automatisch auf Türkisch, Arabisch, Englisch, Russisch antwortet. Der Kunde wählt seine Sprache. Bucht in 2 Klicks. Du siehst alles auf Deutsch.",
+      "solution": "10 Sprachen, eine Oberfläche, null Aufwand für dich.",
+      "cta": "Demo ansehen — vermarkter.vercel.app",
+      "visuals": ["Interface wechselt Sprachen live", "Münchner Stadtbild Schwabing", "Diverse Kundengespräch"],
+      "hashtags": ["#Mehrsprachig", "#München", "#Nagelstudio", "#Beauty"]
+    },
+    {
+      "id": "MUC_003",
+      "title": "14 Tage bis zum Launch",
+      "type": "Process-Reveal",
+      "duration_sec": 90,
+      "hook": "Was passiert, wenn du heute Ja sagst?",
+      "body": "Tag 1: 45-Minuten-Kickoff-Call. Du zeigst uns dein Logo, deine Leistungen, deine Preise. Tag 3: Erster Entwurf deiner App, du gibst Feedback. Tag 7: KI lernt deine Leistungen und Antworten. Tag 12: Test-Phase, du buchst selbst einen Termin. Tag 14: Go-Live. Deine Kunden buchen. Du bekommst die erste Benachrichtigung.",
+      "solution": "14 Tage von Null zur fertigen App. Einmalig 1.000 €. Kein Abo.",
+      "cta": "Schreib uns auf WhatsApp — Nummer in Bio.",
+      "visuals": ["Timeline Animation: 14 Tage", "Kickoff Call Szene", "Phone: erste Buchung"],
+      "hashtags": ["#Launch", "#Friseur", "#München", "#Digital"]
+    },
+    {
+      "id": "MUC_004",
+      "title": "Schwabing Beauty Story",
+      "type": "Local-Targeting",
+      "duration_sec": 60,
+      "hook": "Schwabing hat die dichteste Konkurrenz an Salons in ganz München — wie stichst du heraus?",
+      "body": "Leopoldstraße, Clemensstraße, Hohenzollernstraße — auf jedem zweiten Block ein Friseur, ein Nagelstudio, ein Barber. Gleiche Preise. Gleiche Instagram-Posts. Wer den einfachsten Buchungsweg hat, gewinnt. Punkt.",
+      "solution": "Eigene App. Dein Name. Deine Farben. Deine Kunden kommen wieder — weil Buchen so einfach ist.",
+      "cta": "Kostenlose Demo — 30 Minuten reichen.",
+      "visuals": ["Luftaufnahme Schwabing", "Crowded Straße mit Salons", "App mockup mit Schwabing Salon"],
+      "hashtags": ["#Schwabing", "#München", "#Beauty", "#Friseur"]
+    },
+    {
+      "id": "MUC_005",
+      "title": "Der KI-Rezeptionist",
+      "type": "AI-Feature",
+      "duration_sec": 75,
+      "hook": "Was wenn dein Salon um Mitternacht bucht, ohne dass du da bist?",
+      "body": "Stell dir vor: Es ist 23:15 Uhr. Du schläfst. Ein Kunde sucht auf Google nach 'Barbershop München Schwabing'. Findet deinen. Klickt auf 'Termin buchen'. Wählt Freitag 15 Uhr. Bucht. Du bekommst morgens früh eine Benachrichtigung: 'Neuer Termin: Anna K., Freitag 15:00, Balayage.' Du hast nichts getan. Und trotzdem einen Termin mehr.",
+      "solution": "KI-Rezeption arbeitet 24/7. Du schläfst, sie bucht.",
+      "cta": "Wir bauen das für dich in 14 Tagen.",
+      "visuals": ["Zeitraffer Nacht München", "Phone-Screen: Buchung eingeht 23:15", "Kalender füllt sich"],
+      "hashtags": ["#KI", "#Automatisierung", "#München", "#Barbershop"]
+    },
+    {
+      "id": "MUC_006",
+      "title": "Nein zu Abos",
+      "type": "Objection-Buster",
+      "duration_sec": 50,
+      "hook": "Noch ein Abo? Nein.",
+      "body": "Fresha nimmt 1% deines Umsatzes. Treatwell nimmt Provision. Booksy nimmt monatlich Gebühr. Wir nehmen einmalig 1.000 €. Fertig. Kein Abo. Kein Umsatzanteil. Keine monatliche Rechnung. Der Code gehört dir.",
+      "solution": "Einmalinvestition, keine laufenden Kosten.",
+      "cta": "Mehr Info: vermarkter.vercel.app",
+      "visuals": ["Rote X auf Abo-Logos", "1.000 € = Final", "Eigentums-Metapher: Schlüssel übergeben"],
+      "hashtags": ["#KeinAbo", "#Friseur", "#München", "#Beauty"]
+    },
+    {
+      "id": "MUC_007",
+      "title": "Maxvorstadt Sniper",
+      "type": "Local-Targeting",
+      "duration_sec": 65,
+      "hook": "Maxvorstadt: Studenten, Künstler, Akademiker — und alle wollen einen guten Barber.",
+      "body": "Rund um LMU und TU München — tausende Studenten. Internationale Austauschstudenten, die kein Deutsch sprechen. Professoren, die keine Zeit haben anzurufen. Mit einer mehrsprachigen Buchungs-App holst du sie alle — auf Englisch, Arabisch, Chinesisch — direkt in deinen Kalender.",
+      "solution": "Maxvorstadt bucht auf Englisch. Dein Kalender ist voll. Du verdienst mehr.",
+      "cta": "Demo anfragen — Link in Bio.",
+      "visuals": ["LMU Campus Footage", "Internationales Studentenleben", "Booking App Englisch"],
+      "hashtags": ["#Maxvorstadt", "#München", "#Barber", "#International"]
+    },
+    {
+      "id": "MUC_008",
+      "title": "Konkurrenzcheck",
+      "type": "FOMO",
+      "duration_sec": 55,
+      "hook": "Dein Konkurrent auf der anderen Straßenseite hat gerade eine Buchungs-App gelauncht.",
+      "body": "Nicht morgen. Diese Woche. Sein Kunde googlet 'Friseur München', sieht seine App, bucht in 2 Klicks. Dein Kunde googlet dasselbe, findet deine Nummer, ruft an, du bist besetzt, er geht zum Nächsten. Das Spiel ist vorbei bevor es anfängt — wenn du wartest.",
+      "solution": "14 Tage. 1.000 €. Du bist dabei oder dein Konkurrent ist es.",
+      "cta": "Schreib jetzt — Nummer in Bio.",
+      "visuals": ["Two salons side by side", "One has app, one doesn't", "Customer choosing"],
+      "hashtags": ["#München", "#Friseur", "#Konkurrenz", "#Digital"]
+    }
+  ]
+}
