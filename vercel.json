@@ -1,25 +1,8 @@
 {
   "version": 2,
-  "cleanUrls": false,
+  "cleanUrls": true,
   "trailingSlash": false,
-  "functions": {
-    "api/track.js": { "runtime": "nodejs20.x" }
-  },
-  "redirects": [
-    {
-      "source": "/SERVICES/:path*",
-      "destination": "/services/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/services/beauty-industry",
-      "destination": "/services/beauty-industry/de/",
-      "permanent": false
-    },
-    {
-      "source": "/services/beauty-industry/",
-      "destination": "/services/beauty-industry/de/",
-      "permanent": false
-    }
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/$1" }
   ]
 }
