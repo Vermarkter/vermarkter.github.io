@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vermarkter — Beauty Industry</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<script>
+(function(){
+  var lang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  var qs   = window.location.search; // keeps ?s=Name and any other params
+  var base = '/services/beauty-industry/';
+  var dest;
+  if (lang.startsWith('fr')) {
+    dest = base + 'fr/' + qs;
+  } else if (lang.startsWith('de')) {
+    dest = base + 'de/' + qs;
+  } else if (lang.startsWith('uk') || lang.startsWith('ua')) {
+    dest = base + 'ua/' + qs;
+  } else if (lang.startsWith('pl')) {
+    dest = base + 'pl/' + qs;
+  } else if (lang.startsWith('tr')) {
+    dest = base + 'tr/' + qs;
+  } else {
+    dest = base + 'en/' + qs;
+  }
+  window.location.replace(dest);
+})();
+</script>
+</head>
+<body>
+</body>
+</html>
