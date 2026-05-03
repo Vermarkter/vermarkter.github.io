@@ -311,7 +311,7 @@ def parse_district(formatted_address, plz):
     return city, city
 
 # ── Main ─────────────────────────────────────────────────────────────────────
-def harvest(plz_list):
+def harvest(plz_list, city_override=None):
     seen_ids = set()
     inserted = updated = errors = 0
 
@@ -344,12 +344,26 @@ def harvest(plz_list):
         print("\n" + "="*60)
         print("PLZ %s — Suche..." % plz)
 
-        is_fr = plz in FR_PLZ_CITY_QUERY
-        if is_fr:
+        is_fr = plz in FR_PLZ_CITY_QUERY or (city_override and city_override.lower() not in
+                ("berlin","münchen","hamburg","köln","frankfurt","stuttgart","düsseldorf",
+                 "hannover","bremen","dortmund","leipzig","essen","bochum","duisburg"))
+
+        if city_override:
+            # --city flag: use exactly what Director specified
+            city_hint = city_override
+            # Detect language/region from city name
+            fr_cities = {"nice","cannes","antibes","monaco","paris","lyon","marseille",
+                         "toulouse","bordeaux","nantes","strasbourg","montpellier","lille"}
+            if city_override.lower() in fr_cities:
+                region, language = "fr", "fr"
+                kw_list = ["Coiffeur", "Barbier", "Institut de beauté", "Salon de coiffure"]
+            else:
+                region, language = "de", "de"
+                kw_list = KEYWORDS
+        elif is_fr:
             city_hint  = FR_PLZ_CITY_QUERY[plz]
             region     = "fr"
             language   = "fr"
-            # Only use French keywords for FR postcodes
             kw_list = ["Coiffeur", "Barbier", "Institut de beauté", "Salon de coiffure"]
         else:
             city_hint = plz_prefix3_city.get(plz[:3]) or plz_prefix_city.get(plz[:2], "Deutschland")
@@ -358,7 +372,11 @@ def harvest(plz_list):
             kw_list   = KEYWORDS
 
         for kw in kw_list:
-            if is_fr:
+            if city_override:
+                # "Coiffeur in Nice, France" — most precise Google Maps query
+                suffix = ", France" if region == "fr" else ""
+                query = "%s in %s%s" % (kw, city_hint, suffix)
+            elif is_fr:
                 query = "%s %s" % (kw, city_hint)
             else:
                 query = "%s %s %s" % (kw, plz, city_hint)
@@ -387,7 +405,9 @@ def harvest(plz_list):
                 rate = d.get("rating")
                 nrev = d.get("user_ratings_total")
                 city, district = parse_district(addr, plz)
-                if plz in PLZ_CITY_OVERRIDE:
+                if city_override:
+                    city = city_override
+                elif plz in PLZ_CITY_OVERRIDE:
                     city = PLZ_CITY_OVERRIDE[plz]
 
                 email = None
@@ -426,11 +446,24 @@ def harvest(plz_list):
     return inserted, updated, errors, len(seen_ids)
 
 if __name__ == "__main__":
-    plz_list = sys.argv[1:] if len(sys.argv) > 1 else ["10115","10117","10178","10179"]
-    print("Total Germany Beauty Database — Harvester")
+    import argparse
+    parser = argparse.ArgumentParser(description="Beauty lead harvester")
+    parser.add_argument("plz", nargs="*", help="Postal codes to search (e.g. 06000 06100)")
+    parser.add_argument("--plz", dest="plz_flag", nargs="+", metavar="PLZ",
+                        help="Postal codes (alternative flag form)")
+    parser.add_argument("--city", default=None,
+                        help="Override city name for search query (e.g. Nice, Berlin)")
+    args = parser.parse_args()
+
+    plz_list = args.plz_flag or args.plz or ["10115","10117","10178","10179"]
+    city_override = args.city  # passed into harvest()
+
+    print("Total Beauty Database — Harvester")
     print("PLZ-Pakete: " + ", ".join(plz_list))
+    if city_override:
+        print("City override: " + city_override)
     t0 = time.time()
-    ins, upd, err, total = harvest(plz_list)
+    ins, upd, err, total = harvest(plz_list, city_override=city_override)
     dt = time.time() - t0
     print("\n" + "="*60)
     print("FERTIG за %.1fs" % dt)
