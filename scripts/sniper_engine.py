@@ -32,6 +32,11 @@ Optional in config.ini:
 import sys, io, json, time, argparse, os, urllib.request, urllib.parse, configparser, re
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from holiday_guard import guard_dispatch
+try:
+    from sniper_lang_detect import detect as _lang_detect, build_ua_bilingual_message
+except ImportError:
+    _lang_detect = lambda name: None
+    build_ua_bilingual_message = None
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
@@ -222,14 +227,16 @@ def fix_style(text):
 # ---------------------------------------------------------------------------
 FIELDS = 'id,name,city,district,phone,email,website,notes,custom_message,compliment_detail'
 
-def fetch_leads(city='München', limit=20, offset=0, ids=None):
+def fetch_leads(city='München', limit=20, offset=0, ids=None, force=False):
     if ids:
         id_list = ','.join(str(i) for i in ids)
         url = (f"{SB_URL}/rest/v1/beauty_leads"
                f"?select={FIELDS}"
                f"&id=in.({id_list})"
-               f"&status=eq.new"
                f"&order=id.asc")
+        # When --force is set, skip status filter so we can overwrite READY TO SEND leads
+        if not force:
+            url += '&status=eq.new'
     else:
         city_enc = urllib.parse.quote(city, safe='')
         url = (f"{SB_URL}/rest/v1/beauty_leads"
@@ -295,6 +302,11 @@ def build_user_prompt(lead):
 
 
 def generate_message(lead, ab_variant='empathy'):
+    # UA detection: bilingual message bypasses GPT entirely
+    lang = _lang_detect(lead.get('name', ''))
+    if lang == 'UA' and build_ua_bilingual_message:
+        return build_ua_bilingual_message(lead)
+
     system = SYSTEM_PROMPTS[ab_variant]
     body = json.dumps({
         'model': OPENAI_MODEL,
@@ -352,7 +364,7 @@ def main():
     if args.force: print(f'  --force: overwriting existing messages for status=new leads')
     print(f'{"="*64}\n')
 
-    leads = fetch_leads(city=args.city, limit=args.limit, offset=args.offset, ids=ids)
+    leads = fetch_leads(city=args.city, limit=args.limit, offset=args.offset, ids=ids, force=args.force)
     if not leads:
         print('No leads found matching criteria.')
         return
@@ -369,16 +381,21 @@ def main():
             skipped += 1
             continue
 
+        lang_tag = _lang_detect(name)
         for variant in variants_to_run:
             try:
                 msg = generate_message(lead, ab_variant=variant)
                 preview = msg[:80].replace('\n', ' ')
 
-                # Style validation
-                issues = validate_style(msg)
-                issue_tag = f'  ⚠ {"; ".join(issues)}' if issues else '  ✓ Style OK'
+                # Style validation (skip for bilingual UA messages — different format)
+                if lang_tag == 'UA':
+                    issue_tag = '  ✓ UA-BILINGUAL'
+                else:
+                    issues = validate_style(msg)
+                    issue_tag = f'  ⚠ {"; ".join(issues)}' if issues else '  ✓ Style OK'
 
-                label = f'[{variant.upper()}]' if ab == 'all' else '[GEN]'
+                lang_label = f'[{lang_tag}]' if lang_tag else ''
+                label = f'[{variant.upper()}]{lang_label}' if ab == 'all' else f'[GEN]{lang_label}'
                 print(f'  {label}  id={lid} «{name}»')
                 print(f'         → {preview}...')
                 print(f'         {issue_tag}')
