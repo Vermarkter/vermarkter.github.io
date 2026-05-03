@@ -253,8 +253,6 @@ def fetch_leads(city='München', limit=20, offset=0, ids=None, force=False):
 
 def patch_lead(lead_id, message, ab_variant=None):
     payload = {'custom_message': message, 'status': 'READY TO SEND'}
-    if ab_variant:
-        payload['notes_ab'] = ab_variant  # store which variant won (if column exists)
     data = json.dumps(payload).encode('utf-8')
     url = f"{SB_URL}/rest/v1/beauty_leads?id=eq.{lead_id}"
     req = urllib.request.Request(url, data=data, headers=HDRS_SB_PATCH, method='PATCH')
