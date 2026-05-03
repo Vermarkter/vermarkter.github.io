@@ -24,7 +24,7 @@ sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="repla
 
 # ── Credentials (config.ini) ─────────────────────────────────────────────────
 _cfg = configparser.ConfigParser()
-_cfg.read(os.path.join(os.path.dirname(os.path.abspath(__file__)), "config.ini"), encoding="utf-8")
+_cfg.read(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "config.ini"), encoding="utf-8")
 GMAPS_KEY = _cfg["GOOGLE"]["maps_api_key"]
 SB_URL    = _cfg["SUPABASE"]["url"]
 # SERVICE_ROLE_KEY — обходить RLS, тільки для серверних скриптів
@@ -33,13 +33,21 @@ SB_KEY    = _cfg["SUPABASE"]["service_role_key"]
 SB_HEAD   = {"apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY,
              "Content-Type": "application/json"}
 
-KEYWORDS  = ["Friseur", "Barbershop", "Kosmetikstudio", "Nagelstudio"]
+KEYWORDS  = ["Friseur", "Barbershop", "Kosmetikstudio", "Nagelstudio",
+             "Coiffeur", "Barbier", "Institut de beauté", "Salon de coiffure"]
 PAUSE_API = 0.25
 HTTP_CTX  = ssl.create_default_context()
 HTTP_CTX.check_hostname = False
 HTTP_CTX.verify_mode    = ssl.CERT_NONE
 
-DEMO_URL  = "https://vermarkter.vercel.app/services/beauty-industry/de/"
+DEMO_URL     = "https://vermarkter.vercel.app/services/beauty-industry/de/"
+DEMO_URL_FR  = "https://vermarkter.vercel.app/services/beauty-industry/de/"
+
+FR_POSTCODES = {"06000","06100","06200","06300","06600","06400","98000"}
+
+FR_OPENERS = [
+    "Bonjour ! 😄 ", "Salut ! 👋 ", "Bonjour à vous ! ✨ ",
+]
 
 # ── Helpers: HTTP ─────────────────────────────────────────────────────────────
 def safe(s, n=60):
@@ -74,10 +82,10 @@ def sb_write(method, path, payload, prefer="return=representation"):
         return e.code, e.read().decode("utf-8")
 
 # ── Google Maps: text search + place details ─────────────────────────────────
-def maps_text_search(query):
+def maps_text_search(query, region="de", language="de"):
     """Повертає всі результати з пагінацією (до 60 місць)."""
     results = []
-    params  = {"query": query, "language": "de", "region": "de"}
+    params  = {"query": query, "language": language, "region": region}
     for _ in range(3):  # max 3 сторінки = 60 results
         data = gmaps_get("place/textsearch/json", params)
         results.extend(data.get("results", []))
@@ -87,9 +95,9 @@ def maps_text_search(query):
         params = {"pagetoken": token}
     return results
 
-def place_details(place_id):
+def place_details(place_id, language="de"):
     fields = "name,formatted_address,formatted_phone_number,international_phone_number,website,rating,user_ratings_total,types,url"
-    data   = gmaps_get("place/details/json", {"place_id": place_id, "fields": fields, "language": "de"})
+    data   = gmaps_get("place/details/json", {"place_id": place_id, "fields": fields, "language": language})
     return data.get("result", {})
 
 # ── Email scraping ───────────────────────────────────────────────────────────
@@ -137,10 +145,59 @@ def first_name(name):
     m = re.search(r"\b(?:Friseur|Salon|Barbier|Studio|by|von)\s+([A-ZÄÖÜ][a-zäöüß]+)", name)
     return m.group(1) if m else None
 
+def gen_message_fr(rec, rng):
+    """French message for FR postcodes."""
+    name   = rec["name"]
+    site   = (rec.get("website") or "").lower()
+    rating = rec.get("rating") or 0
+    nrev   = rec.get("user_ratings_total") or 0
+    greet  = rng.choice(FR_OPENERS)
+    plat_match = PLATFORM_RX.search(site)
+    has_site   = bool(rec.get("website"))
+
+    if plat_match:
+        plat = plat_match.group(1).capitalize()
+        body = (f"{name} — super d'être réservable en ligne. Mais vos réservations passent par {plat} : "
+                f"vous construisez leur marque, pas la vôtre, et payez une commission à chaque rendez-vous. "
+                f"Avec notre réceptionniste IA, chaque cliente reste à vous — zéro commission, disponible 24h/24.")
+    elif not has_site:
+        if rating >= 4.7 and nrev >= 30:
+            body = (f"Excellentes évaluations ({rating}★, {nrev} avis) — vous faites un travail remarquable. "
+                    f"Mais sans site web, de nouveaux clients vous trouvent presque uniquement via Google. "
+                    f"Nous créons votre présence digitale : site + app + réceptionniste IA.")
+        else:
+            body = (f"Je vois que {name} n'a pas encore de site web. "
+                    f"Quand quelqu'un vous cherche, il tombe sur des portails d'avis — pas sur vous. "
+                    f"Il est temps d'avoir votre propre présence en ligne avec une réception IA 24h/24.")
+    elif rating >= 4.8 and nrev >= 50:
+        body = (f"{rating}★ pour {nrev} avis — {name} est une référence. "
+                f"Mais qui veut réserver en soirée ou le dimanche ne peut que téléphoner. "
+                f"Notre réceptionniste IA accueille ces clients 24h/24 — en français, anglais et arabe.")
+    elif rating and rating < 4.3:
+        body = (f"Je vois un vrai potentiel chez {name}. Un site moderne avec réservation en ligne et IA "
+                f"améliore non seulement la conversion — il vous différencie immédiatement de la concurrence du quartier.")
+    else:
+        body = (f"{name} a une belle présence en ligne. Mais qui veut un rendez-vous spontané le soir "
+                f"doit appeler — et souvent ne rappelle pas. Avec notre réceptionniste IA, "
+                f"le client réserve instantanément, automatiquement, dans toutes les langues.")
+
+    pkg = rng.choice([
+        "💰 Pack complet (site + app + CRM + IA) pour 1 000 € une seule fois. Sans abonnement.",
+        "💰 Tout inclus (site + app + CRM + réceptionniste IA) : 1 000 € unique.",
+        "💰 1 000 € une fois — site, app, CRM et IA dans un seul pack.",
+    ])
+    return greet + body + " " + pkg + " 👉 " + DEMO_URL_FR
+
+
 def gen_message(rec):
     """rec: dict with name, website, rating, user_ratings_total, district, phone."""
     seed   = int(hashlib.md5((rec["place_id"] or rec["name"]).encode()).hexdigest()[:8], 16)
     rng    = random.Random(seed)
+
+    # French postcodes → French message
+    if rec.get("plz") in FR_POSTCODES:
+        return gen_message_fr(rec, rng)
+
     name   = rec["name"]
     site   = (rec.get("website") or "").lower()
     rating = rec.get("rating") or 0
@@ -264,20 +321,50 @@ def harvest(plz_list):
         "20":"Hamburg","22":"Hamburg","28":"Bremen","30":"Hannover",
         "40":"Düsseldorf","50":"Köln","60":"Frankfurt",
         "70":"Stuttgart","80":"München",
+        "06":"Nice","98":"Monaco",
     }
     plz_prefix3_city = {
         "441":"Dortmund","447":"Bochum",
         "451":"Essen","470":"Duisburg","471":"Duisburg",
+        "060":"Nice","061":"Nice","062":"Nice","063":"Nice","066":"Nice",
+        "064":"Cannes","980":"Monaco",
     }
+    # PLZ → city override (France: all 06xxx → Nice for DB grouping)
+    PLZ_CITY_OVERRIDE = {
+        "06000":"Nice","06100":"Nice","06200":"Nice","06300":"Nice",
+        "06600":"Nice","06400":"Nice","98000":"Nice",
+    }
+    # FR postcodes: search by "keyword city" with region=fr, no PLZ in query
+    FR_PLZ_CITY_QUERY = {
+        "06000":"Nice","06100":"Nice","06200":"Nice","06300":"Nice",
+        "06600":"Antibes","06400":"Cannes","98000":"Monaco",
+    }
+
     for plz in plz_list:
         print("\n" + "="*60)
         print("PLZ %s — Suche..." % plz)
-        city_hint = plz_prefix3_city.get(plz[:3]) or plz_prefix_city.get(plz[:2], "Deutschland")
-        for kw in KEYWORDS:
-            query = "%s %s %s" % (kw, plz, city_hint)
+
+        is_fr = plz in FR_PLZ_CITY_QUERY
+        if is_fr:
+            city_hint  = FR_PLZ_CITY_QUERY[plz]
+            region     = "fr"
+            language   = "fr"
+            # Only use French keywords for FR postcodes
+            kw_list = ["Coiffeur", "Barbier", "Institut de beauté", "Salon de coiffure"]
+        else:
+            city_hint = plz_prefix3_city.get(plz[:3]) or plz_prefix_city.get(plz[:2], "Deutschland")
+            region    = "de"
+            language  = "de"
+            kw_list   = KEYWORDS
+
+        for kw in kw_list:
+            if is_fr:
+                query = "%s %s" % (kw, city_hint)
+            else:
+                query = "%s %s %s" % (kw, plz, city_hint)
             print("  > %s" % query, end=" ", flush=True)
             try:
-                results = maps_text_search(query)
+                results = maps_text_search(query, region=region, language=language)
             except Exception as e:
                 print("FAIL:", e); continue
             print("→ %d Treffer" % len(results))
@@ -287,7 +374,7 @@ def harvest(plz_list):
                 seen_ids.add(pid)
 
                 try:
-                    d = place_details(pid)
+                    d = place_details(pid, language=language)
                 except Exception as e:
                     print("    [details fail %s] %s" % (safe(r.get("name")), e))
                     continue
@@ -300,6 +387,8 @@ def harvest(plz_list):
                 rate = d.get("rating")
                 nrev = d.get("user_ratings_total")
                 city, district = parse_district(addr, plz)
+                if plz in PLZ_CITY_OVERRIDE:
+                    city = PLZ_CITY_OVERRIDE[plz]
 
                 email = None
                 if site:
@@ -314,6 +403,7 @@ def harvest(plz_list):
                     "phone": phone, "email": email, "website": site,
                     "rating": rate, "user_ratings_total": nrev,
                     "maps_url": canon_maps_url(pid),
+                    "plz": plz,
                 }
                 rec["custom_message"] = gen_message(rec)
 
