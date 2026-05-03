@@ -112,8 +112,9 @@ STYLE GUIDE — PFLICHT für jeden Text:
    Korrekt: Ihre Website wird als „unsicher" eingestuft.
 
 3. Grammatik (Trennbare Verben) — KEIN Zusammenziehen:
-   RICHTIG: „Das schreckt Kunden ab"
-   FALSCH:  „Das abschreckt Kunden"
+   RICHTIG: „Das schreckt Kunden ab" / „Das schreckt viele Besucher ab"
+   FALSCH:  „Das abschreckt Kunden" / „Das abschreckt Besucher"
+   MERKE: Das Wort „abschreckt" existiert im Deutschen NICHT als zusammengezogene Form — immer trennen!
 
 4. Anrede: ausschließlich „Sie" — kein Du, kein Hey, kein Hi
 
@@ -211,13 +212,27 @@ def validate_style(text):
 
 
 def fix_style(text):
-    """Auto-fix the easy violations (€ spacing, straight quotes → DE quotes)."""
-    # Fix: digit immediately before € → add non-breaking space (U+00A0)
+    """Auto-fix style violations before writing to DB."""
+    # Fix: digit immediately before € → add space
     text = re.sub(r'(\d)(€)', r'\1 \2', text)
 
-    # Fix: "text" → „text" (simple heuristic — works for most cases)
-    # Only replace pairs of straight quotes that are clearly wrapping a word/phrase
+    # Fix: "text" → „text"
     text = re.sub(r'"([^"]{1,60})"', r'„\1"', text)
+
+    # Fix: abschreckt → schreckt ... ab  (trennbares Verb)
+    # Pattern: "Das abschreckt Kunden" → "Das schreckt Kunden ab"
+    # Covers: abschreckt, abschrecken, abschreckte (all forms)
+    text = re.sub(
+        r'\b(abschreckt|abschrecken|abschreckte|abzuschrecken)\b',
+        lambda m: {
+            'abschreckt':    'schreckt ab',
+            'abschrecken':   'schrecken ab',
+            'abschreckte':   'schreckte ab',
+            'abzuschrecken': 'abzuschrecken',  # infinitive with zu — leave as-is
+        }.get(m.group(0).lower(), m.group(0)),
+        text,
+        flags=re.IGNORECASE,
+    )
 
     return text
 
