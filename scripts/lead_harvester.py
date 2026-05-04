@@ -317,7 +317,7 @@ def parse_district(formatted_address, plz):
     return city, city
 
 # ── Main ─────────────────────────────────────────────────────────────────────
-def harvest(plz_list, city_override=None):
+def harvest(plz_list, city_override=None, limit=0):
     seen_ids = set()
     inserted = updated = errors = 0
 
@@ -445,7 +445,11 @@ def harvest(plz_list, city_override=None):
                     "y" if phone else "-",
                     "y" if email else "-",
                     "y" if site  else "-"))
-                if action == "inserted": inserted += 1
+                if action == "inserted":
+                    inserted += 1
+                    if limit and inserted >= limit:
+                        print("  [LIMIT] %d inserted — stopping." % limit)
+                        return inserted, updated, errors, len(seen_ids)
                 elif action == "updated": updated += 1
                 else: errors += 1
 
@@ -459,6 +463,8 @@ if __name__ == "__main__":
                         help="Postal codes (alternative flag form)")
     parser.add_argument("--city", default=None,
                         help="Override city name for search query (e.g. Nice, Berlin)")
+    parser.add_argument("--limit", type=int, default=0,
+                        help="Max new leads to insert (0 = unlimited)")
     args = parser.parse_args()
 
     plz_list = args.plz_flag or args.plz or ["10115","10117","10178","10179"]
@@ -468,8 +474,10 @@ if __name__ == "__main__":
     print("PLZ-Pakete: " + ", ".join(plz_list))
     if city_override:
         print("City override: " + city_override)
+    if args.limit:
+        print("Limit: %d" % args.limit)
     t0 = time.time()
-    ins, upd, err, total = harvest(plz_list, city_override=city_override)
+    ins, upd, err, total = harvest(plz_list, city_override=city_override, limit=args.limit)
     dt = time.time() - t0
     print("\n" + "="*60)
     print("FERTIG за %.1fs" % dt)
