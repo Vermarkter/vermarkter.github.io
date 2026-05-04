@@ -365,7 +365,7 @@ def generate_message(lead, ab_variant='empathy'):
 # ---------------------------------------------------------------------------
 def parse_args():
     p = argparse.ArgumentParser(description='Sniper Engine — GPT-4o outreach generator')
-    p.add_argument('--city',    default='München', help='City filter (default: München)')
+    p.add_argument('--city',    default='Nice', help='City filter (default: Nice)')
     p.add_argument('--limit',   type=int, default=20, help='Max leads per run (default: 20)')
     p.add_argument('--offset',  type=int, default=0,  help='Supabase offset (default: 0)')
     p.add_argument('--ids',     default='', help='Comma-separated IDs to target (overrides city/limit)')

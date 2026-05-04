@@ -285,7 +285,7 @@ def patch_lead(lead_id: int, message: str, channel: str) -> int:
 # ---------------------------------------------------------------------------
 def parse_args():
     p = argparse.ArgumentParser(description='Sniper v3 — GPT-4o WA/Email split engine')
-    p.add_argument('--city',    default='Munich')
+    p.add_argument('--city',    default='Nice')
     p.add_argument('--limit',   type=int, default=20)
     p.add_argument('--offset',  type=int, default=0)
     p.add_argument('--ids',     default='', help='Comma-separated IDs')
