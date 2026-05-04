@@ -65,8 +65,14 @@ def gmaps_get(endpoint, params):
     raw = http_get(url, timeout=15).decode("utf-8")
     return json.loads(raw)
 
-def sb_get(path):
-    req = urllib.request.Request(SB_URL + path, headers=SB_HEAD)
+def sb_get(path, params=None):
+    url = SB_URL + path
+    if params:
+        parts = []
+        for k, v in params.items():
+            parts.append(f"{k}={urllib.parse.quote(str(v), safe='=.,*():!-')}")
+        url += "?" + "&".join(parts)
+    req = urllib.request.Request(url, headers=SB_HEAD)
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.loads(r.read().decode("utf-8"))
 

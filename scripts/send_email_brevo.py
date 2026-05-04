@@ -65,8 +65,10 @@ _SB_PATCH = {
 def sb_get(path, params=None):
     url = f"{SB_URL.strip()}/rest/v1/{path}"
     if params:
-        url += '?' + urllib.parse.urlencode(params, quote_via=urllib.parse.quote, safe='().,*:!-')
-    print(f"DEBUG URL: {url}", file=sys.stderr)
+        parts = []
+        for k, v in params.items():
+            parts.append(f"{k}={urllib.parse.quote(str(v), safe='=.,*():!-')}")
+        url += '?' + '&'.join(parts)
     with urllib.request.urlopen(urllib.request.Request(url, headers=_SB_READ), timeout=20) as r:
         return json.loads(r.read().decode('utf-8'))
 
