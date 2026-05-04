@@ -45,7 +45,7 @@ async function sendTelegram(name, city, waLink) {
   );
 }
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const leadId = parseInt(req.query.id, 10);
 
   if (leadId && SUPABASE_URL && SUPABASE_KEY) {
