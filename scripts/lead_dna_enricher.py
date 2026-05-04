@@ -23,11 +23,23 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 # ─── Config ────────────────────────────────────────────────────────────────────
-SUPABASE_URL  = os.environ["SUPABASE_URL"]
-SUPABASE_KEY  = os.environ["SUPABASE_KEY"]
-ANTHROPIC_KEY = os.environ["ANTHROPIC_API_KEY"]
+import configparser as _cp
+_cfg_dna = _cp.ConfigParser()
+_cfg_dna.read(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'config.ini'), encoding='utf-8')
 
-CITIES     = ["München", "Berlin"]
+def _e(k):  return (os.environ.get(k) or '').strip()
+def _c(s, k):
+    try:    return (_cfg_dna.get(s, k) or '').strip()
+    except: return ''
+
+SUPABASE_URL  = _e('SUPABASE_URL')  or _c('SUPABASE', 'url')
+_svc_dna      = _c('SUPABASE', 'service_role_key')
+SUPABASE_KEY  = (_e('SUPABASE_KEY') or
+                 (_svc_dna if len(_svc_dna) > 80 and 'PASTE' not in _svc_dna else '') or
+                 _c('SUPABASE', 'anon_key'))
+ANTHROPIC_KEY = _e('ANTHROPIC_API_KEY') or _c('ANTHROPIC', 'api_key')
+
+CITIES     = ["München", "Berlin", "Nice"]
 STATUS     = "READY TO SEND"
 THREADS    = 10
 MODEL      = "claude-3-5-sonnet-20240620"
@@ -277,7 +289,7 @@ def enrich_lead(lead: dict) -> dict:
 
 def parse_args():
     p = argparse.ArgumentParser(description="Lead DNA Enricher — Vermarkter Elite")
-    p.add_argument("--city",   default="München", help="City filter (default: München)")
+    p.add_argument("--city",   default="Nice", help="City filter (default: Nice)")
     p.add_argument("--limit",  type=int, default=100, help="Max leads (default: 100)")
     p.add_argument("--offset", type=int, default=0,   help="Supabase offset (default: 0)")
     p.add_argument("--threads",type=int, default=THREADS, help=f"Parallel threads (default: {THREADS})")

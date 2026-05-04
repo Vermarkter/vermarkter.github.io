@@ -258,10 +258,21 @@ def gen_message(rec):
 def canon_maps_url(place_id):
     return "https://www.google.com/maps/place/?q=place_id:" + place_id
 
-def find_existing(maps_url):
+def find_existing(maps_url, name=None, city=None):
+    # Primary: canonical maps_url with place_id — guaranteed unique
     q = "/rest/v1/beauty_leads?select=id&maps_url=eq." + urllib.parse.quote(maps_url, safe="")
     rows = sb_get(q)
-    return rows[0]["id"] if rows else None
+    if rows:
+        return rows[0]["id"]
+    # Fallback: same name + city (catches edge cases where maps_url format differs)
+    if name and city:
+        q2 = ("/rest/v1/beauty_leads?select=id"
+              "&name=eq." + urllib.parse.quote(name, safe="") +
+              "&city=eq." + urllib.parse.quote(city, safe=""))
+        rows2 = sb_get(q2)
+        if rows2:
+            return rows2[0]["id"]
+    return None
 
 def upsert_lead(rec):
     payload = {
@@ -275,7 +286,7 @@ def upsert_lead(rec):
         "status":         rec.get("_status_override") or "new",
         "custom_message": rec["custom_message"],
     }
-    existing_id = find_existing(rec["maps_url"])
+    existing_id = find_existing(rec["maps_url"], name=rec["name"], city=rec["city"])
     if existing_id:
         # PATCH без перезапису ручних правок: оновлюємо лише пусті поля + дані з Maps
         patch = {k:v for k,v in payload.items() if v is not None and k != "status"}

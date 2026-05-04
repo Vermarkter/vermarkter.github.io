@@ -61,7 +61,7 @@ if not SB_URL or not SB_KEY:
     print('[ERROR] SUPABASE_URL/KEY not configured', file=sys.stderr); sys.exit(1)
 
 PROGRESS_FILE = os.path.join(_ROOT, 'data', 'sv_progress.json')
-CITIES        = ['Berlin', 'München']
+CITIES        = ['Berlin', 'München', 'Nice']
 BATCH_SIZE    = 50    # leads per Supabase PATCH batch
 PAGE_SIZE     = 1000  # leads per Supabase GET page
 
