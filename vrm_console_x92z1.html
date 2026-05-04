@@ -70,7 +70,7 @@ h1{font-size:clamp(1.55rem,3.2vw,2.5rem);font-weight:900;line-height:1.1;margin-
 
 /* FILTERS */
 .filters{max-width:1700px;margin:0 auto 1rem;display:flex;gap:.55rem;flex-wrap:wrap}
-.filters input,.filters select{background:rgba(255,255,255,.045);border:1px solid var(--border);border-radius:8px;padding:.42rem .78rem;font-size:.82rem;color:var(--text);outline:none;transition:border-color .2s;font-family:inherit}
+.filters input,.filters select{background:#1a1a2e;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:.42rem .78rem;font-size:.82rem;color:#fff;outline:none;transition:border-color .2s;font-family:inherit}
 .filters input{flex:1;min-width:170px}
 .filters input:focus,.filters select:focus{border-color:rgba(236,72,153,.48)}
 .filters select option{background:#0f0f18}
@@ -124,8 +124,11 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 .semailsent{background:rgba(6,182,212,.15);color:#22d3ee}
 .scalled{background:rgba(59,130,246,.15);color:#60a5fa}
 .sbooked{background:rgba(16,185,129,.18);color:#34d399}
-.ssel{background:rgba(255,255,255,.045);border:1px solid var(--border);border-radius:5px;color:var(--muted);font-size:.63rem;padding:.18rem .36rem;cursor:pointer;font-family:inherit;margin-top:.22rem;display:block}
-.ssel-inline{width:100%;margin-top:0;font-size:.7rem;font-weight:700;padding:.32rem .5rem;border:1.5px solid rgba(255,255,255,.13);color:var(--text);background:rgba(255,255,255,.06);border-radius:6px;cursor:pointer;transition:border-color .18s}
+.shold{background:rgba(249,115,22,.18);color:#fb923c}
+.ssel{background:#1a1a2e;border:1px solid var(--border);border-radius:5px;color:#fff;font-size:.63rem;padding:.18rem .36rem;cursor:pointer;font-family:inherit;margin-top:.22rem;display:block}
+.ssel option{background:#1a1a2e;color:#fff}
+.ssel-inline{width:100%;margin-top:0;font-size:.7rem;font-weight:700;padding:.32rem .5rem;border:1.5px solid rgba(255,255,255,.25);color:#fff;background:#1a1a2e;border-radius:6px;cursor:pointer;transition:border-color .18s}
+.ssel-inline option{background:#1a1a2e;color:#fff}
 .ssel-inline:focus,.ssel-inline:hover{border-color:rgba(236,72,153,.5);outline:none}
 /* CHAT / AB columns */
 .chat-cell{max-width:220px;min-width:120px;font-size:.7rem;line-height:1.5;color:#d1d5db;overflow-wrap:break-word;word-break:break-word}
@@ -143,9 +146,9 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 
 /* NOTES */
 .nwrap{display:flex;flex-direction:column;gap:.25rem;min-width:0}
-.nta{width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:5px;color:#f1f5f9;font-size:.76rem;font-family:inherit;padding:.4rem .55rem;resize:vertical;min-height:64px;outline:none;line-height:1.5}
-.nta:focus{border-color:rgba(99,102,241,.65);background:rgba(255,255,255,.09)}
-.nta::placeholder{color:rgba(255,255,255,.3)}
+.nta{width:100%;box-sizing:border-box;background:#1a1a2e;border:1px solid rgba(255,255,255,.25);border-radius:5px;color:#fff;font-size:.76rem;font-family:inherit;padding:.4rem .55rem;resize:vertical;min-height:64px;outline:none;line-height:1.5}
+.nta:focus{border-color:rgba(99,102,241,.65);background:#1e1e35}
+.nta::placeholder{color:rgba(255,255,255,.45)}
 
 /* OVERLAY */
 .overlay{text-align:center;padding:4rem 1rem;color:var(--muted)}
@@ -867,7 +870,8 @@ function renderTable() {
       'CALLED':        { label: 'ЗАТЕЛЕФОНУВАЛИ', cls: 'scalled' },
       'booked':        { label: 'ЗАБРОНЬОВАНО', cls: 'sbooked' },
       'interested':    { label: 'ЦІКАВО',       cls: 'sreplied' },
-      'rejected':      { label: 'ВІДМОВА',      cls: 'snew' }
+      'rejected':      { label: 'ВІДМОВА',      cls: 'snew' },
+      'status_hold':   { label: '🛑 НЕ ВІДПРАВЛЯТИ', cls: 'shold' }
     };
     var sm = STATUS_MAP[s.status] || { label: 'НОВИЙ', cls: 'snew' };
     var selOpts = [
@@ -879,7 +883,8 @@ function renderTable() {
       ['interested',   'ЦІКАВО'],
       ['rejected',     'ВІДМОВА'],
       ['CALLED',       'ЗАТЕЛЕФОНУВАЛИ'],
-      ['booked',       'ЗАБРОНЬОВАНО']
+      ['booked',       'ЗАБРОНЬОВАНО'],
+      ['status_hold',  '🛑 НЕ ВІДПРАВЛЯТИ']
     ];
     var curVal = s.status || 'new';
     var c11 = '<td>'
