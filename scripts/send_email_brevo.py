@@ -59,7 +59,7 @@ def sb_get(path, params=None):
     url = f"{SB_URL}/rest/v1/{path}"
     if params:
         qs = '&'.join(
-            f"{k}={urllib.parse.quote(str(v), safe=':.,*()!-')}"
+            f"{urllib.parse.quote(str(k), safe='')}={urllib.parse.quote(str(v), safe=':.,*()!-_~')}"
             for k, v in params.items()
         )
         url += '?' + qs
