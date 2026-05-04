@@ -130,10 +130,9 @@ _BASE_RULES = f"""
 
 AUSGABE-REGELN (ALLE PFLICHT):
 - MAXIMAL 480 Zeichen — zähle exakt, kürze gnadenlos
-- Angebot: Website + App + KI-Rezeption auf 10 Sprachen — einmalig 1 000 €
+- Angebot: Website + App + KI-Rezeption auf 10 Sprachen — einmalig 1 000 €, Startklar in 7 Tagen
 - CTA (PFLICHT, exakt so): „Soll ich Ihnen ein Video schicken?"
-- KEIN Link, KEINE URL — nur Text
-- Unterschrift: www.my-salon.eu (KEIN Name, nur die Domain)
+- ABSOLUT KEIN Link, KEINE URL, KEIN www., KEINE Domain — nur reiner Text, null Ausnahmen
 - SSL-Treffer NUR wenn ssl=n in den Notizen
 - Konkurrent NUR wenn explizit in den Notizen — dann namentlich nennen
 
@@ -151,7 +150,7 @@ STRUKTUR — „Proблема-zuerst":
 4. CTA
 
 Beispiel:
-„Guten Tag, Ihre Website wird aktuell von Google als „unsicher" eingestuft. Das schreckt ca. 70 % der Besucher ab, noch bevor sie Ihre Arbeit sehen. Wir bieten Website + App + KI-Rezeption auf 10 Sprachen für einmalig 1 000 €. Soll ich Ihnen ein Video schicken? www.my-salon.eu"
+„Guten Tag, Ihre Website wird aktuell von Google als „unsicher" eingestuft. Das schreckt ca. 70 % der Besucher ab, noch bevor sie Ihre Arbeit sehen. Wir bieten Website + App + KI-Rezeption auf 10 Sprachen für einmalig 1 000 €, Startklar in 7 Tagen. Soll ich Ihnen ein Video schicken?"
 {_BASE_RULES}""",
 
     'story': f"""Du bist ein elitärer Berater für digitale Transformation. Stil: Modern Professional.
@@ -164,7 +163,7 @@ STRUKTUR — „Geschichte-zuerst":
 4. Angebot + CTA
 
 Beispiel:
-„Guten Tag, ein Barbershop in Schwabing hat nach Einführung unserer App ca. 30 % mehr Buchungen pro Woche verzeichnet — ohne zusätzliche Werbung. Das können wir auch für Sie umsetzen: Website + App + KI-Rezeption auf 10 Sprachen, einmalig 1 000 €. Soll ich Ihnen ein Video schicken? www.my-salon.eu"
+„Guten Tag, ein Barbershop in Schwabing hat nach Einführung unserer App ca. 30 % mehr Buchungen pro Woche verzeichnet — ohne zusätzliche Werbung. Das können wir auch für Sie umsetzen: Website + App + KI-Rezeption auf 10 Sprachen, einmalig 1 000 €, Startklar in 7 Tagen. Soll ich Ihnen ein Video schicken?"
 {_BASE_RULES}""",
 
     'empathy': f"""Du bist ein elitärer Berater für digitale Transformation. Stil: Modern Professional.
@@ -176,7 +175,7 @@ STRUKTUR — „Empathie-zuerst":
 4. CTA
 
 Beispiel:
-„Guten Tag, ein gut geführter Salon verdient Kunden, die ihn auch online finden und buchen können. Aktuell erschwert Ihre fehlende Online-Buchung genau das — Kunden, die nach 18 Uhr suchen, gehen zum Nächsten. Wir lösen das: Website + App + KI-Rezeption auf 10 Sprachen, einmalig 1 000 €. Soll ich Ihnen ein Video schicken? www.my-salon.eu"
+„Guten Tag, ein gut geführter Salon verdient Kunden, die ihn auch online finden und buchen können. Aktuell erschwert Ihre fehlende Online-Buchung genau das — Kunden, die nach 18 Uhr suchen, gehen zum Nächsten. Wir lösen das: Website + App + KI-Rezeption auf 10 Sprachen, einmalig 1 000 €, Startklar in 7 Tagen. Soll ich Ihnen ein Video schicken?"
 {_BASE_RULES}""",
 }
 
@@ -208,6 +207,10 @@ def validate_style(text):
     if re.search(r'\b(hey|hi|du |dein|deine)\b', text.lower()):
         issues.append('Informelle Anrede gefunden (Du/Hey/Hi) — nur „Sie" erlaubt')
 
+    # Rule 5: no URLs or www. references
+    if re.search(r'https?://|www\.', text):
+        issues.append('URL/www. gefunden — KEIN Link erlaubt')
+
     return issues
 
 
@@ -233,6 +236,10 @@ def fix_style(text):
         text,
         flags=re.IGNORECASE,
     )
+
+    # Fix: strip any www.domain or http(s):// references entirely
+    text = re.sub(r'\s*https?://\S+', '', text)
+    text = re.sub(r'\s*www\.\S+', '', text)
 
     return text
 
