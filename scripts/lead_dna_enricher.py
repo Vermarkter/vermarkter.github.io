@@ -3,7 +3,7 @@
 """
 Lead DNA Enricher — Vermarkter Elite
 Збирає «ДНК» салонів: бренди, топ-послуги, цінові точки.
-Використовує 10 паралельних потоків + Claude API для аналізу.
+Використовує 10 паралельних потоків + OpenAI GPT-4o для аналізу.
 """
 
 import os
@@ -37,13 +37,19 @@ _svc_dna      = _c('SUPABASE', 'service_role_key')
 SUPABASE_KEY  = (_e('SUPABASE_KEY') or
                  (_svc_dna if len(_svc_dna) > 80 and 'PASTE' not in _svc_dna else '') or
                  _c('SUPABASE', 'anon_key'))
-ANTHROPIC_KEY = _e('ANTHROPIC_API_KEY') or _c('ANTHROPIC', 'api_key')
+OPENAI_KEY = (
+    _e('OPENAI_API_KEY')
+    or _c('OPENAI', 'api_key')
+).strip()
+if not OPENAI_KEY or not OPENAI_KEY.startswith('sk-') or 'PASTE' in OPENAI_KEY:
+    print('[ERROR] OPENAI_API_KEY missing. Set in config.ini [OPENAI] api_key', file=sys.stderr)
+    sys.exit(1)
 
 CITIES     = ["München", "Berlin", "Nice"]
 STATUS     = "READY TO SEND"
 THREADS    = 10
-MODEL      = "claude-3-5-sonnet-20240620"
-MAX_TOKENS = 1200
+MODEL      = "gpt-4o"
+MAX_TOKENS = 800
 
 logging.basicConfig(
     level=logging.INFO,
@@ -136,36 +142,39 @@ def fetch_website(url: str, timeout: int = 15) -> str:
         return ""
 
 
-# ─── Claude DNA analysis ──────────────────────────────────────────────────────
+# ─── OpenAI GPT-4o DNA analysis ───────────────────────────────────────────────
 
-SYSTEM_PROMPT = """
-Ти — аналітик б'юті-індустрії. Тобі дають текст сайту перукарні / салону краси.
+SYSTEM_PROMPT = """You are a beauty industry analyst. Given website text of a hair/beauty salon, extract:
+1. brand_stack     — list of cosmetic brands used (Wella, Kerastase, Schwarzkopf, Oribe, L'Oréal, Goldwell, Davines, etc). Empty list if none found.
+2. top_service     — most premium/expensive service offered (Balayage, Extensions, Laser, Keratin, Color Correction, etc). Single name.
+3. price_point     — price of standard haircut or base service, format "€XX" or "€XX–€XX". null if unknown.
+4. positioning     — 1-2 words: Budget / Mid-range / Premium / Luxury.
+5. booking_system  — name of online booking system (Treatwell, Booksy, Fresha, Planity, own system, etc) or null.
 
-Визнач:
-1. brand_stack     — список косметичних брендів (Wella, Kerastase, Schwarzkopf, Oribe, L'Oréal, Goldwell, BHAVE, Davines тощо). Якщо не знайдено — порожній список.
-2. top_service     — найдорожча / преміум послуга (Balayage, Extensions, Laser, Keratin, Color Correction тощо). Одна назва.
-3. price_point     — ціна стандартної стрижки або базової послуги у форматі "€XX" або "€XX–€XX". Якщо невідомо — null.
-4. positioning     — 1-2 слова: Budget / Mid-range / Premium / Luxury.
-5. booking_system  — назва системи онлайн-запису (Treatwell, Booksy, Fresha, власна тощо) або null.
-
-Відповідай ТІЛЬКИ валідним JSON без зайвого тексту:
+Reply ONLY with valid JSON, no extra text:
 {
   "brand_stack": [...],
   "top_service": "...",
   "price_point": "...",
   "positioning": "...",
   "booking_system": "..."
-}
-"""
+}"""
 
-HEADERS_AI = {
-    "x-api-key":         ANTHROPIC_KEY,
-    "anthropic-version": "2023-06-01",
-    "content-type":      "application/json",
-}
+_openai_client = None
+
+def _get_openai():
+    global _openai_client
+    if _openai_client is None:
+        try:
+            from openai import OpenAI
+            _openai_client = OpenAI(api_key=OPENAI_KEY)
+        except ImportError:
+            print('[ERROR] openai not installed. Run: pip install openai', file=sys.stderr)
+            sys.exit(1)
+    return _openai_client
 
 
-def analyze_with_claude(salon_name: str, website_text: str) -> dict:
+def analyze_with_gpt(salon_name: str, website_text: str) -> dict:
     if not website_text:
         return {
             "brand_stack":    [],
@@ -177,33 +186,29 @@ def analyze_with_claude(salon_name: str, website_text: str) -> dict:
             "source":         "no_website",
         }
 
-    user_msg = f"Салон: {salon_name}\n\nТекст сайту:\n{website_text}"
-
-    payload = {
-        "model":      MODEL,
-        "max_tokens": MAX_TOKENS,
-        "system":     SYSTEM_PROMPT,
-        "messages":   [{"role": "user", "content": user_msg}],
-    }
+    user_msg = f"Salon: {salon_name}\n\nWebsite text:\n{website_text}"
+    oai = _get_openai()
 
     for attempt in range(3):
         try:
-            r = httpx.post(
-                "https://api.anthropic.com/v1/messages",
-                headers=HEADERS_AI,
-                json=payload,
-                timeout=60,
+            resp = oai.chat.completions.create(
+                model=MODEL,
+                max_tokens=MAX_TOKENS,
+                temperature=0.2,
+                messages=[
+                    {"role": "system", "content": SYSTEM_PROMPT},
+                    {"role": "user",   "content": user_msg},
+                ],
             )
-            r.raise_for_status()
-            raw = r.json()["content"][0]["text"].strip()
+            raw = resp.choices[0].message.content.strip()
             raw = re.sub(r"^```json\s*", "", raw)
-            raw = re.sub(r"```$", "", raw).strip()
+            raw = re.sub(r"```\s*$",     "", raw).strip()
             dna = json.loads(raw)
             dna["enriched_at"] = datetime.utcnow().isoformat()
             dna["source"]      = "website_scraped"
             return dna
         except Exception as exc:
-            log.warning(f"Claude спроба {attempt+1} для '{salon_name}': {exc}")
+            log.warning(f"GPT-4o attempt {attempt+1} for '{salon_name}': {exc}")
             time.sleep(2 ** attempt)
 
     return {
@@ -273,7 +278,7 @@ def enrich_lead(lead: dict) -> dict:
     log.info(f"Processing: {name} | {website or 'no website'}")
 
     website_text = fetch_website(website)
-    dna = analyze_with_claude(name, website_text)
+    dna = analyze_with_gpt(name, website_text)
     save_dna(lead, dna)
 
     log.info(
@@ -293,7 +298,7 @@ def parse_args():
     p.add_argument("--limit",  type=int, default=100, help="Max leads (default: 100)")
     p.add_argument("--offset", type=int, default=0,   help="Supabase offset (default: 0)")
     p.add_argument("--threads",type=int, default=THREADS, help=f"Parallel threads (default: {THREADS})")
-    p.add_argument("--dry-run",action="store_true",   help="Fetch + scrape only, no Claude call, no DB write")
+    p.add_argument("--dry-run",action="store_true",   help="Fetch + scrape only, no GPT-4o call, no DB write")
     return p.parse_args()
 
 
