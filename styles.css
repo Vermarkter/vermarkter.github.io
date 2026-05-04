@@ -1791,51 +1791,342 @@ header .lang-switcher:hover .lang-dropdown,
 }
 
 /* ============================================
-   LIGHT THEME SUPPORT
+   LIGHT THEME — Clean White (Apple / Planity)
    ============================================ */
 
 [data-theme='light'] {
-    --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
-    --text-primary: #0f172a;
+    --bg-body:        #ffffff;
+    --bg-card:        #f8fafc;
+    --bg-secondary:   #f1f5f9;
+    --text-main:      #0f172a;
     --text-secondary: #475569;
-    --text-muted: #94a3b8;
-    --glass-bg: rgba(255, 255, 255, 0.8);
-    --glass-border: rgba(0, 0, 0, 0.1);
+    --text-muted:     #94a3b8;
+    --glass-bg:       rgba(255, 255, 255, 0.9);
+    --glass-border:   rgba(15, 23, 42, 0.08);
+    --shadow-sm:      0 2px 8px rgba(15, 23, 42, 0.06);
+    --shadow-md:      0 4px 16px rgba(15, 23, 42, 0.10);
+    --shadow-lg:      0 8px 32px rgba(15, 23, 42, 0.14);
+    --shadow-glow:    0 0 24px rgba(59, 130, 246, 0.18);
 }
 
+/* ── Base ── */
 [data-theme='light'] body {
-    background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #e0e7ff 100%);
-    color: var(--text-primary);
+    background: #ffffff;
+    color: #0f172a;
 }
 
+[data-theme='light'] body::before,
+[data-theme='light'] body::after {
+    background: none;
+}
+
+/* ── Matrix canvas: hide in light mode ── */
+[data-theme='light'] #matrix-canvas {
+    opacity: 0 !important;
+}
+
+/* ── Header ── */
 [data-theme='light'] header {
-    background: rgba(255, 255, 255, 0.95);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.96) !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08) !important;
 }
 
+[data-theme='light'] .logo {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-theme='light'] .nav-menu a,
 [data-theme='light'] .nav a {
-    color: var(--text-primary);
+    color: #475569 !important;
 }
 
-[data-theme='light'] .theme-toggle {
-    color: var(--text-primary) !important;
-    border-color: rgba(0, 0, 0, 0.2) !important;
+[data-theme='light'] .nav-menu a:hover,
+[data-theme='light'] .nav a:hover {
+    color: #0f172a !important;
+    background: #f1f5f9 !important;
+}
+
+[data-theme='light'] .theme-toggle,
+[data-theme='light'] #theme-btn {
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+    background: #f8fafc !important;
 }
 
 [data-theme='light'] .lang-button {
-    color: var(--text-primary) !important;
-    background: rgba(0, 0, 0, 0.05) !important;
-    border-color: rgba(0, 0, 0, 0.2) !important;
+    color: #0f172a !important;
+    background: #f8fafc !important;
+    border-color: #e2e8f0 !important;
 }
 
 [data-theme='light'] .lang-dropdown {
-    background: rgba(255, 255, 255, 0.95) !important;
-    border-color: rgba(0, 0, 0, 0.1) !important;
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12) !important;
 }
 
 [data-theme='light'] .lang-dropdown a {
-    color: var(--text-primary) !important;
+    color: #475569 !important;
+}
+
+[data-theme='light'] .lang-dropdown a:hover {
+    background: #f1f5f9 !important;
+    color: #0f172a !important;
+}
+
+/* ── Mobile menu ── */
+[data-theme='light'] #mobileMenu,
+[data-theme='light'] .mobile-menu {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+[data-theme='light'] #mobileMenu a,
+[data-theme='light'] .mobile-menu a {
+    color: #0f172a !important;
+}
+
+/* ── Hero section ── */
+[data-theme='light'] .hero,
+[data-theme='light'] .hero-section,
+[data-theme='light'] section:first-of-type {
+    background: #ffffff !important;
+}
+
+[data-theme='light'] .hero h1,
+[data-theme='light'] .hero-title,
+[data-theme='light'] h1 {
+    color: #0f172a !important;
+}
+
+[data-theme='light'] .hero p,
+[data-theme='light'] .hero-subtitle {
+    color: #475569 !important;
+}
+
+/* ── Sections ── */
+[data-theme='light'] section {
+    background: #ffffff !important;
+}
+
+[data-theme='light'] section:nth-child(even),
+[data-theme='light'] .section-alt,
+[data-theme='light'] .bg-secondary {
+    background: #f8fafc !important;
+}
+
+[data-theme='light'] h2,
+[data-theme='light'] h3,
+[data-theme='light'] h4 {
+    color: #0f172a !important;
+}
+
+[data-theme='light'] p,
+[data-theme='light'] li {
+    color: #475569 !important;
+}
+
+/* ── Cards / Glass boxes ── */
+[data-theme='light'] .card,
+[data-theme='light'] .glass,
+[data-theme='light'] .glass-card,
+[data-theme='light'] .service-card,
+[data-theme='light'] .pricing-card,
+[data-theme='light'] .feature-card,
+[data-theme='light'] .pain-card,
+[data-theme='light'] .visual-box,
+[data-theme='light'] .step-card,
+[data-theme='light'] .stat-item,
+[data-theme='light'] .testimonial-card,
+[data-theme='light'] [class*="-card"] {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06) !important;
+    color: #0f172a !important;
+}
+
+[data-theme='light'] .card:hover,
+[data-theme='light'] .service-card:hover,
+[data-theme='light'] .pricing-card:hover,
+[data-theme='light'] [class*="-card"]:hover {
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12) !important;
+    border-color: #cbd5e1 !important;
+}
+
+[data-theme='light'] .card h3,
+[data-theme='light'] .service-card h3,
+[data-theme='light'] .pricing-card h3,
+[data-theme='light'] [class*="-card"] h3 {
+    color: #0f172a !important;
+}
+
+[data-theme='light'] .card p,
+[data-theme='light'] .service-card p,
+[data-theme='light'] .pricing-card p,
+[data-theme='light'] [class*="-card"] p {
+    color: #475569 !important;
+}
+
+/* ── Stats grid ── */
+[data-theme='light'] .stats-grid {
+    background: #f8fafc !important;
+}
+
+[data-theme='light'] .stat-value {
+    color: #2563eb !important;
+}
+
+[data-theme='light'] .stat-label {
+    color: #475569 !important;
+}
+
+/* ── Buttons ── */
+[data-theme='light'] .btn-secondary,
+[data-theme='light'] .btn-outline {
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+    background: #ffffff !important;
+}
+
+[data-theme='light'] .btn-secondary:hover,
+[data-theme='light'] .btn-outline:hover {
+    background: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+}
+
+/* ── Forms / Inputs ── */
+[data-theme='light'] input,
+[data-theme='light'] select,
+[data-theme='light'] textarea {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+[data-theme='light'] input:focus,
+[data-theme='light'] select:focus,
+[data-theme='light'] textarea:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12) !important;
+}
+
+[data-theme='light'] label {
+    color: #475569 !important;
+}
+
+/* ── Calculator ── */
+[data-theme='light'] .calculator,
+[data-theme='light'] .calculator-wrapper {
+    background: #f8fafc !important;
+    border: 1px solid #e2e8f0 !important;
+}
+
+[data-theme='light'] .calculator__title {
+    color: #0f172a !important;
+}
+
+[data-theme='light'] input[type="range"] {
+    accent-color: #2563eb;
+}
+
+/* ── Pricing ── */
+[data-theme='light'] .pricing-card.featured,
+[data-theme='light'] .pricing-card.popular {
+    background: #eff6ff !important;
+    border-color: #2563eb !important;
+}
+
+[data-theme='light'] .price-amount {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ── FAQ / Accordion ── */
+[data-theme='light'] .faq-item,
+[data-theme='light'] .accordion-item {
+    background: #ffffff !important;
+    border-color: #e2e8f0 !important;
+}
+
+[data-theme='light'] .faq-question,
+[data-theme='light'] .accordion-header {
+    color: #0f172a !important;
+}
+
+[data-theme='light'] .faq-answer,
+[data-theme='light'] .accordion-body {
+    color: #475569 !important;
+}
+
+/* ── Contact / Form sections ── */
+[data-theme='light'] .contact-form,
+[data-theme='light'] .contact-section {
+    background: #f8fafc !important;
+}
+
+/* ── Footer ── */
+[data-theme='light'] footer {
+    background: #f1f5f9 !important;
+    border-top: 1px solid #e2e8f0 !important;
+    color: #475569 !important;
+}
+
+[data-theme='light'] footer a {
+    color: #475569 !important;
+}
+
+[data-theme='light'] footer a:hover {
+    color: #2563eb !important;
+}
+
+/* ── Modals ── */
+[data-theme='light'] .modal,
+[data-theme='light'] [id*="Modal"],
+[data-theme='light'] [class*="modal"] {
+    background: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
+}
+
+[data-theme='light'] .modal-overlay,
+[data-theme='light'] .modal-backdrop {
+    background: rgba(15, 23, 42, 0.4) !important;
+}
+
+/* ── Text gradients → solid in light mode ── */
+[data-theme='light'] .text-gradient,
+[data-theme='light'] [class*="gradient-text"] {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ── Dividers / borders ── */
+[data-theme='light'] hr,
+[data-theme='light'] .divider {
+    border-color: #e2e8f0 !important;
+}
+
+/* ── Scroll-to-top ── */
+[data-theme='light'] .scroll-to-top,
+[data-theme='light'] #scrollToTop {
+    background: #2563eb !important;
+    color: #ffffff !important;
+}
+
+/* ── Cookie banner ── */
+[data-theme='light'] .cookie-banner,
+[data-theme='light'] #cookieBanner {
+    background: #ffffff !important;
+    border-top: 1px solid #e2e8f0 !important;
+    color: #0f172a !important;
 }
 
 /* ============================================

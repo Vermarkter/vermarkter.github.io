@@ -68,6 +68,11 @@ if (mobileToggle && mobileMenu) {
 const themeToggle = document.getElementById('theme-btn');
 
 function initTheme() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlTheme = urlParams.get('theme');
+    if (urlTheme === 'light' || urlTheme === 'dark') {
+        localStorage.setItem('theme', urlTheme);
+    }
     const savedTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', savedTheme);
     updateThemeIcon(savedTheme);
@@ -76,6 +81,9 @@ function initTheme() {
 function updateThemeIcon(theme) {
     if (themeToggle) {
         themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+        themeToggle.style.color = theme === 'light' ? '#0f172a' : 'white';
+        themeToggle.style.borderColor = theme === 'light' ? '#e2e8f0' : 'rgba(255,255,255,0.2)';
+        themeToggle.style.background = theme === 'light' ? '#f8fafc' : 'none';
     }
 }
 
