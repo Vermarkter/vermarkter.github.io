@@ -39,14 +39,14 @@ HDRS = {'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY}
 FIELDS = 'id,name,city,phone,email,website,notes,status'
 
 
-def fetch_leads(city: str, limit: int, offset: int) -> list:
+def fetch_leads(city: str, limit: int, offset: int, status_null: bool = False) -> list:
     city_enc = urllib.parse.quote(city, safe='')
+    status_filter = '&status=is.null' if status_null else '&status=neq.EMAIL%20SENT'
     url = (
         f"{SB_URL}/rest/v1/beauty_leads"
         f"?select={FIELDS}"
         f"&city=eq.{city_enc}"
-        f"&email_funnel_json=is.null"
-        f"&status=neq.EMAIL%20SENT"
+        f"{status_filter}"
         f"&order=id.asc"
         f"&limit={limit}"
         f"&offset={offset}"
@@ -71,10 +71,12 @@ def format_lead(lead: dict) -> str:
 
 def parse_args():
     p = argparse.ArgumentParser(description='Export Nice leads → plain text for Claude Pro')
-    p.add_argument('--city',   default='Nice', help='City filter (default: Nice)')
-    p.add_argument('--limit',  type=int, default=50, help='Max leads per file (default: 50)')
-    p.add_argument('--offset', type=int, default=0,  help='Supabase offset (default: 0)')
-    p.add_argument('--out',    default='', help='Output file (default: nice_raw_leads.txt)')
+    p.add_argument('--city',        default='Nice', help='City filter (default: Nice)')
+    p.add_argument('--limit',       type=int, default=50, help='Max leads per file (default: 50)')
+    p.add_argument('--offset',      type=int, default=0,  help='Supabase offset (default: 0)')
+    p.add_argument('--out',         default='', help='Output file (default: <city>_raw_leads.txt)')
+    p.add_argument('--status-null', action='store_true',
+                   help='Filter status IS NULL only (default: skip EMAIL SENT)')
     return p.parse_args()
 
 
@@ -85,11 +87,13 @@ def main():
 
     print(f'\n{"="*64}')
     print(f'  Export Raw Leads  |  City: {args.city}  |  Limit: {args.limit}')
-    print(f'  Filter: email_funnel_json IS NULL + status != EMAIL SENT')
+    flt = 'status IS NULL' if args.status_null else 'status != EMAIL SENT'
+    print(f'  Filter: {flt}')
     print(f'{"="*64}\n')
 
     print('Fetching from Supabase...')
-    leads = fetch_leads(city=args.city, limit=args.limit, offset=args.offset)
+    leads = fetch_leads(city=args.city, limit=args.limit, offset=args.offset,
+                        status_null=args.status_null)
     print(f'Fetched: {len(leads)} leads\n')
 
     if not leads:
@@ -100,7 +104,7 @@ def main():
 
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write(f'# Nice leads export — {len(leads)} records\n')
-        f.write(f'# Filter: email_funnel_json IS NULL | status != EMAIL SENT\n')
+        f.write(f'# Filter: {flt}\n')
         f.write(f'# City: {args.city} | offset={args.offset}\n')
         f.write('#\n')
         f.write('# Paste this block into Claude Pro with the Indépendance prompt.\n')

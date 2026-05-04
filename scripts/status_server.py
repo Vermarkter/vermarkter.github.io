@@ -854,13 +854,80 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
 
+# ── Port utilities ─────────────────────────────────────────────────────────────
+import socket as _socket
+import signal as _signal
+
+
+def _port_in_use(port: int) -> bool:
+    with _socket.socket(_socket.AF_INET, _socket.SOCK_STREAM) as s:
+        s.settimeout(1)
+        return s.connect_ex(('127.0.0.1', port)) == 0
+
+
+def _kill_port(port: int) -> bool:
+    """Kill process holding the port (Linux/macOS only via fuser/lsof)."""
+    import subprocess
+    killed = False
+    for cmd in [
+        ['fuser', '-k', f'{port}/tcp'],
+        ['bash', '-c', f"lsof -ti tcp:{port} | xargs -r kill -9"],
+    ]:
+        try:
+            r = subprocess.run(cmd, capture_output=True, timeout=5)
+            if r.returncode == 0:
+                killed = True
+                break
+        except Exception:
+            continue
+    return killed
+
+
+class _ReuseServer(HTTPServer):
+    """HTTPServer with SO_REUSEADDR + SO_REUSEPORT (Linux) for clean restarts."""
+    allow_reuse_address = True
+
+    def server_bind(self):
+        try:
+            self.socket.setsockopt(_socket.SOL_SOCKET, _socket.SO_REUSEPORT, 1)
+        except (AttributeError, OSError):
+            pass  # SO_REUSEPORT not available on all platforms (e.g. Windows)
+        super().server_bind()
+
+
 # ── Entry point ────────────────────────────────────────────────────────────────
 def main():
     import argparse
     p = argparse.ArgumentParser(description='Vermarkter status server')
     p.add_argument('--host', default='0.0.0.0', help='Bind host (default: 0.0.0.0)')
     p.add_argument('--port', type=int, default=8080, help='Port (default: 8080)')
+    p.add_argument('--kill', action='store_true',
+                   help='Kill any process already holding the port before starting')
     args = p.parse_args()
+
+    # ── Port conflict check ────────────────────────────────────────────────────
+    if _port_in_use(args.port):
+        if args.kill:
+            print(f'[STATUS SERVER] Port {args.port} busy — killing old process...')
+            if _kill_port(args.port):
+                time.sleep(1.2)  # let the OS reclaim the port
+                if _port_in_use(args.port):
+                    print(f'[STATUS SERVER] ERROR: port {args.port} still busy after kill. Aborting.', file=sys.stderr)
+                    sys.exit(1)
+                print(f'[STATUS SERVER] Port {args.port} cleared.')
+            else:
+                print(f'[STATUS SERVER] WARNING: could not kill process on port {args.port}. '
+                      f'Try: fuser -k {args.port}/tcp', file=sys.stderr)
+                sys.exit(1)
+        else:
+            print(
+                f'[STATUS SERVER] ERROR: port {args.port} is already in use.\n'
+                f'  Option 1: python scripts/status_server.py --kill   (auto-kill old process)\n'
+                f'  Option 2: fuser -k {args.port}/tcp                 (manual kill)\n'
+                f'  Option 3: --port <other>                            (use different port)',
+                file=sys.stderr,
+            )
+            sys.exit(1)
 
     print(f'[STATUS SERVER] Starting on http://{args.host}:{args.port}')
     print(f'[STATUS SERVER] Dashboard: http://46.101.217.35:{args.port}')
@@ -877,7 +944,7 @@ def main():
     except Exception as e:
         print(f'[STATUS SERVER] Cache warm-up error (non-fatal): {e}')
 
-    server = HTTPServer((args.host, args.port), Handler)
+    server = _ReuseServer((args.host, args.port), Handler)
     try:
         server.serve_forever()
     except KeyboardInterrupt:
