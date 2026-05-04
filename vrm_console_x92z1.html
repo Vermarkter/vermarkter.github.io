@@ -126,6 +126,7 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 .scalled{background:rgba(59,130,246,.15);color:#60a5fa}
 .sbooked{background:rgba(16,185,129,.18);color:#34d399}
 .shold{background:rgba(249,115,22,.18);color:#fb923c}
+.snowa{background:rgba(153,27,27,.25);color:#fca5a5;border:1px solid rgba(239,68,68,.3)}
 .ssel{background:#1a1a2e;border:1px solid var(--border);border-radius:5px;color:#fff;font-size:.63rem;padding:.18rem .36rem;cursor:pointer;font-family:inherit;margin-top:.22rem;display:block}
 .ssel option{background:#1a1a2e;color:#fff}
 .ssel-inline{width:100%;margin-top:0;font-size:.7rem;font-weight:700;padding:.32rem .5rem;border:1.5px solid rgba(255,255,255,.25);color:#fff;background:#1a1a2e;border-radius:6px;cursor:pointer;transition:border-color .18s}
@@ -782,7 +783,7 @@ function renderTable() {
   empty.style.display = 'none';
 
   tbody.innerHTML = rows.map(function(s, vi) {
-    var isDone = s.status === 'sent' || s.status === 'replied' || s.status === 'EMAIL SENT' || s.status === 'booked' || s.status === 'interested' || s.status === 'rejected';
+    var isDone = s.status === 'sent' || s.status === 'replied' || s.status === 'EMAIL SENT' || s.status === 'booked' || s.status === 'interested' || s.status === 'rejected' || s.status === 'status_hold' || s.status === 'status_no_wa';
     var fresh  = isFresh(s) && isNewStatus(s);
     var isChecked = !!SELECTED[s.id];
 
@@ -872,7 +873,8 @@ function renderTable() {
       'booked':        { label: 'ЗАБРОНЬОВАНО', cls: 'sbooked' },
       'interested':    { label: 'ЦІКАВО',       cls: 'sreplied' },
       'rejected':      { label: 'ВІДМОВА',      cls: 'snew' },
-      'status_hold':   { label: '🛑 НЕ ВІДПРАВЛЯТИ', cls: 'shold' }
+      'status_hold':   { label: '🛑 НЕ ВІДПРАВЛЯТИ', cls: 'shold' },
+      'status_no_wa':  { label: '📵 Немає WhatsApp',  cls: 'snowa' }
     };
     var sm = STATUS_MAP[s.status] || { label: 'НОВИЙ', cls: 'snew' };
     var selOpts = [
@@ -885,7 +887,8 @@ function renderTable() {
       ['rejected',     'ВІДМОВА'],
       ['CALLED',       'ЗАТЕЛЕФОНУВАЛИ'],
       ['booked',       'ЗАБРОНЬОВАНО'],
-      ['status_hold',  '🛑 НЕ ВІДПРАВЛЯТИ']
+      ['status_hold',  '🛑 НЕ ВІДПРАВЛЯТИ'],
+      ['status_no_wa', '📵 Немає WhatsApp']
     ];
     var curVal = s.status || 'new';
     var c11 = '<td>'

@@ -285,6 +285,17 @@ def patch_lead(lead_id, message, ab_variant=None):
     except urllib.request.HTTPError as e:
         return e.code
 
+def patch_status_only(lead_id, status):
+    payload = {'status': status}
+    data = json.dumps(payload).encode('utf-8')
+    url = f"{SB_URL}/rest/v1/beauty_leads?id=eq.{lead_id}"
+    req = urllib.request.Request(url, data=data, headers=HDRS_SB_PATCH, method='PATCH')
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            return r.status
+    except urllib.request.HTTPError as e:
+        return e.code
+
 # ---------------------------------------------------------------------------
 # OpenAI helper
 # ---------------------------------------------------------------------------
@@ -364,6 +375,8 @@ def parse_args():
     p.add_argument('--ab',      default='empathy',
                    choices=['problem', 'story', 'empathy', 'all'],
                    help='A/B structure: problem | story | empathy | all (default: empathy)')
+    p.add_argument('--require-compliment', action='store_true',
+                   help='Skip leads without compliment_detail; mark them need_research')
     return p.parse_args()
 
 
@@ -383,6 +396,7 @@ def main():
     print(f'  A/B structure: {ab}')
     if ids:        print(f'  IDs override: {ids}')
     if args.force: print(f'  --force: overwriting existing messages for status=new leads')
+    if args.require_compliment: print(f'  --require-compliment: leads without compliment_detail → need_research')
     print(f'{"="*64}\n')
 
     leads = fetch_leads(city=args.city, limit=args.limit, offset=args.offset, ids=ids, force=args.force)
@@ -399,6 +413,13 @@ def main():
 
         if lead.get('custom_message') and not args.force:
             print(f'  [SKIP] id={lid} «{name}» — already has message')
+            skipped += 1
+            continue
+
+        if args.require_compliment and not lead.get('compliment_detail'):
+            print(f'  [NR]   id={lid} «{name}» — no compliment_detail → need_research')
+            if not dry:
+                patch_status_only(lid, 'need_research')
             skipped += 1
             continue
 
