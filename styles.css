@@ -26,7 +26,7 @@
     --brand: #3B82F6;
     --brand-secondary: #8B5CF6;
     --accent: #10B981;
-    --accent-secondary: #F59E0B;
+    --accent-secondary: #007bff;
     
     /* Ukrainian Colors */
     --ua-blue: #0057B7;
@@ -1791,7 +1791,7 @@ header .lang-switcher:hover .lang-dropdown,
 }
 
 /* ============================================
-   LIGHT THEME
+   LIGHT THEME SUPPORT
    ============================================ */
 
 [data-theme='light'] {
@@ -1837,7 +1837,6 @@ header .lang-switcher:hover .lang-dropdown,
 [data-theme='light'] .lang-dropdown a {
     color: var(--text-primary) !important;
 }
-
 
 /* ============================================
    UI POLISH - PRICING SECTION
@@ -4221,4 +4220,3 @@ input:focus, select:focus, textarea:focus {
         -webkit-filter: saturate(2) brightness(1.6) !important;
     }
 }
-
