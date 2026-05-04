@@ -42,6 +42,7 @@ HTTP_CTX.verify_mode    = ssl.CERT_NONE
 
 DEMO_URL     = "https://vermarkter.vercel.app/services/beauty-industry/de/"
 DEMO_URL_FR  = "https://vermarkter.vercel.app/services/beauty-industry/de/"
+_no_message  = False  # overridden by --no-message flag
 
 FR_POSTCODES = {"06000","06100","06200","06300","06600","06400","98000"}
 
@@ -269,7 +270,7 @@ def upsert_lead(rec):
         "website":        rec.get("website"),
         "district":       rec.get("district"),
         "maps_url":       rec["maps_url"],
-        "status":         "new",
+        "status":         rec.get("_status_override") or "new",
         "custom_message": rec["custom_message"],
     }
     existing_id = find_existing(rec["maps_url"])
@@ -431,7 +432,9 @@ def harvest(plz_list, city_override=None, limit=0):
                     "maps_url": canon_maps_url(pid),
                     "plz": plz,
                 }
-                rec["custom_message"] = gen_message(rec)
+                rec["custom_message"] = None if _no_message else gen_message(rec)
+                if _no_message:
+                    rec["_status_override"] = "need_analysis"
 
                 try:
                     action, _id = upsert_lead(rec)
@@ -465,7 +468,11 @@ if __name__ == "__main__":
                         help="Override city name for search query (e.g. Nice, Berlin)")
     parser.add_argument("--limit", type=int, default=0,
                         help="Max new leads to insert (0 = unlimited)")
+    parser.add_argument("--no-message", action="store_true",
+                        help="Skip message generation; set status=need_analysis")
     args = parser.parse_args()
+
+    _no_message = args.no_message
 
     plz_list = args.plz_flag or args.plz or ["10115","10117","10178","10179"]
     city_override = args.city  # passed into harvest()
