@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <script src="../../../js/analytics.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solutions IT et marketing exclusives pour salons de beauté en Europe. Application mobile + Site web + Publicité locale à partir de 1 000 €. Remplissez votre agenda 2 semaines à l'avance.">
+    <meta name="keywords" content="marketing salon de beauté, application coiffeur, site web institut de beauté, marketing beauty France, publicité onglerie">
+    <meta name="author" content="Vermarkter Agency">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IT et Marketing pour Salons de Beauté — Vermarkter">
+    <meta property="og:description" content="Solutions IT et marketing exclusives pour salons de beauté en Europe. Application mobile + Site web + Publicité locale à partir de 1 000 €. Remplissez votre agenda 2 semaines à l'avance.">
+    <title>IT et Marketing pour Salons de Beauté en Europe — Vermarkter</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        :root {--beauty-grad: linear-gradient(135deg,#ec4899,#8b5cf6);}
+        .beauty-text {background:var(--beauty-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .btn-beauty {background:var(--beauty-grad);color:#fff;border:none;padding:1rem 2.2rem;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:pointer;transition:opacity .2s,transform .15s;box-shadow:0 8px 28px rgba(236,72,153,.4);display:inline-block;text-decoration:none;}
+        .btn-beauty:hover {opacity:.88;transform:translateY(-2px);}
+        .offer-card {background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(236,72,153,.28);border-radius:28px;padding:2.5rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);}
+        .review-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.75rem;}
+        .faq-item {background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;margin-bottom:1rem;overflow:hidden;}
+        .faq-question {width:100%;padding:1.4rem 1.5rem;display:flex;justify-content:space-between;align-items:center;background:transparent;border:none;cursor:pointer;text-align:left;color:var(--text-primary);font-size:1.05rem;font-weight:600;}
+        .faq-icon {font-size:1.4rem;transition:transform .3s;flex-shrink:0;}
+        .faq-item.active .faq-icon {transform:rotate(45deg);}
+        .faq-answer {max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;}
+        .faq-item.active .faq-answer {max-height:300px;padding:0 1.5rem 1.5rem;}
+        .faq-answer p {color:var(--text-secondary);line-height:1.7;margin:0;}
+        @media(max-width:640px){.offer-grid{grid-template-columns:1fr !important;}}
+    </style>
+</head>
+<body>
+<script>const s=new URLSearchParams(window.location.search).get("s");if(s){document.addEventListener("DOMContentLoaded",()=>{const h=document.querySelector("h1");if(h)h.innerText="Solution IT exclusive pour "+s;});}</script>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="../../../fr/index.html" class="brand" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ec4899" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    <span style="font-weight:900;font-size:22px;color:white;">Vermarkter</span>
+                    <span style="font-size:.62rem;font-weight:800;letter-spacing:1.5px;background:var(--beauty-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">BEAUTY</span>
+                </a>
+                <div class="nav-desktop">
+                    <a href="#offer">Forfait</a>
+                    <a href="#reviews">Avis</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="../../../fr/contact.html">Contact</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://t.me/my_salon_eu" target="_blank" class="btn btn-primary" style="padding:8px 16px;display:inline-flex;align-items:center;gap:.4rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+                        Telegram
+                    </a>
+                    <a href="https://wa.me/4915510300538" target="_blank" class="btn btn-secondary" style="padding:8px 16px;margin-left:5px;display:inline-flex;align-items:center;gap:.4rem;">WhatsApp</a>
+                </div>
+                <div class="nav-controls-mobile">
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle;margin-right:4px;"><rect width="16" height="4" fill="#002395"/><rect y="4" width="16" height="4" fill="#fff"/><rect y="8" width="16" height="4" fill="#ED2939"/></svg>
+                            FR &#9660;
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../fr/index.html" style="font-weight:700;color:#ec4899"><svg width="16" height="12" style="vertical-align:middle;margin-right:4px;"><rect width="16" height="4" fill="#002395"/><rect y="4" width="16" height="4" fill="#fff"/><rect y="8" width="16" height="4" fill="#ED2939"/></svg>FR</a></li>
+                            <li><a href="../de/index.html"><svg width="16" height="12" style="vertical-align:middle;margin-right:4px;"><rect width="16" height="4" fill="#000"/><rect y="4" width="16" height="4" fill="#D00"/><rect y="8" width="16" height="4" fill="#FFCE00"/></svg>DE</a></li>
+                            <li><a href="../en/index.html"><svg width="16" height="12" style="vertical-align:middle;margin-right:4px;"><rect width="16" height="12" fill="#012169"/><path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/><path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/><path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/><path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/></svg>EN</a></li>
+                            <li><a href="../pl/index.html"><svg width="16" height="12" style="vertical-align:middle;margin-right:4px;"><rect width="16" height="6" fill="#fff"/><rect y="6" width="16" height="6" fill="#DC143C"/></svg>PL</a></li>
+                            <li><a href="../tr/index.html"><svg width="16" height="12" style="vertical-align:middle;margin-right:4px;"><rect width="16" height="12" fill="#E30A17"/><circle cx="6.4" cy="6" r="3.2" fill="#fff"/><circle cx="7.2" cy="6" r="2.6" fill="#E30A17"/><path d="M9.6,4.8 L10.4,7.2 L8,5.6 H11.2 L8.8,7.2 Z" fill="#fff"/></svg>TR</a></li>
+                            <li><a href="../ua/index.html"><svg width="16" height="12" style="vertical-align:middle;margin-right:4px;"><rect width="16" height="6" fill="#0057B7"/><rect y="6" width="16" height="6" fill="#FFD700"/></svg>UA</a></li>
+                        </ul>
+                    </div>
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">&#9776;</button>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#offer">Forfait</a>
+            <a href="#reviews">Avis</a>
+            <a href="#faq">FAQ</a>
+            <a href="../../../fr/contact.html">Contact</a>
+        </div>
+    </header>
+
+    <main style="padding-top:80px;">
+
+        <!-- HERO -->
+        <section class="hero" style="min-height:85vh;display:flex;align-items:center;padding:4rem 1.5rem;position:relative;overflow:hidden;">
+            <canvas id="matrix-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+            <div class="container" style="position:relative;z-index:1;text-align:center;max-width:860px;margin:0 auto;">
+                <div data-depth="0.55" style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(236,72,153,.12);border:1px solid rgba(236,72,153,.3);padding:.45rem 1.2rem;border-radius:50px;margin-bottom:1.75rem;font-size:.88rem;color:#ec4899;font-weight:700;letter-spacing:.5px;">
+                    &#128132; Beauty Industry Solution
+                </div>
+                <h1 data-depth="0.25" style="font-size:clamp(2.4rem,7vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem;">
+                    IT &amp; Marketing pour<br><span class="beauty-text">Salons de Beauté</span>
+                </h1>
+                <p data-depth="0.12" style="font-size:1.2rem;line-height:1.75;color:var(--text-secondary);margin-bottom:2rem;max-width:660px;margin-left:auto;margin-right:auto;">
+                    Libérez-vous des agendas papier et des messages WhatsApp sans fin. Pack IT complet — site web, réservation en ligne et publicité — pour votre salon.
+                </p>
+                <div class="glass" data-depth="0.08" style="background:rgba(236,72,153,.07);border:1px solid rgba(236,72,153,.22);border-radius:18px;padding:1.25rem 1.75rem;margin-bottom:2.25rem;max-width:620px;margin-left:auto;margin-right:auto;">
+                    <p style="font-size:1.05rem;color:var(--text-primary);margin:0;line-height:1.6;">
+                        &#128161; <strong>Un agenda plein, c'est le résultat d'un système : réservation 24h/24 sans appels, rappels automatiques et un site web qui inspire confiance. Nous construisons ce système pour vous.</strong>
+                    </p>
+                </div>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;">
+                    <a href="https://www.my-salon.eu/" target="_blank" class="btn-beauty" style="font-size:1.05rem;padding:1rem 2.2rem;">✨ Tester le panneau admin (Démo)</a>
+                    <a href="https://www.my-salon.eu/demo" target="_blank" class="btn-beauty" style="font-size:1.05rem;padding:1rem 2.2rem;background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 8px 28px rgba(139,92,246,.4);">🌸 Voir le site salon (Live)</a>
+                </div>
+                <div style="margin-top:.6rem;font-size:.92rem;color:#fff;text-align:center;font-weight:600;letter-spacing:.2px;">🔓 Identifiants déjà remplis — cliquez simplement</div>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
+                    <a href="#offer" style="display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid rgba(236,72,153,.35);color:rgba(255,255,255,.55);padding:.75rem 1.6rem;border-radius:50px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .25s;">Demander le forfait</a>
+                    <a href="https://t.me/my_salon_eu" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.55);padding:.75rem 1.6rem;border-radius:50px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .25s;">Prendre rendez-vous</a>
+                </div>
+                <!-- Stats -->
+                <div class="stats-grid" style="margin-top:3.5rem;">
+                    <div class="stat-item">
+                        <div class="stat-value beauty-text">120+</div>
+                        <div class="stat-label">Salons en Europe</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value beauty-text">+85%</div>
+                        <div class="stat-label">de réservations</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value beauty-text">2 400&#8364;</div>
+                        <div class="stat-label">revenus supplémentaires/mois</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAIN -->
+        <section style="padding:5rem 1.5rem;background:rgba(236,72,153,.02);">
+            <div class="container" style="max-width:1100px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">Ça vous parle ?</h2>
+                <div class="pain-cards-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;">
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;">&#128542;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">Toutes les réservations passent par vous</h3>
+                        <p style="color:var(--text-secondary);line-height:1.65;margin:0;">Des heures en messages, appels et cahiers. Vous êtes l'administrateur, pas le chef d'entreprise.</p>
+                    </div>
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;">&#128245;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">Les clients n'arrivent pas sans rappel</h3>
+                        <p style="color:var(--text-secondary);line-height:1.65;margin:0;">15–20 % des rendez-vous ne sont pas honorés — des pertes directes. Sans rappels automatiques, vous perdez des centaines d'euros chaque mois.</p>
+                    </div>
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;">&#128222;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">Pas de site web professionnel</h3>
+                        <p style="color:var(--text-secondary);line-height:1.65;margin:0;">Les concurrents avec un site professionnel paraissent plus fiables. Les clients choisissent ceux en qui ils ont confiance en ligne.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUNDLE OFFER -->
+        <section id="offer" style="padding:5rem 1.5rem;">
+            <div class="container" style="max-width:920px;">
+                <div class="offer-card">
+                    <div style="text-align:center;margin-bottom:2.5rem;">
+                        <span style="background:var(--beauty-grad);color:#fff;padding:.4rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:800;letter-spacing:1.5px;">🔥 FORFAIT EXCLUSIF</span>
+                        <h2 style="font-size:clamp(1.9rem,5vw,2.9rem);font-weight:900;margin:1.25rem 0 .8rem;">Tout-en-un pour <span class="beauty-text">1 000&nbsp;&#8364;</span></h2>
+                        <p style="color:var(--text-secondary);font-size:1.1rem;">Application mobile + Site web + Publicité locale — lancez-vous en 7 jours.</p>
+                    </div>
+                    <div class="offer-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+                        <ul style="list-style:none;padding:0;margin:0;">
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">📱 Application mobile de réservation client (iOS + Android)</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">🌐 Site web carte de visite professionnel</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">📍 Publicité Google Maps — nouveaux clients dans un rayon de 5 km</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">🔔 Rappels automatiques SMS/e-mail pour les clients</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">📊 Rapport analytics mensuel</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">🇫🇷 Support francophone 24h/24</li>
+                        </ul>
+                        <div style="text-align:center;background:rgba(236,72,153,.07);border:1px solid rgba(236,72,153,.25);border-radius:20px;padding:2.25rem 1.5rem;">
+                            <div style="font-size:.82rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem;">Bundle</div>
+                            <div class="beauty-text" style="font-size:clamp(2.5rem,6vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:.4rem;">1 000 &#8364;</div>
+                            <div style="font-size:.88rem;color:var(--text-muted);margin-bottom:1.75rem;">paiement unique · sans abonnement</div>
+                            <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty" style="display:block;text-align:center;">Demander maintenant</a>
+                            <div style="margin-top:.9rem;font-size:.78rem;color:var(--text-muted);">Support francophone 24h/24</div>
+                            <div style="margin-top:.6rem;font-size:.75rem;color:var(--text-muted);text-align:center;">*Le coût des SMS est facturé séparément selon les tarifs du fournisseur (si besoin).</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ROI COMPARISON -->
+        <section id="roi-compare" style="padding:5rem 1.5rem;background:rgba(0,0,0,.25);">
+          <div class="container" style="max-width:960px;">
+            <div style="text-align:center;margin-bottom:2.5rem;">
+              <span style="background:linear-gradient(135deg,#f59e0b,#ec4899);color:#fff;padding:.4rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:800;letter-spacing:1.5px;">📊 BILAN SUR 3 ANS</span>
+              <h2 style="font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;margin:1.25rem 0 .6rem;">Planity vs. Vermarkter :<br><span style="background:linear-gradient(135deg,#f59e0b,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Votre bilan sur 3 ans</span></h2>
+              <p style="color:var(--text-secondary);font-size:1rem;max-width:560px;margin:0 auto;">Déplacez les curseurs — voyez en direct combien Planity vous coûte.</p>
+            </div>
+
+            <!-- Sliders -->
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
+              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(245,158,11,.2);border-radius:16px;padding:1.4rem 1.6rem;">
+                <label style="font-size:.78rem;font-weight:700;color:rgba(245,158,11,.85);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:.5rem;">Réservations / mois</label>
+                <div style="font-size:2rem;font-weight:900;color:#f1f5f9;margin-bottom:.6rem;" id="roiBookingsVal">80</div>
+                <input type="range" id="roiBookings" min="20" max="300" value="80" step="10"
+                  style="width:100%;accent-color:#f59e0b;cursor:pointer;" oninput="updateROI()">
+                <div style="display:flex;justify-content:space-between;font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.3rem;"><span>20</span><span>300</span></div>
+              </div>
+              <div style="background:rgba(255,255,255,.04);border:1px solid rgba(245,158,11,.2);border-radius:16px;padding:1.4rem 1.6rem;">
+                <label style="font-size:.78rem;font-weight:700;color:rgba(245,158,11,.85);text-transform:uppercase;letter-spacing:.8px;display:block;margin-bottom:.5rem;">Ticket moyen (€)</label>
+                <div style="font-size:2rem;font-weight:900;color:#f1f5f9;margin-bottom:.6rem;" id="roiTicketVal">55 €</div>
+                <input type="range" id="roiTicket" min="20" max="150" value="55" step="5"
+                  style="width:100%;accent-color:#f59e0b;cursor:pointer;" oninput="updateROI()">
+                <div style="display:flex;justify-content:space-between;font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.3rem;"><span>20 €</span><span>150 €</span></div>
+              </div>
+            </div>
+
+            <!-- Summary stats -->
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.8rem;" id="roiStats">
+              <div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.22);border-radius:14px;padding:1.1rem;text-align:center;">
+                <div style="font-size:.68rem;font-weight:700;color:#fca5a5;text-transform:uppercase;letter-spacing:.6px;margin-bottom:.3rem;">Planity 3 ans</div>
+                <div style="font-size:1.7rem;font-weight:900;color:#ef4444;" id="roiTW3">—</div>
+              </div>
+              <div style="background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.22);border-radius:14px;padding:1.1rem;text-align:center;">
+                <div style="font-size:.68rem;font-weight:700;color:#fde68a;text-transform:uppercase;letter-spacing:.6px;margin-bottom:.3rem;">Vermarkter 3 ans</div>
+                <div style="font-size:1.7rem;font-weight:900;color:#f59e0b;" id="roiVM3">—</div>
+              </div>
+              <div style="background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.22);border-radius:14px;padding:1.1rem;text-align:center;">
+                <div style="font-size:.68rem;font-weight:700;color:#86efac;text-transform:uppercase;letter-spacing:.6px;margin-bottom:.3rem;">Vos économies</div>
+                <div style="font-size:1.7rem;font-weight:900;color:#22c55e;" id="roiSave">—</div>
+              </div>
+            </div>
+
+            <!-- Chart -->
+            <div style="background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:1.5rem;">
+              <canvas id="roiCanvas" height="280"></canvas>
+            </div>
+            <div style="text-align:center;margin-top:1.2rem;">
+              <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty">Démarrer pour 1 000 € — économisez <span id="roiSaveCta">jusqu'à 20 000 €</span></a>
+            </div>
+          </div>
+        </section>
+
+        <!-- TECH ADVANTAGE -->
+        <section id="tech" style="padding:5rem 1.5rem;background:rgba(139,92,246,.02);">
+            <div class="container" style="max-width:1100px;">
+                <div style="text-align:center;margin-bottom:3rem;">
+                    <span style="background:var(--beauty-grad);color:#fff;padding:.4rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:800;letter-spacing:1.5px;">&#9889; AVANTAGE TECHNOLOGIQUE</span>
+                    <h2 style="font-size:clamp(1.8rem,4vw,2.5rem);font-weight:900;margin:1.25rem 0 .8rem;">Ce que reçoit votre salon</h2>
+                    <p style="color:var(--text-secondary);font-size:1.05rem;max-width:600px;margin:0 auto;">Pas seulement un site web &#8212; un système d'exploitation complet pour votre salon de beauté.</p>
+                </div>
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;">
+                    <div style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);">
+                        <div style="font-size:2rem;margin-bottom:1rem;">&#128200;</div>
+                        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.6rem;color:var(--text-primary);">Contrôle financier</h3>
+                        <p style="color:var(--text-secondary);line-height:1.7;margin:0;font-size:.95rem;">Rapports quotidiens et hebdomadaires, ticket moyen par employé. Voyez où est l'argent &#8212; et où vous pouvez croître.</p>
+                    </div>
+                    <div style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);">
+                        <div style="font-size:2rem;margin-bottom:1rem;">&#128193;</div>
+                        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.6rem;color:var(--text-primary);">Catalogue de services prêt à l'emploi</h3>
+                        <p style="color:var(--text-secondary);line-height:1.7;margin:0;font-size:.95rem;">42 services préchargés avec prix &#8212; modifiables en 1 minute, sans développeur.</p>
+                    </div>
+                    <div style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);">
+                        <div style="font-size:2rem;margin-bottom:1rem;">&#129306;</div>
+                        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.6rem;color:var(--text-primary);">CRM clients</h3>
+                        <p style="color:var(--text-secondary);line-height:1.7;margin:0;font-size:.95rem;">Rappels automatiques par Telegram et e-mail (inclus). SMS &#8212; en option.</p>
+                    </div>
+                    <div style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);">
+                        <div style="font-size:2rem;margin-bottom:1rem;">&#127769;</div>
+                        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.6rem;color:var(--text-primary);">Pilote automatique 24h/24</h3>
+                        <p style="color:var(--text-secondary);line-height:1.7;margin:0;font-size:.95rem;">Les clients réservent eux-mêmes &#8212; la nuit, le week-end, pendant votre repos.</p>
+                    </div>
+                    <div style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);">
+                        <div style="font-size:2rem;margin-bottom:1rem;">&#128205;</div>
+                        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.6rem;color:var(--text-primary);">Publicité Google Maps</h3>
+                        <p style="color:var(--text-secondary);line-height:1.7;margin:0;font-size:.95rem;">Les nouveaux clients dans un rayon de 5 km vous trouvent en premier, pas vos concurrents.</p>
+                    </div>
+                    <div style="background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);">
+                        <div style="font-size:2rem;margin-bottom:1rem;">&#128640;</div>
+                        <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:.6rem;color:var(--text-primary);">Lancement en 7 jours</h3>
+                        <p style="color:var(--text-secondary);line-height:1.7;margin:0;font-size:.95rem;">Site web + App + Publicité en ligne dans la semaine suivant le paiement.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- THE DEAL -->
+        <section style="padding:4rem 1.5rem;">
+            <div class="container" style="max-width:860px;">
+                <div style="background:linear-gradient(135deg,rgba(236,72,153,.1),rgba(139,92,246,.1));border:1px solid rgba(236,72,153,.3);border-radius:28px;padding:3rem 2.5rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);text-align:center;">
+                    <div style="font-size:2.5rem;margin-bottom:1rem;">&#128293;</div>
+                    <h2 style="font-size:clamp(1.6rem,4vw,2.3rem);font-weight:900;margin-bottom:1rem;">
+                        Les agences EU demandent à partir de <span style="text-decoration:line-through;color:var(--text-muted);">5 000 &#8364;</span><br>
+                        Nous &#8212; <span class="beauty-text">1 000 &#8364; pour tout</span>
+                    </h2>
+                    <p style="color:var(--text-secondary);font-size:1.05rem;line-height:1.7;max-width:600px;margin:0 auto 2rem;">
+                        Un développement de ce niveau &#8212; application mobile, site web et publicité configurée &#8212; coûte dans les agences de Paris ou Lyon à partir de 5 000&#160;&#8364;. Chez nous, vous obtenez le pack complet pour <strong style="color:var(--text-primary);">1 000 &#8364;</strong> avec support francophone 24h/24.
+                    </p>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;max-width:620px;margin:0 auto 2rem;text-align:left;">
+                        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:1.5rem;">
+                            <div style="font-size:.75rem;font-weight:800;letter-spacing:1.5px;color:var(--text-muted);text-transform:uppercase;margin-bottom:1rem;">Agence EU</div>
+                            <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.9rem;color:var(--text-secondary);">
+                                <div>&#128241; Application mobile &#8212; <strong>2 000 &#8364;</strong></div>
+                                <div>&#127760; Site web &#8212; <strong>1 500 &#8364;</strong></div>
+                                <div>&#128205; Configuration pub &#8212; <strong>1 500 &#8364;</strong></div>
+                                <div style="border-top:1px solid rgba(255,255,255,.1);padding-top:.6rem;color:var(--text-muted);text-decoration:line-through;">Total : 5 000 &#8364;+</div>
+                            </div>
+                        </div>
+                        <div style="background:linear-gradient(135deg,rgba(236,72,153,.12),rgba(139,92,246,.12));border:1px solid rgba(236,72,153,.35);border-radius:16px;padding:1.5rem;">
+                            <div style="font-size:.75rem;font-weight:800;letter-spacing:1.5px;color:#ec4899;text-transform:uppercase;margin-bottom:1rem;">Vermarkter</div>
+                            <div style="display:flex;flex-direction:column;gap:.6rem;font-size:.9rem;color:var(--text-secondary);">
+                                <div>&#128241; &#8212; <strong style="color:var(--text-primary);">&#10003; inclus</strong></div>
+                                <div>&#127760; &#8212; <strong style="color:var(--text-primary);">&#10003; inclus</strong></div>
+                                <div>&#128205; &#8212; <strong style="color:var(--text-primary);">&#10003; inclus</strong></div>
+                                <div style="border-top:1px solid rgba(236,72,153,.3);padding-top:.6rem;font-weight:900;font-size:1.05rem;" class="beauty-text">Total : 1 000 &#8364;</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty">Démarrer pour 1 000 &#8364;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section id="reviews" style="padding:5rem 1.5rem;background:rgba(255,255,255,.015);">
+            <div class="container" style="max-width:1100px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">Ce que disent nos clients beauté</h2>
+                <div class="review-grid">
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem;font-style:italic;">&ldquo;Depuis la nouvelle app, 73 % de mes clients réservent en ligne. Mes employées n'ont plus d'heures creuses — l'agenda est toujours plein. ROI atteint en 6 semaines.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">Elena H.</div><div style="font-size:.83rem;color:var(--text-muted);">Propriétaire, Beauty Lounge Paris</div></div></div></div>
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem;font-style:italic;">&ldquo;La publicité locale nous a propulsés dans le top 3 sur Google Maps. De nouveaux clients arrivent chaque jour — sans recommandations.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">Marie K.</div><div style="font-size:.83rem;color:var(--text-muted);">Studio coiffure, Lyon</div></div></div></div>
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem;font-style:italic;">&ldquo;Je pensais que 1 000 € pour une app, c'était cher. Aujourd'hui je gagne ce montant en plus dès la première semaine.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">Sophie L.</div><div style="font-size:.83rem;color:var(--text-muted);">Institut de beauté, Nice</div></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALCULATOR -->
+        <section id="calculator-section" style="padding:5rem 1.5rem;">
+            <div class="container" style="max-width:900px;">
+                <h2 class="calculator__title">Prévision de profits et ROI pour votre business 📊</h2>
+                <div class="calculator">
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
+                        <div class="calc-field">
+                            <label class="calc-label">Plateforme</label>
+                            <select id="platformSelector" class="calc-select">
+                                <option value="google">Google Ads</option>
+                                <option value="meta">Meta Ads</option>
+                                <option value="tiktok">TikTok Ads</option>
+                            </select>
+                        </div>
+                        <div class="calc-field">
+                            <label class="calc-label">Niche</label>
+                            <select id="nicheSelector" class="calc-select">
+                                <option value="beauty" selected>Beauty / Salons</option>
+                                <option value="custom">Personnalisé</option>
+                                <option value="ecommerce">E-Commerce</option>
+                                <option value="expert">Expert / B2B</option>
+                                <option value="realestate">Immobilier</option>
+                                <option value="auto">Auto</option>
+                                <option value="construction">Construction</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display:grid;gap:1.5rem;margin-bottom:2rem;">
+                        <div class="calc-row">
+                            <label class="calc-label">Budget (&#8364;) &#8212; <span id="budgetValue">500</span></label>
+                            <input type="range" id="budgetSlider" class="calc-slider" min="100" max="10000" value="500" step="50">
+                            <input type="number" id="budgetInput" class="calc-number" value="500" min="100" max="10000">
+                        </div>
+                        <div class="calc-row">
+                            <label class="calc-label">CPC (&#8364;) &#8212; <span id="cpcValue">0.5</span></label>
+                            <input type="range" id="cpcSlider" class="calc-slider" min="0.1" max="10" value="0.5" step="0.1">
+                            <input type="number" id="cpcInput" class="calc-number" value="0.5" min="0.1" max="10" step="0.1">
+                        </div>
+                        <div class="calc-row">
+                            <label class="calc-label">CR (%) &#8212; <span id="crValue">3.5</span></label>
+                            <input type="range" id="crSlider" class="calc-slider" min="0.1" max="20" value="3.5" step="0.1">
+                            <input type="number" id="crInput" class="calc-number" value="3.5" min="0.1" max="20" step="0.1">
+                        </div>
+                        <div class="calc-row">
+                            <label class="calc-label">Revenu moyen par visite (&#8364;) &#8212; <span id="aovValue">80</span></label>
+                            <input type="range" id="aovSlider" class="calc-slider" min="10" max="2000" value="80" step="5">
+                            <input type="number" id="aovInput" class="calc-number" value="80" min="10" max="2000">
+                        </div>
+                        <div class="calc-row">
+                            <label class="calc-label">Marge (%) &#8212; <span id="marginValue">65</span></label>
+                            <input type="range" id="marginSlider" class="calc-slider" min="1" max="99" value="65">
+                            <input type="number" id="marginInput" class="calc-number" value="65" min="1" max="99">
+                        </div>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;">
+                        <div class="calc-result-item glass" style="padding:1.2rem;border-radius:16px;text-align:center;">
+                            <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:.3rem;">Clics</div>
+                            <div id="resultClicks" style="font-size:1.4rem;font-weight:800;">&#8212;</div>
+                        </div>
+                        <div class="calc-result-item glass" style="padding:1.2rem;border-radius:16px;text-align:center;">
+                            <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:.3rem;">Leads</div>
+                            <div id="resultLeads" style="font-size:1.4rem;font-weight:800;">&#8212;</div>
+                        </div>
+                        <div class="calc-result-item glass" style="padding:1.2rem;border-radius:16px;text-align:center;">
+                            <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:.3rem;">CPA</div>
+                            <div id="resultCPA" style="font-size:1.4rem;font-weight:800;">&#8212;</div>
+                        </div>
+                        <div class="calc-result-item glass" style="padding:1.2rem;border-radius:16px;text-align:center;">
+                            <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:.3rem;">ROAS</div>
+                            <div id="resultROAS" style="font-size:1.4rem;font-weight:800;">&#8212;</div>
+                        </div>
+                        <div class="calc-result-item glass" style="padding:1.2rem;border-radius:16px;text-align:center;border:1px solid rgba(236,72,153,.3);">
+                            <div style="font-size:.78rem;color:var(--text-muted);margin-bottom:.3rem;">Profit</div>
+                            <div id="resultProfit" style="font-size:1.4rem;font-weight:800;color:#ec4899;">&#8212;</div>
+                        </div>
+                    </div>
+                    <p id="niche-disclaimer" style="text-align:center;font-size:.82rem;color:var(--text-muted);margin-top:1.25rem;"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" style="padding:5rem 1.5rem;background:rgba(255,255,255,.015);">
+            <div class="container" style="max-width:800px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">Questions fréquentes</h2>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Combien de temps dure le développement ?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Le site web est prêt en 3–5 jours, l'application en 7–14 jours. La publicité locale démarre dès le premier jour.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Ai-je besoin de compétences techniques ?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Non. Nous configurons tout et vous formons en 1 heure. Ensuite tout fonctionne automatiquement.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Que se passe-t-il après l'achat ?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Vous recevez un appel d'onboarding dans les 24 heures. Nous démarrons immédiatement.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Y a-t-il des frais récurrents ?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Le forfait est unique. Suivi mensuel optionnel à partir de 99 €/mois.</p></div></div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="contact" style="padding:6rem 1.5rem;text-align:center;">
+            <div class="container" style="max-width:680px;">
+                <h2 style="font-size:clamp(1.9rem,5vw,2.9rem);font-weight:900;margin-bottom:1rem;">Prêt à remplir votre agenda ?</h2>
+                <p style="color:var(--text-secondary);font-size:1.1rem;margin-bottom:2.25rem;">Consultation gratuite — sans pression commerciale.</p>
+                <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty">Demander une consultation gratuite</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer style="background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);padding:3rem 1.5rem 2rem;">
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem;">
+                <a href="../../../fr/index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ec4899" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    <span style="font-weight:800;font-size:20px;color:white;">Vermarkter</span>
+                </a>
+                <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+                    <a href="../../../fr/index.html" style="color:var(--text-muted);text-decoration:none;font-size:.9rem;">Accueil</a>
+                    <a href="../../../fr/contact.html" style="color:var(--text-muted);text-decoration:none;font-size:.9rem;">Contact</a>
+                    <a href="https://t.me/my_salon_eu" target="_blank" style="color:var(--text-muted);text-decoration:none;font-size:.9rem;">Telegram</a>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;text-align:center;color:var(--text-muted);font-size:.83rem;">
+                © 2025 Vermarkter. Performance Marketing pour votre business.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SOCIAL FLOAT -->
+    <div class="social-float" style="position:fixed;bottom:2rem;right:1.5rem;display:flex;flex-direction:column;gap:.75rem;z-index:999;">
+        <a href="https://t.me/my_salon_eu" target="_blank" aria-label="Telegram" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#2AABEE,#229ED9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(42,171,238,.45);transition:transform .25s;text-decoration:none;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+        </a>
+        <a href="https://wa.me/4915510300538" target="_blank" aria-label="WhatsApp" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45);transition:transform .25s;text-decoration:none;font-size:24px;line-height:1;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">&#x1F4AC;</a>
+    </div>
+
+    <!-- COOKIE BANNER -->
+    <div class="cookie-banner" id="cookieBanner"></div>
+
+    <!-- SCROLL TO TOP -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">&#8593;</button>
+
+    <!-- SCRIPTS -->
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/calculator.js"></script>
+    <script src="../../../js/consent.js"></script>
+    <script src="../../../js/lightbox.js"></script>
+
+    <!-- Personalized headline: ?s=SalonName → "Solution IT exclusive pour SalonName" -->
+    <script>
+    (function () {
+      var raw = new URLSearchParams(window.location.search).get('s');
+      if (!raw) return;
+      var name = raw.trim().slice(0, 60);
+      if (!name) return;
+
+      var safeName = name
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+
+      function applyName() {
+        var h1 = document.querySelector('section.hero h1')
+              || document.querySelector('.hero h1')
+              || document.querySelector('main h1')
+              || document.querySelector('h1');
+        if (!h1) return false;
+        if (h1.getAttribute('data-personalized') === '1') return true;
+        h1.innerHTML =
+          'Solution IT exclusive pour<br>' +
+          '<span class="beauty-text">' + safeName + '</span>';
+        h1.setAttribute('data-personalized', '1');
+        document.title = 'Solution IT exclusive pour ' + name + ' — Vermarkter';
+        return true;
+      }
+
+      try { if (applyName()) return; } catch (e) {}
+
+      document.addEventListener('DOMContentLoaded', function () {
+        try { if (applyName()) return; } catch (e) {}
+      });
+
+      window.addEventListener('load', function () {
+        try { if (applyName()) return; } catch (e) {}
+      });
+
+      var _n = 0;
+      var _t = setInterval(function () {
+        try {
+          if (applyName() || ++_n >= 30) {
+            clearInterval(_t);
+            if (_n >= 30 && !document.querySelector('[data-personalized="1"]')) {
+              var any = document.querySelector('h1');
+              if (any) {
+                any.innerHTML = 'Solution IT exclusive pour<br><span class="beauty-text">' + safeName + '</span>';
+                any.setAttribute('data-personalized', 'emergency');
+                document.title = 'Solution IT exclusive pour ' + name + ' — Vermarkter';
+              }
+            }
+          }
+        } catch (e) { clearInterval(_t); }
+      }, 100);
+    })();
+    </script>
+
+    <!-- SCARCITY TICKER -->
+    <div id="scarcityTicker" style="display:none;position:fixed;bottom:1.5rem;left:1.5rem;z-index:9999;max-width:340px;background:rgba(10,10,20,.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(245,158,11,.35);border-radius:16px;padding:1rem 1.2rem 1rem 1rem;box-shadow:0 8px 32px rgba(0,0,0,.45);animation:scarcityIn .45s cubic-bezier(.22,1,.36,1);">
+      <button onclick="this.parentElement.style.display='none'" style="position:absolute;top:.5rem;right:.6rem;background:transparent;border:none;color:rgba(255,255,255,.35);font-size:1rem;cursor:pointer;line-height:1;">&#10005;</button>
+      <div style="display:flex;align-items:flex-start;gap:.7rem;">
+        <div style="font-size:1.4rem;flex-shrink:0;margin-top:.05rem;">&#128293;</div>
+        <div>
+          <div style="font-size:.72rem;font-weight:800;color:#f59e0b;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.3rem;">Statut actuel</div>
+          <div style="font-size:.85rem;color:#f1f5f9;line-height:1.5;">Plus que <strong style="color:#f59e0b;">2 places d'onboarding</strong> disponibles à Nice en mai.</div>
+          <a href="https://t.me/my_salon_eu" target="_blank" style="display:inline-block;margin-top:.6rem;font-size:.75rem;font-weight:700;color:#f59e0b;text-decoration:none;border:1px solid rgba(245,158,11,.4);border-radius:6px;padding:.22rem .65rem;transition:all .2s;" onmouseover="this.style.background='rgba(245,158,11,.12)'" onmouseout="this.style.background='transparent'">Réserver maintenant →</a>
+        </div>
+      </div>
+    </div>
+    <style>
+    @keyframes scarcityIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    </style>
+
+    <!-- ROI CHART + SCARCITY INIT -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+    <script>
+    setTimeout(function() {
+      var t = document.getElementById('scarcityTicker');
+      if (t) t.style.display = 'block';
+    }, 5000);
+
+    var roiChart = null;
+
+    function calcROI(bookings, ticket) {
+      var months = 36;
+      var twCommission = 0.26;
+      var twShare = 0.35;
+      var twMonthlyFee = 39;
+      var vmSetup = 1000;
+      var monthlyRevenue = bookings * ticket;
+      var twMonthly = twMonthlyFee + (monthlyRevenue * twShare * twCommission);
+
+      var labels = [], tw = [], vm = [];
+      var twCum = 0, vmCum = vmSetup;
+      for (var m = 1; m <= months; m++) {
+        twCum += twMonthly;
+        labels.push('M' + m);
+        tw.push(Math.round(twCum));
+        vm.push(Math.round(vmCum));
+      }
+      return { labels: labels, tw: tw, vm: vm,
+        twTotal: Math.round(twCum), vmTotal: Math.round(vmCum),
+        saving: Math.round(twCum - vmCum) };
+    }
+
+    function updateROI() {
+      var bookings = parseInt(document.getElementById('roiBookings').value);
+      var ticket   = parseInt(document.getElementById('roiTicket').value);
+      document.getElementById('roiBookingsVal').textContent = bookings;
+      document.getElementById('roiTicketVal').textContent = ticket + ' €';
+      var d = calcROI(bookings, ticket);
+      document.getElementById('roiTW3').textContent = '€' + d.twTotal.toLocaleString('fr-FR');
+      document.getElementById('roiVM3').textContent = '€' + d.vmTotal.toLocaleString('fr-FR');
+      document.getElementById('roiSave').textContent = '€' + d.saving.toLocaleString('fr-FR');
+      document.getElementById('roiSaveCta').textContent = '€' + d.saving.toLocaleString('fr-FR');
+
+      if (roiChart) {
+        roiChart.data.labels = d.labels;
+        roiChart.data.datasets[0].data = d.tw;
+        roiChart.data.datasets[1].data = d.vm;
+        roiChart.update('none');
+      } else {
+        var ctx = document.getElementById('roiCanvas').getContext('2d');
+        roiChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: d.labels,
+            datasets: [
+              { label: 'Planity (cumulatif)',
+                data: d.tw,
+                borderColor: '#6b7280',
+                backgroundColor: 'rgba(107,114,128,.12)',
+                borderWidth: 2.5, pointRadius: 0, tension: 0.35, fill: true },
+              { label: 'Vermarkter (cumulatif)',
+                data: d.vm,
+                borderColor: '#f59e0b',
+                backgroundColor: 'rgba(245,158,11,.1)',
+                borderWidth: 2.5, pointRadius: 0, tension: 0.35, fill: true }
+            ]
+          },
+          options: {
+            responsive: true,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+              legend: { labels: { color: '#f1f5f9', font: { size: 12 }, boxWidth: 14 } },
+              tooltip: { callbacks: { label: function(c) {
+                return c.dataset.label + ': €' + c.parsed.y.toLocaleString('fr-FR');
+              }}}
+            },
+            scales: {
+              x: { ticks: { color: 'rgba(255,255,255,.3)', maxTicksLimit: 12, font: { size: 10 } },
+                   grid: { color: 'rgba(255,255,255,.04)' } },
+              y: { ticks: { color: 'rgba(255,255,255,.3)',
+                             callback: function(v){ return '€' + v.toLocaleString('fr-FR'); },
+                             font: { size: 10 } },
+                   grid: { color: 'rgba(255,255,255,.04)' } }
+            }
+          }
+        });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      updateROI();
+    });
+    </script>
+</body>
+</html>
