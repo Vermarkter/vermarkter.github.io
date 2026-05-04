@@ -125,6 +125,8 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 .scalled{background:rgba(59,130,246,.15);color:#60a5fa}
 .sbooked{background:rgba(16,185,129,.18);color:#34d399}
 .ssel{background:rgba(255,255,255,.045);border:1px solid var(--border);border-radius:5px;color:var(--muted);font-size:.63rem;padding:.18rem .36rem;cursor:pointer;font-family:inherit;margin-top:.22rem;display:block}
+.ssel-inline{width:100%;margin-top:0;font-size:.7rem;font-weight:700;padding:.32rem .5rem;border:1.5px solid rgba(255,255,255,.13);color:var(--text);background:rgba(255,255,255,.06);border-radius:6px;cursor:pointer;transition:border-color .18s}
+.ssel-inline:focus,.ssel-inline:hover{border-color:rgba(236,72,153,.5);outline:none}
 /* CHAT / AB columns */
 .chat-cell{max-width:220px;min-width:120px;font-size:.7rem;line-height:1.5;color:#d1d5db;overflow-wrap:break-word;word-break:break-word}
 .chat-msg{background:rgba(139,92,246,.12);border-left:2px solid rgba(139,92,246,.5);padding:.3rem .5rem;border-radius:0 5px 5px 0;margin-bottom:.25rem;color:#e2e8f0;word-break:break-word;overflow-wrap:break-word}
@@ -284,11 +286,11 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
   <div class="sc"><div class="sn"   id="statTotal">—</div><div class="sl">Всього</div></div>
   <div class="sc"><div class="sn g" id="statWa">—</div><div class="sl">WhatsApp</div></div>
   <div class="sc"><div class="sn c" id="statEmail">—</div><div class="sl">Email</div></div>
-  <div class="sc"><div class="sn a" id="statSent">—</div><div class="sl">WA Надіслано</div></div>
-  <div class="sc"><div class="sn c" id="statEmailSent">—</div><div class="sl">Email Надіслано</div></div>
-  <div class="sc"><div class="sn"  id="statReady">—</div><div class="sl">Ready to Send</div></div>
-  <div class="sc"><div class="sn g" id="statReplied">—</div><div class="sl">Відповіли</div></div>
-  <div class="sc"><div class="sn a" id="statBooked">—</div><div class="sl">Заброньовано</div></div>
+  <div class="sc"><div class="sn a" id="statSent">—</div><div class="sl">НАДІСЛАНО WA</div></div>
+  <div class="sc"><div class="sn c" id="statEmailSent">—</div><div class="sl">НАДІСЛАНО EMAIL</div></div>
+  <div class="sc"><div class="sn"  id="statReady">—</div><div class="sl">ГОТОВО</div></div>
+  <div class="sc"><div class="sn g" id="statReplied">—</div><div class="sl">ВІДПОВІЛИ</div></div>
+  <div class="sc"><div class="sn a" id="statBooked">—</div><div class="sl">ЗАБРОНЬОВАНО</div></div>
 </div>
 
 <div class="cbar">
@@ -366,13 +368,15 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
   </select>
   <select id="fStatus" onchange="renderTable()">
     <option value="">Всі статуси</option>
-    <option value="new">Новий</option>
-    <option value="READY TO SEND">Ready to Send</option>
-    <option value="sent">WA Надіслано</option>
-    <option value="EMAIL SENT">Email Надіслано</option>
-    <option value="replied">Відповіли</option>
-    <option value="CALLED">Зателефонували</option>
-    <option value="booked">Заброньовано</option>
+    <option value="new">НОВИЙ</option>
+    <option value="READY TO SEND">ГОТОВО</option>
+    <option value="sent">НАДІСЛАНО (WA)</option>
+    <option value="EMAIL SENT">НАДІСЛАНО EMAIL</option>
+    <option value="replied">ВІДПОВІЛИ</option>
+    <option value="interested">ЦІКАВО</option>
+    <option value="rejected">ВІДМОВА</option>
+    <option value="CALLED">ЗАТЕЛЕФОНУВАЛИ</option>
+    <option value="booked">ЗАБРОНЬОВАНО</option>
   </select>
 </div>
 
@@ -581,7 +585,7 @@ function saveNote(id) {
 function updateCounter() {
   var today = new Date().toISOString().slice(0, 10);
   var st   = SALONS.filter(function(s) { return s.last_contacted && s.last_contacted.slice(0,10) === today; }).length;
-  var done = SALONS.filter(function(s) { return s.status === 'sent' || s.status === 'replied' || s.status === 'EMAIL SENT' || s.status === 'booked'; }).length;
+  var done = SALONS.filter(function(s) { return s.status === 'sent' || s.status === 'replied' || s.status === 'EMAIL SENT' || s.status === 'booked' || s.status === 'interested' || s.status === 'rejected'; }).length;
   document.getElementById('sentToday').textContent    = st;
   document.getElementById('progressFill').style.width = Math.min(100, (st / DAILY_MAX) * 100) + '%';
   document.getElementById('cTotal').textContent = SALONS.length;
@@ -774,7 +778,7 @@ function renderTable() {
   empty.style.display = 'none';
 
   tbody.innerHTML = rows.map(function(s, vi) {
-    var isDone = s.status === 'sent' || s.status === 'replied' || s.status === 'EMAIL SENT' || s.status === 'booked';
+    var isDone = s.status === 'sent' || s.status === 'replied' || s.status === 'EMAIL SENT' || s.status === 'booked' || s.status === 'interested' || s.status === 'rejected';
     var fresh  = isFresh(s) && isNewStatus(s);
     var isChecked = !!SELECTED[s.id];
 
@@ -856,25 +860,33 @@ function renderTable() {
 
     // COL 11 — Статус (expanded)
     var STATUS_MAP = {
-      'sent':          { label: 'WA Надіслано',   cls: 'ssent' },
-      'replied':       { label: 'Відповіли',       cls: 'sreplied' },
-      'READY TO SEND': { label: 'Ready to Send',   cls: 'sready' },
-      'EMAIL SENT':    { label: 'Email Надіслано', cls: 'semailsent' },
-      'CALLED':        { label: 'Зателефонували',  cls: 'scalled' },
-      'booked':        { label: 'Заброньовано',    cls: 'sbooked' }
+      'sent':          { label: 'НАДІСЛАНО',    cls: 'ssent' },
+      'replied':       { label: 'ВІДПОВІЛИ',    cls: 'sreplied' },
+      'READY TO SEND': { label: 'ГОТОВО',       cls: 'sready' },
+      'EMAIL SENT':    { label: 'НАДІСЛАНО EMAIL', cls: 'semailsent' },
+      'CALLED':        { label: 'ЗАТЕЛЕФОНУВАЛИ', cls: 'scalled' },
+      'booked':        { label: 'ЗАБРОНЬОВАНО', cls: 'sbooked' },
+      'interested':    { label: 'ЦІКАВО',       cls: 'sreplied' },
+      'rejected':      { label: 'ВІДМОВА',      cls: 'snew' }
     };
-    var sm = STATUS_MAP[s.status] || { label: 'Новий', cls: 'snew' };
+    var sm = STATUS_MAP[s.status] || { label: 'НОВИЙ', cls: 'snew' };
+    var selOpts = [
+      ['new',          'НОВИЙ'],
+      ['READY TO SEND','ГОТОВО'],
+      ['sent',         'НАДІСЛАНО (WA)'],
+      ['EMAIL SENT',   'НАДІСЛАНО EMAIL'],
+      ['replied',      'ВІДПОВІЛИ'],
+      ['interested',   'ЦІКАВО'],
+      ['rejected',     'ВІДМОВА'],
+      ['CALLED',       'ЗАТЕЛЕФОНУВАЛИ'],
+      ['booked',       'ЗАБРОНЬОВАНО']
+    ];
+    var curVal = s.status || 'new';
     var c11 = '<td>'
-      + '<span class="sbadge ' + sm.cls + '">' + sm.label + '</span>'
-      + '<select class="ssel" onchange="markStatus(' + s.id + ',this.value)">'
-      + '<option value="">— статус —</option>'
-      + '<option value="new">Новий</option>'
-      + '<option value="READY TO SEND">Ready to Send</option>'
-      + '<option value="sent">WA Надіслано</option>'
-      + '<option value="EMAIL SENT">Email Надіслано</option>'
-      + '<option value="replied">Відповіли</option>'
-      + '<option value="CALLED">Зателефонували</option>'
-      + '<option value="booked">Заброньовано</option>'
+      + '<select class="ssel ssel-inline" onchange="markStatus(' + s.id + ',this.value)">'
+      + selOpts.map(function(o){
+          return '<option value="' + o[0] + '"' + (o[0] === curVal ? ' selected' : '') + '>' + o[1] + '</option>';
+        }).join('')
       + '</select>'
       + '</td>';
 
