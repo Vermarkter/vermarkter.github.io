@@ -130,9 +130,9 @@ _BASE_RULES = f"""
 
 AUSGABE-REGELN (ALLE PFLICHT):
 - MAXIMAL 480 Zeichen — zähle exakt, kürze gnadenlos
-- Angebot: Website + App + WhatsApp-Assistent — einmalig 1 000 €
-- CTA (PFLICHT): „Soll ich Ihnen ein 60-Sekunden-Video-Demo dazu schicken?"
-- Link: https://vermarkter.vercel.app/services/beauty-industry/de/
+- Angebot: Website + App + KI-Rezeption auf 10 Sprachen — einmalig 1 000 €
+- CTA (PFLICHT, exakt so): „Soll ich Ihnen ein Video schicken?"
+- KEIN Link, KEINE URL — nur Text
 - Unterschrift: www.my-salon.eu (KEIN Name, nur die Domain)
 - SSL-Treffer NUR wenn ssl=n in den Notizen
 - Konkurrent NUR wenn explizit in den Notizen — dann namentlich nennen
@@ -151,7 +151,7 @@ STRUKTUR — „Proблема-zuerst":
 4. CTA
 
 Beispiel:
-„Guten Tag, Ihre Website wird aktuell von Google als „unsicher" eingestuft. Das schreckt ca. 70 % der Besucher ab, noch bevor sie Ihre Arbeit sehen. Wir bieten Website + App + WhatsApp-Assistent für einmalig 1 000 €. Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Soll ich Ihnen ein 60-Sekunden-Video-Demo dazu schicken?"
+„Guten Tag, Ihre Website wird aktuell von Google als „unsicher" eingestuft. Das schreckt ca. 70 % der Besucher ab, noch bevor sie Ihre Arbeit sehen. Wir bieten Website + App + KI-Rezeption auf 10 Sprachen für einmalig 1 000 €. Soll ich Ihnen ein Video schicken? www.my-salon.eu"
 {_BASE_RULES}""",
 
     'story': f"""Du bist ein elitärer Berater für digitale Transformation. Stil: Modern Professional.
@@ -164,7 +164,7 @@ STRUKTUR — „Geschichte-zuerst":
 4. Angebot + CTA
 
 Beispiel:
-„Guten Tag, ein Barbershop in Schwabing hat nach Einführung unserer App ca. 30 % mehr Buchungen pro Woche verzeichnet — ohne zusätzliche Werbung. Das können wir auch für Sie umsetzen: Website + App + WhatsApp-Assistent, einmalig 1 000 €. Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Soll ich Ihnen ein 60-Sekunden-Video-Demo dazu schicken?"
+„Guten Tag, ein Barbershop in Schwabing hat nach Einführung unserer App ca. 30 % mehr Buchungen pro Woche verzeichnet — ohne zusätzliche Werbung. Das können wir auch für Sie umsetzen: Website + App + KI-Rezeption auf 10 Sprachen, einmalig 1 000 €. Soll ich Ihnen ein Video schicken? www.my-salon.eu"
 {_BASE_RULES}""",
 
     'empathy': f"""Du bist ein elitärer Berater für digitale Transformation. Stil: Modern Professional.
@@ -176,7 +176,7 @@ STRUKTUR — „Empathie-zuerst":
 4. CTA
 
 Beispiel:
-„Guten Tag, ein gut geführter Salon verdient Kunden, die ihn auch online finden und buchen können. Aktuell erschwert Ihre fehlende Online-Buchung genau das — Kunden, die nach 18 Uhr suchen, gehen zum Nächsten. Wir lösen das: Website + App + WhatsApp-Assistent, einmalig 1 000 €. Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Soll ich Ihnen ein 60-Sekunden-Video-Demo dazu schicken?"
+„Guten Tag, ein gut geführter Salon verdient Kunden, die ihn auch online finden und buchen können. Aktuell erschwert Ihre fehlende Online-Buchung genau das — Kunden, die nach 18 Uhr suchen, gehen zum Nächsten. Wir lösen das: Website + App + KI-Rezeption auf 10 Sprachen, einmalig 1 000 €. Soll ich Ihnen ein Video schicken? www.my-salon.eu"
 {_BASE_RULES}""",
 }
 
@@ -254,10 +254,11 @@ def fetch_leads(city='München', limit=20, offset=0, ids=None, force=False):
             url += '&status=eq.new'
     else:
         city_enc = urllib.parse.quote(city, safe='')
+        status_filter = '' if force else '&status=eq.new'
         url = (f"{SB_URL}/rest/v1/beauty_leads"
                f"?select={FIELDS}"
                f"&city=eq.{city_enc}"
-               f"&status=eq.new"
+               f"{status_filter}"
                f"&order=id.asc"
                f"&limit={limit}"
                f"&offset={offset}")

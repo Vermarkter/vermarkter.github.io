@@ -126,9 +126,9 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 .sbooked{background:rgba(16,185,129,.18);color:#34d399}
 .ssel{background:rgba(255,255,255,.045);border:1px solid var(--border);border-radius:5px;color:var(--muted);font-size:.63rem;padding:.18rem .36rem;cursor:pointer;font-family:inherit;margin-top:.22rem;display:block}
 /* CHAT / AB columns */
-.chat-cell{max-width:200px;font-size:.7rem;line-height:1.45;color:var(--muted)}
-.chat-msg{background:rgba(139,92,246,.08);border-left:2px solid rgba(139,92,246,.35);padding:.25rem .45rem;border-radius:0 5px 5px 0;margin-bottom:.22rem;word-break:break-word}
-.chat-empty{color:rgba(255,255,255,.15);font-size:.66rem}
+.chat-cell{max-width:220px;min-width:120px;font-size:.7rem;line-height:1.5;color:#d1d5db;overflow-wrap:break-word;word-break:break-word}
+.chat-msg{background:rgba(139,92,246,.12);border-left:2px solid rgba(139,92,246,.5);padding:.3rem .5rem;border-radius:0 5px 5px 0;margin-bottom:.25rem;color:#e2e8f0;word-break:break-word;overflow-wrap:break-word}
+.chat-empty{color:rgba(255,255,255,.3);font-size:.66rem}
 .ab-cell{text-align:center;min-width:70px}
 .ab-badge{display:inline-block;font-size:.62rem;font-weight:800;padding:.18rem .5rem;border-radius:4px;letter-spacing:.5px}
 .ab-a{background:rgba(236,72,153,.16);color:var(--pink)}
@@ -140,9 +140,10 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 @keyframes pulse{0%,100%{box-shadow:0 0 6px rgba(245,158,11,.35)}50%{box-shadow:0 0 12px rgba(245,158,11,.65)}}
 
 /* NOTES */
-.nwrap{display:flex;flex-direction:column;gap:.25rem}
-.nta{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:5px;color:var(--text);font-size:.73rem;font-family:inherit;padding:.3rem .45rem;resize:vertical;min-height:44px;outline:none;line-height:1.4}
-.nta:focus{border-color:rgba(99,102,241,.45);background:rgba(255,255,255,.06)}
+.nwrap{display:flex;flex-direction:column;gap:.25rem;min-width:0}
+.nta{width:100%;box-sizing:border-box;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:5px;color:#f1f5f9;font-size:.76rem;font-family:inherit;padding:.4rem .55rem;resize:vertical;min-height:64px;outline:none;line-height:1.5}
+.nta:focus{border-color:rgba(99,102,241,.65);background:rgba(255,255,255,.09)}
+.nta::placeholder{color:rgba(255,255,255,.3)}
 
 /* OVERLAY */
 .overlay{text-align:center;padding:4rem 1rem;color:var(--muted)}
@@ -825,7 +826,7 @@ function renderTable() {
 
     // COL 8 — Нотатки
     var noteVal = esc(s.notes || '');
-    var c8 = '<td style="min-width:190px">'
+    var c8 = '<td style="min-width:190px;max-width:240px">'
       + '<div class="nwrap">'
       + '<textarea class="nta" id="note-' + s.id + '" rows="2" placeholder="Додати нотатку...">' + noteVal + '</textarea>'
       + '<button class="btn bsave" onclick="saveNote(' + s.id + ')">💾 Зберегти</button>'
