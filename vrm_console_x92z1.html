@@ -102,6 +102,7 @@ tbody tr.isnew:hover{background:rgba(245,158,11,.08)}
 tbody tr.selected{background:rgba(37,211,102,.07)!important}
 tbody td{padding:.52rem .75rem;vertical-align:top}
 .tnum{color:var(--muted);font-size:.7rem;text-align:center;vertical-align:middle;width:38px}
+.tid{color:rgba(255,255,255,.28);font-size:.65rem;text-align:center;vertical-align:middle;width:46px;font-variant-numeric:tabular-nums;letter-spacing:.3px}
 .chk-cell{text-align:center;vertical-align:middle;width:36px}
 input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#25D366}
 
@@ -409,6 +410,7 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
         <th class="chk-col" id="chkColHdr" style="display:none">
           <input type="checkbox" id="selAll" onclick="toggleSelectAll()" title="Виділити всі">
         </th>
+        <th style="width:46px;color:rgba(236,72,153,.5)"># ID</th>
         <th style="width:38px">№</th>
         <th style="min-width:175px">Назва / Сайт</th>
         <th style="width:130px" class="hide-mob">Район</th>
@@ -774,6 +776,9 @@ function renderTable() {
         + '</td>'
       : '';
 
+    // COL 0b — ID
+    var cID = '<td class="tid">' + s.id + '</td>';
+
     // COL 1 — №
     var c1 = '<td class="tnum">' + (vi + 1) + '</td>';
 
@@ -864,7 +869,7 @@ function renderTable() {
       + '</td>';
 
     var trCls = (isDone ? 'done' : '') + (fresh ? ' isnew' : '') + (isChecked ? ' selected' : '');
-    return '<tr class="' + trCls.trim() + '">' + c0 + c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 + c9 + c10 + c11 + '</tr>';
+    return '<tr class="' + trCls.trim() + '">' + c0 + cID + c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 + c9 + c10 + c11 + '</tr>';
   }).join('');
 }
 
