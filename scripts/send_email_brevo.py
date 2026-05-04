@@ -51,18 +51,22 @@ if not BREVO_KEY or 'PASTE' in BREVO_KEY:
 
 # ── Supabase ──────────────────────────────────────────────────────────────────
 
-_SB_READ  = {'apikey': SB_KEY, 'Authorization': f'Bearer {SB_KEY}'}
-_SB_PATCH = {**_SB_READ, 'Content-Type': 'application/json; charset=utf-8', 'Prefer': 'return=minimal'}
+_SB_READ  = {
+    'apikey':        SB_KEY.strip(),
+    'Authorization': f'Bearer {SB_KEY.strip()}',
+}
+_SB_PATCH = {
+    **_SB_READ,
+    'Content-Type': 'application/json; charset=utf-8',
+    'Prefer':       'return=minimal',
+}
 
 
 def sb_get(path, params=None):
-    url = f"{SB_URL}/rest/v1/{path}"
+    url = f"{SB_URL.strip()}/rest/v1/{path}"
     if params:
-        qs = '&'.join(
-            f"{urllib.parse.quote(str(k), safe='')}={urllib.parse.quote(str(v), safe=':.,*()!-_~')}"
-            for k, v in params.items()
-        )
-        url += '?' + qs
+        url += '?' + urllib.parse.urlencode(params, quote_via=urllib.parse.quote, safe='().,*:!-')
+    print(f"DEBUG URL: {url}", file=sys.stderr)
     with urllib.request.urlopen(urllib.request.Request(url, headers=_SB_READ), timeout=20) as r:
         return json.loads(r.read().decode('utf-8'))
 
