@@ -112,10 +112,10 @@ def collect_supabase():
     return {
         'online':           ok,
         'total_leads':      _sb_count(''),
-        'berlin_ready':     _sb_count('&city=eq.Berlin&status=eq.READY TO SEND'),
-        'email_sent_total': _sb_count('&status=eq.EMAIL SENT'),
+        'berlin_ready':     _sb_count('&city=eq.Berlin&status=eq.READY%20TO%20SEND'),
+        'email_sent_total': _sb_count('&status=eq.EMAIL%20SENT'),
         'wa_sent_total':    _sb_count('&status=eq.sent'),
-        'total_done':       _sb_count('&status=in.(sent,EMAIL SENT,replied,booked,CALLED)'),
+        'total_done':       _sb_count('&status=in.(sent,EMAIL%20SENT,replied,booked,CALLED)'),
         # Reply classifier stats (from analyze_replies.py)
         'reply_hot':        _sb_count('&status=eq.reply_hot'),
         'reply_info':       _sb_count('&status=eq.reply_info'),

@@ -149,7 +149,7 @@ def fetch_leads(city=None, limit=300, offset=0, ids=None):
                f"&custom_message=not.is.null"
                f"&order=id.asc")
     else:
-        filters = (f"&status=eq.READY TO SEND"
+        filters = (f"&status=eq.READY%20TO%20SEND"
                    f"&email=not.is.null"
                    f"&custom_message=not.is.null"
                    f"&order=id.asc"

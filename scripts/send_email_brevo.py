@@ -58,7 +58,11 @@ _SB_PATCH = {**_SB_READ, 'Content-Type': 'application/json; charset=utf-8', 'Pre
 def sb_get(path, params=None):
     url = f"{SB_URL}/rest/v1/{path}"
     if params:
-        url += '?' + urllib.parse.urlencode(params)
+        qs = '&'.join(
+            f"{k}={urllib.parse.quote(str(v), safe=':.,*()!-')}"
+            for k, v in params.items()
+        )
+        url += '?' + qs
     with urllib.request.urlopen(urllib.request.Request(url, headers=_SB_READ), timeout=20) as r:
         return json.loads(r.read().decode('utf-8'))
 

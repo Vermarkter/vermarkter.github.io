@@ -132,7 +132,7 @@ def run(city=None, as_json=False):
         #     but whatsapp_logs has sent_at so we can do real today filter)
         email_today, _ = _sb_count(
             'beauty_leads',
-            f'&status=eq.EMAIL SENT'
+            '&status=eq.EMAIL%20SENT'
         )
 
         # 3b. WhatsApp logs today
@@ -151,13 +151,13 @@ def run(city=None, as_json=False):
         )
 
         # 3c. Pipeline
-        ready_params = '&status=eq.READY TO SEND'
+        ready_params = '&status=eq.READY%20TO%20SEND'
         if city:
             ready_params += f'&city=eq.{urllib.parse.quote(city, safe="")}'
         ready, _ = _sb_count('beauty_leads', ready_params)
 
-        berlin_ready, _ = _sb_count('beauty_leads', '&status=eq.READY TO SEND&city=eq.Berlin')
-        total_sent, _   = _sb_count('beauty_leads', '&status=in.(sent,EMAIL SENT)')
+        berlin_ready, _ = _sb_count('beauty_leads', '&status=eq.READY%20TO%20SEND&city=eq.Berlin')
+        total_sent, _   = _sb_count('beauty_leads', '&status=in.(sent,EMAIL%20SENT)')
 
         result['stats'] = {
             'date':          today,
