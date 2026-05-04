@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <script src="../../../js/analytics.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Soluzioni IT e marketing esclusive per saloni di bellezza in Europa. App mobile + Sito web + Pubblicità locale da 1.000 €. Riempite la vostra agenda con 2 settimane di anticipo.">
+    <meta name="keywords" content="marketing salone di bellezza, app parrucchiere, sito web centro estetico, beauty marketing Italia, pubblicità unghie">
+    <meta name="author" content="Vermarkter Agency">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IT e Marketing per Saloni di Bellezza — Vermarkter">
+    <meta property="og:description" content="Soluzioni IT e marketing esclusive per saloni di bellezza in Europa. App mobile + Sito web + Pubblicità locale da 1.000 €.">
+    <title>IT e Marketing per Saloni di Bellezza in Europa — Vermarkter</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        :root {--beauty-grad: linear-gradient(135deg,#ec4899,#8b5cf6);}
+        .beauty-text {background:var(--beauty-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .btn-beauty {background:var(--beauty-grad);color:#fff;border:none;padding:1rem 2.2rem;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:pointer;transition:opacity .2s,transform .15s;box-shadow:0 8px 28px rgba(236,72,153,.4);display:inline-block;text-decoration:none;}
+        .btn-beauty:hover {opacity:.88;transform:translateY(-2px);}
+        .offer-card {background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(236,72,153,.28);border-radius:28px;padding:2.5rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);}
+        .review-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.75rem;}
+        .faq-item {background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;margin-bottom:1rem;overflow:hidden;}
+        .faq-question {width:100%;padding:1.4rem 1.5rem;display:flex;justify-content:space-between;align-items:center;background:transparent;border:none;cursor:pointer;text-align:left;color:var(--text-primary);font-size:1.05rem;font-weight:600;}
+        .faq-icon {font-size:1.4rem;transition:transform .3s;flex-shrink:0;}
+        .faq-item.active .faq-icon {transform:rotate(45deg);}
+        .faq-answer {max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;}
+        .faq-item.active .faq-answer {max-height:300px;padding:0 1.5rem 1.5rem;}
+        .faq-answer p {color:var(--text-secondary);line-height:1.7;margin:0;}
+        @media(max-width:640px){.offer-grid{grid-template-columns:1fr !important;}}
+    </style>
+</head>
+<body>
+<script>const s=new URLSearchParams(window.location.search).get("s");if(s){document.addEventListener("DOMContentLoaded",()=>{const h=document.querySelector("h1");if(h)h.innerText="Soluzione IT esclusiva per "+s;});}</script>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="../../../en/index.html" class="brand" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ec4899" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    <span style="font-weight:900;font-size:22px;color:white;">Vermarkter</span>
+                    <span style="font-size:.62rem;font-weight:800;letter-spacing:1.5px;background:var(--beauty-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">BEAUTY</span>
+                </a>
+                <div class="nav-desktop">
+                    <a href="#offer">Pacchetto</a>
+                    <a href="#reviews">Recensioni</a>
+                    <a href="#faq">FAQ</a>
+                    <a href="https://t.me/my_salon_eu">Contatti</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://t.me/my_salon_eu" target="_blank" class="btn btn-primary" style="padding:8px 16px;display:inline-flex;align-items:center;gap:.4rem;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+                        Telegram
+                    </a>
+                    <a href="https://wa.me/4915510300538" target="_blank" class="btn btn-secondary" style="padding:8px 16px;margin-left:5px;display:inline-flex;align-items:center;gap:.4rem;">WhatsApp</a>
+                </div>
+                <div class="nav-controls-mobile">
+                    <div class="lang-switcher">
+                        <button class="lang-button">
+                            <svg width="16" height="12" style="vertical-align:middle;margin-right:4px;"><rect width="16" height="4" fill="#009246"/><rect y="4" width="16" height="4" fill="#fff"/><rect y="8" width="16" height="4" fill="#CE2B37"/></svg>
+                            IT &#9660;
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../it/index.html" style="font-weight:700;color:#ec4899">IT</a></li>
+                            <li><a href="../fr/index.html">FR</a></li>
+                            <li><a href="../es/index.html">ES</a></li>
+                            <li><a href="../de/index.html">DE</a></li>
+                            <li><a href="../en/index.html">EN</a></li>
+                            <li><a href="../pl/index.html">PL</a></li>
+                            <li><a href="../tr/index.html">TR</a></li>
+                            <li><a href="../ua/index.html">UA</a></li>
+                            <li><a href="../ru/index.html">RU</a></li>
+                            <li><a href="../ar/index.html">AR</a></li>
+                        </ul>
+                    </div>
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">&#9776;</button>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#offer">Pacchetto</a>
+            <a href="#reviews">Recensioni</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://t.me/my_salon_eu">Contatti</a>
+        </div>
+    </header>
+
+    <main style="padding-top:80px;">
+
+        <!-- HERO -->
+        <section class="hero" style="min-height:85vh;display:flex;align-items:center;padding:4rem 1.5rem;position:relative;overflow:hidden;">
+            <canvas id="matrix-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+            <div class="container" style="position:relative;z-index:1;text-align:center;max-width:860px;margin:0 auto;">
+                <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(236,72,153,.12);border:1px solid rgba(236,72,153,.3);padding:.45rem 1.2rem;border-radius:50px;margin-bottom:1.75rem;font-size:.88rem;color:#ec4899;font-weight:700;letter-spacing:.5px;">
+                    &#128132; Beauty Industry Solution
+                </div>
+                <h1 style="font-size:clamp(2.4rem,7vw,4.2rem);font-weight:900;line-height:1.1;margin-bottom:1.5rem;">
+                    IT &amp; Marketing per<br><span class="beauty-text">Saloni di Bellezza</span>
+                </h1>
+                <p style="font-size:1.2rem;line-height:1.75;color:var(--text-secondary);margin-bottom:2rem;max-width:660px;margin-left:auto;margin-right:auto;">
+                    Dimenticate le agende cartacee e i messaggi WhatsApp infiniti. Pack IT completo — sito web, prenotazioni online e pubblicità — per il vostro salone.
+                </p>
+                <div class="glass" style="background:rgba(236,72,153,.07);border:1px solid rgba(236,72,153,.22);border-radius:18px;padding:1.25rem 1.75rem;margin-bottom:2.25rem;max-width:620px;margin-left:auto;margin-right:auto;">
+                    <p style="font-size:1.05rem;color:var(--text-primary);margin:0;line-height:1.6;">
+                        &#128161; <strong>Un'agenda piena è il risultato di un sistema: prenotazioni 24/7 senza telefonate, promemoria automatici e un sito che ispira fiducia. Costruiamo questo sistema per voi.</strong>
+                    </p>
+                </div>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;">
+                    <a href="https://www.my-salon.eu/" target="_blank" class="btn-beauty" style="font-size:1.05rem;padding:1rem 2.2rem;">✨ Prova il pannello admin (Demo)</a>
+                    <a href="https://www.my-salon.eu/demo" target="_blank" class="btn-beauty" style="font-size:1.05rem;padding:1rem 2.2rem;background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 8px 28px rgba(139,92,246,.4);">🌸 Vedi il sito del salone (Live)</a>
+                </div>
+                <div style="margin-top:.6rem;font-size:.92rem;color:#fff;text-align:center;font-weight:600;">🔓 Credenziali già inserite — basta cliccare</div>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
+                    <a href="#offer" style="display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid rgba(236,72,153,.35);color:rgba(255,255,255,.55);padding:.75rem 1.6rem;border-radius:50px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .25s;">Richiedi il pacchetto</a>
+                    <a href="https://t.me/my_salon_eu" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.55);padding:.75rem 1.6rem;border-radius:50px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .25s;">Prenota un appuntamento</a>
+                </div>
+                <div class="stats-grid" style="margin-top:3.5rem;">
+                    <div class="stat-item"><div class="stat-value beauty-text">120+</div><div class="stat-label">Saloni in Europa</div></div>
+                    <div class="stat-item"><div class="stat-value beauty-text">+85%</div><div class="stat-label">prenotazioni in più</div></div>
+                    <div class="stat-item"><div class="stat-value beauty-text">2.400&#8364;</div><div class="stat-label">entrate extra/mese</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAIN -->
+        <section style="padding:5rem 1.5rem;background:rgba(236,72,153,.02);">
+            <div class="container" style="max-width:1100px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">Vi suona familiare?</h2>
+                <div class="pain-cards-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;">
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;">&#128542;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">Tutte le prenotazioni passano per voi</h3>
+                        <p style="color:var(--text-secondary);line-height:1.65;margin:0;">Ore in chat, telefonate e quaderni. Siete l'amministratore, non l'imprenditore.</p>
+                    </div>
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;">&#128245;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">Clienti che non si presentano senza promemoria</h3>
+                        <p style="color:var(--text-secondary);line-height:1.65;margin:0;">Il 15-20% degli appuntamenti non si presentano — perdite dirette. Senza promemoria automatici perdete centinaia di euro al mese.</p>
+                    </div>
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;">&#128222;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">Nessun sito web professionale</h3>
+                        <p style="color:var(--text-secondary);line-height:1.65;margin:0;">I concorrenti con un sito professionale appaiono più affidabili. I clienti scelgono chi si fida online.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUNDLE OFFER -->
+        <section id="offer" style="padding:5rem 1.5rem;">
+            <div class="container" style="max-width:920px;">
+                <div class="offer-card">
+                    <div style="text-align:center;margin-bottom:2.5rem;">
+                        <span style="background:var(--beauty-grad);color:#fff;padding:.4rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:800;letter-spacing:1.5px;">🔥 PACCHETTO ESCLUSIVO</span>
+                        <h2 style="font-size:clamp(1.9rem,5vw,2.9rem);font-weight:900;margin:1.25rem 0 .8rem;">Tutto in uno per <span class="beauty-text">1.000&nbsp;&#8364;</span></h2>
+                        <p style="color:var(--text-secondary);font-size:1.1rem;">App mobile + Sito web + Pubblicità locale — partite in 7 giorni.</p>
+                    </div>
+                    <div class="offer-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+                        <ul style="list-style:none;padding:0;margin:0;">
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">📱 App mobile di prenotazione clienti (iOS + Android)</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">🌐 Sito web biglietto da visita professionale</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">📍 Pubblicità Google Maps — nuovi clienti nel raggio di 5 km</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">🔔 Promemoria automatici SMS/email per i clienti</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">📊 Report analytics mensile</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;">🇮🇹 Supporto in italiano 24/7</li>
+                        </ul>
+                        <div style="text-align:center;background:rgba(236,72,153,.07);border:1px solid rgba(236,72,153,.25);border-radius:20px;padding:2.25rem 1.5rem;">
+                            <div style="font-size:.82rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem;">Bundle</div>
+                            <div class="beauty-text" style="font-size:clamp(2.5rem,6vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:.4rem;">1.000 &#8364;</div>
+                            <div style="font-size:.88rem;color:var(--text-muted);margin-bottom:1.75rem;">pagamento unico · nessun abbonamento</div>
+                            <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty" style="display:block;text-align:center;">Richiedi ora</a>
+                            <div style="margin-top:.9rem;font-size:.78rem;color:var(--text-muted);">Supporto in italiano 24/7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section id="reviews" style="padding:5rem 1.5rem;background:rgba(255,255,255,.015);">
+            <div class="container" style="max-width:1100px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">Cosa dicono i nostri clienti</h2>
+                <div class="review-grid">
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem;font-style:italic;">&ldquo;Da quando abbiamo la nuova app, il 73% dei clienti prenota online. Le mie collaboratrici non hanno più ore vuote — l'agenda è sempre piena. ROI raggiunto in 6 settimane.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">Elena H.</div><div style="font-size:.83rem;color:var(--text-muted);">Titolare, Beauty Lounge Milano</div></div></div></div>
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem;font-style:italic;">&ldquo;La pubblicità locale ci ha portato nel top 3 di Google Maps. Nuovi clienti arrivano ogni giorno — senza raccomandazioni.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">Maria K.</div><div style="font-size:.83rem;color:var(--text-muted);">Studio acconciatura, Roma</div></div></div></div>
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.7;margin-bottom:1.5rem;font-style:italic;">&ldquo;Pensavo che 1.000 € per un'app fosse caro. Ora guadagno quella cifra in più già dalla prima settimana.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">Sofia L.</div><div style="font-size:.83rem;color:var(--text-muted);">Istituto di bellezza, Napoli</div></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" style="padding:5rem 1.5rem;background:rgba(255,255,255,.015);">
+            <div class="container" style="max-width:800px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">Domande frequenti</h2>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Quanto dura lo sviluppo?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Il sito è pronto in 3-5 giorni, l'app in 7-14 giorni. La pubblicità locale parte dal primo giorno.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Ho bisogno di competenze tecniche?<span class="faq-icon">+</span></button><div class="faq-answer"><p>No. Configuriamo tutto e vi formiamo in 1 ora. Poi tutto funziona automaticamente.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Cosa succede dopo l'acquisto?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Riceverete una chiamata di onboarding entro 24 ore. Iniziamo subito.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">Ci sono costi ricorrenti?<span class="faq-icon">+</span></button><div class="faq-answer"><p>Il pacchetto è a pagamento unico. Assistenza mensile opzionale da 99 €/mese.</p></div></div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="contact" style="padding:6rem 1.5rem;text-align:center;">
+            <div class="container" style="max-width:680px;">
+                <h2 style="font-size:clamp(1.9rem,5vw,2.9rem);font-weight:900;margin-bottom:1rem;">Pronti a riempire la vostra agenda?</h2>
+                <p style="color:var(--text-secondary);font-size:1.1rem;margin-bottom:2.25rem;">Consulenza gratuita — senza pressioni commerciali.</p>
+                <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty">Richiedi consulenza gratuita</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);padding:3rem 1.5rem 2rem;">
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem;">
+                <a href="../../../en/index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ec4899" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    <span style="font-weight:800;font-size:20px;color:white;">Vermarkter</span>
+                </a>
+                <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+                    <a href="https://t.me/my_salon_eu" target="_blank" style="color:var(--text-muted);text-decoration:none;font-size:.9rem;">Telegram</a>
+                    <a href="https://wa.me/4915510300538" target="_blank" style="color:var(--text-muted);text-decoration:none;font-size:.9rem;">WhatsApp</a>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;text-align:center;color:var(--text-muted);font-size:.83rem;">
+                © 2025 Vermarkter. Performance Marketing per il vostro business.
+            </div>
+        </div>
+    </footer>
+
+    <div class="social-float" style="position:fixed;bottom:2rem;right:1.5rem;display:flex;flex-direction:column;gap:.75rem;z-index:999;">
+        <a href="https://t.me/my_salon_eu" target="_blank" aria-label="Telegram" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#2AABEE,#229ED9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(42,171,238,.45);transition:transform .25s;text-decoration:none;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+        </a>
+        <a href="https://wa.me/4915510300538" target="_blank" aria-label="WhatsApp" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45);transition:transform .25s;text-decoration:none;font-size:24px;line-height:1;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">&#x1F4AC;</a>
+    </div>
+
+    <div class="cookie-banner" id="cookieBanner"></div>
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">&#8593;</button>
+
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/calculator.js"></script>
+    <script src="../../../js/consent.js"></script>
+    <script src="../../../js/lightbox.js"></script>
+
+    <script>
+    (function () {
+      var raw = new URLSearchParams(window.location.search).get('s');
+      if (!raw) return;
+      var name = raw.trim().slice(0, 60);
+      if (!name) return;
+      var safeName = name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      function applyName() {
+        var h1 = document.querySelector('section.hero h1')||document.querySelector('.hero h1')||document.querySelector('main h1')||document.querySelector('h1');
+        if (!h1) return false;
+        if (h1.getAttribute('data-personalized')==='1') return true;
+        h1.innerHTML='Soluzione IT esclusiva per<br><span class="beauty-text">'+safeName+'</span>';
+        h1.setAttribute('data-personalized','1');
+        document.title='Soluzione IT esclusiva per '+name+' — Vermarkter';
+        return true;
+      }
+      try{if(applyName())return;}catch(e){}
+      document.addEventListener('DOMContentLoaded',function(){try{if(applyName())return;}catch(e){}});
+      window.addEventListener('load',function(){try{if(applyName())return;}catch(e){}});
+      var _n=0,_t=setInterval(function(){try{if(applyName()||++_n>=30){clearInterval(_t);if(_n>=30&&!document.querySelector('[data-personalized="1"]')){var any=document.querySelector('h1');if(any){any.innerHTML='Soluzione IT esclusiva per<br><span class="beauty-text">'+safeName+'</span>';any.setAttribute('data-personalized','emergency');document.title='Soluzione IT esclusiva per '+name+' — Vermarkter';}}}}catch(e){clearInterval(_t);}},100);
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <script src="../../../js/analytics.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="حلول IT وتسويق حصرية لصالونات التجميل في أوروبا. تطبيق موبايل + موقع إلكتروني + إعلانات محلية من 1000 يورو. املأ جدولك الزمني أسبوعين مقدماً.">
+    <meta name="keywords" content="تسويق صالون تجميل, تطبيق صالون, موقع مركز تجميل, ماركتينج بيوتي, إعلانات أظافر">
+    <meta name="author" content="Vermarkter Agency">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IT والتسويق لصالونات التجميل — Vermarkter">
+    <meta property="og:description" content="حلول IT وتسويق حصرية لصالونات التجميل في أوروبا. تطبيق موبايل + موقع إلكتروني + إعلانات محلية من 1000 يورو.">
+    <title>IT والتسويق لصالونات التجميل في أوروبا — Vermarkter</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Cairo: best Arabic web font — supports full ligature shaping -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../styles.css">
+    <style>
+        :root {--beauty-grad: linear-gradient(135deg,#ec4899,#8b5cf6);}
+        /* Arabic font stack — Cairo for Arabic text, Inter fallback for Latin/numbers */
+        body { font-family: 'Cairo', 'Inter', sans-serif; }
+        .beauty-text {background:var(--beauty-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+        .btn-beauty {background:var(--beauty-grad);color:#fff;border:none;padding:1rem 2.2rem;border-radius:50px;font-size:1.05rem;font-weight:700;cursor:pointer;transition:opacity .2s,transform .15s;box-shadow:0 8px 28px rgba(236,72,153,.4);display:inline-block;text-decoration:none;}
+        .btn-beauty:hover {opacity:.88;transform:translateY(-2px);}
+        .offer-card {background:linear-gradient(135deg,rgba(236,72,153,.07),rgba(139,92,246,.07));border:1px solid rgba(236,72,153,.28);border-radius:28px;padding:2.5rem;backdrop-filter:blur(25px);-webkit-backdrop-filter:blur(25px);}
+        .review-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:1.75rem;}
+        .faq-item {background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;margin-bottom:1rem;overflow:hidden;}
+        .faq-question {width:100%;padding:1.4rem 1.5rem;display:flex;justify-content:space-between;align-items:center;background:transparent;border:none;cursor:pointer;text-align:right;color:var(--text-primary);font-size:1.05rem;font-weight:600;font-family:'Cairo',sans-serif;}
+        .faq-icon {font-size:1.4rem;transition:transform .3s;flex-shrink:0;}
+        .faq-item.active .faq-icon {transform:rotate(45deg);}
+        .faq-answer {max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;}
+        .faq-item.active .faq-answer {max-height:300px;padding:0 1.5rem 1.5rem;}
+        .faq-answer p {color:var(--text-secondary);line-height:1.9;margin:0;text-align:right;}
+        @media(max-width:640px){.offer-grid{grid-template-columns:1fr !important;}}
+        /* RTL nav fix */
+        .nav { flex-direction: row-reverse; }
+        .nav-desktop a { margin-right: 0; margin-left: 1.5rem; }
+        /* Ensure hero text is centered regardless of dir */
+        .hero .container { text-align: center !important; }
+        h1, h2, h3, p, li { text-align: right; }
+        .hero h1, .hero p, .stats-grid, .hero .glass { text-align: center !important; }
+        /* Hammer personalised name — always LTR inside RTL page */
+        .ar-name { display: inline-block; direction: ltr; unicode-bidi: embed; }
+    </style>
+</head>
+<body>
+<!-- Hammer: Arabic precision — name inserted with correct bidi isolation -->
+<script>
+(function(){
+  var raw = new URLSearchParams(window.location.search).get('s');
+  if (!raw) return;
+  var name = raw.trim().slice(0, 60);
+  if (!name) return;
+  var safeName = name.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+
+  // Detect if name contains Arabic characters → no LTR wrapper needed
+  var hasArabic = /[؀-ۿ]/.test(name);
+  // Wrap in bidi-isolated span: Arabic names flow RTL naturally, Latin names get LTR isolation
+  var nameSpan = hasArabic
+    ? '<span class="beauty-text">' + safeName + '</span>'
+    : '<span class="beauty-text ar-name">' + safeName + '</span>';
+
+  function applyName() {
+    var h1 = document.querySelector('section.hero h1')
+          || document.querySelector('.hero h1')
+          || document.querySelector('main h1')
+          || document.querySelector('h1');
+    if (!h1) return false;
+    if (h1.getAttribute('data-personalized') === '1') return true;
+    // Arabic: "حل IT حصري لـ [name]"
+    h1.innerHTML = 'حل IT حصري لـ<br>' + nameSpan;
+    h1.setAttribute('data-personalized', '1');
+    document.title = 'حل IT حصري لـ ' + name + ' — Vermarkter';
+    return true;
+  }
+
+  try { if (applyName()) return; } catch(e) {}
+  document.addEventListener('DOMContentLoaded', function(){ try { if(applyName()) return; } catch(e){} });
+  window.addEventListener('load', function(){ try { if(applyName()) return; } catch(e){} });
+  var _n=0, _t=setInterval(function(){
+    try {
+      if (applyName() || ++_n >= 30) {
+        clearInterval(_t);
+        if (_n >= 30 && !document.querySelector('[data-personalized="1"]')) {
+          var any = document.querySelector('h1');
+          if (any) {
+            any.innerHTML = 'حل IT حصري لـ<br>' + nameSpan;
+            any.setAttribute('data-personalized','emergency');
+            document.title = 'حل IT حصري لـ ' + name + ' — Vermarkter';
+          }
+        }
+      }
+    } catch(e) { clearInterval(_t); }
+  }, 100);
+})();
+</script>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav class="nav">
+                <a href="../../../en/index.html" class="brand" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ec4899" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    <span style="font-weight:900;font-size:22px;color:white;font-family:'Inter',sans-serif;">Vermarkter</span>
+                    <span style="font-size:.62rem;font-weight:800;letter-spacing:1.5px;background:var(--beauty-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-family:'Inter',sans-serif;">BEAUTY</span>
+                </a>
+                <div class="nav-desktop" style="direction:rtl;">
+                    <a href="#offer">الباقة</a>
+                    <a href="#reviews">آراء العملاء</a>
+                    <a href="#faq">الأسئلة الشائعة</a>
+                    <a href="https://t.me/my_salon_eu">تواصل معنا</a>
+                </div>
+                <div class="nav-actions">
+                    <a href="https://t.me/my_salon_eu" target="_blank" class="btn btn-primary" style="padding:8px 16px;display:inline-flex;align-items:center;gap:.4rem;font-family:'Inter',sans-serif;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+                        Telegram
+                    </a>
+                    <a href="https://wa.me/4915510300538" target="_blank" class="btn btn-secondary" style="padding:8px 16px;margin-right:5px;display:inline-flex;align-items:center;gap:.4rem;font-family:'Inter',sans-serif;">WhatsApp</a>
+                </div>
+                <div class="nav-controls-mobile">
+                    <div class="lang-switcher">
+                        <button class="lang-button" style="font-family:'Cairo',sans-serif;">
+                            AR &#9660;
+                        </button>
+                        <ul class="lang-dropdown">
+                            <li><a href="../ar/index.html" style="font-weight:700;color:#ec4899">AR</a></li>
+                            <li><a href="../fr/index.html">FR</a></li>
+                            <li><a href="../de/index.html">DE</a></li>
+                            <li><a href="../en/index.html">EN</a></li>
+                            <li><a href="../es/index.html">ES</a></li>
+                            <li><a href="../it/index.html">IT</a></li>
+                            <li><a href="../pl/index.html">PL</a></li>
+                            <li><a href="../tr/index.html">TR</a></li>
+                            <li><a href="../ua/index.html">UA</a></li>
+                            <li><a href="../ru/index.html">RU</a></li>
+                        </ul>
+                    </div>
+                    <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">&#9776;</button>
+                </div>
+            </nav>
+        </div>
+        <div class="mobile-menu" id="mobileMenu" style="direction:rtl;text-align:right;">
+            <a href="#offer">الباقة</a>
+            <a href="#reviews">آراء العملاء</a>
+            <a href="#faq">الأسئلة الشائعة</a>
+            <a href="https://t.me/my_salon_eu">تواصل معنا</a>
+        </div>
+    </header>
+
+    <main style="padding-top:80px;">
+
+        <!-- HERO -->
+        <section class="hero" style="min-height:85vh;display:flex;align-items:center;padding:4rem 1.5rem;position:relative;overflow:hidden;">
+            <canvas id="matrix-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+            <div class="container" style="position:relative;z-index:1;text-align:center;max-width:860px;margin:0 auto;">
+                <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(236,72,153,.12);border:1px solid rgba(236,72,153,.3);padding:.45rem 1.2rem;border-radius:50px;margin-bottom:1.75rem;font-size:.88rem;color:#ec4899;font-weight:700;letter-spacing:.5px;">
+                    &#128132; Beauty Industry Solution
+                </div>
+                <h1 style="font-size:clamp(2.2rem,7vw,4rem);font-weight:900;line-height:1.3;margin-bottom:1.5rem;text-align:center;">
+                    IT والتسويق<br><span class="beauty-text">لصالونات التجميل</span>
+                </h1>
+                <p style="font-size:1.15rem;line-height:1.9;color:var(--text-secondary);margin-bottom:2rem;max-width:660px;margin-left:auto;margin-right:auto;text-align:center;">
+                    تخلصوا من الأجندات الورقية ورسائل واتساب اللانهائية. حزمة IT متكاملة — موقع إلكتروني، حجز أونلاين وإعلانات — لصالونكم.
+                </p>
+                <div class="glass" style="background:rgba(236,72,153,.07);border:1px solid rgba(236,72,153,.22);border-radius:18px;padding:1.25rem 1.75rem;margin-bottom:2.25rem;max-width:620px;margin-left:auto;margin-right:auto;">
+                    <p style="font-size:1.05rem;color:var(--text-primary);margin:0;line-height:1.9;text-align:center;">
+                        &#128161; <strong>الجدول الممتلئ هو نتيجة منظومة متكاملة: حجز 24/7 بدون مكالمات، تذكيرات تلقائية، وموقع يبني الثقة. نحن نبني هذه المنظومة من أجلكم.</strong>
+                    </p>
+                </div>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem;">
+                    <a href="https://www.my-salon.eu/" target="_blank" class="btn-beauty" style="font-size:1.05rem;padding:1rem 2.2rem;">✨ تجربة لوحة التحكم (ديمو)</a>
+                    <a href="https://www.my-salon.eu/demo" target="_blank" class="btn-beauty" style="font-size:1.05rem;padding:1rem 2.2rem;background:linear-gradient(135deg,#8b5cf6,#ec4899);box-shadow:0 8px 28px rgba(139,92,246,.4);">🌸 مشاهدة موقع الصالون (مباشر)</a>
+                </div>
+                <div style="margin-top:.6rem;font-size:.92rem;color:#fff;text-align:center;font-weight:600;">🔓 بيانات الدخول مُعبأة مسبقاً — انقر فقط</div>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.25rem;">
+                    <a href="#offer" style="display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid rgba(236,72,153,.35);color:rgba(255,255,255,.55);padding:.75rem 1.6rem;border-radius:50px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .25s;">طلب الباقة</a>
+                    <a href="https://t.me/my_salon_eu" target="_blank" style="display:inline-flex;align-items:center;gap:.5rem;background:transparent;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.55);padding:.75rem 1.6rem;border-radius:50px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .25s;">حجز موعد</a>
+                </div>
+                <div class="stats-grid" style="margin-top:3.5rem;">
+                    <div class="stat-item"><div class="stat-value beauty-text">120+</div><div class="stat-label">صالون في أوروبا</div></div>
+                    <div class="stat-item"><div class="stat-value beauty-text">+85%</div><div class="stat-label">المزيد من الحجوزات</div></div>
+                    <div class="stat-item"><div class="stat-value beauty-text">2.400€</div><div class="stat-label">إيرادات إضافية/شهر</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAIN -->
+        <section style="padding:5rem 1.5rem;background:rgba(236,72,153,.02);">
+            <div class="container" style="max-width:1100px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">هل هذا مألوف لكم؟</h2>
+                <div class="pain-cards-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;">
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;text-align:center;">&#128542;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">كل الحجوزات تمر عبركم</h3>
+                        <p style="color:var(--text-secondary);line-height:1.9;margin:0;">ساعات في الدردشة والمكالمات والدفاتر. أنتم مدير، لا صاحب عمل.</p>
+                    </div>
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;text-align:center;">&#128245;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">عملاء لا يحضرون بدون تذكير</h3>
+                        <p style="color:var(--text-secondary);line-height:1.9;margin:0;">15-20% من المواعيد لا تُحترم — خسائر مباشرة. بدون تذكيرات تلقائية تخسرون مئات اليوروهات شهرياً.</p>
+                    </div>
+                    <div class="pain-card glass" style="padding:2rem;border-radius:20px;border:1px solid rgba(236,72,153,.15);">
+                        <div style="font-size:2.2rem;margin-bottom:.9rem;text-align:center;">&#128222;</div>
+                        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:.6rem;">لا موقع إلكتروني احترافي</h3>
+                        <p style="color:var(--text-secondary);line-height:1.9;margin:0;">المنافسون الذين لديهم موقع احترافي يبدون أكثر موثوقية. العملاء يختارون من يثقون به أونلاين.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUNDLE OFFER -->
+        <section id="offer" style="padding:5rem 1.5rem;">
+            <div class="container" style="max-width:920px;">
+                <div class="offer-card">
+                    <div style="text-align:center;margin-bottom:2.5rem;">
+                        <span style="background:var(--beauty-grad);color:#fff;padding:.4rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:800;letter-spacing:1.5px;">🔥 باقة حصرية</span>
+                        <h2 style="font-size:clamp(1.9rem,5vw,2.9rem);font-weight:900;margin:1.25rem 0 .8rem;text-align:center;">الكل في واحد بـ <span class="beauty-text">1.000&nbsp;€</span></h2>
+                        <p style="color:var(--text-secondary);font-size:1.1rem;text-align:center;">تطبيق موبايل + موقع إلكتروني + إعلانات محلية — انطلقوا في 7 أيام.</p>
+                    </div>
+                    <div class="offer-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+                        <ul style="list-style:none;padding:0;margin:0;">
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;flex-direction:row-reverse;">📱 تطبيق موبايل للحجز (iOS + Android)</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;flex-direction:row-reverse;">🌐 موقع إلكتروني احترافي</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;flex-direction:row-reverse;">📍 إعلانات Google Maps — عملاء جدد في نطاق 5 كم</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;flex-direction:row-reverse;">🔔 تذكيرات SMS/بريد إلكتروني تلقائية</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;flex-direction:row-reverse;">📊 تقرير تحليلي شهري</li>
+                            <li style="padding:.55rem 0;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:flex-start;gap:.7rem;color:var(--text-secondary);font-size:.95rem;flex-direction:row-reverse;">🌍 دعم باللغة العربية 24/7</li>
+                        </ul>
+                        <div style="text-align:center;background:rgba(236,72,153,.07);border:1px solid rgba(236,72,153,.25);border-radius:20px;padding:2.25rem 1.5rem;">
+                            <div style="font-size:.82rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem;font-family:'Inter',sans-serif;">Bundle</div>
+                            <div class="beauty-text" style="font-size:clamp(2.5rem,6vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:.4rem;font-family:'Inter',sans-serif;">1.000 €</div>
+                            <div style="font-size:.88rem;color:var(--text-muted);margin-bottom:1.75rem;">دفعة واحدة · بدون اشتراك</div>
+                            <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty" style="display:block;text-align:center;">اطلب الآن</a>
+                            <div style="margin-top:.9rem;font-size:.78rem;color:var(--text-muted);">دعم باللغة العربية 24/7</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS -->
+        <section id="reviews" style="padding:5rem 1.5rem;background:rgba(255,255,255,.015);">
+            <div class="container" style="max-width:1100px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">ماذا يقول عملاؤنا</h2>
+                <div class="review-grid">
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;text-align:center;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.9;margin-bottom:1.5rem;font-style:italic;">&ldquo;منذ التطبيق الجديد، 73% من عملائي يحجزون أونلاين. موظفاتي لم يعد لديهن ساعات فارغة — الجدول دائماً ممتلئ. حققت العائد على الاستثمار في 6 أسابيع.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;flex-direction:row-reverse;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">إيلينا ح.</div><div style="font-size:.83rem;color:var(--text-muted);">صاحبة Beauty Lounge، نيس</div></div></div></div>
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;text-align:center;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.9;margin-bottom:1.5rem;font-style:italic;">&ldquo;الإعلانات المحلية أوصلتنا إلى أفضل 3 في Google Maps. عملاء جدد يصلون كل يوم — بدون توصيات.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;flex-direction:row-reverse;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">مريم ك.</div><div style="font-size:.83rem;color:var(--text-muted);">صالون تجميل، باريس</div></div></div></div>
+                    <div class="glass" style="padding:2rem;border-radius:20px;"><div style="margin-bottom:.75rem;font-size:1.1rem;text-align:center;">&#11088;&#11088;&#11088;&#11088;&#11088;</div><p style="color:var(--text-secondary);line-height:1.9;margin-bottom:1.5rem;font-style:italic;">&ldquo;كنت أظن أن 1000 يورو لتطبيق غالٍ. الآن أكسب هذا المبلغ إضافياً منذ الأسبوع الأول.&rdquo;</p><div style="display:flex;align-items:center;gap:1rem;flex-direction:row-reverse;"><div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#ec4899,#8b5cf6);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">&#128132;</div><div><div style="font-weight:700;color:var(--text-primary);">سارة ل.</div><div style="font-size:.83rem;color:var(--text-muted);">معهد تجميل، مرسيليا</div></div></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" style="padding:5rem 1.5rem;background:rgba(255,255,255,.015);">
+            <div class="container" style="max-width:800px;">
+                <h2 style="text-align:center;font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:3rem;">الأسئلة الشائعة</h2>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">كم يستغرق التطوير؟<span class="faq-icon">+</span></button><div class="faq-answer"><p>الموقع جاهز في 3-5 أيام، التطبيق في 7-14 يوماً. الإعلانات المحلية تنطلق من اليوم الأول.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">هل أحتاج إلى معرفة تقنية؟<span class="faq-icon">+</span></button><div class="faq-answer"><p>لا. نحن نعدّ كل شيء وندربكم في ساعة واحدة. بعدها كل شيء يعمل تلقائياً.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">ماذا يحدث بعد الشراء؟<span class="faq-icon">+</span></button><div class="faq-answer"><p>ستتلقون مكالمة تأهيل خلال 24 ساعة. نبدأ فوراً.</p></div></div>
+                <div class="faq-item"><button class="faq-question" onclick="this.parentElement.classList.toggle('active')">هل هناك تكاليف متكررة؟<span class="faq-icon">+</span></button><div class="faq-answer"><p>الباقة دفعة واحدة فقط. متابعة شهرية اختيارية من 99 يورو/شهر.</p></div></div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="contact" style="padding:6rem 1.5rem;text-align:center;">
+            <div class="container" style="max-width:680px;">
+                <h2 style="font-size:clamp(1.9rem,5vw,2.9rem);font-weight:900;margin-bottom:1rem;text-align:center;">هل أنتم مستعدون لملء جدولكم؟</h2>
+                <p style="color:var(--text-secondary);font-size:1.1rem;margin-bottom:2.25rem;text-align:center;">استشارة مجانية — بدون ضغط تجاري.</p>
+                <a href="https://t.me/my_salon_eu" target="_blank" class="btn-beauty">طلب استشارة مجانية</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.06);padding:3rem 1.5rem 2rem;">
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;margin-bottom:2rem;flex-direction:row-reverse;">
+                <a href="../../../en/index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#ec4899" stroke="white" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    <span style="font-weight:800;font-size:20px;color:white;font-family:'Inter',sans-serif;">Vermarkter</span>
+                </a>
+                <div style="display:flex;gap:1.5rem;flex-wrap:wrap;">
+                    <a href="https://t.me/my_salon_eu" target="_blank" style="color:var(--text-muted);text-decoration:none;font-size:.9rem;font-family:'Inter',sans-serif;">Telegram</a>
+                    <a href="https://wa.me/4915510300538" target="_blank" style="color:var(--text-muted);text-decoration:none;font-size:.9rem;font-family:'Inter',sans-serif;">WhatsApp</a>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;text-align:center;color:var(--text-muted);font-size:.83rem;">
+                © 2025 Vermarkter. تسويق الأداء لأعمالكم.
+            </div>
+        </div>
+    </footer>
+
+    <div class="social-float" style="position:fixed;bottom:2rem;left:1.5rem;display:flex;flex-direction:column;gap:.75rem;z-index:999;">
+        <a href="https://t.me/my_salon_eu" target="_blank" aria-label="Telegram" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#2AABEE,#229ED9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(42,171,238,.45);transition:transform .25s;text-decoration:none;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+        </a>
+        <a href="https://wa.me/4915510300538" target="_blank" aria-label="WhatsApp" style="width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(37,211,102,.45);transition:transform .25s;text-decoration:none;font-size:24px;line-height:1;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">&#x1F4AC;</a>
+    </div>
+
+    <div class="cookie-banner" id="cookieBanner"></div>
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">&#8593;</button>
+
+    <script src="../../../js/main.js"></script>
+    <script src="../../../js/calculator.js"></script>
+    <script src="../../../js/consent.js"></script>
+    <script src="../../../js/lightbox.js"></script>
+</body>
+</html>
