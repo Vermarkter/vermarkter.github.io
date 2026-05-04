@@ -4567,3 +4567,452 @@ input:focus, select:focus, textarea:focus {
         -webkit-filter: saturate(2) brightness(1.6) !important;
     }
 }
+
+/* ============================================================
+   CLEAN THEME — Planity / French Luxury Aesthetic
+   Pure white · Inter grotesque · hairline borders · zero neon
+   ============================================================ */
+
+[data-theme='clean'] {
+    /* Palette — snow white canvas */
+    --bg-body:        #ffffff;
+    --bg-card:        #ffffff;
+    --bg-secondary:   #fafafa;
+    --text-main:      #1a1a1a;
+    --text-secondary: #6b6b6b;
+    --text-muted:     #a3a3a3;
+
+    /* Hairline borders — Planity signature */
+    --glass-bg:       #ffffff;
+    --glass-border:   #e5e5e5;
+    --glass-blur:     none;
+
+    /* Flat minimal shadows — depth via border only */
+    --shadow-xs:      none;
+    --shadow-sm:      0 1px 0 #e5e5e5;
+    --shadow-md:      0 0 0 1px #e5e5e5;
+    --shadow-lg:      0 4px 24px rgba(0, 0, 0, 0.06);
+    --shadow-glow:    none;
+
+    /* Brand stays blue but muted */
+    --brand:          #2563eb;
+    --brand-secondary:#2563eb;
+    --accent:         #2563eb;
+}
+
+/* ── Typography — load Inter via @font-face fallback chain ── */
+[data-theme='clean'] body,
+[data-theme='clean'] h1,
+[data-theme='clean'] h2,
+[data-theme='clean'] h3,
+[data-theme='clean'] h4,
+[data-theme='clean'] p,
+[data-theme='clean'] a,
+[data-theme='clean'] button,
+[data-theme='clean'] input,
+[data-theme='clean'] select,
+[data-theme='clean'] textarea {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text',
+                 'Helvetica Neue', Arial, sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+/* ── Base ── */
+[data-theme='clean'] body {
+    background: #ffffff !important;
+    color: #1a1a1a !important;
+}
+
+/* Kill ALL background effects */
+[data-theme='clean'] body::before,
+[data-theme='clean'] body::after {
+    background: none !important;
+    display: none !important;
+}
+
+[data-theme='clean'] #matrix-canvas {
+    display: none !important;
+}
+
+/* ── Headings — tight tracking, pure black ── */
+[data-theme='clean'] h1 {
+    color: #1a1a1a !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.03em !important;
+}
+[data-theme='clean'] h2 {
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.025em !important;
+}
+[data-theme='clean'] h3,
+[data-theme='clean'] h4 {
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.015em !important;
+}
+[data-theme='clean'] p {
+    color: #6b6b6b !important;
+    font-weight: 400 !important;
+    line-height: 1.75 !important;
+    letter-spacing: 0 !important;
+}
+[data-theme='clean'] li {
+    color: #6b6b6b !important;
+}
+
+/* ── Header — pure white, hairline bottom ── */
+[data-theme='clean'] header {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+    box-shadow: none !important;
+}
+
+[data-theme='clean'] .logo {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: #1a1a1a !important;
+    color: #1a1a1a !important;
+    font-weight: 700 !important;
+}
+
+[data-theme='clean'] .nav-menu a,
+[data-theme='clean'] .nav a {
+    color: #6b6b6b !important;
+    font-weight: 400 !important;
+    font-size: 0.9375rem !important;
+}
+[data-theme='clean'] .nav-menu a:hover,
+[data-theme='clean'] .nav a:hover {
+    color: #1a1a1a !important;
+    background: none !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+}
+
+[data-theme='clean'] .theme-toggle,
+[data-theme='clean'] #theme-btn {
+    color: #1a1a1a !important;
+    border: 1px solid #e5e5e5 !important;
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+}
+[data-theme='clean'] .theme-toggle:hover,
+[data-theme='clean'] #theme-btn:hover {
+    background: #f5f5f5 !important;
+}
+
+[data-theme='clean'] .lang-button {
+    color: #1a1a1a !important;
+    background: #ffffff !important;
+    border: 1px solid #e5e5e5 !important;
+    font-weight: 400 !important;
+}
+[data-theme='clean'] .lang-dropdown {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    border: 1px solid #e5e5e5 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06) !important;
+    border-radius: 8px !important;
+}
+[data-theme='clean'] .lang-dropdown a {
+    color: #6b6b6b !important;
+    font-weight: 400 !important;
+}
+[data-theme='clean'] .lang-dropdown a:hover {
+    background: #fafafa !important;
+    color: #1a1a1a !important;
+}
+
+/* ── Mobile menu ── */
+[data-theme='clean'] #mobileMenu,
+[data-theme='clean'] .mobile-menu {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    border: 1px solid #e5e5e5 !important;
+}
+[data-theme='clean'] #mobileMenu a,
+[data-theme='clean'] .mobile-menu a {
+    color: #1a1a1a !important;
+}
+
+/* ── Sections ── */
+[data-theme='clean'] section {
+    background: #ffffff !important;
+}
+[data-theme='clean'] section:nth-child(even),
+[data-theme='clean'] .section-alt,
+[data-theme='clean'] .bg-secondary {
+    background: #fafafa !important;
+}
+
+/* ── Cards — flat white, hairline border, 12px radius ── */
+[data-theme='clean'] .card,
+[data-theme='clean'] .glass,
+[data-theme='clean'] .glass-card,
+[data-theme='clean'] .service-card,
+[data-theme='clean'] .pricing-card,
+[data-theme='clean'] .feature-card,
+[data-theme='clean'] .pain-card,
+[data-theme='clean'] .visual-box,
+[data-theme='clean'] .step-card,
+[data-theme='clean'] .testimonial-card,
+[data-theme='clean'] [class*="-card"] {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    color: #1a1a1a !important;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+}
+[data-theme='clean'] .card:hover,
+[data-theme='clean'] .service-card:hover,
+[data-theme='clean'] .pricing-card:hover,
+[data-theme='clean'] .feature-card:hover,
+[data-theme='clean'] [class*="-card"]:hover {
+    border-color: #d0d0d0 !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important;
+    transform: none !important;
+}
+[data-theme='clean'] .card h3,
+[data-theme='clean'] [class*="-card"] h3 {
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+}
+[data-theme='clean'] .card p,
+[data-theme='clean'] [class*="-card"] p {
+    color: #6b6b6b !important;
+}
+
+/* ── Stats ── */
+[data-theme='clean'] .stats-grid {
+    background: transparent !important;
+}
+[data-theme='clean'] .stat-item {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    border: 1px solid #e5e5e5 !important;
+    box-shadow: none !important;
+    border-radius: 12px !important;
+}
+[data-theme='clean'] .stat-value {
+    color: #1a1a1a !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: #1a1a1a !important;
+    font-weight: 700 !important;
+}
+[data-theme='clean'] .stat-label {
+    color: #a3a3a3 !important;
+    font-size: 0.8125rem !important;
+    font-weight: 400 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+}
+
+/* ── Buttons — Planity style: 8px radius, no neon ── */
+[data-theme='clean'] .btn-primary {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+}
+[data-theme='clean'] .btn-primary:hover {
+    background: #333333 !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+[data-theme='clean'] .btn-secondary,
+[data-theme='clean'] .btn-outline {
+    color: #1a1a1a !important;
+    border: 1px solid #e5e5e5 !important;
+    background: #ffffff !important;
+    border-radius: 8px !important;
+    font-weight: 500 !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+[data-theme='clean'] .btn-secondary:hover,
+[data-theme='clean'] .btn-outline:hover {
+    background: #fafafa !important;
+    border-color: #d0d0d0 !important;
+    color: #1a1a1a !important;
+    box-shadow: none !important;
+}
+
+/* ── Kill ALL neon gradients on interactive elements ── */
+[data-theme='clean'] .text-gradient,
+[data-theme='clean'] [class*="gradient-text"],
+[data-theme='clean'] .price-amount {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: #1a1a1a !important;
+    color: #1a1a1a !important;
+}
+
+/* ── Forms ── */
+[data-theme='clean'] input,
+[data-theme='clean'] select,
+[data-theme='clean'] textarea {
+    background: #ffffff !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 8px !important;
+    color: #1a1a1a !important;
+    box-shadow: none !important;
+    font-weight: 400 !important;
+}
+[data-theme='clean'] input:focus,
+[data-theme='clean'] select:focus,
+[data-theme='clean'] textarea:focus {
+    border-color: #1a1a1a !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+[data-theme='clean'] label {
+    color: #6b6b6b !important;
+    font-weight: 400 !important;
+    font-size: 0.875rem !important;
+}
+
+/* ── Calculator ── */
+[data-theme='clean'] .calculator,
+[data-theme='clean'] .calculator-wrapper {
+    background: #ffffff !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 12px !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+[data-theme='clean'] .calculator__title {
+    color: #1a1a1a !important;
+    font-weight: 600 !important;
+}
+[data-theme='clean'] input[type="range"] {
+    accent-color: #1a1a1a;
+}
+
+/* ── Pricing — featured = thin blue border only ── */
+[data-theme='clean'] .pricing-card.featured,
+[data-theme='clean'] .pricing-card.popular {
+    background: #ffffff !important;
+    border: 1.5px solid #2563eb !important;
+    box-shadow: none !important;
+}
+[data-theme='clean'] .price-period {
+    color: #a3a3a3 !important;
+    font-weight: 400 !important;
+}
+
+/* ── FAQ ── */
+[data-theme='clean'] .faq-item,
+[data-theme='clean'] .accordion-item {
+    background: #ffffff !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+[data-theme='clean'] .faq-question,
+[data-theme='clean'] .accordion-header {
+    color: #1a1a1a !important;
+    font-weight: 500 !important;
+}
+[data-theme='clean'] .faq-answer,
+[data-theme='clean'] .accordion-body {
+    color: #6b6b6b !important;
+}
+
+/* ── Footer ── */
+[data-theme='clean'] footer {
+    background: #fafafa !important;
+    backdrop-filter: none !important;
+    border-top: 1px solid #e5e5e5 !important;
+    box-shadow: none !important;
+    color: #a3a3a3 !important;
+}
+[data-theme='clean'] footer a {
+    color: #a3a3a3 !important;
+    font-weight: 400 !important;
+}
+[data-theme='clean'] footer a:hover {
+    color: #1a1a1a !important;
+    text-decoration: underline !important;
+    text-underline-offset: 3px !important;
+}
+
+/* ── Modals ── */
+[data-theme='clean'] .modal,
+[data-theme='clean'] [id*="Modal"] > div,
+[data-theme='clean'] [class*="modal-content"] {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: 1px solid #e5e5e5 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.10) !important;
+    color: #1a1a1a !important;
+}
+[data-theme='clean'] .modal-overlay,
+[data-theme='clean'] .modal-backdrop {
+    background: rgba(0, 0, 0, 0.25) !important;
+    backdrop-filter: none !important;
+}
+
+/* ── Dividers ── */
+[data-theme='clean'] hr,
+[data-theme='clean'] .divider {
+    border-color: #e5e5e5 !important;
+}
+
+/* ── Scroll-to-top ── */
+[data-theme='clean'] .scroll-to-top,
+[data-theme='clean'] #scrollToTop {
+    background: #1a1a1a !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
+}
+
+/* ── Cookie banner ── */
+[data-theme='clean'] .cookie-banner,
+[data-theme='clean'] #cookieBanner {
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    border-top: 1px solid #e5e5e5 !important;
+    box-shadow: none !important;
+    color: #1a1a1a !important;
+}
+
+/* ── Floating buttons (WA/TG) — neutralize neon ── */
+[data-theme='clean'] .float-btn,
+[data-theme='clean'] [class*="float"],
+[data-theme='clean'] [class*="whatsapp"],
+[data-theme='clean'] [class*="telegram"] {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ── Section headers / eyebrow text ── */
+[data-theme='clean'] .section-badge,
+[data-theme='clean'] .tag,
+[data-theme='clean'] [class*="-badge"],
+[data-theme='clean'] [class*="-tag"] {
+    background: #f5f5f5 !important;
+    color: #6b6b6b !important;
+    border: 1px solid #e5e5e5 !important;
+    font-size: 0.75rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    border-radius: 4px !important;
+}

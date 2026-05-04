@@ -64,36 +64,47 @@ if (mobileToggle && mobileMenu) {
     });
 }
 
-// ==================== THEME TOGGLE ====================
+// ==================== THEME TOGGLE (3-mode: dark → light → clean) ====================
 const themeToggle = document.getElementById('theme-btn');
+const THEMES = ['dark', 'light', 'clean'];
+const THEME_ICONS = { dark: '☀️', light: '✦', clean: '🌙' };
 
 function initTheme() {
     const urlParams = new URLSearchParams(window.location.search);
     const urlTheme = urlParams.get('theme');
-    if (urlTheme === 'light' || urlTheme === 'dark') {
+    if (THEMES.includes(urlTheme)) {
         localStorage.setItem('theme', urlTheme);
     }
     const savedTheme = localStorage.getItem('theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-    updateThemeIcon(savedTheme);
+    applyTheme(savedTheme);
 }
 
-function updateThemeIcon(theme) {
+function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
     if (themeToggle) {
-        themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-        themeToggle.style.color = theme === 'light' ? '#0f172a' : 'white';
-        themeToggle.style.borderColor = theme === 'light' ? '#e2e8f0' : 'rgba(255,255,255,0.2)';
-        themeToggle.style.background = theme === 'light' ? '#f8fafc' : 'none';
+        themeToggle.textContent = THEME_ICONS[theme] || '☀️';
+        if (theme === 'dark') {
+            themeToggle.style.color = 'white';
+            themeToggle.style.borderColor = 'rgba(255,255,255,0.2)';
+            themeToggle.style.background = 'none';
+        } else if (theme === 'light') {
+            themeToggle.style.color = '#0f172a';
+            themeToggle.style.borderColor = '#e2e8f0';
+            themeToggle.style.background = '#f8fafc';
+        } else {
+            themeToggle.style.color = '#1a1a1a';
+            themeToggle.style.borderColor = '#e5e5e5';
+            themeToggle.style.background = '#ffffff';
+        }
     }
 }
 
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
+        const current = document.documentElement.getAttribute('data-theme') || 'dark';
+        const next = THEMES[(THEMES.indexOf(current) + 1) % THEMES.length];
+        localStorage.setItem('theme', next);
+        applyTheme(next);
     });
 }
 
