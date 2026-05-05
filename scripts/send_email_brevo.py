@@ -543,7 +543,11 @@ def main():
         if result.startswith('OK') or result == 'DRY':
             ok += 1
             if not dry:
-                sb_patch(lead_id, {'status': 'email_sent', 'last_error': None})
+                sb_patch(lead_id, {
+                    'status':         'EMAIL SENT',
+                    'last_contacted': datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+                    'last_error':     None,
+                })
                 append_chat_history(lead_id, subject, body_text)
         else:
             fail += 1

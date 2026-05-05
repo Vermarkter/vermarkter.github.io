@@ -1,0 +1,70 @@
+# Vermarkter — Nice: останні 5 відправлених листів
+# Згенеровано: 2026-05-05 12:07 UTC
+# Усього Nice EMAIL SENT: 42 | Показано: 5
+
+УВАГА: Nice-листи були відправлені через send_email_brevo.py до впровадження
+системи збереження тексту листа в email_funnel_json.
+email_funnel_json = NULL для всіх 42 відправлених. Текст листа не збережено.
+Нижче — дані які є в базі (WA-текст Снайпера + нотатки).
+
+========================================================================
+
+--- Лід 1/5 ---
+ID:            4756
+Назва:         Hair by Priscillia.k
+Email:         None
+Дата відправки: —
+Нотатка CRM:   —
+
+WA-повідомлення Снайпера (той самий текст, основа листа):
+------------------------------------------------------------
+Salut ! 👋 Excellentes évaluations (5★, 84 avis) — vous faites un travail remarquable. Mais sans site web, de nouveaux clients vous trouvent presque uniquement via Google. Nous créons votre présence digitale : site + app + réceptionniste IA. 💰 1 000 € une fois — site, app, CRM et IA dans un seul pack. 👉 https://vermarkter.vercel.app/services/beauty-industry/de/
+========================================================================
+
+--- Лід 2/5 ---
+ID:            4755
+Назва:         KS Beauty Hair - Salon de coiffure Nice.Ombre hair,Lissages
+Email:         None
+Дата відправки: —
+Нотатка CRM:   —
+
+WA-повідомлення Снайпера (той самий текст, основа листа):
+------------------------------------------------------------
+Salut ! 👋 Excellentes évaluations (5★, 88 avis) — vous faites un travail remarquable. Mais sans site web, de nouveaux clients vous trouvent presque uniquement via Google. Nous créons votre présence digitale : site + app + réceptionniste IA. 💰 Tout inclus (site + app + CRM + réceptionniste IA) : 1 000 € unique. 👉 https://vermarkter.vercel.app/services/beauty-industry/de/
+========================================================================
+
+--- Лід 3/5 ---
+ID:            4754
+Назва:         Lilang - Salon de Coiffure Nice. Styliste Coloriste Expert en lissages.
+Email:         None
+Дата відправки: —
+Нотатка CRM:   —
+
+WA-повідомлення Снайпера (той самий текст, основа листа):
+------------------------------------------------------------
+Bonjour à vous ! ✨ Lilang - Salon de Coiffure Nice. Styliste Coloriste Expert en lissages. a une belle présence en ligne. Mais qui veut un rendez-vous spontané le soir doit appeler — et souvent ne rappelle pas. Avec notre réceptionniste IA, le client réserve instantanément, automatiquement, dans toutes les langues. 💰 Pack complet (site + app + CRM + IA) pour 1 000 € une seule fois. Sans abonnement. 👉 https://vermarkter.vercel.app/services/beauty-industry/de/
+========================================================================
+
+--- Лід 4/5 ---
+ID:            4753
+Назва:         JOKER BEAUTY
+Email:         None
+Дата відправки: —
+Нотатка CRM:   —
+
+WA-повідомлення Снайпера (той самий текст, основа листа):
+------------------------------------------------------------
+Bonjour ! 😄 Excellentes évaluations (4.9★, 118 avis) — vous faites un travail remarquable. Mais sans site web, de nouveaux clients vous trouvent presque uniquement via Google. Nous créons votre présence digitale : site + app + réceptionniste IA. 💰 Tout inclus (site + app + CRM + réceptionniste IA) : 1 000 € unique.
+========================================================================
+
+--- Лід 5/5 ---
+ID:            4752
+Назва:         Le Salon
+Email:         None
+Дата відправки: —
+Нотатка CRM:   —
+
+WA-повідомлення Снайпера (той самий текст, основа листа):
+------------------------------------------------------------
+Salut ! 👋 Excellentes évaluations (4.9★, 145 avis) — vous faites un travail remarquable. Mais sans site web, de nouveaux clients vous trouvent presque uniquement via Google. Nous créons votre présence digitale : site + app + réceptionniste IA. 💰 Pack complet (site + app + CRM + IA) pour 1 000 € une seule fois. Sans abonnement. 👉 https://vermarkter.vercel.app/services/beauty-industry/de/
+========================================================================

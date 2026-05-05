@@ -929,22 +929,53 @@ def main():
             )
             sys.exit(1)
 
-    print(f'[STATUS SERVER] Starting on http://{args.host}:{args.port}')
-    print(f'[STATUS SERVER] Dashboard: http://46.101.217.35:{args.port}')
-    print(f'[STATUS SERVER] API:       http://46.101.217.35:{args.port}/api/status')
-    print(f'[STATUS SERVER] Supabase:  {"OK" if SB_URL else "NOT CONFIGURED"}')
-    print(f'[STATUS SERVER] Brevo:     {"OK" if BREVO_KEY.startswith("xkeysib-") else "NOT CONFIGURED"}')
-    print(f'[STATUS SERVER] OpenAI:    {"OK" if OPENAI_KEY.startswith("sk-") else "NOT CONFIGURED"}')
-    print(f'[STATUS SERVER] Press Ctrl+C to stop\n')
+    print(f'[STATUS SERVER] Starting on http://{args.host}:{args.port}', flush=True)
+    print(f'[STATUS SERVER] Dashboard: http://46.101.217.35:{args.port}', flush=True)
+    print(f'[STATUS SERVER] API:       http://46.101.217.35:{args.port}/api/status', flush=True)
+    print(f'[STATUS SERVER] Supabase:  {"OK — " + SB_URL if SB_URL else "NOT CONFIGURED"}', flush=True)
+    print(f'[STATUS SERVER] Brevo:     {"OK" if BREVO_KEY.startswith("xkeysib-") else "NOT CONFIGURED"}', flush=True)
+    print(f'[STATUS SERVER] OpenAI:    {"OK" if OPENAI_KEY.startswith("sk-") else "NOT CONFIGURED"}', flush=True)
+    print(f'[STATUS SERVER] Press Ctrl+C to stop', flush=True)
 
-    # Warm up cache immediately so first request is fast
-    try:
-        get_metrics()
-        print('[STATUS SERVER] Metrics cache warmed up')
-    except Exception as e:
-        print(f'[STATUS SERVER] Cache warm-up error (non-fatal): {e}')
-
+    # Bind and start serving FIRST — warm-up runs in background thread
+    print(f'[STATUS SERVER] Binding socket...', flush=True)
     server = _ReuseServer((args.host, args.port), Handler)
+    print(f'[STATUS SERVER] Socket bound. Server is READY.', flush=True)
+
+    # Background warm-up: do NOT block server startup on slow Supabase/Brevo calls
+    import threading
+    def _warmup():
+        print('[STATUS SERVER] [warmup] Starting metrics collection...', flush=True)
+        stages = [
+            ('supabase', collect_supabase),
+            ('batches',  collect_batches),
+            ('brevo',    collect_brevo),
+            ('disk',     collect_disk),
+            ('logs',     collect_logs),
+            ('holiday',  collect_holiday),
+        ]
+        partial = {}
+        for name, fn in stages:
+            t0 = time.time()
+            try:
+                partial[name] = fn()
+                print(f'[STATUS SERVER] [warmup] {name}: OK ({time.time()-t0:.1f}s)', flush=True)
+            except Exception as e:
+                partial[name] = {'error': str(e)}
+                print(f'[STATUS SERVER] [warmup] {name}: ERROR {e} ({time.time()-t0:.1f}s)', flush=True)
+        now = time.time()
+        partial.update({
+            'uptime_s':    int(now - _START),
+            'server_time': datetime.now(timezone.utc).isoformat(timespec='seconds'),
+        })
+        global _cache, _cache_ts
+        with _cache_lock:
+            _cache    = partial
+            _cache_ts = now
+        print('[STATUS SERVER] [warmup] Cache ready.', flush=True)
+
+    threading.Thread(target=_warmup, daemon=True).start()
+
     try:
         server.serve_forever()
     except KeyboardInterrupt:
