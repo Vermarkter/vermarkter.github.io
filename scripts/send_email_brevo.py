@@ -21,7 +21,7 @@ Requirements:
   Columns in beauty_leads: email, email_funnel_json, street_view_url, last_opened_at
 """
 
-import sys, io, os, json, time, argparse, configparser, urllib.request, urllib.parse, html
+import sys, io, os, json, time, argparse, configparser, urllib.request, urllib.parse, html, datetime
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
@@ -82,6 +82,32 @@ def sb_patch(lead_id, payload):
             return 'OK'
     except urllib.request.HTTPError as e:
         return f'ERR {e.code}'
+
+
+def sb_get_lead(lead_id: int) -> dict:
+    url = f"{SB_URL}/rest/v1/beauty_leads?id=eq.{lead_id}&select=chat_history"
+    req = urllib.request.Request(url, headers=_SB_READ)
+    try:
+        with urllib.request.urlopen(req, timeout=10) as r:
+            rows = json.loads(r.read().decode('utf-8'))
+            return rows[0] if rows else {}
+    except Exception:
+        return {}
+
+
+def append_chat_history(lead_id: int, subject: str, body: str) -> None:
+    existing = sb_get_lead(lead_id)
+    history  = existing.get('chat_history') or []
+    if not isinstance(history, list):
+        history = []
+    entry = {
+        'ts':      datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S'),
+        'channel': 'email',
+        'subject': subject[:120],
+        'note':    body[:800],
+    }
+    history.append(entry)
+    sb_patch(lead_id, {'chat_history': history})
 
 
 def fetch_leads(ids: set, limit: int, city: str) -> list:
@@ -400,7 +426,7 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
 </body>
 </html>"""
 
-    return subject, html_body
+    return subject, body_text, html_body
 
 
 # ── Brevo sender ──────────────────────────────────────────────────────────────
@@ -496,9 +522,11 @@ def main():
         print(f'         sv_url: {"YES" if lead.get("street_view_url") else "no (logo fallback)"}')
 
         try:
-            subject, html_body = build_html_email(lead, args.letter)
+            subject, body_text, html_body = build_html_email(lead, args.letter)
         except Exception as e:
             print(f'         → [ERR] build failed: {e}')
+            if not dry:
+                sb_patch(lead_id, {'last_error': f'build: {str(e)[:380]}'})
             fail += 1
             continue
 
@@ -515,9 +543,12 @@ def main():
         if result.startswith('OK') or result == 'DRY':
             ok += 1
             if not dry:
-                sb_patch(lead_id, {'status': 'email_sent'})
+                sb_patch(lead_id, {'status': 'email_sent', 'last_error': None})
+                append_chat_history(lead_id, subject, body_text)
         else:
             fail += 1
+            if not dry:
+                sb_patch(lead_id, {'last_error': result[:400]})
 
         time.sleep(args.delay)
 

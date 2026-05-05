@@ -134,6 +134,19 @@ tbody tr.ms-row-REJECTED   td{background:rgba(239,68,68,.04);opacity:.6}
 .chat-save:hover{background:#4f46e5}
 .chat-close{position:absolute;top:.5rem;right:.6rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;line-height:1}
 
+/* Email preview button */
+.bemail-preview{background:rgba(6,182,212,.12);color:var(--cyan);border:1px solid rgba(6,182,212,.35);font-size:.72rem;padding:.3rem .65rem;border-radius:6px;cursor:pointer;font-weight:700;white-space:nowrap;transition:all .2s}
+.bemail-preview:hover{background:rgba(6,182,212,.28);border-color:var(--cyan)}
+
+/* Email preview panel */
+.email-preview-panel{background:rgba(6,20,30,.97);border:1px solid rgba(6,182,212,.4);border-radius:10px;padding:.9rem 1rem;margin-top:.4rem;min-width:260px;max-width:420px;position:relative}
+.email-preview-panel pre{font-size:.72rem;color:#e2e8f0;white-space:pre-wrap;word-break:break-word;line-height:1.5;max-height:260px;overflow-y:auto;margin:0}
+.email-preview-close{position:absolute;top:.5rem;right:.6rem;background:none;border:none;color:var(--muted);cursor:pointer;font-size:1rem;line-height:1}
+.email-preview-subj{font-size:.7rem;font-weight:700;color:var(--cyan);letter-spacing:.3px;margin-bottom:.4rem}
+
+/* last_error badge */
+.last-error-badge{display:block;margin-top:.35rem;font-size:.65rem;color:#f87171;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:5px;padding:.2rem .45rem;word-break:break-word;max-width:200px;line-height:1.35}
+
 @media(max-width:900px){
   .hide-mob{display:none}
   .cstats{display:none}
@@ -430,6 +443,19 @@ function closeChat(id) {
   if (panel) panel.style.display = 'none';
 }
 
+function toggleEmail(id) {
+  var panel = document.getElementById('emailprev-' + id);
+  if (!panel) return;
+  var isOpen = panel.style.display !== 'none';
+  document.querySelectorAll('.email-preview-panel').forEach(function(p){ p.style.display = 'none'; });
+  if (!isOpen) panel.style.display = 'block';
+}
+
+function closeEmailPreview(id) {
+  var panel = document.getElementById('emailprev-' + id);
+  if (panel) panel.style.display = 'none';
+}
+
 function saveChat(id) {
   var inp = document.getElementById('chat-inp-' + id);
   if (!inp) return;
@@ -702,12 +728,42 @@ function renderTable() {
     var notesCell = '<td class="notes-cell"><span id="cell-' + s.id + '-notes">' + notesContent + '</span></td>';
 
     // Action buttons (WA link reads live from s.custom_message)
+    // Email preview panel
+    var emailPrevHtml = '';
+    if (s.email_funnel_json) {
+      var funnel = s.email_funnel_json;
+      if (typeof funnel === 'string') { try { funnel = JSON.parse(funnel); } catch(e){} }
+      var letter = (typeof funnel === 'object' && funnel !== null)
+        ? (funnel['letter_1_digital_mirror'] || funnel['body'] || '')
+        : (typeof funnel === 'string' ? funnel : '');
+      var subj = '';
+      var body = letter;
+      if (typeof letter === 'string' && letter.indexOf('\n') !== -1) {
+        var lines = letter.split('\n');
+        for (var li = 0; li < lines.length; li++) {
+          var trimmed = lines[li].trim().toLowerCase();
+          if (trimmed.startsWith('objet:') || trimmed.startsWith('subject:') || trimmed.startsWith('betreff:')) {
+            subj = lines[li].split(':').slice(1).join(':').trim();
+            body = lines.slice(li + 1).join('\n').trim();
+            break;
+          }
+        }
+      }
+      emailPrevHtml = '<div id="emailprev-' + s.id + '" class="email-preview-panel" style="display:none">'
+        + '<button class="email-preview-close" onclick="closeEmailPreview(' + s.id + ')">&times;</button>'
+        + (subj ? '<div class="email-preview-subj">📧 ' + esc(subj) + '</div>' : '')
+        + '<pre>' + esc(body || '—') + '</pre>'
+        + '</div>';
+    }
+
     var btns = '<div class="awrap">';
     if (hasWa) btns += '<a class="btn bwa" href="' + waLink(s) + '" target="_blank" onclick="markSent(' + s.id + ')">' + WA_SVG + ' WA</a>';
     if (hasEm) btns += '<a class="btn bem" href="' + emailLink(s) + '" onclick="markSent(' + s.id + ')">' + EM_SVG + ' Email</a>';
     btns += '<a class="btn bmap" href="' + esc(s.maps_url||'#') + '" target="_blank">' + MAP_SVG + ' Maps</a>';
     btns += '<button class="blog" onclick="toggleChat(' + s.id + ')">&#128172; Log Chat</button>';
+    if (s.email_funnel_json) btns += '<button class="bemail-preview" onclick="toggleEmail(' + s.id + ')">&#128065;&#65039; Лист</button>';
     btns += '</div>';
+    btns += emailPrevHtml;
 
     // Chat history panel (hidden by default, toggled by Log Chat button)
     var chatEntries = Array.isArray(s.chat_history) ? s.chat_history : [];
@@ -725,7 +781,12 @@ function renderTable() {
       + '<button class="chat-save" onclick="saveChat(' + s.id + ')">\ud83d\udcbe \u0417\u0431\u0435\u0440\u0435\u0433\u0442\u0438</button>'
       + '</div>';
 
-    // Status cell \u2014 manual_status funnel + legacy status + dropdown
+    // last_error badge (set by send_email_brevo.py on failure)
+    var errBadge = s.last_error
+      ? '<span class="last-error-badge">\u26a0\ufe0f ' + esc(s.last_error) + '</span>'
+      : '';
+
+    // Status cell \u2014 manual_status funnel + legacy status + dropdown + error
     var statusCell = msBadge
         + (msBadge ? '<br>' : '')
         + '<span class="' + scls + '">' + slabel + '</span>'
@@ -737,6 +798,7 @@ function renderTable() {
       + '<option value="INTERESTED"' + (ms==='INTERESTED'?' selected':'') + '>\ud83d\udd25 INTERESTED</option>'
       + '<option value="REJECTED"' + (ms==='REJECTED'?' selected':'') + '>\ud83d\udeab REJECTED</option>'
       + '</select>'
+      + errBadge
       + chatHtml;
 
     var trCls = 'ms-row-' + (ms || 'none') + (isDone ? ' done' : '') + (fresh ? ' is-new' : '');
