@@ -72,15 +72,24 @@ except (KeyError, configparser.NoSectionError):
     SB_URL = ''
     SB_KEY = ''
 
+def _cfg_get(section, key):
+    try:    return (_cfg.get(section, key) or '').strip()
+    except: return ''
+
+# Read order mirrors send_email_brevo.py exactly:
+# config.ini has highest priority, then os.environ, then .env file.
+# This ensures both scripts always use the same key from the same source.
 OPENAI_KEY = (
-    _env.get('OPENAI_API_KEY') or os.environ.get('OPENAI_API_KEY', '')
-    or _cfg.get('OPENAI', 'api_key', fallback='')
-).strip()
+    _cfg_get('OPENAI', 'api_key')
+    or os.environ.get('OPENAI_API_KEY', '').strip()
+    or _env.get('OPENAI_API_KEY', '').strip()
+)
 
 BREVO_KEY = (
-    _env.get('BREVO_API_KEY') or os.environ.get('BREVO_API_KEY', '')
-    or _cfg.get('BREVO', 'api_key', fallback='')
-).strip()
+    _cfg_get('BREVO', 'api_key')
+    or os.environ.get('BREVO_API_KEY', '').strip()
+    or _env.get('BREVO_API_KEY', '').strip()
+)
 
 SB_HDRS = {
     'apikey': SB_KEY,
@@ -933,7 +942,10 @@ def main():
     print(f'[STATUS SERVER] Dashboard: http://46.101.217.35:{args.port}', flush=True)
     print(f'[STATUS SERVER] API:       http://46.101.217.35:{args.port}/api/status', flush=True)
     print(f'[STATUS SERVER] Supabase:  {"OK — " + SB_URL if SB_URL else "NOT CONFIGURED"}', flush=True)
-    print(f'[STATUS SERVER] Brevo:     {"OK" if BREVO_KEY.startswith("xkeysib-") else "NOT CONFIGURED"}', flush=True)
+    _brevo_src = ('config.ini' if _cfg_get('BREVO','api_key') else
+                  'os.environ' if os.environ.get('BREVO_API_KEY','') else
+                  '.env file'  if _env.get('BREVO_API_KEY','') else 'NONE')
+    print(f'[STATUS SERVER] Brevo:     {"OK — key from " + _brevo_src if BREVO_KEY.startswith("xkeysib-") else "NOT CONFIGURED (key missing or invalid)"}', flush=True)
     print(f'[STATUS SERVER] OpenAI:    {"OK" if OPENAI_KEY.startswith("sk-") else "NOT CONFIGURED"}', flush=True)
     print(f'[STATUS SERVER] Press Ctrl+C to stop', flush=True)
 
