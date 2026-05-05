@@ -52,7 +52,7 @@ def patch_lead(lead_id: int, letter: str, status: str, dry: bool) -> str:
     if dry:
         return 'dry'
     payload = json.dumps({
-        'email_funnel_json': json.dumps({'letter_1_digital_mirror': letter}, ensure_ascii=False),
+        'email_funnel_json': {'letter_1_digital_mirror': letter},
         'status':            status,
     }, ensure_ascii=False).encode('utf-8')
     url = f"{SB_URL}/rest/v1/beauty_leads?id=eq.{lead_id}"

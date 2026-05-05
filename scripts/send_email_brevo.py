@@ -85,14 +85,15 @@ def sb_patch(lead_id, payload):
 
 
 def fetch_leads(ids: set, limit: int, city: str) -> list:
+    select = 'id,name,email,city,notes,street_view_url,email_funnel_json'
     params = {
         'status': 'eq.email_ready',
-        'select': 'id,name,email,city,addr,street_view_url,email_funnel_json',
+        'select': select,
         'order':  'id.asc',
     }
     if ids:
         params = {'id': f'in.({",".join(str(i) for i in sorted(ids))})',
-                  'select': params['select']}
+                  'select': select}
     else:
         if city:
             params['city'] = f'eq.{city}'
@@ -130,13 +131,13 @@ LOGO_HTML = """
 """
 
 
-def build_street_view_block(sv_url: str, addr: str, demo_url: str = '') -> str:
+def build_street_view_block(sv_url: str, addr: str = '', demo_url: str = '') -> str:
     """
     Facade photo with a centered Play-button overlay — looks like a video thumbnail.
     The entire block is a clickable link to demo_url (if provided).
     Works in Gmail, Apple Mail, Outlook Web, iOS/Android mail apps.
     """
-    street      = addr.split(',')[0].strip() if addr else 'Ihrem Salon'
+    street      = addr.split(',')[0].strip() if addr else 'votre salon'
     safe_street = html.escape(street)
     safe_photo  = html.escape(sv_url)
     safe_demo   = html.escape(demo_url) if demo_url else '#'
@@ -276,20 +277,53 @@ def body_to_html(body_text: str, salon_name: str = '') -> str:
     return '\n'.join(parts)
 
 
+def _parse_letter(letter_val) -> tuple[str, str]:
+    """
+    Parse letter value into (subject, body).
+    Handles two formats:
+      1. Plain string: "Objet: ...\n\nBonjour,..."  (from import_generated_leads.py)
+      2. Dict: {"subject_options": [...], "body": "..."}  (from batch pipeline)
+    """
+    if isinstance(letter_val, str):
+        lines  = letter_val.strip().splitlines()
+        subject = ''
+        body_start = 0
+        for i, line in enumerate(lines):
+            stripped = line.strip()
+            if stripped.lower().startswith(('objet:', 'subject:', 'betreff:')):
+                subject = stripped.split(':', 1)[1].strip()
+                body_start = i + 1
+                break
+        body = '\n'.join(lines[body_start:]).strip()
+        return subject, body
+    elif isinstance(letter_val, dict):
+        subjects = letter_val.get('subject_options') or []
+        subject  = subjects[0] if subjects else ''
+        body     = letter_val.get('body', '')
+        return subject, body
+    return '', str(letter_val or '')
+
+
 def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
     """
     Returns (subject, html_body).
     letter_key: 'letter_1_digital_mirror' | 'letter_2_future_vision' | 'letter_3_social_proof_scarcity'
     """
-    funnel  = lead['email_funnel_json']
-    letter  = funnel.get(letter_key) or funnel.get(list(funnel.keys())[0])
-    lead_id = lead['id']
-    name    = lead.get('name', '')
-    addr    = lead.get('addr') or ''
+    funnel = lead['email_funnel_json']
+    if isinstance(funnel, str):
+        try:
+            funnel = json.loads(funnel)
+        except Exception:
+            funnel = {'letter_1_digital_mirror': funnel}
 
-    # Subject — use first subject option
-    subjects = letter.get('subject_options') or []
-    subject  = subjects[0] if subjects else f'Wichtige Information für {name}'
+    letter_val = funnel.get(letter_key) or funnel.get(list(funnel.keys())[0])
+    lead_id    = lead['id']
+    name       = lead.get('name', '')
+    addr       = lead.get('notes', '') or ''
+
+    subject, body_text = _parse_letter(letter_val)
+    if not subject:
+        subject = f'Information importante pour {name}' if name else 'Information importante'
 
     # Tracking pixel URL
     pixel_url = f"{TRACK_BASE_URL}?id={lead_id}"
@@ -305,7 +339,6 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
         hero_block = build_logo_fallback_block()
 
     # Body text → HTML rows (demo button also uses same personalized URL)
-    body_text = letter.get('body', '')
     body_rows = body_to_html(body_text, salon_name=name)
 
     html_body = f"""<!DOCTYPE html>
