@@ -237,6 +237,16 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
   .hide-mob{display:none!important}
   .cstats{display:none}
 }
+
+/* Email preview button */
+.bemail-preview{background:rgba(6,182,212,.12);color:#06b6d4;border:1px solid rgba(6,182,212,.35);font-size:.72rem;padding:.3rem .65rem;border-radius:6px;cursor:pointer;font-weight:700;white-space:nowrap;transition:all .2s;margin-top:.3rem;display:inline-block}
+.bemail-preview:hover{background:rgba(6,182,212,.28);border-color:#06b6d4}
+.email-preview-panel{background:rgba(6,20,30,.97);border:1px solid rgba(6,182,212,.4);border-radius:10px;padding:.9rem 1rem;margin-top:.4rem;min-width:260px;max-width:420px;position:relative}
+.email-preview-panel pre{font-size:.72rem;color:#e2e8f0;white-space:pre-wrap;word-break:break-word;line-height:1.5;max-height:260px;overflow-y:auto;margin:0}
+.email-preview-close{position:absolute;top:.5rem;right:.6rem;background:none;border:none;color:rgba(255,255,255,.45);cursor:pointer;font-size:1rem;line-height:1}
+.email-preview-subj{font-size:.7rem;font-weight:700;color:#06b6d4;letter-spacing:.3px;margin-bottom:.4rem}
+/* last_error badge */
+.last-error-badge{display:block;margin-top:.35rem;font-size:.65rem;color:#f87171;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);border-radius:5px;padding:.2rem .45rem;word-break:break-word;max-width:200px;line-height:1.35}
 </style>
 </head>
 <body>
@@ -512,6 +522,8 @@ function isMobile(phone) {
   var d = String(phone).replace(/\D/g, '');
   if (d.indexOf('49') === 0) return /^491[5-7]/.test(d);
   if (d.indexOf('0')  === 0) return /^01[5-7]/.test(d);
+  // French mobile: +336xxxx or +337xxxx
+  if (d.indexOf('336') === 0 || d.indexOf('337') === 0) return true;
   return false;
 }
 
@@ -546,6 +558,19 @@ function setSync(state, text) {
   var t = document.getElementById('syncText');
   if (d) d.className = 'dot' + (state === 'ok' ? '' : ' ' + state);
   if (t) t.textContent = text;
+}
+
+// ── Email preview toggle ─────────────────────────────────
+function toggleEmailPrev(id) {
+  var panel = document.getElementById('emailprev-' + id);
+  if (!panel) return;
+  var isOpen = panel.style.display !== 'none';
+  document.querySelectorAll('.email-preview-panel').forEach(function(p){ p.style.display = 'none'; });
+  if (!isOpen) panel.style.display = 'block';
+}
+function closeEmailPreview(id) {
+  var el = document.getElementById('emailprev-' + id);
+  if (el) el.style.display = 'none';
 }
 
 // ── Actions ─────────────────────────────────────────────
@@ -900,8 +925,46 @@ function renderTable() {
       + '</select>'
       + '</td>';
 
+    // Email preview panel + 👁️ Лист button
+    var emailPrevHtml = '';
+    var emailPrevBtn  = '';
+    if (s.email_funnel_json) {
+      var funnel = s.email_funnel_json;
+      if (typeof funnel === 'string') { try { funnel = JSON.parse(funnel); } catch(e){} }
+      var letter = (typeof funnel === 'object' && funnel !== null)
+        ? (funnel['letter_1_digital_mirror'] || funnel['body'] || '')
+        : (typeof funnel === 'string' ? funnel : '');
+      var eSubj = '', eBody = letter;
+      if (typeof letter === 'string' && letter.indexOf('\n') !== -1) {
+        var elines = letter.split('\n');
+        for (var eli = 0; eli < elines.length; eli++) {
+          var etrim = elines[eli].trim().toLowerCase();
+          if (etrim.indexOf('objet:') === 0 || etrim.indexOf('subject:') === 0 || etrim.indexOf('betreff:') === 0) {
+            eSubj = elines[eli].split(':').slice(1).join(':').trim();
+            eBody = elines.slice(eli + 1).join('\n').trim();
+            break;
+          }
+        }
+      }
+      emailPrevHtml = '<div id="emailprev-' + s.id + '" class="email-preview-panel" style="display:none">'
+        + '<button class="email-preview-close" onclick="closeEmailPreview(' + s.id + ')">&times;</button>'
+        + (eSubj ? '<div class="email-preview-subj">📧 ' + esc(eSubj) + '</div>' : '')
+        + '<pre>' + esc(eBody || '—') + '</pre>'
+        + '</div>';
+      emailPrevBtn = '<button class="bemail-preview" onclick="toggleEmailPrev(' + s.id + ')">👁️ Лист</button>';
+    }
+
+    // last_error badge
+    var errBadge = s.last_error
+      ? '<span class="last-error-badge">⚠️ ' + esc(s.last_error) + '</span>'
+      : '';
+
+    // Append email preview button + errBadge to WA cell
+    var c7full = '<td>' + c7.replace('<td>','').replace('</td>','')
+      + emailPrevBtn + errBadge + emailPrevHtml + '</td>';
+
     var trCls = (isDone ? 'done' : '') + (fresh ? ' isnew' : '') + (isChecked ? ' selected' : '');
-    return '<tr class="' + trCls.trim() + '">' + c0 + cID + c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 + c9 + c10 + c11 + '</tr>';
+    return '<tr class="' + trCls.trim() + '">' + c0 + cID + c1 + c2 + c3 + c4 + c5 + c6 + c7full + c8 + c9 + c10 + c11 + '</tr>';
   }).join('');
 }
 
