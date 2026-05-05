@@ -14,7 +14,7 @@ Usage:
   python scripts/export_raw_leads.py --offset 50          # skip first 50
 """
 
-import sys, io, os, json, argparse, configparser, urllib.request, urllib.parse
+import sys, io, os, json, argparse, configparser, urllib.request, urllib.parse, csv
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
@@ -77,6 +77,8 @@ def parse_args():
     p.add_argument('--out',         default='', help='Output file (default: <city>_raw_leads.txt)')
     p.add_argument('--status-null', action='store_true',
                    help='Filter status IS NULL only (default: skip EMAIL SENT)')
+    p.add_argument('--csv', action='store_true',
+                   help='Also export CSV with separate notes column (for Sniper review)')
     return p.parse_args()
 
 
@@ -117,6 +119,15 @@ def main():
     print(f'  Output: {out_path}')
     print(f'  Lines:  {len(leads)}')
     print(f'  Size:   {size_kb:.1f} KB')
+
+    if args.csv:
+        csv_path = out_path.replace('.txt', '.csv')
+        with open(csv_path, 'w', newline='', encoding='utf-8-sig') as f:
+            cols = ['id', 'name', 'city', 'phone', 'email', 'website', 'notes', 'status']
+            w = csv.DictWriter(f, fieldnames=cols, extrasaction='ignore')
+            w.writeheader()
+            w.writerows(leads)
+        print(f'  CSV:    {csv_path}  ({len(leads)} rows, notes column included)')
     print(f'\n  Next step:')
     print(f'  1. Open {out_path} → paste into Claude Pro with the prompt below')
     print(f'  2. Claude returns JSON array → save as nice_offers.json')

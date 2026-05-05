@@ -163,6 +163,7 @@ SYSTEM_WA = (
     "- MAXIMAL 480 Zeichen — zähle exakt, kürze gnadenlos\n"
     "- Format: 3–4 knappe Sätze, kein Fließtext-Block\n"
     "- Keine Emojis\n"
+    "- KEINE URLs, KEINE Links — WhatsApp sperrt Nummern bei Links im Erstkontakt\n"
     "- Output: NUR den fertigen WhatsApp-Text, keine Erklärungen"
 )
 
@@ -222,6 +223,8 @@ def build_prompt(lead: dict, channel: str) -> str:
 # ---------------------------------------------------------------------------
 # GPT-4o call
 # ---------------------------------------------------------------------------
+_URL_RE = re.compile(r'https?://\S+|www\.\S+', re.IGNORECASE)
+
 def generate(lead: dict, channel: str) -> str:
     system = SYSTEM_WA if channel == 'wa' else SYSTEM_EMAIL
     max_tok = 200 if channel == 'wa' else 500
@@ -237,9 +240,13 @@ def generate(lead: dict, channel: str) -> str:
     )
     msg = resp.choices[0].message.content.strip()
 
-    # Hard enforce WA length
-    if channel == 'wa' and len(msg) > 500:
-        msg = msg[:497] + '...'
+    if channel == 'wa':
+        if len(msg) > 500:
+            msg = msg[:497] + '...'
+        # Block URLs — WhatsApp bans sender numbers that include links in cold first messages
+        if _URL_RE.search(msg):
+            msg = _URL_RE.sub('[link]', msg)
+            print(f'    [WA-SAFETY] URL stripped — lead {lead.get("id")} ({lead.get("name","")})')
 
     return msg
 
