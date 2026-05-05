@@ -364,6 +364,8 @@ function isMobile(phone) {
   var d = String(phone).replace(/\D/g, '');
   if (d.indexOf('49') === 0) return /^491[5-7]/.test(d);
   if (d.indexOf('0')  === 0) return /^01[5-7]/.test(d);
+  // French mobile: +336xxxx or +337xxxx
+  if (d.indexOf('336') === 0 || d.indexOf('337') === 0) return true;
   return false;
 }
 function waLink(s) {
