@@ -5,12 +5,14 @@ import_generated_leads.py — Import Claude Pro-generated offers into Supabase.
 
 Reads a JSON array (from Claude Pro output) and updates:
   - email_funnel_json → {"letter_1_digital_mirror": "<generated email>"}
-  - status            → "email_ready"
+  - custom_message    → wa_text (if present) + channel="wa"
+  - status            → "email_ready" (email) | "new" (wa-only, no email)
 
-Input JSON format (one array, can be file or stdin):
+Input JSON format — supports both old (email only) and new (WA + Email):
   [
     {"id": 123, "letter_1": "Objet: ...\\n\\nBonjour,..."},
-    {"id": 124, "letter_1": "Objet: ...\\n\\nBonjour,..."}
+    {"id": 124, "letter_1": "Objet: ...\\n\\nBonjour,...", "wa_text": "Bonjour..."},
+    {"id": 125, "wa_text": "Bonjour..."}
   ]
 
 Usage:
@@ -48,13 +50,15 @@ HDRS_PATCH = {
 }
 
 
-def patch_lead(lead_id: int, letter: str, status: str, dry: bool) -> str:
+def patch_lead(lead_id: int, letter: str, wa_text: str, status: str, dry: bool) -> str:
     if dry:
         return 'dry'
-    payload = json.dumps({
-        'email_funnel_json': {'letter_1_digital_mirror': letter},
-        'status':            status,
-    }, ensure_ascii=False).encode('utf-8')
+    body = {'status': status}
+    if letter:
+        body['email_funnel_json'] = {'letter_1_digital_mirror': letter}
+    if wa_text:
+        body['custom_message'] = wa_text
+    payload = json.dumps(body, ensure_ascii=False).encode('utf-8')
     url = f"{SB_URL}/rest/v1/beauty_leads?id=eq.{lead_id}"
     req = urllib.request.Request(url, data=payload, headers=HDRS_PATCH, method='PATCH')
     for attempt in range(3):
@@ -131,23 +135,32 @@ def main():
 
     for rec in records:
         lead_id = rec.get('id')
-        letter  = rec.get('letter_1') or rec.get('letter_1_digital_mirror') or ''
+        letter  = (rec.get('letter_1') or rec.get('letter_1_digital_mirror') or '').strip()
+        wa_text = (rec.get('wa_text') or '').strip()
 
         if not lead_id:
             print(f'  [SKIP] No "id" field in record: {str(rec)[:80]}')
             skip_count += 1
             continue
 
-        if not letter.strip():
-            print(f'  [SKIP] id={lead_id} — empty letter_1')
+        if not letter and not wa_text:
+            print(f'  [SKIP] id={lead_id} — no letter_1 and no wa_text')
             skip_count += 1
             continue
 
-        preview = letter.replace('\n', ' ')[:80]
-        result  = patch_lead(lead_id, letter.strip(), args.status, dry)
+        # Status: email_ready if has email text, else keep args.status (default new)
+        status = args.status if letter else 'new'
 
-        icon = {'ok': '✓', 'dry': '~', 'timeout': '⏱'}.get(result, '✗')
-        print(f'  [{icon}] id={lead_id} → {result}  |  {preview}...')
+        channel_tag = []
+        if letter:  channel_tag.append('EMAIL')
+        if wa_text: channel_tag.append('WA')
+        tag_str = '+'.join(channel_tag)
+
+        preview = (letter or wa_text).replace('\n', ' ')[:80]
+        result  = patch_lead(lead_id, letter, wa_text, status, dry)
+
+        icon = {'ok': 'OK', 'dry': '~', 'timeout': 'TO'}.get(result, 'ERR')
+        print(f'  [{icon}] id={lead_id} [{tag_str}] status={status}  |  {preview}...')
 
         if result in ('ok', 'dry'):
             ok_count += 1
