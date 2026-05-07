@@ -3,26 +3,42 @@
 """
 import_generated_leads.py — Import Claude Pro-generated offers into Supabase.
 
-Reads a JSON array (from Claude Pro output) and updates:
-  - email_funnel_json → {"letter_1_digital_mirror": "<generated email>"}
-  - custom_message    → wa_text (if present) + channel="wa"
-  - status            → "email_ready" (email) | "new" (wa-only, no email)
+Reads a JSON array and updates:
+  - custom_message     ← wa_text
+  - email_funnel_json  ← {
+        "letter_1_digital_mirror": letter_1,
+        "letter_2_future_vision":  letter_2,   (optional)
+        "letter_3_scarcity":       letter_3,   (optional)
+    }
+  - status             ← "email_ready" (if any email text) | "new" (wa-only)
+  - last_error         ← null  (cleared on import)
 
-Input JSON format — supports both old (email only) and new (WA + Email):
+Signature rules (--check-signatures, default ON):
+  - notes contains [Sniper FR UA] or lang=ua → expects "Андрій" somewhere in signature
+  - otherwise (FR/AR/default)               → expects "Équipe Vermarkter" or "equipe vermarkter"
+  Mismatches are printed as [WARN] but do NOT block the import.
+
+Input JSON format:
   [
-    {"id": 123, "letter_1": "Objet: ...\\n\\nBonjour,..."},
-    {"id": 124, "letter_1": "Objet: ...\\n\\nBonjour,...", "wa_text": "Bonjour..."},
-    {"id": 125, "wa_text": "Bonjour..."}
+    {
+      "id": 123,
+      "letter_1": "Objet: ...\\n\\nBonjour,...",
+      "letter_2": "Objet: ...\\n\\nBonjour,...",
+      "letter_3": "Objet: ...\\n\\nBonjour,...",
+      "wa_text":  "Bonjour..."
+    },
+    ...
   ]
+  Any subset of letter_1/letter_2/letter_3/wa_text is valid.
 
 Usage:
-  python scripts/import_generated_leads.py --file nice_offers.json
-  python scripts/import_generated_leads.py --file nice_offers.json --dry-run
-  cat nice_offers.json | python scripts/import_generated_leads.py --stdin
-  python scripts/import_generated_leads.py --file nice_offers.json --status READY TO SEND
+  python scripts/import_generated_leads.py --file cannes_offers.json
+  python scripts/import_generated_leads.py --file cannes_offers.json --dry-run
+  cat offers.json | python scripts/import_generated_leads.py --stdin
+  python scripts/import_generated_leads.py --file offers.json --no-check-signatures
 """
 
-import sys, io, os, json, argparse, configparser, urllib.request, urllib.parse, time
+import sys, io, os, json, argparse, configparser, urllib.request, urllib.parse, time, re
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
@@ -49,15 +65,73 @@ HDRS_PATCH = {
     'Prefer':        'return=minimal',
 }
 
+HDRS_GET = {
+    'apikey':        SB_KEY,
+    'Authorization': 'Bearer ' + SB_KEY,
+}
 
-def patch_lead(lead_id: int, letter: str, wa_text: str, status: str, dry: bool) -> str:
+# Signature keywords by language tag
+_SIG_UA = 'Андрій'
+_SIG_FR = 'Équipe Vermarkter'
+_SIG_FR_LOW = 'equipe vermarkter'
+
+
+def _detect_lang_tag(notes: str) -> str:
+    """Returns 'ua' if notes contain UA tag, else 'fr'."""
+    if not notes:
+        return 'fr'
+    notes_up = notes.upper()
+    if 'SNIPER FR UA' in notes_up:
+        return 'ua'
+    return 'fr'
+
+
+def _check_signature(text: str, lang: str) -> bool:
+    """Returns True if text contains the expected signature for the language."""
+    if not text:
+        return True  # no text → nothing to check
+    if lang == 'ua':
+        return _SIG_UA in text
+    else:
+        return _SIG_FR in text or _SIG_FR_LOW in text.lower()
+
+
+def fetch_lead_notes(lead_ids: list) -> dict:
+    """Fetch id→notes mapping for signature checking."""
+    if not lead_ids:
+        return {}
+    id_str = ','.join(str(i) for i in lead_ids)
+    url = f"{SB_URL}/rest/v1/beauty_leads?id=in.({id_str})&select=id,notes"
+    req = urllib.request.Request(url, headers=HDRS_GET)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            rows = json.loads(r.read())
+            return {row['id']: (row.get('notes') or '') for row in rows}
+    except Exception as exc:
+        print(f'  [WARN] Could not fetch notes for sig check: {exc}', file=sys.stderr)
+        return {}
+
+
+def patch_lead(lead_id: int, letter1: str, letter2: str, letter3: str,
+               wa_text: str, status: str, dry: bool) -> str:
     if dry:
         return 'dry'
-    body = {'status': status}
-    if letter:
-        body['email_funnel_json'] = {'letter_1_digital_mirror': letter}
+
+    # Build email_funnel_json from non-empty letters only
+    funnel = {}
+    if letter1:
+        funnel['letter_1_digital_mirror'] = letter1
+    if letter2:
+        funnel['letter_2_future_vision'] = letter2
+    if letter3:
+        funnel['letter_3_scarcity'] = letter3
+
+    body = {'status': status, 'last_error': None}
+    if funnel:
+        body['email_funnel_json'] = funnel
     if wa_text:
         body['custom_message'] = wa_text
+
     payload = json.dumps(body, ensure_ascii=False).encode('utf-8')
     url = f"{SB_URL}/rest/v1/beauty_leads?id=eq.{lead_id}"
     req = urllib.request.Request(url, data=payload, headers=HDRS_PATCH, method='PATCH')
@@ -70,7 +144,7 @@ def patch_lead(lead_id: int, letter: str, wa_text: str, status: str, dry: bool) 
                 time.sleep(2 ** attempt)
             else:
                 return f'err {e.code}'
-        except Exception as exc:
+        except Exception:
             time.sleep(1)
     return 'timeout'
 
@@ -114,28 +188,38 @@ def parse_args():
     p.add_argument('--status',  default='email_ready', help='Status to set (default: email_ready)')
     p.add_argument('--dry-run', action='store_true',   help='No DB writes, preview only')
     p.add_argument('--delay',   type=float, default=0.1, help='Seconds between patches (default: 0.1)')
+    p.add_argument('--no-check-signatures', action='store_true',
+                   help='Skip signature language validation')
     return p.parse_args()
 
 
 def main():
     args = parse_args()
     dry  = args.dry_run
+    check_sigs = not args.no_check_signatures
 
     print(f'\n{"="*64}')
     print(f'  Import Generated Leads  |  {"DRY-RUN" if dry else "LIVE"}')
-    print(f'  Target status: {args.status}')
+    print(f'  Target status: {args.status}  |  Sig-check: {"ON" if check_sigs else "OFF"}')
     print(f'{"="*64}\n')
 
     records = load_records(args)
     print(f'Loaded {len(records)} records from input\n')
 
+    # Pre-fetch notes for signature checking
+    all_ids = [rec.get('id') for rec in records if rec.get('id')]
+    notes_map = fetch_lead_notes(all_ids) if check_sigs else {}
+
     ok_count   = 0
     err_count  = 0
     skip_count = 0
+    sig_warn   = 0
 
     for rec in records:
         lead_id = rec.get('id')
-        letter  = (rec.get('letter_1') or rec.get('letter_1_digital_mirror') or '').strip()
+        letter1 = (rec.get('letter_1') or rec.get('letter_1_digital_mirror') or '').strip()
+        letter2 = (rec.get('letter_2') or rec.get('letter_2_future_vision')  or '').strip()
+        letter3 = (rec.get('letter_3') or rec.get('letter_3_scarcity')       or '').strip()
         wa_text = (rec.get('wa_text') or '').strip()
 
         if not lead_id:
@@ -143,21 +227,40 @@ def main():
             skip_count += 1
             continue
 
-        if not letter and not wa_text:
-            print(f'  [SKIP] id={lead_id} — no letter_1 and no wa_text')
+        if not letter1 and not letter2 and not letter3 and not wa_text:
+            print(f'  [SKIP] id={lead_id} — no letter_1/2/3 and no wa_text')
             skip_count += 1
             continue
 
-        # Status: email_ready if has email text, else keep args.status (default new)
-        status = args.status if letter else 'new'
+        # Status: email_ready if any email text present, else 'new' (wa-only)
+        has_email = bool(letter1 or letter2 or letter3)
+        status = args.status if has_email else 'new'
 
+        # Signature check
+        if check_sigs and has_email:
+            notes = notes_map.get(lead_id, '')
+            lang  = _detect_lang_tag(notes)
+            # Check all present letters
+            for lname, ltext in [('letter_1', letter1), ('letter_2', letter2), ('letter_3', letter3)]:
+                if ltext and not _check_signature(ltext, lang):
+                    expected = _SIG_UA if lang == 'ua' else _SIG_FR
+                    print(f'  [WARN] id={lead_id} {lname}: signature mismatch '
+                          f'(lang={lang}, expected "{expected}")')
+                    sig_warn += 1
+
+        # Channel tag for display
         channel_tag = []
-        if letter:  channel_tag.append('EMAIL')
+        if has_email:
+            parts = []
+            if letter1: parts.append('L1')
+            if letter2: parts.append('L2')
+            if letter3: parts.append('L3')
+            channel_tag.append('EMAIL(' + '+'.join(parts) + ')')
         if wa_text: channel_tag.append('WA')
         tag_str = '+'.join(channel_tag)
 
-        preview = (letter or wa_text).replace('\n', ' ')[:80]
-        result  = patch_lead(lead_id, letter, wa_text, status, dry)
+        preview = (letter1 or letter2 or wa_text).replace('\n', ' ')[:70]
+        result  = patch_lead(lead_id, letter1, letter2, letter3, wa_text, status, dry)
 
         icon = {'ok': 'OK', 'dry': '~', 'timeout': 'TO'}.get(result, 'ERR')
         print(f'  [{icon}] id={lead_id} [{tag_str}] status={status}  |  {preview}...')
@@ -171,6 +274,8 @@ def main():
 
     print(f'\n{"="*64}')
     print(f'  DONE — ok={ok_count} | errors={err_count} | skipped={skip_count}')
+    if sig_warn:
+        print(f'  SIG WARNINGS: {sig_warn} (check manually)')
     if dry:
         print('  DRY-RUN: nothing written to DB.')
     print(f'{"="*64}\n')

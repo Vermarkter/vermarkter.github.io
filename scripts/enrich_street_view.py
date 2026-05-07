@@ -61,9 +61,11 @@ if not SB_URL or not SB_KEY:
     print('[ERROR] SUPABASE_URL/KEY not configured', file=sys.stderr); sys.exit(1)
 
 PROGRESS_FILE = os.path.join(_ROOT, 'data', 'sv_progress.json')
-CITIES        = ['Berlin', 'München', 'Nice']
+CITIES        = ['Berlin', 'München', 'Nice', 'Cannes', 'Antibes']
 BATCH_SIZE    = 50    # leads per Supabase PATCH batch
 PAGE_SIZE     = 1000  # leads per Supabase GET page
+# Statuses eligible for photo enrichment
+PHOTO_STATUSES = ['READY TO SEND', 'email_ready']
 
 # ── Thread-safe counters ───────────────────────────────────────────────────────
 _lock    = threading.Lock()
@@ -103,9 +105,10 @@ def _sb_get(path, params_dict):
 
 
 def sb_fetch_page(city, offset):
-    """Fetch one page of READY TO SEND leads for a city."""
+    """Fetch one page of email_ready / READY TO SEND leads for a city."""
+    statuses = ','.join(PHOTO_STATUSES)
     return _sb_get('beauty_leads', {
-        'status': 'eq.READY TO SEND',
+        'status': f'in.({statuses})',
         'city':   f'eq.{city}',
         'select': 'id,name,maps_url,street_view_url',
         'order':  'id.asc',
