@@ -37,9 +37,21 @@ def _c(s, k): return (_cfg.get(s, k, fallback='') or '').strip()
 SB_URL   = _env('SUPABASE_URL')  or _c('SUPABASE', 'url')
 SB_KEY   = _env('SUPABASE_KEY')  or _c('SUPABASE', 'service_role_key') or _c('SUPABASE', 'anon_key')
 BREVO_KEY     = _env('BREVO_API_KEY') or _c('BREVO', 'api_key')
-FROM_EMAIL    = _c('BREVO', 'from_email') or 'hello@vermarkter.eu'
+FROM_EMAIL    = _c('BREVO', 'from_email') or 'admin@my-salon.eu'
 FROM_NAME     = _c('BREVO', 'from_name')  or 'Vermarkter'
+FROM_NAME_FR  = _c('BREVO', 'from_name_fr') or 'Équipe My-Salon'
+FROM_NAME_UA  = _c('BREVO', 'from_name_ua') or 'Andrii | My-Salon'
 DAILY_LIMIT   = int(_c('BREVO', 'daily_limit') or 300)
+
+_FR_CITIES = {'nice', 'cannes', 'paris', 'lyon', 'marseille'}
+
+def get_from_name(city: str = '') -> str:
+    c = city.lower()
+    if c in _FR_CITIES:
+        return FROM_NAME_FR
+    if c in ('berlin', 'hamburg', 'munich', 'ua', 'ukraine'):
+        return FROM_NAME_UA
+    return FROM_NAME
 TRACK_BASE_URL = 'https://vermarkter.vercel.app/api/track'
 
 if not SB_URL or not SB_KEY:
@@ -439,9 +451,9 @@ BREVO_HEADERS  = {
 }
 
 
-def send_via_brevo(to_email: str, to_name: str, subject: str, html_body: str, dry: bool) -> str:
+def send_via_brevo(to_email: str, to_name: str, subject: str, html_body: str, dry: bool, city: str = '') -> str:
     payload = {
-        'sender':   {'name': FROM_NAME, 'email': FROM_EMAIL},
+        'sender':   {'name': get_from_name(city), 'email': FROM_EMAIL},
         'to':       [{'email': to_email, 'name': to_name}],
         'subject':  subject,
         'htmlContent': html_body,
@@ -537,7 +549,7 @@ def main():
                 f.write(html_body)
             print(f'         → HTML saved: {preview_path}')
 
-        result = send_via_brevo(email, name, subject, html_body, dry)
+        result = send_via_brevo(email, name, subject, html_body, dry, city=lead.get('city', args.city or ''))
         print(f'         → [{result}]')
 
         if result.startswith('OK') or result == 'DRY':

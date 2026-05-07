@@ -78,8 +78,10 @@ from = Vermarkter <hello@vermarkter.eu>
 
 [BREVO]
 api_key = PASTE_YOUR_BREVO_API_KEY_HERE
-from_email = hello@vermarkter.eu
+from_email = admin@my-salon.eu
 from_name = Vermarkter
+from_name_fr = Équipe My-Salon
+from_name_ua = Andrii | My-Salon
 daily_limit = 300
 INIEOF
 

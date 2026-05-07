@@ -66,9 +66,21 @@ BREVO_KEY = (
     or _cfg.get('BREVO', 'api_key', fallback='')
 ).strip()
 
-FROM_EMAIL = _cfg.get('BREVO', 'from_email', fallback='hello@vermarkter.eu').strip()
-FROM_NAME  = _cfg.get('BREVO', 'from_name',  fallback='Vermarkter').strip()
-DAILY_CAP  = int(_cfg.get('BREVO', 'daily_limit', fallback='300'))
+FROM_EMAIL    = _cfg.get('BREVO', 'from_email',    fallback='admin@my-salon.eu').strip()
+FROM_NAME     = _cfg.get('BREVO', 'from_name',     fallback='Vermarkter').strip()
+FROM_NAME_FR  = _cfg.get('BREVO', 'from_name_fr',  fallback='Équipe My-Salon').strip()
+FROM_NAME_UA  = _cfg.get('BREVO', 'from_name_ua',  fallback='Andrii | My-Salon').strip()
+DAILY_CAP     = int(_cfg.get('BREVO', 'daily_limit', fallback='300'))
+
+_FR_CITIES = {'nice', 'cannes', 'paris', 'lyon', 'marseille'}
+
+def get_from_name(city: str = '') -> str:
+    c = (city or '').lower()
+    if c in _FR_CITIES:
+        return FROM_NAME_FR
+    if c in ('berlin', 'hamburg', 'munich', 'ua', 'ukraine'):
+        return FROM_NAME_UA
+    return FROM_NAME
 
 BREVO_SEND_URL    = 'https://api.brevo.com/v3/smtp/email'
 BREVO_ACCOUNT_URL = 'https://api.brevo.com/v3/account'
@@ -186,14 +198,15 @@ def brevo_account_info():
         return {}
 
 
-def brevo_send(to_email, to_name, subject, html_body, text_body):
+def brevo_send(to_email, to_name, subject, html_body, text_body, city=''):
+    sender_name = get_from_name(city)
     payload = json.dumps({
-        'sender':  {'name': FROM_NAME, 'email': FROM_EMAIL},
+        'sender':  {'name': sender_name, 'email': FROM_EMAIL},
         'to':      [{'email': to_email, 'name': to_name}],
         'subject': subject,
         'htmlContent': html_body,
         'textContent': text_body,
-        'replyTo': {'email': FROM_EMAIL, 'name': FROM_NAME},
+        'replyTo': {'email': FROM_EMAIL, 'name': sender_name},
         'headers': {'X-Mailer': 'Vermarkter-Sniper/1.0'},
     }, ensure_ascii=False).encode('utf-8')
 
@@ -236,12 +249,12 @@ def zoho_send(to_email, to_name, subject, html_body, text_body):
         return False, f'Zoho SMTP error: {e}'
 
 
-def send_with_fallback(to_email, to_name, subject, html_body, text_body):
+def send_with_fallback(to_email, to_name, subject, html_body, text_body, city=''):
     """Try Brevo first; on 429 (daily limit) switch to Zoho SMTP for this run."""
     global _brevo_limit_hit
 
     if not _brevo_limit_hit:
-        ok, result = brevo_send(to_email, to_name, subject, html_body, text_body)
+        ok, result = brevo_send(to_email, to_name, subject, html_body, text_body, city=city)
         if ok:
             return True, 'brevo', result
         if _brevo_limit_hit:
@@ -328,7 +341,7 @@ def main():
             print(f'         → [DRY-RUN, not sent]')
             ok += 1
         else:
-            success, engine, result = send_with_fallback(email, name, subject, html_body, text_body)
+            success, engine, result = send_with_fallback(email, name, subject, html_body, text_body, city=lead.get('city', args.city or ''))
             if success:
                 code = patch_lead_sent(lid)
                 db_sym = 'DB OK' if code in (200, 204) else f'DB ERR {code}'
