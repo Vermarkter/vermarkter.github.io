@@ -81,6 +81,26 @@ tbody tr.is-new:hover{background:rgba(245,158,11,.08)}
 .toggle-new.on{background:linear-gradient(135deg,#f59e0b,#ef4444);border-color:transparent;color:#fff;box-shadow:0 6px 22px rgba(245,158,11,.45)}
 .toggle-new .cnt{background:rgba(0,0,0,.2);padding:.18rem .55rem;border-radius:999px;font-size:.78rem;font-weight:900}
 .toggle-new.on .cnt{background:rgba(255,255,255,.25)}
+/* ── EMAIL DISPATCH STATS BAR ── */
+.edsbar{max-width:1400px;margin:0 auto 1.25rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.75rem}
+.eds-card{border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:center;gap:.9rem;border:1px solid var(--border);background:rgba(255,255,255,.03);position:relative;overflow:hidden}
+.eds-card::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:14px 0 0 14px}
+.eds-sent::after{background:linear-gradient(180deg,#06b6d4,#6366f1)}
+.eds-err::after{background:linear-gradient(180deg,#ef4444,#f59e0b)}
+.eds-ready::after{background:linear-gradient(180deg,#22c55e,#16a34a)}
+.eds-icon{font-size:1.5rem;flex-shrink:0;line-height:1}
+.eds-body{}
+.eds-val{font-size:1.75rem;font-weight:900;line-height:1}
+.eds-sent .eds-val{background:linear-gradient(135deg,#06b6d4,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.eds-err  .eds-val{background:linear-gradient(135deg,#ef4444,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.eds-ready .eds-val{background:linear-gradient(135deg,#22c55e,#16a34a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.eds-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:700;margin-top:.1rem}
+.eds-sub{font-size:.62rem;color:rgba(255,255,255,.22);margin-top:.08rem}
+.eds-prog-wrap{display:flex;align-items:center;gap:.6rem;flex:1;min-width:120px}
+.eds-prog{flex:1;background:rgba(255,255,255,.07);border-radius:999px;height:5px;overflow:hidden}
+.eds-progfill{height:100%;border-radius:999px;background:linear-gradient(90deg,#06b6d4,#6366f1);transition:width .6s ease}
+.eds-pct{font-size:.68rem;color:var(--muted);white-space:nowrap;min-width:30px;text-align:right}
+.eds-ts{font-size:.62rem;color:rgba(255,255,255,.18);text-align:right;margin-top:.3rem}
 .overlay{text-align:center;padding:4rem;color:var(--muted)}
 .spinner{display:inline-block;width:32px;height:32px;border:3px solid rgba(236,72,153,.2);border-top-color:var(--pink);border-radius:50%;animation:spin 1s linear infinite;margin-bottom:1rem}
 .err-box{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3);border-radius:12px;padding:1.5rem 2rem;color:#fca5a5;font-size:.9rem;max-width:600px;margin:0 auto;text-align:left}
@@ -175,6 +195,49 @@ tbody tr.ms-row-REJECTED   td{background:rgba(239,68,68,.04);opacity:.6}
   <div class="stat-card" style="border-color:rgba(59,130,246,.3)"><div class="sn" id="statMsReplied" style="background:linear-gradient(135deg,#60a5fa,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">&#8212;</div><div class="sl">&#128172; REPLIED</div></div>
   <div class="stat-card" style="border-color:rgba(34,197,94,.3)"><div class="sn" id="statMsInterested" style="background:linear-gradient(135deg,#4ade80,#22c55e);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">&#8212;</div><div class="sl">&#128293; INTERESTED</div></div>
   <div class="stat-card" style="border-color:rgba(239,68,68,.3)"><div class="sn" id="statMsRejected" style="background:linear-gradient(135deg,#f87171,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">&#8212;</div><div class="sl">&#128683; REJECTED</div></div>
+</div>
+
+<!-- ── EMAIL DISPATCH TODAY ────────────────────────────────────────────── -->
+<div class="edsbar" id="edsBar">
+  <div class="eds-card eds-sent">
+    <div class="eds-icon">&#128231;</div>
+    <div class="eds-body">
+      <div class="eds-val" id="edsSent">&#8212;</div>
+      <div class="eds-lbl">Email надіслано сьогодні</div>
+      <div class="eds-sub" id="edsSentSub">статус EMAIL SENT / sent</div>
+    </div>
+  </div>
+  <div class="eds-card eds-err">
+    <div class="eds-icon">&#9888;&#65039;</div>
+    <div class="eds-body">
+      <div class="eds-val" id="edsErr">&#8212;</div>
+      <div class="eds-lbl">Помилки доставки</div>
+      <div class="eds-sub" id="edsErrSub">last_error &#8800; null</div>
+    </div>
+  </div>
+  <div class="eds-card eds-ready" style="flex-direction:column;align-items:flex-start;gap:.4rem">
+    <div style="display:flex;align-items:center;gap:.9rem;width:100%">
+      <div class="eds-icon">&#128228;</div>
+      <div class="eds-body" style="flex:1">
+        <div class="eds-val" id="edsReady">&#8212;</div>
+        <div class="eds-lbl">Ready to send</div>
+        <div class="eds-sub">email_ready / READY TO SEND</div>
+      </div>
+    </div>
+    <div class="eds-prog-wrap" style="width:100%">
+      <div class="eds-prog"><div class="eds-progfill" id="edsProgFill" style="width:0%"></div></div>
+      <div class="eds-pct" id="edsProgPct">0%</div>
+    </div>
+  </div>
+  <div class="eds-card" style="flex-direction:column;justify-content:center;gap:.3rem;min-width:140px">
+    <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);font-weight:700">Brevo ліміт</div>
+    <div style="display:flex;align-items:baseline;gap:.3rem">
+      <span style="font-size:1.5rem;font-weight:900;color:var(--text)" id="edsBrevoSent">&#8212;</span>
+      <span style="color:var(--muted);font-size:.9rem">/ <span id="edsBrevoLimit">300</span></span>
+    </div>
+    <div class="eds-prog" style="margin-top:.2rem"><div class="eds-progfill" id="edsBrevoFill" style="width:0%;background:linear-gradient(90deg,#ec4899,#8b5cf6)"></div></div>
+    <div class="eds-ts" id="edsTs">&#8212;</div>
+  </div>
 </div>
 
 <div class="cbar">
@@ -818,10 +881,89 @@ function renderTable() {
   }).join('');
 }
 
+// ── EMAIL DISPATCH STATS (Supabase count queries — no port 8080 needed) ──────
+var BREVO_DAILY_LIMIT = 300;
+
+function sbCount(params) {
+  var url = SB_URL + '/rest/v1/' + TABLE + '?select=id' + params;
+  return fetch(url, {
+    headers: Object.assign({}, SB_HEADERS, {
+      'Prefer':     'count=exact',
+      'Range-Unit': 'items',
+      'Range':      '0-0'
+    })
+  }).then(function(r) {
+    var cr = r.headers.get('Content-Range') || '*/0';
+    var total = cr.split('/').pop();
+    return parseInt(total, 10) || 0;
+  });
+}
+
+function loadEmailStats() {
+  var today = new Date().toISOString().slice(0, 10);  // "YYYY-MM-DD"
+
+  Promise.all([
+    // Відправлено сьогодні (Brevo pipeline set status=EMAIL SENT)
+    sbCount('&status=in.(EMAIL%20SENT,sent)&last_contacted=gte.' + today + 'T00%3A00%3A00'),
+    // Помилки: last_error заповнено (скрипт пише туди причину фейлу)
+    sbCount('&last_error=not.is.null'),
+    // Готові до відправки
+    sbCount('&status=in.(email_ready,READY%20TO%20SEND)'),
+    // Відправлено всього за поточний день (ширший фільтр — EMAIL SENT без дати, сьогоднішні)
+    sbCount('&status=eq.EMAIL%20SENT&last_contacted=gte.' + today + 'T00%3A00%3A00'),
+  ]).then(function(r) {
+    var sentToday  = r[0];
+    var errCount   = r[1];
+    var readyCount = r[2];
+    var brevoToday = r[3];  // точний EMAIL SENT за сьогодні для Brevo лічильника
+
+    var set = function(id, v) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = (v === undefined || v === null) ? '—' : v;
+    };
+
+    set('edsSent',  sentToday);
+    set('edsErr',   errCount);
+    set('edsReady', readyCount);
+    set('edsBrevoSent', brevoToday);
+
+    // Progress bar: ready / (ready + sent_today), cap 100%
+    var total = readyCount + sentToday;
+    var pct   = total > 0 ? Math.min(100, Math.round(sentToday / total * 100)) : 0;
+    var progEl = document.getElementById('edsProgFill');
+    if (progEl) progEl.style.width = pct + '%';
+    set('edsProgPct', pct + '%');
+
+    // Brevo bar
+    var bpct  = Math.min(100, Math.round(brevoToday / BREVO_DAILY_LIMIT * 100));
+    var bfill = document.getElementById('edsBrevoFill');
+    if (bfill) bfill.style.width = bpct + '%';
+
+    // Error card highlight
+    var errCard = document.getElementById('edsBar');
+    if (errCard && errCount > 0) {
+      var errValEl = document.getElementById('edsErr');
+      if (errValEl) errValEl.style.animation = 'pulse 1.5s ease-in-out infinite';
+    }
+
+    // Sub-labels with context
+    set('edsSentSub', 'sent + EMAIL SENT · ' + today);
+    set('edsErrSub',  errCount > 0 ? 'Перевір last_error в таблиці' : 'Без помилок');
+
+    // Timestamp
+    var now = new Date();
+    set('edsTs', 'Оновлено ' + now.toLocaleTimeString('uk-UA', {hour:'2-digit',minute:'2-digit'}));
+  }).catch(function(e) {
+    console.warn('[CRM] loadEmailStats error:', e.message);
+  });
+}
+
 // ── BOOT ─────────────────────────────────────────────────────────────────────
 syncToggleUI();
 loadData();
+loadEmailStats();
 setInterval(loadData, 60000);
+setInterval(loadEmailStats, 60000);
 </script>
 </body>
 </html>
