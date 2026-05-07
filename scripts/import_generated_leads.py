@@ -18,18 +18,22 @@ Signature rules (--check-signatures, default ON):
   - otherwise (FR/AR/default)               → expects "Équipe Vermarkter" or "equipe vermarkter"
   Mismatches are printed as [WARN] but do NOT block the import.
 
-Input JSON format:
+Input JSON format (all fields optional except id):
   [
     {
       "id": 123,
-      "letter_1": "Objet: ...\\n\\nBonjour,...",
-      "letter_2": "Objet: ...\\n\\nBonjour,...",
-      "letter_3": "Objet: ...\\n\\nBonjour,...",
-      "wa_text":  "Bonjour..."
+      "whatsapp":               "Bonjour...",          // → custom_message
+      "wa_text":                "Bonjour...",          // alias for whatsapp
+      "letter_1_subject":       "Objet: ...",          // → email_funnel_json.letter_1_subject
+      "letter_1_digital_mirror":"Bonjour,...",         // → email_funnel_json.letter_1_digital_mirror
+      "letter_2_subject":       "Objet: ...",
+      "letter_2_future_vision": "Bonjour,...",
+      "letter_3_subject":       "Objet: ...",
+      "letter_3_scarcity":      "Bonjour,..."
     },
     ...
   ]
-  Any subset of letter_1/letter_2/letter_3/wa_text is valid.
+  Any subset of fields is valid. status=email_ready if any letter present, else new.
 
 Usage:
   python scripts/import_generated_leads.py --file cannes_offers.json
@@ -112,19 +116,28 @@ def fetch_lead_notes(lead_ids: list) -> dict:
         return {}
 
 
-def patch_lead(lead_id: int, letter1: str, letter2: str, letter3: str,
+def patch_lead(lead_id: int,
+               letter1: str, letter1_subj: str,
+               letter2: str, letter2_subj: str,
+               letter3: str, letter3_subj: str,
                wa_text: str, status: str, dry: bool) -> str:
     if dry:
         return 'dry'
 
-    # Build email_funnel_json from non-empty letters only
+    # Build email_funnel_json — body and subject stored as separate keys
     funnel = {}
     if letter1:
         funnel['letter_1_digital_mirror'] = letter1
+    if letter1_subj:
+        funnel['letter_1_subject'] = letter1_subj
     if letter2:
         funnel['letter_2_future_vision'] = letter2
+    if letter2_subj:
+        funnel['letter_2_subject'] = letter2_subj
     if letter3:
         funnel['letter_3_scarcity'] = letter3
+    if letter3_subj:
+        funnel['letter_3_subject'] = letter3_subj
 
     body = {'status': status, 'last_error': None}
     if funnel:
@@ -217,10 +230,13 @@ def main():
 
     for rec in records:
         lead_id = rec.get('id')
-        letter1 = (rec.get('letter_1') or rec.get('letter_1_digital_mirror') or '').strip()
-        letter2 = (rec.get('letter_2') or rec.get('letter_2_future_vision')  or '').strip()
-        letter3 = (rec.get('letter_3') or rec.get('letter_3_scarcity')       or '').strip()
-        wa_text = (rec.get('wa_text') or '').strip()
+        letter1      = (rec.get('letter_1') or rec.get('letter_1_digital_mirror') or '').strip()
+        letter1_subj = (rec.get('letter_1_subject') or '').strip()
+        letter2      = (rec.get('letter_2') or rec.get('letter_2_future_vision')  or '').strip()
+        letter2_subj = (rec.get('letter_2_subject') or '').strip()
+        letter3      = (rec.get('letter_3') or rec.get('letter_3_scarcity')       or '').strip()
+        letter3_subj = (rec.get('letter_3_subject') or '').strip()
+        wa_text      = (rec.get('wa_text') or rec.get('whatsapp') or '').strip()
 
         if not lead_id:
             print(f'  [SKIP] No "id" field in record: {str(rec)[:80]}')
@@ -260,7 +276,11 @@ def main():
         tag_str = '+'.join(channel_tag)
 
         preview = (letter1 or letter2 or wa_text).replace('\n', ' ')[:70]
-        result  = patch_lead(lead_id, letter1, letter2, letter3, wa_text, status, dry)
+        result  = patch_lead(lead_id,
+                             letter1, letter1_subj,
+                             letter2, letter2_subj,
+                             letter3, letter3_subj,
+                             wa_text, status, dry)
 
         icon = {'ok': 'OK', 'dry': '~', 'timeout': 'TO'}.get(result, 'ERR')
         print(f'  [{icon}] id={lead_id} [{tag_str}] status={status}  |  {preview}...')
