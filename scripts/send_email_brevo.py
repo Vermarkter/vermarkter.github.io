@@ -419,7 +419,7 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
                          color:#444;letter-spacing:1px;">
               Vermarkter — vermarkter.vercel.app<br>
               Sie erhalten diese E-Mail, weil wir eine geschäftliche Relevanz für Ihr Unternehmen sehen.<br>
-              <a href="mailto:hello@vermarkter.eu?subject=Abmeldung"
+              <a href="mailto:{html.escape(FROM_EMAIL)}?subject=Abmeldung"
                  style="color:#555;text-decoration:underline;">Abmelden</a>
             </span>
           </td>
