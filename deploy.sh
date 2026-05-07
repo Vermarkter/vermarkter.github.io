@@ -110,11 +110,17 @@ MAILTO=""
 # 10:00 Берлін — Email-розсилка через Brevo (300/день)
 0 10 * * * root cd /opt/vermarkter && TZ=Europe/Berlin /usr/bin/python3 scripts/mass_email_sender.py --limit 300 >> logs/mass_email.log 2>&1
 
-# 09:00 Nice (Europe/Paris = UTC+2) — Каскадна розсилка: Nice→Cannes→Berlin (до 300/день Brevo)
-0 7 * * * root cd /opt/vermarkter && TZ=Europe/Paris /usr/bin/python3 scripts/send_email_brevo.py --city Nice --limit 100 >> /opt/vermarkter/logs/email_send.log 2>&1 && /usr/bin/python3 scripts/send_email_brevo.py --city Cannes --limit 100 >> /opt/vermarkter/logs/email_send.log 2>&1 && /usr/bin/python3 scripts/send_email_brevo.py --city Berlin --limit 200 >> /opt/vermarkter/logs/email_send.log 2>&1
+# 09:00 Paris — Nice (100 листів)
+0 7 * * * root cd /opt/vermarkter && /usr/bin/python3 scripts/send_email_brevo.py --city Nice --limit 100 >> /opt/vermarkter/logs/email_send.log 2>&1
 
-# 09:30 Nice — Зведений звіт після розсилки → reports/daily_summary.txt
-30 7 * * * root cd /opt/vermarkter && TZ=Europe/Paris /usr/bin/python3 scripts/check_sent_log.py >> /opt/vermarkter/logs/daily_summary.log 2>&1
+# 09:05 Paris — Cannes (100 листів)
+5 7 * * * root cd /opt/vermarkter && /usr/bin/python3 scripts/send_email_brevo.py --city Cannes --limit 100 >> /opt/vermarkter/logs/email_send.log 2>&1
+
+# 09:10 Paris — Berlin (200 листів, добиває ліміт Brevo до 300/день)
+10 7 * * * root cd /opt/vermarkter && /usr/bin/python3 scripts/send_email_brevo.py --city Berlin --limit 200 >> /opt/vermarkter/logs/email_send.log 2>&1
+
+# 09:30 Paris — Зведений звіт по всіх містах → reports/daily_summary.txt
+30 7 * * * root cd /opt/vermarkter && /usr/bin/python3 scripts/check_sent_log.py >> /opt/vermarkter/logs/daily_summary.log 2>&1
 
 CRONEOF
 
