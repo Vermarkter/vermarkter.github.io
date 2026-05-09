@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Solutions IT et marketing exclusives pour les salons de beauté en Europe. Application mobile + site web + publicité locale à partir de 1 000 €.">
+    <title>IT et Marketing pour Salons de Beauté — Vermarkter</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../../CSS/clean-beauty.css">
+</head>
+<body>
+
+<header class="cb-header" id="cbHeader">
+    <nav class="cb-nav">
+        <a href="../../../de/index.html" class="cb-logo">
+            <div class="cb-logo-mark">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFFFFF" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <span class="cb-logo-name">Vermarkter</span>
+            <span class="cb-logo-badge">Beauty</span>
+        </a>
+
+        <div class="cb-nav-links">
+            <a href="#offer">Forfait</a>
+            <a href="#tech">Technologie</a>
+            <a href="#reviews">Avis</a>
+            <a href="#faq">FAQ</a>
+        </div>
+
+        <div class="cb-nav-actions" style="display:flex;align-items:center;gap:0.6rem;">
+            <div class="cb-lang" id="cbLang">
+                <button class="cb-lang-btn" id="cbLangBtn" aria-expanded="false">
+                    <svg width="16" height="12" style="vertical-align:middle;flex-shrink:0"><rect width="16" height="12" fill="#fff"/><rect width="5.3" height="12" fill="#002395"/><rect x="10.7" width="5.3" height="12" fill="#ED2939"/></svg>
+                    FR ▾
+                </button>
+                <ul class="cb-lang-dropdown" id="cbLangDropdown">
+                    <li><a href="../de/clean.html"><svg width="16" height="12"><rect width="16" height="4" fill="#000"/><rect y="4" width="16" height="4" fill="#D00"/><rect y="8" width="16" height="4" fill="#FFCE00"/></svg> DE</a></li>
+                    <li><a href="../en/clean.html"><svg width="16" height="12"><rect width="16" height="12" fill="#012169"/><path d="M0,0 L16,12 M16,0 L0,12" stroke="#fff" stroke-width="2.4"/><path d="M0,0 L16,12 M16,0 L0,12" stroke="#C8102E" stroke-width="1.6"/><path d="M8,0 V12 M0,6 H16" stroke="#fff" stroke-width="4"/><path d="M8,0 V12 M0,6 H16" stroke="#C8102E" stroke-width="2.4"/></svg> EN</a></li>
+                    <li><a href="clean.html" class="active"><svg width="16" height="12"><rect width="16" height="12" fill="#fff"/><rect width="5.3" height="12" fill="#002395"/><rect x="10.7" width="5.3" height="12" fill="#ED2939"/></svg> FR</a></li>
+                    <li><a href="../it/clean.html"><svg width="16" height="12"><rect width="16" height="12" fill="#fff"/><rect width="5.3" height="12" fill="#009246"/><rect x="10.7" width="5.3" height="12" fill="#CE2B37"/></svg> IT</a></li>
+                    <li><a href="../pl/clean.html"><svg width="16" height="12"><rect width="16" height="6" fill="#fff"/><rect y="6" width="16" height="6" fill="#DC143C"/></svg> PL</a></li>
+                    <li><a href="../ru/clean.html"><svg width="16" height="12"><rect width="16" height="4" fill="#fff"/><rect y="4" width="16" height="4" fill="#0039A6"/><rect y="8" width="16" height="4" fill="#D52B1E"/></svg> RU</a></li>
+                    <li><a href="../tr/clean.html"><svg width="16" height="12"><rect width="16" height="12" fill="#E30A17"/><circle cx="6.4" cy="6" r="3.2" fill="#fff"/><circle cx="7.2" cy="6" r="2.6" fill="#E30A17"/><path d="M9.6,4.8 L10.4,7.2 L8,5.6 H11.2 L8.8,7.2 Z" fill="#fff"/></svg> TR</a></li>
+                    <li><a href="../ua/clean.html"><svg width="16" height="12"><rect width="16" height="6" fill="#0057B7"/><rect y="6" width="16" height="6" fill="#FFD700"/></svg> UA</a></li>
+                </ul>
+            </div>
+            <a href="https://t.me/my_salon_eu" target="_blank" class="cb-btn cb-btn-glass" style="padding:0.5rem 1.15rem;font-size:0.83rem;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+                Telegram
+            </a>
+            <a href="https://wa.me/4915510300538" target="_blank" class="cb-btn cb-btn-primary" style="padding:0.5rem 1.15rem;font-size:0.83rem;">WhatsApp</a>
+        </div>
+
+        <button class="cb-mobile-toggle" id="cbMobileToggle" aria-label="Menu">&#9776;</button>
+    </nav>
+
+    <div class="cb-mobile-menu" id="cbMobileMenu">
+        <a href="#offer">Forfait</a>
+        <a href="#tech">Technologie</a>
+        <a href="#reviews">Avis</a>
+        <a href="#faq">FAQ</a>
+        <div style="display:flex;gap:0.5rem;padding-top:0.5rem;flex-wrap:wrap;">
+            <a href="../de/clean.html" style="font-size:0.82rem;color:#8E8E93;">DE</a>
+            <a href="../en/clean.html" style="font-size:0.82rem;color:#8E8E93;">EN</a>
+            <a href="../it/clean.html" style="font-size:0.82rem;color:#8E8E93;">IT</a>
+            <a href="../pl/clean.html" style="font-size:0.82rem;color:#8E8E93;">PL</a>
+            <a href="../ru/clean.html" style="font-size:0.82rem;color:#8E8E93;">RU</a>
+            <a href="../tr/clean.html" style="font-size:0.82rem;color:#8E8E93;">TR</a>
+            <a href="../ua/clean.html" style="font-size:0.82rem;color:#8E8E93;">UA</a>
+        </div>
+        <a href="https://t.me/my_salon_eu" target="_blank" style="color:#007AFF;font-weight:700;margin-top:0.25rem;">→ Telegram / WhatsApp</a>
+    </div>
+</header>
+
+<section class="cb-hero">
+    <div class="cb-hero-bg">
+        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1800&q=85&auto=format&fit=crop&crop=center" alt="Salon de beauté premium" loading="eager" fetchpriority="high">
+    </div>
+    <div class="cb-hero-content">
+        <div class="cb-hero-text">
+            <span class="cb-badge">&#128332; Beauty Industry Solution</span>
+            <h1 class="cb-hero-title">IT &amp; Marketing<br>pour <em>Salons de Beauté</em></h1>
+            <p class="cb-hero-subtitle">Libérez-vous des cahiers papier et des messages WhatsApp sans fin. Un forfait IT professionnel — site web, réservation en ligne et publicité — pour votre salon.</p>
+            <div class="cb-hero-highlight">
+                💡 <strong>Un agenda plein est le résultat d'un système :</strong> réservation 24h/24 sans appels, rappels automatiques et un site web qui inspire confiance.
+            </div>
+            <div class="cb-hero-actions" style="display:flex;gap:15px;flex-wrap:wrap;justify-content:flex-start;">
+                <a href="https://www.my-salon.eu/" target="_blank" class="cb-btn cb-btn-primary cb-btn-lg">✨ Tester le panneau admin (Démo)</a>
+                <a href="https://www.my-salon.eu/demo" target="_blank" class="cb-btn cb-btn-lg" style="background:transparent;color:#007AFF;border:2px solid #007AFF;" onmouseover="this.style.background='rgba(0,122,255,0.1)'" onmouseout="this.style.background='transparent'">🌸 Voir le site salon (Live)</a>
+            </div>
+            <p class="cb-hero-note">🔓 Identifiants déjà remplis — cliquez simplement</p>
+        </div>
+        <div class="cb-hero-cards">
+            <div class="cb-hero-stat-card">
+                <div class="cb-hero-stat-icon">📱</div>
+                <div><div class="cb-hero-stat-val">120+</div><div class="cb-hero-stat-label">Salons en Europe</div></div>
+            </div>
+            <div class="cb-hero-stat-card">
+                <div class="cb-hero-stat-icon">📈</div>
+                <div><div class="cb-hero-stat-val">+85%</div><div class="cb-hero-stat-label">de réservations</div></div>
+            </div>
+            <div class="cb-hero-stat-card">
+                <div class="cb-hero-stat-icon">💶</div>
+                <div><div class="cb-hero-stat-val">2 400 €</div><div class="cb-hero-stat-label">revenus suppl./mois</div></div>
+            </div>
+        </div>
+    </div>
+    <div class="cb-hero-scroll"><div class="cb-hero-scroll-line"></div><span>scroll</span></div>
+</section>
+
+<section class="cb-section cb-section-alt" style="padding-top:3rem;padding-bottom:3rem;">
+    <div class="cb-container">
+        <div class="cb-photo-strip">
+            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700&q=80&auto=format&fit=crop" alt="Salon de coiffure élégant" loading="lazy">
+            <div class="cb-photo-col">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400&q=80&auto=format&fit=crop" alt="Coiffeure avec iPad" loading="lazy">
+                <img src="https://images.unsplash.com/photo-1470259078422-826894b933aa?w=400&q=80&auto=format&fit=crop" alt="Équipement salon moderne" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cb-section">
+    <div class="cb-container">
+        <div class="cb-section-head">
+            <span class="cb-badge">Ça vous parle ?</span>
+            <h2>Ça vous parle ?</h2>
+        </div>
+        <div class="cb-pain-grid">
+            <div class="cb-card">
+                <div class="cb-pain-icon">😞</div>
+                <h3>Toutes les réservations passent par vous</h3>
+                <p>Des heures passées sur les chats, appels et cahiers. Vous êtes l'administrateur, pas le chef d'entreprise.</p>
+            </div>
+            <div class="cb-card">
+                <div class="cb-pain-icon">📵</div>
+                <h3>Les clients ne viennent pas sans rappel</h3>
+                <p>15–20% des rendez-vous sont manqués. Sans rappels automatiques, vous perdez des centaines d'euros chaque mois.</p>
+            </div>
+            <div class="cb-card">
+                <div class="cb-pain-icon">📞</div>
+                <h3>Pas de site web professionnel</h3>
+                <p>Les concurrents avec un site professionnel paraissent plus fiables. Les clients choisissent ceux en qui ils ont confiance en ligne.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="offer" class="cb-section cb-section-alt">
+    <div class="cb-container">
+        <div class="cb-section-head">
+            <span class="cb-badge">🔥 Forfait Exclusif</span>
+            <h2>Tout-en-un pour <span style="color:#007AFF;">1 000 €</span></h2>
+            <p>Application mobile + site web + publicité locale — lancez-vous en 7 jours.</p>
+        </div>
+        <div class="cb-offer-wrap">
+            <div class="cb-offer-header">
+                <div class="cb-offer-price-tag">⚡ Bundle — Paiement unique</div>
+                <h2>Forfait complet pour votre salon</h2>
+                <p>Tout ce dont vous avez besoin — opérationnel en 7 jours</p>
+            </div>
+            <div class="cb-offer-body">
+                <ul class="cb-offer-list">
+                    <li>📱 Application mobile pour la réservation client (iOS + Android)</li>
+                    <li>🌐 Site web carte de visite professionnel</li>
+                    <li>📍 Publicité Google Maps — nouveaux clients dans un rayon de 5 km</li>
+                    <li>🔔 Rappels SMS/Email automatiques pour les clients</li>
+                    <li>📊 Rapport analytics mensuel</li>
+                    <li>🇫🇷 Support francophone 24h/24</li>
+                </ul>
+                <div class="cb-offer-price">
+                    <div style="font-size:0.75rem;color:#8E8E93;text-transform:uppercase;letter-spacing:1px;">Bundle</div>
+                    <div class="cb-price-amount">1 000 €</div>
+                    <div class="cb-price-note">unique · sans abonnement</div>
+                    <a href="https://t.me/my_salon_eu" target="_blank" class="cb-btn cb-btn-primary cb-btn-lg" style="margin-top:0.5rem;width:100%;justify-content:center;">Demander maintenant</a>
+                    <p style="font-size:0.72rem;color:#C7C7CC;margin-top:0.6rem;text-align:center;">*Coûts SMS selon tarif opérateur (optionnel)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="tech" class="cb-section">
+    <div class="cb-container">
+        <div class="cb-section-head">
+            <span class="cb-badge">⚡ Avantage Technologique</span>
+            <h2>Ce que votre salon obtient en interne</h2>
+            <p>Pas seulement un site web — un système d'exploitation complet pour votre salon de beauté.</p>
+        </div>
+        <div class="cb-tech-grid">
+            <div class="cb-tech-card"><div class="cb-tech-icon">📈</div><h3>Contrôle financier</h3><p>Rapports quotidiens et hebdomadaires, ticket moyen par employé. Voyez où est l'argent — voyez où vous pouvez grandir.</p></div>
+            <div class="cb-tech-card"><div class="cb-tech-icon">📁</div><h3>Catalogue de services prêt</h3><p>42 services préchargés avec prix — modifiables en 1 minute, sans développeur.</p></div>
+            <div class="cb-tech-card"><div class="cb-tech-icon">🤝</div><h3>CRM clients</h3><p>Rappels automatiques via Telegram et Email (inclus). SMS — sur demande.</p></div>
+            <div class="cb-tech-card"><div class="cb-tech-icon">🌙</div><h3>Autopilote 24/7</h3><p>Les clients réservent eux-mêmes — la nuit, le week-end, pendant que vous vous reposez.</p></div>
+            <div class="cb-tech-card"><div class="cb-tech-icon">📍</div><h3>Publicité Google Maps</h3><p>Les nouveaux clients dans un rayon de 5 km vous trouvent en premier, pas vos concurrents.</p></div>
+            <div class="cb-tech-card"><div class="cb-tech-icon">🚀</div><h3>Lancement en 7 jours</h3><p>Site + App + publicité mis en ligne dans la semaine suivant le paiement.</p></div>
+        </div>
+    </div>
+</section>
+
+<section class="cb-section cb-section-alt">
+    <div class="cb-container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+            <div>
+                <span class="cb-badge">📱 My-Salon App</span>
+                <h2 style="margin-bottom:1rem;">Votre salon dans votre poche</h2>
+                <p style="margin-bottom:1.5rem;">Gérez les réservations, le personnel et les finances — directement depuis votre iPhone. Vos clients réservent eux-mêmes, vous gardez le contrôle.</p>
+                <ul style="display:flex;flex-direction:column;gap:0.85rem;margin-bottom:2rem;">
+                    <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.95rem;color:#48484A;"><span style="width:22px;height:22px;border-radius:50%;background:rgba(0,122,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#007AFF;flex-shrink:0;">✓</span>Vue calendrier en temps réel</li>
+                    <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.95rem;color:#48484A;"><span style="width:22px;height:22px;border-radius:50%;background:rgba(0,122,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#007AFF;flex-shrink:0;">✓</span>Rappels clients automatiques</li>
+                    <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.95rem;color:#48484A;"><span style="width:22px;height:22px;border-radius:50%;background:rgba(0,122,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#007AFF;flex-shrink:0;">✓</span>Rapport quotidien &amp; hebdomadaire en un clic</li>
+                    <li style="display:flex;align-items:center;gap:0.75rem;font-size:0.95rem;color:#48484A;"><span style="width:22px;height:22px;border-radius:50%;background:rgba(0,122,255,0.1);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:#007AFF;flex-shrink:0;">✓</span>Base de données clients avec historique</li>
+                </ul>
+                <a href="https://www.my-salon.eu/" target="_blank" class="cb-btn cb-btn-primary cb-btn-lg">Tester le panneau admin en direct →</a>
+            </div>
+            <div style="position:relative;">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=560&q=80&auto=format&fit=crop" alt="My-Salon App sur iPhone" loading="lazy" style="border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,0.1);max-height:420px;object-fit:cover;width:100%;">
+                <div style="position:absolute;top:1.5rem;right:-1rem;background:#FFFFFF;border-radius:14px;padding:0.85rem 1.1rem;box-shadow:0 8px 28px rgba(0,0,0,0.1);text-align:left;">
+                    <div style="font-size:0.62rem;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;color:#8E8E93;margin-bottom:0.2rem;">Aujourd'hui</div>
+                    <div style="font-size:1.4rem;font-weight:900;color:#34C759;line-height:1;">+12</div>
+                    <div style="font-size:0.7rem;color:#8E8E93;">nouvelles réservations</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="roi-compare" class="cb-section">
+    <div class="cb-container" style="max-width:960px;">
+        <div class="cb-section-head">
+            <span class="cb-badge">📊 Bilan sur 3 ans</span>
+            <h2>Planity vs. Vermarkter</h2>
+            <p>Déplacez les curseurs — voyez en direct combien Planity vous coûte.</p>
+        </div>
+        <div class="cb-roi-sliders">
+            <div class="cb-slider-box">
+                <div class="cb-slider-label">Réservations / mois</div>
+                <div class="cb-slider-val" id="roiBookingsVal">80</div>
+                <input type="range" class="cb-range" id="roiBookings" min="20" max="300" value="80" step="10" oninput="updateROI()">
+                <div class="cb-range-limits"><span>20</span><span>300</span></div>
+            </div>
+            <div class="cb-slider-box">
+                <div class="cb-slider-label">Ticket moyen (€)</div>
+                <div class="cb-slider-val" id="roiTicketVal">55 €</div>
+                <input type="range" class="cb-range" id="roiTicket" min="20" max="150" value="55" step="5" oninput="updateROI()">
+                <div class="cb-range-limits"><span>20 €</span><span>150 €</span></div>
+            </div>
+        </div>
+        <div class="cb-roi-stats">
+            <div class="cb-roi-stat"><div class="cb-roi-stat-label">Planity 3 ans</div><div class="cb-roi-stat-val is-red" id="roiTW3">—</div></div>
+            <div class="cb-roi-stat"><div class="cb-roi-stat-label">Vermarkter 3 ans</div><div class="cb-roi-stat-val is-blue" id="roiVM3">—</div></div>
+            <div class="cb-roi-stat"><div class="cb-roi-stat-label">Vos économies</div><div class="cb-roi-stat-val is-green" id="roiSave">—</div></div>
+        </div>
+        <div class="cb-roi-chart-wrap"><canvas id="roiCanvas" height="260"></canvas></div>
+        <div style="text-align:center;margin-top:2rem;">
+            <a href="https://t.me/my_salon_eu" target="_blank" class="cb-btn cb-btn-primary cb-btn-lg">
+                Démarrez pour 1 000 € — économisez <span id="roiSaveCta">jusqu'à 20 000 €</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="cb-section cb-section-alt">
+    <div class="cb-container" style="max-width:860px;">
+        <div class="cb-section-head">
+            <span class="cb-badge">💶 Comparaison de prix</span>
+            <h2>Les agences EU facturent à partir de <span style="text-decoration:line-through;color:#8E8E93;">5 000 €</span><br>Nous — <span style="color:#007AFF;">1 000 € pour tout</span></h2>
+            <p>Un développement à ce niveau coûte entre 5 000 € et plus dans les agences de Paris ou Lyon.</p>
+        </div>
+        <div class="cb-compare">
+            <div class="cb-compare-col">
+                <div class="cb-compare-col-label">Agence EU</div>
+                <div class="cb-compare-item"><span>📱 Application mobile</span> <strong>2 000 €</strong></div>
+                <div class="cb-compare-item"><span>🌐 Site web</span> <strong>1 500 €</strong></div>
+                <div class="cb-compare-item"><span>📍 Configuration pub</span> <strong>1 500 €</strong></div>
+                <div class="cb-compare-item cb-compare-total"><span>Total</span><span class="strike">5 000 €+</span></div>
+            </div>
+            <div class="cb-compare-col is-winner">
+                <div class="cb-compare-col-label">Vermarkter</div>
+                <div class="cb-compare-item"><span>📱 Application mobile</span> <strong style="color:#007AFF;">✓ inclus</strong></div>
+                <div class="cb-compare-item"><span>🌐 Site web</span> <strong style="color:#007AFF;">✓ inclus</strong></div>
+                <div class="cb-compare-item"><span>📍 Publicité</span> <strong style="color:#007AFF;">✓ inclus</strong></div>
+                <div class="cb-compare-item cb-compare-total"><span>Total</span><span>1 000 €</span></div>
+            </div>
+        </div>
+        <div style="text-align:center;">
+            <a href="https://t.me/my_salon_eu" target="_blank" class="cb-btn cb-btn-primary cb-btn-lg">Démarrez pour 1 000 €</a>
+        </div>
+    </div>
+</section>
+
+<section id="reviews" class="cb-section">
+    <div class="cb-container">
+        <div class="cb-section-head">
+            <span class="cb-badge">⭐ Témoignages</span>
+            <h2>Ce que disent nos clients beauté</h2>
+        </div>
+        <div class="cb-review-grid">
+            <div class="cb-review">
+                <div class="cb-stars">★★★★★</div>
+                <blockquote>« Depuis la nouvelle appli, 73% de mes clients réservent en ligne. Mes employés n'ont plus de créneaux vides — l'agenda est toujours plein. ROI atteint en 6 semaines. »</blockquote>
+                <div class="cb-reviewer"><div class="cb-reviewer-avatar">💆</div><div><div class="cb-reviewer-name">Elena H.</div><div class="cb-reviewer-role">Propriétaire, Beauty Lounge Paris</div></div></div>
+            </div>
+            <div class="cb-review">
+                <div class="cb-stars">★★★★★</div>
+                <blockquote>« La publicité locale nous a mis dans le top 3 sur Google Maps. De nouveaux clients viennent chaque jour — sans recommandations. »</blockquote>
+                <div class="cb-reviewer"><div class="cb-reviewer-avatar">💇</div><div><div class="cb-reviewer-name">Marie K.</div><div class="cb-reviewer-role">Institut de beauté, Lyon</div></div></div>
+            </div>
+            <div class="cb-review">
+                <div class="cb-stars">★★★★★</div>
+                <blockquote>« Je pensais que 1 000 € pour une appli c'était cher. Maintenant je gagne ce montant en plus dès la première semaine. »</blockquote>
+                <div class="cb-reviewer"><div class="cb-reviewer-avatar">💅</div><div><div class="cb-reviewer-name">Sophie L.</div><div class="cb-reviewer-role">Institut ongles, Marseille</div></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="cb-section cb-section-alt">
+    <div class="cb-container">
+        <div class="cb-section-head">
+            <span class="cb-badge">❓ Questions fréquentes</span>
+            <h2>FAQ</h2>
+        </div>
+        <div class="cb-faq">
+            <div class="cb-faq-item">
+                <button class="cb-faq-q" onclick="this.parentElement.classList.toggle('active')">Combien de temps dure le développement ?<span class="cb-faq-icon">+</span></button>
+                <div class="cb-faq-a"><p>Le site est prêt en 3–5 jours, l'application en 7–14 jours. La publicité locale fonctionne dès le jour 1.</p></div>
+            </div>
+            <div class="cb-faq-item">
+                <button class="cb-faq-q" onclick="this.parentElement.classList.toggle('active')">Ai-je besoin de connaissances techniques ?<span class="cb-faq-icon">+</span></button>
+                <div class="cb-faq-a"><p>Non. Nous configurons tout et vous formons en 1 heure. Ensuite tout fonctionne automatiquement.</p></div>
+            </div>
+            <div class="cb-faq-item">
+                <button class="cb-faq-q" onclick="this.parentElement.classList.toggle('active')">Que se passe-t-il après l'achat ?<span class="cb-faq-icon">+</span></button>
+                <div class="cb-faq-a"><p>Vous recevez un appel d'onboarding dans les 24 heures. Nous démarrons immédiatement.</p></div>
+            </div>
+            <div class="cb-faq-item">
+                <button class="cb-faq-q" onclick="this.parentElement.classList.toggle('active')">Y a-t-il des coûts récurrents ?<span class="cb-faq-icon">+</span></button>
+                <div class="cb-faq-a"><p>Le forfait est unique. Support mensuel optionnel à partir de 99 €/mois.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cb-section">
+    <div class="cb-container">
+        <div class="cb-cta-wrap">
+            <h2>Prêt à remplir votre agenda ?</h2>
+            <p>Consultation gratuite — sans pression commerciale. Réponse dans les 2 heures.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                <a href="https://t.me/my_salon_eu" target="_blank" class="cb-btn cb-btn-white cb-btn-lg">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+                    Demander une consultation gratuite
+                </a>
+                <a href="https://wa.me/4915510300538" target="_blank" class="cb-btn cb-btn-lg" style="background:rgba(255,255,255,0.15);color:#fff;border:1.5px solid rgba(255,255,255,0.38);">Écrire sur WhatsApp</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="cb-footer">
+    <div class="cb-footer-inner">
+        <a href="../../../de/index.html" style="display:flex;align-items:center;gap:10px;">
+            <div style="width:32px;height:32px;background:#007AFF;border-radius:8px;display:flex;align-items:center;justify-content:center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" fill="#FFFFFF"/></svg>
+            </div>
+            <span class="cb-footer-logo-name">Vermarkter</span>
+        </a>
+        <div class="cb-footer-links">
+            <a href="../../../de/index.html">Accueil</a>
+            <a href="../../../de/contact.html">Contact</a>
+            <a href="https://t.me/my_salon_eu" target="_blank">Telegram</a>
+            <a href="https://wa.me/4915510300538" target="_blank">WhatsApp</a>
+        </div>
+    </div>
+    <div class="cb-footer-copy">© 2025 Vermarkter. Performance Marketing pour votre business.</div>
+</footer>
+
+<div class="cb-social-float">
+    <a href="https://t.me/my_salon_eu" target="_blank" class="cb-social-btn cb-social-tg" aria-label="Telegram">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 14.26l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.3z"/></svg>
+    </a>
+    <a href="https://wa.me/4915510300538" target="_blank" class="cb-social-btn cb-social-wa" aria-label="WhatsApp">&#x1F4AC;</a>
+</div>
+
+<button id="cbScrollTop" aria-label="Haut de page">↑</button>
+
+<div class="cb-scarcity" id="cbScarcity">
+    <button class="cb-scarcity-close" onclick="this.parentElement.style.display='none'">✕</button>
+    <div class="cb-scarcity-title">Statut actuel</div>
+    <div class="cb-scarcity-text">Seulement <strong>2 places d'onboarding</strong> disponibles à Nice en mai.</div>
+    <a href="https://t.me/my_salon_eu" target="_blank" class="cb-scarcity-link">Réserver maintenant →</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+var cbHeader = document.getElementById('cbHeader');
+window.addEventListener('scroll', function() { cbHeader.classList.toggle('scrolled', window.pageYOffset > 60); }, { passive: true });
+document.getElementById('cbMobileToggle').addEventListener('click', function() { document.getElementById('cbMobileMenu').classList.toggle('open'); });
+var cbLang = document.getElementById('cbLang');
+document.getElementById('cbLangBtn').addEventListener('click', function(e) { e.stopPropagation(); cbLang.classList.toggle('open'); this.setAttribute('aria-expanded', cbLang.classList.contains('open')); });
+document.addEventListener('click', function() { cbLang.classList.remove('open'); });
+var cbScrollBtn = document.getElementById('cbScrollTop');
+window.addEventListener('scroll', function() { cbScrollBtn.classList.toggle('visible', window.pageYOffset > 300); }, { passive: true });
+cbScrollBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+setTimeout(function() { document.getElementById('cbScarcity').style.display = 'block'; }, 5000);
+
+var roiChart = null;
+function calcROI(bookings, ticket) {
+    var months = 36, twCommission = 0.26, twShare = 0.35, twMonthlyFee = 39, vmSetup = 1000;
+    var twMonthly = twMonthlyFee + (bookings * ticket * twShare * twCommission);
+    var labels = [], tw = [], vm = [], twCum = 0, vmCum = vmSetup;
+    for (var m = 1; m <= months; m++) { twCum += twMonthly; labels.push('M' + m); tw.push(Math.round(twCum)); vm.push(Math.round(vmCum)); }
+    return { labels: labels, tw: tw, vm: vm, twTotal: Math.round(twCum), vmTotal: Math.round(vmCum), saving: Math.round(twCum - vmCum) };
+}
+function updateROI() {
+    var bookings = parseInt(document.getElementById('roiBookings').value);
+    var ticket = parseInt(document.getElementById('roiTicket').value);
+    document.getElementById('roiBookingsVal').textContent = bookings;
+    document.getElementById('roiTicketVal').textContent = ticket + ' €';
+    var d = calcROI(bookings, ticket);
+    document.getElementById('roiTW3').textContent = '€' + d.twTotal.toLocaleString('fr-FR');
+    document.getElementById('roiVM3').textContent = '€' + d.vmTotal.toLocaleString('fr-FR');
+    document.getElementById('roiSave').textContent = '€' + d.saving.toLocaleString('fr-FR');
+    document.getElementById('roiSaveCta').textContent = '€' + d.saving.toLocaleString('fr-FR');
+    if (roiChart) { roiChart.data.labels = d.labels; roiChart.data.datasets[0].data = d.tw; roiChart.data.datasets[1].data = d.vm; roiChart.update('none'); }
+    else {
+        var ctx = document.getElementById('roiCanvas').getContext('2d');
+        roiChart = new Chart(ctx, { type: 'line', data: { labels: d.labels, datasets: [
+            { label: 'Planity (cumulatif)', data: d.tw, borderColor: '#C7C7CC', backgroundColor: 'rgba(199,199,204,0.12)', borderWidth: 2.5, pointRadius: 0, tension: 0.35, fill: true },
+            { label: 'Vermarkter (cumulatif)', data: d.vm, borderColor: '#007AFF', backgroundColor: 'rgba(0,122,255,0.07)', borderWidth: 2.5, pointRadius: 0, tension: 0.35, fill: true }
+        ]}, options: { responsive: true, interaction: { mode: 'index', intersect: false },
+            plugins: { legend: { labels: { color: '#48484A', font: { size: 12 }, boxWidth: 14 } }, tooltip: { callbacks: { label: function(c) { return c.dataset.label + ': €' + c.parsed.y.toLocaleString('fr-FR'); }}}},
+            scales: { x: { ticks: { color: '#C7C7CC', maxTicksLimit: 12, font: { size: 10 } }, grid: { color: 'rgba(0,0,0,0.04)' } }, y: { ticks: { color: '#C7C7CC', font: { size: 10 }, callback: function(v){ return '€' + v.toLocaleString('fr-FR'); } }, grid: { color: 'rgba(0,0,0,0.04)' } } }
+        }});
+    }
+}
+document.addEventListener('DOMContentLoaded', function() { updateROI(); });
+</script>
+</body>
+</html>
