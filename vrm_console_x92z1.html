@@ -451,7 +451,7 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
   <div id="emptyMsg" style="display:none;text-align:center;padding:3rem;color:var(--muted)">Нічого не знайдено</div>
 </div>
 
-<div class="footer">Vermarkter &middot; Master Outreach CRM &middot; Supabase Live &middot; 4 676+ лідів &middot; auto-sync 60s</div>
+<div class="footer">Vermarkter &middot; Master Outreach CRM &middot; Supabase Live &middot; 4 676+ лідів &middot; on-demand sync</div>
 
 <script>
 // ═══════════════════════════════════════════════════════
@@ -1002,13 +1002,15 @@ function loadData() {
     updateCounter();
     renderTable();
   }).catch(function(e) {
-    console.error('[CRM]', e);
-    setSync('error', 'Помилка завантаження');
+    var msg = e.message || String(e);
+    console.error('[CRM] loadData FAILED:', msg);
+    console.error('[CRM] Full error object:', e);
+    setSync('error', 'Помилка: ' + msg.slice(0, 80));
     document.getElementById('overlay').innerHTML =
       '<div class="ebox">'
       + '<b>❌ Помилка завантаження</b><br><br>'
-      + esc(e.message)
-      + '<br><br><small style="color:rgba(255,165,0,.8)">Якщо Supabase повернув 0 рядків — можливо увімкнено RLS без SELECT-політики для anon role.</small>'
+      + '<code style="font-size:.78rem;word-break:break-all;color:#fca5a5">' + esc(msg) + '</code>'
+      + '<br><br><small style="color:rgba(255,165,0,.8)">Перевір DevTools → Console (F12) для повного тексту помилки від Supabase.</small>'
       + '<br><br><button onclick="loadData()" style="margin-top:.75rem;padding:.42rem 1rem;background:var(--pink);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-family:inherit">↺ Спробувати знову</button>'
       + '</div>';
   });
