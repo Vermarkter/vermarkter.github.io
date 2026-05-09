@@ -674,10 +674,14 @@ function resetFilters() {
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
 function esc(s) {
-  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  if (s === null || s === undefined) s = '';
+  else if (typeof s !== 'string') s = JSON.stringify(s);
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 function escAttr(s) {
-  return (s||'').replace(/'/g,'&#39;').replace(/\n/g,'&#10;');
+  if (s === null || s === undefined) s = '';
+  else if (typeof s !== 'string') s = JSON.stringify(s);
+  return s.replace(/'/g,'&#39;').replace(/\n/g,'&#10;');
 }
 
 // ── RENDER TABLE ──────────────────────────────────────────────────────────────
