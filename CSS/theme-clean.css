@@ -1,0 +1,327 @@
+/* ============================================
+   VERMARKTER — THEME: CLEAN (Enterprise White)
+   Activation: ?v=clean → body.theme-clean
+   Zero interference with Luxury Dark base.
+   ============================================ */
+
+/* === VARIABLE OVERRIDES === */
+body.theme-clean {
+    /* Backgrounds */
+    --bg-body:       #F8F9FA;
+    --bg-card:       #FFFFFF;
+    --bg-secondary:  #F0F2F5;
+
+    /* Text */
+    --text-main:      #0F172A;
+    --text-secondary: #475569;
+    --text-muted:     #94A3B8;
+
+    /* Brand → Royal Blue (Apple-style) */
+    --brand:           #007AFF;
+    --brand-secondary: #0055CC;
+    --accent:          #34C759;
+    --accent-secondary:#007AFF;
+
+    /* Glassmorphism → plain white cards */
+    --glass-bg:     #FFFFFF;
+    --glass-border: #DEE2E6;
+    --glass-blur:   none;
+
+    /* Shadows — subtle, no colored glow */
+    --shadow-sm:   0 1px 4px rgba(0,0,0,0.08);
+    --shadow-md:   0 4px 12px rgba(0,0,0,0.10);
+    --shadow-lg:   0 8px 24px rgba(0,0,0,0.12);
+    --shadow-glow: 0 0 0 3px rgba(0,122,255,0.20);
+}
+
+/* === BODY & BACKGROUND === */
+body.theme-clean {
+    background: var(--bg-body);
+    color: var(--text-main);
+}
+
+/* Kill the dark radial gradients */
+body.theme-clean::before,
+body.theme-clean::after {
+    display: none;
+}
+
+/* === HEADER / NAV === */
+body.theme-clean header,
+body.theme-clean .header,
+body.theme-clean nav {
+    background: rgba(255,255,255,0.95) !important;
+    border-bottom: 1px solid #DEE2E6 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08) !important;
+}
+
+body.theme-clean header a,
+body.theme-clean nav a,
+body.theme-clean .nav-link {
+    color: #0F172A !important;
+}
+
+body.theme-clean .nav-link:hover,
+body.theme-clean header a:hover {
+    color: #007AFF !important;
+}
+
+body.theme-clean .mobile-menu {
+    background: #FFFFFF !important;
+    border-top: 1px solid #DEE2E6 !important;
+}
+
+/* === HERO SECTION === */
+body.theme-clean .hero,
+body.theme-clean .hero-section {
+    background: linear-gradient(135deg, #EBF4FF 0%, #F8F9FA 60%, #EEF2FF 100%) !important;
+}
+
+body.theme-clean .hero-title,
+body.theme-clean .hero h1 {
+    color: #0F172A !important;
+    text-shadow: none !important;
+}
+
+body.theme-clean .hero-subtitle,
+body.theme-clean .hero p {
+    color: #475569 !important;
+}
+
+/* === HEADINGS === */
+body.theme-clean h1,
+body.theme-clean h2,
+body.theme-clean h3,
+body.theme-clean h4,
+body.theme-clean h5,
+body.theme-clean h6 {
+    color: #0F172A !important;
+    text-shadow: none !important;
+}
+
+body.theme-clean p {
+    color: #334155;
+}
+
+/* === CARDS === */
+body.theme-clean .card,
+body.theme-clean .service-card,
+body.theme-clean .feature-card,
+body.theme-clean .pain-card,
+body.theme-clean .bundle-card,
+body.theme-clean .stat-item,
+body.theme-clean .price-card,
+body.theme-clean .faq-item,
+body.theme-clean .step-card,
+body.theme-clean .portfolio-item,
+body.theme-clean .testimonial-card {
+    background: #FFFFFF !important;
+    border: 1px solid #DEE2E6 !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+body.theme-clean .card:hover,
+body.theme-clean .service-card:hover,
+body.theme-clean .feature-card:hover,
+body.theme-clean .pain-card:hover {
+    border-color: #007AFF !important;
+    box-shadow: 0 4px 16px rgba(0,122,255,0.12) !important;
+    transform: translateY(-2px);
+}
+
+/* === SECTIONS ALTERNATING BG === */
+body.theme-clean section:nth-child(even),
+body.theme-clean .section-alt,
+body.theme-clean .bg-secondary {
+    background: #F0F2F5 !important;
+}
+
+body.theme-clean section {
+    background: transparent;
+}
+
+/* === BUTTONS === */
+body.theme-clean .btn-primary,
+body.theme-clean .cta-button,
+body.theme-clean .button-primary,
+body.theme-clean [class*="btn-primary"] {
+    background: #007AFF !important;
+    color: #FFFFFF !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0,122,255,0.30) !important;
+}
+
+body.theme-clean .btn-primary:hover,
+body.theme-clean .cta-button:hover,
+body.theme-clean .button-primary:hover {
+    background: #0055CC !important;
+    box-shadow: 0 4px 16px rgba(0,122,255,0.40) !important;
+}
+
+body.theme-clean .btn-secondary,
+body.theme-clean .button-secondary,
+body.theme-clean [class*="btn-secondary"] {
+    background: transparent !important;
+    color: #007AFF !important;
+    border: 1.5px solid #007AFF !important;
+}
+
+body.theme-clean .btn-secondary:hover,
+body.theme-clean .button-secondary:hover {
+    background: #007AFF !important;
+    color: #FFFFFF !important;
+}
+
+/* === STATS BAR === */
+body.theme-clean .stats-grid,
+body.theme-clean .stats-section {
+    background: #FFFFFF !important;
+    border-top: 1px solid #DEE2E6 !important;
+    border-bottom: 1px solid #DEE2E6 !important;
+}
+
+body.theme-clean .stat-value {
+    color: #007AFF !important;
+}
+
+body.theme-clean .stat-label {
+    color: #64748B !important;
+}
+
+/* === LINKS & ACCENTS === */
+body.theme-clean a {
+    color: #007AFF;
+}
+
+body.theme-clean a:hover {
+    color: #0055CC;
+}
+
+/* Kill neon glow on text */
+body.theme-clean [class*="gradient-text"],
+body.theme-clean .text-gradient,
+body.theme-clean .gradient-text {
+    background: linear-gradient(135deg, #007AFF 0%, #0055CC 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* === FORM INPUTS === */
+body.theme-clean input,
+body.theme-clean textarea,
+body.theme-clean select {
+    background: #FFFFFF !important;
+    border: 1.5px solid #CED4DA !important;
+    color: #0F172A !important;
+}
+
+body.theme-clean input:focus,
+body.theme-clean textarea:focus,
+body.theme-clean select:focus {
+    border-color: #007AFF !important;
+    box-shadow: 0 0 0 3px rgba(0,122,255,0.15) !important;
+    outline: none !important;
+}
+
+body.theme-clean input::placeholder,
+body.theme-clean textarea::placeholder {
+    color: #94A3B8 !important;
+}
+
+/* === FOOTER === */
+body.theme-clean footer,
+body.theme-clean .footer {
+    background: #1E293B !important;
+    color: #CBD5E1 !important;
+    border-top: none !important;
+}
+
+body.theme-clean footer a,
+body.theme-clean .footer a {
+    color: #94A3B8 !important;
+}
+
+body.theme-clean footer a:hover,
+body.theme-clean .footer a:hover {
+    color: #FFFFFF !important;
+}
+
+/* === MATRIX CANVAS (hide in clean theme) === */
+body.theme-clean #matrix-canvas {
+    display: none !important;
+}
+
+/* === CALCULATOR === */
+body.theme-clean .calculator,
+body.theme-clean .calculator-wrapper {
+    background: #FFFFFF !important;
+    border: 1px solid #DEE2E6 !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08) !important;
+}
+
+body.theme-clean .calculator__result,
+body.theme-clean .result-value {
+    color: #007AFF !important;
+}
+
+/* === SCROLL-TO-TOP === */
+body.theme-clean .scroll-to-top,
+body.theme-clean #scrollToTop {
+    background: #007AFF !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 2px 8px rgba(0,122,255,0.30) !important;
+}
+
+/* === RANGE SLIDER === */
+body.theme-clean input[type="range"] {
+    accent-color: #007AFF;
+    border: none !important;
+}
+
+/* === BADGES & TAGS === */
+body.theme-clean .badge,
+body.theme-clean .tag,
+body.theme-clean [class*="badge"],
+body.theme-clean [class*="tag"] {
+    background: #EBF4FF !important;
+    color: #007AFF !important;
+    border: 1px solid #BFDBFE !important;
+}
+
+/* === SEPARATOR / DIVIDER === */
+body.theme-clean hr,
+body.theme-clean .divider {
+    border-color: #DEE2E6 !important;
+}
+
+/* === LANGUAGE SWITCHER === */
+body.theme-clean .lang-dropdown,
+body.theme-clean .lang-menu {
+    background: #FFFFFF !important;
+    border: 1px solid #DEE2E6 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.10) !important;
+}
+
+body.theme-clean .lang-dropdown a,
+body.theme-clean .lang-menu a {
+    color: #0F172A !important;
+}
+
+body.theme-clean .lang-dropdown a:hover {
+    background: #F0F2F5 !important;
+    color: #007AFF !important;
+}
+
+/* ============================================
+   FOUNDATION FOR FUTURE THEMES
+   Add new themes as:
+     body.theme-medical { ... }
+     body.theme-minimalist { ... }
+   Activation via ?v=medical, ?v=minimalist etc.
+   All in separate files: css/theme-medical.css
+   ============================================ */

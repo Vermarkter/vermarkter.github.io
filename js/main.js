@@ -92,6 +92,32 @@ if (themeToggle) {
 // Initialize theme on load
 initTheme();
 
+// ==================== URL SKIN / THEME SWITCHER ====================
+// Activates a visual skin via ?v=<name> URL parameter.
+// Each skin maps to body.theme-<name> + css/theme-<name>.css loaded on demand.
+// To add a new theme: create css/theme-<name>.css and add '<name>' to SKINS.
+(function initUrlSkin() {
+    const SKINS = ['clean', 'medical', 'minimalist'];
+    const param = new URLSearchParams(window.location.search).get('v');
+    if (!param || !SKINS.includes(param)) return;
+
+    const skinName = param;
+    document.body.classList.add('theme-' + skinName);
+
+    // Inject stylesheet if not already present
+    const cssId = 'skin-' + skinName;
+    if (!document.getElementById(cssId)) {
+        const link = document.createElement('link');
+        link.id   = cssId;
+        link.rel  = 'stylesheet';
+        link.href = '/css/theme-' + skinName + '.css';
+        document.head.appendChild(link);
+    }
+
+    // Persist skin for same-tab navigation (keeps ?v= param across links)
+    sessionStorage.setItem('activeSkin', skinName);
+})();
+
 // ==================== LANGUAGE SELECTOR ====================
 const langSelector = document.getElementById('langSelector');
 
