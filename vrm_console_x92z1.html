@@ -614,9 +614,17 @@ function saveNote(id) {
 }
 
 // ── Counter ─────────────────────────────────────────────
+function localDateStr(isoStr) {
+  // Convert any ISO UTC string (or local) to YYYY-MM-DD in browser's local timezone
+  var d = isoStr ? new Date(isoStr) : new Date();
+  var y = d.getFullYear();
+  var m = String(d.getMonth() + 1).padStart(2, '0');
+  var dd = String(d.getDate()).padStart(2, '0');
+  return y + '-' + m + '-' + dd;
+}
 function updateCounter() {
-  var today = new Date().toISOString().slice(0, 10);
-  var st   = SALONS.filter(function(s) { return s.last_contacted && s.last_contacted.slice(0,10) === today; }).length;
+  var today = localDateStr();
+  var st   = SALONS.filter(function(s) { return s.last_contacted && localDateStr(s.last_contacted) === today; }).length;
   var done = SALONS.filter(function(s) { return s.status === 'sent' || s.status === 'replied' || s.status === 'EMAIL SENT' || s.status === 'booked' || s.status === 'interested' || s.status === 'rejected'; }).length;
   document.getElementById('sentToday').textContent    = st;
   document.getElementById('progressFill').style.width = Math.min(100, (st / DAILY_MAX) * 100) + '%';
