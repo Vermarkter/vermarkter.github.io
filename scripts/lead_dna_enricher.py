@@ -45,7 +45,7 @@ if not OPENAI_KEY or not OPENAI_KEY.startswith('sk-') or 'PASTE' in OPENAI_KEY:
     print('[ERROR] OPENAI_API_KEY missing. Set in config.ini [OPENAI] api_key', file=sys.stderr)
     sys.exit(1)
 
-CITIES     = ["München", "Berlin", "Nice"]
+CITIES     = ["München", "Berlin", "Nice", "Hamburg"]
 STATUS     = "READY TO SEND"
 THREADS    = 10
 MODEL      = "gpt-4o"
@@ -149,7 +149,7 @@ SYSTEM_PROMPT = """You are a beauty industry analyst. Given website text of a ha
 2. top_service     — most premium/expensive service offered (Balayage, Extensions, Laser, Keratin, Color Correction, etc). Single name.
 3. price_point     — price of standard haircut or base service, format "€XX" or "€XX–€XX". null if unknown.
 4. positioning     — 1-2 words: Budget / Mid-range / Premium / Luxury.
-5. booking_system  — name of online booking system (Treatwell, Booksy, Fresha, Planity, own system, etc) or null.
+5. booking_system  — name of online booking system used. Check carefully for: Treatwell (treatwell.de, treatwell.com, or "Jetzt buchen" via Treatwell), Booksy, Fresha, Planity, Vagaro, own system, or null if none found. Treatwell is the dominant platform in Germany — look for treatwell links or widgets.
 
 Reply ONLY with valid JSON, no extra text:
 {
@@ -295,6 +295,7 @@ def enrich_lead(lead: dict) -> dict:
 def parse_args():
     p = argparse.ArgumentParser(description="Lead DNA Enricher — Vermarkter Elite")
     p.add_argument("--city",   default="Nice", help="City filter (default: Nice)")
+    p.add_argument("--status", default=None,   help=f"Status filter (default: {STATUS!r})")
     p.add_argument("--limit",  type=int, default=100, help="Max leads (default: 100)")
     p.add_argument("--offset", type=int, default=0,   help="Supabase offset (default: 0)")
     p.add_argument("--threads",type=int, default=THREADS, help=f"Parallel threads (default: {THREADS})")
@@ -310,6 +311,10 @@ def main():
     log.info(f"  Model: {MODEL}  |  City: {args.city}  |  Limit: {args.limit}")
     log.info(f"  Threads: {args.threads}  |  {'DRY-RUN' if args.dry_run else 'LIVE'}")
     log.info("=" * 60)
+
+    if args.status:
+        global STATUS
+        STATUS = args.status
 
     if not args.dry_run:
         ensure_table_exists()
