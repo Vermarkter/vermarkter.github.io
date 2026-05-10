@@ -118,13 +118,13 @@ MAILTO=""
 0 8 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/mass_email_sender.py --limit 300 >> /opt/vermarkter/logs/mass_email.log 2>&1
 
 # 11:00 Paris (09:00 UTC) — Nice (100 листів)
-0 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/send_email_brevo.py --city Nice   --limit 100 >> /opt/vermarkter/logs/email_send.log 2>&1
+0 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/send_email_brevo.py --city Nice   --limit 100 2>&1 | tee -a /opt/vermarkter/logs/email_send.log >> /var/log/vermarkter_cron.log
 
 # 11:05 Paris (09:05 UTC) — Cannes (100 листів)
-5 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/send_email_brevo.py --city Cannes --limit 100 >> /opt/vermarkter/logs/email_send.log 2>&1
+5 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/send_email_brevo.py --city Cannes --limit 100 2>&1 | tee -a /opt/vermarkter/logs/email_send.log >> /var/log/vermarkter_cron.log
 
 # 11:10 Paris (09:10 UTC) — Berlin (200 листів, добиває ліміт Brevo до 300/день)
-10 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/send_email_brevo.py --city Berlin --limit 200 >> /opt/vermarkter/logs/email_send.log 2>&1
+10 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/send_email_brevo.py --city Berlin --limit 200 2>&1 | tee -a /opt/vermarkter/logs/email_send.log >> /var/log/vermarkter_cron.log
 
 # 11:30 Paris (09:30 UTC) — Зведений звіт по всіх містах
 30 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/check_sent_log.py >> /opt/vermarkter/logs/daily_summary.log 2>&1
@@ -132,8 +132,10 @@ MAILTO=""
 CRONEOF
 
 chmod 644 "$CRON_FILE"
+touch /var/log/vermarkter_cron.log && chmod 644 /var/log/vermarkter_cron.log
 service cron restart || systemctl restart cron 2>/dev/null || true
 info "Cron-завдання встановлено: $CRON_FILE"
+info "Лог розсилки: /var/log/vermarkter_cron.log"
 
 # Перевіримо timezone сервера
 timedatectl set-timezone Europe/Berlin 2>/dev/null || true
@@ -162,7 +164,7 @@ PYEOF
 # =============================================================================
 info "Налаштування logrotate..."
 cat > /etc/logrotate.d/vermarkter << 'LREOF'
-/opt/vermarkter/logs/*.log {
+/opt/vermarkter/logs/*.log /var/log/vermarkter_cron.log {
     daily
     rotate 14
     compress
