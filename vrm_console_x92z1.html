@@ -934,12 +934,19 @@ function renderTable() {
     if (s.email_funnel_json) {
       var funnel = s.email_funnel_json;
       if (typeof funnel === 'string') { try { funnel = JSON.parse(funnel); } catch(e){} }
-      var letter = (typeof funnel === 'object' && funnel !== null)
-        ? (funnel['letter_1_digital_mirror'] || funnel['body'] || '')
-        : (typeof funnel === 'string' ? funnel : '');
-      var eSubj = '', eBody = letter;
-      if (typeof letter === 'string' && letter.indexOf('\n') !== -1) {
-        var elines = letter.split('\n');
+      var eSubj = '', eBody = '';
+      if (typeof funnel === 'object' && funnel !== null) {
+        // Monaco-style: letter_1_subject + letter_1_body
+        eSubj = funnel['letter_1_subject'] || funnel['subject'] || '';
+        eBody = funnel['letter_1_body'] || funnel['letter_1_digital_mirror'] || funnel['body'] || '';
+        // fallback: plain string inside object
+        if (!eBody && typeof funnel === 'string') eBody = funnel;
+      } else if (typeof funnel === 'string') {
+        eBody = funnel;
+      }
+      // legacy: subject embedded as first line "Objet: ..."
+      if (!eSubj && eBody && eBody.indexOf('\n') !== -1) {
+        var elines = eBody.split('\n');
         for (var eli = 0; eli < elines.length; eli++) {
           var etrim = elines[eli].trim().toLowerCase();
           if (etrim.indexOf('objet:') === 0 || etrim.indexOf('subject:') === 0 || etrim.indexOf('betreff:') === 0) {
@@ -952,7 +959,7 @@ function renderTable() {
       emailPrevHtml = '<div id="emailprev-' + s.id + '" class="email-preview-panel" style="display:none">'
         + '<button class="email-preview-close" onclick="closeEmailPreview(' + s.id + ')">&times;</button>'
         + (eSubj ? '<div class="email-preview-subj">📧 ' + esc(eSubj) + '</div>' : '')
-        + '<pre>' + esc(eBody || '—') + '</pre>'
+        + '<div style="font-size:.72rem;color:#e2e8f0;white-space:pre-wrap;word-break:break-word;line-height:1.6;max-height:320px;overflow-y:auto;margin:0;padding-top:.2rem">' + esc(eBody || '—') + '</div>'
         + '</div>';
       emailPrevBtn = '<button class="bemail-preview" onclick="toggleEmailPrev(' + s.id + ')">👁️ Лист</button>';
     }
