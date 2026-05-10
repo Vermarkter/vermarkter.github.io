@@ -65,7 +65,7 @@ CITIES        = ['Berlin', 'München', 'Nice', 'Cannes', 'Antibes']
 BATCH_SIZE    = 50    # leads per Supabase PATCH batch
 PAGE_SIZE     = 1000  # leads per Supabase GET page
 # Statuses eligible for photo enrichment
-PHOTO_STATUSES = ['READY TO SEND', 'email_ready']
+PHOTO_STATUSES = ['READY TO SEND', 'email_ready', 'new']
 
 # ── Thread-safe counters ───────────────────────────────────────────────────────
 _lock    = threading.Lock()
