@@ -116,6 +116,22 @@ def fetch_lead_notes(lead_ids: list) -> dict:
         return {}
 
 
+def fetch_lead_emails(lead_ids: list) -> set:
+    """Return set of lead IDs that already have a non-null email address."""
+    if not lead_ids:
+        return set()
+    id_str = ','.join(str(i) for i in lead_ids)
+    url = f"{SB_URL}/rest/v1/beauty_leads?id=in.({id_str})&email=not.is.null&select=id"
+    req = urllib.request.Request(url, headers=HDRS_GET)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as r:
+            rows = json.loads(r.read())
+            return {row['id'] for row in rows}
+    except Exception as exc:
+        print(f'  [WARN] Could not fetch emails for status check: {exc}', file=sys.stderr)
+        return set()
+
+
 def patch_lead(lead_id: int,
                letter1: str, letter1_subj: str,
                letter2: str, letter2_subj: str,
@@ -221,7 +237,8 @@ def main():
 
     # Pre-fetch notes for signature checking
     all_ids = [rec.get('id') for rec in records if rec.get('id')]
-    notes_map = fetch_lead_notes(all_ids) if check_sigs else {}
+    notes_map  = fetch_lead_notes(all_ids) if check_sigs else {}
+    emails_set = fetch_lead_emails(all_ids)
 
     ok_count   = 0
     err_count  = 0
@@ -248,12 +265,20 @@ def main():
             skip_count += 1
             continue
 
-        # Status: email_ready if any email text present, else 'new' (wa-only)
-        has_email = bool(letter1 or letter2 or letter3)
-        status = args.status if has_email else 'new'
+        # Status: email_ready only if letters exist AND lead already has an email address.
+        # Without an email address, storing letters as 'funnel_ready' avoids false-positives
+        # in the send queue — the dispatcher requires email IS NOT NULL.
+        has_letters = bool(letter1 or letter2 or letter3)
+        has_email_addr = lead_id in emails_set
+        if has_letters and has_email_addr:
+            status = args.status  # → 'email_ready' (default)
+        elif has_letters:
+            status = 'funnel_ready'  # letters generated but no email yet
+        else:
+            status = 'new'  # wa-only or empty
 
         # Signature check
-        if check_sigs and has_email:
+        if check_sigs and has_letters:
             notes = notes_map.get(lead_id, '')
             lang  = _detect_lang_tag(notes)
             # Check all present letters
@@ -266,7 +291,7 @@ def main():
 
         # Channel tag for display
         channel_tag = []
-        if has_email:
+        if has_letters:
             parts = []
             if letter1: parts.append('L1')
             if letter2: parts.append('L2')
