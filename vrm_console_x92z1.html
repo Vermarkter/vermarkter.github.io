@@ -606,9 +606,9 @@ function saveNote(id) {
   if (!ta) return;
   var val = ta.value.trim();
   setSync('loading', 'Збереження...');
-  sbPatch(id, { notes: val || null }).then(function() {
+  sbPatch(id, { manual_notes: val || null }).then(function() {
     var s = SALONS.find(function(x) { return x.id === id; });
-    if (s) s.notes = val || null;
+    if (s) s.manual_notes = val || null;
     setSync('ok', 'Нотатку збережено ✔');
   }).catch(function(e) { setSync('error', 'Помилка: ' + e.message); });
 }
@@ -862,12 +862,14 @@ function renderTable() {
           : '<span style="color:rgba(255,255,255,.15);font-size:.7rem">—</span>')
       + '</td>';
 
-    // COL 8 — Нотатки
-    var noteVal = esc(s.notes || '');
+    // COL 8 — Нотатки (manual_notes = Director textarea; notes = technical readonly)
+    var manualVal = esc(s.manual_notes || '');
+    var techNotes = (s.notes || '').trim();
     var c8 = '<td style="min-width:190px;max-width:240px">'
       + '<div class="nwrap">'
-      + '<textarea class="nta" id="note-' + s.id + '" rows="2" placeholder="Додати нотатку...">' + noteVal + '</textarea>'
+      + '<textarea class="nta" id="note-' + s.id + '" rows="2" placeholder="Нотатка Директора...">' + manualVal + '</textarea>'
       + '<button class="btn bsave" onclick="saveNote(' + s.id + ')">💾 Зберегти</button>'
+      + (techNotes ? '<div style="font-size:.62rem;color:rgba(255,255,255,.35);margin-top:4px;line-height:1.4;white-space:pre-wrap;word-break:break-word">' + esc(techNotes) + '</div>' : '')
       + '</div>'
       + '</td>';
 
@@ -936,15 +938,30 @@ function renderTable() {
       if (typeof funnel === 'string') { try { funnel = JSON.parse(funnel); } catch(e){} }
       var eSubj = '', eBody = '';
       if (typeof funnel === 'object' && funnel !== null) {
-        // Monaco-style: letter_1_subject + letter_1_body
+        // Monaco-style flat keys: letter_1_subject + letter_1_body
         eSubj = funnel['letter_1_subject'] || funnel['subject'] || '';
-        eBody = funnel['letter_1_body'] || funnel['letter_1_digital_mirror'] || funnel['body'] || '';
-        // fallback: plain string inside object
-        if (!eBody && typeof funnel === 'string') eBody = funnel;
+        var l1 = funnel['letter_1_body'] || funnel['letter_1_digital_mirror'] || funnel['body'] || '';
+        // Berlin-style: letter_1_digital_mirror may be a dict {subject_options:[...], body:"..."}
+        if (typeof l1 === 'object' && l1 !== null) {
+          var subOpts = l1['subject_options'] || [];
+          if (!eSubj && subOpts.length) eSubj = subOpts[0];
+          eBody = l1['body'] || '';
+        } else {
+          eBody = String(l1 || '');
+        }
+        // fallback: try first value in funnel object
+        if (!eBody) {
+          var fkeys = Object.keys(funnel);
+          for (var fki = 0; fki < fkeys.length; fki++) {
+            var fv = funnel[fkeys[fki]];
+            if (typeof fv === 'string' && fv.length > 10) { eBody = fv; break; }
+            if (typeof fv === 'object' && fv && fv['body']) { eBody = fv['body']; break; }
+          }
+        }
       } else if (typeof funnel === 'string') {
         eBody = funnel;
       }
-      // legacy: subject embedded as first line "Objet: ..."
+      // extract "Objet: ..." / "Subject: ..." from first line of body
       if (!eSubj && eBody && eBody.indexOf('\n') !== -1) {
         var elines = eBody.split('\n');
         for (var eli = 0; eli < elines.length; eli++) {
