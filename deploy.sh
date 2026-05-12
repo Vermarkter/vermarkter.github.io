@@ -126,6 +126,9 @@ MAILTO=""
 # 11:10 Paris (09:10 UTC) — Berlin (200 листів, добиває ліміт Brevo до 300/день)
 10 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/send_email_brevo.py --city Berlin --limit 200 2>&1 | tee -a /opt/vermarkter/logs/email_send.log >> /var/log/vermarkter_cron.log
 
+# 11:15 Paris (09:15 UTC) — Frankfurt (100 листів)
+15 9 * * 1-5 root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/send_email_brevo.py --city Frankfurt --limit 100 2>&1 | tee -a /opt/vermarkter/logs/email_send.log >> /var/log/vermarkter_cron.log
+
 # 11:30 Paris (09:30 UTC) — Зведений звіт по всіх містах
 30 9 * * * root PYTHONPATH=/opt/vermarkter /usr/bin/python3 /opt/vermarkter/scripts/check_sent_log.py >> /opt/vermarkter/logs/daily_summary.log 2>&1
 

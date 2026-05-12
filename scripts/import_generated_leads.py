@@ -268,7 +268,14 @@ def main():
         # Hard block: reject any record containing URLs or domain suffixes.
         # AI-generated text must never include links — they indicate a hallucinated
         # or incorrectly formatted batch that would damage deliverability.
-        _all_text = ' '.join([letter1, letter2, letter3, wa_text])
+        # Strip known sender signatures before checking — they contain my-salon.eu legitimately.
+        _SIG_STRIP = re.compile(
+            r'Andrii\s*\|\s*My-Salon\s*\n?admin@my-salon\.eu'
+            r'|Équipe\s+(?:My-Salon|Vermarkter)[^\n]*\n?[^\n]*@[^\n]*'
+            r'|Équipe\s+Vermarkter',
+            re.I)
+        _clean_text = _SIG_STRIP.sub('', ' '.join([letter1, letter2, letter3, wa_text]))
+        _all_text = _clean_text
         _link_rx  = re.compile(r'https?://|www\.|\.eu\b|\.de\b|\.fr\b|\.com\b|\.net\b', re.I)
         _link_hit = _link_rx.search(_all_text)
         if _link_hit:
