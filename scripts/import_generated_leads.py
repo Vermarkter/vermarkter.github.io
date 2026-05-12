@@ -265,6 +265,17 @@ def main():
             skip_count += 1
             continue
 
+        # Hard block: reject any record containing URLs or domain suffixes.
+        # AI-generated text must never include links — they indicate a hallucinated
+        # or incorrectly formatted batch that would damage deliverability.
+        _all_text = ' '.join([letter1, letter2, letter3, wa_text])
+        _link_rx  = re.compile(r'https?://|www\.|\.eu\b|\.de\b|\.fr\b|\.com\b|\.net\b', re.I)
+        _link_hit = _link_rx.search(_all_text)
+        if _link_hit:
+            print(f'  [BLOCK] id={lead_id} — URL/domain found: "{_link_hit.group(0)}" — import rejected for this record')
+            err_count += 1
+            continue
+
         # Status: email_ready only if letters exist AND lead already has an email address.
         # Without an email address, storing letters as 'funnel_ready' avoids false-positives
         # in the send queue — the dispatcher requires email IS NOT NULL.
