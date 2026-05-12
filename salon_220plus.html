@@ -37,17 +37,65 @@
 .ar2 input{flex:1;font-size:12px;padding:5px 7px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary)}
 .ab{font-size:12px;padding:5px 13px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);cursor:pointer;white-space:nowrap}
 .em{text-align:center;padding:2rem;color:var(--color-text-secondary);font-size:13px}
+/* WA action buttons row */
+.wab{display:inline-flex;padding:3px 8px;font-size:11px;border-radius:var(--border-radius-md);border:.5px solid;cursor:pointer;background:none;white-space:nowrap}
+.wab-sent{color:#085041;border-color:#5DCAA5}.wab-sent:hover{background:#E1F5EE}
+.wab-no{color:#9A3412;border-color:#FCA5A5}.wab-no:hover{background:#FEF2F2}
+.wab-back{color:var(--color-text-secondary);border-color:var(--color-border-secondary)}.wab-back:hover{background:var(--color-background-secondary)}
+.wab-skip{color:#7C3AED;border-color:#C4B5FD}.wab-skip:hover{background:#F5F3FF}
+/* status badge colours */
+.sbadge{font-size:10px;padding:1px 6px;border-radius:999px;flex-shrink:0}
+.sbadge-opened{background:#FEF9C3;color:#854D0E;border:.5px solid #FDE68A}
+.sbadge-unavail{background:#FEE2E2;color:#9A3412;border:.5px solid #FCA5A5}
+/* WA preview modal */
+.wpm{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.5);align-items:center;justify-content:center}
+.wpm.open{display:flex}
+.wpm-box{background:var(--color-background-primary);border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);padding:16px 18px;max-width:480px;width:90%;max-height:80vh;display:flex;flex-direction:column;gap:10px}
+.wpm-header{display:flex;align-items:center;gap:8px}
+.wpm-name{font-size:14px;font-weight:600;color:var(--color-text-primary);flex:1}
+.wpm-phone{font-size:11px;color:var(--color-text-secondary)}
+.wpm-qabadge{font-size:10px;padding:1px 7px;border-radius:999px;border:.5px solid}
+.wpm-qa-passed{background:#DCFCE7;color:#166534;border-color:#86EFAC}
+.wpm-qa-regen{background:#FEF9C3;color:#854D0E;border-color:#FDE68A}
+.wpm-qa-failed{background:#FEE2E2;color:#9A3412;border-color:#FCA5A5}
+.wpm-qa-none{background:var(--color-background-secondary);color:var(--color-text-secondary);border-color:var(--color-border-secondary)}
+.wpm-warn{font-size:11px;padding:6px 9px;background:#FEF9C3;color:#854D0E;border-radius:var(--border-radius-md);border:.5px solid #FDE68A}
+.wpm-body{font-size:12px;color:var(--color-text-primary);line-height:1.6;white-space:pre-wrap;overflow-y:auto;flex:1;padding:8px 10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary)}
+.wpm-empty{font-size:12px;color:var(--color-text-secondary);font-style:italic;padding:12px}
+.wpm-footer{display:flex;gap:7px;justify-content:flex-end}
+.db-eye{background:none;border:none;cursor:pointer;color:var(--color-text-secondary);font-size:13px;padding:1px 3px;flex-shrink:0}
+.db-eye:hover{color:var(--color-text-primary)}
+/* WA preview modal — email letters section */
+.wpm-letters{margin-top:2px}
+.wpm-ltabs{display:flex;gap:4px;margin-bottom:6px}
+.wpm-ltab{font-size:11px;padding:2px 9px;border-radius:999px;border:.5px solid var(--color-border-secondary);background:var(--color-background-primary);color:var(--color-text-secondary);cursor:pointer;white-space:nowrap}
+.wpm-ltab.active{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.wpm-ltab:hover:not(.active){background:var(--color-background-secondary)}
+.wpm-lsubj{font-size:11px;font-weight:600;color:var(--color-text-secondary);margin-bottom:5px;padding:0 2px}
+.wpm-lbody{font-size:11px;color:var(--color-text-primary);line-height:1.55;white-space:pre-wrap;overflow-y:auto;max-height:200px;padding:7px 9px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary)}
+.wpm-lload{font-size:11px;color:var(--color-text-secondary);font-style:italic;padding:8px 2px}
+.wpm-lnone{font-size:11px;color:var(--color-text-secondary);font-style:italic;padding:4px 2px}
 @media(prefers-color-scheme:dark){
 .wb{background:#085041;color:#9FE1CB;border-color:#0F6E56}.wb:hover{background:#0F6E56}
 .mb{background:#3C3489;color:#CECBF6;border-color:#534AB7}.mb:hover{background:#534AB7}
+.wab-sent{color:#9FE1CB;border-color:#0F6E56}.wab-sent:hover{background:#085041}
+.wab-no{color:#FCA5A5;border-color:#9A3412}.wab-no:hover{background:#450A0A}
+.sbadge-opened{background:#78350F;color:#FEF3C7;border-color:#92400E}
+.sbadge-unavail{background:#450A0A;color:#FCA5A5;border-color:#9A3412}
 }
 </style>
 <div class="w">
 <div class="stats">
   <div class="stat"><div class="sl">Всього</div><div class="sv" id="sa">0</div></div>
   <div class="stat"><div class="sl">Написав</div><div class="sv" id="sw">0</div></div>
+  <div class="stat"><div class="sl">WA geöffnet</div><div class="sv" id="swo">0</div></div>
+  <div class="stat"><div class="sl">Kein WA</div><div class="sv" id="snu">0</div></div>
+</div>
+<div class="stats" style="margin-top:-4px">
   <div class="stat"><div class="sl">Думає</div><div class="sv" id="st">0</div></div>
   <div class="stat"><div class="sl">Купив</div><div class="sv" id="sb">0</div></div>
+  <div class="stat"></div>
+  <div class="stat"></div>
 </div>
 <div class="tb">
   <input id="q" placeholder="Пошук..." oninput="render()">
@@ -83,7 +131,14 @@
   </select>
   <select id="fs" onchange="render()">
     <option value="">Всі статуси</option>
-    <option>Не сконтактовано</option><option>Написав</option><option>Думає</option><option>Купив</option>
+    <option value="offen">Offen (не сконтакт.)</option>
+    <option>Не сконтактовано</option>
+    <option>wa_opened</option>
+    <option>Написав</option>
+    <option>Думає</option>
+    <option>Купив</option>
+    <option>wa_unavailable</option>
+    <option>Überspringen</option>
   </select>
   <button class="cb" onclick="copyMd()">Копіювати MD</button>
 </div>
@@ -115,8 +170,29 @@
   </div>
 </div>
 </div>
+<div class="wpm" id="wpm" onclick="if(event.target===this)closePreview()">
+  <div class="wpm-box">
+    <div class="wpm-header">
+      <div class="wpm-name" id="wpm-name"></div>
+      <div class="wpm-phone" id="wpm-phone"></div>
+      <span class="wpm-qabadge" id="wpm-qabadge"></span>
+    </div>
+    <div id="wpm-warn" style="display:none" class="wpm-warn"></div>
+    <div class="wpm-body" id="wpm-body"></div>
+    <div class="wpm-letters" id="wpm-letters" style="display:none">
+      <div class="wpm-ltabs" id="wpm-ltabs"></div>
+      <div class="wpm-lsubj" id="wpm-lsubj"></div>
+      <div class="wpm-lbody" id="wpm-lbody"></div>
+    </div>
+    <div id="wpm-lload" class="wpm-lload" style="display:none">Завантаження листів...</div>
+    <div class="wpm-footer">
+      <button class="wab wab-sent" id="wpm-wa-btn" onclick="openWAFromPreview()">&#x1F4F2; WhatsApp</button>
+      <button class="cb" onclick="closePreview()">Закрити</button>
+    </div>
+  </div>
+</div>
 <script>
-const wt=(nm)=>`Hi ${nm}! 👋 Deine Colorations auf Instagram sind der Hammer! 🔥 \n\nKurze Frage: Wenn jemand in Charlottenburg "Friseur" googelt — warum findet er dich nicht? 😕\n\nIch helfe Salons wie deinem mit:\n✅ Eigene Website + Booking-App\n✅ 24/7 Auto-Termine via WhatsApp\n✅ Alles für 1.000€ einmalig\n\n👉 2-Min-Demo: https://vermarkter.vercel.app/SERVICES/beauty-industry/de/\n\nInteresse an 10 Min. Call?\n\nViele Grüße,\ndein Vermarkter-Team`;
+const wt=(nm)=>`Hi ${nm}! 👋 Deine Colorations auf Instagram sind der Hammer! 🔥 \n\nKurze Frage: Wenn jemand in Charlottenburg "Friseur" googelt — warum findet er dich nicht? 😕\n\nIch helfe Salons wie deinem mit:\n✅ Eigene Website + Booking-App\n✅ 24/7 Auto-Termine via WhatsApp\n✅ Alles für 1.000€ einmalig\n\n👉 2-Min-Demo: https://vermarkter.vercel.app/services/beauty-industry/de/\n\nInteresse an 10 Min. Call?\n\nViele Grüße,\ndein Vermarkter-Team`;
 const isMobile=p=>!!p&&p!=='\u2014'&&/^\+49\s?(15|16|17)/.test(p.trim());
 const wl=(p,nm)=>{if(!isMobile(p))return '';const n=p.replace(/\D/g,'');return 'https://wa.me/'+n+'?text='+encodeURIComponent(wt(nm||''));};
 const ml=(pid,nm,ad)=>pid?'https://www.google.com/maps/place/?q=place_id:'+pid:'https://www.google.com/maps/search/'+encodeURIComponent(nm+' '+ad+' Deutschland');
@@ -316,16 +392,140 @@ const R=[
 
 const data=R.map(r=>({city:r[0],name:r[1],addr:r[2],phone:r[3],rating:r[4],pid:r[5],site:'',status:'Не сконтактовано',date:'16.03.2026'}));
 
+const OFFEN=['Не сконтактовано','wa_opened','Überspringen'];
+const ALL_STATUSES=['Не сконтактовано','wa_opened','Написав','Думає','Купив','wa_unavailable','Überspringen'];
+
+let _previewIdx = -1;
+
+const _SB_URL = 'https://wrvdbvekiteopkdwxuzz.supabase.co';
+const _SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndydmRidmVraXRlb3BrZHd4dXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwNjU5MjAsImV4cCI6MjA3ODY0MTkyMH0.ZeUzRVMA2O8oz9_VWkOaKGB8CESnXut9Fb1GminWE_c';
+
+let _letterCache = {};
+let _activeLetterIdx = 0;
+
+async function fetchLetters(name) {
+  if (_letterCache[name] !== undefined) return _letterCache[name];
+  try {
+    const enc = encodeURIComponent(name);
+    const url = `${_SB_URL}/rest/v1/beauty_leads?name=eq.${enc}&select=id,name,email_funnel_json&limit=1`;
+    const resp = await fetch(url, {headers: {'apikey': _SB_KEY, 'Authorization': 'Bearer ' + _SB_KEY}});
+    if (!resp.ok) { _letterCache[name] = null; return null; }
+    const rows = await resp.json();
+    const efj = rows[0]?.email_funnel_json || null;
+    _letterCache[name] = efj;
+    return efj;
+  } catch(e) { _letterCache[name] = null; return null; }
+}
+
+function renderLetterTab(efj, idx) {
+  _activeLetterIdx = idx;
+  const keys = ['letter_1', 'letter_2', 'letter_3'];
+  const labels = ['Лист 1', 'Лист 2', 'Лист 3'];
+  document.querySelectorAll('.wpm-ltab').forEach((t, i) => {
+    t.classList.toggle('active', i === idx);
+  });
+  const key = keys[idx];
+  const subj = efj[key + '_subject'] || efj[key]?.subject || '';
+  const body = efj[key + '_digital_mirror'] || efj[key + '_future_vision'] || efj[key + '_scarcity'] || efj[key]?.body || '';
+  document.getElementById('wpm-lsubj').textContent = subj ? '✉ ' + subj : '';
+  document.getElementById('wpm-lbody').textContent = body || '(текст відсутній)';
+}
+
+async function loadPreviewLetters(name) {
+  const lettersEl = document.getElementById('wpm-letters');
+  const loadEl = document.getElementById('wpm-lload');
+  lettersEl.style.display = 'none';
+  loadEl.style.display = '';
+  const efj = await fetchLetters(name);
+  loadEl.style.display = 'none';
+  if (!efj) return;
+  const keys = ['letter_1', 'letter_2', 'letter_3'];
+  const labels = ['Лист 1', 'Лист 2', 'Лист 3'];
+  const available = keys.filter((k, i) => {
+    return efj[k + '_subject'] || efj[k + '_digital_mirror'] || efj[k + '_future_vision'] || efj[k + '_scarcity'] || efj[k];
+  });
+  if (!available.length) return;
+  const tabsEl = document.getElementById('wpm-ltabs');
+  tabsEl.innerHTML = available.map((k, i) => {
+    const origIdx = keys.indexOf(k);
+    return `<button class="wpm-ltab${i===0?' active':''}" onclick="renderLetterTab(window._currentEfj, ${origIdx})">${labels[origIdx]}</button>`;
+  }).join('');
+  window._currentEfj = efj;
+  lettersEl.style.display = '';
+  renderLetterTab(efj, keys.indexOf(available[0]));
+}
+
+function showPreview(i) {
+  const r = data[i];
+  _previewIdx = i;
+  document.getElementById('wpm-name').textContent = r.name;
+  document.getElementById('wpm-phone').textContent = (r.phone && r.phone !== '—') ? r.phone : '';
+  const msg = (r.custom_message || r._wa || '').trim();
+  const qa = r.qa_status || '';
+  const flags = r.content_flags || [];
+  const qaBadge = document.getElementById('wpm-qabadge');
+  if (qa === 'passed') { qaBadge.className = 'wpm-qabadge wpm-qa-passed'; qaBadge.textContent = 'QA: passed'; }
+  else if (qa === 'needs_regeneration') { qaBadge.className = 'wpm-qabadge wpm-qa-regen'; qaBadge.textContent = 'QA: regen'; }
+  else if (qa === 'failed') { qaBadge.className = 'wpm-qabadge wpm-qa-failed'; qaBadge.textContent = 'QA: failed'; }
+  else { qaBadge.className = 'wpm-qabadge wpm-qa-none'; qaBadge.textContent = 'QA: —'; }
+  const warnEl = document.getElementById('wpm-warn');
+  if (qa && qa !== 'passed') {
+    warnEl.style.display = '';
+    warnEl.textContent = '⚠️ ' + (flags.length ? flags.join(', ') : qa);
+  } else { warnEl.style.display = 'none'; }
+  const bodyEl = document.getElementById('wpm-body');
+  if (msg) { bodyEl.textContent = msg; bodyEl.className = 'wpm-body'; }
+  else { bodyEl.innerHTML = '<div class="wpm-empty">Повідомлення відсутнє</div>'; bodyEl.className = 'wpm-body'; }
+  const waBtn = document.getElementById('wpm-wa-btn');
+  const link = wl(r.phone, r.name);
+  waBtn.style.display = link ? '' : 'none';
+  document.getElementById('wpm').classList.add('open');
+  loadPreviewLetters(r.name);
+}
+
+function closePreview() {
+  document.getElementById('wpm').classList.remove('open');
+  _previewIdx = -1;
+  document.getElementById('wpm-letters').style.display = 'none';
+  document.getElementById('wpm-lload').style.display = 'none';
+}
+
+function openWAFromPreview() {
+  if (_previewIdx < 0) return;
+  const link = wl(data[_previewIdx].phone, data[_previewIdx].name);
+  if (link) { window.open(link, '_blank'); data[_previewIdx].status = 'wa_opened'; closePreview(); render(); }
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePreview(); });
+
+function openWA(i){
+  const link=wl(data[i].phone,data[i].name);
+  if(link){window.open(link,'_blank');data[i].status='wa_opened';render();}
+}
+
+function waAct(i,act){
+  if(act==='sent'){data[i].status='Написав';}
+  else if(act==='no'){data[i].status='wa_unavailable';data[i]._err='No WhatsApp';}
+  else if(act==='back'){data[i].status='Не сконтактовано';delete data[i]._err;}
+  else if(act==='skip'){data[i].status='Überspringen';}
+  render();
+}
+
 function render(){
   const q=document.getElementById('q').value.toLowerCase();
   const fc=document.getElementById('fc').value;
-  const fs=document.getElementById('fs').value;
-  const f=data.filter(r=>
-    (!q||(r.name+r.city+r.addr+r.phone+r.site).toLowerCase().includes(q))&&
-    (!fc||r.city===fc)&&(!fs||r.status===fs)
-  );
+  const fsRaw=document.getElementById('fs').value;
+  const f=data.filter(r=>{
+    if(q&&!(r.name+r.city+r.addr+r.phone+r.site).toLowerCase().includes(q))return false;
+    if(fc&&r.city!==fc)return false;
+    if(fsRaw==='offen')return OFFEN.includes(r.status);
+    if(fsRaw&&r.status!==fsRaw)return false;
+    return true;
+  });
   document.getElementById('sa').textContent=data.length;
   document.getElementById('sw').textContent=data.filter(r=>r.status==='Написав').length;
+  document.getElementById('swo').textContent=data.filter(r=>r.status==='wa_opened').length;
+  document.getElementById('snu').textContent=data.filter(r=>r.status==='wa_unavailable').length;
   document.getElementById('st').textContent=data.filter(r=>r.status==='Думає').length;
   document.getElementById('sb').textContent=data.filter(r=>r.status==='Купив').length;
   const cities=[...new Set(f.map(r=>r.city))];
@@ -338,26 +538,39 @@ function render(){
       const link=wl(r.phone,r.name);
       const mlink=ml(r.pid,r.name,r.addr);
       const mobile=r.phone&&r.phone!=='—'&&isMobile(r.phone);
-      return `<div class="c" style="${mobile?'border-color:rgba(37,211,102,0.4);background:rgba(37,211,102,0.04)':''}">
+      const isOpened=r.status==='wa_opened';
+      const isUnavail=r.status==='wa_unavailable';
+      const borderStyle=isUnavail?'border-color:rgba(239,68,68,0.4);background:rgba(239,68,68,0.03)'
+        :(isOpened?'border-color:rgba(234,179,8,0.4);background:rgba(234,179,8,0.03)'
+        :(mobile?'border-color:rgba(37,211,102,0.4);background:rgba(37,211,102,0.04)':''));
+      const statusBadge=isOpened?`<span class="sbadge sbadge-opened">WA geöffnet</span>`
+        :(isUnavail?`<span class="sbadge sbadge-unavail">Kein WA</span>`:'');
+      const showWAbtns=isOpened||isUnavail||(r.status==='Написав');
+      return `<div class="c" style="${borderStyle}">
         <div class="ct">
           <div class="cn">${r.name}${mobile?' 📱':''}</div>
+          ${statusBadge}
           <span class="br">★ ${r.rating}</span>
           <button class="db" onclick="toggleEdit(${i})">${r._edit?'✓':'✎'}</button>
-          <button class="db" onclick="del(${i})">✕</button>
+          <button class="db-eye" onclick="showPreview(${i})" title="Preview WA">&#x1F441;&#xFE0F;</button>
+          <button class="db" onclick="del(${i})">&#x2715;</button>
         </div>
         ${r._edit?`<div class="pi">
           <input value="${r.phone}" onchange="upd(${i},'phone',this.value)" placeholder="Телефон">
           <input value="${r.site}" onchange="upd(${i},'site',this.value)" placeholder="Сайт">
-          <button class="si" onclick="toggleEdit(${i})">✓ Зберегти</button>
-        </div>`:`<div class="cm">${r.addr}${r.phone!=='—'?' · '+r.phone:''}${r.site?' · '+r.site:''}</div>`}
+          <button class="si" onclick="toggleEdit(${i})">&#x2713; Зберегти</button>
+        </div>`:`<div class="cm">${r.addr}${r.phone!=='—'?' · '+r.phone:''}${r.site?' · '+r.site:''}${r._err?' · ⚠ '+r._err:''}</div>`}
         <div class="ca">
           <a class="mb" href="${mlink}" target="_blank">Maps</a>
           ${link
-            ?`<a class="wb" href="${link}" target="_blank" style="background:#25D366;color:#fff;border-color:#25D366;font-weight:700">✅ WhatsApp</a>`
-            :(r.phone&&r.phone!=='\u2014'?`<span class="wb" style="opacity:0.3;cursor:not-allowed;filter:grayscale(100%)" title="Стаціонарний — WhatsApp малоймовірний">📞 Стаціонарний</span>`:'')
+            ?`<button class="wb" onclick="openWA(${i})" style="background:#25D366;color:#fff;border-color:#25D366;font-weight:700;cursor:pointer">📲 WhatsApp</button>`
+            :(r.phone&&r.phone!=='—'?`<span class="wb" style="opacity:0.3;cursor:not-allowed;filter:grayscale(100%)" title="Стаціонарний">📞 Стаціонарний</span>`:'')
           }
+          ${showWAbtns
+            ?`<button class="wab wab-sent" onclick="waAct(${i},'sent')">✓ WA gesendet</button><button class="wab wab-no" onclick="waAct(${i},'no')">✗ Kein WhatsApp</button><button class="wab wab-back" onclick="waAct(${i},'back')">↩ Zurück</button><button class="wab wab-skip" onclick="waAct(${i},'skip')">⟶ Überspringen</button>`
+            :(link?`<button class="wab wab-no" onclick="waAct(${i},'no')">✗ Kein WhatsApp</button><button class="wab wab-skip" onclick="waAct(${i},'skip')">⟶ Überspringen</button>`:'')}
           <select class="ss" onchange="chS(${i},this.value)">
-            ${['Не сконтактовано','Написав','Думає','Купив'].map(s=>`<option${s===r.status?' selected':''}>${s}</option>`).join('')}
+            ${ALL_STATUSES.map(s=>`<option${s===r.status?' selected':''}>${s}</option>`).join('')}
           </select>
         </div>
       </div>`;
