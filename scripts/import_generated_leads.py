@@ -10,7 +10,8 @@ Reads a JSON array and updates:
         "letter_2_future_vision":  letter_2,   (optional)
         "letter_3_scarcity":       letter_3,   (optional)
     }
-  - status             ← "email_ready" (if any email text) | "new" (wa-only)
+  - status             ← "funnel_ready" (if any email text) | "new" (wa-only)
+                        Caller must promote to email_ready manually after QA pass.
   - last_error         ← null  (cleared on import)
 
 Signature rules (--check-signatures, default ON):
@@ -33,7 +34,8 @@ Input JSON format (all fields optional except id):
     },
     ...
   ]
-  Any subset of fields is valid. status=email_ready if any letter present, else new.
+  Any subset of fields is valid. status=funnel_ready if any letter present, else new (wa-only).
+  Promote to email_ready manually after QA: email IS NOT NULL, letter_1_subject + letter_1_digital_mirror exist, qa_status='passed'.
 
 Usage:
   python scripts/import_generated_leads.py --file cannes_offers.json
@@ -214,7 +216,9 @@ def parse_args():
     p = argparse.ArgumentParser(description='Import Claude Pro-generated offers → Supabase')
     p.add_argument('--file',    default='', help='Path to JSON file with offers')
     p.add_argument('--stdin',   action='store_true', help='Read JSON from stdin')
-    p.add_argument('--status',  default='email_ready', help='Status to set (default: email_ready)')
+    p.add_argument('--status',  default='funnel_ready',
+                   help='Status to set when letters present (default: funnel_ready). '
+                        'Use email_ready only after QA pass + manual review.')
     p.add_argument('--dry-run', action='store_true',   help='No DB writes, preview only')
     p.add_argument('--delay',   type=float, default=0.1, help='Seconds between patches (default: 0.1)')
     p.add_argument('--no-check-signatures', action='store_true',
@@ -229,7 +233,7 @@ def main():
 
     print(f'\n{"="*64}')
     print(f'  Import Generated Leads  |  {"DRY-RUN" if dry else "LIVE"}')
-    print(f'  Target status: {args.status}  |  Sig-check: {"ON" if check_sigs else "OFF"}')
+    print(f'  Letters → status={args.status}  |  WA-only → status=new  |  Sig-check: {"ON" if check_sigs else "OFF"}')
     print(f'{"="*64}\n')
 
     records = load_records(args)
@@ -238,7 +242,6 @@ def main():
     # Pre-fetch notes for signature checking
     all_ids = [rec.get('id') for rec in records if rec.get('id')]
     notes_map  = fetch_lead_notes(all_ids) if check_sigs else {}
-    emails_set = fetch_lead_emails(all_ids)
 
     ok_count   = 0
     err_count  = 0
@@ -283,17 +286,16 @@ def main():
             err_count += 1
             continue
 
-        # Status: email_ready only if letters exist AND lead already has an email address.
-        # Without an email address, storing letters as 'funnel_ready' avoids false-positives
-        # in the send queue — the dispatcher requires email IS NOT NULL.
+        # Status rules (strict):
+        # - letters present → funnel_ready (regardless of email presence)
+        #   email_ready requires manual promotion after: email IS NOT NULL,
+        #   letter_1_subject exists, letter_1_digital_mirror exists, qa_status='passed'
+        # - wa-only (no letters) → new (wa_ready requires mobile phone + WA QA, set manually)
         has_letters = bool(letter1 or letter2 or letter3)
-        has_email_addr = lead_id in emails_set
-        if has_letters and has_email_addr:
-            status = args.status  # → 'email_ready' (default)
-        elif has_letters:
-            status = 'funnel_ready'  # letters generated but no email yet
+        if has_letters:
+            status = 'funnel_ready'
         else:
-            status = 'new'  # wa-only or empty
+            status = 'new'
 
         # Signature check
         if check_sigs and has_letters:
