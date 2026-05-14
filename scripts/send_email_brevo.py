@@ -144,21 +144,21 @@ def fetch_leads(ids: set, limit: int, city: str) -> list:
 LOGO_HTML = """
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
   <tr>
-    <td align="center" style="padding:40px 0 20px;">
+    <td align="center" style="padding:32px 0 16px;">
       <div style="
-        font-family:'Courier New',monospace;
-        font-size:22px;
+        font-family:Arial,sans-serif;
+        font-size:18px;
         font-weight:bold;
-        letter-spacing:4px;
+        letter-spacing:2px;
         color:#d4a847;
         background:#0a0a0a;
-        padding:18px 32px;
-        border:1px solid #d4a847;
+        padding:14px 28px;
+        border:1px solid #2a2a2a;
         display:inline-block;
-      ">VERMARKTER</div>
-      <div style="font-family:'Courier New',monospace;font-size:11px;color:#666;
-                  letter-spacing:3px;margin-top:6px;">
-        DIGITAL INFRASTRUCTURE FOR BERLIN'S BEST
+      ">My-Salon</div>
+      <div style="font-family:Arial,sans-serif;font-size:11px;color:#555;
+                  letter-spacing:1px;margin-top:6px;">
+        Digitale Buchungssysteme für moderne Salons
       </div>
     </td>
   </tr>
@@ -315,6 +315,21 @@ def body_to_html(body_text: str, salon_name: str = '') -> str:
 _FR_CITIES_SET = {'nice', 'cannes', 'paris', 'lyon', 'marseille', 'monaco',
                   'bordeaux', 'toulouse', 'strasbourg', 'nantes', 'lille'}
 
+# Patterns that must be replaced in DB body text before rendering.
+# Order matters: more specific first.
+_OLD_SIG_PATTERNS = [
+    'Andrii | My-Salon',
+    'Andriy | My-Salon',
+    'Andrii|My-Salon',
+]
+
+
+def _fix_signature_in_body(body_text: str, correct_sig: str) -> str:
+    """Replace any hardcoded old signatures in DB-stored body text."""
+    for old in _OLD_SIG_PATTERNS:
+        body_text = body_text.replace(old, correct_sig)
+    return body_text
+
 
 def _fallback_subject(name: str, city: str) -> str:
     """Language-aware fallback subject when funnel provides none."""
@@ -397,6 +412,10 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str, str]:
     used_fallback = not subject
     if not subject:
         subject = _fallback_subject(name, city)
+
+    # ── Signature fix: replace any stale DB signature with the correct one ────
+    correct_sig = get_from_name(lead)
+    body_text = _fix_signature_in_body(body_text, correct_sig)
 
     # Tracking pixel URL
     pixel_url = f"{TRACK_BASE_URL}?id={lead_id}"
