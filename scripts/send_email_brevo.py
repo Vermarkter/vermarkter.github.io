@@ -23,6 +23,10 @@ Requirements:
 
 import sys, io, os, json, time, argparse, configparser, urllib.request, urllib.parse, html, datetime
 
+_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _ROOT)
+from scripts.signature import get_signature as _get_signature
+
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
@@ -39,19 +43,12 @@ SB_KEY   = _env('SUPABASE_KEY')  or _c('SUPABASE', 'service_role_key') or _c('SU
 BREVO_KEY     = _env('BREVO_API_KEY') or _c('BREVO', 'api_key')
 FROM_EMAIL    = _c('BREVO', 'from_email') or 'admin@my-salon.eu'
 FROM_NAME     = _c('BREVO', 'from_name')  or 'Vermarkter'
-FROM_NAME_FR  = _c('BREVO', 'from_name_fr') or 'Équipe My-Salon'
-FROM_NAME_UA  = _c('BREVO', 'from_name_ua') or 'Andrii | My-Salon'
 DAILY_LIMIT   = int(_c('BREVO', 'daily_limit') or 300)
 
-_FR_CITIES = {'nice', 'cannes', 'paris', 'lyon', 'marseille'}
 
-def get_from_name(city: str = '') -> str:
-    c = city.lower()
-    if c in _FR_CITIES:
-        return FROM_NAME_FR
-    if c in ('berlin', 'hamburg', 'munich', 'ua', 'ukraine'):
-        return FROM_NAME_UA
-    return FROM_NAME
+def get_from_name(lead: dict) -> str:
+    """Return sender display name based on lead-level Ukrainian signal and city."""
+    return _get_signature(lead)
 TRACK_BASE_URL = 'https://vermarkter.vercel.app/api/track'
 
 if not SB_URL or not SB_KEY:
@@ -315,21 +312,36 @@ def body_to_html(body_text: str, salon_name: str = '') -> str:
     return '\n'.join(parts)
 
 
+_FR_CITIES_SET = {'nice', 'cannes', 'paris', 'lyon', 'marseille', 'monaco',
+                  'bordeaux', 'toulouse', 'strasbourg', 'nantes', 'lille'}
+
+
+def _fallback_subject(name: str, city: str) -> str:
+    """Language-aware fallback subject when funnel provides none."""
+    city_lc = (city or '').strip().lower()
+    if city_lc in _FR_CITIES_SET:
+        return f'Information importante pour {name}' if name else 'Information importante'
+    if name:
+        return f'Kurze Information für {name}'
+    return 'Kurze Information'
+
+
 def _parse_letter(letter_val) -> tuple[str, str]:
     """
     Parse letter value into (subject, body).
     Handles two formats:
-      1. Plain string: "Objet: ...\n\nBonjour,..."  (from import_generated_leads.py)
-      2. Dict: {"subject_options": [...], "body": "..."}  (from batch pipeline)
+      1. Plain string: "Objet/Subject/Betreff: ...\n\nBody..."
+      2. Dict: {"subject_options": [...], "body": "..."}
+    Returns (subject_or_empty, body).
     """
     if isinstance(letter_val, str):
-        lines  = letter_val.strip().splitlines()
-        subject = ''
+        lines      = letter_val.strip().splitlines()
+        subject    = ''
         body_start = 0
         for i, line in enumerate(lines):
             stripped = line.strip()
             if stripped.lower().startswith(('objet:', 'subject:', 'betreff:')):
-                subject = stripped.split(':', 1)[1].strip()
+                subject    = stripped.split(':', 1)[1].strip()
                 body_start = i + 1
                 break
         body = '\n'.join(lines[body_start:]).strip()
@@ -342,10 +354,16 @@ def _parse_letter(letter_val) -> tuple[str, str]:
     return '', str(letter_val or '')
 
 
-def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
+def build_html_email(lead: dict, letter_key: str) -> tuple[str, str, str]:
     """
-    Returns (subject, html_body).
+    Returns (subject, body_text, html_body).
     letter_key: 'letter_1_digital_mirror' | 'letter_2_future_vision' | 'letter_3_social_proof_scarcity'
+
+    Subject resolution order:
+      1. Top-level funnel key matching the letter number
+         e.g. letter_key='letter_1_digital_mirror' → funnel['letter_1_subject']
+      2. Subject embedded inside the letter value (Betreff:/Subject:/Objet: prefix, or subject_options[])
+      3. Language-aware fallback: German for DE cities, French for FR cities
     """
     funnel = lead['email_funnel_json']
     if isinstance(funnel, str):
@@ -357,11 +375,28 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
     letter_val = funnel.get(letter_key) or funnel.get(list(funnel.keys())[0])
     lead_id    = lead['id']
     name       = lead.get('name', '')
+    city       = lead.get('city', '') or ''
     addr       = lead.get('notes', '') or ''
 
-    subject, body_text = _parse_letter(letter_val)
+    # ── Subject resolution ────────────────────────────────────────────────────
+    # Step 1: top-level subject key (e.g. 'letter_1_subject' for letter_1_*)
+    subject = ''
+    import re as _re
+    m = _re.match(r'(letter_\d+)', letter_key)
+    if m:
+        top_key = m.group(1) + '_subject'
+        subject = (funnel.get(top_key) or '').strip()
+
+    # Step 2: subject embedded in the letter value itself
     if not subject:
-        subject = f'Information importante pour {name}' if name else 'Information importante'
+        subject, body_text = _parse_letter(letter_val)
+    else:
+        _, body_text = _parse_letter(letter_val)
+
+    # Step 3: language-aware fallback
+    used_fallback = not subject
+    if not subject:
+        subject = _fallback_subject(name, city)
 
     # Tracking pixel URL
     pixel_url = f"{TRACK_BASE_URL}?id={lead_id}"
@@ -438,7 +473,7 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str]:
 </body>
 </html>"""
 
-    return subject, body_text, html_body
+    return subject, body_text, html_body, used_fallback
 
 
 # ── Brevo sender ──────────────────────────────────────────────────────────────
@@ -451,29 +486,41 @@ BREVO_HEADERS  = {
 }
 
 
-def send_via_brevo(to_email: str, to_name: str, subject: str, html_body: str, dry: bool, city: str = '') -> str:
+def send_via_brevo(to_email: str, to_name: str, subject: str, html_body: str, dry: bool, lead: dict = None) -> str:
+    sender_name  = get_from_name(lead or {})
+    ts           = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+
     payload = {
-        'sender':   {'name': get_from_name(city), 'email': FROM_EMAIL},
-        'to':       [{'email': to_email, 'name': to_name}],
-        'subject':  subject,
+        'sender':      {'name': sender_name, 'email': FROM_EMAIL},
+        'to':          [{'email': to_email, 'name': to_name}],
+        'subject':     subject,
         'htmlContent': html_body,
+        'replyTo':     {'email': FROM_EMAIL, 'name': sender_name},
     }
     data = json.dumps(payload, ensure_ascii=False).encode('utf-8')
 
+    print(f"         ts={ts}")
+    print(f"         sender='{sender_name} <{FROM_EMAIL}>'")
+    print(f"         recipient='{to_name} <{to_email}>'")
+    print(f"         subject='{subject[:80]}'")
+
     if dry:
-        preview = html_body[:200].replace('\n', ' ')
-        print(f"         [DRY] To: {to_email} | Subject: {subject[:60]}")
+        print(f"         → [DRY-RUN — not sent]")
         return 'DRY'
 
     req = urllib.request.Request(BREVO_SEND_URL, data=data, headers=BREVO_HEADERS, method='POST')
     try:
         with urllib.request.urlopen(req, timeout=30) as r:
-            resp = json.loads(r.read().decode('utf-8'))
+            status = r.status
+            resp   = json.loads(r.read().decode('utf-8'))
             msg_id = resp.get('messageId', '?')
+            print(f"         → HTTP {status} | messageId={msg_id}")
             return f'OK:{msg_id}'
     except urllib.request.HTTPError as e:
-        body = e.read().decode('utf-8', errors='replace')[:300]
-        return f'ERR {e.code}: {body}'
+        body = e.read().decode('utf-8', errors='replace')
+        short = body[:400]
+        print(f"         → HTTP {e.code} ERROR | body={short}", file=sys.stderr)
+        return f'ERR {e.code}: {short}'
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -534,13 +581,16 @@ def main():
         print(f'         sv_url: {"YES" if lead.get("street_view_url") else "no (logo fallback)"}')
 
         try:
-            subject, body_text, html_body = build_html_email(lead, args.letter)
+            subject, body_text, html_body, used_fallback = build_html_email(lead, args.letter)
         except Exception as e:
             print(f'         → [ERR] build failed: {e}')
             if not dry:
                 sb_patch(lead_id, {'last_error': f'build: {str(e)[:380]}'})
             fail += 1
             continue
+
+        fallback_warn = ' ⚠ FALLBACK SUBJECT' if used_fallback else ''
+        print(f'         subject: {subject[:100]}{fallback_warn}')
 
         if args.save_html:
             preview_path = os.path.join(_ROOT, 'data', f'email_preview_{lead_id}.html')
@@ -549,8 +599,7 @@ def main():
                 f.write(html_body)
             print(f'         → HTML saved: {preview_path}')
 
-        result = send_via_brevo(email, name, subject, html_body, dry, city=lead.get('city', args.city or ''))
-        print(f'         → [{result}]')
+        result = send_via_brevo(email, name, subject, html_body, dry, lead=lead)
 
         if result.startswith('OK') or result == 'DRY':
             ok += 1

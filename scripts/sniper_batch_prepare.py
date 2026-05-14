@@ -23,6 +23,8 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _ROOT)
+from scripts.signature import get_signature
 
 # ── Config ────────────────────────────────────────────────────────────────────
 _cfg = configparser.ConfigParser()
@@ -38,8 +40,8 @@ HDRS = {'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY}
 OPENAI_MODEL = 'gpt-4o'  # hardcoded — never downgrade to mini or 3.5
 FIELDS = 'id,name,city,district,phone,email,website,notes,custom_message'
 
-# ── Ultimate v5 System Prompt ─────────────────────────────────────────────────
-SYSTEM_PROMPT = """Du bist ein elitärer Berater für digitale Transformation. Stil: Modern Professional.
+# ── System Prompt builder (signature injected per lead) ───────────────────────
+_SYSTEM_PROMPT_TEMPLATE = """Du bist ein elitärer Berater für digitale Transformation. Stil: Modern Professional.
 Anrede AUSSCHLIESSLICH „Sie". Niemals „Hey" oder „Hi".
 
 GRAMMATIK-PFLICHT (Separable Verbs):
@@ -49,22 +51,26 @@ GRAMMATIK-PFLICHT (Separable Verbs):
 FEW-SHOT BEISPIELE (exakt so aufbauen):
 
 Beispiel SSL:
-„Guten Tag, Ihr Webauftritt wird aktuell von Google als „unsicher" eingestuft. Das schreckt ca. 70 % Ihrer potenziellen Kunden ab, noch bevor sie Ihre Arbeit sehen. Wir bieten Ihnen Website, App und WhatsApp-Assistent für einmalig 1.000 €. Hier ist die Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Soll ich Ihnen ein 60-Sekunden-Video-Demo dazu schicken?"
+„Guten Tag, Ihr Webauftritt wird aktuell von Google als „unsicher" eingestuft. Das schreckt ca. 70 % Ihrer potenziellen Kunden ab, noch bevor sie Ihre Arbeit sehen. Wir bieten Ihnen Website, App und WhatsApp-Assistent in 10 Sprachen für einmalig 1.000 €. Soll ich Ihnen ein 60-Sekunden-Video-Demo dazu schicken?"
 
 Beispiel Konkurrent:
-„Sehr geehrtes Team, Kunden in Ihrem Viertel buchen aktuell eher bei [Konkurrent], da dort eine direkte Online-Buchung möglich ist. Wir machen Sie digital unabhängig für einmalig 1.000 €. Demo: https://vermarkter.vercel.app/services/beauty-industry/de/ Soll ich Ihnen ein Video-Demo schicken?"
+„Sehr geehrtes Team, Kunden in Ihrem Viertel buchen aktuell eher bei [Konkurrent], da dort eine direkte Online-Buchung möglich ist. Wir machen Sie digital unabhängig — Website, App und WhatsApp-Assistent in 10 Sprachen für einmalig 1.000 €. Soll ich Ihnen ein Video-Demo schicken?"
 
 REGELN (ALLE PFLICHT):
 - MAXIMAL 480 Zeichen — zähle exakt, kürze gnadenlos
+- KEINE Links, KEINE URLs in der Nachricht
 - SSL-Treffer NUR wenn ssl=n in den Notizen — exakt wie Beispiel SSL oben
 - Konkurrent NUR wenn explizit in den Notizen genannt — dann namentlich erwähnen
 - Kein Konkurrent in Notizen → schreib über allgemeinen Kundenverlust außerhalb der Öffnungszeiten
-- Angebot: Website + App + WhatsApp-Assistent — einmalig 1.000 €
+- Angebot: Website + App + WhatsApp-Assistent in 10 Sprachen — einmalig 1.000 €
 - CTA (PFLICHT): „Soll ich Ihnen ein 60-Sekunden-Video-Demo dazu schicken?"
-- Link: https://vermarkter.vercel.app/services/beauty-industry/de/
-- Unterschrift: www.my-salon.eu (KEIN Name, nur die Domain)
+- Unterschrift: {signature} (genau diese Zeichenkette, kein Link, kein Zusatz)
 
 Output: NUR den fertigen Nachrichtentext — keine Erklärungen, keine Kommentare."""
+
+
+def build_system_prompt(lead):
+    return _SYSTEM_PROMPT_TEMPLATE.format(signature=get_signature(lead))
 
 # ── Supabase fetch (paginated) ────────────────────────────────────────────────
 def fetch_all_leads(city, limit, force):
@@ -132,7 +138,7 @@ def build_jsonl_line(lead):
             "max_tokens": 300,
             "temperature": 0.75,
             "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "system", "content": build_system_prompt(lead)},
                 {"role": "user",   "content": build_user_prompt(lead)},
             ]
         }

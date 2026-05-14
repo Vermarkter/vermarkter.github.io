@@ -25,6 +25,8 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='repla
 sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, _ROOT)
+from scripts.signature import get_signature
 
 # ── Config ────────────────────────────────────────────────────────────────────
 _cfg = configparser.ConfigParser()
@@ -45,7 +47,7 @@ DEMO_URL = 'https://vermarkter.vercel.app/services/beauty-industry/de/'
 _MOBILE_RE = re.compile(r'\+33\s*[67]|\b0[67]\d{8}')
 
 # ── Prompt "Indépendance" ──────────────────────────────────────────────────────
-SYSTEM_PROMPT_FR_WA = """Tu es un conseiller d'élite en transformation digitale. Style : Moderne Professionnel.
+_SYSTEM_PROMPT_FR_WA_TMPL = """Tu es un conseiller d'élite en transformation digitale. Style : Moderne Professionnel.
 Vouvoiement OBLIGATOIRE. Jamais « Salut » ou « Hey ».
 
 CONTEXTE PRODUIT (OBLIGATOIRE — ne jamais restreindre) :
@@ -75,12 +77,12 @@ RÈGLES (TOUTES OBLIGATOIRES) :
 - Planity/Treatwell/Booksy : nommer la plateforme si connue
 - Pas de plateforme connue → parler de clients perdus hors heures d'ouverture
 - CTA OBLIGATOIRE (LITTÉRAL) : « Puis-je vous envoyer une démo 60 secondes ? »
-- Signature : www.my-salon.eu (NI nom NI prénom — domaine uniquement)
+- Signature : {signature} (exactement cette chaîne — aucun lien, aucun ajout)
 - Ton : professionnel, direct, jamais agressif
 
 Output : UNIQUEMENT le texte du message WhatsApp — aucune explication."""
 
-SYSTEM_PROMPT_FR_EMAIL = """Tu es un conseiller d'élite en transformation digitale. Style : Moderne Professionnel.
+_SYSTEM_PROMPT_FR_EMAIL_TMPL = """Tu es un conseiller d'élite en transformation digitale. Style : Moderne Professionnel.
 Vouvoiement OBLIGATOIRE. Jamais de ton familier.
 
 CONTEXTE PRODUIT (OBLIGATOIRE — ne jamais restreindre) :
@@ -107,7 +109,7 @@ Résultat : zéro commission, clients fidélisés directement, réservations aut
 Puis-je vous envoyer une démo de 60 secondes ?
 
 Cordialement,
-www.my-salon.eu
+{signature}
 
 RÈGLES (TOUTES OBLIGATOIRES) :
 - Première ligne : « Objet : ... » (précis, pas de clickbait)
@@ -115,11 +117,17 @@ RÈGLES (TOUTES OBLIGATOIRES) :
 - Structure : Problème → Solution → CTA
 - Ton personnalisé, pas d'e-mail de masse
 - CTA OBLIGATOIRE : « Puis-je vous envoyer une démo de 60 secondes ? »
-- Signature : www.my-salon.eu
+- Signature : {signature}
 - AUCUN lien cliquable dans le corps
 - Mentionner la plateforme si connue (Planity/Treatwell/Booksy)
 
 Output : UNIQUEMENT Objet + texte e-mail — aucune explication."""
+
+
+def build_system_prompt_fr(lead, channel):
+    sig = get_signature(lead)
+    tmpl = _SYSTEM_PROMPT_FR_WA_TMPL if channel == 'wa' else _SYSTEM_PROMPT_FR_EMAIL_TMPL
+    return tmpl.format(signature=sig)
 
 PLATFORM_RX = re.compile(r'(treatwell|planity|booksy|fresha|salonkee)', re.I)
 
@@ -188,7 +196,7 @@ def build_user_prompt(lead, channel):
 
 # ── JSONL builder ─────────────────────────────────────────────────────────────
 def build_jsonl_line(lead, channel):
-    system = SYSTEM_PROMPT_FR_WA if channel == 'wa' else SYSTEM_PROMPT_FR_EMAIL
+    system = build_system_prompt_fr(lead, channel)
     max_tok = 200 if channel == 'wa' else 500
     return json.dumps({
         'custom_id': str(lead['id']),

@@ -170,20 +170,15 @@ def sb_patch_email(lead_id: int, email: str) -> None:
 
 def fetch_leads_missing_email(cities: list, limit: int) -> list:
     city_param = ','.join(f'"{c}"' for c in cities)
-    path = (
-        '/rest/v1/beauty_leads'
-        '?select=id,name,website,city,email'
-        f'&city=in.({city_param})'
-        '&email=is.null'
-        '&website=not.is.null'
-        '&order=id.asc'
-    )
-    if limit:
-        path += f'&limit={limit}'
-    else:
-        path += '&limit=2000'
-
-    return sb_get(path)
+    qs = urllib.parse.urlencode({
+        'select': 'id,name,website,city,email',
+        'city':   f'in.({city_param})',
+        'email':  'is.null',
+        'website':'not.is.null',
+        'order':  'id.asc',
+        'limit':  str(limit if limit else 2000),
+    })
+    return sb_get('/rest/v1/beauty_leads?' + qs)
 
 
 # ── Worker ────────────────────────────────────────────────────────────────────
