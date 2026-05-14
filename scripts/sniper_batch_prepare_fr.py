@@ -132,16 +132,24 @@ def build_system_prompt_fr(lead, channel):
 PLATFORM_RX = re.compile(r'(treatwell|planity|booksy|fresha|salonkee)', re.I)
 
 # ── Channel detection ─────────────────────────────────────────────────────────
-def detect_channel(lead):
+def detect_channels(lead):
+    """Returns list of channels for this lead: ['wa'], ['email'], ['wa','email'], or []."""
     phone = (lead.get('phone') or '').strip()
     email = (lead.get('email') or '').strip()
+    channels = []
     if phone and _MOBILE_RE.search(phone):
-        return 'wa'
+        channels.append('wa')
+    elif phone:
+        channels.append('wa')
     if email:
-        return 'email'
-    if phone:
-        return 'wa'
-    return 'skip'
+        channels.append('email')
+    return channels
+
+
+def detect_channel(lead):
+    """Legacy single-channel helper — returns first channel or 'skip'."""
+    chs = detect_channels(lead)
+    return chs[0] if chs else 'skip'
 
 # ── User prompt builder ───────────────────────────────────────────────────────
 def build_user_prompt(lead, channel):
@@ -199,7 +207,7 @@ def build_jsonl_line(lead, channel):
     system = build_system_prompt_fr(lead, channel)
     max_tok = 200 if channel == 'wa' else 500
     return json.dumps({
-        'custom_id': str(lead['id']),
+        'custom_id': f"{lead['id']}_{channel}",
         'method': 'POST',
         'url': '/v1/chat/completions',
         'body': {
@@ -280,30 +288,36 @@ def main():
         print('  python scripts/lead_harvester.py --plz 06000 06100 06200 06300 --city Nice')
         return
 
-    # Channel split
+    # Channel split — a lead with mobile+email generates two JSONL lines
     wa_leads    = []
     email_leads = []
+    both_leads  = []
     skip_leads  = []
 
     for l in leads:
-        ch = detect_channel(l)
-        if ch == 'wa':
+        chs = detect_channels(l)
+        if 'wa' in chs and 'email' in chs:
+            both_leads.append(l)
+        elif 'wa' in chs:
             wa_leads.append(l)
-        elif ch == 'email':
+        elif 'email' in chs:
             email_leads.append(l)
         else:
             skip_leads.append(l)
 
     print(f'Fetched {len(leads)} leads:')
-    print(f'  WA:    {len(wa_leads)}')
-    print(f'  Email: {len(email_leads)}')
-    print(f'  Skip:  {len(skip_leads)} (no contact)')
+    print(f'  WA only:    {len(wa_leads)}')
+    print(f'  Email only: {len(email_leads)}')
+    print(f'  Both:       {len(both_leads)}')
+    print(f'  Skip:       {len(skip_leads)} (no contact)')
 
     to_process = []
     if args.channel in ('wa', 'both'):
         to_process.extend((l, 'wa') for l in wa_leads)
+        to_process.extend((l, 'wa') for l in both_leads)
     if args.channel in ('email', 'both'):
         to_process.extend((l, 'email') for l in email_leads)
+        to_process.extend((l, 'email') for l in both_leads)
 
     if not to_process:
         print('Nothing to process for selected channel.')

@@ -74,11 +74,33 @@ HDRS_PATCH = {
 }
 
 # ── Supabase patch ────────────────────────────────────────────────────────────
-def patch_lead(lead_id, message):
-    payload = json.dumps({
-        'custom_message': message,
-        'status': 'READY TO SEND',
-    }).encode('utf-8')
+def patch_lead(lead_id, channel, message):
+    """
+    channel='wa'    → write custom_message, leave email_funnel_json untouched
+    channel='email' → parse "Objet: ...\n\nbody" → write email_funnel_json.letter_1_*
+                       (status stays 'new'; import_generated_leads handles funnel_ready)
+    channel=None    → legacy behaviour: write custom_message only
+    """
+    if channel == 'email':
+        subject = ''
+        body = message
+        lines = message.split('\n', 2)
+        if lines and lines[0].lower().startswith('objet'):
+            subject = lines[0].partition(':')[2].strip()
+            body = '\n'.join(lines[1:]).lstrip('\n')
+        patch = {
+            'email_funnel_json': {
+                'letter_1_subject':        subject,
+                'letter_1_digital_mirror': body,
+            },
+            'status': 'funnel_ready',
+        }
+    else:
+        patch = {
+            'custom_message': message,
+        }
+
+    payload = json.dumps(patch).encode('utf-8')
     url = f"{SB_URL}/rest/v1/beauty_leads?id=eq.{lead_id}"
     req = urllib.request.Request(url, data=payload, headers=HDRS_PATCH, method='PATCH')
     try:
@@ -158,8 +180,21 @@ def finalize_chunk(batch, out_dir, chunk_num, dry_run):
             fail += 1
             continue
 
+        # custom_id may be "{id}_{channel}" (new) or plain "{id}" (legacy)
+        if '_' in str(custom_id) and str(custom_id).rsplit('_', 1)[-1] in ('wa', 'email'):
+            raw_id, channel = str(custom_id).rsplit('_', 1)
+        else:
+            raw_id, channel = str(custom_id), None
+
+        try:
+            lead_id = int(raw_id)
+        except ValueError:
+            print(f'      [FAIL] bad custom_id={custom_id}', file=sys.stderr)
+            fail += 1
+            continue
+
         if not dry_run:
-            code = patch_lead(int(custom_id), msg)
+            code = patch_lead(lead_id, channel, msg)
             if code in (200, 204):
                 ok += 1
             else:

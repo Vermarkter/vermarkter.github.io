@@ -761,7 +761,8 @@ def sniper_pilot_batch(city: str = '', top_n: int = 20) -> None:
             f'/rest/v1/beauty_leads'
             f'?city=eq.{enc}'
             f'&select=id,name,city,district,category,reviews_count,'
-            f'website,phone,email,platform,pain_tags,status,is_mobile'
+            f'website,phone,email,platform,pain_tags,status,is_mobile,'
+            f'custom_message,batch_id'
             f'&limit=2000'
         )
         all_leads.extend(rows)
@@ -771,14 +772,51 @@ def sniper_pilot_batch(city: str = '', top_n: int = 20) -> None:
         return
 
     # ── Filter ────────────────────────────────────────────────────────────────
+    _JUNK_EMAIL_RX = re.compile(
+        r'beispiel@|@beispiel\.'         # placeholder
+        r'|&#\d+;'                       # HTML-encoded address
+        r'|@ivof\.com$'                  # non-salon vendor
+        r'|@ebvv\.com$'
+        r'|noreply|no-reply|donotreply'
+        r'|@treatwell\.|@planity\.|@booksy\.|@fresha\.|@salonkee\.',
+        re.I
+    )
+
+    _ALREADY_SENT_STATUSES = {
+        'wa_ready', 'email_ready', 'funnel_ready',
+        'EMAIL SENT', 'email_sent', 'НАДІСЛАНО WA',
+    }
+
     candidates = []
     skipped_chain = skipped_empty = skipped_no_evidence = 0
+    skipped_already = skipped_junk_email = 0
 
     for lead in all_leads:
+        # Skip leads already processed in a previous batch
+        if lead.get('custom_message'):
+            skipped_already += 1
+            continue
+        if lead.get('batch_id'):
+            skipped_already += 1
+            continue
+        if (lead.get('status') or '') in _ALREADY_SENT_STATUSES:
+            skipped_already += 1
+            continue
+
         # Must-have contact
         if not lead.get('phone') and not lead.get('email'):
             skipped_empty += 1
             continue
+
+        # Strip junk/technical emails — they don't belong to the salon
+        raw_email = (lead.get('email') or '').strip()
+        if raw_email and _JUNK_EMAIL_RX.search(raw_email):
+            lead = {**lead, 'email': None}
+            skipped_junk_email += 1
+            # don't skip the lead entirely — it may still have a phone
+            if not lead.get('phone'):
+                skipped_empty += 1
+                continue
 
         # Skip chains
         if _is_chain(lead.get('name', '')):
@@ -820,26 +858,44 @@ def sniper_pilot_batch(city: str = '', top_n: int = 20) -> None:
     batch = candidates[:top_n]
 
     print(f'\nFiltered: {len(all_leads)} total → {len(candidates)} candidates '
-          f'(skipped: chain={skipped_chain} empty={skipped_empty} no_evidence={skipped_no_evidence})')
+          f'(skipped: already_batched={skipped_already} junk_email={skipped_junk_email} '
+          f'chain={skipped_chain} empty={skipped_empty} no_evidence={skipped_no_evidence})')
     print(f'Batch size: {len(batch)}\n')
 
     # ── Print Sniper batch ────────────────────────────────────────────────────
+    _MOBILE_DE = re.compile(r'\+49\s*1[5-7]|\b015\d|016\d|017\d')
+
     sep = '─' * 80
     for i, lead in enumerate(batch, 1):
         tags_str = ', '.join(lead['_tags']) if isinstance(lead['_tags'], list) else lead['_tags']
+
+        phone = (lead.get('phone') or '').strip()
+        email = (lead.get('email') or '').strip()
+        has_mobile = bool(phone and _MOBILE_DE.search(phone))
+        has_email  = bool(email)
+        if has_mobile and has_email:
+            output_needed = 'both'
+        elif has_mobile:
+            output_needed = 'whatsapp'
+        elif has_email:
+            output_needed = 'email'
+        else:
+            output_needed = '—'
+
         print(sep)
         print(f'#{i:>2}  [{lead["_score"]} pts]  ID={lead.get("id")}')
-        print(f'  Name:     {lead.get("name")}')
-        print(f'  City:     {lead.get("city")}')
-        print(f'  Address:  {lead.get("district") or "—"}')
-        print(f'  Category: {lead.get("category") or "—"}')
-        print(f'  Reviews:  {lead.get("reviews_count") or "?"} reviews on Google Maps')
-        print(f'  Website:  {lead.get("website") or "—"}')
-        print(f'  Phone:    {lead.get("phone") or "—"}')
-        print(f'  Email:    {lead.get("email") or "—"}')
-        print(f'  Platform: {lead.get("platform") or "—"}')
-        print(f'  Tags:     {tags_str or "—"}')
-        print(f'  Evidence: {lead["_evidence"]}')
+        print(f'  Name:          {lead.get("name")}')
+        print(f'  City:          {lead.get("city")}')
+        print(f'  Address:       {lead.get("district") or "—"}')
+        print(f'  Category:      {lead.get("category") or "—"}')
+        print(f'  Reviews:       {lead.get("reviews_count") or "?"} reviews on Google Maps')
+        print(f'  Website:       {lead.get("website") or "—"}')
+        print(f'  Phone:         {phone or "—"}')
+        print(f'  Email:         {email or "—"}')
+        print(f'  Platform:      {lead.get("platform") or "—"}')
+        print(f'  Pain_tags:     {tags_str or "—"}')
+        print(f'  Evidence:      {lead["_evidence"]}')
+        print(f'  Output needed: {output_needed}')
     print(sep)
     print(f'\nTotal in batch: {len(batch)} leads ready for Sniper.')
 
