@@ -762,7 +762,7 @@ def sniper_pilot_batch(city: str = '', top_n: int = 20) -> None:
             f'?city=eq.{enc}'
             f'&select=id,name,city,district,category,reviews_count,'
             f'website,phone,email,platform,pain_tags,status,is_mobile,'
-            f'custom_message,batch_id'
+            f'custom_message,batch_id,email_funnel_json'
             f'&limit=2000'
         )
         all_leads.extend(rows)
@@ -794,6 +794,9 @@ def sniper_pilot_batch(city: str = '', top_n: int = 20) -> None:
     for lead in all_leads:
         # Skip leads already processed in a previous batch
         if lead.get('custom_message'):
+            skipped_already += 1
+            continue
+        if lead.get('email_funnel_json'):
             skipped_already += 1
             continue
         if lead.get('batch_id'):
