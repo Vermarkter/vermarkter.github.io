@@ -1328,6 +1328,20 @@ function openMsgPreview(id) {
     }
   }
 
+  // ── Storefront / Street View block ──────────────────────
+  html += '<div style="margin-top:1.3rem;border-top:1px solid rgba(255,255,255,.08);padding-top:1rem">';
+  html += '<div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.45rem">&#128247; Storefront / Street View</div>';
+  if (s.street_view_url) {
+    html += '<img src="' + esc(s.street_view_url) + '" alt="Storefront" style="max-width:100%;border-radius:8px;display:block;background:#111;border:1px solid rgba(255,255,255,.08)">';
+    html += '<div style="font-size:.68rem;color:rgba(255,165,0,.8);margin-top:.45rem">&#9888; Bitte manuell pr&#252;fen, ob das Bild wirklich zum Salon geh&#246;rt.</div>';
+  } else {
+    html += '<div style="color:rgba(255,255,255,.3);font-size:.8rem;font-style:italic;padding:.3rem 0">Kein Storefront-Bild vorhanden</div>';
+  }
+  if (s.maps_url) {
+    html += '<a href="' + esc(s.maps_url) + '" target="_blank" rel="noopener" style="display:inline-block;margin-top:.6rem;font-size:.75rem;background:rgba(66,133,244,.12);border:1px solid rgba(66,133,244,.3);border-radius:6px;padding:.28rem .7rem;color:#60a5fa;text-decoration:none;font-weight:700">&#127758; Open Maps</a>';
+  }
+  html += '</div>';
+
   document.getElementById('msgPrevContent').innerHTML = html;
   var bg = document.getElementById('msgPrevBg');
   bg.style.display = 'flex';

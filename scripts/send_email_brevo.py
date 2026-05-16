@@ -291,16 +291,8 @@ def body_to_html(body_text: str, salon_name: str = '') -> str:
                 f'</td></tr>'
             )
             continue
-        # Demo link line
+        # Demo link line — suppressed (no external links in body)
         if 'Demo:' in stripped or 'vermarkter.vercel.app' in stripped:
-            parts.append(
-                f'<tr><td style="padding:16px 0 8px;text-align:center;">'
-                f'<a href="{html.escape(demo_url)}" '
-                f'style="display:inline-block;background:#d4a847;color:#000;'
-                f'font-family:\'Courier New\',monospace;font-size:13px;font-weight:bold;'
-                f'letter-spacing:2px;padding:14px 32px;text-decoration:none;'
-                f'border-radius:2px;">→ DEMO ANSEHEN (90 SEK)</a></td></tr>'
-            )
             continue
         # Regular paragraph
         parts.append(
@@ -471,7 +463,13 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str, str]:
           <td style="padding:24px 0 8px;text-align:center;">
             <span style="font-family:'Courier New',monospace;font-size:10px;
                          color:#444;letter-spacing:1px;">
-              Vermarkter — vermarkter.vercel.app<br>
+              Team My-Salon<br>
+              <a href="https://www.my-salon.eu"
+                 style="color:#555;text-decoration:underline;">www.my-salon.eu</a>
+              &nbsp;·&nbsp;
+              <a href="mailto:{html.escape(FROM_EMAIL)}"
+                 style="color:#555;text-decoration:underline;">{html.escape(FROM_EMAIL)}</a><br>
+              <br>
               Sie erhalten diese E-Mail, weil wir eine geschäftliche Relevanz für Ihr Unternehmen sehen.<br>
               <a href="mailto:{html.escape(FROM_EMAIL)}?subject=Abmeldung"
                  style="color:#555;text-decoration:underline;">Abmelden</a>
@@ -481,10 +479,7 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str, str]:
 
       </table>
 
-      <!-- TRACKING PIXEL (1x1, invisible) -->
-      <img src="{pixel_url}" width="1" height="1"
-           alt="" style="display:block;width:1px;height:1px;border:0;"
-           loading="lazy" />
+      <!-- tracking pixel removed: domain moved off vercel -->
 
     </td>
   </tr>
@@ -509,12 +504,14 @@ def send_via_brevo(to_email: str, to_name: str, subject: str, html_body: str, dr
     sender_name  = get_from_name(lead or {})
     ts           = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
 
+    lead_id = (lead or {}).get('id')
     payload = {
         'sender':      {'name': sender_name, 'email': FROM_EMAIL},
         'to':          [{'email': to_email, 'name': to_name}],
         'subject':     subject,
         'htmlContent': html_body,
         'replyTo':     {'email': FROM_EMAIL, 'name': sender_name},
+        'tags':        [f'lead_id:{lead_id}'] if lead_id else [],
     }
     data = json.dumps(payload, ensure_ascii=False).encode('utf-8')
 
