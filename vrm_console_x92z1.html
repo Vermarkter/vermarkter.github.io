@@ -1013,9 +1013,12 @@ function renderTable() {
       ? '<span class="last-error-badge">⚠️ ' + esc(s.last_error) + '</span>'
       : '';
 
-    // Append email preview button + errBadge to WA cell
+    // 👁️ Preview button — opens modal with custom_message + email letters
+    var prevBtn = '<button style="margin-left:4px;padding:.18rem .45rem;font-size:.75rem;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.3);border-radius:6px;cursor:pointer;color:#a78bfa" onclick="openMsgPreview(' + s.id + ')">&#128065;&#65039;</button>';
+
+    // Append preview + email preview button + errBadge to WA cell
     var c7full = '<td>' + c7.replace('<td>','').replace('</td>','')
-      + emailPrevBtn + errBadge + emailPrevHtml + '</td>';
+      + prevBtn + emailPrevBtn + errBadge + emailPrevHtml + '</td>';
 
     var trCls = (isDone ? 'done' : '') + (fresh ? ' isnew' : '') + (isChecked ? ' selected' : '');
     return '<tr class="' + trCls.trim() + '">' + c0 + cID + c1 + c2 + c3 + c4 + c5 + c6 + c7full + c8 + c9 + c10 + c11 + '</tr>';
@@ -1288,6 +1291,61 @@ function sbCopy(e, i, text) {
     });
   }
 }
+
+function openMsgPreview(id) {
+  var s = SALONS.find(function(x){ return x.id === id; });
+  if (!s) return;
+  var html = '<h3 style="margin:0 0 .9rem;font-size:.95rem;font-weight:700;color:#a78bfa">' + esc(s.name) + '</h3>';
+
+  html += '<div style="margin-bottom:1.1rem">';
+  html += '<div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.4rem">📱 WhatsApp</div>';
+  if (s.custom_message) {
+    html += '<div style="font-size:.82rem;white-space:pre-wrap;line-height:1.65;background:rgba(37,211,102,.07);border:1px solid rgba(37,211,102,.22);border-radius:10px;padding:.9rem 1rem;word-break:break-word">' + esc(s.custom_message) + '</div>';
+  } else {
+    html += '<div style="color:rgba(255,255,255,.32);font-size:.8rem;font-style:italic;padding:.6rem 0">Keine Nachricht vorhanden</div>';
+  }
+  html += '</div>';
+
+  if (s.email_funnel_json) {
+    var funnel = s.email_funnel_json;
+    if (typeof funnel === 'string') { try { funnel = JSON.parse(funnel); } catch(e){} }
+    if (typeof funnel === 'object' && funnel !== null) {
+      [1,2,3].forEach(function(n) {
+        var subj = funnel['letter_' + n + '_subject'] || '';
+        var body = funnel['letter_' + n + '_body'] || funnel['letter_' + n + '_digital_mirror'] || '';
+        if (typeof body === 'object' && body !== null) {
+          if (!subj && body['subject_options'] && body['subject_options'].length) subj = body['subject_options'][0];
+          body = body['body'] || '';
+        }
+        if (n === 1 && !body) { body = funnel['body'] || ''; subj = subj || funnel['subject'] || ''; }
+        if (!body) return;
+        html += '<div style="margin-bottom:.85rem">';
+        html += '<div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem">📧 Letter ' + n + (subj ? ' — ' + esc(String(subj).slice(0,60)) : '') + '</div>';
+        html += '<div style="font-size:.78rem;white-space:pre-wrap;line-height:1.6;background:rgba(6,182,212,.05);border:1px solid rgba(6,182,212,.15);border-radius:10px;padding:.8rem 1rem;word-break:break-word;max-height:200px;overflow-y:auto">' + esc(String(body)) + '</div>';
+        html += '</div>';
+      });
+    }
+  }
+
+  document.getElementById('msgPrevContent').innerHTML = html;
+  var bg = document.getElementById('msgPrevBg');
+  bg.style.display = 'flex';
+  document.addEventListener('keydown', _msgPrevEsc);
+}
+
+function closeMsgPreview() {
+  document.getElementById('msgPrevBg').style.display = 'none';
+  document.removeEventListener('keydown', _msgPrevEsc);
+}
+
+function _msgPrevEsc(e) { if (e.key === 'Escape') closeMsgPreview(); }
 </script>
+
+<div id="msgPrevBg" onclick="if(event.target===this)closeMsgPreview()" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:2000;align-items:center;justify-content:center;padding:1rem">
+  <div style="background:#0d0d1a;border:1px solid rgba(139,92,246,.35);border-radius:18px;max-width:660px;width:100%;max-height:90vh;overflow-y:auto;padding:1.8rem 2rem;position:relative">
+    <button onclick="closeMsgPreview()" style="position:absolute;top:.9rem;right:1rem;background:none;border:none;color:rgba(255,255,255,.55);font-size:1.25rem;cursor:pointer;line-height:1">&times;</button>
+    <div id="msgPrevContent"></div>
+  </div>
+</div>
 </body>
 </html>
