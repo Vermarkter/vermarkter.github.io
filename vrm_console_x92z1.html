@@ -361,7 +361,7 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 </div>
 
 <div class="filters">
-  <input type="text" id="search" placeholder="🔍 Пошук за назвою або районом..." oninput="renderTable()">
+  <input type="text" id="search" placeholder="🔍 Назва, район, ID або 46,63,2..." oninput="renderTable()">
   <select id="fCity" onchange="renderTable()">
     <option value="">Всі міста</option>
     <option value="München">München</option>
@@ -391,12 +391,17 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
     <option value="sent">НАДІСЛАНО (WA)</option>
     <option value="EMAIL SENT">НАДІСЛАНО EMAIL</option>
     <option value="replied">ВІДПОВІЛИ</option>
+    <option value="wa_ready">wa_ready</option>
     <option value="interested">ЦІКАВО</option>
     <option value="rejected">ВІДМОВА</option>
     <option value="CALLED">ЗАТЕЛЕФОНУВАЛИ</option>
     <option value="booked">ЗАБРОНЬОВАНО</option>
   </select>
-  <button class="rbtn" style="border-color:rgba(34,197,94,.4);color:#22c55e" onclick="(function(){document.getElementById('fCity').value='Nice';document.getElementById('fType').value='wa';document.getElementById('fStatus').value='';document.getElementById('search').value='';renderTable();})()">📱 Nice WA</button>
+  <select id="fBatch" onchange="renderTable()">
+    <option value="">Всі batch</option>
+    <option value="munich_wa_regen_01">Munich WA #1 (17)</option>
+  </select>
+  <button class="rbtn" style="border-color:rgba(34,197,94,.4);color:#22c55e" onclick="(function(){document.getElementById('fCity').value='Nice';document.getElementById('fType').value='wa';document.getElementById('fStatus').value='';document.getElementById('fBatch').value='';document.getElementById('search').value='';renderTable();})()">📱 Nice WA</button>
 </div>
 
 <!-- ═══════════════ SALES BOOK PANEL ═══════════════ -->
@@ -657,6 +662,7 @@ function resetFilters() {
   document.getElementById('fCity').value   = '';
   document.getElementById('fType').value   = '';
   document.getElementById('fStatus').value = '';
+  document.getElementById('fBatch').value  = '';
   onlyNew = false; localStorage.removeItem(ONLY_NEW_KEY);
   syncToggleUI(); renderTable();
 }
@@ -786,10 +792,11 @@ var WA_SVG  = '<svg width="12" height="12" viewBox="0 0 24 24" fill="currentColo
 // ── Render table ────────────────────────────────────────
 function renderTable() {
   if (!SALONS.length) return;
-  var q  = (document.getElementById('search').value  || '').toLowerCase();
+  var q  = (document.getElementById('search').value  || '').toLowerCase().trim();
   var fc = (document.getElementById('fCity').value   || '');
   var ft = (document.getElementById('fType').value   || '');
   var fs = (document.getElementById('fStatus').value || '');
+  var fb = (document.getElementById('fBatch').value  || '');
 
   var newCnt = SALONS.filter(isReadyToSend).length;
   var tcEl = document.getElementById('toggleNewCnt');
@@ -797,12 +804,22 @@ function renderTable() {
 
   var rows = SALONS.filter(function(s) {
     if (onlyNew && !isReadyToSend(s)) return false;
-    if (q  && ((s.name||'') + ' ' + (s.district||'')).toLowerCase().indexOf(q) === -1) return false;
+    if (q) {
+      var numParts = q.split(',').map(function(x){ return parseInt(x.trim(), 10); });
+      var allNums  = q.replace(/[\d,\s]/g, '') === '' && numParts.length > 0 && numParts.every(function(x){ return !isNaN(x); });
+      if (allNums) {
+        if (numParts.indexOf(s.id) === -1) return false;
+      } else {
+        var hay = ((s.name||'') + ' ' + (s.district||'') + ' ' + (s.city||'') + ' ' + (s.website||'') + ' ' + (s.email||'') + ' ' + (s.phone||'')).toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+    }
     if (fc && ((s.city||'') + ' ' + (s.district||'')).indexOf(fc) === -1) return false;
     if (ft === 'wa'    && !isMobile(s.phone)) return false;
     if (ft === 'email' && !s.email)           return false;
     if (ft === 'none'  && (s.email || isMobile(s.phone))) return false;
     if (fs && s.status !== fs) return false;
+    if (fb && s.batch_id !== fb) return false;
     return true;
   });
 
