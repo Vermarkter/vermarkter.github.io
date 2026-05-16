@@ -120,7 +120,7 @@ def append_chat_history(lead_id: int, subject: str, body: str) -> None:
 
 
 def fetch_leads(ids: set, limit: int, city: str) -> list:
-    select = 'id,name,email,city,notes,street_view_url,email_funnel_json'
+    select = 'id,name,email,city,notes,street_view_url,email_funnel_json,content_flags'
     params = {
         'status': 'eq.email_ready',
         'select': select,
@@ -361,7 +361,7 @@ def _parse_letter(letter_val) -> tuple[str, str]:
     return '', str(letter_val or '')
 
 
-def build_html_email(lead: dict, letter_key: str) -> tuple[str, str, str]:
+def build_html_email(lead: dict, letter_key: str, proxy_url: str = None) -> tuple[str, str, str, bool]:
     """
     Returns (subject, body_text, html_body).
     letter_key: 'letter_1_digital_mirror' | 'letter_2_future_vision' | 'letter_3_social_proof_scarcity'
@@ -415,10 +415,12 @@ def build_html_email(lead: dict, letter_key: str) -> tuple[str, str, str]:
     # Personalized demo URL (shared by hero thumbnail link + demo button in body)
     demo_url = build_demo_url(name)
 
-    # First screen: Street View thumbnail (with Play overlay) or logo fallback
-    sv_url = lead.get('street_view_url')
-    if sv_url:
-        hero_block = build_street_view_block(sv_url, addr, demo_url=demo_url)
+    # First screen: proxy image or logo fallback.
+    # Never use raw street_view_url here — it contains the Google API key.
+    # proxy_url is set by main() only when --with-storefront-proxy is passed
+    # and the lead has both street_view_url and storefront_ok in content_flags.
+    if proxy_url:
+        hero_block = build_street_view_block(proxy_url, addr, demo_url=demo_url)
     else:
         hero_block = build_logo_fallback_block()
 
@@ -554,6 +556,13 @@ def parse_args():
                    help='Which funnel letter to send (default: letter_1)')
     p.add_argument('--delay',   type=float, default=1.0,
                    help='Seconds between sends (default: 1.0)')
+    p.add_argument('--with-storefront-proxy', action='store_true',
+                   help=(
+                       'Insert hero image via proxy (https://my-salon.eu/proxy-image?lead_id=ID). '
+                       'Only applies when lead has street_view_url AND content_flags contains '
+                       '"storefront_ok" or "storefront_verified". '
+                       'Without this flag emails always use the logo fallback.'
+                   ))
     p.add_argument('--dry-run', action='store_true',
                    help='Build emails and print, no actual sending')
     p.add_argument('--save-html', action='store_true',
@@ -573,6 +582,8 @@ def main():
     if ids:
         print(f'  ID filter: {sorted(ids)}')
     print(f'{"="*64}\n')
+
+    PROXY_BASE = 'https://my-salon.eu/proxy-image'
 
     leads = fetch_leads(ids, args.limit, args.city)
     print(f'  Leads with email + funnel: {len(leads)}\n')
@@ -594,10 +605,35 @@ def main():
             continue
 
         print(f'  [SEND] id={lead_id} «{name}» → {email}')
-        print(f'         sv_url: {"YES" if lead.get("street_view_url") else "no (logo fallback)"}')
+
+        # Resolve proxy URL for this lead (only when --with-storefront-proxy is passed)
+        proxy_url = None
+        if args.with_storefront_proxy:
+            sv = (lead.get('street_view_url') or '').strip()
+            flags = lead.get('content_flags') or []
+            if isinstance(flags, str):
+                try:    flags = json.loads(flags)
+                except: flags = []
+            storefront_verified = any(f in flags for f in ('storefront_ok', 'storefront_verified'))
+            if sv and storefront_verified:
+                proxy_url = f'{PROXY_BASE}?lead_id={lead_id}'
+
+        if args.with_storefront_proxy:
+            if proxy_url:
+                print(f'         hero: proxy → {proxy_url}')
+            elif (lead.get('street_view_url') or '').strip():
+                print(f'         hero: logo fallback (sv_url exists but no storefront_ok flag)')
+            else:
+                print(f'         hero: logo fallback (no sv_url)')
+        else:
+            sv_label = 'YES (not used — pass --with-storefront-proxy to enable)' \
+                       if lead.get('street_view_url') else 'no'
+            print(f'         hero: logo fallback | sv_url={sv_label}')
 
         try:
-            subject, body_text, html_body, used_fallback = build_html_email(lead, args.letter)
+            subject, body_text, html_body, used_fallback = build_html_email(
+                lead, args.letter, proxy_url=proxy_url
+            )
         except Exception as e:
             print(f'         → [ERR] build failed: {e}')
             if not dry:
