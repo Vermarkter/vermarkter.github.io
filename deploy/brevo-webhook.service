@@ -1,0 +1,19 @@
+[Unit]
+Description=Vermarkter Brevo Webhook Server
+Documentation=https://github.com/Vermarkter/vermarkter.github.io
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/vermarkter
+ExecStart=/usr/bin/python3 /opt/vermarkter/scripts/brevo_webhook_server.py \
+          --host 127.0.0.1 --port 8082
+Restart=always
+RestartSec=5
+StandardOutput=append:/opt/vermarkter/logs/brevo_webhook_server.log
+StandardError=append:/opt/vermarkter/logs/brevo_webhook_server.log
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,20 @@
+[Unit]
+Description=Vermarkter Street View Image Proxy
+Documentation=https://github.com/Vermarkter/vermarkter.github.io
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/vermarkter
+ExecStart=/usr/bin/python3 /opt/vermarkter/scripts/proxy_image_server.py \
+          --host 127.0.0.1 --port 8083
+Restart=always
+RestartSec=5
+StandardOutput=append:/opt/vermarkter/logs/proxy_image.log
+StandardError=append:/opt/vermarkter/logs/proxy_image.log
+Environment=PYTHONUNBUFFERED=1
+Environment=PROXY_CACHE_DIR=/opt/vermarkter/cache/street_view
+
+[Install]
+WantedBy=multi-user.target
