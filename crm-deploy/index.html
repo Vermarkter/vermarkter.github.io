@@ -264,7 +264,7 @@ tbody tr.ms-row-REJECTED   td{background:rgba(239,68,68,.04);opacity:.6}
 </div>
 
 <div class="filters">
-  <input type="text" id="search" placeholder="&#128269; &#1055;&#1086;&#1096;&#1091;&#1082; &#1079;&#1072; &#1085;&#1072;&#1079;&#1074;&#1086;&#1102; &#1072;&#1073;&#1086; &#1088;&#1072;&#1081;&#1086;&#1085;&#1086;&#1084;..." oninput="renderTable()">
+  <input type="text" id="search" placeholder="&#128269; &#1053;&#1072;&#1079;&#1074;&#1072;, &#1088;&#1072;&#1081;&#1086;&#1085;, ID &#1072;&#1073;&#1086; 46,63,2..." oninput="renderTable()">
   <select id="fCity" onchange="renderTable()">
     <option value="">&#1042;&#1089;&#1110; &#1084;&#1110;&#1089;&#1090;&#1072;</option>
     <option value="nchen">M&#252;nchen</option>
@@ -281,10 +281,16 @@ tbody tr.ms-row-REJECTED   td{background:rgba(239,68,68,.04);opacity:.6}
     <option value="new">&#1053;&#1086;&#1074;&#1110;</option>
     <option value="sent">&#1053;&#1072;&#1076;&#1110;&#1089;&#1083;&#1072;&#1085;&#1086;</option>
     <option value="replied">&#1042;&#1110;&#1076;&#1087;&#1086;&#1074;&#1110;&#1083;&#1080;</option>
+    <option value="wa_ready">wa_ready</option>
+    <option value="READY TO SEND">READY TO SEND</option>
     <option value="ms:SENT">&#128228; SENT</option>
     <option value="ms:REPLIED">&#128172; REPLIED</option>
     <option value="ms:INTERESTED">&#128293; INTERESTED</option>
     <option value="ms:REJECTED">&#128683; REJECTED</option>
+  </select>
+  <select id="fBatch" onchange="renderTable()">
+    <option value="">&#1042;&#1089;&#1110; batch</option>
+    <option value="munich_wa_regen_01">Munich WA #1 (17)</option>
   </select>
 </div>
 
@@ -666,6 +672,7 @@ function resetFilters() {
   document.getElementById('fCity').value   = '';
   document.getElementById('fType').value   = '';
   document.getElementById('fStatus').value = '';
+  document.getElementById('fBatch').value  = '';
   onlyNew = false;
   localStorage.removeItem(ONLY_NEW_KEY);
   syncToggleUI();
@@ -687,10 +694,11 @@ function escAttr(s) {
 // ── RENDER TABLE ──────────────────────────────────────────────────────────────
 function renderTable() {
   if (!SALONS.length) return;
-  var q  = document.getElementById('search').value.toLowerCase();
+  var q  = document.getElementById('search').value.toLowerCase().trim();
   var fc = document.getElementById('fCity').value;
   var ft = document.getElementById('fType').value;
   var fs = document.getElementById('fStatus').value;
+  var fb = document.getElementById('fBatch').value;
 
   // Update toggle counter (Berlin + status=new = ready-to-send working list)
   var newCnt = SALONS.filter(function(s){ return isReadyToSend(s); }).length;
@@ -699,7 +707,17 @@ function renderTable() {
 
   var rows = SALONS.filter(function(s) {
     if (onlyNew && !isReadyToSend(s)) return false;
-    if (q  && !(s.name + ' ' + (s.district||'')).toLowerCase().includes(q)) return false;
+    if (q) {
+      var numParts = q.split(',').map(function(x){ return parseInt(x.trim(), 10); });
+      var allNums  = q.replace(/[\d,\s]/g, '') === '' && numParts.length > 0 && numParts.every(function(x){ return !isNaN(x); });
+      if (allNums) {
+        if (numParts.indexOf(s.id) === -1) return false;
+      } else {
+        var hay = ((s.name||'') + ' ' + (s.district||'') + ' ' + (s.city||'') + ' ' + (s.website||'') + ' ' + (s.email||'') + ' ' + (s.phone||'')).toLowerCase();
+        if (!hay.includes(q)) return false;
+      }
+    }
+    if (fb && s.batch_id !== fb) return false;
     if (fc && !(s.district||'').includes(fc)) return false;
     if (ft === 'wa'    && !(isMobile(s.phone) && s.custom_message)) return false;
     if (ft === 'email' && !s.email) return false;
