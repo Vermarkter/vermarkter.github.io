@@ -115,6 +115,10 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
 .bmap:hover{background:rgba(59,130,246,.26);border-color:rgba(59,130,246,.55);transform:translateY(-1px)}
 .bsave{background:rgba(99,102,241,.14);color:#a5b4fc;border:1px solid rgba(99,102,241,.3);font-size:.67rem;padding:.24rem .52rem}
 .bsave:hover{background:rgba(99,102,241,.26);border-color:rgba(99,102,241,.55)}
+.bwa-sent{background:rgba(37,211,102,.14);color:#25d366;border:1px solid rgba(37,211,102,.32);font-size:.67rem;padding:.24rem .52rem;border-radius:6px;cursor:pointer;font-weight:700;white-space:nowrap;transition:all .2s;font-family:inherit;margin-top:.22rem;display:inline-block}
+.bwa-sent:hover{background:rgba(37,211,102,.28);border-color:#25d366}
+.bno-wa{background:rgba(255,255,255,.04);color:var(--muted);border:1px solid var(--border);font-size:.67rem;padding:.24rem .52rem;border-radius:6px;cursor:pointer;font-weight:700;white-space:nowrap;transition:all .2s;font-family:inherit;margin-top:.22rem;display:inline-block;margin-left:.22rem}
+.bno-wa:hover{border-color:#f87171;color:#f87171}
 
 /* STATUS */
 .sbadge{display:inline-block;font-size:.61rem;padding:.17rem .45rem;border-radius:4px;font-weight:600;white-space:nowrap}
@@ -399,8 +403,6 @@ input[type=checkbox].wa-chk{width:16px;height:16px;cursor:pointer;accent-color:#
   </select>
   <select id="fBatch" onchange="renderTable()">
     <option value="">Всі batch</option>
-    <option value="munich_wa_regen_01">Munich WA #1 (17)</option>
-    <option value="augsburg_wa_regen_01">Augsburg Batch #1 (17)</option>
   </select>
   <button class="rbtn" style="border-color:rgba(34,197,94,.4);color:#22c55e" onclick="(function(){document.getElementById('fCity').value='Nice';document.getElementById('fType').value='wa';document.getElementById('fStatus').value='';document.getElementById('fBatch').value='';document.getElementById('search').value='';renderTable();})()">📱 Nice WA</button>
 </div>
@@ -883,10 +885,12 @@ function renderTable() {
     // COL 6 — Maps
     var c6 = '<td><a class="btn bmap" href="' + esc(mapsLink(s)) + '" target="_blank">' + MAP_SVG + ' Maps</a></td>';
 
-    // COL 7 — WhatsApp
+    // COL 7 — WhatsApp (opens link only — no auto-markSent)
     var c7 = '<td>'
       + (isMobile(s.phone)
-          ? '<a class="btn bwa" href="' + esc(waLink(s)) + '" target="_blank" onclick="markSent(' + s.id + ')">' + WA_SVG + ' WA</a>'
+          ? '<a class="btn bwa" href="' + esc(waLink(s)) + '" target="_blank">' + WA_SVG + ' WA</a>'
+            + '<br><button class="bwa-sent" onclick="markSent(' + s.id + ')">&#10003; WA Sent</button>'
+            + '<button class="bno-wa" onclick="markStatus(' + s.id + ',\'status_no_wa\')">&#9940; No WA</button>'
           : '<span style="color:rgba(255,255,255,.15);font-size:.7rem">—</span>')
       + '</td>';
 
@@ -1026,6 +1030,26 @@ function renderTable() {
   }).join('');
 }
 
+// ── Batch dropdown — populated from loaded SALONS data ──
+function populateBatchDropdown() {
+  var seen = {};
+  SALONS.forEach(function(s) {
+    if (s.batch_id && s.batch_id.trim()) seen[s.batch_id.trim()] = true;
+  });
+  var batches = Object.keys(seen).sort();
+  var sel = document.getElementById('fBatch');
+  if (!sel) return;
+  var cur = sel.value;
+  sel.innerHTML = '<option value="">Всі batch</option>';
+  batches.forEach(function(b) {
+    var opt = document.createElement('option');
+    opt.value = b;
+    opt.textContent = b;
+    if (b === cur) opt.selected = true;
+    sel.appendChild(opt);
+  });
+}
+
 // ── Load data ───────────────────────────────────────────
 function loadData() {
   setSync('loading', 'Завантаження даних...');
@@ -1057,6 +1081,7 @@ function loadData() {
 
     setSync('ok', 'Готово · ' + SALONS.length + ' записів · ' + (hasChatCol ? 'chat_history ✓' : 'chat_history —') + (hasAbCol ? ' · A/B ✓' : ''));
     updateCounter();
+    populateBatchDropdown();
     renderTable();
   }).catch(function(e) {
     var msg = e.message || String(e);
